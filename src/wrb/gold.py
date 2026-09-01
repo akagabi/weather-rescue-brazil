@@ -28,7 +28,11 @@ def validate_sheet(s: Sheet) -> list[str]:
                 v.append(f"{r.date}: {col}={val} outside physical range {lo_hi}")
     if s.printed_totals:
         for key, printed in s.printed_totals.items():
-            col, kind = key.rsplit("_", 1)          # e.g. "tmax_mean", "precip_sum"
+            parts = key.rsplit("_", 1)
+            if len(parts) != 2:
+                v.append(f"printed_totals key '{key}' is malformed (expected <col>_mean or <col>_sum)")
+                continue
+            col, kind = parts
             vals = [r.cells[col] for r in s.rows if r.cells.get(col) is not None]
             if not vals:
                 continue
