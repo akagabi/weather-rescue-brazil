@@ -262,7 +262,14 @@ def g2b_response_schema(day_count: int | None = None) -> dict:
     model itself is discouraged from producing, and is rejected as
     unrecoverable by `_parse_g2b_response` if it happens anyway. When
     `day_count` is unknown, no length bound is sent (used by tests probing
-    request shape in isolation)."""
+    request shape in isolation).
+
+    Live-verified (Task 2 probe, 2026-09-01): a schema-only request (this
+    function's output, unchanged) against the gate model
+    (gemini-3.5-flash) returns 200 with correctly structured output via a
+    direct curl - the responseSchema mechanism, minItems/maxItems
+    included, is not the cause of the g2b table call's 400 (see
+    `_request_gemini_g2b`'s docstring: that was `responseLogprobs`)."""
     cell_properties = {key: {"type": "NUMBER", "nullable": True} for key in _CELL_KEYS}
     row_schema = {
         "type": "OBJECT",
@@ -310,7 +317,11 @@ class G2BRow(BaseModel):
 class G2BTable(BaseModel):
     rows: list[G2BRow]
     printed_totals: dict[str, float] | None = None
-    # Fix #5: a free confidence read, captured but never gated on.
+    # Fix #5: a free confidence read, captured but never gated on. NOT
+    # requested via responseLogprobs/logprobs (see _request_gemini_g2b's
+    # docstring - the gate model 400s the whole call if those are sent), so
+    # this stays None whenever the provider doesn't otherwise report a
+    # candidate-level avgLogprobs; extract() never crashes on its absence.
     avg_logprobs: float | None = None
 
 
@@ -413,6 +424,24 @@ def _parse_g2b_response(text: str, day_count: int | None) -> G2BTable:
 def _request_gemini_g2b(
     endpoint: str, api_key: str, image_bytes: bytes, day_count: int | None = None,
 ) -> httpx.Response:
+    """Build the g2b table-call request.
+
+    Fix #5 (`responseLogprobs`/`logprobs` in generationConfig) is NOT sent:
+    live-verified (Task 2 probe, 2026-09-01) via direct curl, the gate
+    model (gemini-3.5-flash) 400s the ENTIRE request with `{"error":
+    {"code": 400, "message": "Logprobs is not enabled for this model",
+    "status": "INVALID_ARGUMENT"}}` whenever either field is present - this
+    is not a per-field soft-reject, it fails the whole call. The same curl
+    probe confirmed `responseSchema` (below, unchanged) is NOT implicated -
+    a schema-only request (no logprobs fields) returns 200 with correctly
+    structured output. `G2BTable.avg_logprobs` stays in the model (see its
+    docstring) and stays None-safe downstream in `extract()` - Gemini may
+    still report a candidate-level `avgLogprobs` without `responseLogprobs`
+    being set, so it is still opportunistically captured when present."""
+    gen_cfg = {
+        "responseMimeType": "application/json",
+        "responseSchema": g2b_response_schema(day_count),
+    }
     body = {
         "system_instruction": {"parts": [{"text": G2B_SYSTEM_PROMPT}]},
         "contents": [{
@@ -421,13 +450,7 @@ def _request_gemini_g2b(
                                   "data": base64.b64encode(image_bytes).decode("ascii")}},
             ],
         }],
-        "generationConfig": {
-            "responseMimeType": "application/json",
-            "responseSchema": g2b_response_schema(day_count),
-            # Fix #5: a free confidence read, stored not gated on.
-            "responseLogprobs": True,
-            "logprobs": 1,
-        },
+        "generationConfig": gen_cfg,
     }
     return httpx.post(endpoint, json=body,
                        headers={"User-Agent": USER_AGENT, "X-goog-api-key": api_key},
@@ -991,8 +1014,13 @@ def extract(
     `validate_day_sequence` (fix #2 - NOT run automatically here; the
     caller decides what to do with a shifted sheet), deterministic
     barometer-prefix reconstruction applied to the parsed result before it
-    is returned (fix #4), and `responseLogprobs` captured onto the
-    returned `G2BTable.avg_logprobs` (fix #5). It returns a `G2BTable`
+    is returned (fix #4), and an opportunistic candidate-level `avgLogprobs`
+    (when the provider reports one) captured onto `G2BTable.avg_logprobs`
+    (fix #5) - `responseLogprobs`/`logprobs` are deliberately NOT requested
+    (live-verified, Task 2 probe 2026-09-01: the gate model 400s the whole
+    call if either is set - see `_request_gemini_g2b`'s docstring), so this
+    field is commonly None and every caller must treat it as optional. It
+    returns a `G2BTable`
     (day-indexed, no calendar date) rather than a `Sheet` - fix #3 moves
     the calendar date out of this call entirely; combine the result with
     `extract_period`+`reconcile_period` via `assemble_sheet` to get a

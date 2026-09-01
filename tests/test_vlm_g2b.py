@@ -68,8 +68,16 @@ def test_g2b_request_sends_response_schema_matching_day_count(tmp_path, monkeypa
     sent = json.loads(route.calls.last.request.content)
     gen_cfg = sent["generationConfig"]
     assert gen_cfg["responseMimeType"] == "application/json"
-    assert gen_cfg["responseLogprobs"] is True
+    # Live-verified (Task 2 probe, 2026-09-01): the gate model
+    # (gemini-3.5-flash) 400s the WHOLE g2b call with "Logprobs is not
+    # enabled for this model" whenever either field is present - so
+    # neither is ever sent (see _request_gemini_g2b's docstring).
+    assert "responseLogprobs" not in gen_cfg
+    assert "logprobs" not in gen_cfg
     schema = gen_cfg["responseSchema"]
+    # The exact-31-row pin IS sent over the wire - live-verified (same
+    # probe) that responseSchema, minItems/maxItems included, is not
+    # implicated in the 400; only the logprobs fields were.
     assert schema["properties"]["rows"]["minItems"] == 31
     assert schema["properties"]["rows"]["maxItems"] == 31
     item_props = schema["properties"]["rows"]["items"]["properties"]
@@ -238,6 +246,51 @@ def test_g2b_captures_avg_logprobs_when_absent(tmp_path, monkeypatch):
     table = extract(b"fake-image-bytes", GEMINI_PROVIDER, meter, strategy="g2b", day_count=1)
 
     assert table.avg_logprobs is None
+
+
+@respx.mock
+def test_g2b_never_sends_logprobs_fields_in_a_single_call(tmp_path, monkeypatch):
+    """Live-verified (Task 2 probe, 2026-09-01): gemini-3.5-flash (the
+    controller-mandated gate model) 400s the WHOLE g2b table call with
+    {"error": {"message": "Logprobs is not enabled for this model"}}
+    whenever `responseLogprobs`/`logprobs` are present in generationConfig
+    - there is no partial/soft-reject to recover from, so the fix is to
+    never send either field, not to retry after a 400. This exercises the
+    real (non-mocked-400) happy path end to end and asserts it took exactly
+    one HTTP attempt and one ledger charge."""
+    monkeypatch.setenv("WRB_GEMINI_KEY", "test-personal-key-123")
+    meter = CostMeter(cap_usd=10.0, ledger=tmp_path / "ledger.json")
+    ok_body = {"candidates": [{"content": {"parts": [{"text": json.dumps({"rows": _g2b_rows(1)})}]}}]}
+    route = respx.post(ENDPOINTS[GEMINI_PROVIDER]).mock(return_value=httpx.Response(200, json=ok_body))
+
+    table = extract(b"fake-image-bytes", GEMINI_PROVIDER, meter, strategy="g2b", day_count=1)
+
+    assert isinstance(table, G2BTable)
+    assert len(table.rows) == 1
+    assert table.avg_logprobs is None
+    assert route.call_count == 1
+    sent_cfg = json.loads(route.calls[0].request.content)["generationConfig"]
+    assert "responseLogprobs" not in sent_cfg
+    assert "logprobs" not in sent_cfg
+    assert len(meter.items) == 1
+
+
+@respx.mock
+def test_g2b_raises_immediately_on_400_no_retry(tmp_path, monkeypatch):
+    """A 400 is not in RETRYABLE_STATUS_CODES (see _request_with_retry) -
+    it must fail fast with exactly one HTTP attempt, never be swallowed or
+    retried. This guards against reintroducing the removed
+    catch-and-retry-without-logprobs fallback for some OTHER 400 cause."""
+    monkeypatch.setenv("WRB_GEMINI_KEY", "test-personal-key-123")
+    meter = CostMeter(cap_usd=10.0, ledger=tmp_path / "ledger.json")
+    route = respx.post(ENDPOINTS[GEMINI_PROVIDER]).mock(
+        return_value=httpx.Response(400, json={"error": {"message": "Request contains an invalid argument"}}),
+    )
+
+    with pytest.raises(httpx.HTTPStatusError):
+        extract(b"fake-image-bytes", GEMINI_PROVIDER, meter, strategy="g2b", day_count=1)
+
+    assert route.call_count == 1
 
 
 # --- charging (mirrors the existing zero_shot charge-before-call contract) ---
