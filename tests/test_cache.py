@@ -20,3 +20,15 @@ def test_path_helper(tmp_path: Path):
     c = PageCache(tmp_path)
     p = c.path("hdbn", "364568", 1)
     assert p == tmp_path / "hdbn" / "364568" / "000001.jpg"
+
+
+def test_custom_extension_roundtrip(tmp_path: Path):
+    # non-image sources (e.g. IAG-USP PDF boletins) need a real extension,
+    # not a forced .jpg on binary content that isn't a JPEG.
+    c = PageCache(tmp_path)
+    assert c.get("iagusp", "2020", 1, ext="pdf") is None
+    p = c.put("iagusp", "2020", 1, b"%PDF-FAKE", {"url": "http://x", "attribution": "a"}, ext="pdf")
+    assert p == tmp_path / "iagusp" / "2020" / "000001.pdf"
+    assert c.get("iagusp", "2020", 1, ext="pdf") == b"%PDF-FAKE"
+    # default extension is unaffected
+    assert c.path("iagusp", "2020", 1) == tmp_path / "iagusp" / "2020" / "000001.jpg"
