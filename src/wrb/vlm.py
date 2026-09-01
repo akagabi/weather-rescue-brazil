@@ -295,11 +295,15 @@ def g2b_response_schema(day_count: int | None = None) -> dict:
     # as a parameter only so callers don't need a signature change and so
     # its intent (row-count enforcement) is documented at the call site.
     rows_schema: dict = {"type": "ARRAY", "items": row_schema}
-    # `printed_totals` is intentionally NOT in the response schema: Gemini's
-    # structured-output rejects an OBJECT with no declared `properties`
-    # ("invalid argument" 400), and the Mez summary is not needed from the
-    # model here (it is a gold-side checksum; g2b scores daily cells). The
-    # model simply doesn't return it; G2BTable.printed_totals stays None.
+    # `printed_totals` is NOT in the response schema. NOTE: an isolated
+    # single-call probe (page 41, 2026-09-01) succeeded with an
+    # empty-properties `{"type": "OBJECT"}` printed_totals entry present in
+    # the schema, so that shape is not independently confirmed here as a
+    # 400 cause on its own - it is left out because the Mez summary isn't
+    # needed for scoring (a gold-side checksum; g2b scores daily cells
+    # only), not because leaving it in is known to fail. The model simply
+    # doesn't return it under this schema; G2BTable.printed_totals stays
+    # None, and callers must treat it as optional either way.
     return {
         "type": "OBJECT",
         "properties": {
@@ -437,13 +441,18 @@ def _request_gemini_g2b(
     model (gemini-3.5-flash) 400s the ENTIRE request with `{"error":
     {"code": 400, "message": "Logprobs is not enabled for this model",
     "status": "INVALID_ARGUMENT"}}` whenever either field is present - this
-    is not a per-field soft-reject, it fails the whole call. The same curl
-    probe confirmed `responseSchema` (below, unchanged) is NOT implicated -
-    a schema-only request (no logprobs fields) returns 200 with correctly
-    structured output. `G2BTable.avg_logprobs` stays in the model (see its
-    docstring) and stays None-safe downstream in `extract()` - Gemini may
-    still report a candidate-level `avgLogprobs` without `responseLogprobs`
-    being set, so it is still opportunistically captured when present."""
+    is not a per-field soft-reject, it fails the whole call.
+
+    `responseSchema` (below) IS also implicated in a 400, separately from
+    the logprobs fields - see `g2b_response_schema`'s docstring: pinning
+    the `rows` array to the exact day_count via minItems/maxItems 400s on
+    the real (14-required-field, 28-31 item) schema, even though the
+    logprobs fields are absent. That bound has been removed there; row
+    count is enforced client-side in `_parse_g2b_response` instead.
+    `G2BTable.avg_logprobs` stays in the model (see its docstring) and
+    stays None-safe downstream in `extract()` - Gemini may still report a
+    candidate-level `avgLogprobs` without `responseLogprobs` being set, so
+    it is still opportunistically captured when present."""
     gen_cfg = {
         "responseMimeType": "application/json",
         "responseSchema": g2b_response_schema(day_count),
@@ -1015,8 +1024,11 @@ def extract(
     `strategy="g2b"` (the G2-B structural-error strategy - see the plan's
     Task 1 and the block of code above this function) is Gemini-only and
     applies all four research-backed fixes to the MAIN TABLE call: a
-    schema-enforced response shape pinned to `day_count` rows (fix #1), a
-    `day`-anchored row shape validated separately by
+    schema-enforced response shape for each row (fix #1 - the exact row
+    count is NOT pinned into the schema via minItems/maxItems, since that
+    400s on the real-size schema; it is instead enforced client-side in
+    `_parse_g2b_response` against `day_count`), a `day`-anchored row shape
+    validated separately by
     `validate_day_sequence` (fix #2 - NOT run automatically here; the
     caller decides what to do with a shifted sheet), deterministic
     barometer-prefix reconstruction applied to the parsed result before it
