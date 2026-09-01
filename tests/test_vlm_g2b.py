@@ -280,6 +280,32 @@ def test_assemble_sheet_builds_iso_dates_from_period_and_day():
     assert sheet.rows[1].flags["wind_dir"] == "SSE"
 
 
+def test_assemble_sheet_uses_row_day_not_positional_index():
+    """Coordinator fix (post Task-1-approval): this is the load-bearing
+    anti-cheat property of the whole day-anchor design (fix #2) - if
+    assemble_sheet silently fell back to a row's POSITION in the list
+    instead of its own `.day` field, a dropped/shifted row would produce a
+    Sheet with plausible-looking but WRONG dates instead of surfacing the
+    gap, turning the day anchor into theater. Give it a table with a day
+    GAP (day 5 missing entirely - as if the model's row for day 5 failed
+    to parse and was dropped) and assert the built dates track `.day`,
+    not the row's index in the list."""
+    table = G2BTable(rows=[
+        G2BRow(day=1, cells={"tmax": 28.3}, flags={}),
+        G2BRow(day=5, cells={"tmax": 30.0}, flags={}),
+    ])
+
+    sheet = assemble_sheet(
+        table, year=1886, month=1,
+        source="docvirt", bib="14", page=41, station="s", columns=["tmax"],
+    )
+
+    assert [r.date for r in sheet.rows] == ["1886-01-01", "1886-01-05"]
+    # the failure mode this guards against: positional indexing would give
+    # ["1886-01-01", "1886-01-02"] instead.
+    assert sheet.rows[1].date != "1886-01-02"
+
+
 def test_zero_shot_strategy_is_unaffected_default():
     """The old zero-shot path must remain the default and behave exactly as
     before Task 1 - strategy="g2b" is strictly additive."""
