@@ -232,7 +232,7 @@
       "cells": {
         "pressure": 756.6,
         "pressure_max": 759.93,
-        "pressure_min": 753.35,
+        "pressure_min": 755.35,
         "tmean": 23.9,
         "tmax": 27.0,
         "tmin": 23.0,
@@ -462,7 +462,7 @@
         "pressure": 756.3,
         "pressure_max": 757.93,
         "pressure_min": 755.12,
-        "tmean": 21.6,
+        "tmean": 21.3,
         "tmax": 26.1,
         "tmin": 20.0,
         "vapor": 16.9,

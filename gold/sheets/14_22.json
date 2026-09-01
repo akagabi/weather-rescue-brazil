@@ -263,13 +263,13 @@
         "cloudiness": 5.0,
         "precip": null,
         "evap_sol": 7.2,
-        "evap_sombra": 4.7,
+        "evap_sombra": 4.2,
         "ozone": 5.0
       },
       "flags": {
         "wind_dir": "NW, variavel",
         "precip": "none",
-        "low_confidence": "evap_ozone/ozone last digit smudged, read as 5"
+        "low_confidence": "evap_ozone/ozone last digit smudged, read as 5. Separately, evap_sombra glyph worn on original page; re-zoomed reading is 4.2 (was misread as 4.7 in the first-pass draft) - Task 9 adjudication, HIGH confidence despite the wear."
       }
     },
     {
@@ -346,7 +346,7 @@
         "pressure": 758.35,
         "pressure_max": 759.63,
         "pressure_min": 756.14,
-        "tmean": 23.4,
+        "tmean": 24.3,
         "tmax": 25.8,
         "tmin": 22.9,
         "vapor": 18.0,
@@ -378,7 +378,7 @@
         "cloudiness": 8.5,
         "precip": null,
         "evap_sol": 4.1,
-        "evap_sombra": 2.0,
+        "evap_sombra": 2.6,
         "ozone": 2.0
       },
       "flags": {
@@ -469,7 +469,7 @@
         "wind_force": 5.0,
         "cloudiness": 2.1,
         "precip": null,
-        "evap_sol": 5.6,
+        "evap_sol": 5.0,
         "evap_sombra": 5.4,
         "ozone": 2.0
       },
@@ -675,7 +675,7 @@
         "wind_force": 4.1,
         "cloudiness": 6.0,
         "precip": null,
-        "evap_sol": 8.3,
+        "evap_sol": 8.5,
         "evap_sombra": 6.0,
         "ozone": 2.0
       },

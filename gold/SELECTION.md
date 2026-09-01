@@ -175,3 +175,29 @@ row-30 correction to match, documented in REVIEW_QUEUE.md). `printed_totals`
 in the gold JSON therefore only carries true means/sums; the max/min
 cross-check lives in `/private/tmp/.../scratchpad/build_gold.py` used to
 build these sheets (not committed - the resulting JSON is what matters).
+
+## Certification
+
+The gold set was **triple-verified** before this freeze: a first-pass draft
+transcription, an independent blind re-transcription of the same 9 sheets
+(no access to the draft), and a zoom-level adjudication pass over every
+disagreement between the two. Cross-transcription agreement across the
+3,822 gold cells was **99.52%** - 20 disagreements total. All 20 were
+resolved at **HIGH confidence** by direct image inspection (full-page open,
+then an 8-20x LANCZOS-upscaled crop of the specific cell); zero were
+escalated as coin-flips. That adjudication produced **16 corrections**,
+applied to `gold/sheets/*.json` (full ruling table in
+`.superpowers/sdd/2026-08-31-weather-rescue-brazil-g0-g1/task-9-adjudication-report.md`);
+the remaining 4 disputed cells confirmed the first-pass draft was already
+correct and needed no change.
+
+The binding **faithful-to-print convention** (see above) governed every
+ruling in the adjudication exactly as it governed the original
+transcription: each correction stores the literal glyph on the page, never
+a constraint-solved or "intended" value. Two corrections
+(`14_22` day 1885-12-11 `evap_sombra`, and `14_90` day 1886-04-05 `tmean` -
+where *neither* prior transcription had the printed value right) are
+documented/flagged rather than smoothed to fit an ordering or checksum
+expectation. The gold set was re-frozen after these corrections;
+`gold/MANIFEST.json` records the current sha256 per sheet and freeze
+timestamp.
