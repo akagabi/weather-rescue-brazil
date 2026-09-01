@@ -256,20 +256,21 @@ def g2b_response_schema(day_count: int | None = None) -> dict:
     is what encodes fix #2's "day is the first field" requirement directly
     into the request, not just into the prompt text.
 
-    When `day_count` is known (the month's day count, e.g. 28/30/31) the
-    `rows` array is pinned to exactly that length via minItems/maxItems -
-    a response with a different row count is then a schema violation the
-    model itself is discouraged from producing, and is rejected as
-    unrecoverable by `_parse_g2b_response` if it happens anyway. When
-    `day_count` is unknown, no length bound is sent (used by tests probing
-    request shape in isolation).
+    `day_count` (the month's day count, e.g. 28/30/31) is accepted for
+    signature compatibility and used by `_parse_g2b_response` to reject an
+    off-length response, but it is deliberately NOT sent into the schema as
+    `minItems`/`maxItems` on the `rows` array.
 
-    Live-verified (Task 2 probe, 2026-09-01): a schema-only request (this
-    function's output, unchanged) against the gate model
-    (gemini-3.5-flash) returns 200 with correctly structured output via a
-    direct curl - the responseSchema mechanism, minItems/maxItems
-    included, is not the cause of the g2b table call's 400 (see
-    `_request_gemini_g2b`'s docstring: that was `responseLogprobs`)."""
+    CORRECTED (2026-09-01, controller-confirmed): an earlier version of
+    this docstring claimed minItems/maxItems were live-verified as not the
+    cause of the g2b table call's 400 - that was wrong. A controller curl
+    probe showed a tiny 2-item schema WITH minItems/maxItems=2 returns 200,
+    but this same schema (14-required-field row objects) pinned to the
+    real day_count (31) 400s ("invalid argument") on the gate model. The
+    length bound is the cause on the full-size schema; it is removed here
+    and the exact row count is enforced CLIENT-SIDE instead, in
+    `_parse_g2b_response` below (a wrong count still raises
+    ExtractionParseError - it is never padded or truncated to fit)."""
     cell_properties = {key: {"type": "NUMBER", "nullable": True} for key in _CELL_KEYS}
     row_schema = {
         "type": "OBJECT",
@@ -289,18 +290,23 @@ def g2b_response_schema(day_count: int | None = None) -> dict:
         "required": ["day", "cells"],
         "propertyOrdering": ["day", "cells", "flags"],
     }
+    # `day_count` is intentionally NOT applied as minItems/maxItems here -
+    # see the docstring above. It is unused in this function's body; kept
+    # as a parameter only so callers don't need a signature change and so
+    # its intent (row-count enforcement) is documented at the call site.
     rows_schema: dict = {"type": "ARRAY", "items": row_schema}
-    if day_count is not None:
-        rows_schema["minItems"] = day_count
-        rows_schema["maxItems"] = day_count
+    # `printed_totals` is intentionally NOT in the response schema: Gemini's
+    # structured-output rejects an OBJECT with no declared `properties`
+    # ("invalid argument" 400), and the Mez summary is not needed from the
+    # model here (it is a gold-side checksum; g2b scores daily cells). The
+    # model simply doesn't return it; G2BTable.printed_totals stays None.
     return {
         "type": "OBJECT",
         "properties": {
             "rows": rows_schema,
-            "printed_totals": {"type": "OBJECT"},
         },
         "required": ["rows"],
-        "propertyOrdering": ["rows", "printed_totals"],
+        "propertyOrdering": ["rows"],
     }
 
 

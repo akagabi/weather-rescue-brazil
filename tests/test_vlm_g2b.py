@@ -75,11 +75,15 @@ def test_g2b_request_sends_response_schema_matching_day_count(tmp_path, monkeypa
     assert "responseLogprobs" not in gen_cfg
     assert "logprobs" not in gen_cfg
     schema = gen_cfg["responseSchema"]
-    # The exact-31-row pin IS sent over the wire - live-verified (same
-    # probe) that responseSchema, minItems/maxItems included, is not
-    # implicated in the 400; only the logprobs fields were.
-    assert schema["properties"]["rows"]["minItems"] == 31
-    assert schema["properties"]["rows"]["maxItems"] == 31
+    # CORRECTED (2026-09-01, controller-confirmed): the exact-day-count pin
+    # is NOT sent over the wire. A controller curl probe showed a tiny
+    # 2-item schema WITH minItems/maxItems=2 returns 200, but this same
+    # 14-required-field row schema pinned to day_count=31 400s
+    # ("invalid argument") on the gate model - the length bound IS
+    # implicated on the full-size schema. The exact row count is instead
+    # enforced client-side (see test_g2b_rejects_short_row_count_response).
+    assert "minItems" not in schema["properties"]["rows"]
+    assert "maxItems" not in schema["properties"]["rows"]
     item_props = schema["properties"]["rows"]["items"]["properties"]
     assert set(_CELL_KEYS) <= set(item_props["cells"]["properties"])
     assert item_props["day"]["type"] == "INTEGER"
@@ -91,8 +95,14 @@ def test_g2b_request_sends_response_schema_matching_day_count(tmp_path, monkeypa
     assert table.avg_logprobs == pytest.approx(-0.05)
 
 
-def test_g2b_response_schema_omits_item_bounds_when_day_count_unknown():
-    schema = g2b_response_schema(day_count=None)
+@pytest.mark.parametrize("day_count", [None, 28, 30, 31])
+def test_g2b_response_schema_never_pins_row_count(day_count):
+    """Regardless of day_count, no minItems/maxItems is ever sent on the
+    rows array - see g2b_response_schema's docstring for why (a
+    controller curl confirmed the length bound 400s on the full 31x14
+    schema). The exact count is enforced client-side in
+    _parse_g2b_response instead."""
+    schema = g2b_response_schema(day_count=day_count)
     assert "minItems" not in schema["properties"]["rows"]
     assert "maxItems" not in schema["properties"]["rows"]
 
