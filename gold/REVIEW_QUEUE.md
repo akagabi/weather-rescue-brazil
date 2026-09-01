@@ -1,5 +1,21 @@
 # Review queue - Gabriel's second pass
 
+**Finalization note (Task 9 close-out):** this queue below reflects the
+*first-pass* draft, written before the owner's binding verification-pass
+decision on the transcription convention (see "Transcription convention" in
+`gold/SELECTION.md`: store what was printed, faithful to the glyph, plus an
+anomaly flag - never a corrected/constraint-solved value). Several items
+described below as "corrected to X" or "resolved to X" have since been
+**reverted** to their literal printed reading as part of applying that
+convention project-wide - see the sheet JSON flags (now `printed_error`) for
+the final values: `14_212.json` days 3, 16, 21, 26, 28, 30 (barometer cells)
+and the whole cloudiness column, `14_142.json` day 27 (barometer mean), and
+`14_57.json` day 18 (`tmin`, upgraded from `low_confidence` to a confirmed
+`printed_error` after checking the image - value was already faithful). The
+narrative below is kept as the historical record of the investigation; treat
+the JSON files as authoritative for final values. The gold set is now
+frozen (see `gold/MANIFEST.json`).
+
 First-pass transcription is done (`gold/sheets/*.json`, 9 sheets, 3,822
 cells). This is **not frozen** - it is waiting for your check before Task 9
 Step 4 (freeze). Everything below is either (a) a cell I was less than fully

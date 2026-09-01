@@ -33,7 +33,7 @@
         "vapor": 16.1,
         "humidity": 79.7,
         "wind_force": 4.3,
-        "cloudiness": 8.0,
+        "cloudiness": 0.8,
         "precip": 7.0,
         "evap_sol": 3.3,
         "evap_sombra": 2.5,
@@ -41,7 +41,7 @@
       },
       "flags": {
         "wind_dir": "Variavel",
-        "printed_error": "sheet-level: this is the lowest-confidence sheet in the first pass (heaviest scan wear of the selection). Residual mismatches after the fixes documented on individual rows: pressure_mean printed 755.22 vs computed 755.96 (rows 3/4 baro both low-confidence); vapor_mean printed 16.3 vs computed 16.06 (minor, no specific bad cell found); precip_sum printed 35.0 vs computed 68.1 (UNRESOLVED - see rows 11 and 16, and REVIEW_QUEUE.md - needs a human re-check against the image, not force-fitted here)"
+        "printed_error": "sheet-level: this is the lowest-confidence sheet in the first pass (heaviest scan wear of the selection). Per the project's faithful-transcription convention (see gold/SELECTION.md), every barometer cell that the first pass had silently substituted a constraint-solved value for has been reverted to its literal printed reading (7xx-prefix reconstruction) on rows 3, 16, 21, 26, 28 and 30 (pressure/pressure_max/pressure_min/evap_sombra - see each row's own flag), plus the whole cloudiness column (was silently x10'd; reverted). Residual printed totals mismatches after reverting: pressure_mean printed 755.22 vs computed 755.63; vapor_mean printed 16.3 vs computed 16.06 (minor, no specific bad cell found); cloudiness_mean printed 6.5 vs computed 0.65 (the printed daily Nebulosidade digits are consistently ~1/10 of what the printed Mez mean implies - kept as printed, not rescaled); precip_sum printed 35.0 vs computed 68.10 (UNRESOLVED - see rows 11 and 16, and REVIEW_QUEUE.md - needs a human re-check against the image, not force-fitted here)."
       }
     },
     {
@@ -56,7 +56,7 @@
         "vapor": 13.1,
         "humidity": 70.9,
         "wind_force": 5.3,
-        "cloudiness": 8.0,
+        "cloudiness": 0.8,
         "precip": 0.4,
         "evap_sol": 6.4,
         "evap_sombra": 4.1,
@@ -71,14 +71,14 @@
       "cells": {
         "pressure": 753.38,
         "pressure_max": 760.95,
-        "pressure_min": 749.43,
+        "pressure_min": 757.43,
         "tmean": 17.9,
         "tmax": 23.8,
         "tmin": 15.8,
         "vapor": 11.6,
         "humidity": 67.0,
         "wind_force": 3.8,
-        "cloudiness": 6.0,
+        "cloudiness": 0.6,
         "precip": null,
         "evap_sol": 5.9,
         "evap_sombra": 3.3,
@@ -87,7 +87,7 @@
       "flags": {
         "wind_dir": "SE, SSE",
         "precip": "none",
-        "low_confidence": "baro minima elided as '57.43'; 757.43 would exceed the row mean (invalid) and 747.43 would undercut the printed monthly floor (749.06) - used 749.43 as the value consistent with both constraints, but verify against image"
+        "printed_error": "baro minima printed as '57.43' (7xx-prefix reconstruction per SELECTION.md convention: 757.43); this exceeds the row's own mean (753.38), which is physically impossible for a diurnal mean vs its own minimum - printed as-is per faithful-transcription convention (previously silently blended to 749.43 to satisfy the ordering constraint; that value did not correspond to any printed digit and has been reverted). Likely an 1886 compositor slip; verify against data/raw/docvirt/14/000212.webp if in doubt."
       }
     },
     {
@@ -102,7 +102,7 @@
         "vapor": 11.7,
         "humidity": 67.1,
         "wind_force": 3.7,
-        "cloudiness": 1.0,
+        "cloudiness": 0.1,
         "precip": null,
         "evap_sol": 5.5,
         "evap_sombra": 3.9,
@@ -111,7 +111,7 @@
       "flags": {
         "wind_dir": "N, SSE",
         "precip": "none",
-        "low_confidence": "baro min could alternately read 747.43 (chained from row3); chose 757.43 via smoother day-to-day trend from row5"
+        "low_confidence": "baro minima printed as '57.43'; reconstructed as 757.43 via the standard 7xx-prefix convention (whole page runs 749-765mmHg) - internally consistent with this row's own mean (758.90) and max (759.95). Low risk, kept for completeness since day 3's identical-looking elided digits needed correction."
       }
     },
     {
@@ -126,7 +126,7 @@
         "vapor": 13.6,
         "humidity": 76.1,
         "wind_force": 5.3,
-        "cloudiness": 3.0,
+        "cloudiness": 0.3,
         "precip": null,
         "evap_sol": 5.8,
         "evap_sombra": 5.0,
@@ -149,7 +149,7 @@
         "vapor": 14.5,
         "humidity": 73.2,
         "wind_force": 4.9,
-        "cloudiness": 3.0,
+        "cloudiness": 0.3,
         "precip": null,
         "evap_sol": 5.0,
         "evap_sombra": 3.3,
@@ -172,7 +172,7 @@
         "vapor": 15.8,
         "humidity": 76.2,
         "wind_force": 3.5,
-        "cloudiness": 8.0,
+        "cloudiness": 0.8,
         "precip": 5.9,
         "evap_sol": 4.7,
         "evap_sombra": 3.7,
@@ -194,7 +194,7 @@
         "vapor": 18.4,
         "humidity": 84.7,
         "wind_force": 2.4,
-        "cloudiness": 10.0,
+        "cloudiness": 1.0,
         "precip": 2.6,
         "evap_sol": 2.1,
         "evap_sombra": 1.6,
@@ -216,7 +216,7 @@
         "vapor": 18.7,
         "humidity": 69.3,
         "wind_force": 2.8,
-        "cloudiness": 6.0,
+        "cloudiness": 0.6,
         "precip": null,
         "evap_sol": 5.3,
         "evap_sombra": 2.8,
@@ -239,7 +239,7 @@
         "vapor": 18.0,
         "humidity": 67.4,
         "wind_force": 3.6,
-        "cloudiness": 3.0,
+        "cloudiness": 0.3,
         "precip": null,
         "evap_sol": 6.7,
         "evap_sombra": 3.7,
@@ -262,7 +262,7 @@
         "vapor": 18.7,
         "humidity": 76.1,
         "wind_force": 2.3,
-        "cloudiness": 10.0,
+        "cloudiness": 1.0,
         "precip": 17.0,
         "evap_sol": 4.5,
         "evap_sombra": 4.5,
@@ -285,7 +285,7 @@
         "vapor": 15.7,
         "humidity": 93.0,
         "wind_force": 7.5,
-        "cloudiness": 10.0,
+        "cloudiness": 1.0,
         "precip": null,
         "evap_sol": 1.8,
         "evap_sombra": 1.8,
@@ -308,7 +308,7 @@
         "vapor": 14.8,
         "humidity": 86.6,
         "wind_force": 7.0,
-        "cloudiness": 9.0,
+        "cloudiness": 0.9,
         "precip": null,
         "evap_sol": 3.2,
         "evap_sombra": 3.2,
@@ -331,7 +331,7 @@
         "vapor": 17.0,
         "humidity": 76.6,
         "wind_force": 4.8,
-        "cloudiness": 8.0,
+        "cloudiness": 0.8,
         "precip": 1.1,
         "evap_sol": 4.0,
         "evap_sombra": 2.6,
@@ -353,7 +353,7 @@
         "vapor": 18.0,
         "humidity": 77.5,
         "wind_force": 3.1,
-        "cloudiness": 8.0,
+        "cloudiness": 0.8,
         "precip": null,
         "evap_sol": 4.8,
         "evap_sombra": 2.4,
@@ -368,7 +368,7 @@
       "date": "1886-11-16",
       "cells": {
         "pressure": 756.22,
-        "pressure_max": 759.13,
+        "pressure_max": 750.13,
         "pressure_min": 755.09,
         "tmean": 20.8,
         "tmax": 28.0,
@@ -376,7 +376,7 @@
         "vapor": 15.1,
         "humidity": 83.0,
         "wind_force": 4.4,
-        "cloudiness": 9.0,
+        "cloudiness": 0.9,
         "precip": 19.6,
         "evap_sol": 4.8,
         "evap_sombra": 3.4,
@@ -384,7 +384,7 @@
       },
       "flags": {
         "wind_dir": "SSE",
-        "low_confidence": "baro maxima printed as '50.13' (< mean, impossible); corrected to 759.13. Chuva printed as '19.6' but does not reconcile with the Mez sum - verify against image"
+        "low_confidence": "baro maxima printed as '50.13' (7xx-prefix reconstruction: 750.13); this is less than the row's own mean (756.22), which is physically impossible for a daily maximum - printed as-is per faithful-transcription convention (previously silently corrected to 759.13; reverted). Likely an 1886 compositor error (leading digit '5' for '9' or similar); verify against data/raw/docvirt/14/000212.webp. Chuva printed as '19.6' but does not reconcile with the Mez sum - see REVIEW_QUEUE.md."
       }
     },
     {
@@ -399,7 +399,7 @@
         "vapor": 18.0,
         "humidity": 78.4,
         "wind_force": 4.1,
-        "cloudiness": 6.0,
+        "cloudiness": 0.6,
         "precip": 2.2,
         "evap_sol": 4.5,
         "evap_sombra": 2.9,
@@ -421,7 +421,7 @@
         "vapor": 19.8,
         "humidity": 85.4,
         "wind_force": 3.9,
-        "cloudiness": 9.0,
+        "cloudiness": 0.9,
         "precip": null,
         "evap_sol": 4.5,
         "evap_sombra": 3.3,
@@ -444,7 +444,7 @@
         "vapor": 15.2,
         "humidity": 81.1,
         "wind_force": 3.6,
-        "cloudiness": 8.0,
+        "cloudiness": 0.8,
         "precip": null,
         "evap_sol": 6.6,
         "evap_sombra": 5.0,
@@ -467,7 +467,7 @@
         "vapor": 15.7,
         "humidity": 80.0,
         "wind_force": 4.7,
-        "cloudiness": 8.0,
+        "cloudiness": 0.8,
         "precip": null,
         "evap_sol": 5.4,
         "evap_sombra": 5.0,
@@ -483,14 +483,14 @@
       "cells": {
         "pressure": 755.9,
         "pressure_max": 757.78,
-        "pressure_min": 754.99,
+        "pressure_min": 757.99,
         "tmean": 21.9,
         "tmax": 26.5,
         "tmin": 19.6,
         "vapor": 16.4,
         "humidity": 76.9,
         "wind_force": 4.2,
-        "cloudiness": 3.0,
+        "cloudiness": 0.3,
         "precip": null,
         "evap_sol": 6.5,
         "evap_sombra": 3.6,
@@ -499,7 +499,7 @@
       "flags": {
         "wind_dir": "NE, SSE",
         "precip": "none",
-        "low_confidence": "baro minima printed as '57.99' (> maxima, impossible); corrected to 754.99"
+        "low_confidence": "baro minima printed as '57.99' (7xx-prefix reconstruction: 757.99); this exceeds the row's own maxima (757.78), which is physically impossible for a daily minimum - printed as-is per faithful-transcription convention (previously silently corrected to 754.99; reverted). Likely an 1886 compositor error; verify against data/raw/docvirt/14/000212.webp."
       }
     },
     {
@@ -514,7 +514,7 @@
         "vapor": 17.2,
         "humidity": 64.2,
         "wind_force": 3.4,
-        "cloudiness": 5.0,
+        "cloudiness": 0.5,
         "precip": 8.8,
         "evap_sol": 6.6,
         "evap_sombra": 3.9,
@@ -536,7 +536,7 @@
         "vapor": 17.6,
         "humidity": 85.8,
         "wind_force": 4.6,
-        "cloudiness": 10.0,
+        "cloudiness": 1.0,
         "precip": 3.5,
         "evap_sol": 4.4,
         "evap_sombra": 3.5,
@@ -558,7 +558,7 @@
         "vapor": 14.1,
         "humidity": 66.1,
         "wind_force": 4.2,
-        "cloudiness": 6.0,
+        "cloudiness": 0.6,
         "precip": null,
         "evap_sol": 4.6,
         "evap_sombra": 3.7,
@@ -581,7 +581,7 @@
         "vapor": 14.6,
         "humidity": 79.2,
         "wind_force": 2.6,
-        "cloudiness": 7.0,
+        "cloudiness": 0.7,
         "precip": null,
         "evap_sol": 6.0,
         "evap_sombra": 3.1,
@@ -596,7 +596,7 @@
       "date": "1886-11-26",
       "cells": {
         "pressure": 760.69,
-        "pressure_max": 764.52,
+        "pressure_max": 754.52,
         "pressure_min": 752.62,
         "tmean": 21.9,
         "tmax": 26.6,
@@ -604,16 +604,16 @@
         "vapor": 15.7,
         "humidity": 79.5,
         "wind_force": 3.7,
-        "cloudiness": 3.0,
+        "cloudiness": 0.3,
         "precip": null,
         "evap_sol": 4.6,
-        "evap_sombra": 2.7,
+        "evap_sombra": 27.0,
         "ozone": 4.0
       },
       "flags": {
         "wind_dir": "O, SSE",
         "precip": "none",
-        "low_confidence": "baro maxima printed as '54.52' (< mean, impossible); corrected to 764.52. Evap_sombra printed as '27.' (implausible magnitude); corrected to 2.7"
+        "low_confidence": "baro maxima printed as '54.52' (7xx-prefix reconstruction: 754.52); this is less than the row's own mean (760.69), physically impossible for a daily maximum - printed as-is per faithful-transcription convention (previously silently corrected to 764.52; reverted). Evap_sombra printed as '27.' - an implausible magnitude for this column (every other reading in the sheet is under 6mm) - kept as printed 27.0 (previously silently corrected to 2.7; reverted), likely a misplaced decimal point in the original typesetting. Verify against data/raw/docvirt/14/000212.webp."
       }
     },
     {
@@ -628,7 +628,7 @@
         "vapor": 16.4,
         "humidity": 75.0,
         "wind_force": 4.9,
-        "cloudiness": 2.0,
+        "cloudiness": 0.2,
         "precip": null,
         "evap_sol": 4.7,
         "evap_sombra": 2.5,
@@ -643,7 +643,7 @@
       "date": "1886-11-28",
       "cells": {
         "pressure": 754.7,
-        "pressure_max": 755.83,
+        "pressure_max": 753.83,
         "pressure_min": 750.71,
         "tmean": 23.6,
         "tmax": 29.8,
@@ -651,7 +651,7 @@
         "vapor": 15.9,
         "humidity": 69.3,
         "wind_force": 4.5,
-        "cloudiness": 3.0,
+        "cloudiness": 0.3,
         "precip": null,
         "evap_sol": 6.4,
         "evap_sombra": 4.2,
@@ -660,7 +660,7 @@
       "flags": {
         "wind_dir": "Variavel",
         "precip": "none",
-        "low_confidence": "baro maxima printed as '53.83' (< mean, impossible); corrected to 755.83"
+        "low_confidence": "baro maxima printed as '53.83' (7xx-prefix reconstruction: 753.83); this is less than the row's own mean (754.70), physically impossible for a daily maximum - printed as-is per faithful-transcription convention (previously silently corrected to 755.83; reverted). Likely an 1886 compositor error; verify against data/raw/docvirt/14/000212.webp."
       }
     },
     {
@@ -675,7 +675,7 @@
         "vapor": 14.8,
         "humidity": 76.4,
         "wind_force": 3.8,
-        "cloudiness": 6.0,
+        "cloudiness": 0.6,
         "precip": null,
         "evap_sol": 6.3,
         "evap_sombra": 4.4,
@@ -689,16 +689,16 @@
     {
       "date": "1886-11-30",
       "cells": {
-        "pressure": 752.03,
+        "pressure": 742.03,
         "pressure_max": 756.2,
-        "pressure_min": 749.06,
+        "pressure_min": 749.16,
         "tmean": 25.6,
         "tmax": 31.6,
         "tmin": 21.8,
         "vapor": 19.5,
         "humidity": 73.1,
         "wind_force": 4.1,
-        "cloudiness": 9.0,
+        "cloudiness": 0.9,
         "precip": null,
         "evap_sol": 5.7,
         "evap_sombra": 2.6,
@@ -707,7 +707,7 @@
       "flags": {
         "wind_dir": "N",
         "precip": "none",
-        "low_confidence": "baro media printed as '42.03' (< minima, impossible); corrected to 752.03. Minima read as 749.16, nudged to 749.06 to match the printed monthly minimum exactly - verify against image"
+        "low_confidence": "baro media printed as '42.03' (7xx-prefix reconstruction: 742.03); this is less than the row's own minima (749.16), physically impossible for a diurnal mean - printed as-is per faithful-transcription convention (previously silently corrected to 752.03; reverted). Separately, this day's own printed minima (749.16) does not match the sheet's printed monthly minimum extremum on the Mez row (749.06) - a second, independent printed inconsistency, also kept as printed (previously nudged to 749.06 to force the match; reverted). Both confirmed directly against data/raw/docvirt/14/000212.webp; likely 1886 compositor/compilation errors."
       }
     }
   ],

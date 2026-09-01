@@ -109,6 +109,52 @@ kept where the source gives two readings). Every row has this flag - see
    neighbouring columns make this unambiguous) with no flag, since it isn't
    a reading judgment call.
 
+## Transcription convention (binding, applies to every sheet)
+
+**The gold records what was printed on the page, faithful to the glyph, plus
+an anomaly flag - never our "corrected" or constraint-solved value.**
+
+The gold set is the reading-fidelity benchmark: a model that reads the
+printed glyph correctly must score correct, even when the 1886 compositor
+made a mistake. Silently substituting a value we believe was "intended"
+(because it satisfies `min <= mean <= max`, or reproduces a Mez total, or
+looks smoother day-to-day) would make the gold measure our own error-fixing
+instead of the model's transcription accuracy - and it would be
+undetectable to anyone re-checking the gold against the image, since the
+stored digits would no longer match what's on the page.
+
+So: every cell is transcribed as printed, including barometer-elision
+decade reconstruction (`57.43` on a 7xx-range page -> `757.43`, mechanically
+- see the "Decimal / elision conventions" section above), even when the
+result is physically impossible (a maximum below the mean, a minimum above
+the maximum, a magnitude wildly off the column's usual range). When that
+happens:
+
+1. Store the literal printed value (with only the *mechanical* decade
+   prefix applied - never a different tens/units digit chosen to satisfy an
+   ordering or checksum constraint).
+2. Add a `printed_error` (confirmed anomaly) or `low_confidence` (glyph
+   still worth a second look) flag on that row naming the affected column,
+   stating the printed value, why it's anomalous, and - where useful - what
+   the compositor likely intended.
+3. Let `validate_sheet` flag the resulting range/ordering/checksum
+   violation; that violation is expected and correct, not something to
+   engineer away. `tests/test_gold_pass1.py::test_sheet_validates_clean_or_documented`
+   enforces that every such violation is covered by a flag naming the
+   violated column.
+
+This was tightened during the Task 9 finalization pass: the first draft of
+`14_212.json` (Novembro 1886, the worst-case/heaviest-wear sheet) had
+silently substituted constraint-solved values for several elided barometer
+cells (days 3, 16, 21, 26, 28, 30) and had silently multiplied the whole
+Nebulosidade (cloudiness) column by 10 to match the printed Mez mean;
+`14_142.json` (Julho 1886) had done the same for day 27's barometer mean.
+All of these were reverted to their literal printed readings and re-flagged
+- see each row's `printed_error`/`low_confidence` text for the specific
+before/after and the image evidence. `14_57.json` day 18's `tmin` was
+already stored faithfully (23.4) and only needed its flag upgraded from
+`low_confidence` to a confirmed `printed_error` after checking the image.
+
 ## The Mez row's "Maximas"/"Minimas" are NOT means (important finding)
 
 Every table's bottom "Mez" (monthly) row was initially assumed to give the

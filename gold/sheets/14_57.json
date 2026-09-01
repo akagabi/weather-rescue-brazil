@@ -424,7 +424,7 @@
       },
       "flags": {
         "wind_dir": "Variavel",
-        "low_confidence": "tmin (23.4) prints higher than tmean (22.9); verify against image, possible digit misread of 20.4"
+        "printed_error": "tmin printed as '23.4', which is higher than this row's own tmean (22.9) - physically odd (a diurnal mean is normally >= the daily minimum) but confirmed directly against data/raw/docvirt/14/000057.webp: the Minimas column clearly shows '23.4', not '20.4' as first suspected. Kept as printed per faithful-transcription convention; likely an 1886 period compilation/typesetting inconsistency, not a transcription error."
       }
     },
     {

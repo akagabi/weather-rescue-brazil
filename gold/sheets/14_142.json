@@ -432,7 +432,7 @@
       "date": "1886-07-19",
       "cells": {
         "pressure": 764.47,
-        "pressure_max": 765.72,
+        "pressure_max": 795.72,
         "pressure_min": 763.22,
         "tmean": 16.0,
         "tmax": 18.5,
@@ -449,7 +449,7 @@
       "flags": {
         "wind_dir": "NW, SSE",
         "precip": "none",
-        "printed_error": "baro maxima printed as '95.72' (physically impossible; < mean/min under any decade reading and > RANGES ceiling as 795.72); reconstructed as 765.72 (misprint of leading digit, '9' for '6') using row and day-to-day pressure consistency"
+        "printed_error": "baro maxima printed as '95.72' (7xx-prefix reconstruction per SELECTION.md convention: 795.72); this is below both the row's own mean (764.47) and minimum (763.22) under any reading, and well above the day-to-day trend - physically anomalous for a daily maximum - printed as-is per faithful-transcription convention (previously silently corrected to 765.72, guessing a misprinted leading digit '9' for '6'; reverted, since the gold now records the printed glyph, not the plausible intended value). Confirmed directly against data/raw/docvirt/14/000142.webp: the page clearly shows '95.72'. Likely an 1886 compositor slip (probably intended ~765.72), kept faithful."
       }
     },
     {
@@ -616,7 +616,7 @@
     {
       "date": "1886-07-27",
       "cells": {
-        "pressure": 762.55,
+        "pressure": 752.55,
         "pressure_max": 763.88,
         "pressure_min": 761.81,
         "tmean": 18.5,
@@ -634,7 +634,7 @@
       "flags": {
         "wind_dir": "SSE",
         "precip": "none",
-        "low_confidence": "baro means printed elided as '52.55' with no clear decade cue in isolation; resolved to 762.55 via same-row min/max ordering (751.81/753.88 would be internally inconsistent)"
+        "printed_error": "baro media printed elided as '52.55' (7xx-prefix reconstruction per SELECTION.md convention: 752.55); this is below both the row's own minima (761.81) and maxima (763.88), physically impossible for a diurnal mean - printed as-is per faithful-transcription convention (previously silently corrected to 762.55 by swapping the tens digit to satisfy the ordering constraint; reverted, since '62.55' was never actually printed). Confirmed against data/raw/docvirt/14/000142.webp. This also reintroduces a printed-total mismatch: pressure_mean printed 761.44 vs computed ~761.15 with this row reverted - kept, not force-fitted. Likely an 1886 compositor slip (probably intended ~762.55), kept faithful."
       }
     },
     {
