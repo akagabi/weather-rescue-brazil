@@ -3,8 +3,23 @@
 Date: 2026-08-31. Method: `scripts/check_access.py` (httpx, single sequential GET
 per target, custom User-Agent identifying the project + contact email), with two
 manual fallbacks noted below where the script could not get a clean answer.
-Read-only. Total requests against the three targets plus the BN FAQ: 5 (well
-under a "handful").
+Read-only throughout. Request tally, itemized so it's checkable:
+- `scripts/check_access.py`, run verbatim twice: both times it attempted
+  `memoria.bn.gov.br/robots.txt` first and errored at the TLS handshake
+  before an HTTP response arrived (see §3), halting before the other two
+  targets were ever requested.
+- A non-committed, try/except-wrapped copy of the same 3-URL loop was run
+  once to get past that halt: `memoria.bn.gov.br/robots.txt` (TLS error
+  again, no response), `bndigital.bn.gov.br/perguntas-e-respostas/` (403),
+  `docvirt.com/robots.txt` (404).
+- WebFetch was tried once against the BN FAQ URL: also 403.
+- Two browser page loads (Claude in Chrome) supplied the two responses no
+  programmatic client could get: `memoria.bn.gov.br/robots.txt` (rendered,
+  confirmed 404) and the BN FAQ page (rendered, 200, read via DOM query —
+  §2).
+- A few `openssl s_client` TLS handshakes (no HTTP GET, chain inspection
+  only) were used to diagnose the memoria.bn.gov.br cert gap in §3 — not
+  content fetches.
 
 ## 1. robots.txt
 
@@ -52,11 +67,12 @@ clients. This is the FAQ *marketing/help* site, not the image-serving host
 we intend to script against (memoria.bn.gov.br, above) — so it doesn't
 change the bulk-fetch verdict, but it does mean a plain script can't read
 BN's own terms page, and it can't be treated as a bulk-fetch target itself.
-Per the brief's allowance, I rendered the page in a real browser (Claude in
-Chrome) to read the actual FAQ answer under "Reprodução/uso do acervo
-digitalizado → Como fazer para utilizar o acervo digitalizado da Hemeroteca
-Digital Brasileira?". Verbatim (Portuguese, machine-translated notes in
-brackets):
+As a read-only workaround authorized by the task dispatch (not by the brief
+file itself), the page was rendered in a real browser (Claude in Chrome) to
+read the actual FAQ answer under "Reprodução/uso do acervo digitalizado →
+Como fazer para utilizar o acervo digitalizado da Hemeroteca Digital
+Brasileira?". Verbatim, original Portuguese, with one elision marked `[...]`
+where an unrelated clause was cut for length:
 
 > "Sim, desde que você respeite os direitos dos autores. Siga estas
 > orientações:
