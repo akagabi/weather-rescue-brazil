@@ -65,7 +65,8 @@
       },
       "flags": {
         "wind_dir": "O, SSE",
-        "precip": "none"
+        "precip": "none",
+        "printed_error": "sheet-level: printed Mez humidity_mean=80.4 does not reproduce from daily cells (computed 80.04, diff 0.36); every daily humidity cell re-checked against the image (data/raw/docvirt/14/000057.webp) and matches exactly - a second period compilation inconsistency on this same page (see also day 1's vapor_mean flag), not a transcription error"
       }
     },
     {

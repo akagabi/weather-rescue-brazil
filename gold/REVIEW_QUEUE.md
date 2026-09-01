@@ -48,6 +48,7 @@ resolve this with confidence and did **not** force a fix - please check
 |---|---|---|
 | `14_22` (Dez 1885) | `precip_sum=146.0` vs computed `146.20` | Printed total comes from a *separate* table (scan p.23) that rounds to whole mm; daily cells (from scan p.22) reproduce 146.2. Documented as printed-era rounding, not fixed. |
 | `14_57` (Fev 1886) | `vapor_mean=17.5` vs computed `18.20` | Every daily vapor cell re-checked against the image and matches; Mez value also re-confirmed from image. Genuine period compilation inconsistency - kept, flagged `printed_error`. |
+| `14_57` (Fev 1886) | `humidity_mean=80.4` vs computed `80.04` | Every daily humidity cell re-checked against the image (`data/raw/docvirt/14/000057.webp`) and matches exactly - a second, independent period compilation inconsistency on the same page as the vapor_mean one above. Kept, flagged `printed_error` on day 2's row. |
 | `14_75` (Mar 1886) | `vapor_mean=18.4` vs computed `18.67` | Same as above, smaller gap (0.27, just over the 0.15 tolerance). Kept, flagged. |
 | `14_90` (Abr 1886) | `humidity_mean=75.7` vs computed `79.04` | Largest gap found (3.34). All 30 daily humidity cells re-verified against the image **twice** and match exactly; Mez value also re-confirmed as "75.7" (not a misread of "79.7"). This looks like a genuine 1886 compilation error in the original publication - please double check if you have time, since it's the biggest unexplained gap of the "clean" sheets. |
 | `14_109` (Mai 1886) | `humidity_mean=76.7` vs computed `76.89` | Small gap (0.19), likely printed rounding. |
@@ -152,7 +153,7 @@ tmax=24.0 · 05-30 pressure_max=761.3, pressure_min=758.41, tmin=19.0 ·
 </details>
 
 <details>
-<summary><b>14_142 (Julho 1886) - 39 cells</b></summary>
+<summary><b>14_142 (Julho 1886) - 36 cells</b></summary>
 
 07-01 evap_sombra=2.5, ozone=1.0, vapor=12.2 · 07-03 pressure_min=755.63 ·
 07-04 evap_sombra=1.5, precip=6.5, pressure_max=763.45, tmean=17.9 · 07-05
@@ -168,7 +169,7 @@ pressure_max=759.91, vapor=13.3 · 07-31 evap_sol=2.6
 </details>
 
 <details>
-<summary><b>14_179 (Setembro 1886) - 41 cells</b></summary>
+<summary><b>14_179 (Setembro 1886) - 50 cells</b></summary>
 
 09-01 vapor=13.2 · 09-04 evap_sol=4.1, humidity=78.8, pressure_max=763.09 ·
 09-05 evap_sombra=1.9, humidity=80.5, pressure=759.4, tmin=19.0 · 09-06
@@ -187,7 +188,7 @@ evap_sol=3.2, ozone=1.0
 </details>
 
 <details>
-<summary><b>14_212 (Novembro 1886) - 32 cells (none overlap the flagged rows above)</b></summary>
+<summary><b>14_212 (Novembro 1886) - 30 cells (none overlap the flagged rows above)</b></summary>
 
 11-01 tmin=20.0 · 11-04 pressure_max=759.95 · 11-05 tmin=17.8 · 11-06
 tmax=25.4, wind_force=4.9 · 11-09 pressure_min=753.82, tmean=26.8 · 11-11
@@ -202,7 +203,7 @@ pressure=760.69, pressure_min=752.62, tmax=26.6 · 11-27 evap_sombra=2.5 ·
 </details>
 
 <details>
-<summary><b>14_22 (Dezembro 1885) - 38 cells</b></summary>
+<summary><b>14_22 (Dezembro 1885) - 42 cells</b></summary>
 
 12-01 tmean=24.1 · 12-02 evap_sol=3.7, evap_sombra=2.0, tmax=30.8,
 tmean=26.8 · 12-03 tmax=28.8 · 12-04 cloudiness=6.2, vapor=14.0 · 12-05
@@ -219,7 +220,7 @@ pressure=752.41, pressure_max=755.85 · 12-31 tmin=21.3
 </details>
 
 <details>
-<summary><b>14_41 (Janeiro 1886) - 40 cells</b></summary>
+<summary><b>14_41 (Janeiro 1886) - 38 cells</b></summary>
 
 01-02 pressure_min=749.53, wind_force=4.4 · 01-04 evap_sombra=1.8,
 pressure_max=753.63 · 01-05 vapor=22.6 · 01-06 precip=22.9 · 01-07
@@ -236,7 +237,7 @@ pressure_max=754.31, tmax=29.3
 </details>
 
 <details>
-<summary><b>14_57 (Fevereiro 1886) - 34 cells</b></summary>
+<summary><b>14_57 (Fevereiro 1886) - 39 cells</b></summary>
 
 02-01 humidity=72.2, tmin=24.6 · 02-02 tmin=25.0 · 02-03 evap_sol=4.3,
 tmax=28.4 · 02-04 cloudiness=8.7 · 02-05 tmin=24.6, vapor=20.6 · 02-08
@@ -254,7 +255,7 @@ tmean=28.2
 </details>
 
 <details>
-<summary><b>14_75 (Marco 1886) - 39 cells</b></summary>
+<summary><b>14_75 (Marco 1886) - 44 cells</b></summary>
 
 03-01 evap_sombra=4.3, tmax=32.0 · 03-04 pressure=755.22, vapor=19.3 · 03-05
 vapor=19.6, wind_force=3.9 · 03-06 vapor=20.2 · 03-07 humidity=81.7 · 03-09
@@ -272,7 +273,7 @@ tmax=26.8, vapor=18.1
 </details>
 
 <details>
-<summary><b>14_90 (Abril 1886) - 34 cells</b></summary>
+<summary><b>14_90 (Abril 1886) - 36 cells</b></summary>
 
 04-02 wind_force=3.0 · 04-05 tmean=24.0 · 04-06 evap_sombra=3.3,
 wind_force=3.8 · 04-07 ozone=3.0, pressure_min=753.78, tmean=24.3,

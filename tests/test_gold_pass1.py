@@ -8,6 +8,7 @@ low-confidence items ("low_confidence") that a human pass (gold/REVIEW_
 QUEUE.md) still needs to resolve.
 """
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -15,6 +16,24 @@ import pytest
 from wrb.gold import Sheet, validate_sheet
 
 GOLD_SHEETS = sorted((Path(__file__).resolve().parent.parent / "gold" / "sheets").glob("*.json"))
+
+
+def _violation_columns(violation: str) -> list[str]:
+    """
+    Map a validate_sheet() violation string back to the data column(s) it is
+    about, so a documentation flag can be checked for actually covering it
+    (rather than just existing somewhere on the sheet).
+    """
+    m = re.match(r"printed (\w+)_(?:mean|sum)=", violation)
+    if m:
+        return [m.group(1)]
+    m = re.search(r"^\S+: tmax .* < tmin", violation)
+    if m:
+        return ["tmax", "tmin"]
+    m = re.search(r"^\S+: (\w+)=.* outside physical range", violation)
+    if m:
+        return [m.group(1)]
+    return []
 
 
 def test_gold_sheets_dir_is_not_empty():
@@ -31,21 +50,41 @@ def test_sheet_parses_against_schema(path):
 
 @pytest.mark.parametrize("path", GOLD_SHEETS, ids=lambda p: p.stem)
 def test_sheet_validates_clean_or_documented(path):
+    """
+    Per-VIOLATION rigor, not per-sheet: it is not enough for *some* row on
+    the sheet to carry a printed_error/low_confidence flag (a sheet could
+    have two unrelated violations and only one of them documented, and the
+    old per-sheet check would have let the second slip through silently).
+    Every specific validate_sheet() violation must map to a documentation
+    flag that plausibly covers it - the violated aggregate's column name
+    (the part before _mean/_sum, or the raw column for a range/ordering
+    violation) must appear in the text of some printed_error/low_confidence
+    flag on that sheet (a "sheet-level: ..." flag counts - it's still just
+    flag text on a row).
+    """
     data = json.loads(path.read_text())
     sheet = Sheet(**data)
     violations = validate_sheet(sheet)
     if not violations:
         return
-    # Every violation on a first-pass sheet must be explained by a
-    # "printed_error" (documented era inconsistency) or "low_confidence"
-    # (open item for the human pass) flag somewhere on the sheet - i.e. we
-    # never silently ship an unexplained validate_sheet violation.
-    documented = any(
-        "printed_error" in row.flags or "low_confidence" in row.flags
+
+    flag_texts = [
+        text
         for row in sheet.rows
-    )
-    assert documented, (
-        f"{path.name}: validate_sheet found undocumented violations: {violations}"
+        for text in (row.flags.get("printed_error"), row.flags.get("low_confidence"))
+        if text
+    ]
+    haystack = " | ".join(flag_texts).lower()
+
+    undocumented = []
+    for v in violations:
+        cols = _violation_columns(v)
+        if not cols or not any(col.lower() in haystack for col in cols):
+            undocumented.append(v)
+
+    assert not undocumented, (
+        f"{path.name}: validate_sheet violation(s) not covered by any "
+        f"printed_error/low_confidence flag naming the violated column: {undocumented}"
     )
 
 
