@@ -1,3 +1,5 @@
+import time
+
 import respx, httpx
 import pytest
 from pathlib import Path
@@ -6,7 +8,7 @@ from wrb.fetch_static import StaticFetcher
 
 
 @respx.mock
-def test_fetch_uses_cache_and_rate_limit(tmp_path: Path):
+def test_fetch_uses_cache(tmp_path: Path):
     route = respx.get("https://api.docvirt.com/v1/documents/obnacional/14/3").mock(
         return_value=httpx.Response(200, content=b"WEBP", headers={"content-type": "image/webp"}))
     f = StaticFetcher(PageCache(tmp_path), delay_s=0)
@@ -28,6 +30,23 @@ def test_fetch_stores_pdf_extension(tmp_path: Path):
                 ext="pdf", attribution="Estação Meteorológica do IAG-USP")
     assert p == PageCache(tmp_path).path("iagusp", "2020", 1, ext="pdf")
     assert p.read_bytes() == b"%PDF-FAKE"
+
+
+@respx.mock
+def test_fetch_enforces_delay_between_uncached_requests(tmp_path: Path):
+    respx.get("https://api.docvirt.com/v1/documents/obnacional/14/1").mock(
+        return_value=httpx.Response(200, content=b"P1", headers={"content-type": "image/webp"}))
+    respx.get("https://api.docvirt.com/v1/documents/obnacional/14/2").mock(
+        return_value=httpx.Response(200, content=b"P2", headers={"content-type": "image/webp"}))
+    delay_s = 0.15
+    f = StaticFetcher(PageCache(tmp_path), delay_s=delay_s)
+    start = time.monotonic()
+    f.fetch("docvirt", "14", 1, "https://api.docvirt.com/v1/documents/obnacional/14/1",
+            ext="webp", attribution="x")
+    f.fetch("docvirt", "14", 2, "https://api.docvirt.com/v1/documents/obnacional/14/2",
+            ext="webp", attribution="x")
+    elapsed = time.monotonic() - start
+    assert elapsed >= delay_s
 
 
 @respx.mock
