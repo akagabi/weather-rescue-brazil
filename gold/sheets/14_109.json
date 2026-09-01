@@ -1,0 +1,747 @@
+{
+  "source": "docvirt",
+  "bib": "14",
+  "page": 109,
+  "station": "Rio de Janeiro - Imperial Observatorio",
+  "period": "1886-05",
+  "columns": [
+    "pressure",
+    "pressure_max",
+    "pressure_min",
+    "tmean",
+    "tmax",
+    "tmin",
+    "vapor",
+    "humidity",
+    "wind_force",
+    "cloudiness",
+    "precip",
+    "evap_sol",
+    "evap_sombra",
+    "ozone"
+  ],
+  "rows": [
+    {
+      "date": "1886-05-01",
+      "cells": {
+        "pressure": 759.73,
+        "pressure_max": 761.12,
+        "pressure_min": 758.46,
+        "tmean": 19.7,
+        "tmax": 21.8,
+        "tmin": 18.8,
+        "vapor": 13.7,
+        "humidity": 80.1,
+        "wind_force": 3.2,
+        "cloudiness": 9.6,
+        "precip": null,
+        "evap_sol": 1.5,
+        "evap_sombra": 1.5,
+        "ozone": 0.0
+      },
+      "flags": {
+        "wind_dir": "NW",
+        "precip": "gottas",
+        "printed_error": "sheet-level: printed Mez humidity_mean=76.7 vs computed 76.89 (diff 0.19, just over tolerance) - minor period compilation rounding difference"
+      }
+    },
+    {
+      "date": "1886-05-02",
+      "cells": {
+        "pressure": 761.24,
+        "pressure_max": 762.55,
+        "pressure_min": 760.4,
+        "tmean": 19.9,
+        "tmax": 23.2,
+        "tmin": 17.6,
+        "vapor": 12.6,
+        "humidity": 73.6,
+        "wind_force": 2.0,
+        "cloudiness": 5.9,
+        "precip": 0.3,
+        "evap_sol": 3.8,
+        "evap_sombra": 2.5,
+        "ozone": 1.0
+      },
+      "flags": {
+        "wind_dir": "NW, O"
+      }
+    },
+    {
+      "date": "1886-05-03",
+      "cells": {
+        "pressure": 760.02,
+        "pressure_max": 761.17,
+        "pressure_min": 758.93,
+        "tmean": 20.0,
+        "tmax": 24.4,
+        "tmin": 17.3,
+        "vapor": 12.4,
+        "humidity": 71.9,
+        "wind_force": 2.3,
+        "cloudiness": 2.5,
+        "precip": null,
+        "evap_sol": 6.0,
+        "evap_sombra": 4.0,
+        "ozone": 1.0
+      },
+      "flags": {
+        "wind_dir": "NW, SSE",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-04",
+      "cells": {
+        "pressure": 756.17,
+        "pressure_max": 757.9,
+        "pressure_min": 754.56,
+        "tmean": 21.6,
+        "tmax": 26.6,
+        "tmin": 18.6,
+        "vapor": 14.3,
+        "humidity": 74.6,
+        "wind_force": 1.9,
+        "cloudiness": 5.0,
+        "precip": null,
+        "evap_sol": 4.7,
+        "evap_sombra": 2.8,
+        "ozone": 0.0
+      },
+      "flags": {
+        "wind_dir": "NW",
+        "precip": "gottas"
+      }
+    },
+    {
+      "date": "1886-05-05",
+      "cells": {
+        "pressure": 755.22,
+        "pressure_max": 757.18,
+        "pressure_min": 754.14,
+        "tmean": 22.1,
+        "tmax": 24.8,
+        "tmin": 19.0,
+        "vapor": 14.8,
+        "humidity": 74.8,
+        "wind_force": 2.9,
+        "cloudiness": 8.1,
+        "precip": null,
+        "evap_sol": 3.3,
+        "evap_sombra": 1.8,
+        "ozone": 2.0
+      },
+      "flags": {
+        "wind_dir": "NW, SSW",
+        "precip": "gottas"
+      }
+    },
+    {
+      "date": "1886-05-06",
+      "cells": {
+        "pressure": 757.01,
+        "pressure_max": 757.96,
+        "pressure_min": 756.21,
+        "tmean": 21.8,
+        "tmax": 25.2,
+        "tmin": 20.1,
+        "vapor": 12.7,
+        "humidity": 69.2,
+        "wind_force": 3.0,
+        "cloudiness": 3.9,
+        "precip": null,
+        "evap_sol": 7.0,
+        "evap_sombra": 4.2,
+        "ozone": 2.0
+      },
+      "flags": {
+        "wind_dir": "NW",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-07",
+      "cells": {
+        "pressure": 756.62,
+        "pressure_max": 758.13,
+        "pressure_min": 755.71,
+        "tmean": 20.2,
+        "tmax": 23.6,
+        "tmin": 17.9,
+        "vapor": 14.6,
+        "humidity": 83.6,
+        "wind_force": 3.5,
+        "cloudiness": 2.9,
+        "precip": null,
+        "evap_sol": 3.5,
+        "evap_sombra": 3.2,
+        "ozone": 1.0
+      },
+      "flags": {
+        "wind_dir": "NW",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-08",
+      "cells": {
+        "pressure": 752.93,
+        "pressure_max": 755.04,
+        "pressure_min": 751.13,
+        "tmean": 21.5,
+        "tmax": 23.6,
+        "tmin": 18.2,
+        "vapor": 14.5,
+        "humidity": 76.4,
+        "wind_force": 2.4,
+        "cloudiness": 7.7,
+        "precip": null,
+        "evap_sol": 3.6,
+        "evap_sombra": 2.6,
+        "ozone": 1.0
+      },
+      "flags": {
+        "wind_dir": "NW",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-09",
+      "cells": {
+        "pressure": 753.56,
+        "pressure_max": 756.51,
+        "pressure_min": 750.89,
+        "tmean": 22.3,
+        "tmax": 24.0,
+        "tmin": 21.2,
+        "vapor": 14.6,
+        "humidity": 72.6,
+        "wind_force": 2.7,
+        "cloudiness": 8.4,
+        "precip": null,
+        "evap_sol": 4.7,
+        "evap_sombra": 3.2,
+        "ozone": 2.0
+      },
+      "flags": {
+        "wind_dir": "SW",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-10",
+      "cells": {
+        "pressure": 756.39,
+        "pressure_max": 757.74,
+        "pressure_min": 755.24,
+        "tmean": 20.8,
+        "tmax": 24.4,
+        "tmin": 18.8,
+        "vapor": 12.4,
+        "humidity": 67.9,
+        "wind_force": 3.8,
+        "cloudiness": 5.0,
+        "precip": null,
+        "evap_sol": 4.8,
+        "evap_sombra": 3.2,
+        "ozone": 1.0
+      },
+      "flags": {
+        "wind_dir": "NW, SSE",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-11",
+      "cells": {
+        "pressure": 755.41,
+        "pressure_max": 758.01,
+        "pressure_min": 753.39,
+        "tmean": 19.6,
+        "tmax": 23.6,
+        "tmin": 16.8,
+        "vapor": 11.9,
+        "humidity": 70.8,
+        "wind_force": 2.8,
+        "cloudiness": 3.8,
+        "precip": null,
+        "evap_sol": 4.5,
+        "evap_sombra": 4.0,
+        "ozone": 4.0
+      },
+      "flags": {
+        "wind_dir": "NW, SW",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-12",
+      "cells": {
+        "pressure": 760.83,
+        "pressure_max": 763.96,
+        "pressure_min": 758.11,
+        "tmean": 17.3,
+        "tmax": 19.4,
+        "tmin": 16.8,
+        "vapor": 8.7,
+        "humidity": 59.0,
+        "wind_force": 4.7,
+        "cloudiness": 6.8,
+        "precip": null,
+        "evap_sol": 5.2,
+        "evap_sombra": 2.6,
+        "ozone": 2.0
+      },
+      "flags": {
+        "wind_dir": "WSW",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-13",
+      "cells": {
+        "pressure": 764.66,
+        "pressure_max": 765.9,
+        "pressure_min": 763.0,
+        "tmean": 17.4,
+        "tmax": 21.2,
+        "tmin": 13.8,
+        "vapor": 10.8,
+        "humidity": 72.9,
+        "wind_force": 2.4,
+        "cloudiness": 7.8,
+        "precip": 0.4,
+        "evap_sol": 5.7,
+        "evap_sombra": 3.1,
+        "ozone": 1.0
+      },
+      "flags": {
+        "wind_dir": "NW, W"
+      }
+    },
+    {
+      "date": "1886-05-14",
+      "cells": {
+        "pressure": 764.65,
+        "pressure_max": 765.75,
+        "pressure_min": 763.39,
+        "tmean": 18.7,
+        "tmax": 21.8,
+        "tmin": 14.4,
+        "vapor": 12.1,
+        "humidity": 76.5,
+        "wind_force": 2.3,
+        "cloudiness": 6.4,
+        "precip": null,
+        "evap_sol": 3.2,
+        "evap_sombra": 2.3,
+        "ozone": 2.0
+      },
+      "flags": {
+        "wind_dir": "Variavel",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-15",
+      "cells": {
+        "pressure": 763.3,
+        "pressure_max": 764.36,
+        "pressure_min": 762.21,
+        "tmean": 19.7,
+        "tmax": 23.0,
+        "tmin": 18.0,
+        "vapor": 13.5,
+        "humidity": 79.4,
+        "wind_force": 2.8,
+        "cloudiness": 7.9,
+        "precip": null,
+        "evap_sol": 4.0,
+        "evap_sombra": 2.5,
+        "ozone": 3.0
+      },
+      "flags": {
+        "wind_dir": "W, SSE",
+        "precip": "gottas"
+      }
+    },
+    {
+      "date": "1886-05-16",
+      "cells": {
+        "pressure": 761.5,
+        "pressure_max": 762.49,
+        "pressure_min": 760.21,
+        "tmean": 19.8,
+        "tmax": 23.0,
+        "tmin": 16.7,
+        "vapor": 13.8,
+        "humidity": 80.6,
+        "wind_force": 3.4,
+        "cloudiness": 4.8,
+        "precip": null,
+        "evap_sol": 3.3,
+        "evap_sombra": 2.2,
+        "ozone": 2.0
+      },
+      "flags": {
+        "wind_dir": "Variavel",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-17",
+      "cells": {
+        "pressure": 760.29,
+        "pressure_max": 761.32,
+        "pressure_min": 759.38,
+        "tmean": 20.5,
+        "tmax": 24.8,
+        "tmin": 16.5,
+        "vapor": 12.9,
+        "humidity": 73.3,
+        "wind_force": 2.7,
+        "cloudiness": 2.5,
+        "precip": null,
+        "evap_sol": 4.3,
+        "evap_sombra": 2.8,
+        "ozone": 2.0
+      },
+      "flags": {
+        "wind_dir": "NW",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-18",
+      "cells": {
+        "pressure": 761.91,
+        "pressure_max": 763.58,
+        "pressure_min": 760.16,
+        "tmean": 20.3,
+        "tmax": 23.4,
+        "tmin": 16.8,
+        "vapor": 14.3,
+        "humidity": 78.3,
+        "wind_force": 3.2,
+        "cloudiness": 7.3,
+        "precip": 7.5,
+        "evap_sol": 3.9,
+        "evap_sombra": 2.9,
+        "ozone": 3.0
+      },
+      "flags": {
+        "wind_dir": "Variavel"
+      }
+    },
+    {
+      "date": "1886-05-19",
+      "cells": {
+        "pressure": 762.0,
+        "pressure_max": 763.33,
+        "pressure_min": 761.12,
+        "tmean": 20.4,
+        "tmax": 23.0,
+        "tmin": 18.0,
+        "vapor": 14.0,
+        "humidity": 78.6,
+        "wind_force": 2.4,
+        "cloudiness": 7.6,
+        "precip": null,
+        "evap_sol": 3.1,
+        "evap_sombra": 2.1,
+        "ozone": 3.0
+      },
+      "flags": {
+        "wind_dir": "NW, SSE",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-20",
+      "cells": {
+        "pressure": 761.83,
+        "pressure_max": 762.93,
+        "pressure_min": 760.88,
+        "tmean": 19.9,
+        "tmax": 23.0,
+        "tmin": 17.4,
+        "vapor": 14.2,
+        "humidity": 81.9,
+        "wind_force": 2.9,
+        "cloudiness": 4.5,
+        "precip": null,
+        "evap_sol": 3.6,
+        "evap_sombra": 2.0,
+        "ozone": 1.0
+      },
+      "flags": {
+        "wind_dir": "NW, SSE",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-21",
+      "cells": {
+        "pressure": 760.97,
+        "pressure_max": 762.14,
+        "pressure_min": 759.86,
+        "tmean": 20.4,
+        "tmax": 23.7,
+        "tmin": 16.8,
+        "vapor": 15.0,
+        "humidity": 83.7,
+        "wind_force": 1.3,
+        "cloudiness": 9.4,
+        "precip": 0.7,
+        "evap_sol": 3.2,
+        "evap_sombra": 2.0,
+        "ozone": 3.0
+      },
+      "flags": {
+        "wind_dir": "NW, SSE"
+      }
+    },
+    {
+      "date": "1886-05-22",
+      "cells": {
+        "pressure": 760.06,
+        "pressure_max": 761.47,
+        "pressure_min": 758.6,
+        "tmean": 21.1,
+        "tmax": 23.5,
+        "tmin": 19.5,
+        "vapor": 16.0,
+        "humidity": 87.5,
+        "wind_force": 2.4,
+        "cloudiness": 4.1,
+        "precip": null,
+        "evap_sol": 3.2,
+        "evap_sombra": 1.5,
+        "ozone": 2.0
+      },
+      "flags": {
+        "wind_dir": "Variavel",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-23",
+      "cells": {
+        "pressure": 759.06,
+        "pressure_max": 760.06,
+        "pressure_min": 757.49,
+        "tmean": 22.9,
+        "tmax": 26.5,
+        "tmin": 19.5,
+        "vapor": 14.8,
+        "humidity": 73.6,
+        "wind_force": 1.9,
+        "cloudiness": 3.9,
+        "precip": null,
+        "evap_sol": 3.2,
+        "evap_sombra": 1.5,
+        "ozone": 1.0
+      },
+      "flags": {
+        "wind_dir": "Variavel",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-24",
+      "cells": {
+        "pressure": 758.95,
+        "pressure_max": 760.41,
+        "pressure_min": 758.05,
+        "tmean": 23.1,
+        "tmax": 27.4,
+        "tmin": 20.2,
+        "vapor": 15.7,
+        "humidity": 75.9,
+        "wind_force": 2.0,
+        "cloudiness": 3.9,
+        "precip": null,
+        "evap_sol": 5.9,
+        "evap_sombra": 3.1,
+        "ozone": 1.0
+      },
+      "flags": {
+        "wind_dir": "NW, O",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-25",
+      "cells": {
+        "pressure": 761.5,
+        "pressure_max": 762.72,
+        "pressure_min": 760.43,
+        "tmean": 22.0,
+        "tmax": 26.0,
+        "tmin": 20.5,
+        "vapor": 16.3,
+        "humidity": 83.1,
+        "wind_force": 3.2,
+        "cloudiness": 8.8,
+        "precip": null,
+        "evap_sol": 5.1,
+        "evap_sombra": 2.5,
+        "ozone": 4.0
+      },
+      "flags": {
+        "wind_dir": "NW, SSE",
+        "precip": "gottas"
+      }
+    },
+    {
+      "date": "1886-05-26",
+      "cells": {
+        "pressure": 761.65,
+        "pressure_max": 762.89,
+        "pressure_min": 760.31,
+        "tmean": 22.5,
+        "tmax": 25.5,
+        "tmin": 20.5,
+        "vapor": 16.8,
+        "humidity": 83.4,
+        "wind_force": 3.0,
+        "cloudiness": 5.4,
+        "precip": null,
+        "evap_sol": 4.3,
+        "evap_sombra": 1.7,
+        "ozone": 3.0
+      },
+      "flags": {
+        "wind_dir": "Variavel",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-27",
+      "cells": {
+        "pressure": 761.59,
+        "pressure_max": 762.68,
+        "pressure_min": 760.8,
+        "tmean": 22.2,
+        "tmax": 25.0,
+        "tmin": 20.2,
+        "vapor": 16.5,
+        "humidity": 83.0,
+        "wind_force": 2.9,
+        "cloudiness": 6.8,
+        "precip": null,
+        "evap_sol": 2.5,
+        "evap_sombra": 1.8,
+        "ozone": 2.0
+      },
+      "flags": {
+        "wind_dir": "NW",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-28",
+      "cells": {
+        "pressure": 762.27,
+        "pressure_max": 763.51,
+        "pressure_min": 761.23,
+        "tmean": 21.6,
+        "tmax": 25.0,
+        "tmin": 20.2,
+        "vapor": 15.6,
+        "humidity": 81.7,
+        "wind_force": 3.8,
+        "cloudiness": 6.3,
+        "precip": null,
+        "evap_sol": 3.8,
+        "evap_sombra": 2.3,
+        "ozone": 3.0
+      },
+      "flags": {
+        "wind_dir": "O, SSE",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-29",
+      "cells": {
+        "pressure": 761.68,
+        "pressure_max": 763.07,
+        "pressure_min": 760.48,
+        "tmean": 21.7,
+        "tmax": 24.0,
+        "tmin": 19.7,
+        "vapor": 16.2,
+        "humidity": 84.9,
+        "wind_force": 3.3,
+        "cloudiness": 4.1,
+        "precip": null,
+        "evap_sol": 3.1,
+        "evap_sombra": 2.2,
+        "ozone": 3.0
+      },
+      "flags": {
+        "wind_dir": "O, SSE",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-30",
+      "cells": {
+        "pressure": 759.94,
+        "pressure_max": 761.3,
+        "pressure_min": 758.41,
+        "tmean": 21.9,
+        "tmax": 25.5,
+        "tmin": 19.0,
+        "vapor": 14.6,
+        "humidity": 76.3,
+        "wind_force": 2.6,
+        "cloudiness": 6.0,
+        "precip": null,
+        "evap_sol": 3.1,
+        "evap_sombra": 1.9,
+        "ozone": 1.0
+      },
+      "flags": {
+        "wind_dir": "N, SSE",
+        "precip": "none"
+      }
+    },
+    {
+      "date": "1886-05-31",
+      "cells": {
+        "pressure": 758.05,
+        "pressure_max": 759.64,
+        "pressure_min": 756.41,
+        "tmean": 21.4,
+        "tmax": 25.5,
+        "tmin": 18.5,
+        "vapor": 13.8,
+        "humidity": 74.4,
+        "wind_force": 2.9,
+        "cloudiness": 1.1,
+        "precip": null,
+        "evap_sol": 3.9,
+        "evap_sombra": 2.2,
+        "ozone": 3.0
+      },
+      "flags": {
+        "wind_dir": "Variavel",
+        "precip": "none"
+      }
+    }
+  ],
+  "printed_totals": {
+    "pressure_mean": 759.68,
+    "tmean_mean": 20.7,
+    "vapor_mean": 14.0,
+    "humidity_mean": 76.7,
+    "wind_force_mean": 2.8,
+    "cloudiness_mean": 5.7,
+    "precip_sum": 8.9,
+    "evap_sol_mean": 4.0,
+    "evap_sombra_mean": 2.5,
+    "ozone_mean": 2.0
+  }
+}
