@@ -43,8 +43,18 @@ ESTIMATED_OUTPUT_TOKENS = 2_000
 # USD per 1,000,000 tokens. Sources checked 2026-08-31/09-01:
 PRICES = {
     # https://ai.google.dev/gemini-api/docs/pricing - Gemini 2.5 Flash,
-    # standard paid tier, image/text input.
+    # standard paid tier, image/text input. NOTE: "gemini-flash" (this
+    # entry) actually points at gemini-flash-lite-latest as of Task 11
+    # (see ENDPOINTS below - gemini-flash-latest was persistently 503 for
+    # this key) - the lite tier is normally cheaper than this rate, so
+    # using the full-Flash number here is a deliberately conservative
+    # overestimate for the lite run, consistent with this module's
+    # charge-before-call design (never undercharge the cap).
     "gemini-flash": {"input": 0.30, "output": 2.50},
+    # Same rate, used for the separate "gemini-flash-full" provider (the
+    # actual non-lite Flash tier - see ENDPOINTS) added when Task 11's
+    # review required a full-flash gate number alongside the lite one.
+    "gemini-flash-full": {"input": 0.30, "output": 2.50},
     # https://platform.claude.com/docs/en/about-claude/pricing - Claude
     # Haiku 4.5, base (non-cached) input/output rates.
     "claude-haiku": {"input": 1.00, "output": 5.00},
@@ -77,15 +87,32 @@ ENDPOINTS = {
     # bench/g1 + the Task 11 report as a live-verified deviation, not a
     # silent swap.
     "gemini-flash": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent",
+    # "gemini-flash-full": the controller-mandated gate provider. Re-verified
+    # live 2026-09-01 (Task 11 review round): "gemini-flash-latest" is
+    # STILL persistently 503 ("high demand") for this key - confirmed via
+    # direct curl minutes apart, and again through the harness's own
+    # 8-attempt/generous-backoff retry (see MAX_ATTEMPTS/_BACKOFF_BASE_SECONDS
+    # below) exhausting without a single non-503 response. Falling back to
+    # "gemini-3.5-flash" (a current, stable, non-lite Flash model per the
+    # live model list - NOT a "-latest" alias, so it isn't subject to
+    # whatever routing is overloading gemini-flash-latest specifically),
+    # confirmed working incl. vision input via direct curl. If Google
+    # resolves the gemini-flash-latest outage, swap this one line back.
+    "gemini-flash-full": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
     "claude-haiku": "https://api.anthropic.com/v1/messages",
     "qwen-vl": "https://router.huggingface.co/v1/chat/completions",
 }
 
 ENV_VARS = {
     "gemini-flash": "WRB_GEMINI_KEY",
+    "gemini-flash-full": "WRB_GEMINI_KEY",
     "claude-haiku": "WRB_ANTHROPIC_KEY",
     "qwen-vl": "WRB_HF_TOKEN",
 }
+
+# Both Gemini providers speak the same request/response shape regardless of
+# which model id the endpoint URL points at.
+_GEMINI_PROVIDERS = {"gemini-flash", "gemini-flash-full"}
 
 QWEN_MODEL = "Qwen/Qwen2.5-VL-7B-Instruct"
 
@@ -241,6 +268,7 @@ def _request_qwen(endpoint: str, api_key: str, image_bytes: bytes) -> httpx.Resp
 
 _REQUESTERS = {
     "gemini-flash": _request_gemini,
+    "gemini-flash-full": _request_gemini,
     "claude-haiku": _request_claude,
     "qwen-vl": _request_qwen,
 }
@@ -256,7 +284,7 @@ def _extract_text_from_response(provider: str, data: dict) -> str:
     for "this response could not be turned into a Sheet".
     """
     try:
-        if provider == "gemini-flash":
+        if provider in _GEMINI_PROVIDERS:
             return data["candidates"][0]["content"]["parts"][0]["text"]
         if provider == "claude-haiku":
             return data["content"][0]["text"]
@@ -401,13 +429,18 @@ def _parse_response(text: str) -> Sheet:
 
 # Safety net against rate-limit blips even on a paid-tier project: retry a
 # 429 (rate limited) or 503 (transiently overloaded) up to this many times
-# total, with exponential backoff + jitter. Any other status is NOT
-# retried - it's raised immediately via raise_for_status() so a real error
-# (bad auth, bad request body, etc.) fails fast instead of burning 5x the
-# wall-clock time before reporting.
+# total, with exponential backoff + jitter (capped at 60s/wait so a
+# sustained outage doesn't turn into an unbounded wait). Any other status
+# is NOT retried - it's raised immediately via raise_for_status() so a
+# real error (bad auth, bad request body, etc.) fails fast instead of
+# burning the wall-clock retry budget before reporting.
+#
+# Bumped from 5/32s-max to 8/60s-max (Task 11 review round) specifically to
+# give gemini-flash-latest's persistent 503s a genuinely generous real
+# effort before falling back to a different model id - see ENDPOINTS.
 RETRYABLE_STATUS_CODES = {429, 503}
-MAX_ATTEMPTS = 5
-_BACKOFF_BASE_SECONDS = [2, 4, 8, 16, 32]
+MAX_ATTEMPTS = 8
+_BACKOFF_BASE_SECONDS = [2, 4, 8, 16, 32, 60, 60, 60]
 
 
 def _sleep_for_retry(attempt: int) -> None:
@@ -424,7 +457,22 @@ def _request_with_retry(provider: str, endpoint: str, api_key: str, image_bytes:
     backoff-and-retry treatment). Deliberately narrow to ReadTimeout only
     (not the broader httpx.TimeoutException or e.g. ConnectError) - those
     other transport failures are typically not self-resolving on retry and
-    stay fail-fast."""
+    stay fail-fast.
+
+    CAP CAVEAT: CostMeter.charge() in extract() charges once per extract()
+    call, before any of these retries happen - so a single extract() call
+    that times out and retries N times is still only ONE ledger entry
+    against the US$ cap, regardless of N. A ReadTimeout means the request
+    reached the provider and it may have already spent real compute
+    (prompt processing, partial generation) generating tokens we never
+    receive and never see billed to us in this ledger - so on the timeout
+    path specifically, actual provider-side spend could exceed our
+    conservative per-call estimate by more than the 429/503 path (which
+    fails before real generation starts). The US$10 cap is enforced
+    against OUR ledger, not the provider's own billing, so this is a
+    (still small, since 1.5k-input/2k-output-token estimates are already
+    conservative) gap between "our cap fired" and "real spend stayed under
+    it" that is specific to timeouts, not retries in general."""
     last_response: httpx.Response | None = None
     for attempt in range(MAX_ATTEMPTS):
         try:

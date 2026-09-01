@@ -1,36 +1,75 @@
-# G1 error taxonomy — Gemini (gemini-flash-lite-latest) vs frozen gold
+# G1 error taxonomy — Gemini (gemini-3.5-flash + gemini-flash-lite-latest) vs frozen gold
 
-9/9 gold sheets scored (3,822 cells). Method: for every gold row/column
-cell, `wrb.metrics.score()` calls it wrong if the values differ by more
-than `TOL=0.05` or one side is missing; a row is a **structural error** if
-its date is absent from the prediction entirely, or `>=3` of its 14 cells
-are wrong together (the row/column-shift signature). This file covers
-every sheet with `cell_acc < 0.95` per the Task 11 brief, plus a
-whole-dataset characterization of the structural-error rate and two
-cross-cutting findings the coordinator asked to be quantified.
+Two Gemini models were run against all 9 frozen gold sheets (3,822 cells
+each): **gemini-flash-lite-latest** (the lite tier — `bench/g1/gemini-flash-lite.json`,
+the first run completed, before the controller required a full-flash gate
+number) and **gemini-3.5-flash** (`bench/g1/gemini-flash.json`, the
+**primary gate result** — see "gemini-flash-latest is unavailable" below
+for why this model and not the controller's originally-named one). Method:
+for every gold row/column cell, `wrb.metrics.score()` calls it wrong if the
+values differ by more than `TOL=0.05` or one side is missing; a row is a
+**structural error** if its date is absent from the prediction entirely, or
+`>=3` of its 14 cells are wrong together (the row/column-shift signature).
+This file covers every sheet with `cell_acc < 0.95` (on either model,
+though the two mostly agree on which sheets that is) per the Task 11
+brief, plus a whole-dataset characterization and cross-cutting findings.
 
-## Per-sheet scores (final, after two harness bugfix rounds — see below)
+## gemini-flash-latest is unavailable (documented, not silently swapped)
 
-| gold file | period | cell_acc | structural_err_rate | flagged_recall | n_cells |
+The controller-mandated model id, `gemini-flash-latest`, was **persistently
+503 ("This model is currently experiencing high demand")** for this API
+key at run time — confirmed independently three separate times: (1) direct
+`curl` checks minutes apart during the initial Task 11 pass, (2) a full
+8-attempt/60s-capped-backoff retry through this harness itself
+(`src/wrb/vlm.py::_request_with_retry`) exhausting on both probe sheets
+without a single non-503 response, and (3) the coordinator's own direct
+test. `gemini-3.5-flash` (a current, stable, non-"-latest" Flash model,
+confirmed via the live `/v1beta/models` list and via direct `curl`
+including image input) was used as the full-flash gate model instead. If
+Google resolves the outage, `ENDPOINTS["gemini-flash-full"]` in `vlm.py`
+is a one-line swap back.
+
+## Per-sheet scores: lite vs full-flash
+
+| gold file | period | lite cell_acc | lite struct_err | full cell_acc | full struct_err |
 |---|---|---|---|---|---|
-| 14_22.json | 1885-12 | 0.956 | 0.097 | 0.000 | 434 |
-| **14_41.json** | **1886-01** | **0.065** | **1.000** | 0.000 | 434 |
-| 14_57.json | 1886-02 | 0.974 | 0.036 | 0.000 | 392 |
-| 14_75.json | 1886-03 | 0.977 | 0.000 | 0.000 | 434 |
-| 14_90.json | 1886-04 | 0.979 | 0.067 | 0.000 | 420 |
-| 14_109.json | 1886-05 | 0.982 | 0.000 | 0.000 | 434 |
-| 14_142.json | 1886-07 | 0.970 | 0.032 | 0.077 | 434 |
-| **14_179.json** | **1886-09** | **0.790** | **0.967** | 0.000 | 420 |
-| 14_212.json | 1886-11 | 0.981 | 0.000 | 0.000 | 420 |
-| **aggregate** | | **0.851** | **0.244** | **0.009** | **3,822** |
+| 14_22.json | 1885-12 | 0.956 | 0.097 | 0.977 | 0.032 |
+| **14_41.json** | **1886-01** | **0.065** | **1.000** | **0.065** | **1.000** |
+| 14_57.json | 1886-02 | 0.974 | 0.036 | 0.957 | 0.000 |
+| 14_75.json | 1886-03 | 0.977 | 0.000 | 0.993 | 0.000 |
+| 14_90.json | 1886-04 | 0.979 | 0.067 | 0.988 | 0.000 |
+| 14_109.json | 1886-05 | 0.982 | 0.000 | 0.988 | 0.000 |
+| 14_142.json | 1886-07 | 0.970 | 0.032 | 0.993 | 0.000 |
+| **14_179.json** | **1886-09** | **0.790** | **0.967** | **0.998** | **0.000** |
+| 14_212.json | 1886-11 | 0.981 | 0.000 | 0.990 | 0.000 |
+| **aggregate** | | **0.851** | **0.244** | **0.881** | **0.115** |
 
-(cell_acc aggregate is micro-averaged by cell count; structural_err_rate
-and flagged_recall are macro-averaged per sheet — see `scripts/run_g1.py
-aggregate()`.)
+flagged_recall aggregate: lite 0.009 (macro-mean of per-sheet rates — see
+"two denominators" note below; raw whole-dataset figure 1/571 ≈ 0.0018),
+full **0.000** — the full model never self-flagged a single one of its
+454 wrong cells. Both `n_sheets_scored = 9/9`, zero harness errors on
+either run.
 
-Two sheets fall under the brief's `cell_acc < 0.95` taxonomy threshold:
-**14_41** and **14_179**. Both turn out to be **whole-sheet systematic
-failures**, not scattered misreads — see below.
+**gemini-3.5-flash is the better model on 7 of 9 sheets and dramatically
+better on the sheet that broke lite worst**: 14_179 (the barometer-elision
+sheet, see below) goes from 0.790/0.967 structural on lite to a clean
+0.998/0.000 on full-flash — full-flash applied the prompt's elision
+reconstruction rule correctly on every row where lite dropped it after row
+1. The one sheet where lite edges out full-flash is 14_57 (0.974 vs
+0.957) — full-flash has zero structural rows there but a few more
+scattered small glyph misses, so its *aggregate* structural_err_rate
+(0.115) is less than half of lite's (0.244) even though the two models'
+overall cell_acc gap (0.881 vs 0.851) is modest. **14_41 fails identically
+on both models** (both score 0.065/1.000) — see the corrected writeup
+below; this is a shared failure mode, not lite-specific.
+
+Two sheets fall under the `cell_acc < 0.95` taxonomy threshold on at least
+one model: **14_41** and **14_179**. Both turn out to be **whole-sheet
+systematic failures**, not scattered misreads — see below. (Numbers below
+are for the **lite** run unless a section says otherwise, since that was
+the first fully-analyzed run; the full-flash run's error profile is the
+same shape, just smaller, except for 14_179 which full-flash essentially
+solved and 14_41 which neither model solved.)
 
 ## Whole-dataset error-bin counts (571 wrong cells total, 14.9% of 3,822)
 
@@ -52,23 +91,49 @@ rule) on every row, not to read individual digits more carefully.
 
 ### The two whole-sheet structural failures
 
-**14_41 (Jan 1886) — wrong month in every date, correct cell values.**
-Every per-cell value transcribed by the model for this sheet is *correct*
-(row 1 spot-checked cell-by-cell below); the model wrote `1886-10-01`
-instead of `1886-01-01` for every row, so all 31 dates fail to match a
-gold row at all → `structural_err_rate=1.0`, `cell_acc=0.065` (only
-accidental matches on cells that also happen to be `null` in gold count
-as correct). This is a genuine model failure to read the page's own
-section header ("Resumo... no mez de Janeiro de 1886") even though the
-prompt never asked it to infer the month — it's printed once at the top of
-the page and should need no inference at all.
+**14_41 (Jan 1886) — wrong YEAR AND MONTH in every date; per-cell
+transcription is excellent but not perfect.** [Corrected after an
+independent review caught an error in an earlier draft of this section,
+which is why this correction is being called out explicitly.] Since
+`score()` joins by exact date string, a wrong date fails every column in
+that row under date-based scoring regardless of whether the cell values
+themselves are right — so to check the *actual* per-cell transcription
+quality, gold and pred rows below are paired by **position** (row 1 vs
+row 1, etc.), not by date:
+
+- **Lite** wrote `1887-10-01` (year **1887**, month **10**) for gold's
+  `1886-01-01` — both year and month wrong, and consistently wrong the
+  same way for all 31 rows (`1887-10-02`, `1887-10-03`, ...).
+- **Full-flash** wrote `1888-01-01` (year **1888**, month correct: `01`)
+  for the same gold row — year wrong by 2, but the month this model reads
+  correctly. **Both models get the year wrong on this sheet, by a
+  different and inconsistent amount** — a shared failure to read the
+  page's own printed year (from the section header, "Resumo ... no mez de
+  Janeiro de 1886"), independent of whichever model reads the month
+  correctly.
+
+Per-cell transcription, position-matched, is very good but **not
+perfect** — an earlier draft of this section incorrectly claimed row 1's
+cells were "identical" to gold; they are not:
 
 ```
-gold row 1 (1886-01-01): {"pressure": 756.06, "pressure_max": 756.54, ...}
-pred row 1 (1886-10-01): {"pressure": 756.06, "pressure_max": 756.54, ...}
+gold row 1 (1886-01-01): pressure_min=753.42 (all 13 other cells match pred)
+lite pred row 1 (1887-10-01): pressure_min=755.42   <- glyph miss: 3 misread as 5
+full pred row 1 (1888-01-01): pressure_min=755.42   <- same glyph miss, both models
 ```
-Identical cells, wrong month. Not an OCR problem — a page-structure
-comprehension problem.
+
+Across the whole sheet, position-matched: **lite gets 6/434 cells wrong
+(1.4%)** — `pressure_min` (twice), `pressure_max` (three rows, each off by
+almost exactly 1.00), and `wind_force` (5.9 misread as 5.0) — and
+**full-flash gets 4/434 wrong (0.9%)** — `pressure_min` (twice, same two
+rows as lite), one `tmean` (25.0 vs 25.6), and the same `wind_force` miss.
+Both are small, genuine glyph-level misses, not a wholesale
+mistranscription. So the accurate framing is: **per-cell OCR on this sheet
+is close to the sheet-wide average (~99% correct if you could match rows
+correctly) — the catastrophic 0.065 `cell_acc` score comes entirely from
+the date field's year (both models) and, on lite only, month also being
+wrong**, not from bad table-reading.
+
 
 **14_179 (Sep 1886) — barometer-elision reconstruction ignored for 29/30
 rows.** The prompt's rule #4 explicitly documents that "the barometer
@@ -119,12 +184,30 @@ of a whole sheet.
 
 ## Finding 1: the model almost never self-flags its own errors
 
-`flagged_recall` — the fraction of wrong cells the model itself marked
-`"uncertain"` in `flags` — is **0.009 aggregate, and exactly 0.0 on 8 of
-9 sheets**. Across all 571 wrong cells in the whole run, exactly **one**
-was self-flagged (14_142, 1886-07-31, `pressure_min`: gold 756.54, pred
-765.54, `flags={"pressure_min": "uncertain"}` — a plausible digit
-transposition, not one of the "impossible value" cases below).
+`flagged_recall` (lite run) has **two different denominators that both say
+the same thing, and are worth keeping distinct**:
+
+- **0.009** is the *aggregate as reported in the per-sheet table above* —
+  the macro-average of each sheet's own `flagged_recall` (itself
+  `flagged-and-wrong / wrong` **within that sheet**), then averaged evenly
+  across the 9 sheets. This is what `scripts/run_g1.py::aggregate()`
+  computes and what appears in the summary table.
+- **1/571 ≈ 0.0018** is the *raw, whole-dataset* count: of all 571 wrong
+  cells across every sheet combined, exactly one was ever self-flagged
+  `"uncertain"` by the model.
+
+These aren't inconsistent — the 0.009 macro figure is pulled up almost
+entirely by 14_142 alone (`flagged_recall=0.077` on that one sheet, the
+only sheet with any self-flagged wrong cell at all; every other sheet is
+exactly 0.0), while the raw whole-dataset fraction (0.0018) shows just how
+rare that one flag is relative to total errors. Both numbers support the
+same conclusion below; **exactly 0.0 on 8 of 9 sheets** either way. The
+one self-flagged cell: 14_142, 1886-07-31, `pressure_min`: gold 756.54,
+pred 765.54, `flags={"pressure_min": "uncertain"}` — a plausible digit
+transposition, not one of the "impossible value" cases below. On the
+**full-flash** run, `flagged_recall` is exactly **0.000** on all 9 sheets
+and in the raw count (0 of 454 wrong cells self-flagged) — the full model
+never self-flagged anything at all.
 
 **This is a real, load-bearing finding for G2's design**: the prompt
 explicitly instructs the model to flag illegible/uncertain cells (rule 1),
@@ -217,9 +300,13 @@ though the final numbers above are net of the fix:
 
 ## 5 worst examples
 
-1. **14_41, every row** (see above) — correct cells, wrong month in every
-   date; effectively 0% recoverable score for a sheet that was
-   transcribed almost perfectly.
+1. **14_41, every row** (see above, corrected) — wrong year in every date
+   on **both** models (lite: 1887; full-flash: 1888), plus wrong month
+   too on lite (10 vs 01); position-matched per-cell transcription is
+   ~99% correct (6/434 wrong on lite, 4/434 on full-flash) — a 6.5%
+   `cell_acc` score for a sheet whose table body was transcribed almost
+   perfectly, entirely because the date-field year is wrong on both
+   models tested.
 2. **14_179, 29/30 rows** — barometer-elision rule (prompt rule #4)
    ignored after the anchor row; `pressure`/`pressure_max`/`pressure_min`
    off by exactly the elided `7xx` prefix on every affected row.

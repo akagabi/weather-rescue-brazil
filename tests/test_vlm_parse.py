@@ -206,6 +206,27 @@ def test_extract_connect_error_not_retried(tmp_path, monkeypatch):
     assert route.call_count == 1
 
 
+@respx.mock
+def test_gemini_flash_full_provider_uses_gemini_parsing_and_own_endpoint(tmp_path, monkeypatch):
+    """Task 11 review round: a second Gemini provider ("gemini-flash-full",
+    the controller-mandated non-lite gate model) was added alongside the
+    original "gemini-flash" (lite) - it must hit its own endpoint URL, use
+    the header-auth key, and parse the reply the same way as the other
+    Gemini provider."""
+    assert ENDPOINTS["gemini-flash-full"] != ENDPOINTS["gemini-flash"]
+
+    monkeypatch.setenv("WRB_GEMINI_KEY", "test-personal-key-999")
+    meter = CostMeter(cap_usd=10.0, ledger=tmp_path / "ledger.json")
+    ok_body = {"candidates": [{"content": {"parts": [{"text": json.dumps(VALID_SHEET)}]}}]}
+    route = respx.post(ENDPOINTS["gemini-flash-full"]).mock(return_value=httpx.Response(200, json=ok_body))
+
+    sheet = extract(b"fake-image-bytes", "gemini-flash-full", meter)
+
+    assert isinstance(sheet, Sheet)
+    sent = route.calls.last.request
+    assert sent.headers["X-goog-api-key"] == "test-personal-key-999"
+
+
 def test_system_prompt_pins_exact_gold_cell_keys():
     """A live Task 11 probe run showed a zero-shot model invents its own
     plausible column-name synonyms (bar_mean, temp_mean, ...) when the

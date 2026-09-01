@@ -8,12 +8,32 @@ out. Gemini is the primary/gate provider (billing enabled, header-auth key
 per Task 11 corrections in src/wrb/vlm.py); HF/Qwen-VL is attempted
 best-effort only, see `hf-probe` mode.
 
+Two Gemini providers exist (see src/wrb/vlm.py ENDPOINTS):
+  - "gemini-flash"      -> gemini-flash-lite-latest (the lite tier; the
+                           model that actually ran first, after
+                           gemini-flash-latest was found persistently 503
+                           for this key). Output: bench/g1/gemini-flash-lite.json
+  - "gemini-flash-full" -> gemini-3.5-flash (the controller-mandated
+                           full/non-lite gate model - gemini-flash-latest
+                           itself was STILL persistently 503 on a second,
+                           more generous (8-attempt) retry effort during
+                           the Task 11 review round, so this is a
+                           documented, live-verified fallback, not
+                           gemini-flash-latest itself). Output:
+                           bench/g1/gemini-flash.json - this is the
+                           PRIMARY gate file.
+
 Usage:
-    python scripts/run_g1.py probe          # gemini-flash on 2 sheets
-    python scripts/run_g1.py full           # gemini-flash on all 9 sheets,
-                                             # writes bench/g1/gemini.json
-    python scripts/run_g1.py hf-probe       # qwen-vl (HF router) on 1 sheet,
-                                             # best-effort, does not gate G1
+    python scripts/run_g1.py probe [provider]       # 2 sheets, sanity check
+    python scripts/run_g1.py full [provider]        # all 9 sheets, writes
+                                                     # bench/g1/<output>.json
+    python scripts/run_g1.py retry <provider> <page> [<page> ...]
+    python scripts/run_g1.py hf-probe               # qwen-vl (HF router) on
+                                                     # 1 sheet, best-effort,
+                                                     # does not gate G1
+
+provider defaults to "gemini-flash" (the lite tier) for probe/full to match
+prior invocations; pass "gemini-flash-full" explicitly for the gate run.
 """
 
 import io
@@ -34,6 +54,12 @@ from wrb.vlm import ExtractionParseError, extract  # noqa: E402
 IMAGE_DIR = ROOT / "data" / "raw" / "docvirt" / "14"
 LEDGER = ROOT / "data" / "ledger.json"
 BENCH_DIR = ROOT / "bench" / "g1"
+
+OUTPUT_FILENAMES = {
+    "gemini-flash": "gemini-flash-lite.json",
+    "gemini-flash-full": "gemini-flash.json",
+    "qwen-vl": "qwen-vl.json",
+}
 
 
 def image_png_bytes(sheet: Sheet) -> bytes:
@@ -119,10 +145,11 @@ def main() -> None:
     print(f"ledger total before run: US${meter.total():.4f}")
 
     if mode == "probe":
+        provider = sys.argv[2] if len(sys.argv) > 2 else "gemini-flash"
         probe_sheets = sheets[:2]
-        print(f"PROBE: gemini-flash on {len(probe_sheets)} sheets: "
+        print(f"PROBE: {provider} on {len(probe_sheets)} sheets: "
               f"{[s.period for s in probe_sheets]}")
-        results = run_provider("gemini-flash", probe_sheets, meter)
+        results = run_provider(provider, probe_sheets, meter)
         print(f"ledger total after probe: US${meter.total():.4f}")
         n_ok = sum(1 for r in results if "scores" in r)
         if n_ok < len(probe_sheets):
@@ -131,41 +158,50 @@ def main() -> None:
         print("PROBE OK.")
 
     elif mode == "full":
-        print(f"FULL: gemini-flash on all {len(sheets)} sheets")
-        results = run_provider("gemini-flash", sheets, meter)
+        provider = sys.argv[2] if len(sys.argv) > 2 else "gemini-flash"
+        out_name = OUTPUT_FILENAMES.get(provider, f"{provider}.json")
+        print(f"FULL: {provider} on all {len(sheets)} sheets")
+        results = run_provider(provider, sheets, meter)
         agg = aggregate(results)
         print(f"ledger total after full run: US${meter.total():.4f}")
         print(f"aggregate: {json.dumps(agg, indent=2)}")
 
         BENCH_DIR.mkdir(parents=True, exist_ok=True)
-        out = {"provider": "gemini-flash", "aggregate": agg, "per_sheet": results,
+        out = {"provider": provider, "aggregate": agg, "per_sheet": results,
                "ledger_total_usd": meter.total()}
-        out_path = BENCH_DIR / "gemini.json"
+        out_path = BENCH_DIR / out_name
         out_path.write_text(json.dumps(out, indent=2))
         print(f"wrote {out_path}")
 
     elif mode == "retry":
-        pages = {int(p) for p in sys.argv[2:]}
+        rest = sys.argv[2:]
+        if rest and not rest[0].isdigit():
+            provider, page_args = rest[0], rest[1:]
+        else:
+            provider, page_args = "gemini-flash", rest
+        out_name = OUTPUT_FILENAMES.get(provider, f"{provider}.json")
+        pages = {int(p) for p in page_args}
         if not pages:
-            print("usage: run_g1.py retry <page> [<page> ...]", file=sys.stderr)
+            print("usage: run_g1.py retry [provider] <page> [<page> ...]", file=sys.stderr)
             sys.exit(2)
-        prior = json.loads((BENCH_DIR / "gemini.json").read_text())
+        prior_path = BENCH_DIR / out_name
+        prior = json.loads(prior_path.read_text()) if prior_path.exists() else {"per_sheet": []}
         retry_sheets = [s for s in sheets if s.page in pages]
-        print(f"RETRY: gemini-flash on pages {sorted(pages)}: "
+        print(f"RETRY: {provider} on pages {sorted(pages)}: "
               f"{[s.period for s in retry_sheets]}")
-        new_results = run_provider("gemini-flash", retry_sheets, meter)
+        new_results = run_provider(provider, retry_sheets, meter)
         print(f"ledger total after retry: US${meter.total():.4f}")
 
         by_page = {r["page"]: r for r in prior["per_sheet"]}
         for r in new_results:
             by_page[r["page"]] = r
-        merged = [by_page[s.page] for s in sheets]
+        merged = [by_page[s.page] for s in sheets if s.page in by_page]
         agg = aggregate(merged)
         print(f"aggregate after merge: {json.dumps(agg, indent=2)}")
 
-        out = {"provider": "gemini-flash", "aggregate": agg, "per_sheet": merged,
+        out = {"provider": provider, "aggregate": agg, "per_sheet": merged,
                "ledger_total_usd": meter.total()}
-        out_path = BENCH_DIR / "gemini.json"
+        out_path = BENCH_DIR / out_name
         out_path.write_text(json.dumps(out, indent=2))
         print(f"wrote {out_path}")
 
@@ -183,7 +219,7 @@ def main() -> None:
         print("HF-PROBE OK." if n_ok else "HF-PROBE FAILED (see error above) - documented, skipped.")
 
     else:
-        print(f"unknown mode {mode!r}; expected probe|full|hf-probe", file=sys.stderr)
+        print(f"unknown mode {mode!r}; expected probe|full|retry|hf-probe", file=sys.stderr)
         sys.exit(2)
 
 
