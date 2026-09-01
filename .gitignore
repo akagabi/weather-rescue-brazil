@@ -1,5 +1,6 @@
 .venv/
 data/raw/
+data/ledger.json
 __pycache__/
 *.egg-info/
 .env
