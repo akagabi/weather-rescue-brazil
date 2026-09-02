@@ -12,12 +12,13 @@ import os
 import random
 import re
 import time
+from collections import Counter
 from functools import partial
 
 import httpx
 from pydantic import BaseModel, ValidationError
 
-from wrb.costs import CostMeter
+from wrb.costs import CapExceeded, CostMeter
 from wrb.gold import Row, Sheet
 from wrb.guard import assert_personal
 from wrb.reconstruct import restore_thousands
@@ -433,6 +434,7 @@ def _parse_g2b_response(text: str, day_count: int | None) -> G2BTable:
 
 def _request_gemini_g2b(
     endpoint: str, api_key: str, image_bytes: bytes, day_count: int | None = None,
+    temperature: float | None = None,
 ) -> httpx.Response:
     """Build the g2b table-call request.
 
@@ -457,6 +459,12 @@ def _request_gemini_g2b(
         "responseMimeType": "application/json",
         "responseSchema": g2b_response_schema(day_count),
     }
+    # Consensus (Task 1, G3) needs the n repeated calls to actually vary, so
+    # it passes temperature>0 here; a plain single-shot extract() call
+    # leaves this None, which omits the field entirely and keeps the
+    # provider's own default (unchanged behavior for every existing caller).
+    if temperature is not None:
+        gen_cfg["temperature"] = temperature
     body = {
         "system_instruction": {"parts": [{"text": G2B_SYSTEM_PROMPT}]},
         "contents": [{
@@ -1014,6 +1022,7 @@ def _request_with_retry(
 def extract(
     image_bytes: bytes, provider: str, meter: CostMeter,
     strategy: str = "zero_shot", *, day_count: int | None = None,
+    temperature: float | None = None,
 ) -> Sheet | G2BTable:
     """Extract a table from an image using the named provider.
 
@@ -1055,6 +1064,13 @@ def extract(
     _request_with_retry) as a safety net; any other error status is raised
     immediately via raise_for_status() - after the charge has already
     landed, for both strategies.
+
+    `temperature`, when given, is forwarded into generationConfig for the
+    g2b strategy only (see _request_gemini_g2b) - added for
+    consensus_extract below, which needs the n repeated calls to actually
+    vary instead of returning the same deterministic reply n times. It is
+    silently ignored for strategy="zero_shot" (that request builder has no
+    generationConfig at all).
     """
     if strategy == "zero_shot":
         endpoint, api_key = _build_client_and_charge(provider, meter)
@@ -1074,7 +1090,7 @@ def extract(
             desc=f"{provider} g2b table call (image~{ESTIMATED_INPUT_TOKENS}tok, "
                  f"out~{ESTIMATED_OUTPUT_TOKENS}tok, schema-enforced)",
         )
-        requester = partial(_request_gemini_g2b, day_count=day_count)
+        requester = partial(_request_gemini_g2b, day_count=day_count, temperature=temperature)
         response = _request_with_retry(provider, endpoint, api_key, image_bytes, requester=requester)
         response.raise_for_status()
 
@@ -1089,3 +1105,134 @@ def extract(
         return table
 
     raise ValueError(f"unknown strategy {strategy!r}; expected 'zero_shot' or 'g2b'")
+
+
+# --- Self-consistency consensus (G3 Task 1) ----------------------------------
+#
+# G2-B (98.85% cell / 0.4% structural on the frozen gold, controller-
+# recomputed) eliminated the STRUCTURAL failure mode (row/date shift). The
+# residual ~1.15% wrong cells are individual glyph misreads, and the model
+# essentially never self-flags them (bench/g2/gemini-3.5-flash-g2b.json's
+# aggregate flagged_recall is 0.0 - the model's own `flags[col]="uncertain"`
+# mechanism is not catching its own mistakes in practice). Self-consistency
+# (call the same page n times at temperature>0, vote per cell) is a cheap,
+# well-established way to both (a) let independent misreads outvote each
+# other on the cells where the reads actually agree, and (b) surface an
+# EXTERNAL uncertainty signal - disagreement across independent reads -
+# on exactly the cells the single-shot self-flag rate misses.
+
+def _vote_cell(values: list[float | None]) -> tuple[float | None, bool]:
+    """Vote one cell across n independent reads. Returns (chosen_value,
+    agreed) where agreed=True iff some value holds a strict majority (more
+    than half of `values`, including None as a countable value in its own
+    right - unanimous-or-majority "illegible" is itself an agreement, not a
+    disagreement).
+
+    When no value holds a strict majority (a 3-way split, or an even-n tie),
+    falls back to the median of the non-null values (per the Task 1 plan:
+    "keep the majority value, or the median for numerics") and reports
+    agreed=False, so the caller flags that cell `uncertain` - disagreement
+    across independent reads is exactly the external signal this function
+    exists to surface, since the model's own self-flag rate is ~0."""
+    counts = Counter(values)
+    n = len(values)
+    best_val, best_count = counts.most_common(1)[0]
+    if best_count > n / 2:
+        return best_val, True
+
+    nums = sorted(v for v in values if v is not None)
+    if not nums:
+        return None, False
+    mid = len(nums) // 2
+    if len(nums) % 2 == 1:
+        median = nums[mid]
+    else:
+        median = (nums[mid - 1] + nums[mid]) / 2
+    return median, False
+
+
+def _majority_vote_tables(tables: list[G2BTable]) -> G2BTable:
+    """Merge >=2 independently-extracted G2BTables into one consensus
+    G2BTable, aligning rows by `day` and cells by column key (not by list
+    position - a run that drops/duplicates a row must not silently
+    misalign every column after it). A day present in only some of the
+    successful tables is still voted over just those tables that have it."""
+    by_day: dict[int, list[G2BRow]] = {}
+    for table in tables:
+        for row in table.rows:
+            by_day.setdefault(row.day, []).append(row)
+
+    consensus_rows: list[G2BRow] = []
+    for day in sorted(by_day):
+        rows_for_day = by_day[day]
+        keys: set[str] = set()
+        for r in rows_for_day:
+            keys.update(r.cells.keys())
+
+        cells: dict[str, float | None] = {}
+        flags: dict[str, str] = {}
+        for key in keys:
+            values = [r.cells.get(key) for r in rows_for_day]
+            value, agreed = _vote_cell(values)
+            cells[key] = value
+            if not agreed:
+                flags[key] = "uncertain"
+
+        # wind_dir (and any other non-numeric flag text) isn't a voted
+        # numeric cell - take the majority non-empty string instead, same
+        # spirit as _vote_cell but over strings.
+        texts = [r.flags.get("wind_dir") for r in rows_for_day if r.flags.get("wind_dir")]
+        if texts:
+            flags["wind_dir"] = Counter(texts).most_common(1)[0][0]
+
+        consensus_rows.append(G2BRow(day=day, cells=cells, flags=flags))
+
+    return G2BTable(rows=consensus_rows)
+
+
+def consensus_extract(
+    image_bytes: bytes, provider: str, meter: CostMeter, day_count: int,
+    n: int = 3, temperature: float = 0.7,
+) -> G2BTable:
+    """Self-consistency consensus over the g2b table call: run
+    extract(strategy="g2b") `n` times at `temperature` (so the runs actually
+    vary) and majority-vote each cell across the successful runs (see
+    _majority_vote_tables/_vote_cell). Any cell the n reads do NOT agree on
+    keeps the majority-or-median value AND gets `flags[col]="uncertain"` -
+    that disagreement flag is this function's whole point, since the model's
+    own self-flag rate is near-zero (see the module note above).
+
+    Each of the n calls goes through extract(), which already charges the
+    CostMeter BEFORE its own network call (see _build_client_and_charge) -
+    so this function charges n times total, once per run, win or lose.
+
+    Robust to a run failing outright (a parse error, an HTTP error, a
+    timeout exhausting its retries): that run is skipped and logged, and
+    voting proceeds over whatever succeeded. Needs at least 2 successful
+    runs to vote at all (a single surviving run has nothing to agree or
+    disagree with) - raises RuntimeError if fewer than 2 of the n runs
+    succeed. CapExceeded is never swallowed - it must stop the whole run,
+    not just one attempt, since it means the US$ cap itself would be
+    breached."""
+    tables: list[G2BTable] = []
+    errors: list[str] = []
+    for i in range(n):
+        try:
+            table = extract(
+                image_bytes, provider, meter, strategy="g2b",
+                day_count=day_count, temperature=temperature,
+            )
+        except CapExceeded:
+            raise
+        except Exception as e:  # noqa: BLE001 - one bad run must not sink the vote
+            errors.append(f"run {i}: {type(e).__name__}: {e}")
+            continue
+        tables.append(table)
+
+    if len(tables) < 2:
+        raise RuntimeError(
+            f"consensus_extract: only {len(tables)}/{n} run(s) succeeded (need >=2 "
+            f"to vote); errors: {errors}"
+        )
+
+    return _majority_vote_tables(tables)
