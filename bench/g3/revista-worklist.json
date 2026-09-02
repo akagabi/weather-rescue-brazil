@@ -1,0 +1,232 @@
+{
+  "work": [
+    {
+      "doc": "14",
+      "page": 22,
+      "period": "1885-12",
+      "is_gold": true
+    },
+    {
+      "doc": "14",
+      "page": 41,
+      "period": "1886-01",
+      "is_gold": true
+    },
+    {
+      "doc": "14",
+      "page": 57,
+      "period": "1886-02",
+      "is_gold": true
+    },
+    {
+      "doc": "14",
+      "page": 75,
+      "period": "1886-03",
+      "is_gold": true
+    },
+    {
+      "doc": "14",
+      "page": 90,
+      "period": "1886-04",
+      "is_gold": true
+    },
+    {
+      "doc": "14",
+      "page": 109,
+      "period": "1886-05",
+      "is_gold": true
+    },
+    {
+      "doc": "14",
+      "page": 141,
+      "period": "1886-06",
+      "is_gold": false
+    },
+    {
+      "doc": "14",
+      "page": 142,
+      "period": "1886-07",
+      "is_gold": true
+    },
+    {
+      "doc": "14",
+      "page": 158,
+      "period": "1886-08",
+      "is_gold": false
+    },
+    {
+      "doc": "14",
+      "page": 179,
+      "period": "1886-09",
+      "is_gold": true
+    },
+    {
+      "doc": "14",
+      "page": 195,
+      "period": "1886-10",
+      "is_gold": false
+    },
+    {
+      "doc": "14",
+      "page": 212,
+      "period": "1886-11",
+      "is_gold": true
+    },
+    {
+      "doc": "15",
+      "page": 22,
+      "period": "1888-12",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 44,
+      "period": "1889-01",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 60,
+      "period": "1889-02",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 72,
+      "period": "1889-03",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 89,
+      "period": "1889-04",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 91,
+      "period": "1889-04",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 106,
+      "period": "1889-05",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 108,
+      "period": "1889-05",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 139,
+      "period": "1889-07",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 141,
+      "period": "1889-07",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 157,
+      "period": "1889-08",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 166,
+      "period": "1889-09",
+      "is_gold": false
+    },
+    {
+      "doc": "15",
+      "page": 197,
+      "period": "1889-11",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 18,
+      "period": "1889-12",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 22,
+      "period": "1889-12",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 36,
+      "period": "1890-01",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 38,
+      "period": "1890-01",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 39,
+      "period": "1889-11",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 55,
+      "period": "1890-02",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 71,
+      "period": "1890-03",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 72,
+      "period": "1889-12",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 107,
+      "period": "1890-06",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 142,
+      "period": "1890-08",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 156,
+      "period": "1890-09",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 159,
+      "period": "1890-10",
+      "is_gold": false
+    },
+    {
+      "doc": "16",
+      "page": 174,
+      "period": "1890-11",
+      "is_gold": false
+    }
+  ]
+}
