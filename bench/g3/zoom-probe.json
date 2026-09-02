@@ -1,0 +1,149 @@
+{
+  "provider": "gemini-flash-full",
+  "probe_pages": [
+    22,
+    75
+  ],
+  "per_sheet": [
+    {
+      "page": 22,
+      "gold_period": "1885-12",
+      "day_count": 31,
+      "zoom_read_errors": [],
+      "n_zoom_rows_read": 31,
+      "known_wrong_cells": [
+        "day14:pressure",
+        "day16:evap_sombra",
+        "day19:evap_sombra",
+        "day21:evap_sombra",
+        "day26:tmin",
+        "day28:evap_sol",
+        "day2:pressure"
+      ],
+      "n_known_wrong": 7,
+      "suspects": [
+        {
+          "day": 2,
+          "col": "pressure",
+          "consensus_value": 751.6,
+          "zoom_value": 751.69,
+          "proposed_value": 751.69
+        },
+        {
+          "day": 5,
+          "col": "ozone",
+          "consensus_value": 4.0,
+          "zoom_value": 3.0,
+          "proposed_value": 3.0
+        },
+        {
+          "day": 7,
+          "col": "ozone",
+          "consensus_value": 3.0,
+          "zoom_value": 11.0,
+          "proposed_value": 11.0
+        },
+        {
+          "day": 14,
+          "col": "cloudiness",
+          "consensus_value": 6.9,
+          "zoom_value": 6.7,
+          "proposed_value": 6.7
+        },
+        {
+          "day": 14,
+          "col": "precip",
+          "consensus_value": 0.7,
+          "zoom_value": null,
+          "proposed_value": null
+        },
+        {
+          "day": 14,
+          "col": "evap_sol",
+          "consensus_value": 5.0,
+          "zoom_value": 4.5,
+          "proposed_value": 4.5
+        },
+        {
+          "day": 14,
+          "col": "pressure",
+          "consensus_value": 760.2,
+          "zoom_value": 760.29,
+          "proposed_value": 760.29
+        },
+        {
+          "day": 14,
+          "col": "evap_sombra",
+          "consensus_value": 3.3,
+          "zoom_value": 3.1,
+          "proposed_value": 3.1
+        },
+        {
+          "day": 14,
+          "col": "wind_force",
+          "consensus_value": 7.1,
+          "zoom_value": 6.7,
+          "proposed_value": 6.7
+        },
+        {
+          "day": 14,
+          "col": "ozone",
+          "consensus_value": 8.0,
+          "zoom_value": 5.0,
+          "proposed_value": 5.0
+        },
+        {
+          "day": 16,
+          "col": "evap_sombra",
+          "consensus_value": 2.0,
+          "zoom_value": 2.6,
+          "proposed_value": 2.6
+        },
+        {
+          "day": 19,
+          "col": "evap_sombra",
+          "consensus_value": 2.0,
+          "zoom_value": 2.9,
+          "proposed_value": 2.9
+        },
+        {
+          "day": 21,
+          "col": "evap_sombra",
+          "consensus_value": 4.0,
+          "zoom_value": 4.6,
+          "proposed_value": 4.6
+        },
+        {
+          "day": 26,
+          "col": "tmin",
+          "consensus_value": 22.2,
+          "zoom_value": 22.4,
+          "proposed_value": 22.4
+        },
+        {
+          "day": 28,
+          "col": "evap_sol",
+          "consensus_value": 5.0,
+          "zoom_value": 5.9,
+          "proposed_value": 5.9
+        }
+      ],
+      "n_suspects": 15,
+      "true_positive_suspects": [
+        "day14:pressure",
+        "day16:evap_sombra",
+        "day19:evap_sombra",
+        "day21:evap_sombra",
+        "day26:tmin",
+        "day28:evap_sol",
+        "day2:pressure"
+      ],
+      "flag_recall": 1.0,
+      "flag_precision": 0.4666666666666667,
+      "baseline_cell_acc": 0.9838709677419355,
+      "corrected_cell_acc": 0.9792626728110599,
+      "correction_gain": -0.004608294930875556
+    }
+  ],
+  "ledger_total_usd": 0.7081
+}

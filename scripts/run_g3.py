@@ -126,7 +126,15 @@ def run_g3_on_sheet(sheet: Sheet, meter: CostMeter) -> dict:
     return entry
 
 
-def run_g3(sheets: list[Sheet], meter: CostMeter) -> list[dict]:
+def run_g3(sheets: list[Sheet], meter: CostMeter, on_sheet_done=None) -> list[dict]:
+    """Run run_g3_on_sheet over `sheets` in order. `on_sheet_done`, when
+    given, is called with each sheet's result entry (success or error)
+    IMMEDIATELY after that sheet finishes - used by main() to persist
+    progress to disk after every sheet rather than only at the very end, so
+    a mid-run kill (observed live: the first `full` attempt was killed with
+    no output ever flushed through a `tail`-piped stdout, losing an entire
+    run's results even though the CostMeter ledger had already been
+    charged) does not throw away already-completed sheets' work."""
     results: list[dict] = []
     for sheet in sheets:
         gold_file = f"14_{sheet.page}.json"
@@ -135,14 +143,20 @@ def run_g3(sheets: list[Sheet], meter: CostMeter) -> list[dict]:
         except CapExceeded:
             raise
         except (ExtractionParseError, RuntimeError) as e:
-            print(f"  {sheet.period} ({gold_file}): ERROR: {type(e).__name__}: {e}")
-            results.append({"gold_file": gold_file, "gold_period": sheet.period,
-                             "page": sheet.page, "error": f"{type(e).__name__}: {e}"})
+            print(f"  {sheet.period} ({gold_file}): ERROR: {type(e).__name__}: {e}", flush=True)
+            entry = {"gold_file": gold_file, "gold_period": sheet.period,
+                     "page": sheet.page, "error": f"{type(e).__name__}: {e}"}
+            results.append(entry)
+            if on_sheet_done:
+                on_sheet_done(entry)
             continue
         except Exception as e:  # noqa: BLE001 - log and move on, same as run_g2.py
-            print(f"  {sheet.period} ({gold_file}): ERROR: {type(e).__name__}: {e}")
-            results.append({"gold_file": gold_file, "gold_period": sheet.period,
-                             "page": sheet.page, "error": f"{type(e).__name__}: {e}"})
+            print(f"  {sheet.period} ({gold_file}): ERROR: {type(e).__name__}: {e}", flush=True)
+            entry = {"gold_file": gold_file, "gold_period": sheet.period,
+                     "page": sheet.page, "error": f"{type(e).__name__}: {e}"}
+            results.append(entry)
+            if on_sheet_done:
+                on_sheet_done(entry)
             continue
 
         s = entry["scores"]
@@ -150,8 +164,10 @@ def run_g3(sheets: list[Sheet], meter: CostMeter) -> list[dict]:
               f"structural_err_rate={s['structural_err_rate']:.4f} "
               f"flagged_recall={s['flagged_recall']:.4f} "
               f"fraction_flagged={entry['fraction_flagged']:.4f} "
-              f"day_violations={len(entry['day_sequence_violations'])}")
+              f"day_violations={len(entry['day_sequence_violations'])}", flush=True)
         results.append(entry)
+        if on_sheet_done:
+            on_sheet_done(entry)
     return results
 
 
@@ -194,6 +210,17 @@ def aggregate(results: list[dict]) -> dict:
     }
 
 
+def _load_existing_per_sheet(out_path: Path) -> dict[int, dict]:
+    """page -> result entry, from a previous (possibly interrupted) run's
+    output file - lets `full` mode RESUME instead of re-spending on a sheet
+    that already completed successfully (has a "scores" key). A sheet that
+    only recorded an error is retried."""
+    if not out_path.exists():
+        return {}
+    data = json.loads(out_path.read_text())
+    return {e["page"]: e for e in data.get("per_sheet", []) if "scores" in e}
+
+
 def main() -> None:
     mode = sys.argv[1] if len(sys.argv) > 1 else "probe"
     if mode not in ("probe", "full"):
@@ -207,34 +234,52 @@ def main() -> None:
     else:
         sheets = sorted(load_gold(), key=lambda s: s.page)
 
-    meter = CostMeter(cap_usd=10.0, ledger=LEDGER)
-    ledger_before = meter.total()
-    print(f"ledger total before {mode} run: US${ledger_before:.4f}")
-    print(f"{mode.upper()}: {PROVIDER} consensus (n={N_CONSENSUS}, temp={TEMPERATURE}) on "
-          f"{len(sheets)} sheet(s): {[s.period for s in sheets]} (pages {[s.page for s in sheets]})")
-
-    results = run_g3(sheets, meter)
-    ledger_total = meter.total()
-    print(f"ledger total after {mode} run: US${ledger_total:.4f} "
-          f"(delta US${ledger_total - ledger_before:.4f})")
-
-    agg = aggregate(results)
-    print(f"aggregate: {json.dumps(agg, indent=2)}")
-
-    BENCH_DIR.mkdir(parents=True, exist_ok=True)
-    out = {
-        "provider": PROVIDER,
-        "strategy": "g2b+consensus+qc",
-        "n_consensus": N_CONSENSUS,
-        "temperature": TEMPERATURE,
-        "aggregate": agg,
-        "per_sheet": results,
-        "ledger_total_usd": ledger_total,
-    }
     out_name = "consensus-probe.json" if mode == "probe" else "consensus-gold.json"
     out_path = BENCH_DIR / out_name
-    out_path.write_text(json.dumps(out, indent=2))
-    print(f"wrote {out_path}")
+
+    done_by_page = _load_existing_per_sheet(out_path) if mode == "full" else {}
+    remaining = [s for s in sheets if s.page not in done_by_page]
+    if done_by_page:
+        print(f"RESUME: {len(done_by_page)} sheet(s) already completed in {out_path} "
+              f"(pages {sorted(done_by_page)}) - skipping; {len(remaining)} remaining.")
+
+    meter = CostMeter(cap_usd=10.0, ledger=LEDGER)
+    ledger_before = meter.total()
+    print(f"ledger total before {mode} run: US${ledger_before:.4f}", flush=True)
+    print(f"{mode.upper()}: {PROVIDER} consensus (n={N_CONSENSUS}, temp={TEMPERATURE}) on "
+          f"{len(remaining)} sheet(s): {[s.period for s in remaining]} "
+          f"(pages {[s.page for s in remaining]})", flush=True)
+
+    all_results_by_page: dict[int, dict] = dict(done_by_page)
+    BENCH_DIR.mkdir(parents=True, exist_ok=True)
+
+    def persist(entry: dict) -> None:
+        """Called after EVERY sheet (success or error) - rewrites the full
+        output file from everything known so far, so a kill mid-run loses
+        at most the sheet in flight, never earlier ones."""
+        all_results_by_page[entry["page"]] = entry
+        ordered = [all_results_by_page[p] for p in sorted(all_results_by_page)]
+        agg = aggregate(ordered)
+        out = {
+            "provider": PROVIDER,
+            "strategy": "g2b+consensus+qc",
+            "n_consensus": N_CONSENSUS,
+            "temperature": TEMPERATURE,
+            "aggregate": agg,
+            "per_sheet": ordered,
+            "ledger_total_usd": meter.total(),
+        }
+        out_path.write_text(json.dumps(out, indent=2))
+
+    results = run_g3(remaining, meter, on_sheet_done=persist)
+    ledger_total = meter.total()
+    print(f"ledger total after {mode} run: US${ledger_total:.4f} "
+          f"(delta US${ledger_total - ledger_before:.4f})", flush=True)
+
+    final_results = [all_results_by_page[p] for p in sorted(all_results_by_page)]
+    agg = aggregate(final_results)
+    print(f"aggregate: {json.dumps(agg, indent=2)}", flush=True)
+    print(f"wrote {out_path}", flush=True)
 
 
 if __name__ == "__main__":

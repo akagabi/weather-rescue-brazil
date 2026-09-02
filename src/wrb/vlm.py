@@ -248,6 +248,16 @@ G2B_SYSTEM_PROMPT = (
 )
 
 
+def _cell_properties_schema() -> dict:
+    """The Gemini `responseSchema` `properties` dict for one row's `cells`
+    object: one nullable NUMBER field per `_CELL_KEYS`. Factored out (G3
+    Task 1b) so wrb.zoom's per-row-band zoom-reread call builds its own
+    small response schema from the exact same key set/nullability as the
+    g2b table call, rather than a second hand-copied literal that could
+    silently drift out of sync with `_CELL_KEYS`."""
+    return {key: {"type": "NUMBER", "nullable": True} for key in _CELL_KEYS}
+
+
 def g2b_response_schema(day_count: int | None = None) -> dict:
     """The Gemini `responseSchema` for the g2b table call (fix #1:
     schema-enforced structured output).
@@ -272,7 +282,7 @@ def g2b_response_schema(day_count: int | None = None) -> dict:
     and the exact row count is enforced CLIENT-SIDE instead, in
     `_parse_g2b_response` below (a wrong count still raises
     ExtractionParseError - it is never padded or truncated to fit)."""
-    cell_properties = {key: {"type": "NUMBER", "nullable": True} for key in _CELL_KEYS}
+    cell_properties = _cell_properties_schema()
     row_schema = {
         "type": "OBJECT",
         "properties": {
