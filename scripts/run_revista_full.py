@@ -36,8 +36,10 @@ import calendar
 import io
 import json
 import sys
+import time
 from pathlib import Path
 
+import httpx
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -64,6 +66,7 @@ BENCH_DIR = ROOT / "bench" / "g3"
 WORKLIST_PATH = BENCH_DIR / "revista-worklist.json"
 CONSENSUS_GOLD_PATH = BENCH_DIR / "consensus-gold.json"
 OUT_PATH = BENCH_DIR / "revista-full.json"
+PROVE_OUT_PATH = BENCH_DIR / "revista-prove.json"
 
 PROVIDER = "gemini-flash-full"
 N_CONSENSUS = 3
@@ -75,7 +78,11 @@ TEMPERATURE = 0.7
 # per-row band geometry - so the zoom-flagger is scoped to docId 14 by
 # default (see the Task 2b prove-small finding). Consensus-disagreement and
 # validator flags remain the primary suspect signal on all docs.
-ZOOM_DOCS_DEFAULT = {"14"}
+# Bulk run is CONSENSUS-ONLY (no per-row zoom) to stay within the quoted
+# ~US$1.3 budget: per-row zoom is ~31 calls/table and belongs in a separate
+# TARGETED QC pass, not the expensive bulk. Zoom-flagging was validated in
+# Task 1b and is applied selectively later, not baked into every table here.
+ZOOM_DOCS_DEFAULT: set[str] = set()
 
 STATION_BY_DOC = {
     "14": "Rio de Janeiro - Imperial Observatorio",
@@ -250,10 +257,12 @@ def persist(done: dict[str, dict], meter: CostMeter, zoom_docs: set[str]) -> Non
 
 
 def main() -> None:
+    global OUT_PATH
     mode = sys.argv[1] if len(sys.argv) > 1 else "full"
     worklist = json.loads(WORKLIST_PATH.read_text())["work"]
 
     if mode == "prove":
+        OUT_PATH = PROVE_OUT_PATH
         pages = {int(p) for p in sys.argv[2:]}
         worklist = [w for w in worklist if w["page"] in pages and not w["is_gold"]]
         zoom_docs = {w["doc"] for w in worklist}  # test zoom on whatever docs the probe pages hit
@@ -277,8 +286,14 @@ def main() -> None:
     print(f"{mode.upper()}: {len(remaining)} table(s) to run "
           f"(of {len(worklist)} in list; {len(done)} already done).", flush=True)
 
+    # Modest pacing between tables: each table already fires ~4 calls
+    # (period + 3 consensus); a short gap eases the free/paid-tier rate
+    # limit (429s were crashing the run). Cheap insurance on a resumable run.
+    INTER_TABLE_PAUSE_S = 4.0
     for item in remaining:
         k = _key(item)
+        if not item["is_gold"]:
+            time.sleep(INTER_TABLE_PAUSE_S)
         try:
             if item["is_gold"]:
                 if item["page"] not in cons_gold:
@@ -290,7 +305,13 @@ def main() -> None:
             print(f"  {k}: CAP EXCEEDED - persisting and stopping.", flush=True)
             persist(done, meter, zoom_docs)
             raise
-        except (ExtractionParseError, RuntimeError, FileNotFoundError) as e:
+        except (ExtractionParseError, RuntimeError, FileNotFoundError,
+                httpx.HTTPError) as e:
+            # httpx.HTTPError covers a rate-limit/503 that outlasted the
+            # per-call retry budget (e.g. extract_period's raise_for_status):
+            # record THIS table as errored and move on — never let one API
+            # failure crash the whole resumable run. Errored tables aren't
+            # stored in `done`, so a later rerun retries them.
             print(f"  {k} ({item['period']}): ERROR {type(e).__name__}: {e}", flush=True)
             entry = {"doc": item["doc"], "page": item["page"], "period": item["period"],
                      "is_gold": item["is_gold"], "error": f"{type(e).__name__}: {e}"}
