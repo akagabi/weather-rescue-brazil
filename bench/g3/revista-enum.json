@@ -1,0 +1,954 @@
+{
+  "grid_shortlist_min": 6,
+  "shortlist": [
+    {
+      "doc": "15",
+      "page": 22,
+      "n_rules": 8
+    },
+    {
+      "doc": "15",
+      "page": 44,
+      "n_rules": 6
+    },
+    {
+      "doc": "15",
+      "page": 60,
+      "n_rules": 6
+    },
+    {
+      "doc": "15",
+      "page": 72,
+      "n_rules": 9
+    },
+    {
+      "doc": "15",
+      "page": 89,
+      "n_rules": 8
+    },
+    {
+      "doc": "15",
+      "page": 91,
+      "n_rules": 16
+    },
+    {
+      "doc": "16",
+      "page": 174,
+      "n_rules": 15
+    }
+  ],
+  "per_page": [
+    {
+      "doc": "15",
+      "page": 1,
+      "w": 1486,
+      "h": 2229,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 2,
+      "w": 1682,
+      "h": 2514,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 3,
+      "w": 1682,
+      "h": 2514,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 4,
+      "w": 1639,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 5,
+      "w": 1682,
+      "h": 2517,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 6,
+      "w": 1639,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 7,
+      "w": 1682,
+      "h": 2517,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 8,
+      "w": 1639,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 9,
+      "w": 1682,
+      "h": 2517,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 10,
+      "w": 1639,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 11,
+      "w": 1682,
+      "h": 2517,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 12,
+      "w": 1639,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 13,
+      "w": 1682,
+      "h": 2517,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 14,
+      "w": 1655,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 15,
+      "w": 1666,
+      "h": 2496,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 16,
+      "w": 1655,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 17,
+      "w": 1666,
+      "h": 2496,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 18,
+      "w": 1666,
+      "h": 2496,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 19,
+      "w": 1655,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 20,
+      "w": 1666,
+      "h": 2496,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 21,
+      "w": 1655,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 22,
+      "w": 1666,
+      "h": 2496,
+      "orient": "portrait",
+      "n_rules": 8
+    },
+    {
+      "doc": "15",
+      "page": 23,
+      "w": 1655,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 24,
+      "w": 1666,
+      "h": 2496,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "15",
+      "page": 25,
+      "w": 2445,
+      "h": 1685,
+      "orient": "landscape",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 26,
+      "w": 1666,
+      "h": 2496,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 27,
+      "w": 1636,
+      "h": 2440,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 28,
+      "w": 1666,
+      "h": 2496,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 29,
+      "w": 1636,
+      "h": 2440,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 30,
+      "w": 1666,
+      "h": 2496,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 31,
+      "w": 1636,
+      "h": 2440,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 32,
+      "w": 1666,
+      "h": 2496,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 33,
+      "w": 1636,
+      "h": 2440,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 34,
+      "w": 2495,
+      "h": 1647,
+      "orient": "landscape",
+      "n_rules": 28
+    },
+    {
+      "doc": "15",
+      "page": 35,
+      "w": 2445,
+      "h": 1658,
+      "orient": "landscape",
+      "n_rules": 15
+    },
+    {
+      "doc": "15",
+      "page": 36,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 37,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 38,
+      "w": 1696,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 39,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 40,
+      "w": 1696,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 41,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 42,
+      "w": 1696,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 43,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 44,
+      "w": 1696,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 6
+    },
+    {
+      "doc": "15",
+      "page": 45,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 46,
+      "w": 1669,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 47,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 48,
+      "w": 1669,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 49,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 50,
+      "w": 1669,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 51,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 52,
+      "w": 1669,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 53,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 54,
+      "w": 1669,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 55,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 56,
+      "w": 1658,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 57,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 58,
+      "w": 1658,
+      "h": 2444,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 59,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "15",
+      "page": 60,
+      "w": 1658,
+      "h": 2446,
+      "orient": "portrait",
+      "n_rules": 6
+    },
+    {
+      "doc": "15",
+      "page": 61,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 62,
+      "w": 1658,
+      "h": 2446,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 63,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 64,
+      "w": 1658,
+      "h": 2446,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 65,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 66,
+      "w": 1658,
+      "h": 2446,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 67,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 68,
+      "w": 1658,
+      "h": 2446,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 69,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 70,
+      "w": 1658,
+      "h": 2446,
+      "orient": "portrait",
+      "n_rules": 4
+    },
+    {
+      "doc": "15",
+      "page": 71,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 72,
+      "w": 1658,
+      "h": 2446,
+      "orient": "portrait",
+      "n_rules": 9
+    },
+    {
+      "doc": "15",
+      "page": 73,
+      "w": 1658,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 74,
+      "w": 1658,
+      "h": 2446,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "15",
+      "page": 75,
+      "w": 2472,
+      "h": 1647,
+      "orient": "landscape",
+      "n_rules": 37
+    },
+    {
+      "doc": "15",
+      "page": 76,
+      "w": 2451,
+      "h": 1614,
+      "orient": "landscape",
+      "n_rules": 16
+    },
+    {
+      "doc": "15",
+      "page": 77,
+      "w": 2472,
+      "h": 1647,
+      "orient": "landscape",
+      "n_rules": 26
+    },
+    {
+      "doc": "15",
+      "page": 78,
+      "w": 2451,
+      "h": 1614,
+      "orient": "landscape",
+      "n_rules": 19
+    },
+    {
+      "doc": "15",
+      "page": 79,
+      "w": 1664,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 80,
+      "w": 1674,
+      "h": 2449,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 81,
+      "w": 1664,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 82,
+      "w": 1674,
+      "h": 2449,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 83,
+      "w": 1664,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 84,
+      "w": 1674,
+      "h": 2449,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 85,
+      "w": 1664,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 86,
+      "w": 1674,
+      "h": 2449,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 87,
+      "w": 1664,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 88,
+      "w": 1674,
+      "h": 2449,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 89,
+      "w": 1664,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 8
+    },
+    {
+      "doc": "15",
+      "page": 90,
+      "w": 1674,
+      "h": 2449,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 91,
+      "w": 1664,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 16
+    },
+    {
+      "doc": "15",
+      "page": 92,
+      "w": 2451,
+      "h": 1636,
+      "orient": "landscape",
+      "n_rules": 30
+    },
+    {
+      "doc": "15",
+      "page": 93,
+      "w": 2456,
+      "h": 1641,
+      "orient": "landscape",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 94,
+      "w": 2451,
+      "h": 1636,
+      "orient": "landscape",
+      "n_rules": 8
+    },
+    {
+      "doc": "15",
+      "page": 95,
+      "w": 1638,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 96,
+      "w": 1658,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 97,
+      "w": 1638,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 98,
+      "w": 1658,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 99,
+      "w": 1638,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 110,
+      "w": 2462,
+      "h": 1631,
+      "orient": "landscape",
+      "n_rules": 8
+    },
+    {
+      "doc": "15",
+      "page": 128,
+      "w": 1652,
+      "h": 2468,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 172,
+      "w": 1675,
+      "h": 2482,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 194,
+      "w": 1669,
+      "h": 2447,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 195,
+      "w": 1673,
+      "h": 2492,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 199,
+      "w": 2492,
+      "h": 1637,
+      "orient": "landscape",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 200,
+      "w": 1486,
+      "h": 2229,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 1,
+      "w": 1486,
+      "h": 2229,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 2,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 20,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 41,
+      "w": 2461,
+      "h": 1630,
+      "orient": "landscape",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 95,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 170,
+      "w": 1624,
+      "h": 2423,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 174,
+      "w": 1624,
+      "h": 2418,
+      "orient": "portrait",
+      "n_rules": 15
+    },
+    {
+      "doc": "16",
+      "page": 176,
+      "w": 1486,
+      "h": 2229,
+      "orient": "portrait",
+      "n_rules": 1
+    }
+  ]
+}

@@ -157,6 +157,17 @@ def run_probe_on_sheet(page: int, pred_sheet: Sheet, gold_sheet: Sheet, meter: C
     }
 
 
+def _load_existing_per_sheet() -> dict[int, dict]:
+    """page -> result entry from a previous (possibly interrupted) run's
+    output file - lets this script RESUME instead of re-spending on a page
+    that already completed, same reasoning as scripts/run_g3.py's
+    `_load_existing_per_sheet`."""
+    if not OUT_PATH.exists():
+        return {}
+    data = json.loads(OUT_PATH.read_text())
+    return {e["page"]: e for e in data.get("per_sheet", [])}
+
+
 def main() -> None:
     consensus_gold = json.loads(CONSENSUS_GOLD_PATH.read_text())
     gold_sheets = {s.page: s for s in load_gold()}
@@ -168,12 +179,18 @@ def main() -> None:
         e["page"]: Sheet(**e["pred"]) for e in consensus_gold["per_sheet"] if "pred" in e
     }
 
+    done_by_page = _load_existing_per_sheet()
+    remaining_pages = [p for p in probe_pages if p not in done_by_page]
+    if done_by_page:
+        print(f"RESUME: {sorted(done_by_page)} already completed in {OUT_PATH} - skipping; "
+              f"{remaining_pages} remaining.", flush=True)
+
     meter = CostMeter(cap_usd=10.0, ledger=LEDGER)
     ledger_before = meter.total()
     print(f"ledger total before zoom probe: US${ledger_before:.4f}", flush=True)
 
-    per_sheet = []
-    for page in probe_pages:
+    per_sheet = [done_by_page[p] for p in probe_pages if p in done_by_page]
+    for page in remaining_pages:
         print(f"--- page {page} ---", flush=True)
         try:
             result = run_probe_on_sheet(page, pred_by_page[page], gold_sheets[page], meter)
