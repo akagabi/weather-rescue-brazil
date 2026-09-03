@@ -192,6 +192,24 @@ Leituras:
   MLX/GGUF a meta é < 1 min/página; a demo de escala do G4.5 mede isso.
 - Memória: 16 GB são suficientes para inferência; para treino LoRA por linha do 0,9B também.
 
+## 8b. Zero-shot nos recortes de linha do gold (medido 2026-09-03) — DECISÃO REVISTA
+
+40 linhas gold amostradas (seed 0), pontuação estrita por ordem de tokens (14 tokens ou a linha
+inteira conta errada), `scripts/g4_zero_shot.py`, `bench/g4/zero_shot-*.json`.
+
+| Modelo | Acurácia de célula | Linhas com 14 tokens | s/linha no M4 | Observação |
+|---|---|---|---|---|
+| tesseract `--psm 7` | 1,8% (183 linhas) | 22/183 | 0,2 | não lê a tipografia |
+| PaddleOCR-VL-1.6, prompt `OCR:` | 22,5% | 19/40 | **36,1** | lê os dígitos mas emenda tudo sem separador ("758.3460.7256.24…"); muito lento no MPS |
+| Qwen3-VL-2B-Instruct | 31,8% | 29/40 | 4,7 | (baseline anterior) |
+| **Qwen3.5-2B** | **31,8%** | 31/40 | **7,1** | leituras quase todas certas; erra alinhamento (null, eco do dia, "……") |
+
+**Decisão: Qwen3.5-2B é a base do smoke e do treino**, não o Paddle. O Paddle tinha o melhor
+TEDS publicado, mas no nosso caso (uma linha por vez, MPS) é 5× mais lento e sai sem
+estrutura. O Qwen3.5-2B segue instrução, produz os separadores e lê os glifos bem; o que falta
+é exatamente o que o fine-tune ensina. A licença dos rótulos foi decidida pelo owner
+(2026-09-03): **opção A**, seguir com os rótulos Gemini e declarar proveniência.
+
 ## 9. Riscos e o que já está decidido contra eles
 
 - **Estações secundárias (Corumbá, 2 leituras/dia, ~60 linhas)** quebram o schema de 31 linhas:

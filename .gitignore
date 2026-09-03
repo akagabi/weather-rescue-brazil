@@ -7,3 +7,4 @@ __pycache__/
 gold_verify/
 data/g4/train_rows/
 data/g4/gold_rows/
+runs/
