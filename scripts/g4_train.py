@@ -40,6 +40,17 @@ MODELS = {
     "qwen3vl": "Qwen/Qwen3-VL-2B-Instruct",
     "qwen35": "Qwen/Qwen3.5-2B",
 }
+LAYOUT_HINT = {
+    "14": "Layout A: Imperial Observatorio (Rio, 1886), 14 colunas, COM a coluna de evaporação ao sol.",
+}
+DEFAULT_HINT = "Layout B: Observatorio de Santa-Cruz (1889-90), a coluna de evaporação ao sol é sempre null."
+OVERSAMPLE = {"14": 4}  # smoke1 lesson: gold is all vol 14, training was 91% vols 15/16 -> tail columns shifted
+
+
+def layout_hint(doc: str) -> str:
+    return LAYOUT_HINT.get(str(doc), DEFAULT_HINT)
+
+
 INSTRUCTION = ("Leia esta linha de tabela meteorológica impressa (século XIX). Responda com as 14 células "
                "numéricas na ordem das colunas, separadas por ' | ', 'null' para célula vazia, e no fim "
                "'dir=' com a direção do vento impressa. Transcreva fielmente o que está impresso.")
@@ -60,11 +71,11 @@ def split_pages(examples: list[dict], dev_pages: set[tuple[str, int]]) -> tuple[
     return train, dev
 
 
-def build_batch(proc, image, target: str | None, dev: str):
+def build_batch(proc, image, target: str | None, dev: str, hint: str = ""):
     """Tokenise prompt(+target) through the chat template; labels mask the
     prompt so loss is on the target only."""
     import torch
-    user = [{"role": "user", "content": [{"type": "image", "image": image}, {"type": "text", "text": INSTRUCTION}]}]
+    user = [{"role": "user", "content": [{"type": "image", "image": image}, {"type": "text", "text": INSTRUCTION + (" " + hint if hint else "")}]}]
     prompt = proc.apply_chat_template(user, add_generation_prompt=True, tokenize=True, return_dict=True,
                                       return_tensors="pt")
     if target is None:
@@ -91,11 +102,13 @@ def cell_accuracy(proc, model, examples: list[dict], dev: str, max_new: int = 12
     for e in sample:
         from PIL import Image
         im = Image.open(G4 / e["image"]).convert("RGB")
-        inp, _ = build_batch(proc, im, None, dev)
+        inp, _ = build_batch(proc, im, None, dev, layout_hint(e["doc"]))
         n = inp["input_ids"].shape[1]
         with torch.no_grad():
             out = model.generate(**inp, max_new_tokens=max_new, do_sample=False)
         text = proc.decode(out[0][n:], skip_special_tokens=True)
+        if dev == "mps":
+            torch.mps.empty_cache()
         cells, _, problems = parse_row_target(text)
         rows14 += not any("tokens" in p for p in problems)
         for col in COLUMNS:
@@ -124,6 +137,11 @@ def main() -> None:
     ap.add_argument("--synthetic", default="", help="optional extra manifest (synthetic rows)")
     ap.add_argument("--grad-accum", type=int, default=8)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--oversample", action="store_true", help="repeat vol-14 rows x4 (OVERSAMPLE)")
+    ap.add_argument("--no-hint", action="store_true", help="disable the per-volume layout hint")
+    ap.add_argument("--save-every", type=int, default=20, help="checkpoint adapter+optimizer every N optimizer steps")
+    ap.add_argument("--resume", default="", help="checkpoint dir (runs/g4/<run>/latest) to resume from")
+    ap.add_argument("--stop-after-steps", type=int, default=0, help="debug: exit right after this optimizer step (tests resume)")
     args = ap.parse_args()
 
     import torch
@@ -148,9 +166,13 @@ def main() -> None:
         sm = load_manifest(Path(args.synthetic))
         assert_no_gold_leakage(sm, GOLD_PAGES, frozenset(e["sha256"] for e in gm["examples"]))
         train_ex = train_ex + sm["examples"]
+    if args.oversample:
+        extra = [e for e in train_ex for _ in range(OVERSAMPLE.get(str(e["doc"]), 1) - 1)]
+        train_ex = train_ex + extra
     random.shuffle(train_ex)
     if args.max_rows:
         train_ex = train_ex[:args.max_rows]
+    hint_for = (lambda doc: "") if args.no_hint else layout_hint
     print(f"device={dev} train_rows={len(train_ex)} dev_rows={len(dev_ex)} dev_pages={sorted(dev_pages)} "
           f"manifest_hash={tm_hash[:12]}", flush=True)
 
@@ -164,7 +186,11 @@ def main() -> None:
     lcfg = LoraConfig(r=args.rank, lora_alpha=2 * args.rank, lora_dropout=0.05, bias="none",
                       target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
                       exclude_modules=r".*(vision|visual|image|patch|merger|projector).*")
-    model = get_peft_model(model, lcfg)
+    if args.resume:
+        from peft import PeftModel
+        model = PeftModel.from_pretrained(model, args.resume, is_trainable=True)
+    else:
+        model = get_peft_model(model, lcfg)
     model.print_trainable_parameters()
     if hasattr(model, "gradient_checkpointing_enable"):
         try:
@@ -178,24 +204,54 @@ def main() -> None:
 
     log = {"args": vars(args), "model": model_id, "manifest_hash": tm_hash, "device": dev,
            "train_rows": len(train_ex), "dev_rows": len(dev_ex), "epochs": []}
-    print("pre-train dev:", ev0 := cell_accuracy(proc, model, dev_ex, dev, limit=args.eval_limit), flush=True)
-    log["pre_train_dev"] = ev0
+    state = {"step": 0, "epoch": 1, "idx": 0, "order": None}
+    if args.resume:
+        ck = torch.load(Path(args.resume) / "train_state.pt", map_location="cpu", weights_only=False)
+        opt.load_state_dict(ck["opt"])
+        sched.load_state_dict(ck["sched"])
+        state = ck["state"]
+        log = json.loads((Path(args.resume).parent / "log.json").read_text()) if (Path(args.resume).parent / "log.json").exists() else log
+        print(f"RESUMED from {args.resume}: epoch {state['epoch']} idx {state['idx']} step {state['step']}", flush=True)
+    else:
+        print("pre-train dev:", ev0 := cell_accuracy(proc, model, dev_ex, dev, limit=args.eval_limit), flush=True)
+        log["pre_train_dev"] = ev0
+
+    def checkpoint(epoch: int, idx: int, order: list[int]) -> None:
+        """Adapter + optimizer + scheduler + exact position in the epoch, so
+        a kill at any point resumes from the last saved step."""
+        ck_dir = out_dir / "latest"
+        model.save_pretrained(ck_dir)
+        torch.save({"opt": opt.state_dict(), "sched": sched.state_dict(),
+                    "state": {"step": step, "epoch": epoch, "idx": idx, "order": order}}, ck_dir / "train_state.pt")
+        (out_dir / "log.json").write_text(json.dumps(log, indent=1))
 
     # --- loop ---------------------------------------------------------------
     model.train()
-    step = 0
+    step = state["step"]
     t0 = time.time()
-    for epoch in range(1, args.epochs + 1):
-        random.shuffle(train_ex)
+    for epoch in range(state["epoch"], args.epochs + 1):
+        if state["order"] and epoch == state["epoch"]:  # non-empty order = resumed mid-epoch
+            order = state["order"]
+            start_idx = state["idx"]
+            state["order"] = None
+        else:
+            order = list(range(len(train_ex)))
+            random.Random(args.seed + epoch).shuffle(order)
+            start_idx = 0
         losses = []
         opt.zero_grad()
-        for i, e in enumerate(train_ex, start=1):
+        for i, k in enumerate(order, start=1):
+            if i <= start_idx:
+                continue
+            if i == start_idx + 1 and start_idx:
+                print(f"resuming mid-epoch {epoch} at row {i}/{len(order)}", flush=True)
+            e = train_ex[k]
             im = Image.open(G4 / e["image"]).convert("RGB") if not e["image"].startswith("/") else Image.open(e["image"]).convert("RGB")
-            inp, labels = build_batch(proc, im, row_target(e["cells"], e.get("flags")), dev)
+            inp, labels = build_batch(proc, im, row_target(e["cells"], e.get("flags")), dev, hint_for(e["doc"]))
             out = model(**inp, labels=labels)
             (out.loss / args.grad_accum).backward()
             losses.append(out.loss.item())
-            if i % args.grad_accum == 0 or i == len(train_ex):
+            if i % args.grad_accum == 0 or i == len(order):
                 torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
                 opt.step()
                 sched.step()
@@ -203,14 +259,21 @@ def main() -> None:
                 step += 1
                 if dev == "mps":
                     torch.mps.empty_cache()  # smoke1 lesson: the MPS caching allocator grew to 13 GB and swapped
+                if args.save_every and step % args.save_every == 0:
+                    checkpoint(epoch, i, order)
+                if args.stop_after_steps and step >= args.stop_after_steps:
+                    print(f"STOP-AFTER-STEPS {step} (epoch {epoch} idx {i}) - checkpoint at {out_dir / 'latest'}", flush=True)
+                    return
                 if step % 10 == 0:
                     print(f"epoch {epoch} step {step}/{steps_total} loss {sum(losses[-args.grad_accum:]) / args.grad_accum:.4f} "
                           f"{(time.time() - t0) / 60:.1f} min", flush=True)
+        model.save_pretrained(out_dir / f"epoch{epoch}")  # save BEFORE the slow eval: nothing is lost if killed here
+        checkpoint(epoch + 1, 0, [])
         ev = cell_accuracy(proc, model, dev_ex, dev, limit=args.eval_limit)
-        rec = {"epoch": epoch, "train_loss": sum(losses) / len(losses), "dev": ev, "minutes": round((time.time() - t0) / 60, 1)}
+        rec = {"epoch": epoch, "train_loss": (sum(losses) / len(losses)) if losses else None, "dev": ev,
+               "minutes": round((time.time() - t0) / 60, 1)}
         log["epochs"].append(rec)
         print("EPOCH", json.dumps(rec), flush=True)
-        model.save_pretrained(out_dir / f"epoch{epoch}")
         (out_dir / "log.json").write_text(json.dumps(log, indent=1))
     if args.eval_gold:
         log["gold"] = cell_accuracy(proc, model, gm["examples"], dev, limit=args.eval_limit)

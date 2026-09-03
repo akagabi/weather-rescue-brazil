@@ -20,7 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from g4_train import MODELS, build_batch, device, split_pages  # noqa: E402
+from g4_train import MODELS, build_batch, device, layout_hint, split_pages  # noqa: E402
 from wrb.dataset import COLUMNS, load_manifest  # noqa: E402
 from wrb.local_model import parse_row_target  # noqa: E402
 
@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 G4 = ROOT / "data" / "g4"
 
 
-def run(proc, model, examples, dev, limit=0):
+def run(proc, model, examples, dev, limit=0, no_hint=False):
     import torch
     from PIL import Image
     preds = []
@@ -36,7 +36,7 @@ def run(proc, model, examples, dev, limit=0):
     t0 = time.time()
     for e in sample:
         im = Image.open(G4 / e["image"]).convert("RGB")
-        inp, _ = build_batch(proc, im, None, dev)
+        inp, _ = build_batch(proc, im, None, dev, "" if no_hint else layout_hint(e["doc"]))
         n = inp["input_ids"].shape[1]
         with torch.no_grad():
             out = model.generate(**inp, max_new_tokens=120, do_sample=False)
@@ -79,6 +79,7 @@ def main() -> None:
     ap.add_argument("--dev-pages", default="15/60,16/159")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--out", default="")
+    ap.add_argument("--no-hint", action="store_true", help="adapter was trained without the layout hint (smoke1)")
     args = ap.parse_args()
     import torch
     from peft import PeftModel
@@ -90,7 +91,7 @@ def main() -> None:
     model.eval()
     gm = load_manifest(G4 / "gold_manifest.json")
     res = {"model": MODELS[args.model], "adapter": args.adapter}
-    preds, secs = run(proc, model, gm["examples"], dev, args.limit)
+    preds, secs = run(proc, model, gm["examples"], dev, args.limit, args.no_hint)
     res["gold"] = {**summarize(preds), "s_per_row": round(secs / max(1, len(preds)), 2)}
     print("GOLD:", json.dumps(res["gold"]), flush=True)
     res["gold_predictions"] = preds
@@ -98,7 +99,7 @@ def main() -> None:
         tm = load_manifest(G4 / "train_manifest.json")
         dev_pages = {(p.split("/")[0], int(p.split("/")[1])) for p in args.dev_pages.split(",") if p}
         _, dev_ex = split_pages(tm["examples"], dev_pages)
-        dpreds, dsecs = run(proc, model, dev_ex, dev, args.limit)
+        dpreds, dsecs = run(proc, model, dev_ex, dev, args.limit, args.no_hint)
         res["dev"] = {**summarize(dpreds), "s_per_row": round(dsecs / max(1, len(dpreds)), 2)}
         res["dev_predictions"] = dpreds
         print("DEV:", json.dumps(res["dev"]), flush=True)
