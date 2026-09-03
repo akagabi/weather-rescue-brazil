@@ -5,3 +5,5 @@ __pycache__/
 *.egg-info/
 .env
 gold_verify/
+data/g4/train_rows/
+data/g4/gold_rows/

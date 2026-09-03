@@ -1,0 +1,7329 @@
+{
+ "meta": {
+  "source": "bench/g3/revista-full.json",
+  "built_at": "2026-09-03 09:25",
+  "oracle": {
+   "model": "Qwen/Qwen3-VL-2B-Instruct",
+   "calls": 146
+  },
+  "verify": {
+   "n": 84,
+   "mismatches": []
+  }
+ },
+ "n_examples": 183,
+ "n_cells": 2425,
+ "pages": [
+  {
+   "doc": "14",
+   "page": 22,
+   "period": "1885-12",
+   "day_count": 31,
+   "status": "refused",
+   "reason": "chain has 38 rows, expected 31 (peaks=63, isolated=9, pitch=29.0, tried=[29.0, 56.0, 66.0, 74.0, 17.0, 46.0])",
+   "chain": [
+    691,
+    715,
+    743,
+    771,
+    799,
+    828,
+    856,
+    883,
+    912,
+    940,
+    968,
+    996,
+    1023,
+    1053,
+    1081,
+    1109,
+    1137,
+    1165,
+    1193,
+    1221,
+    1249,
+    1278,
+    1306,
+    1334,
+    1362,
+    1390,
+    1419,
+    1447,
+    1475,
+    1503,
+    1532,
+    1560,
+    1594,
+    1625,
+    1657,
+    1741,
+    1812,
+    1846
+   ],
+   "n_examples": 0
+  },
+  {
+   "doc": "14",
+   "page": 41,
+   "period": "1886-01",
+   "day_count": 31,
+   "status": "refused",
+   "reason": "oracle could not find a window starting at day 1: chain has 32 rows, expected 31 (peaks=65, isolated=11, pitch=28.0, tried=[28.0, 34.0, 56.0, 67.0, 74.0, 63.0])",
+   "chain": [
+    1169,
+    1193,
+    1222,
+    1249,
+    1278,
+    1306,
+    1333,
+    1362,
+    1390,
+    1418,
+    1446,
+    1474,
+    1502,
+    1530,
+    1558,
+    1586,
+    1614,
+    1642,
+    1670,
+    1698,
+    1726,
+    1755,
+    1783,
+    1811,
+    1839,
+    1867,
+    1895,
+    1923,
+    1951,
+    1979,
+    2007,
+    2036
+   ],
+   "n_examples": 0
+  },
+  {
+   "doc": "14",
+   "page": 57,
+   "period": "1886-02",
+   "day_count": 28,
+   "status": "refused",
+   "reason": "oracle could not find a window starting at day 1: chain has 29 rows, expected 28 (peaks=59, isolated=5, pitch=28.0, tried=[55.0, 28.0, 65.0, 33.0, 73.0, 78.0])",
+   "chain": [
+    846,
+    874,
+    902,
+    930,
+    957,
+    985,
+    1013,
+    1040,
+    1069,
+    1096,
+    1124,
+    1151,
+    1179,
+    1207,
+    1234,
+    1262,
+    1290,
+    1318,
+    1346,
+    1373,
+    1401,
+    1429,
+    1456,
+    1537,
+    1570,
+    1601,
+    1634,
+    1769,
+    1801
+   ],
+   "n_examples": 0
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day_count": 31,
+   "status": "ok",
+   "reason": "",
+   "chain": [
+    739,
+    767,
+    795,
+    823,
+    851,
+    878,
+    907,
+    935,
+    962,
+    990,
+    1018,
+    1046,
+    1074,
+    1102,
+    1130,
+    1158,
+    1186,
+    1214,
+    1241,
+    1270,
+    1297,
+    1326,
+    1353,
+    1382,
+    1409,
+    1437,
+    1465,
+    1493,
+    1521,
+    1549,
+    1577
+   ],
+   "n_examples": 31
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day_count": 30,
+   "status": "ok",
+   "reason": "",
+   "chain": [
+    1205,
+    1233,
+    1261,
+    1289,
+    1317,
+    1345,
+    1373,
+    1401,
+    1429,
+    1457,
+    1485,
+    1512,
+    1541,
+    1568,
+    1596,
+    1624,
+    1652,
+    1680,
+    1708,
+    1736,
+    1764,
+    1792,
+    1820,
+    1848,
+    1876,
+    1904,
+    1932,
+    1960,
+    1988,
+    2016
+   ],
+   "n_examples": 30
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day_count": 31,
+   "status": "ok_oracle",
+   "reason": "chain has 32 rows, expected 31 (peaks=63, isolated=8, pitch=28.0, tried=[35.0, 28.0, 73.0, 65.0, 55.0, 17.0])",
+   "chain": [
+    713,
+    741,
+    768,
+    797,
+    824,
+    851,
+    879,
+    908,
+    935,
+    963,
+    991,
+    1019,
+    1047,
+    1075,
+    1103,
+    1130,
+    1158,
+    1186,
+    1214,
+    1242,
+    1270,
+    1297,
+    1325,
+    1353,
+    1381,
+    1409,
+    1437,
+    1465,
+    1493,
+    1521,
+    1549,
+    1576
+   ],
+   "n_examples": 31
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day_count": 31,
+   "status": "ok_oracle",
+   "reason": "chain has 33 rows, expected 31 (peaks=60, isolated=11, pitch=28.0, tried=[34.0, 28.0, 56.0, 65.0, 73.0, 45.0])",
+   "chain": [
+    700,
+    728,
+    751,
+    779,
+    807,
+    835,
+    863,
+    890,
+    918,
+    946,
+    973,
+    1001,
+    1029,
+    1057,
+    1084,
+    1112,
+    1139,
+    1167,
+    1195,
+    1222,
+    1250,
+    1278,
+    1305,
+    1333,
+    1361,
+    1389,
+    1416,
+    1444,
+    1472,
+    1500,
+    1527,
+    1555,
+    1583
+   ],
+   "n_examples": 31
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day_count": 30,
+   "status": "ok_oracle",
+   "reason": "chain has 33 rows, expected 30 (peaks=62, isolated=8, pitch=28.0, tried=[34.0, 28.0, 55.0, 77.0, 73.0, 65.0])",
+   "chain": [
+    986,
+    1009,
+    1036,
+    1059,
+    1087,
+    1114,
+    1142,
+    1170,
+    1197,
+    1224,
+    1252,
+    1279,
+    1306,
+    1334,
+    1361,
+    1389,
+    1417,
+    1444,
+    1472,
+    1500,
+    1527,
+    1555,
+    1582,
+    1610,
+    1637,
+    1665,
+    1693,
+    1720,
+    1747,
+    1775,
+    1803,
+    1831,
+    1858
+   ],
+   "n_examples": 30
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day_count": 30,
+   "status": "ok",
+   "reason": "",
+   "chain": [
+    1226,
+    1254,
+    1282,
+    1311,
+    1338,
+    1366,
+    1394,
+    1423,
+    1451,
+    1479,
+    1507,
+    1535,
+    1564,
+    1591,
+    1620,
+    1648,
+    1676,
+    1704,
+    1732,
+    1760,
+    1789,
+    1817,
+    1845,
+    1873,
+    1901,
+    1929,
+    1957,
+    1985,
+    2014,
+    2042
+   ],
+   "n_examples": 30
+  }
+ ],
+ "examples": [
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 1,
+   "date": "1886-03-01",
+   "image": "gold_rows/14_000075_d01.png",
+   "sha256": "14570c2bcee640e80bcb63e51c6f03ceea3b3e30dceb4afd348e10da17b4a931",
+   "cells": {
+    "pressure": 754.75,
+    "pressure_max": 756.02,
+    "pressure_min": 753.68,
+    "tmean": 27.4,
+    "tmax": 32.0,
+    "tmin": 23.0,
+    "vapor": 18.8,
+    "humidity": 69.4,
+    "wind_force": 3.4,
+    "cloudiness": 3.7,
+    "precip": null,
+    "evap_sol": 6.2,
+    "evap_sombra": 4.3,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none",
+    "printed_error": "sheet-level: printed Mez vapor_mean=18.4 vs computed 18.67 (diff 0.27, just over tolerance) - daily cells re-checked against image and match; kept as a minor period compilation rounding difference"
+   },
+   "box": [
+    151,
+    725,
+    1574,
+    753
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 2,
+   "date": "1886-03-02",
+   "image": "gold_rows/14_000075_d02.png",
+   "sha256": "dc3e333764d17caf30a798a2209aa3a7a374cf8124730f8a722a15b7a170c2c2",
+   "cells": {
+    "pressure": 753.51,
+    "pressure_max": 755.14,
+    "pressure_min": 751.55,
+    "tmean": 26.3,
+    "tmax": 31.7,
+    "tmin": 24.4,
+    "vapor": 19.8,
+    "humidity": 78.3,
+    "wind_force": 5.3,
+    "cloudiness": 3.2,
+    "precip": null,
+    "evap_sol": 4.8,
+    "evap_sombra": 3.3,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    753,
+    1574,
+    781
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 3,
+   "date": "1886-03-03",
+   "image": "gold_rows/14_000075_d03.png",
+   "sha256": "9c372cab5631f07cbd1eed433fba3b533d19c18cb9463474131102a7d5cd5f5c",
+   "cells": {
+    "pressure": 754.73,
+    "pressure_max": 756.47,
+    "pressure_min": 752.69,
+    "tmean": 24.6,
+    "tmax": 25.8,
+    "tmin": 23.6,
+    "vapor": 19.2,
+    "humidity": 83.7,
+    "wind_force": 5.6,
+    "cloudiness": 8.9,
+    "precip": null,
+    "evap_sol": 5.5,
+    "evap_sombra": 3.2,
+    "ozone": 8.0
+   },
+   "flags": {
+    "wind_dir": "SE, SSE",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    781,
+    1574,
+    809
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 4,
+   "date": "1886-03-04",
+   "image": "gold_rows/14_000075_d04.png",
+   "sha256": "da7e2ea8b27b7d1805d6cbdd8e00b96ab74ab93f037ca2cc20431fe78fe1594c",
+   "cells": {
+    "pressure": 755.22,
+    "pressure_max": 756.92,
+    "pressure_min": 754.09,
+    "tmean": 24.6,
+    "tmax": 27.7,
+    "tmin": 21.0,
+    "vapor": 19.3,
+    "humidity": 84.5,
+    "wind_force": 4.1,
+    "cloudiness": 7.4,
+    "precip": null,
+    "evap_sol": 4.1,
+    "evap_sombra": 2.6,
+    "ozone": 10.0
+   },
+   "flags": {
+    "wind_dir": "SSE",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    809,
+    1574,
+    837
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 5,
+   "date": "1886-03-05",
+   "image": "gold_rows/14_000075_d05.png",
+   "sha256": "e87212ffe74db21a45d8a9e98febb42834ead5486d2fd8d32e5e9e8d2c11d29d",
+   "cells": {
+    "pressure": 754.35,
+    "pressure_max": 755.22,
+    "pressure_min": 752.62,
+    "tmean": 24.4,
+    "tmax": 28.4,
+    "tmin": 22.8,
+    "vapor": 19.6,
+    "humidity": 86.2,
+    "wind_force": 3.9,
+    "cloudiness": 5.7,
+    "precip": null,
+    "evap_sol": 3.8,
+    "evap_sombra": 1.8,
+    "ozone": 8.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    837,
+    1574,
+    865
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 6,
+   "date": "1886-03-06",
+   "image": "gold_rows/14_000075_d06.png",
+   "sha256": "d5c51bde68eaeb82710e58d6be97837e9eb3f98297839ce7dae9571e5d2b232b",
+   "cells": {
+    "pressure": 754.59,
+    "pressure_max": 755.65,
+    "pressure_min": 753.19,
+    "tmean": 24.9,
+    "tmax": 28.0,
+    "tmin": 23.0,
+    "vapor": 20.2,
+    "humidity": 86.7,
+    "wind_force": 4.1,
+    "cloudiness": 5.5,
+    "precip": null,
+    "evap_sol": 3.6,
+    "evap_sombra": 3.2,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    864,
+    1574,
+    892
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 7,
+   "date": "1886-03-07",
+   "image": "gold_rows/14_000075_d07.png",
+   "sha256": "17585e922345868b73bb9e013d4ad80231fb5476cab3866c9faca8d96df6a62e",
+   "cells": {
+    "pressure": 754.56,
+    "pressure_max": 755.21,
+    "pressure_min": 753.36,
+    "tmean": 25.0,
+    "tmax": 29.5,
+    "tmin": 23.4,
+    "vapor": 19.2,
+    "humidity": 81.7,
+    "wind_force": 4.7,
+    "cloudiness": 3.5,
+    "precip": null,
+    "evap_sol": 4.4,
+    "evap_sombra": 1.6,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    893,
+    1574,
+    921
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 8,
+   "date": "1886-03-08",
+   "image": "gold_rows/14_000075_d08.png",
+   "sha256": "c3ca7869cf14b437cba6ef96d79e67e50a2ec88dcf78e8784787e1d772f2995b",
+   "cells": {
+    "pressure": 753.12,
+    "pressure_max": 754.18,
+    "pressure_min": 750.79,
+    "tmean": 25.3,
+    "tmax": 29.4,
+    "tmin": 21.8,
+    "vapor": 19.6,
+    "humidity": 82.1,
+    "wind_force": 3.2,
+    "cloudiness": 6.5,
+    "precip": 9.8,
+    "evap_sol": 4.8,
+    "evap_sombra": 2.7,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel"
+   },
+   "box": [
+    151,
+    921,
+    1574,
+    949
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 9,
+   "date": "1886-03-09",
+   "image": "gold_rows/14_000075_d09.png",
+   "sha256": "4798818075dfec803a72f64b3da4b48c6bb7ec660501fcefaa67949d91e768af",
+   "cells": {
+    "pressure": 752.45,
+    "pressure_max": 753.51,
+    "pressure_min": 750.85,
+    "tmean": 25.1,
+    "tmax": 27.0,
+    "tmin": 23.1,
+    "vapor": 20.0,
+    "humidity": 85.2,
+    "wind_force": 1.4,
+    "cloudiness": 9.8,
+    "precip": 8.5,
+    "evap_sol": 2.2,
+    "evap_sombra": 2.1,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel"
+   },
+   "box": [
+    151,
+    948,
+    1574,
+    976
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 10,
+   "date": "1886-03-10",
+   "image": "gold_rows/14_000075_d10.png",
+   "sha256": "a6209ac21c9b0bfeb54e0ecc6f740067fe3f41fae462f80f56e390b917fee803",
+   "cells": {
+    "pressure": 751.09,
+    "pressure_max": 752.16,
+    "pressure_min": 750.44,
+    "tmean": 24.5,
+    "tmax": 27.5,
+    "tmin": 21.4,
+    "vapor": 19.9,
+    "humidity": 87.1,
+    "wind_force": 1.9,
+    "cloudiness": 9.1,
+    "precip": null,
+    "evap_sol": 1.7,
+    "evap_sombra": 1.1,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "gottas"
+   },
+   "box": [
+    151,
+    976,
+    1574,
+    1004
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 11,
+   "date": "1886-03-11",
+   "image": "gold_rows/14_000075_d11.png",
+   "sha256": "aa287fef02ddba6e5080d956089d5ca25dd21cae2d505e4149cb6b9e6ff07279",
+   "cells": {
+    "pressure": 752.1,
+    "pressure_max": 754.1,
+    "pressure_min": 750.8,
+    "tmean": 24.9,
+    "tmax": 29.2,
+    "tmin": 23.0,
+    "vapor": 19.0,
+    "humidity": 81.8,
+    "wind_force": 4.7,
+    "cloudiness": 4.1,
+    "precip": null,
+    "evap_sol": 4.7,
+    "evap_sombra": 2.5,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1004,
+    1574,
+    1032
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 12,
+   "date": "1886-03-12",
+   "image": "gold_rows/14_000075_d12.png",
+   "sha256": "39617bf75d91ea6dca598aa5358700d1538cd74b681cb59bc4f209b7805e33c2",
+   "cells": {
+    "pressure": 752.93,
+    "pressure_max": 754.13,
+    "pressure_min": 751.99,
+    "tmean": 25.2,
+    "tmax": 29.0,
+    "tmin": 20.5,
+    "vapor": 18.5,
+    "humidity": 77.6,
+    "wind_force": 2.3,
+    "cloudiness": 2.3,
+    "precip": null,
+    "evap_sol": 4.6,
+    "evap_sombra": 2.5,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1032,
+    1574,
+    1060
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 13,
+   "date": "1886-03-13",
+   "image": "gold_rows/14_000075_d13.png",
+   "sha256": "40a905a005748deb72fb043b3f79fd35c9075c6dcabfc9ac16c55a085f8f3983",
+   "cells": {
+    "pressure": 754.01,
+    "pressure_max": 754.66,
+    "pressure_min": 753.37,
+    "tmean": 26.0,
+    "tmax": 30.5,
+    "tmin": 21.4,
+    "vapor": 18.9,
+    "humidity": 75.7,
+    "wind_force": 3.3,
+    "cloudiness": 3.9,
+    "precip": null,
+    "evap_sol": 6.9,
+    "evap_sombra": 3.4,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1060,
+    1574,
+    1088
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 14,
+   "date": "1886-03-14",
+   "image": "gold_rows/14_000075_d14.png",
+   "sha256": "839167e10df20ecfc55b75110c071eb86550085d58748dfca066f9165d84b93c",
+   "cells": {
+    "pressure": 754.05,
+    "pressure_max": 755.31,
+    "pressure_min": 752.76,
+    "tmean": 25.8,
+    "tmax": 29.5,
+    "tmin": 21.4,
+    "vapor": 19.1,
+    "humidity": 78.3,
+    "wind_force": 2.9,
+    "cloudiness": 4.1,
+    "precip": null,
+    "evap_sol": 5.9,
+    "evap_sombra": 4.0,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1088,
+    1574,
+    1116
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 15,
+   "date": "1886-03-15",
+   "image": "gold_rows/14_000075_d15.png",
+   "sha256": "7bceed5f43591a7a4a32350ba30886d0e00880461bc1d48e9b31383e1fa7e6e0",
+   "cells": {
+    "pressure": 752.32,
+    "pressure_max": 753.78,
+    "pressure_min": 751.0,
+    "tmean": 27.7,
+    "tmax": 33.5,
+    "tmin": 23.9,
+    "vapor": 19.3,
+    "humidity": 70.9,
+    "wind_force": 2.8,
+    "cloudiness": 3.3,
+    "precip": null,
+    "evap_sol": 8.2,
+    "evap_sombra": 3.2,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "gottas"
+   },
+   "box": [
+    151,
+    1116,
+    1574,
+    1144
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 16,
+   "date": "1886-03-16",
+   "image": "gold_rows/14_000075_d16.png",
+   "sha256": "d6eb9af80c321b9c52bc5358c67f11a67419ddc7cccfa703ec10f12a78209502",
+   "cells": {
+    "pressure": 752.22,
+    "pressure_max": 753.24,
+    "pressure_min": 750.7,
+    "tmean": 27.8,
+    "tmax": 33.0,
+    "tmin": 22.6,
+    "vapor": 19.8,
+    "humidity": 72.8,
+    "wind_force": 2.3,
+    "cloudiness": 7.3,
+    "precip": null,
+    "evap_sol": 8.8,
+    "evap_sombra": 4.5,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1144,
+    1574,
+    1172
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 17,
+   "date": "1886-03-17",
+   "image": "gold_rows/14_000075_d17.png",
+   "sha256": "9dcf188d9c30344dca0139f1b41b15ddd3ecb851a75b757e02ceca33fa49253f",
+   "cells": {
+    "pressure": 751.18,
+    "pressure_max": 752.54,
+    "pressure_min": 749.58,
+    "tmean": 27.5,
+    "tmax": 32.8,
+    "tmin": 22.6,
+    "vapor": 19.5,
+    "humidity": 71.7,
+    "wind_force": 2.8,
+    "cloudiness": 7.6,
+    "precip": null,
+    "evap_sol": 8.7,
+    "evap_sombra": 3.3,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1172,
+    1574,
+    1200
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 18,
+   "date": "1886-03-18",
+   "image": "gold_rows/14_000075_d18.png",
+   "sha256": "2cbeb87024a5a33a298ddda4e3d8d3ddcafc5e6960b51e02a448451eeea6a866",
+   "cells": {
+    "pressure": 752.13,
+    "pressure_max": 753.83,
+    "pressure_min": 751.02,
+    "tmean": 27.9,
+    "tmax": 33.0,
+    "tmin": 26.8,
+    "vapor": 19.3,
+    "humidity": 69.8,
+    "wind_force": 3.1,
+    "cloudiness": 3.3,
+    "precip": null,
+    "evap_sol": 8.8,
+    "evap_sombra": 5.0,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1200,
+    1574,
+    1228
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 19,
+   "date": "1886-03-19",
+   "image": "gold_rows/14_000075_d19.png",
+   "sha256": "92bef37603f131212de84dfc91b1ec3a2f86674cf4e208c66ea058d075a4f8ec",
+   "cells": {
+    "pressure": 755.15,
+    "pressure_max": 756.28,
+    "pressure_min": 754.18,
+    "tmean": 26.5,
+    "tmax": 30.6,
+    "tmin": 23.0,
+    "vapor": 18.5,
+    "humidity": 73.2,
+    "wind_force": 2.6,
+    "cloudiness": 1.9,
+    "precip": null,
+    "evap_sol": 6.0,
+    "evap_sombra": 3.2,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1227,
+    1574,
+    1255
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 20,
+   "date": "1886-03-20",
+   "image": "gold_rows/14_000075_d20.png",
+   "sha256": "92a2faac62d9d721e4b7e7e3428d8091e62f92fa7d2fdaefd2f513c2f675ba87",
+   "cells": {
+    "pressure": 756.45,
+    "pressure_max": 757.2,
+    "pressure_min": 755.81,
+    "tmean": 27.0,
+    "tmax": 32.0,
+    "tmin": 22.6,
+    "vapor": 18.2,
+    "humidity": 69.7,
+    "wind_force": 3.1,
+    "cloudiness": 3.5,
+    "precip": null,
+    "evap_sol": 7.0,
+    "evap_sombra": 4.0,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1256,
+    1574,
+    1284
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 21,
+   "date": "1886-03-21",
+   "image": "gold_rows/14_000075_d21.png",
+   "sha256": "61985972d3e9813690b78960107bf8aa9ec0ef4f79b66a253374f9e29d3eb76b",
+   "cells": {
+    "pressure": 757.0,
+    "pressure_max": 758.01,
+    "pressure_min": 755.85,
+    "tmean": 25.5,
+    "tmax": 29.5,
+    "tmin": 24.2,
+    "vapor": 18.9,
+    "humidity": 79.8,
+    "wind_force": 3.2,
+    "cloudiness": 4.0,
+    "precip": null,
+    "evap_sol": 4.5,
+    "evap_sombra": 3.5,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1283,
+    1574,
+    1311
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 22,
+   "date": "1886-03-22",
+   "image": "gold_rows/14_000075_d22.png",
+   "sha256": "898881d171f2a4b3d394836106e87ce394fefa8556ef18f7c23c035e603a913c",
+   "cells": {
+    "pressure": 755.82,
+    "pressure_max": 757.42,
+    "pressure_min": 754.5,
+    "tmean": 24.7,
+    "tmax": 27.8,
+    "tmin": 22.6,
+    "vapor": 17.4,
+    "humidity": 75.7,
+    "wind_force": 3.8,
+    "cloudiness": 2.6,
+    "precip": null,
+    "evap_sol": 5.5,
+    "evap_sombra": 2.9,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1312,
+    1574,
+    1340
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 23,
+   "date": "1886-03-23",
+   "image": "gold_rows/14_000075_d23.png",
+   "sha256": "37c6a9f5b501eb29038243e7933a3e258104c60acfd6f25e4f1f201970bce6ea",
+   "cells": {
+    "pressure": 754.75,
+    "pressure_max": 755.8,
+    "pressure_min": 753.24,
+    "tmean": 25.5,
+    "tmax": 31.5,
+    "tmin": 23.3,
+    "vapor": 17.7,
+    "humidity": 73.0,
+    "wind_force": 3.4,
+    "cloudiness": 1.9,
+    "precip": null,
+    "evap_sol": 6.5,
+    "evap_sombra": 3.8,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1339,
+    1574,
+    1367
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 24,
+   "date": "1886-03-24",
+   "image": "gold_rows/14_000075_d24.png",
+   "sha256": "329ecd25ec3a17b01b8b5a87c5205f1d795cd4d563597ab629a9cda38aea99a0",
+   "cells": {
+    "pressure": 754.07,
+    "pressure_max": 755.18,
+    "pressure_min": 753.14,
+    "tmean": 25.2,
+    "tmax": 28.8,
+    "tmin": 21.0,
+    "vapor": 19.3,
+    "humidity": 81.2,
+    "wind_force": 3.4,
+    "cloudiness": 1.3,
+    "precip": null,
+    "evap_sol": 6.5,
+    "evap_sombra": 3.3,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1368,
+    1574,
+    1396
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 25,
+   "date": "1886-03-25",
+   "image": "gold_rows/14_000075_d25.png",
+   "sha256": "8e705bfb17dba05a55a1a5c2c5cc8a99309056dfc6a9d6c9b93074febf3ab2de",
+   "cells": {
+    "pressure": 755.36,
+    "pressure_max": 757.08,
+    "pressure_min": 752.71,
+    "tmean": 24.2,
+    "tmax": 26.5,
+    "tmin": 23.0,
+    "vapor": 19.0,
+    "humidity": 80.5,
+    "wind_force": 4.0,
+    "cloudiness": 8.1,
+    "precip": 5.1,
+    "evap_sol": 2.0,
+    "evap_sombra": 1.9,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "NW"
+   },
+   "box": [
+    151,
+    1395,
+    1574,
+    1423
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 26,
+   "date": "1886-03-26",
+   "image": "gold_rows/14_000075_d26.png",
+   "sha256": "c5e649fea96bc5de6310226899cf268e4d81ec8a0849f373155fce0e4350c16c",
+   "cells": {
+    "pressure": 757.73,
+    "pressure_max": 759.33,
+    "pressure_min": 756.14,
+    "tmean": 23.0,
+    "tmax": 26.0,
+    "tmin": 20.5,
+    "vapor": 16.2,
+    "humidity": 78.1,
+    "wind_force": 2.6,
+    "cloudiness": 8.0,
+    "precip": 45.0,
+    "evap_sol": 2.6,
+    "evap_sombra": 2.5,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE"
+   },
+   "box": [
+    151,
+    1423,
+    1574,
+    1451
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 27,
+   "date": "1886-03-27",
+   "image": "gold_rows/14_000075_d27.png",
+   "sha256": "ee88a5c49097d8da2b054ff994cf85bcc09b7446d1db0e00c2142fccd9e3b7fb",
+   "cells": {
+    "pressure": 758.28,
+    "pressure_max": 759.01,
+    "pressure_min": 757.24,
+    "tmean": 22.3,
+    "tmax": 26.2,
+    "tmin": 19.5,
+    "vapor": 15.3,
+    "humidity": 77.2,
+    "wind_force": 2.5,
+    "cloudiness": 5.8,
+    "precip": null,
+    "evap_sol": 5.0,
+    "evap_sombra": 3.1,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1451,
+    1574,
+    1479
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 28,
+   "date": "1886-03-28",
+   "image": "gold_rows/14_000075_d28.png",
+   "sha256": "1f765d40150f3d003a166f3b9a6f5b46d38181c140f29766054c65d2fa0cbed3",
+   "cells": {
+    "pressure": 758.2,
+    "pressure_max": 759.11,
+    "pressure_min": 757.32,
+    "tmean": 23.1,
+    "tmax": 25.2,
+    "tmin": 18.6,
+    "vapor": 16.7,
+    "humidity": 80.0,
+    "wind_force": 3.3,
+    "cloudiness": 7.8,
+    "precip": null,
+    "evap_sol": 4.8,
+    "evap_sombra": 2.8,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1479,
+    1574,
+    1507
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 29,
+   "date": "1886-03-29",
+   "image": "gold_rows/14_000075_d29.png",
+   "sha256": "8c9c3e6c3b4f44a6c74d250e307f5e2e863091b24ce7b4f24d8d8e1ce85a6b84",
+   "cells": {
+    "pressure": 757.09,
+    "pressure_max": 758.48,
+    "pressure_min": 755.58,
+    "tmean": 23.6,
+    "tmax": 26.0,
+    "tmin": 20.5,
+    "vapor": 16.6,
+    "humidity": 76.9,
+    "wind_force": 3.6,
+    "cloudiness": 4.1,
+    "precip": null,
+    "evap_sol": 4.8,
+    "evap_sombra": 2.9,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "SE",
+    "precip": "none"
+   },
+   "box": [
+    151,
+    1507,
+    1574,
+    1535
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 30,
+   "date": "1886-03-30",
+   "image": "gold_rows/14_000075_d30.png",
+   "sha256": "007ea3305526b68ce801b97fe24a301951e198a83a20435fc98cef1133632ef6",
+   "cells": {
+    "pressure": 755.29,
+    "pressure_max": 756.22,
+    "pressure_min": 754.08,
+    "tmean": 24.4,
+    "tmax": 29.2,
+    "tmin": 21.6,
+    "vapor": 18.0,
+    "humidity": 79.9,
+    "wind_force": 3.2,
+    "cloudiness": 6.9,
+    "precip": 1.7,
+    "evap_sol": 4.9,
+    "evap_sombra": 3.4,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE"
+   },
+   "box": [
+    151,
+    1535,
+    1574,
+    1563
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 75,
+   "period": "1886-03",
+   "day": 31,
+   "date": "1886-03-31",
+   "image": "gold_rows/14_000075_d31.png",
+   "sha256": "e737a58172aca2e9ccd9c635ac6d66d7f1af359bfea3fcee099ed3ec297a1fbc",
+   "cells": {
+    "pressure": 757.27,
+    "pressure_max": 759.14,
+    "pressure_min": 755.13,
+    "tmean": 24.5,
+    "tmax": 26.8,
+    "tmin": 20.5,
+    "vapor": 18.1,
+    "humidity": 78.9,
+    "wind_force": 2.2,
+    "cloudiness": 8.6,
+    "precip": 6.8,
+    "evap_sol": 4.7,
+    "evap_sombra": 2.1,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE"
+   },
+   "box": [
+    151,
+    1563,
+    1574,
+    1591
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 1,
+   "date": "1886-04-01",
+   "image": "gold_rows/14_000090_d01.png",
+   "sha256": "591d3ddf3d824b3495a8adbf010b726dcbdb5519d52eb116011166d5821d002c",
+   "cells": {
+    "pressure": 758.26,
+    "pressure_max": 759.71,
+    "pressure_min": 757.74,
+    "tmean": 23.4,
+    "tmax": 25.5,
+    "tmin": 19.0,
+    "vapor": 18.0,
+    "humidity": 84.4,
+    "wind_force": 2.3,
+    "cloudiness": 7.8,
+    "precip": null,
+    "evap_sol": 2.6,
+    "evap_sombra": 2.4,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none",
+    "printed_error": "sheet-level: printed Mez humidity_mean=75.7 does not reproduce from daily cells (computed 79.04, diff 3.34); every daily humidity cell re-verified against the image twice and matches exactly - kept as a period compilation inconsistency, not a transcription error"
+   },
+   "box": [
+    150,
+    1191,
+    1568,
+    1219
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 2,
+   "date": "1886-04-02",
+   "image": "gold_rows/14_000090_d02.png",
+   "sha256": "ffea8a911c6967ef5cc43a6d1e0b81ff80531791cc371a425f0605ce2fb128d3",
+   "cells": {
+    "pressure": 757.51,
+    "pressure_max": 758.93,
+    "pressure_min": 755.2,
+    "tmean": 23.7,
+    "tmax": 26.0,
+    "tmin": 20.0,
+    "vapor": 18.7,
+    "humidity": 85.7,
+    "wind_force": 3.0,
+    "cloudiness": 8.0,
+    "precip": 10.7,
+    "evap_sol": 2.8,
+    "evap_sombra": 1.7,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel"
+   },
+   "box": [
+    150,
+    1219,
+    1568,
+    1247
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 3,
+   "date": "1886-04-03",
+   "image": "gold_rows/14_000090_d03.png",
+   "sha256": "08357874e63623ba9a9854107ef157cce7ddd1edadba9dc5da397b9d369a55a1",
+   "cells": {
+    "pressure": 755.16,
+    "pressure_max": 757.21,
+    "pressure_min": 753.96,
+    "tmean": 23.5,
+    "tmax": 26.0,
+    "tmin": 21.0,
+    "vapor": 18.1,
+    "humidity": 84.0,
+    "wind_force": 3.3,
+    "cloudiness": 6.3,
+    "precip": null,
+    "evap_sol": 2.0,
+    "evap_sombra": 1.6,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1247,
+    1568,
+    1275
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 4,
+   "date": "1886-04-04",
+   "image": "gold_rows/14_000090_d04.png",
+   "sha256": "97f99a2dc90c367d5671b966aa0dceb2d55bb0a8e49f7af45d2c94f2e041606e",
+   "cells": {
+    "pressure": 755.08,
+    "pressure_max": 757.22,
+    "pressure_min": 753.75,
+    "tmean": 23.9,
+    "tmax": 26.0,
+    "tmin": 20.5,
+    "vapor": 18.3,
+    "humidity": 83.4,
+    "wind_force": 3.3,
+    "cloudiness": 4.8,
+    "precip": null,
+    "evap_sol": 3.2,
+    "evap_sombra": 2.2,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    1275,
+    1568,
+    1303
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 5,
+   "date": "1886-04-05",
+   "image": "gold_rows/14_000090_d05.png",
+   "sha256": "0379a5bb504ae3421ed5b30eacefd64b6ce9cdf791c7a8fa177a631692e4cc9d",
+   "cells": {
+    "pressure": 754.15,
+    "pressure_max": 757.93,
+    "pressure_min": 750.85,
+    "tmean": 25.2,
+    "tmax": 29.0,
+    "tmin": 21.8,
+    "vapor": 18.0,
+    "humidity": 75.8,
+    "wind_force": 2.9,
+    "cloudiness": 4.3,
+    "precip": null,
+    "evap_sol": 3.4,
+    "evap_sombra": 2.0,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1303,
+    1568,
+    1331
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 6,
+   "date": "1886-04-06",
+   "image": "gold_rows/14_000090_d06.png",
+   "sha256": "916b92d689b49e81b5a0b2abc17e79e09aac14bbb583d17e589486202b42c56e",
+   "cells": {
+    "pressure": 755.04,
+    "pressure_max": 755.47,
+    "pressure_min": 751.14,
+    "tmean": 24.5,
+    "tmax": 26.2,
+    "tmin": 21.6,
+    "vapor": 17.8,
+    "humidity": 77.9,
+    "wind_force": 3.8,
+    "cloudiness": 6.6,
+    "precip": null,
+    "evap_sol": 4.4,
+    "evap_sombra": 3.3,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1331,
+    1568,
+    1359
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 7,
+   "date": "1886-04-07",
+   "image": "gold_rows/14_000090_d07.png",
+   "sha256": "42ea36e398162de33ed0750c3c184c98f062d390f53b314a1608562b7aaf0690",
+   "cells": {
+    "pressure": 754.61,
+    "pressure_max": 755.51,
+    "pressure_min": 753.78,
+    "tmean": 24.3,
+    "tmax": 27.0,
+    "tmin": 22.8,
+    "vapor": 18.9,
+    "humidity": 84.0,
+    "wind_force": 4.5,
+    "cloudiness": 8.8,
+    "precip": 0.3,
+    "evap_sol": 5.8,
+    "evap_sombra": 2.6,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE"
+   },
+   "box": [
+    150,
+    1359,
+    1568,
+    1387
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 8,
+   "date": "1886-04-08",
+   "image": "gold_rows/14_000090_d08.png",
+   "sha256": "2ecf8cd3e0f79fddcc2b3298568de8ac28c224755665a07a4e75950151e10318",
+   "cells": {
+    "pressure": 753.97,
+    "pressure_max": 754.91,
+    "pressure_min": 752.57,
+    "tmean": 25.2,
+    "tmax": 28.6,
+    "tmin": 24.0,
+    "vapor": 19.5,
+    "humidity": 81.8,
+    "wind_force": 3.3,
+    "cloudiness": 6.4,
+    "precip": null,
+    "evap_sol": 3.7,
+    "evap_sombra": 2.2,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1387,
+    1568,
+    1415
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 9,
+   "date": "1886-04-09",
+   "image": "gold_rows/14_000090_d09.png",
+   "sha256": "f1fe951dee0a6500522b0323d6d2b301e16313147b4d898aaa255537324c484a",
+   "cells": {
+    "pressure": 752.99,
+    "pressure_max": 754.03,
+    "pressure_min": 751.79,
+    "tmean": 25.7,
+    "tmax": 30.2,
+    "tmin": 21.6,
+    "vapor": 18.7,
+    "humidity": 76.8,
+    "wind_force": 3.9,
+    "cloudiness": 4.4,
+    "precip": null,
+    "evap_sol": 3.8,
+    "evap_sombra": 2.2,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1415,
+    1568,
+    1443
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 10,
+   "date": "1886-04-10",
+   "image": "gold_rows/14_000090_d10.png",
+   "sha256": "6cc3a4ff4fd7a2a5d0ec7a7b7374a3e46ca2855b73c43ba8446f1efac2038de8",
+   "cells": {
+    "pressure": 753.3,
+    "pressure_max": 754.43,
+    "pressure_min": 751.65,
+    "tmean": 26.4,
+    "tmax": 29.8,
+    "tmin": 22.0,
+    "vapor": 19.4,
+    "humidity": 75.6,
+    "wind_force": 3.3,
+    "cloudiness": 4.3,
+    "precip": null,
+    "evap_sol": 4.2,
+    "evap_sombra": 3.0,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1443,
+    1568,
+    1471
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 11,
+   "date": "1886-04-11",
+   "image": "gold_rows/14_000090_d11.png",
+   "sha256": "e46a9a0e75f6516563b963ee00954222d2ca7e38ca02b90bbd461680df31b109",
+   "cells": {
+    "pressure": 754.57,
+    "pressure_max": 755.8,
+    "pressure_min": 753.73,
+    "tmean": 26.1,
+    "tmax": 28.4,
+    "tmin": 24.5,
+    "vapor": 20.0,
+    "humidity": 79.7,
+    "wind_force": 4.5,
+    "cloudiness": 3.6,
+    "precip": null,
+    "evap_sol": 9.5,
+    "evap_sombra": 3.2,
+    "ozone": 6.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1471,
+    1568,
+    1499
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 12,
+   "date": "1886-04-12",
+   "image": "gold_rows/14_000090_d12.png",
+   "sha256": "e617393179e9a1dd3ef15e04208a6d184fc7fca5753c45d80e29965b2aac3b7a",
+   "cells": {
+    "pressure": 754.95,
+    "pressure_max": 757.16,
+    "pressure_min": 753.88,
+    "tmean": 26.3,
+    "tmax": 28.6,
+    "tmin": 22.4,
+    "vapor": 20.2,
+    "humidity": 80.1,
+    "wind_force": 10.3,
+    "cloudiness": 8.0,
+    "precip": 5.0,
+    "evap_sol": 7.3,
+    "evap_sombra": 2.0,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE"
+   },
+   "box": [
+    150,
+    1498,
+    1568,
+    1526
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 13,
+   "date": "1886-04-13",
+   "image": "gold_rows/14_000090_d13.png",
+   "sha256": "a9c2455fcddd8fb27a1b9302f107c3e3bf64ec4f8756c85f27023cd95cd3af8a",
+   "cells": {
+    "pressure": 759.33,
+    "pressure_max": 762.33,
+    "pressure_min": 756.29,
+    "tmean": 22.6,
+    "tmax": 23.6,
+    "tmin": 21.8,
+    "vapor": 16.6,
+    "humidity": 70.9,
+    "wind_force": 9.1,
+    "cloudiness": 10.0,
+    "precip": 67.5,
+    "evap_sol": 1.7,
+    "evap_sombra": 1.7,
+    "ozone": 9.0
+   },
+   "flags": {
+    "wind_dir": "SSE"
+   },
+   "box": [
+    150,
+    1527,
+    1568,
+    1555
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 14,
+   "date": "1886-04-14",
+   "image": "gold_rows/14_000090_d14.png",
+   "sha256": "e0b4855f4fddedd824a8a29414c243fc7c18df879d76e856510dff74c4b2a6d8",
+   "cells": {
+    "pressure": 762.35,
+    "pressure_max": 763.53,
+    "pressure_min": 761.4,
+    "tmean": 22.5,
+    "tmax": 23.8,
+    "tmin": 21.0,
+    "vapor": 15.6,
+    "humidity": 77.4,
+    "wind_force": 2.9,
+    "cloudiness": 8.9,
+    "precip": null,
+    "evap_sol": 4.4,
+    "evap_sombra": 4.4,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    1554,
+    1568,
+    1582
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 15,
+   "date": "1886-04-15",
+   "image": "gold_rows/14_000090_d15.png",
+   "sha256": "44a65da31185200c91b239f4e22be749d9807394d8de49ff8379ccc0a556a49c",
+   "cells": {
+    "pressure": 761.52,
+    "pressure_max": 763.21,
+    "pressure_min": 760.63,
+    "tmean": 22.8,
+    "tmax": 25.5,
+    "tmin": 20.8,
+    "vapor": 14.8,
+    "humidity": 72.6,
+    "wind_force": 2.8,
+    "cloudiness": 7.8,
+    "precip": null,
+    "evap_sol": 2.5,
+    "evap_sombra": 2.2,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    1582,
+    1568,
+    1610
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 16,
+   "date": "1886-04-16",
+   "image": "gold_rows/14_000090_d16.png",
+   "sha256": "5d3ca43bc372353221f86ec1d3b51da33b8608d323b6f5e45f7fac5d7c456f16",
+   "cells": {
+    "pressure": 758.17,
+    "pressure_max": 760.43,
+    "pressure_min": 755.9,
+    "tmean": 23.5,
+    "tmax": 26.6,
+    "tmin": 19.6,
+    "vapor": 14.6,
+    "humidity": 68.4,
+    "wind_force": 3.0,
+    "cloudiness": 1.3,
+    "precip": null,
+    "evap_sol": 5.2,
+    "evap_sombra": 3.3,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1610,
+    1568,
+    1638
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 17,
+   "date": "1886-04-17",
+   "image": "gold_rows/14_000090_d17.png",
+   "sha256": "7a4cefe21c740e045262aaf5bda5cb4c6cf542c250346f4e52b85e6514278242",
+   "cells": {
+    "pressure": 757.09,
+    "pressure_max": 758.91,
+    "pressure_min": 755.99,
+    "tmean": 23.9,
+    "tmax": 29.0,
+    "tmin": 18.4,
+    "vapor": 17.4,
+    "humidity": 79.4,
+    "wind_force": 2.9,
+    "cloudiness": 4.0,
+    "precip": null,
+    "evap_sol": 4.3,
+    "evap_sombra": 3.1,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1638,
+    1568,
+    1666
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 18,
+   "date": "1886-04-18",
+   "image": "gold_rows/14_000090_d18.png",
+   "sha256": "db3d146a49574ab2c8e7de938ceaa0d229f4c82903ee734f23ab002944af1fd0",
+   "cells": {
+    "pressure": 759.66,
+    "pressure_max": 761.1,
+    "pressure_min": 758.84,
+    "tmean": 24.1,
+    "tmax": 26.4,
+    "tmin": 20.4,
+    "vapor": 18.1,
+    "humidity": 81.5,
+    "wind_force": 3.4,
+    "cloudiness": 5.0,
+    "precip": null,
+    "evap_sol": 3.8,
+    "evap_sombra": 2.3,
+    "ozone": 6.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1666,
+    1568,
+    1694
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 19,
+   "date": "1886-04-19",
+   "image": "gold_rows/14_000090_d19.png",
+   "sha256": "c19bf1d1a94e89c306ae0bc6f08dff09dbe8cb394a79a399e19d3185a1aabeb3",
+   "cells": {
+    "pressure": 760.54,
+    "pressure_max": 762.07,
+    "pressure_min": 759.77,
+    "tmean": 24.4,
+    "tmax": 28.8,
+    "tmin": 21.0,
+    "vapor": 17.9,
+    "humidity": 79.2,
+    "wind_force": 3.5,
+    "cloudiness": 2.8,
+    "precip": null,
+    "evap_sol": 4.0,
+    "evap_sombra": 2.5,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1694,
+    1568,
+    1722
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 20,
+   "date": "1886-04-20",
+   "image": "gold_rows/14_000090_d20.png",
+   "sha256": "798933fb2019a66a4072a5cf692cbfd9330cebdc799bb04a7fd4e83ae8aa76b1",
+   "cells": {
+    "pressure": 760.14,
+    "pressure_max": 761.67,
+    "pressure_min": 759.21,
+    "tmean": 24.0,
+    "tmax": 25.0,
+    "tmin": 20.0,
+    "vapor": 18.6,
+    "humidity": 83.8,
+    "wind_force": 3.2,
+    "cloudiness": 2.8,
+    "precip": null,
+    "evap_sol": 4.2,
+    "evap_sombra": 2.7,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NE, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1722,
+    1568,
+    1750
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 21,
+   "date": "1886-04-21",
+   "image": "gold_rows/14_000090_d21.png",
+   "sha256": "11684c05e2d042be257294836b8b684bf3334ff55584a4516c2e4dbf635f8a29",
+   "cells": {
+    "pressure": 758.74,
+    "pressure_max": 759.96,
+    "pressure_min": 757.71,
+    "tmean": 24.2,
+    "tmax": 27.9,
+    "tmin": 23.0,
+    "vapor": 19.0,
+    "humidity": 84.3,
+    "wind_force": 1.8,
+    "cloudiness": 5.0,
+    "precip": null,
+    "evap_sol": 3.7,
+    "evap_sombra": 2.3,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1750,
+    1568,
+    1778
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 22,
+   "date": "1886-04-22",
+   "image": "gold_rows/14_000090_d22.png",
+   "sha256": "598798e7265036846f942528ac0e34de1b2c05f749fa29d2f65f64792c0579d7",
+   "cells": {
+    "pressure": 758.17,
+    "pressure_max": 759.39,
+    "pressure_min": 757.0,
+    "tmean": 24.3,
+    "tmax": 27.0,
+    "tmin": 22.6,
+    "vapor": 18.8,
+    "humidity": 83.9,
+    "wind_force": 5.2,
+    "cloudiness": 4.1,
+    "precip": null,
+    "evap_sol": 3.6,
+    "evap_sombra": 2.4,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1778,
+    1568,
+    1806
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 23,
+   "date": "1886-04-23",
+   "image": "gold_rows/14_000090_d23.png",
+   "sha256": "780a95e6a8dd4f941433a13fef23b074f3c2066d4da7f09143520585e9f09b57",
+   "cells": {
+    "pressure": 756.69,
+    "pressure_max": 757.86,
+    "pressure_min": 754.73,
+    "tmean": 25.5,
+    "tmax": 29.0,
+    "tmin": 23.0,
+    "vapor": 18.6,
+    "humidity": 77.1,
+    "wind_force": 5.2,
+    "cloudiness": 2.9,
+    "precip": null,
+    "evap_sol": 4.3,
+    "evap_sombra": 1.8,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1806,
+    1568,
+    1834
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 24,
+   "date": "1886-04-24",
+   "image": "gold_rows/14_000090_d24.png",
+   "sha256": "2ad43531d5bc0a3a69b5c67997e8021af3ed76a96e9dc7a3d3fd9cc46aae6755",
+   "cells": {
+    "pressure": 755.42,
+    "pressure_max": 756.85,
+    "pressure_min": 754.22,
+    "tmean": 26.9,
+    "tmax": 30.4,
+    "tmin": 23.8,
+    "vapor": 17.4,
+    "humidity": 67.7,
+    "wind_force": 3.4,
+    "cloudiness": 1.1,
+    "precip": null,
+    "evap_sol": 5.3,
+    "evap_sombra": 3.0,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1834,
+    1568,
+    1862
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 25,
+   "date": "1886-04-25",
+   "image": "gold_rows/14_000090_d25.png",
+   "sha256": "fe95dd010d9f4a142fefd5ffcc95e0e2afc56756533c7eaf9dbfb5bc5fe05744",
+   "cells": {
+    "pressure": 756.34,
+    "pressure_max": 757.88,
+    "pressure_min": 755.45,
+    "tmean": 25.1,
+    "tmax": 29.8,
+    "tmin": 23.0,
+    "vapor": 17.5,
+    "humidity": 74.5,
+    "wind_force": 4.2,
+    "cloudiness": 6.4,
+    "precip": 96.5,
+    "evap_sol": 4.2,
+    "evap_sombra": 3.5,
+    "ozone": 7.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSW"
+   },
+   "box": [
+    150,
+    1862,
+    1568,
+    1890
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 26,
+   "date": "1886-04-26",
+   "image": "gold_rows/14_000090_d26.png",
+   "sha256": "945022c8adae21a12280b532162bd9e71c2400f67e63921798b9674f373e341d",
+   "cells": {
+    "pressure": 757.72,
+    "pressure_max": 758.33,
+    "pressure_min": 756.97,
+    "tmean": 21.7,
+    "tmax": 24.2,
+    "tmin": 21.5,
+    "vapor": 16.1,
+    "humidity": 83.6,
+    "wind_force": 1.9,
+    "cloudiness": 9.8,
+    "precip": 19.5,
+    "evap_sol": 1.0,
+    "evap_sombra": 0.8,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel"
+   },
+   "box": [
+    150,
+    1890,
+    1568,
+    1918
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 27,
+   "date": "1886-04-27",
+   "image": "gold_rows/14_000090_d27.png",
+   "sha256": "b47dd92ff9883201ee76e20ffdd49bc0df65143965ff9437b270d437f8bfea59",
+   "cells": {
+    "pressure": 753.85,
+    "pressure_max": 757.21,
+    "pressure_min": 752.13,
+    "tmean": 21.4,
+    "tmax": 28.0,
+    "tmin": 19.9,
+    "vapor": 16.1,
+    "humidity": 85.0,
+    "wind_force": 3.6,
+    "cloudiness": 9.8,
+    "precip": 11.0,
+    "evap_sol": 2.5,
+    "evap_sombra": 1.7,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE"
+   },
+   "box": [
+    150,
+    1918,
+    1568,
+    1946
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 28,
+   "date": "1886-04-28",
+   "image": "gold_rows/14_000090_d28.png",
+   "sha256": "64e0e094a94307a53c43962c348a4956c6ac2abdf15f1813a4be23379721f469",
+   "cells": {
+    "pressure": 754.87,
+    "pressure_max": 757.69,
+    "pressure_min": 752.06,
+    "tmean": 20.9,
+    "tmax": 23.4,
+    "tmin": 20.0,
+    "vapor": 15.3,
+    "humidity": 83.3,
+    "wind_force": 3.0,
+    "cloudiness": 9.0,
+    "precip": 6.5,
+    "evap_sol": 1.0,
+    "evap_sombra": 1.0,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "W, O"
+   },
+   "box": [
+    150,
+    1946,
+    1568,
+    1974
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 29,
+   "date": "1886-04-29",
+   "image": "gold_rows/14_000090_d29.png",
+   "sha256": "a6c1f67ee7a3e82d4935a5a5713f88a15bab9c0bfcb95cd5ee7df103c435a2cd",
+   "cells": {
+    "pressure": 757.86,
+    "pressure_max": 759.09,
+    "pressure_min": 756.6,
+    "tmean": 20.8,
+    "tmax": 23.6,
+    "tmin": 18.8,
+    "vapor": 13.1,
+    "humidity": 72.7,
+    "wind_force": 2.8,
+    "cloudiness": 8.1,
+    "precip": 6.5,
+    "evap_sol": 4.0,
+    "evap_sombra": 2.6,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel"
+   },
+   "box": [
+    150,
+    1974,
+    1568,
+    2002
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 90,
+   "period": "1886-04",
+   "day": 30,
+   "date": "1886-04-30",
+   "image": "gold_rows/14_000090_d30.png",
+   "sha256": "238aad2bec6e7626f429349141fa0d16c8c0d8be5e58f3fe5d57cf757aadfefd",
+   "cells": {
+    "pressure": 758.69,
+    "pressure_max": 759.73,
+    "pressure_min": 757.46,
+    "tmean": 20.5,
+    "tmax": 22.0,
+    "tmin": 19.0,
+    "vapor": 13.7,
+    "humidity": 76.6,
+    "wind_force": 2.3,
+    "cloudiness": 9.3,
+    "precip": null,
+    "evap_sol": 4.6,
+    "evap_sombra": 2.8,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    2002,
+    1568,
+    2030
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 1,
+   "date": "1886-05-01",
+   "image": "gold_rows/14_000109_d01.png",
+   "sha256": "5f4c05743e4df3f1144562afa57ea2947bc4acfd24b5416a9e01eb7fd13a166f",
+   "cells": {
+    "pressure": 759.73,
+    "pressure_max": 761.12,
+    "pressure_min": 758.46,
+    "tmean": 19.7,
+    "tmax": 21.8,
+    "tmin": 18.8,
+    "vapor": 13.7,
+    "humidity": 80.1,
+    "wind_force": 3.2,
+    "cloudiness": 9.6,
+    "precip": null,
+    "evap_sol": 1.5,
+    "evap_sombra": 1.5,
+    "ozone": 0.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "gottas",
+    "printed_error": "sheet-level: printed Mez humidity_mean=76.7 vs computed 76.89 (diff 0.19, just over tolerance) - minor period compilation rounding difference"
+   },
+   "box": [
+    150,
+    699,
+    1568,
+    727
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 2,
+   "date": "1886-05-02",
+   "image": "gold_rows/14_000109_d02.png",
+   "sha256": "06910ef0b78b43821d9a2d4ce0f4f69f07f410d5430d8c0852163b2ae3f8c9c7",
+   "cells": {
+    "pressure": 761.24,
+    "pressure_max": 762.55,
+    "pressure_min": 760.4,
+    "tmean": 19.9,
+    "tmax": 23.2,
+    "tmin": 17.6,
+    "vapor": 12.6,
+    "humidity": 73.6,
+    "wind_force": 2.0,
+    "cloudiness": 5.9,
+    "precip": 0.3,
+    "evap_sol": 3.8,
+    "evap_sombra": 2.5,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, O"
+   },
+   "box": [
+    150,
+    727,
+    1568,
+    755
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 3,
+   "date": "1886-05-03",
+   "image": "gold_rows/14_000109_d03.png",
+   "sha256": "5897a0c7682f0afc7428bd6f28679017b6da3d7d5c8898e16e0bad38c9d2c644",
+   "cells": {
+    "pressure": 760.02,
+    "pressure_max": 761.17,
+    "pressure_min": 758.93,
+    "tmean": 20.0,
+    "tmax": 24.4,
+    "tmin": 17.3,
+    "vapor": 12.4,
+    "humidity": 71.9,
+    "wind_force": 2.3,
+    "cloudiness": 2.5,
+    "precip": null,
+    "evap_sol": 6.0,
+    "evap_sombra": 4.0,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    754,
+    1568,
+    782
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 4,
+   "date": "1886-05-04",
+   "image": "gold_rows/14_000109_d04.png",
+   "sha256": "6d39e5403df3d8b2671fb2db09e7bbaafd450b65325f3c6f97664c9c21c09080",
+   "cells": {
+    "pressure": 756.17,
+    "pressure_max": 757.9,
+    "pressure_min": 754.56,
+    "tmean": 21.6,
+    "tmax": 26.6,
+    "tmin": 18.6,
+    "vapor": 14.3,
+    "humidity": 74.6,
+    "wind_force": 1.9,
+    "cloudiness": 5.0,
+    "precip": null,
+    "evap_sol": 4.7,
+    "evap_sombra": 2.8,
+    "ozone": 0.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    783,
+    1568,
+    811
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 5,
+   "date": "1886-05-05",
+   "image": "gold_rows/14_000109_d05.png",
+   "sha256": "6261c3bacf47399bf0299d027cf7489a927a9f86580a9d77b34829f3b2499660",
+   "cells": {
+    "pressure": 755.22,
+    "pressure_max": 757.18,
+    "pressure_min": 754.14,
+    "tmean": 22.1,
+    "tmax": 24.8,
+    "tmin": 19.0,
+    "vapor": 14.8,
+    "humidity": 74.8,
+    "wind_force": 2.9,
+    "cloudiness": 8.1,
+    "precip": null,
+    "evap_sol": 3.3,
+    "evap_sombra": 1.8,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSW",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    810,
+    1568,
+    838
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 6,
+   "date": "1886-05-06",
+   "image": "gold_rows/14_000109_d06.png",
+   "sha256": "8bf175ff187dc46648309049e1455269bf02b54e0dc77924a442a7459d2ed340",
+   "cells": {
+    "pressure": 757.01,
+    "pressure_max": 757.96,
+    "pressure_min": 756.21,
+    "tmean": 21.8,
+    "tmax": 25.2,
+    "tmin": 20.1,
+    "vapor": 12.7,
+    "humidity": 69.2,
+    "wind_force": 3.0,
+    "cloudiness": 3.9,
+    "precip": null,
+    "evap_sol": 7.0,
+    "evap_sombra": 4.2,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    837,
+    1568,
+    865
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 7,
+   "date": "1886-05-07",
+   "image": "gold_rows/14_000109_d07.png",
+   "sha256": "d7d56229c22e9e1e681eb84649badfd26e090a9afd4926c05ae36c2bde788373",
+   "cells": {
+    "pressure": 756.62,
+    "pressure_max": 758.13,
+    "pressure_min": 755.71,
+    "tmean": 20.2,
+    "tmax": 23.6,
+    "tmin": 17.9,
+    "vapor": 14.6,
+    "humidity": 83.6,
+    "wind_force": 3.5,
+    "cloudiness": 2.9,
+    "precip": null,
+    "evap_sol": 3.5,
+    "evap_sombra": 3.2,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    865,
+    1568,
+    893
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 8,
+   "date": "1886-05-08",
+   "image": "gold_rows/14_000109_d08.png",
+   "sha256": "a08f9e092032259fbdc2be6954ce6d0728a07700aeae7233193b505558000eb1",
+   "cells": {
+    "pressure": 752.93,
+    "pressure_max": 755.04,
+    "pressure_min": 751.13,
+    "tmean": 21.5,
+    "tmax": 23.6,
+    "tmin": 18.2,
+    "vapor": 14.5,
+    "humidity": 76.4,
+    "wind_force": 2.4,
+    "cloudiness": 7.7,
+    "precip": null,
+    "evap_sol": 3.6,
+    "evap_sombra": 2.6,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    894,
+    1568,
+    922
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 9,
+   "date": "1886-05-09",
+   "image": "gold_rows/14_000109_d09.png",
+   "sha256": "54b1462ab5019f459c8c03c994a1b84d847a274d0bf64ba79364ff451728e331",
+   "cells": {
+    "pressure": 753.56,
+    "pressure_max": 756.51,
+    "pressure_min": 750.89,
+    "tmean": 22.3,
+    "tmax": 24.0,
+    "tmin": 21.2,
+    "vapor": 14.6,
+    "humidity": 72.6,
+    "wind_force": 2.7,
+    "cloudiness": 8.4,
+    "precip": null,
+    "evap_sol": 4.7,
+    "evap_sombra": 3.2,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "SW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    921,
+    1568,
+    949
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 10,
+   "date": "1886-05-10",
+   "image": "gold_rows/14_000109_d10.png",
+   "sha256": "a2f9ee9b51b7304917b53a4aeb296e9d953dc1ff626c1721383327633cae95b9",
+   "cells": {
+    "pressure": 756.39,
+    "pressure_max": 757.74,
+    "pressure_min": 755.24,
+    "tmean": 20.8,
+    "tmax": 24.4,
+    "tmin": 18.8,
+    "vapor": 12.4,
+    "humidity": 67.9,
+    "wind_force": 3.8,
+    "cloudiness": 5.0,
+    "precip": null,
+    "evap_sol": 4.8,
+    "evap_sombra": 3.2,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    949,
+    1568,
+    977
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 11,
+   "date": "1886-05-11",
+   "image": "gold_rows/14_000109_d11.png",
+   "sha256": "20dc8f39eed1cb3ff56317e5d9d6372a57027f134ea2fb3ad510b699c2325eec",
+   "cells": {
+    "pressure": 755.41,
+    "pressure_max": 758.01,
+    "pressure_min": 753.39,
+    "tmean": 19.6,
+    "tmax": 23.6,
+    "tmin": 16.8,
+    "vapor": 11.9,
+    "humidity": 70.8,
+    "wind_force": 2.8,
+    "cloudiness": 3.8,
+    "precip": null,
+    "evap_sol": 4.5,
+    "evap_sombra": 4.0,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "NW, SW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    977,
+    1568,
+    1005
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 12,
+   "date": "1886-05-12",
+   "image": "gold_rows/14_000109_d12.png",
+   "sha256": "ac7c06b2c8fd5ec27125671fbe81942b3a2d2820c3a35f34aee794ffad39e632",
+   "cells": {
+    "pressure": 760.83,
+    "pressure_max": 763.96,
+    "pressure_min": 758.11,
+    "tmean": 17.3,
+    "tmax": 19.4,
+    "tmin": 16.8,
+    "vapor": 8.7,
+    "humidity": 59.0,
+    "wind_force": 4.7,
+    "cloudiness": 6.8,
+    "precip": null,
+    "evap_sol": 5.2,
+    "evap_sombra": 2.6,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "WSW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1005,
+    1568,
+    1033
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 13,
+   "date": "1886-05-13",
+   "image": "gold_rows/14_000109_d13.png",
+   "sha256": "09093bc52a90313bfc1fdb286050208c4ec9ce448574ea20998c558b82090f20",
+   "cells": {
+    "pressure": 764.66,
+    "pressure_max": 765.9,
+    "pressure_min": 763.0,
+    "tmean": 17.4,
+    "tmax": 21.2,
+    "tmin": 13.8,
+    "vapor": 10.8,
+    "humidity": 72.9,
+    "wind_force": 2.4,
+    "cloudiness": 7.8,
+    "precip": 0.4,
+    "evap_sol": 5.7,
+    "evap_sombra": 3.1,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, W"
+   },
+   "box": [
+    150,
+    1033,
+    1568,
+    1061
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 14,
+   "date": "1886-05-14",
+   "image": "gold_rows/14_000109_d14.png",
+   "sha256": "761ad673da288af183415c7d1d8a4b5364d76cee915fdcad4b378ffb57f228e2",
+   "cells": {
+    "pressure": 764.65,
+    "pressure_max": 765.75,
+    "pressure_min": 763.39,
+    "tmean": 18.7,
+    "tmax": 21.8,
+    "tmin": 14.4,
+    "vapor": 12.1,
+    "humidity": 76.5,
+    "wind_force": 2.3,
+    "cloudiness": 6.4,
+    "precip": null,
+    "evap_sol": 3.2,
+    "evap_sombra": 2.3,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1061,
+    1568,
+    1089
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 15,
+   "date": "1886-05-15",
+   "image": "gold_rows/14_000109_d15.png",
+   "sha256": "d43e59463ccabaa687d52f37aa4476b3abdb0cc51c1cde4a7b79d7d7a098c963",
+   "cells": {
+    "pressure": 763.3,
+    "pressure_max": 764.36,
+    "pressure_min": 762.21,
+    "tmean": 19.7,
+    "tmax": 23.0,
+    "tmin": 18.0,
+    "vapor": 13.5,
+    "humidity": 79.4,
+    "wind_force": 2.8,
+    "cloudiness": 7.9,
+    "precip": null,
+    "evap_sol": 4.0,
+    "evap_sombra": 2.5,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "W, SSE",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    1089,
+    1568,
+    1117
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 16,
+   "date": "1886-05-16",
+   "image": "gold_rows/14_000109_d16.png",
+   "sha256": "4bd3b5cfa07ce504b4b23b6b0b73b65fc3c957c216cf90b7fceb06f96d728950",
+   "cells": {
+    "pressure": 761.5,
+    "pressure_max": 762.49,
+    "pressure_min": 760.21,
+    "tmean": 19.8,
+    "tmax": 23.0,
+    "tmin": 16.7,
+    "vapor": 13.8,
+    "humidity": 80.6,
+    "wind_force": 3.4,
+    "cloudiness": 4.8,
+    "precip": null,
+    "evap_sol": 3.3,
+    "evap_sombra": 2.2,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1116,
+    1568,
+    1144
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 17,
+   "date": "1886-05-17",
+   "image": "gold_rows/14_000109_d17.png",
+   "sha256": "c4a13de1b98fc52db2d30df41d244eb5eecaf43b14a77dd5e8442f156285f833",
+   "cells": {
+    "pressure": 760.29,
+    "pressure_max": 761.32,
+    "pressure_min": 759.38,
+    "tmean": 20.5,
+    "tmax": 24.8,
+    "tmin": 16.5,
+    "vapor": 12.9,
+    "humidity": 73.3,
+    "wind_force": 2.7,
+    "cloudiness": 2.5,
+    "precip": null,
+    "evap_sol": 4.3,
+    "evap_sombra": 2.8,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1144,
+    1568,
+    1172
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 18,
+   "date": "1886-05-18",
+   "image": "gold_rows/14_000109_d18.png",
+   "sha256": "14dd5a37c029b34fa79f01236660d96400d10f2aa388dc14467fe3c27d84acd9",
+   "cells": {
+    "pressure": 761.91,
+    "pressure_max": 763.58,
+    "pressure_min": 760.16,
+    "tmean": 20.3,
+    "tmax": 23.4,
+    "tmin": 16.8,
+    "vapor": 14.3,
+    "humidity": 78.3,
+    "wind_force": 3.2,
+    "cloudiness": 7.3,
+    "precip": 7.5,
+    "evap_sol": 3.9,
+    "evap_sombra": 2.9,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "Variavel"
+   },
+   "box": [
+    150,
+    1172,
+    1568,
+    1200
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 19,
+   "date": "1886-05-19",
+   "image": "gold_rows/14_000109_d19.png",
+   "sha256": "4cd72b5cfe5359bba3951d081b1dd71629fbea5b7de43cbbf17c2b8ff5d7f94b",
+   "cells": {
+    "pressure": 762.0,
+    "pressure_max": 763.33,
+    "pressure_min": 761.12,
+    "tmean": 20.4,
+    "tmax": 23.0,
+    "tmin": 18.0,
+    "vapor": 14.0,
+    "humidity": 78.6,
+    "wind_force": 2.4,
+    "cloudiness": 7.6,
+    "precip": null,
+    "evap_sol": 3.1,
+    "evap_sombra": 2.1,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1200,
+    1568,
+    1228
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 20,
+   "date": "1886-05-20",
+   "image": "gold_rows/14_000109_d20.png",
+   "sha256": "561b87b3962c0ab2518c7797b3161bcdbd081a873e28b6beacf53babc03d54e7",
+   "cells": {
+    "pressure": 761.83,
+    "pressure_max": 762.93,
+    "pressure_min": 760.88,
+    "tmean": 19.9,
+    "tmax": 23.0,
+    "tmin": 17.4,
+    "vapor": 14.2,
+    "humidity": 81.9,
+    "wind_force": 2.9,
+    "cloudiness": 4.5,
+    "precip": null,
+    "evap_sol": 3.6,
+    "evap_sombra": 2.0,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1228,
+    1568,
+    1256
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 21,
+   "date": "1886-05-21",
+   "image": "gold_rows/14_000109_d21.png",
+   "sha256": "21f9d0f351660624f963cee158b446322d7a895ade9d0ae438a40293f7ee7a06",
+   "cells": {
+    "pressure": 760.97,
+    "pressure_max": 762.14,
+    "pressure_min": 759.86,
+    "tmean": 20.4,
+    "tmax": 23.7,
+    "tmin": 16.8,
+    "vapor": 15.0,
+    "humidity": 83.7,
+    "wind_force": 1.3,
+    "cloudiness": 9.4,
+    "precip": 0.7,
+    "evap_sol": 3.2,
+    "evap_sombra": 2.0,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE"
+   },
+   "box": [
+    150,
+    1256,
+    1568,
+    1284
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 22,
+   "date": "1886-05-22",
+   "image": "gold_rows/14_000109_d22.png",
+   "sha256": "e5aa9702f0a1c8999d7d379ac1ba39610cb47136e0978532800878b8cdadee39",
+   "cells": {
+    "pressure": 760.06,
+    "pressure_max": 761.47,
+    "pressure_min": 758.6,
+    "tmean": 21.1,
+    "tmax": 23.5,
+    "tmin": 19.5,
+    "vapor": 16.0,
+    "humidity": 87.5,
+    "wind_force": 2.4,
+    "cloudiness": 4.1,
+    "precip": null,
+    "evap_sol": 3.2,
+    "evap_sombra": 1.5,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1283,
+    1568,
+    1311
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 23,
+   "date": "1886-05-23",
+   "image": "gold_rows/14_000109_d23.png",
+   "sha256": "ee0d6227dc3090dd62db71d4b2e747da187af5142192ed88dfa1bcc6a92d84f4",
+   "cells": {
+    "pressure": 759.06,
+    "pressure_max": 760.06,
+    "pressure_min": 757.49,
+    "tmean": 22.9,
+    "tmax": 26.5,
+    "tmin": 19.5,
+    "vapor": 14.8,
+    "humidity": 73.6,
+    "wind_force": 1.9,
+    "cloudiness": 4.1,
+    "precip": null,
+    "evap_sol": 3.2,
+    "evap_sombra": 1.5,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1311,
+    1568,
+    1339
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 24,
+   "date": "1886-05-24",
+   "image": "gold_rows/14_000109_d24.png",
+   "sha256": "d193561c5a925fe2b7ccfec36d47bb59977786c3bc1026deb1961f025b765854",
+   "cells": {
+    "pressure": 758.95,
+    "pressure_max": 760.41,
+    "pressure_min": 758.05,
+    "tmean": 23.1,
+    "tmax": 27.4,
+    "tmin": 20.2,
+    "vapor": 15.7,
+    "humidity": 75.9,
+    "wind_force": 2.0,
+    "cloudiness": 3.0,
+    "precip": null,
+    "evap_sol": 5.9,
+    "evap_sombra": 3.1,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, O",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1339,
+    1568,
+    1367
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 25,
+   "date": "1886-05-25",
+   "image": "gold_rows/14_000109_d25.png",
+   "sha256": "d349dfae4bf2717fbc81c65c0f4f7ac614f68a35c3d011ba71efeddf95523880",
+   "cells": {
+    "pressure": 761.5,
+    "pressure_max": 762.72,
+    "pressure_min": 760.43,
+    "tmean": 22.0,
+    "tmax": 26.0,
+    "tmin": 20.5,
+    "vapor": 16.3,
+    "humidity": 83.1,
+    "wind_force": 3.2,
+    "cloudiness": 8.8,
+    "precip": null,
+    "evap_sol": 5.1,
+    "evap_sombra": 2.5,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    1367,
+    1568,
+    1395
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 26,
+   "date": "1886-05-26",
+   "image": "gold_rows/14_000109_d26.png",
+   "sha256": "00b14cefbbb3302d81bea74cce513607fe5520e154a987c08256c390211d3c54",
+   "cells": {
+    "pressure": 761.65,
+    "pressure_max": 762.89,
+    "pressure_min": 760.31,
+    "tmean": 22.5,
+    "tmax": 25.5,
+    "tmin": 20.5,
+    "vapor": 16.8,
+    "humidity": 83.4,
+    "wind_force": 3.0,
+    "cloudiness": 5.4,
+    "precip": null,
+    "evap_sol": 4.3,
+    "evap_sombra": 1.7,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1395,
+    1568,
+    1423
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 27,
+   "date": "1886-05-27",
+   "image": "gold_rows/14_000109_d27.png",
+   "sha256": "2c42f7fbb0ec32de27bd05a4671cd1bb84c40bfc34b88fd0c8b4452d41fd18a9",
+   "cells": {
+    "pressure": 761.59,
+    "pressure_max": 762.68,
+    "pressure_min": 760.8,
+    "tmean": 22.2,
+    "tmax": 25.0,
+    "tmin": 20.2,
+    "vapor": 16.5,
+    "humidity": 83.0,
+    "wind_force": 2.9,
+    "cloudiness": 6.8,
+    "precip": null,
+    "evap_sol": 2.5,
+    "evap_sombra": 1.8,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1423,
+    1568,
+    1451
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 28,
+   "date": "1886-05-28",
+   "image": "gold_rows/14_000109_d28.png",
+   "sha256": "580eb5a76e330f4b3586f2df973e23a1fcf0c612e6d13a56d754f2f45fa0b169",
+   "cells": {
+    "pressure": 762.27,
+    "pressure_max": 763.51,
+    "pressure_min": 761.23,
+    "tmean": 21.6,
+    "tmax": 25.0,
+    "tmin": 20.2,
+    "vapor": 15.6,
+    "humidity": 81.7,
+    "wind_force": 3.8,
+    "cloudiness": 6.3,
+    "precip": null,
+    "evap_sol": 3.8,
+    "evap_sombra": 2.3,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1451,
+    1568,
+    1479
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 29,
+   "date": "1886-05-29",
+   "image": "gold_rows/14_000109_d29.png",
+   "sha256": "31e356fb2851a5c6050e1be1d3b70b5e4e54d65a3a4ae2f3e77987fff64ffcc1",
+   "cells": {
+    "pressure": 761.68,
+    "pressure_max": 763.07,
+    "pressure_min": 760.48,
+    "tmean": 21.7,
+    "tmax": 24.0,
+    "tmin": 19.7,
+    "vapor": 16.2,
+    "humidity": 84.9,
+    "wind_force": 3.3,
+    "cloudiness": 4.1,
+    "precip": null,
+    "evap_sol": 3.1,
+    "evap_sombra": 2.2,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1479,
+    1568,
+    1507
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 30,
+   "date": "1886-05-30",
+   "image": "gold_rows/14_000109_d30.png",
+   "sha256": "2371931ff91581fd39ed9d52c84eaafd7a9da5d684cbbc34aeddc2f59dd3a89d",
+   "cells": {
+    "pressure": 759.94,
+    "pressure_max": 761.3,
+    "pressure_min": 758.41,
+    "tmean": 21.9,
+    "tmax": 25.5,
+    "tmin": 19.0,
+    "vapor": 14.6,
+    "humidity": 76.3,
+    "wind_force": 2.6,
+    "cloudiness": 6.0,
+    "precip": null,
+    "evap_sol": 3.1,
+    "evap_sombra": 1.9,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "N, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1507,
+    1568,
+    1535
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 109,
+   "period": "1886-05",
+   "day": 31,
+   "date": "1886-05-31",
+   "image": "gold_rows/14_000109_d31.png",
+   "sha256": "6786fb0b08acbcf35bb56bf069260dfa9d71fd76b518c1cc1f524f857a589da0",
+   "cells": {
+    "pressure": 758.05,
+    "pressure_max": 759.64,
+    "pressure_min": 756.41,
+    "tmean": 21.4,
+    "tmax": 25.5,
+    "tmin": 18.5,
+    "vapor": 13.8,
+    "humidity": 74.4,
+    "wind_force": 2.9,
+    "cloudiness": 1.1,
+    "precip": null,
+    "evap_sol": 3.9,
+    "evap_sombra": 2.2,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1535,
+    1568,
+    1563
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 1,
+   "date": "1886-07-01",
+   "image": "gold_rows/14_000142_d01.png",
+   "sha256": "3207a60d478a325d70e6f5356bdb044f3e76c742923ee98d857dce5e8dcfc8f3",
+   "cells": {
+    "pressure": 759.06,
+    "pressure_max": 760.65,
+    "pressure_min": 757.99,
+    "tmean": 21.7,
+    "tmax": 25.4,
+    "tmin": 18.0,
+    "vapor": 12.2,
+    "humidity": 64.4,
+    "wind_force": 2.3,
+    "cloudiness": 0.6,
+    "precip": null,
+    "evap_sol": 5.6,
+    "evap_sombra": 2.5,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, O",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    737,
+    1568,
+    765
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 2,
+   "date": "1886-07-02",
+   "image": "gold_rows/14_000142_d02.png",
+   "sha256": "a111cce61676df596c444c77cb2a84ef484c7cd21a7b6eb84435174647084d1a",
+   "cells": {
+    "pressure": 757.04,
+    "pressure_max": 758.9,
+    "pressure_min": 755.23,
+    "tmean": 21.8,
+    "tmax": 25.5,
+    "tmin": 17.6,
+    "vapor": 12.0,
+    "humidity": 63.9,
+    "wind_force": 3.0,
+    "cloudiness": 2.4,
+    "precip": null,
+    "evap_sol": 6.0,
+    "evap_sombra": 4.0,
+    "ozone": 0.0
+   },
+   "flags": {
+    "wind_dir": "NW, O",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    765,
+    1568,
+    793
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 3,
+   "date": "1886-07-03",
+   "image": "gold_rows/14_000142_d03.png",
+   "sha256": "3eb72205b6efa472844bcfc98e6bc2a7b9f78effddcd3e6f575750391de69a41",
+   "cells": {
+    "pressure": 759.18,
+    "pressure_max": 760.27,
+    "pressure_min": 755.63,
+    "tmean": 21.1,
+    "tmax": 23.8,
+    "tmin": 18.0,
+    "vapor": 13.4,
+    "humidity": 73.1,
+    "wind_force": 2.5,
+    "cloudiness": 8.0,
+    "precip": null,
+    "evap_sol": 6.2,
+    "evap_sombra": 4.0,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "low_confidence": "chuva cell glyph ambiguous (looks like '. ...'); read as no measurement"
+   },
+   "box": [
+    150,
+    793,
+    1568,
+    821
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 4,
+   "date": "1886-07-04",
+   "image": "gold_rows/14_000142_d04.png",
+   "sha256": "23d987f003b6f1c1362b4c8cf8ffdac7810c79b8050d0a78f85f1444534477d8",
+   "cells": {
+    "pressure": 762.02,
+    "pressure_max": 763.45,
+    "pressure_min": 760.37,
+    "tmean": 17.9,
+    "tmax": 19.2,
+    "tmin": 15.0,
+    "vapor": 13.0,
+    "humidity": 85.0,
+    "wind_force": 4.0,
+    "cloudiness": 10.0,
+    "precip": 6.5,
+    "evap_sol": 1.5,
+    "evap_sombra": 1.5,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "NW"
+   },
+   "box": [
+    150,
+    821,
+    1568,
+    849
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 5,
+   "date": "1886-07-05",
+   "image": "gold_rows/14_000142_d05.png",
+   "sha256": "3039d1bda427474b2e7dfe62f82e91b51e9d59c562f7e3e21021a50c289773b5",
+   "cells": {
+    "pressure": 761.24,
+    "pressure_max": 762.18,
+    "pressure_min": 760.18,
+    "tmean": 18.3,
+    "tmax": 20.8,
+    "tmin": 16.4,
+    "vapor": 14.1,
+    "humidity": 90.1,
+    "wind_force": 1.2,
+    "cloudiness": 9.8,
+    "precip": 3.0,
+    "evap_sol": 0.5,
+    "evap_sombra": 0.5,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE"
+   },
+   "box": [
+    150,
+    849,
+    1568,
+    877
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 6,
+   "date": "1886-07-06",
+   "image": "gold_rows/14_000142_d06.png",
+   "sha256": "3ecc2fdfbd91d8c29129d7802eafa5a598717daf11c19e6fce3111fb9390f66f",
+   "cells": {
+    "pressure": 760.14,
+    "pressure_max": 761.68,
+    "pressure_min": 758.93,
+    "tmean": 20.2,
+    "tmax": 24.0,
+    "tmin": 16.5,
+    "vapor": 15.1,
+    "humidity": 86.2,
+    "wind_force": 2.5,
+    "cloudiness": 5.8,
+    "precip": null,
+    "evap_sol": 1.8,
+    "evap_sombra": 1.0,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "O",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    876,
+    1568,
+    904
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 7,
+   "date": "1886-07-07",
+   "image": "gold_rows/14_000142_d07.png",
+   "sha256": "db73153e504fcd6c6453fbc16ed98482d19d691f0ef2f6eed787aae5c37c4d8a",
+   "cells": {
+    "pressure": 758.34,
+    "pressure_max": 760.72,
+    "pressure_min": 756.24,
+    "tmean": 21.1,
+    "tmax": 25.2,
+    "tmin": 17.9,
+    "vapor": 15.6,
+    "humidity": 84.2,
+    "wind_force": 2.2,
+    "cloudiness": 4.4,
+    "precip": null,
+    "evap_sol": 3.0,
+    "evap_sombra": 1.0,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    904,
+    1568,
+    932
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 8,
+   "date": "1886-07-08",
+   "image": "gold_rows/14_000142_d08.png",
+   "sha256": "02a32ff5af17294a52e28c17f1a2076d6eb1d0a7672a730244a0acadf9ec42c8",
+   "cells": {
+    "pressure": 759.5,
+    "pressure_max": 761.2,
+    "pressure_min": 758.6,
+    "tmean": 20.7,
+    "tmax": 22.5,
+    "tmin": 18.0,
+    "vapor": 15.6,
+    "humidity": 86.1,
+    "wind_force": 3.6,
+    "cloudiness": 5.3,
+    "precip": null,
+    "evap_sol": 3.7,
+    "evap_sombra": 2.4,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "O",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    932,
+    1568,
+    960
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 9,
+   "date": "1886-07-09",
+   "image": "gold_rows/14_000142_d09.png",
+   "sha256": "81d4775c864784c3ad48449e3d370dd12c3e47d8fc0b32f20280e39ccea8aefa",
+   "cells": {
+    "pressure": 757.29,
+    "pressure_max": 758.43,
+    "pressure_min": 755.6,
+    "tmean": 21.2,
+    "tmax": 25.2,
+    "tmin": 18.8,
+    "vapor": 15.9,
+    "humidity": 85.9,
+    "wind_force": 3.9,
+    "cloudiness": 5.3,
+    "precip": null,
+    "evap_sol": 2.8,
+    "evap_sombra": 1.2,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "NNW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    959,
+    1568,
+    987
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 10,
+   "date": "1886-07-10",
+   "image": "gold_rows/14_000142_d10.png",
+   "sha256": "4e11a83664fc8d910b282385a6e965e111f4e84d2eae668d0c441cb560e957d1",
+   "cells": {
+    "pressure": 761.74,
+    "pressure_max": 765.34,
+    "pressure_min": 757.32,
+    "tmean": 17.2,
+    "tmax": 20.2,
+    "tmin": 15.4,
+    "vapor": 13.0,
+    "humidity": 88.0,
+    "wind_force": 3.1,
+    "cloudiness": 10.0,
+    "precip": 6.2,
+    "evap_sol": 2.2,
+    "evap_sombra": 2.2,
+    "ozone": 8.0
+   },
+   "flags": {
+    "wind_dir": "SW, NW"
+   },
+   "box": [
+    150,
+    987,
+    1568,
+    1015
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 11,
+   "date": "1886-07-11",
+   "image": "gold_rows/14_000142_d11.png",
+   "sha256": "808a71e7f7aa5b24a81daa8d99de61fc28deccc532dc5aa125b0626ff0e72fbd",
+   "cells": {
+    "pressure": 765.13,
+    "pressure_max": 766.13,
+    "pressure_min": 764.16,
+    "tmean": 16.1,
+    "tmax": 18.2,
+    "tmin": 12.0,
+    "vapor": 11.3,
+    "humidity": 83.3,
+    "wind_force": 2.2,
+    "cloudiness": 9.6,
+    "precip": null,
+    "evap_sol": 1.4,
+    "evap_sombra": 1.4,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    1015,
+    1568,
+    1043
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 12,
+   "date": "1886-07-12",
+   "image": "gold_rows/14_000142_d12.png",
+   "sha256": "a92888299dc892e453b871c03aadc2228e0120604f7fd6785f8048f41552fd62",
+   "cells": {
+    "pressure": 764.34,
+    "pressure_max": 765.84,
+    "pressure_min": 762.48,
+    "tmean": 17.1,
+    "tmax": 20.3,
+    "tmin": 15.0,
+    "vapor": 12.0,
+    "humidity": 82.5,
+    "wind_force": 2.6,
+    "cloudiness": 7.3,
+    "precip": null,
+    "evap_sol": 3.0,
+    "evap_sombra": 1.5,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1043,
+    1568,
+    1071
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 13,
+   "date": "1886-07-13",
+   "image": "gold_rows/14_000142_d13.png",
+   "sha256": "f083da1a5c658e929a2e92aa1ab329919d4699bdd52b065e4e3e53e1cef50aa3",
+   "cells": {
+    "pressure": 762.69,
+    "pressure_max": 763.75,
+    "pressure_min": 760.89,
+    "tmean": 18.2,
+    "tmax": 20.0,
+    "tmin": 15.8,
+    "vapor": 13.3,
+    "humidity": 85.8,
+    "wind_force": 2.2,
+    "cloudiness": 7.0,
+    "precip": null,
+    "evap_sol": 2.4,
+    "evap_sombra": 1.5,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "NW, O",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1070,
+    1568,
+    1098
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 14,
+   "date": "1886-07-14",
+   "image": "gold_rows/14_000142_d14.png",
+   "sha256": "b799f01b38cb88ac10aedc7fe814f6d10ad3f75582ae79fe0bf5702a12d65f16",
+   "cells": {
+    "pressure": 763.8,
+    "pressure_max": 765.35,
+    "pressure_min": 762.48,
+    "tmean": 17.8,
+    "tmax": 19.2,
+    "tmin": 16.5,
+    "vapor": 13.2,
+    "humidity": 87.2,
+    "wind_force": 2.3,
+    "cloudiness": 10.0,
+    "precip": 2.7,
+    "evap_sol": 2.0,
+    "evap_sombra": 1.5,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "O"
+   },
+   "box": [
+    150,
+    1098,
+    1568,
+    1126
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 15,
+   "date": "1886-07-15",
+   "image": "gold_rows/14_000142_d15.png",
+   "sha256": "facbbb33b36091d5e9ff78100186b94fde1b749f07ad38e48b1a9ba30a14b0f9",
+   "cells": {
+    "pressure": 764.37,
+    "pressure_max": 765.55,
+    "pressure_min": 763.14,
+    "tmean": 17.3,
+    "tmax": 19.3,
+    "tmin": 15.8,
+    "vapor": 11.9,
+    "humidity": 81.5,
+    "wind_force": 2.4,
+    "cloudiness": 9.5,
+    "precip": 3.5,
+    "evap_sol": 1.4,
+    "evap_sombra": 1.2,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE"
+   },
+   "box": [
+    150,
+    1125,
+    1568,
+    1153
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 16,
+   "date": "1886-07-16",
+   "image": "gold_rows/14_000142_d16.png",
+   "sha256": "6475b6c4ad16e2eaac8d005ec6d304ccef4943d94e01a0e126bf0a56863cf445",
+   "cells": {
+    "pressure": 760.97,
+    "pressure_max": 763.71,
+    "pressure_min": 757.88,
+    "tmean": 17.7,
+    "tmax": 21.0,
+    "tmin": 15.0,
+    "vapor": 12.2,
+    "humidity": 82.0,
+    "wind_force": 5.2,
+    "cloudiness": 4.6,
+    "precip": null,
+    "evap_sol": 3.1,
+    "evap_sombra": 1.7,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1153,
+    1568,
+    1181
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 17,
+   "date": "1886-07-17",
+   "image": "gold_rows/14_000142_d17.png",
+   "sha256": "7426d11ee2186240d26367b6626e047cf7e257844b85fb347437cf7ab93bbde7",
+   "cells": {
+    "pressure": 761.89,
+    "pressure_max": 763.11,
+    "pressure_min": 760.5,
+    "tmean": 16.3,
+    "tmax": 20.0,
+    "tmin": 14.0,
+    "vapor": 9.9,
+    "humidity": 72.1,
+    "wind_force": 5.8,
+    "cloudiness": 7.9,
+    "precip": 3.0,
+    "evap_sol": 7.7,
+    "evap_sombra": 4.4,
+    "ozone": 7.0
+   },
+   "flags": {
+    "wind_dir": "WSW"
+   },
+   "box": [
+    150,
+    1181,
+    1568,
+    1209
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 18,
+   "date": "1886-07-18",
+   "image": "gold_rows/14_000142_d18.png",
+   "sha256": "bc6aca77f5b1c2d3fa8167d48ae97ebfb1ea80c4e7060ef4444d55a5b87f4be4",
+   "cells": {
+    "pressure": 763.97,
+    "pressure_max": 765.36,
+    "pressure_min": 762.57,
+    "tmean": 15.1,
+    "tmax": 18.0,
+    "tmin": 12.8,
+    "vapor": 10.4,
+    "humidity": 82.1,
+    "wind_force": 4.4,
+    "cloudiness": 7.9,
+    "precip": 14.5,
+    "evap_sol": 1.1,
+    "evap_sombra": 1.1,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "NW, SW"
+   },
+   "box": [
+    150,
+    1208,
+    1568,
+    1236
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 19,
+   "date": "1886-07-19",
+   "image": "gold_rows/14_000142_d19.png",
+   "sha256": "f6a9fe8e0d4b5f681811798964cdcf06f96bc77ed737f10a055c0ded83216ebc",
+   "cells": {
+    "pressure": 764.47,
+    "pressure_max": 795.72,
+    "pressure_min": 763.22,
+    "tmean": 16.0,
+    "tmax": 18.5,
+    "tmin": 12.5,
+    "vapor": 10.4,
+    "humidity": 77.4,
+    "wind_force": 1.1,
+    "cloudiness": 3.8,
+    "precip": null,
+    "evap_sol": 4.1,
+    "evap_sombra": 1.5,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none",
+    "printed_error": "baro maxima printed as '95.72' (7xx-prefix reconstruction per SELECTION.md convention: 795.72); this is below both the row's own mean (764.47) and minimum (763.22) under any reading, and well above the day-to-day trend - physically anomalous for a daily maximum - printed as-is per faithful-transcription convention (previously silently corrected to 765.72, guessing a misprinted leading digit '9' for '6'; reverted, since the gold now records the printed glyph, not the plausible intended value). Confirmed directly against data/raw/docvirt/14/000142.webp: the page clearly shows '95.72'. Likely an 1886 compositor slip (probably intended ~765.72), kept faithful."
+   },
+   "box": [
+    150,
+    1236,
+    1568,
+    1264
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 20,
+   "date": "1886-07-20",
+   "image": "gold_rows/14_000142_d20.png",
+   "sha256": "e1db6269ed65924a785e9a8d6a80369591a27e7781a09346c39b9b02faf56667",
+   "cells": {
+    "pressure": 762.49,
+    "pressure_max": 764.27,
+    "pressure_min": 760.84,
+    "tmean": 17.1,
+    "tmax": 20.0,
+    "tmin": 14.0,
+    "vapor": 11.9,
+    "humidity": 81.8,
+    "wind_force": 2.7,
+    "cloudiness": 5.8,
+    "precip": null,
+    "evap_sol": 3.0,
+    "evap_sombra": 2.0,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1264,
+    1568,
+    1292
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 21,
+   "date": "1886-07-21",
+   "image": "gold_rows/14_000142_d21.png",
+   "sha256": "0edd01eb8222e754bd04a80ad3d060bffe17457376a9c544092f6a2371fdc87f",
+   "cells": {
+    "pressure": 760.81,
+    "pressure_max": 761.96,
+    "pressure_min": 759.97,
+    "tmean": 17.3,
+    "tmax": 19.5,
+    "tmin": 15.0,
+    "vapor": 11.8,
+    "humidity": 80.6,
+    "wind_force": 2.7,
+    "cloudiness": 7.1,
+    "precip": null,
+    "evap_sol": 2.0,
+    "evap_sombra": 1.7,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1291,
+    1568,
+    1319
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 22,
+   "date": "1886-07-22",
+   "image": "gold_rows/14_000142_d22.png",
+   "sha256": "e7658c1956ef283aaf1b791df0fc9ea9cea87aa929a3963ec2ae7971a9e35de5",
+   "cells": {
+    "pressure": 760.93,
+    "pressure_max": 762.98,
+    "pressure_min": 760.11,
+    "tmean": 18.2,
+    "tmax": 23.5,
+    "tmin": 14.4,
+    "vapor": 11.6,
+    "humidity": 75.4,
+    "wind_force": 2.5,
+    "cloudiness": 5.1,
+    "precip": null,
+    "evap_sol": 3.0,
+    "evap_sombra": 1.8,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1319,
+    1568,
+    1347
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 23,
+   "date": "1886-07-23",
+   "image": "gold_rows/14_000142_d23.png",
+   "sha256": "f288c77c3f602e5f19c1acbcd04953f8e4c30e2f1e9c56366c950c4a3cba6e72",
+   "cells": {
+    "pressure": 764.07,
+    "pressure_max": 765.43,
+    "pressure_min": 762.83,
+    "tmean": 18.3,
+    "tmax": 21.0,
+    "tmin": 16.0,
+    "vapor": 12.5,
+    "humidity": 80.4,
+    "wind_force": 2.3,
+    "cloudiness": 4.3,
+    "precip": null,
+    "evap_sol": 3.3,
+    "evap_sombra": 2.3,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1347,
+    1568,
+    1375
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 24,
+   "date": "1886-07-24",
+   "image": "gold_rows/14_000142_d24.png",
+   "sha256": "ca142959687045a5e14849182c7910f58803e5e53c075454524e61add5d56b47",
+   "cells": {
+    "pressure": 763.48,
+    "pressure_max": 764.34,
+    "pressure_min": 762.26,
+    "tmean": 17.8,
+    "tmax": 19.8,
+    "tmin": 15.7,
+    "vapor": 12.6,
+    "humidity": 83.6,
+    "wind_force": 3.2,
+    "cloudiness": 6.1,
+    "precip": null,
+    "evap_sol": 2.4,
+    "evap_sombra": 1.4,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1375,
+    1568,
+    1403
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 25,
+   "date": "1886-07-25",
+   "image": "gold_rows/14_000142_d25.png",
+   "sha256": "6d2311a18fddb0a3a6ad2c2ea290e2f569daaa2c2cd77c187e67a77bf5ed2918",
+   "cells": {
+    "pressure": 762.28,
+    "pressure_max": 763.68,
+    "pressure_min": 761.51,
+    "tmean": 18.9,
+    "tmax": 21.4,
+    "tmin": 15.8,
+    "vapor": 13.4,
+    "humidity": 82.7,
+    "wind_force": 2.8,
+    "cloudiness": 3.5,
+    "precip": null,
+    "evap_sol": 1.7,
+    "evap_sombra": 1.3,
+    "ozone": 6.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1402,
+    1568,
+    1430
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 26,
+   "date": "1886-07-26",
+   "image": "gold_rows/14_000142_d26.png",
+   "sha256": "b02c44cacb6dc4854793de9acec6b324845aaa45319a5a5b0d67c17e8e4843d9",
+   "cells": {
+    "pressure": 761.34,
+    "pressure_max": 763.14,
+    "pressure_min": 760.87,
+    "tmean": 19.2,
+    "tmax": 23.4,
+    "tmin": 15.4,
+    "vapor": 13.6,
+    "humidity": 82.8,
+    "wind_force": 2.9,
+    "cloudiness": 4.8,
+    "precip": null,
+    "evap_sol": 3.2,
+    "evap_sombra": 2.0,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1430,
+    1568,
+    1458
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 27,
+   "date": "1886-07-27",
+   "image": "gold_rows/14_000142_d27.png",
+   "sha256": "4483438ea567c2b78c2a3316eeded2739bff5b7b127860e579d0b48575a5849f",
+   "cells": {
+    "pressure": 752.55,
+    "pressure_max": 763.88,
+    "pressure_min": 761.81,
+    "tmean": 18.5,
+    "tmax": 21.5,
+    "tmin": 15.4,
+    "vapor": 12.4,
+    "humidity": 78.2,
+    "wind_force": 4.5,
+    "cloudiness": 4.0,
+    "precip": null,
+    "evap_sol": 4.7,
+    "evap_sombra": 2.6,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "SSE",
+    "precip": "none",
+    "printed_error": "baro media printed elided as '52.55' (7xx-prefix reconstruction per SELECTION.md convention: 752.55); this is below both the row's own minima (761.81) and maxima (763.88), physically impossible for a diurnal mean - printed as-is per faithful-transcription convention (previously silently corrected to 762.55 by swapping the tens digit to satisfy the ordering constraint; reverted, since '62.55' was never actually printed). Confirmed against data/raw/docvirt/14/000142.webp. This also reintroduces a printed-total mismatch: pressure_mean printed 761.44 vs computed ~761.15 with this row reverted - kept, not force-fitted. Likely an 1886 compositor slip (probably intended ~762.55), kept faithful."
+   },
+   "box": [
+    150,
+    1458,
+    1568,
+    1486
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 28,
+   "date": "1886-07-28",
+   "image": "gold_rows/14_000142_d28.png",
+   "sha256": "5b4b3c2a6ad897f206966168d400726f2533b1df51e7e1145c11343385c824b4",
+   "cells": {
+    "pressure": 761.22,
+    "pressure_max": 763.01,
+    "pressure_min": 759.22,
+    "tmean": 19.1,
+    "tmax": 21.6,
+    "tmin": 16.9,
+    "vapor": 13.8,
+    "humidity": 84.1,
+    "wind_force": 4.7,
+    "cloudiness": 5.5,
+    "precip": null,
+    "evap_sol": 3.5,
+    "evap_sombra": 1.9,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1486,
+    1568,
+    1514
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 29,
+   "date": "1886-07-29",
+   "image": "gold_rows/14_000142_d29.png",
+   "sha256": "cb71fc35b6be3ce92d1b495c7f4cb3d163576f56f35a9d878773c6405f9c8717",
+   "cells": {
+    "pressure": 758.52,
+    "pressure_max": 759.91,
+    "pressure_min": 756.84,
+    "tmean": 20.2,
+    "tmax": 24.7,
+    "tmin": 16.5,
+    "vapor": 13.3,
+    "humidity": 77.0,
+    "wind_force": 3.3,
+    "cloudiness": 5.1,
+    "precip": null,
+    "evap_sol": 3.6,
+    "evap_sombra": 1.5,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1513,
+    1568,
+    1541
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 30,
+   "date": "1886-07-30",
+   "image": "gold_rows/14_000142_d30.png",
+   "sha256": "ef2afe5528b6f0e8e1a74a4121d1d8e44fb31f66d770854bfe8e6b47c39ec40b",
+   "cells": {
+    "pressure": 759.91,
+    "pressure_max": 762.34,
+    "pressure_min": 756.81,
+    "tmean": 19.5,
+    "tmax": 22.0,
+    "tmin": 18.8,
+    "vapor": 13.4,
+    "humidity": 79.8,
+    "wind_force": 1.8,
+    "cloudiness": 7.1,
+    "precip": null,
+    "evap_sol": 4.0,
+    "evap_sombra": 2.5,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1541,
+    1568,
+    1569
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 142,
+   "period": "1886-07",
+   "day": 31,
+   "date": "1886-07-31",
+   "image": "gold_rows/14_000142_d31.png",
+   "sha256": "5b9d0eb6cb19b993b14f6434abb5aaaa72f43fc91a883c83a5799c67f6f7560c",
+   "cells": {
+    "pressure": 760.74,
+    "pressure_max": 762.96,
+    "pressure_min": 756.54,
+    "tmean": 19.4,
+    "tmax": 22.7,
+    "tmin": 15.6,
+    "vapor": 14.3,
+    "humidity": 85.6,
+    "wind_force": 2.8,
+    "cloudiness": 6.5,
+    "precip": null,
+    "evap_sol": 2.6,
+    "evap_sombra": 1.4,
+    "ozone": 6.0
+   },
+   "flags": {
+    "wind_dir": "O, SE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1569,
+    1568,
+    1597
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 1,
+   "date": "1886-09-01",
+   "image": "gold_rows/14_000179_d01.png",
+   "sha256": "6c8deb334ec5fecec3cd3b597696bfe46a72bdedf56a8f239888546c361436ac",
+   "cells": {
+    "pressure": 765.96,
+    "pressure_max": 766.97,
+    "pressure_min": 765.15,
+    "tmean": 17.7,
+    "tmax": 19.0,
+    "tmin": 15.8,
+    "vapor": 13.2,
+    "humidity": 88.2,
+    "wind_force": 3.2,
+    "cloudiness": 10.0,
+    "precip": 13.3,
+    "evap_sol": 0.9,
+    "evap_sombra": 0.9,
+    "ozone": 6.0
+   },
+   "flags": {
+    "wind_dir": "SE"
+   },
+   "box": [
+    150,
+    1045,
+    1572,
+    1073
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 2,
+   "date": "1886-09-02",
+   "image": "gold_rows/14_000179_d02.png",
+   "sha256": "a3244511d48ad63319e3e6df3fced56eb52a6d7f54dd1088993a5712fe806eee",
+   "cells": {
+    "pressure": 764.35,
+    "pressure_max": 765.52,
+    "pressure_min": 763.26,
+    "tmean": 19.3,
+    "tmax": 21.9,
+    "tmin": 17.0,
+    "vapor": 13.5,
+    "humidity": 81.2,
+    "wind_force": 2.9,
+    "cloudiness": 6.0,
+    "precip": null,
+    "evap_sol": 2.4,
+    "evap_sombra": 1.3,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1073,
+    1572,
+    1101
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 3,
+   "date": "1886-09-03",
+   "image": "gold_rows/14_000179_d03.png",
+   "sha256": "6e1cb9bd2e44df04eebd0e6cfe7000b91a5e75e8e46537ee07b2b9bf101e670a",
+   "cells": {
+    "pressure": 763.21,
+    "pressure_max": 764.41,
+    "pressure_min": 761.67,
+    "tmean": 20.2,
+    "tmax": 23.0,
+    "tmin": 16.8,
+    "vapor": 14.0,
+    "humidity": 80.0,
+    "wind_force": 2.5,
+    "cloudiness": 5.3,
+    "precip": null,
+    "evap_sol": 3.8,
+    "evap_sombra": 2.0,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1100,
+    1572,
+    1128
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 4,
+   "date": "1886-09-04",
+   "image": "gold_rows/14_000179_d04.png",
+   "sha256": "333756337d06d4addc7158fec76043c39b638361bd09ee7ff81b42d4b0b3f43b",
+   "cells": {
+    "pressure": 761.64,
+    "pressure_max": 763.09,
+    "pressure_min": 760.15,
+    "tmean": 21.3,
+    "tmax": 24.7,
+    "tmin": 19.4,
+    "vapor": 14.8,
+    "humidity": 78.8,
+    "wind_force": 2.4,
+    "cloudiness": 1.6,
+    "precip": null,
+    "evap_sol": 4.1,
+    "evap_sombra": 2.3,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "NNE, SE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1128,
+    1572,
+    1156
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 5,
+   "date": "1886-09-05",
+   "image": "gold_rows/14_000179_d05.png",
+   "sha256": "a29a62f5816348006445ebaad3095a5d83b17c5d552530afaae2acd11efa41a7",
+   "cells": {
+    "pressure": 759.4,
+    "pressure_max": 760.54,
+    "pressure_min": 758.38,
+    "tmean": 22.3,
+    "tmax": 25.8,
+    "tmin": 19.0,
+    "vapor": 16.0,
+    "humidity": 80.5,
+    "wind_force": 2.5,
+    "cloudiness": 0.1,
+    "precip": null,
+    "evap_sol": 3.9,
+    "evap_sombra": 1.9,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "W, SE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1156,
+    1572,
+    1184
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 6,
+   "date": "1886-09-06",
+   "image": "gold_rows/14_000179_d06.png",
+   "sha256": "1ba6bf698ba7705989ff384c46e4a80365aac79221f0de88357ab3843526ed11",
+   "cells": {
+    "pressure": 758.9,
+    "pressure_max": 759.85,
+    "pressure_min": 757.34,
+    "tmean": 23.6,
+    "tmax": 28.4,
+    "tmin": 19.6,
+    "vapor": 14.4,
+    "humidity": 67.8,
+    "wind_force": 2.3,
+    "cloudiness": 0.9,
+    "precip": null,
+    "evap_sol": 3.0,
+    "evap_sombra": 1.6,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1183,
+    1572,
+    1211
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 7,
+   "date": "1886-09-07",
+   "image": "gold_rows/14_000179_d07.png",
+   "sha256": "61c5b53b4c71abb6b2f7292e51f02f696865bb841e5e4e80824f714372497ffd",
+   "cells": {
+    "pressure": 758.17,
+    "pressure_max": 759.78,
+    "pressure_min": 756.94,
+    "tmean": 22.7,
+    "tmax": 28.4,
+    "tmin": 19.8,
+    "vapor": 13.7,
+    "humidity": 66.8,
+    "wind_force": 3.3,
+    "cloudiness": 4.0,
+    "precip": null,
+    "evap_sol": 6.2,
+    "evap_sombra": 5.2,
+    "ozone": 7.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1210,
+    1572,
+    1238
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 8,
+   "date": "1886-09-08",
+   "image": "gold_rows/14_000179_d08.png",
+   "sha256": "d088092e6cdf5961c2ef287bbddaac0e3ae201f561c5bb746e0ea4cfe2bf2e28",
+   "cells": {
+    "pressure": 756.45,
+    "pressure_max": 757.71,
+    "pressure_min": 754.89,
+    "tmean": 22.2,
+    "tmax": 25.6,
+    "tmin": 20.0,
+    "vapor": 16.3,
+    "humidity": 82.6,
+    "wind_force": 3.7,
+    "cloudiness": 9.4,
+    "precip": null,
+    "evap_sol": 4.0,
+    "evap_sombra": 2.6,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1238,
+    1572,
+    1266
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 9,
+   "date": "1886-09-09",
+   "image": "gold_rows/14_000179_d09.png",
+   "sha256": "597f6d01f8b34a29909d1da65ef16510339b1e3e52a941942c3ad9aa11ddefe7",
+   "cells": {
+    "pressure": 755.08,
+    "pressure_max": 756.94,
+    "pressure_min": 753.04,
+    "tmean": 24.5,
+    "tmax": 29.8,
+    "tmin": 19.8,
+    "vapor": 14.4,
+    "humidity": 70.1,
+    "wind_force": 1.6,
+    "cloudiness": 7.6,
+    "precip": null,
+    "evap_sol": 6.4,
+    "evap_sombra": 3.6,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "NW, NNW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1265,
+    1572,
+    1293
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 10,
+   "date": "1886-09-10",
+   "image": "gold_rows/14_000179_d10.png",
+   "sha256": "0c3c0a2381a6788d742dbe2d07dea3b2a3ff4c0343d8c2576c623a0b5c594e84",
+   "cells": {
+    "pressure": 756.6,
+    "pressure_max": 759.93,
+    "pressure_min": 755.35,
+    "tmean": 23.9,
+    "tmax": 27.0,
+    "tmin": 23.0,
+    "vapor": 13.5,
+    "humidity": 59.6,
+    "wind_force": 5.2,
+    "cloudiness": 10.0,
+    "precip": null,
+    "evap_sol": 9.6,
+    "evap_sombra": 5.6,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "NNW, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1292,
+    1572,
+    1320
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 11,
+   "date": "1886-09-11",
+   "image": "gold_rows/14_000179_d11.png",
+   "sha256": "0ac4cc4dcb3955e62e33faf2d7417062adcdd2df3f9895cff390372f5e8c635d",
+   "cells": {
+    "pressure": 760.91,
+    "pressure_max": 763.41,
+    "pressure_min": 757.29,
+    "tmean": 19.1,
+    "tmax": 22.0,
+    "tmin": 16.4,
+    "vapor": 14.2,
+    "humidity": 86.1,
+    "wind_force": 1.8,
+    "cloudiness": 10.0,
+    "precip": 18.3,
+    "evap_sol": 2.5,
+    "evap_sombra": 2.5,
+    "ozone": 9.0
+   },
+   "flags": {
+    "wind_dir": "O, SE"
+   },
+   "box": [
+    150,
+    1320,
+    1572,
+    1348
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 12,
+   "date": "1886-09-12",
+   "image": "gold_rows/14_000179_d12.png",
+   "sha256": "f79007b752a28bebaf45c06562c22d8e0d52743e962b3df9ea1bf75a608d6111",
+   "cells": {
+    "pressure": 763.95,
+    "pressure_max": 765.0,
+    "pressure_min": 762.83,
+    "tmean": 16.9,
+    "tmax": 19.5,
+    "tmin": 15.0,
+    "vapor": 9.8,
+    "humidity": 69.7,
+    "wind_force": 3.0,
+    "cloudiness": 6.9,
+    "precip": null,
+    "evap_sol": 2.8,
+    "evap_sombra": 2.6,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "NW, SSE",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    1347,
+    1572,
+    1375
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 13,
+   "date": "1886-09-13",
+   "image": "gold_rows/14_000179_d13.png",
+   "sha256": "5543066901dbf612cf959935bef16d6c8024c251b9f0078cf0c593fc2af01809",
+   "cells": {
+    "pressure": 762.77,
+    "pressure_max": 764.23,
+    "pressure_min": 761.63,
+    "tmean": 16.8,
+    "tmax": 21.0,
+    "tmin": 14.0,
+    "vapor": 10.6,
+    "humidity": 74.7,
+    "wind_force": 2.7,
+    "cloudiness": 5.1,
+    "precip": null,
+    "evap_sol": 3.0,
+    "evap_sombra": 2.5,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    1375,
+    1572,
+    1403
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 14,
+   "date": "1886-09-14",
+   "image": "gold_rows/14_000179_d14.png",
+   "sha256": "0b1972c96fa0370c93170f9ee915ae7889bab58123d980919672da8c7ee5df48",
+   "cells": {
+    "pressure": 760.32,
+    "pressure_max": 762.66,
+    "pressure_min": 757.99,
+    "tmean": 17.2,
+    "tmax": 20.4,
+    "tmin": 14.2,
+    "vapor": 11.2,
+    "humidity": 77.3,
+    "wind_force": 4.5,
+    "cloudiness": 1.3,
+    "precip": null,
+    "evap_sol": 4.4,
+    "evap_sombra": 2.7,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "W, SE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1403,
+    1572,
+    1431
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 15,
+   "date": "1886-09-15",
+   "image": "gold_rows/14_000179_d15.png",
+   "sha256": "d5265742c52a6573e4df3ccdb6f5cae18b5b7afadb84ab38943d45656c7ac18f",
+   "cells": {
+    "pressure": 756.84,
+    "pressure_max": 758.0,
+    "pressure_min": 755.0,
+    "tmean": 18.6,
+    "tmax": 21.3,
+    "tmin": 15.6,
+    "vapor": 13.3,
+    "humidity": 82.9,
+    "wind_force": 3.9,
+    "cloudiness": 6.8,
+    "precip": null,
+    "evap_sol": 3.6,
+    "evap_sombra": 2.6,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "NE, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1430,
+    1572,
+    1458
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 16,
+   "date": "1886-09-16",
+   "image": "gold_rows/14_000179_d16.png",
+   "sha256": "3aa68aa71cf0545289211f5eb24690b1a75205852d126392b5df2722a47b7fa7",
+   "cells": {
+    "pressure": 756.34,
+    "pressure_max": 757.43,
+    "pressure_min": 755.26,
+    "tmean": 19.4,
+    "tmax": 22.5,
+    "tmin": 16.0,
+    "vapor": 15.6,
+    "humidity": 93.6,
+    "wind_force": 3.9,
+    "cloudiness": 9.0,
+    "precip": null,
+    "evap_sol": 2.2,
+    "evap_sombra": 1.2,
+    "ozone": 11.0
+   },
+   "flags": {
+    "wind_dir": "SE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1458,
+    1572,
+    1486
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 17,
+   "date": "1886-09-17",
+   "image": "gold_rows/14_000179_d17.png",
+   "sha256": "f557fa76cb04b8b05e80602e5558d5a081d2c05aab058cd75f0872cf7a084a72",
+   "cells": {
+    "pressure": 754.79,
+    "pressure_max": 756.43,
+    "pressure_min": 752.74,
+    "tmean": 23.1,
+    "tmax": 29.1,
+    "tmin": 18.4,
+    "vapor": 16.6,
+    "humidity": 73.6,
+    "wind_force": 1.9,
+    "cloudiness": 8.3,
+    "precip": null,
+    "evap_sol": 2.0,
+    "evap_sombra": 0.3,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1486,
+    1572,
+    1514
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 18,
+   "date": "1886-09-18",
+   "image": "gold_rows/14_000179_d18.png",
+   "sha256": "dce6a26afa8f734883cbb5366672dbbeeeea168e08fd543fd728eea3b369f9c4",
+   "cells": {
+    "pressure": 758.29,
+    "pressure_max": 759.58,
+    "pressure_min": 757.9,
+    "tmean": 21.9,
+    "tmax": 25.2,
+    "tmin": 19.9,
+    "vapor": 15.7,
+    "humidity": 79.9,
+    "wind_force": 3.3,
+    "cloudiness": 8.9,
+    "precip": null,
+    "evap_sol": 4.8,
+    "evap_sombra": 3.2,
+    "ozone": 7.0
+   },
+   "flags": {
+    "wind_dir": "SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1513,
+    1572,
+    1541
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 19,
+   "date": "1886-09-19",
+   "image": "gold_rows/14_000179_d19.png",
+   "sha256": "72824693ae5833b24778a06f76313aae11c9d335f94cea20398d4c46925ec642",
+   "cells": {
+    "pressure": 759.08,
+    "pressure_max": 760.42,
+    "pressure_min": 757.88,
+    "tmean": 21.6,
+    "tmax": 23.6,
+    "tmin": 19.8,
+    "vapor": 16.5,
+    "humidity": 86.2,
+    "wind_force": 1.4,
+    "cloudiness": 9.9,
+    "precip": null,
+    "evap_sol": 2.3,
+    "evap_sombra": 2.0,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1541,
+    1572,
+    1569
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 20,
+   "date": "1886-09-20",
+   "image": "gold_rows/14_000179_d20.png",
+   "sha256": "3cdb70cbefe504b0a26f6fbb6342fb6aff9cc6b09c05b68a5c64710d346b759d",
+   "cells": {
+    "pressure": 756.3,
+    "pressure_max": 757.93,
+    "pressure_min": 755.12,
+    "tmean": 21.3,
+    "tmax": 26.1,
+    "tmin": 20.0,
+    "vapor": 16.9,
+    "humidity": 90.2,
+    "wind_force": 4.6,
+    "cloudiness": 9.5,
+    "precip": null,
+    "evap_sol": 2.7,
+    "evap_sombra": 1.5,
+    "ozone": 12.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    150,
+    1568,
+    1572,
+    1596
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 21,
+   "date": "1886-09-21",
+   "image": "gold_rows/14_000179_d21.png",
+   "sha256": "a8c15176310cc7c814b7c60c3d21f8c52e59f115cec08caf5bfc82887bfb0701",
+   "cells": {
+    "pressure": 756.69,
+    "pressure_max": 758.13,
+    "pressure_min": 755.59,
+    "tmean": 21.7,
+    "tmax": 23.3,
+    "tmin": 20.8,
+    "vapor": 17.7,
+    "humidity": 91.6,
+    "wind_force": 2.4,
+    "cloudiness": 10.0,
+    "precip": null,
+    "evap_sol": 1.7,
+    "evap_sombra": 1.1,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    1596,
+    1572,
+    1624
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 22,
+   "date": "1886-09-22",
+   "image": "gold_rows/14_000179_d22.png",
+   "sha256": "68b5190cc9de57f27fd6b497d252250107075a9701c67207775375fc8d8a1852",
+   "cells": {
+    "pressure": 756.26,
+    "pressure_max": 758.6,
+    "pressure_min": 754.69,
+    "tmean": 22.6,
+    "tmax": 26.8,
+    "tmin": 20.9,
+    "vapor": 17.5,
+    "humidity": 86.1,
+    "wind_force": 3.3,
+    "cloudiness": 9.9,
+    "precip": 0.7,
+    "evap_sol": 1.5,
+    "evap_sombra": 1.2,
+    "ozone": 7.0
+   },
+   "flags": {
+    "wind_dir": "NW"
+   },
+   "box": [
+    150,
+    1623,
+    1572,
+    1651
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 23,
+   "date": "1886-09-23",
+   "image": "gold_rows/14_000179_d23.png",
+   "sha256": "29c686f004622419191412f67bc388f54c75ebacee4bfe0240bdc01a131db004",
+   "cells": {
+    "pressure": 759.34,
+    "pressure_max": 761.07,
+    "pressure_min": 757.43,
+    "tmean": 19.2,
+    "tmax": 20.2,
+    "tmin": 17.0,
+    "vapor": 15.8,
+    "humidity": 95.3,
+    "wind_force": 5.4,
+    "cloudiness": 10.0,
+    "precip": 17.3,
+    "evap_sol": 0.9,
+    "evap_sombra": 0.9,
+    "ozone": 12.0
+   },
+   "flags": {
+    "wind_dir": "SSE"
+   },
+   "box": [
+    150,
+    1651,
+    1572,
+    1679
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 24,
+   "date": "1886-09-24",
+   "image": "gold_rows/14_000179_d24.png",
+   "sha256": "85d82605fdcca9ba98252ccf883cb0ff14e6039c249391d5bcc8e3a3b506d415",
+   "cells": {
+    "pressure": 758.95,
+    "pressure_max": 760.49,
+    "pressure_min": 757.08,
+    "tmean": 19.7,
+    "tmax": 21.0,
+    "tmin": 17.8,
+    "vapor": 15.0,
+    "humidity": 89.8,
+    "wind_force": 4.8,
+    "cloudiness": 9.1,
+    "precip": 5.5,
+    "evap_sol": 1.3,
+    "evap_sombra": 1.1,
+    "ozone": 9.0
+   },
+   "flags": {
+    "wind_dir": "SSE"
+   },
+   "box": [
+    150,
+    1679,
+    1572,
+    1707
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 25,
+   "date": "1886-09-25",
+   "image": "gold_rows/14_000179_d25.png",
+   "sha256": "2cf9c71b607ab45d7bf5fe0077a79b2f4950752c9f37f5758c8c17373590ee56",
+   "cells": {
+    "pressure": 758.63,
+    "pressure_max": 759.54,
+    "pressure_min": 757.33,
+    "tmean": 18.3,
+    "tmax": 20.4,
+    "tmin": 15.5,
+    "vapor": 15.0,
+    "humidity": 95.2,
+    "wind_force": 6.2,
+    "cloudiness": 10.0,
+    "precip": 34.5,
+    "evap_sol": 1.2,
+    "evap_sombra": 1.1,
+    "ozone": 11.0
+   },
+   "flags": {
+    "wind_dir": "SSE"
+   },
+   "box": [
+    150,
+    1706,
+    1572,
+    1734
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 26,
+   "date": "1886-09-26",
+   "image": "gold_rows/14_000179_d26.png",
+   "sha256": "3a948f37b758a733f3a00cb310f9327d70da4315117aec75d9d5585efd2fdcfc",
+   "cells": {
+    "pressure": 761.05,
+    "pressure_max": 762.88,
+    "pressure_min": 758.33,
+    "tmean": 16.0,
+    "tmax": 16.4,
+    "tmin": 15.0,
+    "vapor": 11.3,
+    "humidity": 83.7,
+    "wind_force": 7.5,
+    "cloudiness": 9.9,
+    "precip": 19.9,
+    "evap_sol": 0.5,
+    "evap_sombra": 0.5,
+    "ozone": 10.0
+   },
+   "flags": {
+    "wind_dir": "SE"
+   },
+   "box": [
+    150,
+    1733,
+    1572,
+    1761
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 27,
+   "date": "1886-09-27",
+   "image": "gold_rows/14_000179_d27.png",
+   "sha256": "11c4607873806efe882368156059fdfa8454e16dca62aaaa8251401fa1fa6eec",
+   "cells": {
+    "pressure": 760.06,
+    "pressure_max": 762.11,
+    "pressure_min": 758.42,
+    "tmean": 18.3,
+    "tmax": 21.0,
+    "tmin": 15.0,
+    "vapor": 13.3,
+    "humidity": 84.7,
+    "wind_force": 3.7,
+    "cloudiness": 8.8,
+    "precip": 3.8,
+    "evap_sol": 0.8,
+    "evap_sombra": 0.8,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "SSE"
+   },
+   "box": [
+    150,
+    1761,
+    1572,
+    1789
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 28,
+   "date": "1886-09-28",
+   "image": "gold_rows/14_000179_d28.png",
+   "sha256": "05953b542233d246bca52604b601edaecd9ca3f0f09f2b18f87a9919254d7b70",
+   "cells": {
+    "pressure": 756.87,
+    "pressure_max": 757.63,
+    "pressure_min": 755.97,
+    "tmean": 20.8,
+    "tmax": 23.0,
+    "tmin": 18.5,
+    "vapor": 14.2,
+    "humidity": 78.6,
+    "wind_force": 3.0,
+    "cloudiness": 8.9,
+    "precip": 0.4,
+    "evap_sol": 2.2,
+    "evap_sombra": 2.0,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "SSE"
+   },
+   "box": [
+    150,
+    1789,
+    1572,
+    1817
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 29,
+   "date": "1886-09-29",
+   "image": "gold_rows/14_000179_d29.png",
+   "sha256": "7782e5a7349b1770d1f8cb9bd25a1eda29805652baacc35c9833e370dae14b15",
+   "cells": {
+    "pressure": 759.25,
+    "pressure_max": 761.91,
+    "pressure_min": 756.65,
+    "tmean": 19.8,
+    "tmax": 23.6,
+    "tmin": 16.0,
+    "vapor": 13.0,
+    "humidity": 76.8,
+    "wind_force": 4.5,
+    "cloudiness": 5.8,
+    "precip": null,
+    "evap_sol": 3.2,
+    "evap_sombra": 2.8,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "gottas"
+   },
+   "box": [
+    150,
+    1817,
+    1572,
+    1845
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 179,
+   "period": "1886-09",
+   "day": 30,
+   "date": "1886-09-30",
+   "image": "gold_rows/14_000179_d30.png",
+   "sha256": "f0439c2624d97ef41f91dbbae78a867d61a86febeebb761c0a0a9b2e16c15727",
+   "cells": {
+    "pressure": 761.96,
+    "pressure_max": 763.38,
+    "pressure_min": 760.72,
+    "tmean": 19.5,
+    "tmax": 21.8,
+    "tmin": 17.6,
+    "vapor": 14.0,
+    "humidity": 83.5,
+    "wind_force": 4.5,
+    "cloudiness": 7.8,
+    "precip": 3.0,
+    "evap_sol": 3.0,
+    "evap_sombra": 2.1,
+    "ozone": 6.0
+   },
+   "flags": {
+    "wind_dir": "Variavel"
+   },
+   "box": [
+    150,
+    1844,
+    1572,
+    1872
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 1,
+   "date": "1886-11-01",
+   "image": "gold_rows/14_000212_d01.png",
+   "sha256": "516cd7d35c8d5cca3daf336aff99d46d8b9bc33f9b39f280779cfbe4b5c822b9",
+   "cells": {
+    "pressure": 753.86,
+    "pressure_max": 755.99,
+    "pressure_min": 751.44,
+    "tmean": 22.3,
+    "tmax": 28.3,
+    "tmin": 20.0,
+    "vapor": 16.1,
+    "humidity": 79.7,
+    "wind_force": 4.3,
+    "cloudiness": 0.8,
+    "precip": 7.0,
+    "evap_sol": 3.3,
+    "evap_sombra": 2.5,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "printed_error": "sheet-level: this is the lowest-confidence sheet in the first pass (heaviest scan wear of the selection). Per the project's faithful-transcription convention (see gold/SELECTION.md), every barometer cell that the first pass had silently substituted a constraint-solved value for has been reverted to its literal printed reading (7xx-prefix reconstruction) on rows 3, 16, 21, 26, 28 and 30 (pressure/pressure_max/pressure_min/evap_sombra - see each row's own flag), plus the whole cloudiness column (was silently x10'd; reverted). Residual printed totals mismatches after reverting: pressure_mean printed 755.22 vs computed 755.63; vapor_mean printed 16.3 vs computed 16.06 (minor, no specific bad cell found); cloudiness_mean printed 6.5 vs computed 0.65 (the printed daily Nebulosidade digits are consistently ~1/10 of what the printed Mez mean implies - kept as printed, not rescaled); precip_sum printed 35.0 vs computed 68.10 (UNRESOLVED - see rows 11 and 16, and REVIEW_QUEUE.md - needs a human re-check against the image, not force-fitted here)."
+   },
+   "box": [
+    154,
+    1212,
+    1604,
+    1240
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 2,
+   "date": "1886-11-02",
+   "image": "gold_rows/14_000212_d02.png",
+   "sha256": "2562b627ee6034b84571d89ad639c34b9bc91b99172befe0a2d46c01b850b8a1",
+   "cells": {
+    "pressure": 756.62,
+    "pressure_max": 758.08,
+    "pressure_min": 753.33,
+    "tmean": 20.9,
+    "tmax": 23.5,
+    "tmin": 19.3,
+    "vapor": 13.1,
+    "humidity": 70.9,
+    "wind_force": 5.3,
+    "cloudiness": 0.8,
+    "precip": 0.4,
+    "evap_sol": 6.4,
+    "evap_sombra": 4.1,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "SSE"
+   },
+   "box": [
+    154,
+    1240,
+    1604,
+    1268
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 3,
+   "date": "1886-11-03",
+   "image": "gold_rows/14_000212_d03.png",
+   "sha256": "5838fdf895485ddd4cdb8af4054d9cf037dc0b62abd112b830308bd5f699c035",
+   "cells": {
+    "pressure": 753.38,
+    "pressure_max": 760.95,
+    "pressure_min": 757.43,
+    "tmean": 17.9,
+    "tmax": 23.8,
+    "tmin": 15.8,
+    "vapor": 11.6,
+    "humidity": 67.0,
+    "wind_force": 3.8,
+    "cloudiness": 0.6,
+    "precip": null,
+    "evap_sol": 5.9,
+    "evap_sombra": 3.3,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "SE, SSE",
+    "precip": "none",
+    "printed_error": "baro minima printed as '57.43' (7xx-prefix reconstruction per SELECTION.md convention: 757.43); this exceeds the row's own mean (753.38), which is physically impossible for a diurnal mean vs its own minimum - printed as-is per faithful-transcription convention (previously silently blended to 749.43 to satisfy the ordering constraint; that value did not correspond to any printed digit and has been reverted). Likely an 1886 compositor slip; verify against data/raw/docvirt/14/000212.webp if in doubt."
+   },
+   "box": [
+    154,
+    1268,
+    1604,
+    1296
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 4,
+   "date": "1886-11-04",
+   "image": "gold_rows/14_000212_d04.png",
+   "sha256": "c8040ec299efd7839b754588973f173b9a526e167c7899f0cff86bcefd992f2f",
+   "cells": {
+    "pressure": 758.9,
+    "pressure_max": 759.95,
+    "pressure_min": 757.43,
+    "tmean": 20.1,
+    "tmax": 28.6,
+    "tmin": 17.0,
+    "vapor": 11.7,
+    "humidity": 67.1,
+    "wind_force": 3.7,
+    "cloudiness": 0.1,
+    "precip": null,
+    "evap_sol": 5.5,
+    "evap_sombra": 3.9,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "N, SSE",
+    "precip": "none",
+    "low_confidence": "baro minima printed as '57.43'; reconstructed as 757.43 via the standard 7xx-prefix convention (whole page runs 749-765mmHg) - internally consistent with this row's own mean (758.90) and max (759.95). Low risk, kept for completeness since day 3's identical-looking elided digits needed correction."
+   },
+   "box": [
+    154,
+    1297,
+    1604,
+    1325
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 5,
+   "date": "1886-11-05",
+   "image": "gold_rows/14_000212_d05.png",
+   "sha256": "c8a78d2f502f2aaaab49d6d8c0a0dce9a9013225dcf64aa995ccd8e68d4dee47",
+   "cells": {
+    "pressure": 759.53,
+    "pressure_max": 761.17,
+    "pressure_min": 758.35,
+    "tmean": 20.4,
+    "tmax": 23.0,
+    "tmin": 17.8,
+    "vapor": 13.6,
+    "humidity": 76.1,
+    "wind_force": 5.3,
+    "cloudiness": 0.3,
+    "precip": null,
+    "evap_sol": 5.8,
+    "evap_sombra": 5.0,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "SSE",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1324,
+    1604,
+    1352
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 6,
+   "date": "1886-11-06",
+   "image": "gold_rows/14_000212_d06.png",
+   "sha256": "ab13ff6887e7c4013c1ad8053e4096fb3ce45edc21272eee8c045b213b6b50d4",
+   "cells": {
+    "pressure": 759.17,
+    "pressure_max": 760.32,
+    "pressure_min": 756.89,
+    "tmean": 22.1,
+    "tmax": 25.4,
+    "tmin": 19.0,
+    "vapor": 14.5,
+    "humidity": 73.2,
+    "wind_force": 4.9,
+    "cloudiness": 0.3,
+    "precip": null,
+    "evap_sol": 5.0,
+    "evap_sombra": 3.3,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "SE",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1352,
+    1604,
+    1380
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 7,
+   "date": "1886-11-07",
+   "image": "gold_rows/14_000212_d07.png",
+   "sha256": "a8882654f3b3406b86d475003558880239f57a53671b7d8fe1e796182f2136c4",
+   "cells": {
+    "pressure": 757.41,
+    "pressure_max": 757.97,
+    "pressure_min": 756.55,
+    "tmean": 22.9,
+    "tmax": 29.0,
+    "tmin": 19.4,
+    "vapor": 15.8,
+    "humidity": 76.2,
+    "wind_force": 3.5,
+    "cloudiness": 0.8,
+    "precip": 5.9,
+    "evap_sol": 4.7,
+    "evap_sombra": 3.7,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "N"
+   },
+   "box": [
+    154,
+    1380,
+    1604,
+    1408
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 8,
+   "date": "1886-11-08",
+   "image": "gold_rows/14_000212_d08.png",
+   "sha256": "cdb2a63f2f4dc1325c2e32488810c3268bdc678bd5db6ad62dc07511a6d60f84",
+   "cells": {
+    "pressure": 756.25,
+    "pressure_max": 757.31,
+    "pressure_min": 754.85,
+    "tmean": 23.5,
+    "tmax": 28.1,
+    "tmin": 19.6,
+    "vapor": 18.4,
+    "humidity": 84.7,
+    "wind_force": 2.4,
+    "cloudiness": 1.0,
+    "precip": 2.6,
+    "evap_sol": 2.1,
+    "evap_sombra": 1.6,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "O"
+   },
+   "box": [
+    154,
+    1409,
+    1604,
+    1437
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 9,
+   "date": "1886-11-09",
+   "image": "gold_rows/14_000212_d09.png",
+   "sha256": "2cd134866bff5dc4a690c2711a99a199927e8773b9fd845b807bad8fb2e75c22",
+   "cells": {
+    "pressure": 754.97,
+    "pressure_max": 756.46,
+    "pressure_min": 753.82,
+    "tmean": 26.8,
+    "tmax": 32.8,
+    "tmin": 21.8,
+    "vapor": 18.7,
+    "humidity": 69.3,
+    "wind_force": 2.8,
+    "cloudiness": 0.6,
+    "precip": null,
+    "evap_sol": 5.3,
+    "evap_sombra": 2.8,
+    "ozone": 0.0
+   },
+   "flags": {
+    "wind_dir": "NNW, O",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1437,
+    1604,
+    1465
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 10,
+   "date": "1886-11-10",
+   "image": "gold_rows/14_000212_d10.png",
+   "sha256": "ed091e56350a954959ccc8a24184f887497a6bc4dc1c3065112f4cfda81ecabf",
+   "cells": {
+    "pressure": 754.37,
+    "pressure_max": 755.5,
+    "pressure_min": 752.62,
+    "tmean": 27.0,
+    "tmax": 33.0,
+    "tmin": 21.8,
+    "vapor": 18.0,
+    "humidity": 67.4,
+    "wind_force": 3.6,
+    "cloudiness": 0.3,
+    "precip": null,
+    "evap_sol": 6.7,
+    "evap_sombra": 3.7,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "NNW",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1465,
+    1604,
+    1493
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 11,
+   "date": "1886-11-11",
+   "image": "gold_rows/14_000212_d11.png",
+   "sha256": "b4a8b4dafac08f20d7fd2d82a0fe02737818f60b97dcd539446986505576a7eb",
+   "cells": {
+    "pressure": 755.89,
+    "pressure_max": 759.36,
+    "pressure_min": 753.32,
+    "tmean": 24.7,
+    "tmax": 25.0,
+    "tmin": 23.5,
+    "vapor": 18.7,
+    "humidity": 76.1,
+    "wind_force": 2.3,
+    "cloudiness": 1.0,
+    "precip": 17.0,
+    "evap_sol": 4.5,
+    "evap_sombra": 4.5,
+    "ozone": 0.0
+   },
+   "flags": {
+    "wind_dir": "SSE",
+    "low_confidence": "chuva printed as '17.0'; the adjacent nebulosidade cell also needed a decimal-point correction on this page - verify chuva digit against image directly"
+   },
+   "box": [
+    154,
+    1493,
+    1604,
+    1521
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 12,
+   "date": "1886-11-12",
+   "image": "gold_rows/14_000212_d12.png",
+   "sha256": "4af63450befe66d99129cd61b68f0d7c3c9d7d7d43df6e31155486629442bec4",
+   "cells": {
+    "pressure": 762.39,
+    "pressure_max": 764.71,
+    "pressure_min": 760.1,
+    "tmean": 19.2,
+    "tmax": 20.0,
+    "tmin": 18.4,
+    "vapor": 15.7,
+    "humidity": 93.0,
+    "wind_force": 7.5,
+    "cloudiness": 1.0,
+    "precip": null,
+    "evap_sol": 1.8,
+    "evap_sombra": 1.8,
+    "ozone": 6.0
+   },
+   "flags": {
+    "wind_dir": "S, SE",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1521,
+    1604,
+    1549
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 13,
+   "date": "1886-11-13",
+   "image": "gold_rows/14_000212_d13.png",
+   "sha256": "aae20515cb69ac151ecf769ef78eba23897a52903a6b34ae8d3d99f4a54a2fc6",
+   "cells": {
+    "pressure": 762.18,
+    "pressure_max": 763.31,
+    "pressure_min": 760.35,
+    "tmean": 20.1,
+    "tmax": 22.3,
+    "tmin": 18.0,
+    "vapor": 14.8,
+    "humidity": 86.6,
+    "wind_force": 7.0,
+    "cloudiness": 0.9,
+    "precip": null,
+    "evap_sol": 3.2,
+    "evap_sombra": 3.2,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "SE",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1550,
+    1604,
+    1578
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 14,
+   "date": "1886-11-14",
+   "image": "gold_rows/14_000212_d14.png",
+   "sha256": "4d6ca36572f65b49febe96ed35b410e4eb3733fb9a4013d8b88e6b072fcccf78",
+   "cells": {
+    "pressure": 755.85,
+    "pressure_max": 759.93,
+    "pressure_min": 753.11,
+    "tmean": 23.6,
+    "tmax": 28.9,
+    "tmin": 19.0,
+    "vapor": 17.0,
+    "humidity": 76.6,
+    "wind_force": 4.8,
+    "cloudiness": 0.8,
+    "precip": 1.1,
+    "evap_sol": 4.0,
+    "evap_sombra": 2.6,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "Variavel"
+   },
+   "box": [
+    154,
+    1577,
+    1604,
+    1605
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 15,
+   "date": "1886-11-15",
+   "image": "gold_rows/14_000212_d15.png",
+   "sha256": "1fc2927cc25be3928c4af69593316511b22f969efac405c77785d756ab02fe20",
+   "cells": {
+    "pressure": 755.75,
+    "pressure_max": 759.23,
+    "pressure_min": 752.96,
+    "tmean": 23.6,
+    "tmax": 28.0,
+    "tmin": 23.4,
+    "vapor": 18.0,
+    "humidity": 77.5,
+    "wind_force": 3.1,
+    "cloudiness": 0.8,
+    "precip": null,
+    "evap_sol": 4.8,
+    "evap_sombra": 2.4,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1606,
+    1604,
+    1634
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 16,
+   "date": "1886-11-16",
+   "image": "gold_rows/14_000212_d16.png",
+   "sha256": "7e40eb01d1b33b97be7a2a6ed4f79025362836eb1a3c363da2380d1153adf7e5",
+   "cells": {
+    "pressure": 756.22,
+    "pressure_max": 750.13,
+    "pressure_min": 755.09,
+    "tmean": 20.8,
+    "tmax": 28.0,
+    "tmin": 19.8,
+    "vapor": 15.1,
+    "humidity": 83.0,
+    "wind_force": 4.4,
+    "cloudiness": 0.9,
+    "precip": 19.6,
+    "evap_sol": 4.8,
+    "evap_sombra": 3.4,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "SSE",
+    "low_confidence": "baro maxima printed as '50.13' (7xx-prefix reconstruction: 750.13); this is less than the row's own mean (756.22), which is physically impossible for a daily maximum - printed as-is per faithful-transcription convention (previously silently corrected to 759.13; reverted). Likely an 1886 compositor error (leading digit '5' for '9' or similar); verify against data/raw/docvirt/14/000212.webp. Chuva printed as '19.6' but does not reconcile with the Mez sum - see REVIEW_QUEUE.md."
+   },
+   "box": [
+    154,
+    1634,
+    1604,
+    1662
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 17,
+   "date": "1886-11-17",
+   "image": "gold_rows/14_000212_d17.png",
+   "sha256": "e2425bf28fd513228d83cd50924710e055e25d5c7e2ebf8d951744b018518744",
+   "cells": {
+    "pressure": 753.63,
+    "pressure_max": 755.79,
+    "pressure_min": 751.02,
+    "tmean": 24.4,
+    "tmax": 30.7,
+    "tmin": 20.0,
+    "vapor": 18.0,
+    "humidity": 78.4,
+    "wind_force": 4.1,
+    "cloudiness": 0.6,
+    "precip": 2.2,
+    "evap_sol": 4.5,
+    "evap_sombra": 2.9,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel"
+   },
+   "box": [
+    154,
+    1662,
+    1604,
+    1690
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 18,
+   "date": "1886-11-18",
+   "image": "gold_rows/14_000212_d18.png",
+   "sha256": "f5e70efc75e8dc7ec6d3561a98a5ff18e697e9b49f9d4b4e4acf197228734755",
+   "cells": {
+    "pressure": 755.64,
+    "pressure_max": 758.37,
+    "pressure_min": 752.31,
+    "tmean": 23.7,
+    "tmax": 27.8,
+    "tmin": 22.8,
+    "vapor": 19.8,
+    "humidity": 85.4,
+    "wind_force": 3.9,
+    "cloudiness": 0.9,
+    "precip": null,
+    "evap_sol": 4.5,
+    "evap_sombra": 3.3,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "NW",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1690,
+    1604,
+    1718
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 19,
+   "date": "1886-11-19",
+   "image": "gold_rows/14_000212_d19.png",
+   "sha256": "6b9bad4d711e46482fd4b7ea340188e02c87b4844cbdec7643e36dd684b317f1",
+   "cells": {
+    "pressure": 758.27,
+    "pressure_max": 759.12,
+    "pressure_min": 757.38,
+    "tmean": 21.2,
+    "tmax": 27.8,
+    "tmin": 20.4,
+    "vapor": 15.2,
+    "humidity": 81.1,
+    "wind_force": 3.6,
+    "cloudiness": 0.8,
+    "precip": null,
+    "evap_sol": 6.6,
+    "evap_sombra": 5.0,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "O, SE",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1718,
+    1604,
+    1746
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 20,
+   "date": "1886-11-20",
+   "image": "gold_rows/14_000212_d20.png",
+   "sha256": "ae1a98d464aec328a53fa6adf92bb9426eafcd00a34d120cedde6a560f0236e5",
+   "cells": {
+    "pressure": 758.15,
+    "pressure_max": 758.91,
+    "pressure_min": 756.49,
+    "tmean": 20.8,
+    "tmax": 22.0,
+    "tmin": 19.5,
+    "vapor": 15.7,
+    "humidity": 80.0,
+    "wind_force": 4.7,
+    "cloudiness": 0.8,
+    "precip": null,
+    "evap_sol": 5.4,
+    "evap_sombra": 5.0,
+    "ozone": 3.0
+   },
+   "flags": {
+    "wind_dir": "O, SE",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1746,
+    1604,
+    1774
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 21,
+   "date": "1886-11-21",
+   "image": "gold_rows/14_000212_d21.png",
+   "sha256": "3ce5ca13fca83434185c2c7acbc7d7dd7934de4660e265168ed7bc91d90d187b",
+   "cells": {
+    "pressure": 755.9,
+    "pressure_max": 757.78,
+    "pressure_min": 757.99,
+    "tmean": 21.9,
+    "tmax": 26.5,
+    "tmin": 19.6,
+    "vapor": 16.4,
+    "humidity": 76.9,
+    "wind_force": 4.2,
+    "cloudiness": 0.3,
+    "precip": null,
+    "evap_sol": 6.5,
+    "evap_sombra": 3.6,
+    "ozone": 2.0
+   },
+   "flags": {
+    "wind_dir": "NE, SSE",
+    "precip": "none",
+    "low_confidence": "baro minima printed as '57.99' (7xx-prefix reconstruction: 757.99); this exceeds the row's own maxima (757.78), which is physically impossible for a daily minimum - printed as-is per faithful-transcription convention (previously silently corrected to 754.99; reverted). Likely an 1886 compositor error; verify against data/raw/docvirt/14/000212.webp."
+   },
+   "box": [
+    154,
+    1775,
+    1604,
+    1803
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 22,
+   "date": "1886-11-22",
+   "image": "gold_rows/14_000212_d22.png",
+   "sha256": "f4d50e34558c13910895c94e83b831758c2b6d884b691af93ad9c6940a7006b8",
+   "cells": {
+    "pressure": 751.92,
+    "pressure_max": 754.9,
+    "pressure_min": 749.23,
+    "tmean": 26.5,
+    "tmax": 34.2,
+    "tmin": 21.0,
+    "vapor": 17.2,
+    "humidity": 64.2,
+    "wind_force": 3.4,
+    "cloudiness": 0.5,
+    "precip": 8.8,
+    "evap_sol": 6.6,
+    "evap_sombra": 3.9,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel"
+   },
+   "box": [
+    154,
+    1803,
+    1604,
+    1831
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 23,
+   "date": "1886-11-23",
+   "image": "gold_rows/14_000212_d23.png",
+   "sha256": "58d3de372178fe3d622f84ea56c0426bb5fabedb5d524626f9611571a70e5ff8",
+   "cells": {
+    "pressure": 751.3,
+    "pressure_max": 755.64,
+    "pressure_min": 749.69,
+    "tmean": 22.4,
+    "tmax": 23.7,
+    "tmin": 20.7,
+    "vapor": 17.6,
+    "humidity": 85.8,
+    "wind_force": 4.6,
+    "cloudiness": 1.0,
+    "precip": 3.5,
+    "evap_sol": 4.4,
+    "evap_sombra": 3.5,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "Variavel"
+   },
+   "box": [
+    154,
+    1831,
+    1604,
+    1859
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 24,
+   "date": "1886-11-24",
+   "image": "gold_rows/14_000212_d24.png",
+   "sha256": "632faa50df9e94134e5658f1592030ec2956f31c8dd75c490034826a4c481c96",
+   "cells": {
+    "pressure": 754.57,
+    "pressure_max": 756.78,
+    "pressure_min": 753.09,
+    "tmean": 21.3,
+    "tmax": 23.0,
+    "tmin": 20.2,
+    "vapor": 14.1,
+    "humidity": 66.1,
+    "wind_force": 4.2,
+    "cloudiness": 0.6,
+    "precip": null,
+    "evap_sol": 4.6,
+    "evap_sombra": 3.7,
+    "ozone": 5.0
+   },
+   "flags": {
+    "wind_dir": "SW",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1859,
+    1604,
+    1887
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 25,
+   "date": "1886-11-25",
+   "image": "gold_rows/14_000212_d25.png",
+   "sha256": "2a80f987eeca9b6d0be50a87c85b586552adcb6d97a7e10238d7a98f9a185bf7",
+   "cells": {
+    "pressure": 754.09,
+    "pressure_max": 756.33,
+    "pressure_min": 753.67,
+    "tmean": 20.9,
+    "tmax": 26.8,
+    "tmin": 18.8,
+    "vapor": 14.6,
+    "humidity": 79.2,
+    "wind_force": 2.6,
+    "cloudiness": 0.7,
+    "precip": null,
+    "evap_sol": 6.0,
+    "evap_sombra": 3.1,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1887,
+    1604,
+    1915
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 26,
+   "date": "1886-11-26",
+   "image": "gold_rows/14_000212_d26.png",
+   "sha256": "9a93bb866a510a857b76a8f86ff774c24d8dbe544193340d1ce598277012f939",
+   "cells": {
+    "pressure": 760.69,
+    "pressure_max": 754.52,
+    "pressure_min": 752.62,
+    "tmean": 21.9,
+    "tmax": 26.6,
+    "tmin": 19.2,
+    "vapor": 15.7,
+    "humidity": 79.5,
+    "wind_force": 3.7,
+    "cloudiness": 0.3,
+    "precip": null,
+    "evap_sol": 4.6,
+    "evap_sombra": 27.0,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "O, SSE",
+    "precip": "none",
+    "low_confidence": "baro maxima printed as '54.52' (7xx-prefix reconstruction: 754.52); this is less than the row's own mean (760.69), physically impossible for a daily maximum - printed as-is per faithful-transcription convention (previously silently corrected to 764.52; reverted). Evap_sombra printed as '27.' - an implausible magnitude for this column (every other reading in the sheet is under 6mm) - kept as printed 27.0 (previously silently corrected to 2.7; reverted), likely a misplaced decimal point in the original typesetting. Verify against data/raw/docvirt/14/000212.webp."
+   },
+   "box": [
+    154,
+    1915,
+    1604,
+    1943
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 27,
+   "date": "1886-11-27",
+   "image": "gold_rows/14_000212_d27.png",
+   "sha256": "9ccc3d95d5aaefbc5c3305634bc0a251a9d4b57f8148af4d111b4c259d6980c0",
+   "cells": {
+    "pressure": 753.03,
+    "pressure_max": 754.79,
+    "pressure_min": 752.91,
+    "tmean": 22.3,
+    "tmax": 28.0,
+    "tmin": 20.1,
+    "vapor": 16.4,
+    "humidity": 75.0,
+    "wind_force": 4.9,
+    "cloudiness": 0.2,
+    "precip": null,
+    "evap_sol": 4.7,
+    "evap_sombra": 2.5,
+    "ozone": 4.0
+   },
+   "flags": {
+    "wind_dir": "SSE",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    1943,
+    1604,
+    1971
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 28,
+   "date": "1886-11-28",
+   "image": "gold_rows/14_000212_d28.png",
+   "sha256": "a7fea905813066ee4b9bb145b6016ab0ef8a9a38ab156c3da7e4d40a0520e24b",
+   "cells": {
+    "pressure": 754.7,
+    "pressure_max": 753.83,
+    "pressure_min": 750.71,
+    "tmean": 23.6,
+    "tmax": 29.8,
+    "tmin": 20.0,
+    "vapor": 15.9,
+    "humidity": 69.3,
+    "wind_force": 4.5,
+    "cloudiness": 0.3,
+    "precip": null,
+    "evap_sol": 6.4,
+    "evap_sombra": 4.2,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none",
+    "low_confidence": "baro maxima printed as '53.83' (7xx-prefix reconstruction: 753.83); this is less than the row's own mean (754.70), physically impossible for a daily maximum - printed as-is per faithful-transcription convention (previously silently corrected to 755.83; reverted). Likely an 1886 compositor error; verify against data/raw/docvirt/14/000212.webp."
+   },
+   "box": [
+    154,
+    1971,
+    1604,
+    1999
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 29,
+   "date": "1886-11-29",
+   "image": "gold_rows/14_000212_d29.png",
+   "sha256": "314edf20a79d6476f2d9e9061f3f73632ff79bdcec235d90d3b547a859359a67",
+   "cells": {
+    "pressure": 752.17,
+    "pressure_max": 753.58,
+    "pressure_min": 750.82,
+    "tmean": 25.1,
+    "tmax": 26.7,
+    "tmin": 22.3,
+    "vapor": 14.8,
+    "humidity": 76.4,
+    "wind_force": 3.8,
+    "cloudiness": 0.6,
+    "precip": null,
+    "evap_sol": 6.3,
+    "evap_sombra": 4.4,
+    "ozone": 1.0
+   },
+   "flags": {
+    "wind_dir": "Variavel",
+    "precip": "none"
+   },
+   "box": [
+    154,
+    2000,
+    1604,
+    2028
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  },
+  {
+   "doc": "14",
+   "page": 212,
+   "period": "1886-11",
+   "day": 30,
+   "date": "1886-11-30",
+   "image": "gold_rows/14_000212_d30.png",
+   "sha256": "cb33f956cfc8eac92b8b46f0141b1860b18c9365c1653a88113f23788320ed94",
+   "cells": {
+    "pressure": 742.03,
+    "pressure_max": 756.2,
+    "pressure_min": 749.16,
+    "tmean": 25.6,
+    "tmax": 31.6,
+    "tmin": 21.8,
+    "vapor": 19.5,
+    "humidity": 73.1,
+    "wind_force": 4.1,
+    "cloudiness": 0.9,
+    "precip": null,
+    "evap_sol": 5.7,
+    "evap_sombra": 2.6,
+    "ozone": 0.0
+   },
+   "flags": {
+    "wind_dir": "N",
+    "precip": "none",
+    "low_confidence": "baro media printed as '42.03' (7xx-prefix reconstruction: 742.03); this is less than the row's own minima (749.16), physically impossible for a diurnal mean - printed as-is per faithful-transcription convention (previously silently corrected to 752.03; reverted). Separately, this day's own printed minima (749.16) does not match the sheet's printed monthly minimum extremum on the Mez row (749.06) - a second, independent printed inconsistency, also kept as printed (previously nudged to 749.06 to force the match; reverted). Both confirmed directly against data/raw/docvirt/14/000212.webp; likely 1886 compositor/compilation errors."
+   },
+   "box": [
+    154,
+    2028,
+    1604,
+    2056
+   ],
+   "pitch": 28.0,
+   "skew_deg": 0.0,
+   "is_gold": true
+  }
+ ]
+}

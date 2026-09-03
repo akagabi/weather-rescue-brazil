@@ -1,0 +1,25 @@
+{
+ "gold_rows": 183,
+ "gold_cells_nonempty": 2425,
+ "reference": {
+  "g2b_single_shot_cell_acc": 0.9885,
+  "g2b_consensus_cell_acc": 0.9906,
+  "note": "recomputed 2026-09-03 from bench/g2/gemini-3.5-flash-g2b.json and bench/g3/revista-full.json vs frozen gold, 3822 cells"
+ },
+ "tesseract": {
+  "method": "tesseract --psm 7, tokens in order",
+  "rows": 183,
+  "cells": 2562,
+  "cell_acc": 0.01756440281030445,
+  "rows_with_14_tokens": 22,
+  "seconds": 37.6
+ },
+ "vlm_zero_shot": {
+  "method": "Qwen/Qwen3-VL-2B-Instruct zero-shot, tokens in order",
+  "rows": 40,
+  "cells": 560,
+  "cell_acc": 0.31785714285714284,
+  "rows_with_14_tokens": 29,
+  "seconds": 189.4
+ }
+}
