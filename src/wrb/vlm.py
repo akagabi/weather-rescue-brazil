@@ -41,7 +41,7 @@ class ExtractionParseError(RuntimeError):
 # JSON reply is budgeted at up to 2k output tokens (a full ~31-row/14-column
 # month is a few hundred numbers - 2k tokens covers it with headroom).
 ESTIMATED_INPUT_TOKENS = 1_500
-ESTIMATED_OUTPUT_TOKENS = 2_000
+ESTIMATED_OUTPUT_TOKENS = 3_200  # measured real g2b out w/ thinking off (2026-09-03)
 
 # USD per 1,000,000 tokens. Sources checked 2026-08-31/09-01:
 PRICES = {
@@ -468,6 +468,11 @@ def _request_gemini_g2b(
     gen_cfg = {
         "responseMimeType": "application/json",
         "responseSchema": g2b_response_schema(day_count),
+        # gemini-3.5-flash is a THINKING model: by default it spends ~17k
+        # reasoning tokens per call (billed as output), ~8x the real cost.
+        # Pure table transcription needs no reasoning - disable it. Measured
+        # 2026-09-03: US$0.0625/call (thinking on) -> US$0.0079 (off).
+        "thinkingConfig": {"thinkingBudget": 0},
     }
     # Consensus (Task 1, G3) needs the n repeated calls to actually vary, so
     # it passes temperature>0 here; a plain single-shot extract() call
@@ -561,6 +566,7 @@ def _request_gemini_period(endpoint: str, api_key: str, image_bytes: bytes) -> h
         "generationConfig": {
             "responseMimeType": "application/json",
             "responseSchema": _period_response_schema(),
+            "thinkingConfig": {"thinkingBudget": 0},  # no reasoning needed to read a header (see g2b note)
         },
     }
     return httpx.post(endpoint, json=body,
