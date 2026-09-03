@@ -201,6 +201,8 @@ def main() -> None:
                 sched.step()
                 opt.zero_grad()
                 step += 1
+                if dev == "mps":
+                    torch.mps.empty_cache()  # smoke1 lesson: the MPS caching allocator grew to 13 GB and swapped
                 if step % 10 == 0:
                     print(f"epoch {epoch} step {step}/{steps_total} loss {sum(losses[-args.grad_accum:]) / args.grad_accum:.4f} "
                           f"{(time.time() - t0) / 60:.1f} min", flush=True)
