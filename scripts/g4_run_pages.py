@@ -79,11 +79,11 @@ class MlxDayOracle:
                 left.save(f, format="PNG")
                 f.close()
                 paths.append(f.name)
-            texts = []
-            for chunk in _chunks(paths, self.batch):
+            def _run(chunk):
                 out = batch_generate(self.model, self.proc, images=chunk, prompts=[prompt] * len(chunk),
                                      max_tokens=6, verbose=False)
-                texts += out.texts if hasattr(out, "texts") else [o.text for o in out]
+                return out.texts if hasattr(out, "texts") else [o.text for o in out]
+            texts = _with_fallback(_run, paths, self.batch, "oracle")
         finally:
             for p in paths:
                 Path(p).unlink(missing_ok=True)
@@ -118,11 +118,11 @@ class MlxRowReader:
                 c.save(f, format="PNG")
                 f.close()
                 paths.append(f.name)
-            texts = []
-            for chunk in _chunks(paths, self.batch):
+            def _run(chunk):
                 out = batch_generate(self.model, self.proc, images=chunk, prompts=[prompt] * len(chunk),
                                      max_tokens=self.max_tokens, verbose=False)
-                texts += out.texts if hasattr(out, "texts") else [o.text for o in out]
+                return out.texts if hasattr(out, "texts") else [o.text for o in out]
+            texts = _with_fallback(_run, paths, self.batch, "reader")
         finally:
             for p in paths:
                 Path(p).unlink(missing_ok=True)
@@ -151,6 +151,31 @@ def _chunks(xs, n):
         yield xs[i:i + n]
 
 
+def _with_fallback(fn, items, batch, label=""):
+    """Run `fn(chunk)` over `items` in chunks of `batch`; on a Metal OOM /
+    timeout, halve the batch and retry that chunk (down to 1). 16 GB with two
+    models resident is tight enough that a long run eventually hits it."""
+    out = []
+    for chunk in _chunks(items, batch):
+        b = len(chunk)
+        while True:
+            try:
+                out += fn(chunk[:b]) if b == len(chunk) else []
+                if b == len(chunk):
+                    break
+                sub = []
+                for c2 in _chunks(chunk, b):
+                    sub += fn(c2)
+                out += sub
+                break
+            except Exception as e:  # noqa: BLE001
+                if b <= 1:
+                    raise
+                b = max(1, b // 2)
+                print(f"  [{label}] batch fallback -> {b} after {type(e).__name__}", flush=True)
+    return out
+
+
 def agreement(pred: Sheet, ref: dict) -> dict:
     ref_rows = {r["date"]: r["cells"] for r in ref["rows"]}
     c = t = 0
@@ -172,6 +197,7 @@ def main() -> None:
     ap.add_argument("--out", default="")
     ap.add_argument("--oracle", default=ORACLE_MLX)
     ap.add_argument("--batch", type=int, default=BATCH, help="rows per batched model call")
+    ap.add_argument("--resume", action="store_true", help="skip pages already present in --out")
     args = ap.parse_args()
     only = {(p.split("/")[0], int(p.split("/")[1])) for p in args.pages.split(",") if p}
 
@@ -179,13 +205,21 @@ def main() -> None:
     gold = {int(s.page): s for s in load_gold(ROOT / "gold")}
     oracle = MlxDayOracle(args.oracle, batch=args.batch)
     reader = MlxRowReader(args.model, batch=args.batch)
+    out_path = Path(args.out) if args.out else ROOT / "bench" / "g4" / "scale-demo.json"
     results = []
+    done = set()
+    if args.resume and out_path.exists():
+        results = json.loads(out_path.read_text()).get("pages", [])
+        done = {(r["doc"], r["page"]) for r in results}
+        print(f"resuming: {len(done)} pages already done", flush=True)
     t_all = time.time()
     for p in bench["per_sheet"]:
         if not p.get("pred"):
             continue
         doc, page, period = str(p["doc"]), int(p["page"]), p["period"]
         if only and (doc, page) not in only:
+            continue
+        if (doc, page) in done:
             continue
         year, month = (int(x) for x in period.split("-"))
         day_count = day_count_of(period)
@@ -200,6 +234,7 @@ def main() -> None:
             rec["status"] = "refused"
             rec["reason"] = info.get("reason", "too few direct day reads")
             results.append(rec)
+            out_path.write_text(json.dumps({"summary": None, "pages": results}, indent=1, ensure_ascii=False))
             print(f"{doc}_{page} {period} REFUSED ({rec['t_localise_s']}s) {rec['reason']}", flush=True)
             continue
         boxes = boxes_for_centres(centres, loc, *image.size)
@@ -232,6 +267,7 @@ def main() -> None:
         rec["status"] = "ok"
         rec["sheet"] = sheet.model_dump()
         results.append(rec)
+        out_path.write_text(json.dumps({"summary": None, "pages": results}, indent=1, ensure_ascii=False))
         tag = f"gold cell_acc={rec['gold']['cell_acc']}" if rec["is_gold"] else f"api agree={rec['api_agreement']['agree']:.4f}"
         print(f"{doc}_{page} {period} ok {rec['t_page_s']}s (loc {rec['t_localise_s']} / read {rec['t_read_s']}) {tag} qc_flags={rec['qc_flags']}", flush=True)
 
@@ -253,9 +289,8 @@ def main() -> None:
         "nongold_pages": len(nong), "cost_usd": 0.0, "network_calls": 0,
     }
     print("SUMMARY", json.dumps(summary), flush=True)
-    out = Path(args.out) if args.out else ROOT / "bench" / "g4" / "scale-demo.json"
-    out.write_text(json.dumps({"summary": summary, "pages": results}, indent=1, ensure_ascii=False))
-    print("wrote", out)
+    out_path.write_text(json.dumps({"summary": summary, "pages": results}, indent=1, ensure_ascii=False))
+    print("wrote", out_path)
 
 
 if __name__ == "__main__":
