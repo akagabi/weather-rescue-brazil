@@ -41,6 +41,7 @@ BENCH = ROOT / "bench" / "g3" / "revista-full.json"
 
 
 ORACLE_MLX = "mlx-community/Qwen3-VL-2B-Instruct-bf16"
+BATCH = 8  # rows per batched call: 16 GB holds both models + this; 31 at once OOMs the Metal allocator
 DAY_PROMPT = ("Qual é o número do dia impresso no início desta linha (o primeiro número, à esquerda)? "
               "Responda só o número inteiro.")
 
@@ -49,37 +50,84 @@ class MlxDayOracle:
     """Same contract as g4_build_dataset.DayOracle, on MLX (no torch in the
     runner: torch + mlx in one process corrupt each other's tensors)."""
 
-    def __init__(self, model_path: str = ORACLE_MLX) -> None:
+    def __init__(self, model_path: str = ORACLE_MLX, batch: int = BATCH) -> None:
         from mlx_vlm import load
         self.model, self.proc = load(model_path)
+        self.batch = batch
         self.calls = 0
 
     def read_day(self, crop: Image.Image) -> int | None:
+        return self.read_days([crop])[0]
+
+    def read_days(self, crops: list[Image.Image]) -> list[int | None]:
+        """One batched call for every candidate row. Single-stream decoding is
+        memory-bandwidth bound (the whole model is re-read per token), so
+        batching N rows costs barely more than one and is the difference
+        between 24 s and ~5 s of localisation per page."""
         import re
         import tempfile
-        from mlx_vlm import generate
+        from mlx_vlm import batch_generate
         from mlx_vlm.prompt_utils import apply_chat_template
-        left = crop.crop((0, 0, max(1, int(crop.width * 0.22)), crop.height))
+        if not crops:
+            return []
         prompt = apply_chat_template(self.proc, self.model.config, DAY_PROMPT, num_images=1)
-        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
-            left.save(f, format="PNG")
-            path = f.name
+        paths = []
         try:
-            out = generate(self.model, self.proc, prompt, [path], max_tokens=6, verbose=False)
+            for c in crops:
+                left = c.crop((0, 0, max(1, int(c.width * 0.22)), c.height))
+                f = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
+                left.save(f, format="PNG")
+                f.close()
+                paths.append(f.name)
+            texts = []
+            for chunk in _chunks(paths, self.batch):
+                out = batch_generate(self.model, self.proc, images=chunk, prompts=[prompt] * len(chunk),
+                                     max_tokens=6, verbose=False)
+                texts += out.texts if hasattr(out, "texts") else [o.text for o in out]
         finally:
-            Path(path).unlink(missing_ok=True)
-        self.calls += 1
-        text = out.text if hasattr(out, "text") else str(out)
-        m = re.search(r"\d+", text)
-        return int(m.group()) if m else None
+            for p in paths:
+                Path(p).unlink(missing_ok=True)
+        self.calls += len(crops)
+        days = []
+        for t in texts:
+            m = re.search(r"\d+", t)
+            days.append(int(m.group()) if m else None)
+        return days
 
 
 class MlxRowReader:
-    def __init__(self, model_path: str, max_tokens: int = 80) -> None:
+    def __init__(self, model_path: str, max_tokens: int = 80, batch: int = BATCH) -> None:
         from mlx_vlm import load
         self.model, self.proc = load(model_path)
         self.max_tokens = max_tokens
+        self.batch = batch
         self.calls = 0
+
+    def read_rows(self, crops: list[Image.Image], hint: str) -> list[str]:
+        """Batched row reads (see MlxDayOracle.read_days for why)."""
+        import tempfile
+        from mlx_vlm import batch_generate
+        from mlx_vlm.prompt_utils import apply_chat_template
+        if not crops:
+            return []
+        prompt = apply_chat_template(self.proc, self.model.config, INSTRUCTION + " " + hint, num_images=1)
+        paths = []
+        try:
+            for c in crops:
+                f = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
+                c.save(f, format="PNG")
+                f.close()
+                paths.append(f.name)
+            texts = []
+            for chunk in _chunks(paths, self.batch):
+                out = batch_generate(self.model, self.proc, images=chunk, prompts=[prompt] * len(chunk),
+                                     max_tokens=self.max_tokens, verbose=False)
+                texts += out.texts if hasattr(out, "texts") else [o.text for o in out]
+        finally:
+            for p in paths:
+                Path(p).unlink(missing_ok=True)
+        self.calls += len(crops)
+        return texts
 
     def read_row(self, crop: Image.Image, hint: str) -> str:
         from mlx_vlm import generate
@@ -96,6 +144,11 @@ class MlxRowReader:
             Path(path).unlink(missing_ok=True)
         self.calls += 1
         return out.text if hasattr(out, "text") else str(out)
+
+
+def _chunks(xs, n):
+    for i in range(0, len(xs), n):
+        yield xs[i:i + n]
 
 
 def agreement(pred: Sheet, ref: dict) -> dict:
@@ -118,13 +171,14 @@ def main() -> None:
     ap.add_argument("--pages", default="", help="subset like 14/22,15/44 (default: all transcribed pages)")
     ap.add_argument("--out", default="")
     ap.add_argument("--oracle", default=ORACLE_MLX)
+    ap.add_argument("--batch", type=int, default=BATCH, help="rows per batched model call")
     args = ap.parse_args()
     only = {(p.split("/")[0], int(p.split("/")[1])) for p in args.pages.split(",") if p}
 
     bench = json.loads(BENCH.read_text())
     gold = {int(s.page): s for s in load_gold(ROOT / "gold")}
-    oracle = MlxDayOracle(args.oracle)
-    reader = MlxRowReader(args.model)
+    oracle = MlxDayOracle(args.oracle, batch=args.batch)
+    reader = MlxRowReader(args.model, batch=args.batch)
     results = []
     t_all = time.time()
     for p in bench["per_sheet"]:
@@ -153,8 +207,9 @@ def main() -> None:
         t1 = time.time()
         rows = []
         n_problems = 0
-        for day, crop in enumerate(crops, start=1):
-            cells, flags, problems = parse_row_target(reader.read_row(crop, layout_hint(doc)))
+        texts = reader.read_rows(crops, layout_hint(doc))
+        for day, text in enumerate(texts, start=1):
+            cells, flags, problems = parse_row_target(text)
             if problems:
                 n_problems += 1
                 flags["parse"] = "; ".join(problems)

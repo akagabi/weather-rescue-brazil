@@ -94,7 +94,7 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
     cands = sorted(y for y in loc.peaks if lo <= y <= hi)
     boxes = boxes_for_centres(cands, loc, width, height)
     crops = crop_boxes(image, boxes, loc.skew_deg, scale=2.0)
-    reads = [oracle.read_day(c) for c in crops]
+    reads = oracle.read_days(crops) if hasattr(oracle, "read_days") else [oracle.read_day(c) for c in crops]
     by_day: dict[int, list[int]] = {}
     for y, r in zip(cands, reads):
         if r is not None and 1 <= r <= day_count:
