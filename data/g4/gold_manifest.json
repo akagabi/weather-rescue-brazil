@@ -1,13 +1,13 @@
 {
  "meta": {
   "source": "bench/g3/revista-full.json",
-  "built_at": "2026-09-03 23:54",
+  "built_at": "2026-09-04 06:00",
   "oracle": {
    "model": "Qwen/Qwen3-VL-2B-Instruct",
-   "calls": 1628
+   "calls": 1646
   },
   "verify": {
-   "n": 34,
+   "n": 35,
    "pages": [
     {
      "doc": "14",
@@ -18,7 +18,7 @@
     {
      "doc": "14",
      "page": 41,
-     "direct_reads": 27,
+     "direct_reads": 28,
      "day_count": 31
     },
     {
@@ -36,7 +36,7 @@
     {
      "doc": "14",
      "page": 90,
-     "direct_reads": 27,
+     "direct_reads": 25,
      "day_count": 30
     },
     {
@@ -44,6 +44,12 @@
      "page": 109,
      "direct_reads": 27,
      "day_count": 31
+    },
+    {
+     "doc": "14",
+     "page": 141,
+     "direct_reads": 26,
+     "day_count": 30
     },
     {
      "doc": "14",
@@ -66,13 +72,13 @@
     {
      "doc": "14",
      "page": 195,
-     "direct_reads": 26,
+     "direct_reads": 27,
      "day_count": 31
     },
     {
      "doc": "14",
      "page": 212,
-     "direct_reads": 27,
+     "direct_reads": 28,
      "day_count": 30
     },
     {
@@ -102,7 +108,7 @@
     {
      "doc": "15",
      "page": 89,
-     "direct_reads": 27,
+     "direct_reads": 28,
      "day_count": 30
     },
     {
@@ -114,7 +120,7 @@
     {
      "doc": "15",
      "page": 106,
-     "direct_reads": 26,
+     "direct_reads": 24,
      "day_count": 31
     },
     {
@@ -132,7 +138,7 @@
     {
      "doc": "15",
      "page": 141,
-     "direct_reads": 25,
+     "direct_reads": 24,
      "day_count": 31
     },
     {
@@ -144,7 +150,7 @@
     {
      "doc": "15",
      "page": 166,
-     "direct_reads": 25,
+     "direct_reads": 26,
      "day_count": 30
     },
     {
@@ -173,14 +179,8 @@
     },
     {
      "doc": "16",
-     "page": 39,
-     "direct_reads": 23,
-     "day_count": 30
-    },
-    {
-     "doc": "16",
      "page": 55,
-     "direct_reads": 25,
+     "direct_reads": 24,
      "day_count": 28
     },
     {
@@ -212,6 +212,12 @@
      "page": 159,
      "direct_reads": 28,
      "day_count": 31
+    },
+    {
+     "doc": "16",
+     "page": 174,
+     "direct_reads": 27,
+     "day_count": 30
     }
    ]
   }
@@ -267,40 +273,42 @@
    "period": "1886-01",
    "day_count": 31,
    "status": "ok_oracle",
-   "reason": "oracle: 27/31 days read directly of 45 candidates",
+   "reason": "oracle: 28/31 days read directly of 44 candidates",
    "chain": [
-    1169,
-    1193,
-    1222,
-    1249,
-    1278,
-    1306,
-    1333,
-    1362,
-    1390,
-    1418,
-    1446,
-    1474,
-    1502,
-    1530,
-    1558,
-    1586,
-    1614,
-    1642,
-    1670,
-    1698,
-    1726,
-    1755,
-    1783,
-    1811,
-    1839,
-    1867,
-    1895,
-    1923,
-    1951,
-    1979,
-    2007,
-    2036
+    1200,
+    1229,
+    1257,
+    1285,
+    1313,
+    1341,
+    1369,
+    1397,
+    1425,
+    1453,
+    1481,
+    1509,
+    1537,
+    1565,
+    1593,
+    1621,
+    1649,
+    1677,
+    1705,
+    1733,
+    1762,
+    1790,
+    1817,
+    1846,
+    1874,
+    1902,
+    1930,
+    1958,
+    1986,
+    2014,
+    2042,
+    2123,
+    2156,
+    2188
    ],
    "n_examples": 31
   },
@@ -312,31 +320,31 @@
    "status": "ok_oracle",
    "reason": "oracle: 24/28 days read directly of 40 candidates",
    "chain": [
-    792,
+    793,
     820,
-    847,
-    875,
-    903,
-    931,
-    958,
-    986,
-    1013,
-    1041,
+    848,
+    876,
+    904,
+    932,
+    959,
+    987,
+    1014,
+    1042,
     1070,
-    1097,
+    1098,
     1125,
-    1152,
-    1180,
-    1208,
-    1235,
-    1263,
-    1291,
-    1319,
-    1346,
-    1374,
-    1401,
-    1429,
-    1457,
+    1153,
+    1181,
+    1209,
+    1236,
+    1264,
+    1292,
+    1320,
+    1347,
+    1375,
+    1402,
+    1430,
+    1458,
     1538
    ],
    "n_examples": 28
@@ -389,38 +397,38 @@
    "period": "1886-04",
    "day_count": 30,
    "status": "ok_oracle",
-   "reason": "oracle: 27/30 days read directly of 45 candidates",
+   "reason": "oracle: 25/30 days read directly of 43 candidates",
    "chain": [
-    1210,
-    1238,
-    1266,
-    1294,
-    1322,
-    1350,
-    1378,
-    1406,
-    1434,
-    1462,
-    1490,
-    1517,
-    1546,
-    1574,
-    1601,
-    1629,
-    1657,
-    1685,
-    1713,
-    1741,
-    1769,
-    1797,
-    1825,
-    1853,
-    1881,
-    1909,
-    1937,
-    1965,
-    1993,
-    2021
+    1212,
+    1240,
+    1268,
+    1296,
+    1324,
+    1352,
+    1380,
+    1408,
+    1435,
+    1463,
+    1491,
+    1519,
+    1548,
+    1575,
+    1603,
+    1631,
+    1659,
+    1687,
+    1715,
+    1743,
+    1771,
+    1799,
+    1827,
+    1855,
+    1883,
+    1911,
+    1939,
+    1967,
+    1995,
+    2023
    ],
    "n_examples": 30
   },
@@ -432,38 +440,37 @@
    "status": "ok_oracle",
    "reason": "oracle: 27/31 days read directly of 46 candidates",
    "chain": [
-    713,
-    741,
-    768,
-    797,
-    824,
-    851,
-    879,
-    908,
-    935,
-    963,
-    991,
-    1019,
-    1047,
-    1075,
-    1103,
-    1130,
-    1158,
-    1186,
-    1214,
-    1242,
-    1270,
-    1297,
-    1325,
-    1353,
-    1381,
-    1409,
-    1437,
-    1465,
-    1493,
-    1521,
-    1549,
-    1576
+    714,
+    742,
+    770,
+    798,
+    826,
+    853,
+    881,
+    909,
+    937,
+    965,
+    993,
+    1020,
+    1049,
+    1076,
+    1104,
+    1132,
+    1160,
+    1188,
+    1216,
+    1243,
+    1271,
+    1299,
+    1327,
+    1355,
+    1383,
+    1411,
+    1439,
+    1466,
+    1495,
+    1523,
+    1550
    ],
    "n_examples": 31
   },
@@ -475,39 +482,39 @@
    "status": "ok_oracle",
    "reason": "oracle: 27/31 days read directly of 46 candidates",
    "chain": [
-    707,
-    736,
-    759,
-    787,
-    815,
-    843,
-    870,
-    898,
-    926,
-    954,
-    981,
-    1009,
-    1037,
-    1065,
-    1092,
-    1120,
-    1147,
-    1175,
-    1203,
-    1230,
-    1258,
-    1286,
-    1313,
-    1341,
-    1369,
-    1397,
-    1424,
-    1452,
-    1480,
-    1507,
-    1535,
-    1563,
-    1591
+    708,
+    737,
+    760,
+    788,
+    816,
+    844,
+    871,
+    899,
+    927,
+    955,
+    982,
+    1010,
+    1038,
+    1066,
+    1093,
+    1121,
+    1148,
+    1176,
+    1204,
+    1231,
+    1259,
+    1287,
+    1314,
+    1342,
+    1370,
+    1398,
+    1425,
+    1453,
+    1481,
+    1508,
+    1536,
+    1564,
+    1592
    ],
    "n_examples": 31
   },
@@ -517,38 +524,38 @@
    "period": "1886-09",
    "day_count": 30,
    "status": "ok_oracle",
-   "reason": "oracle: 27/30 days read directly of 45 candidates",
+   "reason": "oracle: 27/30 days read directly of 46 candidates",
    "chain": [
-    1065,
-    1093,
-    1120,
-    1148,
-    1176,
-    1203,
-    1230,
-    1258,
-    1285,
-    1313,
-    1340,
-    1368,
-    1395,
-    1423,
-    1451,
-    1478,
-    1506,
-    1533,
-    1561,
-    1588,
-    1616,
-    1644,
-    1671,
-    1699,
-    1726,
-    1754,
-    1781,
-    1809,
-    1837,
-    1864
+    1066,
+    1094,
+    1121,
+    1149,
+    1177,
+    1204,
+    1231,
+    1259,
+    1286,
+    1314,
+    1341,
+    1369,
+    1396,
+    1424,
+    1452,
+    1479,
+    1507,
+    1534,
+    1562,
+    1589,
+    1617,
+    1645,
+    1672,
+    1700,
+    1727,
+    1755,
+    1782,
+    1810,
+    1838,
+    1865
    ],
    "n_examples": 30
   },
@@ -558,38 +565,40 @@
    "period": "1886-11",
    "day_count": 30,
    "status": "ok_oracle",
-   "reason": "oracle: 27/30 days read directly of 40 candidates",
+   "reason": "oracle: 28/30 days read directly of 39 candidates",
    "chain": [
-    1312,
-    1340,
-    1368,
-    1396,
+    1313,
+    1341,
+    1369,
+    1397,
     1425,
-    1453,
-    1481,
+    1454,
+    1482,
     1509,
-    1537,
-    1565,
-    1593,
-    1621,
-    1649,
+    1538,
+    1566,
+    1594,
+    1622,
+    1650,
     1678,
-    1706,
-    1734,
-    1762,
-    1790,
-    1818,
-    1846,
-    1875,
-    1903,
-    1931,
-    1959,
-    1987,
-    2015,
-    2043,
+    1707,
+    1735,
+    1763,
+    1791,
+    1819,
+    1847,
+    1876,
+    1904,
+    1932,
+    1960,
+    1988,
+    2016,
+    2044,
     2074,
     2107,
-    2139
+    2130,
+    2162,
+    2190
    ],
    "n_examples": 30
   }
@@ -1775,7 +1784,7 @@
    "day": 1,
    "date": "1886-01-01",
    "image": "gold_rows/14_000041_d01.png",
-   "sha256": "8c7732a605a1ebc6a44b8d9e80f0c7049570b54e3e0e1c801177c62d036bab09",
+   "sha256": "ecc22f07a12d9642fc873efd0fb44692fa6abed3aaf55ca2b56cb09dc2bf0b7c",
    "cells": {
     "pressure": 756.06,
     "pressure_max": 756.54,
@@ -1798,12 +1807,12 @@
    },
    "box": [
     151,
-    1179,
+    1187,
     1574,
-    1207
+    1215
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -1813,7 +1822,7 @@
    "day": 2,
    "date": "1886-01-02",
    "image": "gold_rows/14_000041_d02.png",
-   "sha256": "a8f589cf5fd7e8b9189e2f566f81a36f8652605e482a7342a5503b8b3bbfc85f",
+   "sha256": "d8d48ea7133b275911f5eb2dbd15bcdb2ca97fcf8684761a5f2dd5efeec62353",
    "cells": {
     "pressure": 751.94,
     "pressure_max": 754.05,
@@ -1836,12 +1845,12 @@
    },
    "box": [
     151,
-    1207,
+    1215,
     1574,
-    1235
+    1243
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -1851,7 +1860,7 @@
    "day": 3,
    "date": "1886-01-03",
    "image": "gold_rows/14_000041_d03.png",
-   "sha256": "6c328cbb3b12b031df2359c50ba0d1899ecd2b034b64240c1474de1d84de69e7",
+   "sha256": "a0046ed4fd0d941ac14b2b2f7f469b0854af03426333299f8586b5502daf8078",
    "cells": {
     "pressure": 752.75,
     "pressure_max": 754.03,
@@ -1874,12 +1883,12 @@
    },
    "box": [
     151,
-    1235,
+    1243,
     1574,
-    1263
+    1271
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -1889,7 +1898,7 @@
    "day": 4,
    "date": "1886-01-04",
    "image": "gold_rows/14_000041_d04.png",
-   "sha256": "694ddb263d3458bca8ed2b10c6a859f4c708583824cef79c5e2a5778093209c6",
+   "sha256": "39562ae74be3d4c09700584ed48c27ece397f9873bac63d3f294ac20b64f1407",
    "cells": {
     "pressure": 752.33,
     "pressure_max": 753.63,
@@ -1912,12 +1921,12 @@
    },
    "box": [
     151,
-    1264,
+    1271,
     1574,
-    1292
+    1299
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -1927,7 +1936,7 @@
    "day": 5,
    "date": "1886-01-05",
    "image": "gold_rows/14_000041_d05.png",
-   "sha256": "c10d3750ebb8cc080aecbee0e6dfb23017cd7f311be0d4fcbcbdbe7e755e64fc",
+   "sha256": "071b4099387b3a3afeaf9d7bfd63a905e7b253f0bf4776e712821298867abdd8",
    "cells": {
     "pressure": 751.3,
     "pressure_max": 752.3,
@@ -1949,12 +1958,12 @@
    },
    "box": [
     151,
-    1292,
+    1299,
     1574,
-    1320
+    1327
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -1964,7 +1973,7 @@
    "day": 6,
    "date": "1886-01-06",
    "image": "gold_rows/14_000041_d06.png",
-   "sha256": "ecd7cf378eef0b79265f190f447c30634ede8deb5d0dfde60b68ed156517eb7d",
+   "sha256": "eb9be20135e98fa930d47b5a12e63663fb2359e729e59470a8df34512502a9a0",
    "cells": {
     "pressure": 752.38,
     "pressure_max": 753.28,
@@ -1986,12 +1995,12 @@
    },
    "box": [
     151,
-    1319,
+    1327,
     1574,
-    1347
+    1355
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2001,7 +2010,7 @@
    "day": 7,
    "date": "1886-01-07",
    "image": "gold_rows/14_000041_d07.png",
-   "sha256": "2e7fc9353325c11836343c9bf6a95d6df7c5f08b97f8aa35e843e6719cedc745",
+   "sha256": "19416cf0cce0e361ba32086c19e4d018ada6d60e3049090fcda6b989f20a5df8",
    "cells": {
     "pressure": 753.23,
     "pressure_max": 755.98,
@@ -2023,12 +2032,12 @@
    },
    "box": [
     151,
-    1348,
+    1355,
     1574,
-    1376
+    1383
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2038,7 +2047,7 @@
    "day": 8,
    "date": "1886-01-08",
    "image": "gold_rows/14_000041_d08.png",
-   "sha256": "833403b599257d1281338873d476a119907bb878377bbb2e1ed041e98960caf0",
+   "sha256": "156a2e7339d0473c0fbb2097ba754a1cea94f2eecd099b69f0ea4ee10c59ec5c",
    "cells": {
     "pressure": 756.52,
     "pressure_max": 758.73,
@@ -2061,12 +2070,12 @@
    },
    "box": [
     151,
-    1376,
+    1383,
     1574,
-    1404
+    1411
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2076,7 +2085,7 @@
    "day": 9,
    "date": "1886-01-09",
    "image": "gold_rows/14_000041_d09.png",
-   "sha256": "d8276ad9b415d627ec46e63b89c90d24df8ff25cc51e03aef29266d73b3fd33b",
+   "sha256": "441222beb7a97c06150e4db7f670b00506e677ba31782e7fa999c8e49feb8f18",
    "cells": {
     "pressure": 758.35,
     "pressure_max": 759.88,
@@ -2099,12 +2108,12 @@
    },
    "box": [
     151,
-    1404,
+    1411,
     1574,
-    1432
+    1439
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2114,7 +2123,7 @@
    "day": 10,
    "date": "1886-01-10",
    "image": "gold_rows/14_000041_d10.png",
-   "sha256": "eb7793835f1c36ee703e417a41a854b4de2f701101866ae2814a52b9d384ba44",
+   "sha256": "d9cd2d0cc05a38a26401b6795654253abf77cefa5aeb063a1ff4cd13839a425e",
    "cells": {
     "pressure": 758.74,
     "pressure_max": 759.28,
@@ -2137,12 +2146,12 @@
    },
    "box": [
     151,
-    1432,
+    1439,
     1574,
-    1460
+    1467
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2152,7 +2161,7 @@
    "day": 11,
    "date": "1886-01-11",
    "image": "gold_rows/14_000041_d11.png",
-   "sha256": "b3acf571b7ac1372783395e6925a4a2c987c65d4cea754e69c7abc3b13a2d4cc",
+   "sha256": "b82f6ae04934b09a520081e0a8d1d5acebb2d7b17d4225dbf9907c8e37682df7",
    "cells": {
     "pressure": 758.3,
     "pressure_max": 759.26,
@@ -2175,12 +2184,12 @@
    },
    "box": [
     151,
-    1460,
+    1467,
     1574,
-    1488
+    1495
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2190,7 +2199,7 @@
    "day": 12,
    "date": "1886-01-12",
    "image": "gold_rows/14_000041_d12.png",
-   "sha256": "838c65374b753f8b570b8a074780586975a155986749da154fc8c83b45f12405",
+   "sha256": "1e2adafc768a4b80aeb20a15cef0f2925eb5a6a6616d4c35f0df2bccf5a36811",
    "cells": {
     "pressure": 757.8,
     "pressure_max": 758.8,
@@ -2213,12 +2222,12 @@
    },
    "box": [
     151,
-    1488,
+    1495,
     1574,
-    1516
+    1523
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2228,7 +2237,7 @@
    "day": 13,
    "date": "1886-01-13",
    "image": "gold_rows/14_000041_d13.png",
-   "sha256": "9d34c3140ebb91b2c4a33759b3e78c5f8de8b4f1618a9b88c76a97b48f878d60",
+   "sha256": "9be3311c2d3bd7d3e23f6237b1fc3197ccb93e917898e731e071530fb207c9a5",
    "cells": {
     "pressure": 756.82,
     "pressure_max": 757.74,
@@ -2251,12 +2260,12 @@
    },
    "box": [
     151,
-    1516,
+    1523,
     1574,
-    1544
+    1551
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2266,7 +2275,7 @@
    "day": 14,
    "date": "1886-01-14",
    "image": "gold_rows/14_000041_d14.png",
-   "sha256": "2bfc79fbd6bc9dcc93f1f38988750ef507494bb7ea587edcafaaaf3097fb75d5",
+   "sha256": "dee33bfc28348a0e1967f1acbe7fb9e22eb9636a6172034097261ee933cacac9",
    "cells": {
     "pressure": 757.42,
     "pressure_max": 758.66,
@@ -2289,12 +2298,12 @@
    },
    "box": [
     151,
-    1544,
+    1551,
     1574,
-    1572
+    1579
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2304,7 +2313,7 @@
    "day": 15,
    "date": "1886-01-15",
    "image": "gold_rows/14_000041_d15.png",
-   "sha256": "9c6553f626351fdee40840302fae643167f586533fb37858ec6641d35d0f7b83",
+   "sha256": "0ca2b0993f3936ba0ad775d79946280a21b832acc13da43dfde4821b8a545832",
    "cells": {
     "pressure": 758.19,
     "pressure_max": 759.16,
@@ -2327,12 +2336,12 @@
    },
    "box": [
     151,
-    1572,
+    1579,
     1574,
-    1600
+    1607
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2342,7 +2351,7 @@
    "day": 16,
    "date": "1886-01-16",
    "image": "gold_rows/14_000041_d16.png",
-   "sha256": "4ad33757345026a700f153a9cc2b0869fb0aebbd6eff807f258e4a41087650d4",
+   "sha256": "3db64bf007778e81bdc3f46492e4ac65715e633c52aa9c25ec8b5e210b5b47ab",
    "cells": {
     "pressure": 757.81,
     "pressure_max": 759.11,
@@ -2365,12 +2374,12 @@
    },
    "box": [
     151,
-    1600,
+    1607,
     1574,
-    1628
+    1635
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2380,7 +2389,7 @@
    "day": 17,
    "date": "1886-01-17",
    "image": "gold_rows/14_000041_d17.png",
-   "sha256": "cbaa454f109fcdc6f4f979dc9672dea2a9df9c2561430c94fa71370db906267b",
+   "sha256": "41dd383c2249a0c085d9692cf8c4b7e3fde46182f2133c41bd4333b083819899",
    "cells": {
     "pressure": 757.14,
     "pressure_max": 758.41,
@@ -2403,12 +2412,12 @@
    },
    "box": [
     151,
-    1628,
+    1635,
     1574,
-    1656
+    1663
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2418,7 +2427,7 @@
    "day": 18,
    "date": "1886-01-18",
    "image": "gold_rows/14_000041_d18.png",
-   "sha256": "93dc0b7265792416dfcea2956062975ea6f38a8bebd635dec3515927b24bf4ec",
+   "sha256": "03760b3b83e3dad31dab607fbabdda224fccd9db451dfd434a18baabc92d061b",
    "cells": {
     "pressure": 755.62,
     "pressure_max": 756.63,
@@ -2441,12 +2450,12 @@
    },
    "box": [
     151,
-    1656,
+    1663,
     1574,
-    1684
+    1691
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2456,7 +2465,7 @@
    "day": 19,
    "date": "1886-01-19",
    "image": "gold_rows/14_000041_d19.png",
-   "sha256": "c015f130bc8cd243470a4322da3c9ec602ae78ba5c4f733ff088dd1f57688f05",
+   "sha256": "7338905f775593a2a3506792bdd810c2a3e5401abf6174f5fc1dfe5400906fd9",
    "cells": {
     "pressure": 755.8,
     "pressure_max": 757.28,
@@ -2479,12 +2488,12 @@
    },
    "box": [
     151,
-    1684,
+    1691,
     1574,
-    1712
+    1719
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2494,7 +2503,7 @@
    "day": 20,
    "date": "1886-01-20",
    "image": "gold_rows/14_000041_d20.png",
-   "sha256": "1f8ea7a03a0575a613992f26142e438d291444f1233f1d7694cb05f7acdff151",
+   "sha256": "c6401785573fdcbd7686120f52c71d8fc9c643b232e7e03c44b1629fed882f2a",
    "cells": {
     "pressure": 754.7,
     "pressure_max": 756.12,
@@ -2517,12 +2526,12 @@
    },
    "box": [
     151,
-    1712,
+    1719,
     1574,
-    1740
+    1747
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2532,7 +2541,7 @@
    "day": 21,
    "date": "1886-01-21",
    "image": "gold_rows/14_000041_d21.png",
-   "sha256": "92d827b81aa99ed26ba09892e5483205a1c032e72d4adb4c2bfa8c16ad447dd5",
+   "sha256": "e0b57317957115eb753fad9b028a5d8e5a7b530c20af75be48edc847a7f1beb9",
    "cells": {
     "pressure": 754.56,
     "pressure_max": 755.7,
@@ -2555,12 +2564,12 @@
    },
    "box": [
     151,
-    1741,
+    1748,
     1574,
-    1769
+    1776
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2570,7 +2579,7 @@
    "day": 22,
    "date": "1886-01-22",
    "image": "gold_rows/14_000041_d22.png",
-   "sha256": "fe8e0e86c27ec3781ff400b186419491e19ec38369d09730010d68c548422bb4",
+   "sha256": "f2ed7502d91f0f6df37a623863cd930478f53ae6e8597ce28dcc317005a14722",
    "cells": {
     "pressure": 756.29,
     "pressure_max": 757.42,
@@ -2593,12 +2602,12 @@
    },
    "box": [
     151,
-    1769,
+    1776,
     1574,
-    1797
+    1804
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2608,7 +2617,7 @@
    "day": 23,
    "date": "1886-01-23",
    "image": "gold_rows/14_000041_d23.png",
-   "sha256": "ec71c5fbd3fb1087817d2f34a904e337035214f96a2b020994b849c54ce2a7a9",
+   "sha256": "52f4096c64edd6663e9daf4b95dc37d55eb9f505b38fd894cca4a2ec8b270cc8",
    "cells": {
     "pressure": 756.56,
     "pressure_max": 757.62,
@@ -2631,12 +2640,12 @@
    },
    "box": [
     151,
-    1797,
+    1803,
     1574,
-    1825
+    1831
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2646,7 +2655,7 @@
    "day": 24,
    "date": "1886-01-24",
    "image": "gold_rows/14_000041_d24.png",
-   "sha256": "a1bbcf91bee2b1ac6d1e091b0e58df7f4399859640cfb13dafd76087d2bf4868",
+   "sha256": "83df0c413faa0fb388e1e1225afc2923dfd525b6633e49400bf18c7b941d93b4",
    "cells": {
     "pressure": 756.32,
     "pressure_max": 757.15,
@@ -2669,12 +2678,12 @@
    },
    "box": [
     151,
-    1825,
+    1832,
     1574,
-    1853
+    1860
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2684,7 +2693,7 @@
    "day": 25,
    "date": "1886-01-25",
    "image": "gold_rows/14_000041_d25.png",
-   "sha256": "cb95ddb5f9013239b15e38087dc79bf9066477e2087741835a74f2c30b318bb4",
+   "sha256": "6fc0fe70cbcecd82926b935a967de796e6b3f6fc7552611bde7a2463dabfaee9",
    "cells": {
     "pressure": 755.44,
     "pressure_max": 756.66,
@@ -2707,12 +2716,12 @@
    },
    "box": [
     151,
-    1853,
+    1860,
     1574,
-    1881
+    1888
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2722,7 +2731,7 @@
    "day": 26,
    "date": "1886-01-26",
    "image": "gold_rows/14_000041_d26.png",
-   "sha256": "da028792d312280895d464a562d3b19bfaac6eb52cb1d68439d18e10ddd68ad5",
+   "sha256": "a595cdd09be296f31a3d23e0f114345b4e29d6995cdb6bbc747b92bbc7f2e455",
    "cells": {
     "pressure": 755.16,
     "pressure_max": 755.95,
@@ -2745,12 +2754,12 @@
    },
    "box": [
     151,
-    1881,
+    1888,
     1574,
-    1909
+    1916
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2760,7 +2769,7 @@
    "day": 27,
    "date": "1886-01-27",
    "image": "gold_rows/14_000041_d27.png",
-   "sha256": "bdb7d3eba7b70dc48d1fc1441747b75236b39a0ecc888b3814638fbe74ac1d68",
+   "sha256": "fa471b4059a8449a44d5e832d1dc73d18ab30f79d95b40aeb05f8fe2a728e318",
    "cells": {
     "pressure": 756.99,
     "pressure_max": 758.69,
@@ -2783,12 +2792,12 @@
    },
    "box": [
     151,
-    1909,
+    1916,
     1574,
-    1937
+    1944
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2798,7 +2807,7 @@
    "day": 28,
    "date": "1886-01-28",
    "image": "gold_rows/14_000041_d28.png",
-   "sha256": "5777e32e3f3ec4ed60d9aaf26dd1addce4d3581a5a4ebb672613ca36f01f1e39",
+   "sha256": "ec9c471935e5e516917dc48889932d254c73892e0f3c84a175d3bbb9235a7648",
    "cells": {
     "pressure": 756.3,
     "pressure_max": 757.81,
@@ -2821,12 +2830,12 @@
    },
    "box": [
     151,
-    1937,
+    1944,
     1574,
-    1965
+    1972
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2836,7 +2845,7 @@
    "day": 29,
    "date": "1886-01-29",
    "image": "gold_rows/14_000041_d29.png",
-   "sha256": "95fd48eb6a6b6a316572cbda431c32ca44977e90d1732c479958ef831b54bf97",
+   "sha256": "7a7436f123b2979034ec26b5d71973bb0908b8daf25ea6fdf708cd46c8bf2fdb",
    "cells": {
     "pressure": 755.12,
     "pressure_max": 756.42,
@@ -2859,12 +2868,12 @@
    },
    "box": [
     151,
-    1965,
+    1972,
     1574,
-    1993
+    2000
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2874,7 +2883,7 @@
    "day": 30,
    "date": "1886-01-30",
    "image": "gold_rows/14_000041_d30.png",
-   "sha256": "3bf4a63fe288b7beb0c948fc4c37c61d4dbf56ce2df289bbfd9e8272b92fed47",
+   "sha256": "b4fa2692157aec54cdd1de2b0901ea9e8bd678e39442ce9aa1979aecc1db0740",
    "cells": {
     "pressure": 753.24,
     "pressure_max": 754.31,
@@ -2897,12 +2906,12 @@
    },
    "box": [
     151,
-    1993,
+    2000,
     1574,
-    2021
+    2028
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2912,7 +2921,7 @@
    "day": 31,
    "date": "1886-01-31",
    "image": "gold_rows/14_000041_d31.png",
-   "sha256": "18d2fbf9e16d159e4a7c0389fa9556d88e2917ad08607fb5946faac824387a86",
+   "sha256": "9035e0cddfe8976f683da258d061703a326733ed72865e27af13ee87e35cdb4d",
    "cells": {
     "pressure": 753.13,
     "pressure_max": 754.46,
@@ -2935,12 +2944,12 @@
    },
    "box": [
     151,
-    2022,
+    2028,
     1574,
-    2050
+    2056
    ],
    "pitch": 28.0,
-   "skew_deg": 0.0,
+   "skew_deg": 0.75,
    "is_gold": true
   },
   {
@@ -2950,7 +2959,7 @@
    "day": 1,
    "date": "1886-02-01",
    "image": "gold_rows/14_000057_d01.png",
-   "sha256": "c09bb29d01d9d12718326101ffe51bee8d34fc6c5c28c0d42059d1ce24319458",
+   "sha256": "af4d1d1a5c923626d35e2811c8c4b5b27cefeea30940ff8e13bf1443a8cad8c4",
    "cells": {
     "pressure": 753.18,
     "pressure_max": 754.23,
@@ -2974,12 +2983,12 @@
    },
    "box": [
     151,
-    694,
+    695,
     1581,
-    722
+    723
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -2989,7 +2998,7 @@
    "day": 2,
    "date": "1886-02-02",
    "image": "gold_rows/14_000057_d02.png",
-   "sha256": "d862ed335d71b757438f0c0584a254645b33345cfd0ecacb4330813c7bf61cac",
+   "sha256": "6a1905434728727197f999ecc495085cebb1cb2b129ec75083397cef1d881507",
    "cells": {
     "pressure": 753.18,
     "pressure_max": 755.63,
@@ -3013,12 +3022,12 @@
    },
    "box": [
     151,
-    722,
+    723,
     1581,
-    750
+    751
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3028,7 +3037,7 @@
    "day": 3,
    "date": "1886-02-03",
    "image": "gold_rows/14_000057_d03.png",
-   "sha256": "f41763e91cf199dda093ffa9105f392fd3801a7552c998861e9a8999bd3a8384",
+   "sha256": "44ef1bc607aa847b26a062b20574e1782a0a9c1c9ea978af3ad875e21d4ec864",
    "cells": {
     "pressure": 754.08,
     "pressure_max": 755.17,
@@ -3050,12 +3059,12 @@
    },
    "box": [
     151,
-    750,
+    751,
     1581,
-    778
+    779
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3065,7 +3074,7 @@
    "day": 4,
    "date": "1886-02-04",
    "image": "gold_rows/14_000057_d04.png",
-   "sha256": "2311e1d6aa6e7189a96440b780c7d44453b65041c1eecbe11f122bb3035cfd74",
+   "sha256": "1c2780f8584c540b7272265223a59fd4898baebc2c3b208bad352452e420586e",
    "cells": {
     "pressure": 753.43,
     "pressure_max": 754.16,
@@ -3087,12 +3096,12 @@
    },
    "box": [
     151,
-    778,
+    779,
     1581,
-    806
+    807
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3102,7 +3111,7 @@
    "day": 5,
    "date": "1886-02-05",
    "image": "gold_rows/14_000057_d05.png",
-   "sha256": "d59754e0b30c02e830e0de2509b640246b19e20e6db21d5d2f7ee3b1c7edf00a",
+   "sha256": "b725ac83ea686f52b9eadab80a2d94c717082e989588dd4232b994e2946027f3",
    "cells": {
     "pressure": 753.49,
     "pressure_max": 754.36,
@@ -3129,7 +3138,7 @@
     834
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3139,7 +3148,7 @@
    "day": 6,
    "date": "1886-02-06",
    "image": "gold_rows/14_000057_d06.png",
-   "sha256": "89e5d8a41dedc7b7b84b0757e5b745e0ecbb921b208cda1c758a15912902c846",
+   "sha256": "9113483cd0e28f4136c1043f0d9b604e3a0ca7c251241e4d9b66a6d03c70d0d8",
    "cells": {
     "pressure": 755.41,
     "pressure_max": 757.41,
@@ -3161,12 +3170,12 @@
    },
    "box": [
     151,
-    833,
+    834,
     1581,
-    861
+    862
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3176,7 +3185,7 @@
    "day": 7,
    "date": "1886-02-07",
    "image": "gold_rows/14_000057_d07.png",
-   "sha256": "00c8098e4e11b1500de315e685fba4ac95df37318b3bf968b05a674463ba22a7",
+   "sha256": "96097028e29a4c4f890d588bdaf9110fda330b256b7c4e4b77d8eda335852ceb",
    "cells": {
     "pressure": 756.08,
     "pressure_max": 756.96,
@@ -3198,12 +3207,12 @@
    },
    "box": [
     151,
-    861,
+    862,
     1581,
-    889
+    890
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3213,7 +3222,7 @@
    "day": 8,
    "date": "1886-02-08",
    "image": "gold_rows/14_000057_d08.png",
-   "sha256": "de00a4851c98030ffc962f9870ae30fc7dfffaad336626a237dc292c9ee6e893",
+   "sha256": "78853e50dcdfdde46433fc315e756300a89ca747d3013527d9483128b10659f2",
    "cells": {
     "pressure": 756.34,
     "pressure_max": 757.23,
@@ -3235,12 +3244,12 @@
    },
    "box": [
     151,
-    889,
+    890,
     1581,
-    917
+    918
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3250,7 +3259,7 @@
    "day": 9,
    "date": "1886-02-09",
    "image": "gold_rows/14_000057_d09.png",
-   "sha256": "0af9ee3e0a068d61a0124a082634966bdabff74cd773986443abd59a20c5f3d7",
+   "sha256": "a275e5917fdefdf8fbbacbd3c22782158e02035072946b7b98d7661deb4ac921",
    "cells": {
     "pressure": 756.74,
     "pressure_max": 757.89,
@@ -3272,12 +3281,12 @@
    },
    "box": [
     151,
-    917,
+    918,
     1581,
-    945
+    946
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3287,7 +3296,7 @@
    "day": 10,
    "date": "1886-02-10",
    "image": "gold_rows/14_000057_d10.png",
-   "sha256": "a91927218ce1e8bdaffc4af7675339641ad7475960bcdab91e33a811a43f161c",
+   "sha256": "4691b9130c6ad99f9b69d15ef3a34731db1003b1ba4436105eecab088ecc6458",
    "cells": {
     "pressure": 756.12,
     "pressure_max": 757.09,
@@ -3310,12 +3319,12 @@
    },
    "box": [
     151,
-    944,
+    946,
     1581,
-    972
+    974
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3325,7 +3334,7 @@
    "day": 11,
    "date": "1886-02-11",
    "image": "gold_rows/14_000057_d11.png",
-   "sha256": "c3bb4789e77b8776dd94dee71b97299735789056e004718049aaa2e1acbeec79",
+   "sha256": "14310c45ca2723086c6b3e988ae5fd672a96939ea64510f1208cb05a186c9eef",
    "cells": {
     "pressure": 754.82,
     "pressure_max": 755.5,
@@ -3347,12 +3356,12 @@
    },
    "box": [
     151,
-    972,
+    973,
     1581,
-    1000
+    1001
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3362,7 +3371,7 @@
    "day": 12,
    "date": "1886-02-12",
    "image": "gold_rows/14_000057_d12.png",
-   "sha256": "36d874077bb6abcf811356f31493059d4658f9862e3bfb51b0003b040194c6d2",
+   "sha256": "1b8ba2806d217ca9d496f6afda154dcdcd15f76f2d98029abe58406b54d4167b",
    "cells": {
     "pressure": 753.65,
     "pressure_max": 754.53,
@@ -3385,12 +3394,12 @@
    },
    "box": [
     151,
-    999,
+    1000,
     1581,
-    1027
+    1028
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3400,7 +3409,7 @@
    "day": 13,
    "date": "1886-02-13",
    "image": "gold_rows/14_000057_d13.png",
-   "sha256": "c50c0354cf997019052b50ad490fc87d9e10d2824db26a69f02982a35bad5481",
+   "sha256": "f75ebff22e46d211ab0679965346ea27cd5f6c403a420ed76eee0970d0bd0843",
    "cells": {
     "pressure": 753.34,
     "pressure_max": 754.31,
@@ -3423,12 +3432,12 @@
    },
    "box": [
     151,
-    1027,
+    1028,
     1581,
-    1055
+    1056
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3438,7 +3447,7 @@
    "day": 14,
    "date": "1886-02-14",
    "image": "gold_rows/14_000057_d14.png",
-   "sha256": "80b462b9f3cb0276287b4da63902541dcf77871bc5fa2cd176cdb7eec25bd43a",
+   "sha256": "e54f344c22b001603adc7a3d3560623b19ea1be18fc8b06c7d1929ac8fb149f6",
    "cells": {
     "pressure": 754.83,
     "pressure_max": 758.14,
@@ -3465,7 +3474,7 @@
     1084
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3475,7 +3484,7 @@
    "day": 15,
    "date": "1886-02-15",
    "image": "gold_rows/14_000057_d15.png",
-   "sha256": "dfa9765f8589d3fc590429c03277d0b8e40eb9108ac369d76aa275262e32eb87",
+   "sha256": "a94c312f88e7e43c4c32c5e6f0d4c76618a47e05c3e34dc5b256793e2c331c5a",
    "cells": {
     "pressure": 756.88,
     "pressure_max": 758.31,
@@ -3498,12 +3507,12 @@
    },
    "box": [
     151,
-    1083,
+    1084,
     1581,
-    1111
+    1112
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3513,7 +3522,7 @@
    "day": 16,
    "date": "1886-02-16",
    "image": "gold_rows/14_000057_d16.png",
-   "sha256": "34ae06f714a6145f55f23f834b9b64e1e0c2fde4c912e0979218e88c77367ded",
+   "sha256": "533c378ebbc59a8d611a5eef2c66c0d78133938b59fa207fbaa2ba3546188c62",
    "cells": {
     "pressure": 756.34,
     "pressure_max": 757.62,
@@ -3540,7 +3549,7 @@
     1139
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3550,7 +3559,7 @@
    "day": 17,
    "date": "1886-02-17",
    "image": "gold_rows/14_000057_d17.png",
-   "sha256": "e787b05c5a1e22cac41b46fa4872c57c39371d297a7be6f2f7db05be5c8a2c2c",
+   "sha256": "8f7286344c449f7c7aefa9cc161e899be104d421f140477a47f382c4dc5d1022",
    "cells": {
     "pressure": 753.85,
     "pressure_max": 756.4,
@@ -3573,12 +3582,12 @@
    },
    "box": [
     151,
-    1138,
+    1139,
     1581,
-    1166
+    1167
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3588,7 +3597,7 @@
    "day": 18,
    "date": "1886-02-18",
    "image": "gold_rows/14_000057_d18.png",
-   "sha256": "f116c854fad3d2f0b0138b0d5f0f4a90aa6a2fe79cbbe7ba14f6b946752ec518",
+   "sha256": "e628295f5c4f9f7ade762273a322a4d0e7ab8cdc477b728be237176b82e1a0e0",
    "cells": {
     "pressure": 753.4,
     "pressure_max": 756.56,
@@ -3611,12 +3620,12 @@
    },
    "box": [
     151,
-    1166,
+    1167,
     1581,
-    1194
+    1195
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3626,7 +3635,7 @@
    "day": 19,
    "date": "1886-02-19",
    "image": "gold_rows/14_000057_d19.png",
-   "sha256": "c122e886214eccd2fc97528745facf383b77304c6986d2f54b6412738a9aaefe",
+   "sha256": "a4de5259aba874f96c876a5e9a5b104a76d53f9a1da6e44053517a27a00d41f5",
    "cells": {
     "pressure": 758.17,
     "pressure_max": 760.26,
@@ -3648,12 +3657,12 @@
    },
    "box": [
     151,
-    1194,
+    1195,
     1581,
-    1222
+    1223
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3663,7 +3672,7 @@
    "day": 20,
    "date": "1886-02-20",
    "image": "gold_rows/14_000057_d20.png",
-   "sha256": "e8b1b2f50240dec870b0e6d52e6000487f931ce3dacfdeadd551f28f4836b7a6",
+   "sha256": "436654171901152aeb732d2a2074c1539e7e4c237c7fc4a04b1fcf315a1d4af0",
    "cells": {
     "pressure": 760.47,
     "pressure_max": 761.82,
@@ -3685,12 +3694,12 @@
    },
    "box": [
     151,
-    1221,
+    1222,
     1581,
-    1249
+    1250
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3700,7 +3709,7 @@
    "day": 21,
    "date": "1886-02-21",
    "image": "gold_rows/14_000057_d21.png",
-   "sha256": "3bd8aa4c5e349efe7b6f64c888d4d9b851c4c18268956e1dea263c49fb2cfbac",
+   "sha256": "376a81a5fe34073c2ac2267ed77f60d79583f0850b2c8b6fd2c3f19381ea4100",
    "cells": {
     "pressure": 761.36,
     "pressure_max": 762.25,
@@ -3722,12 +3731,12 @@
    },
    "box": [
     151,
-    1249,
+    1250,
     1581,
-    1277
+    1278
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3737,7 +3746,7 @@
    "day": 22,
    "date": "1886-02-22",
    "image": "gold_rows/14_000057_d22.png",
-   "sha256": "25c1b3c8ac6cfca83bd355b4a9084c4d2be926242300cc83ee10796aa640069a",
+   "sha256": "45f907cba8a9e88f331c8cebbdfd553f7c079d6667d9786f68e928f8d5eb83fa",
    "cells": {
     "pressure": 760.16,
     "pressure_max": 761.17,
@@ -3759,12 +3768,12 @@
    },
    "box": [
     151,
-    1277,
+    1278,
     1581,
-    1305
+    1306
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3774,7 +3783,7 @@
    "day": 23,
    "date": "1886-02-23",
    "image": "gold_rows/14_000057_d23.png",
-   "sha256": "2141e45edceb78c1bbe008a6c9c0a2ef6d64c9846a56fdfa859ff348aae482dd",
+   "sha256": "d618572269134faf6cb36e61085d907942a849c1b3edf0b2e1c4496b8909a969",
    "cells": {
     "pressure": 758.72,
     "pressure_max": 760.21,
@@ -3797,12 +3806,12 @@
    },
    "box": [
     151,
-    1305,
+    1306,
     1581,
-    1333
+    1334
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3812,7 +3821,7 @@
    "day": 24,
    "date": "1886-02-24",
    "image": "gold_rows/14_000057_d24.png",
-   "sha256": "ac2ef04adc910e8213e448ed6ce60c050989995d4e6126a6fbda1072213cb179",
+   "sha256": "968f76503f16f447ec8ec5fcb880376451a3b2b36e42e70ad990ab71457f5ecd",
    "cells": {
     "pressure": 757.54,
     "pressure_max": 758.96,
@@ -3835,12 +3844,12 @@
    },
    "box": [
     151,
-    1332,
+    1333,
     1581,
-    1360
+    1361
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3850,7 +3859,7 @@
    "day": 25,
    "date": "1886-02-25",
    "image": "gold_rows/14_000057_d25.png",
-   "sha256": "4f0f873cebe9f6724ed74d6659ed3ba9872a2f02c0d329c97f27beb4292fbebb",
+   "sha256": "1087693d224bcefdafddc14b7d58d7428f8bd68dcdadad610adf69a5ff18460c",
    "cells": {
     "pressure": 757.02,
     "pressure_max": 758.27,
@@ -3873,12 +3882,12 @@
    },
    "box": [
     151,
-    1360,
+    1361,
     1581,
-    1388
+    1389
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3888,7 +3897,7 @@
    "day": 26,
    "date": "1886-02-26",
    "image": "gold_rows/14_000057_d26.png",
-   "sha256": "ac17aaccca8e78190e62721942056acabddab566c957c7a5a42b41adaf1c9df2",
+   "sha256": "af97015eb835d49012865e530122f8717865200596c5d7b8a676ff7e5cc52a6a",
    "cells": {
     "pressure": 757.36,
     "pressure_max": 759.39,
@@ -3911,12 +3920,12 @@
    },
    "box": [
     151,
-    1387,
+    1388,
     1581,
-    1415
+    1416
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3926,7 +3935,7 @@
    "day": 27,
    "date": "1886-02-27",
    "image": "gold_rows/14_000057_d27.png",
-   "sha256": "59231b5a8a1ad112e99c4a6e525bcf2b371994ef70f90e084d0e793e66de2f12",
+   "sha256": "4fef893c5c9733e4d7a244e5de6914a5e32851d9d0f906403e29e55fd21fbb27",
    "cells": {
     "pressure": 756.29,
     "pressure_max": 758.44,
@@ -3949,12 +3958,12 @@
    },
    "box": [
     151,
-    1415,
+    1416,
     1581,
-    1443
+    1444
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -3964,7 +3973,7 @@
    "day": 28,
    "date": "1886-02-28",
    "image": "gold_rows/14_000057_d28.png",
-   "sha256": "47fddb66b196d65e25cde3293fd941d3d1e9bf2a592679aac0fad4a14755af0d",
+   "sha256": "004d799c11d1c2e3f152363fb6e0ffd8c6fa08886dc4b14fff94caece83c2e7c",
    "cells": {
     "pressure": 755.26,
     "pressure_max": 756.21,
@@ -3987,12 +3996,12 @@
    },
    "box": [
     151,
-    1443,
+    1444,
     1581,
-    1471
+    1472
    ],
    "pitch": 28.0,
-   "skew_deg": 0.093,
+   "skew_deg": 0.187,
    "is_gold": true
   },
   {
@@ -5175,7 +5184,7 @@
    "day": 1,
    "date": "1886-04-01",
    "image": "gold_rows/14_000090_d01.png",
-   "sha256": "c7339e6add22341c3334e3093e3ca388662e97bb1a23cb4bb67f443865da3170",
+   "sha256": "16edc96109a0d88da0d208bc1e60c03d6a4d37b1651e5c68d45803f4d8fc5403",
    "cells": {
     "pressure": 758.26,
     "pressure_max": 759.71,
@@ -5199,12 +5208,12 @@
    },
    "box": [
     150,
-    1196,
+    1198,
     1568,
-    1224
+    1226
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5214,7 +5223,7 @@
    "day": 2,
    "date": "1886-04-02",
    "image": "gold_rows/14_000090_d02.png",
-   "sha256": "c106f4e1ca5de60de60048488f7620a3c6dc23711cb7995f4f489423dde06465",
+   "sha256": "21b9f2a49e940377afc441e159f52c4c42264ef92bed1cf1c471ce358aeca183",
    "cells": {
     "pressure": 757.51,
     "pressure_max": 758.93,
@@ -5236,12 +5245,12 @@
    },
    "box": [
     150,
-    1224,
+    1226,
     1568,
-    1252
+    1254
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5251,7 +5260,7 @@
    "day": 3,
    "date": "1886-04-03",
    "image": "gold_rows/14_000090_d03.png",
-   "sha256": "2e9799a8e016cb1a05e3028465a3b2101f2eb62cff6b3bad6a51588a2e5ffbae",
+   "sha256": "fd3a27a74efe7c34d83acb250267c85e9e440ea1afc723d7cdf186e741bda388",
    "cells": {
     "pressure": 755.16,
     "pressure_max": 757.21,
@@ -5274,12 +5283,12 @@
    },
    "box": [
     150,
-    1252,
+    1254,
     1568,
-    1280
+    1282
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5289,7 +5298,7 @@
    "day": 4,
    "date": "1886-04-04",
    "image": "gold_rows/14_000090_d04.png",
-   "sha256": "b618b054a506b12c7df3db7bac3d779403fa20f3e8f62b90f38329d066e5e606",
+   "sha256": "1c34dc6581fa851bdbe6a7b3ea1531c27db50c330de651d4e49be21b0d46ed59",
    "cells": {
     "pressure": 755.08,
     "pressure_max": 757.22,
@@ -5312,12 +5321,12 @@
    },
    "box": [
     150,
-    1280,
+    1282,
     1568,
-    1308
+    1310
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5327,7 +5336,7 @@
    "day": 5,
    "date": "1886-04-05",
    "image": "gold_rows/14_000090_d05.png",
-   "sha256": "271ca974f645f9af2befdfc35c32dc51e3f778f19ffd1cabca6623153b25f13f",
+   "sha256": "cef40bf1a909ac9600897347aa4898aaf8f5ca9ebfc766ebf0ee7df5546a6891",
    "cells": {
     "pressure": 754.15,
     "pressure_max": 757.93,
@@ -5350,12 +5359,12 @@
    },
    "box": [
     150,
-    1308,
+    1310,
     1568,
-    1336
+    1338
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5365,7 +5374,7 @@
    "day": 6,
    "date": "1886-04-06",
    "image": "gold_rows/14_000090_d06.png",
-   "sha256": "cff54f8fd88b874e4ca27d9ee4e4759b4d1b8270f1d4a6fc2b3bd14ee04adb6e",
+   "sha256": "06da4251573e72af2275b1290b196c372782c66e09171395b6a9d24c2fab208e",
    "cells": {
     "pressure": 755.04,
     "pressure_max": 755.47,
@@ -5388,12 +5397,12 @@
    },
    "box": [
     150,
-    1336,
+    1338,
     1568,
-    1364
+    1366
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5403,7 +5412,7 @@
    "day": 7,
    "date": "1886-04-07",
    "image": "gold_rows/14_000090_d07.png",
-   "sha256": "5fe60a8020c187207d149d74f896876d364548998cda33b777bb02186290f559",
+   "sha256": "ab5ae0274ff287b333b55afec28a514d4ccf92b89d0f700a18de9458748d7995",
    "cells": {
     "pressure": 754.61,
     "pressure_max": 755.51,
@@ -5425,12 +5434,12 @@
    },
    "box": [
     150,
-    1364,
+    1366,
     1568,
-    1392
+    1394
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5440,7 +5449,7 @@
    "day": 8,
    "date": "1886-04-08",
    "image": "gold_rows/14_000090_d08.png",
-   "sha256": "4a6da18dced45d89c6a125bd81045e562d0751ab0f97668f3b5eb5c6f839b0e5",
+   "sha256": "60d986882c30b5c0af362634e5faad7a7eea13dca7cc93bec39bb0a08a3d561e",
    "cells": {
     "pressure": 753.97,
     "pressure_max": 754.91,
@@ -5463,12 +5472,12 @@
    },
    "box": [
     150,
-    1392,
+    1394,
     1568,
-    1420
+    1422
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5478,7 +5487,7 @@
    "day": 9,
    "date": "1886-04-09",
    "image": "gold_rows/14_000090_d09.png",
-   "sha256": "054b15e426a6b11cd9b371db18f6088c28d4de0502a9a6131515d56f8b41ef3c",
+   "sha256": "de2ab9350f289e27d3e3dcdfa4e78c59c0c3ad4d62972c49891d879fb82964ae",
    "cells": {
     "pressure": 752.99,
     "pressure_max": 754.03,
@@ -5501,12 +5510,12 @@
    },
    "box": [
     150,
-    1420,
+    1421,
     1568,
-    1448
+    1449
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5516,7 +5525,7 @@
    "day": 10,
    "date": "1886-04-10",
    "image": "gold_rows/14_000090_d10.png",
-   "sha256": "536cdb622b5e36390a8f1a132223ae07bb709076ab94474ded0005118388f772",
+   "sha256": "9312c3e5eb26aac516667c26b5b35d46de359b552b4d81d4cdedc60854bb9ae7",
    "cells": {
     "pressure": 753.3,
     "pressure_max": 754.43,
@@ -5539,12 +5548,12 @@
    },
    "box": [
     150,
-    1448,
+    1449,
     1568,
-    1476
+    1477
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5554,7 +5563,7 @@
    "day": 11,
    "date": "1886-04-11",
    "image": "gold_rows/14_000090_d11.png",
-   "sha256": "e7f6e4f4c1f79eb441f56ac364423af8b23e4eca742c31e7323173462773ef00",
+   "sha256": "4ab5c23016844778bb91e3d00837b9e7347c3f2be7c8a7431195121c674e8363",
    "cells": {
     "pressure": 754.57,
     "pressure_max": 755.8,
@@ -5577,12 +5586,12 @@
    },
    "box": [
     150,
-    1476,
+    1477,
     1568,
-    1504
+    1505
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5592,7 +5601,7 @@
    "day": 12,
    "date": "1886-04-12",
    "image": "gold_rows/14_000090_d12.png",
-   "sha256": "500ff00e5f49c8ec260d4a93bd00cd2f4f0bbf5bd8ff6579bc3f8622560c91f6",
+   "sha256": "d64c356abb5cad6b6294f9ab2a517a4a3a3a6fde557a13b2b87cfd4bb21df31e",
    "cells": {
     "pressure": 754.95,
     "pressure_max": 757.16,
@@ -5614,12 +5623,12 @@
    },
    "box": [
     150,
-    1503,
+    1505,
     1568,
-    1531
+    1533
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5629,7 +5638,7 @@
    "day": 13,
    "date": "1886-04-13",
    "image": "gold_rows/14_000090_d13.png",
-   "sha256": "638589ef44730c365cfecdf4028803044c3b49213da7b94355c689e2a9db45a6",
+   "sha256": "1ca5f49b1ebd42dbfe289cba0005446bc2c0be05be1beb8797cdc119bcedb6ed",
    "cells": {
     "pressure": 759.33,
     "pressure_max": 762.33,
@@ -5651,12 +5660,12 @@
    },
    "box": [
     150,
-    1532,
+    1533,
     1568,
-    1560
+    1561
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5666,7 +5675,7 @@
    "day": 14,
    "date": "1886-04-14",
    "image": "gold_rows/14_000090_d14.png",
-   "sha256": "65a3e2265915de21cb66c1077c2eadbc6cc1eaee1fa61736df2fd0f36f569ea8",
+   "sha256": "bfb93d87434910b67781e1a04dba147ba3f95360f9494d5672d9477415827506",
    "cells": {
     "pressure": 762.35,
     "pressure_max": 763.53,
@@ -5689,12 +5698,12 @@
    },
    "box": [
     150,
-    1560,
+    1561,
     1568,
-    1588
+    1589
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5704,7 +5713,7 @@
    "day": 15,
    "date": "1886-04-15",
    "image": "gold_rows/14_000090_d15.png",
-   "sha256": "333fdbeac14d610dd08c156be7faeaef48f98e496af4356aebf78a712287d2bc",
+   "sha256": "567e14851e15997db62112af43dd8f39d957f8a1d976f7f5620112f4dbd725f9",
    "cells": {
     "pressure": 761.52,
     "pressure_max": 763.21,
@@ -5727,12 +5736,12 @@
    },
    "box": [
     150,
-    1587,
+    1589,
     1568,
-    1615
+    1617
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5742,7 +5751,7 @@
    "day": 16,
    "date": "1886-04-16",
    "image": "gold_rows/14_000090_d16.png",
-   "sha256": "c17d67bac44f8ee4b102e5b3190c98cd2266347ffd2e2bf43a5328bc522a83de",
+   "sha256": "8c278350139ed5e19ddfd89198e4d88dd7c64dd34960f42b2125000a3680cd04",
    "cells": {
     "pressure": 758.17,
     "pressure_max": 760.43,
@@ -5765,12 +5774,12 @@
    },
    "box": [
     150,
-    1615,
+    1617,
     1568,
-    1643
+    1645
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5780,7 +5789,7 @@
    "day": 17,
    "date": "1886-04-17",
    "image": "gold_rows/14_000090_d17.png",
-   "sha256": "c7e98d4e50063c8825fa51f0b6cff739d2a9eea2a6b11342b37960ec9c02e7b9",
+   "sha256": "44daeec211cee0e426318a1fce3784d3359c86b288b33592b6a9a435e8e85977",
    "cells": {
     "pressure": 757.09,
     "pressure_max": 758.91,
@@ -5803,12 +5812,12 @@
    },
    "box": [
     150,
-    1643,
+    1645,
     1568,
-    1671
+    1673
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5818,7 +5827,7 @@
    "day": 18,
    "date": "1886-04-18",
    "image": "gold_rows/14_000090_d18.png",
-   "sha256": "09bb1f6d9946ae09dcc1d012fa3ac6f76a39b6b47c997bece5ca5d9f78448f19",
+   "sha256": "6562ab667fe33f8eaec76f54e91c4f173a93f7491a1b07864796f8e0c7d5b2af",
    "cells": {
     "pressure": 759.66,
     "pressure_max": 761.1,
@@ -5841,12 +5850,12 @@
    },
    "box": [
     150,
-    1671,
+    1673,
     1568,
-    1699
+    1701
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5856,7 +5865,7 @@
    "day": 19,
    "date": "1886-04-19",
    "image": "gold_rows/14_000090_d19.png",
-   "sha256": "a8bddc41838fb4e5316cd17b25af50381c59c8b79386238959b555ebd97e3d57",
+   "sha256": "162368a70abd04b0c13335eea8a8512f871f2a5047f830de5ecf6e0c2207816a",
    "cells": {
     "pressure": 760.54,
     "pressure_max": 762.07,
@@ -5879,12 +5888,12 @@
    },
    "box": [
     150,
-    1699,
+    1701,
     1568,
-    1727
+    1729
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5894,7 +5903,7 @@
    "day": 20,
    "date": "1886-04-20",
    "image": "gold_rows/14_000090_d20.png",
-   "sha256": "c52c124303edd36adb2aa0931242abaad972bd03be3405547897fb3c354e111c",
+   "sha256": "d424d5f7ec4fac1bf3039dc0d27ea867ac5fba81dfb4ec3fa9ca8a33aa31b8c4",
    "cells": {
     "pressure": 760.14,
     "pressure_max": 761.67,
@@ -5917,12 +5926,12 @@
    },
    "box": [
     150,
-    1727,
+    1729,
     1568,
-    1755
+    1757
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5932,7 +5941,7 @@
    "day": 21,
    "date": "1886-04-21",
    "image": "gold_rows/14_000090_d21.png",
-   "sha256": "4cfbb2fd4efbe1501240e82c8329dce773b5021842e38d80b19cee00d83315d2",
+   "sha256": "25f627f5a2c7961829750d974fd0cb58d15c1508ff5c50cf47119d7c3f5ab9ce",
    "cells": {
     "pressure": 758.74,
     "pressure_max": 759.96,
@@ -5955,12 +5964,12 @@
    },
    "box": [
     150,
-    1755,
+    1757,
     1568,
-    1783
+    1785
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -5970,7 +5979,7 @@
    "day": 22,
    "date": "1886-04-22",
    "image": "gold_rows/14_000090_d22.png",
-   "sha256": "0ab251f88b4e37f2349f11b47e7ab123e141609cf99916eb50186c8831d5745d",
+   "sha256": "2a4f3d57069ea6d737bc1753786a2b871225f29b1153402cb2dc810279676914",
    "cells": {
     "pressure": 758.17,
     "pressure_max": 759.39,
@@ -5993,12 +6002,12 @@
    },
    "box": [
     150,
-    1783,
+    1785,
     1568,
-    1811
+    1813
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -6008,7 +6017,7 @@
    "day": 23,
    "date": "1886-04-23",
    "image": "gold_rows/14_000090_d23.png",
-   "sha256": "bbf459e0d1319ea287457de0468e60845e29ec67da6210a7559e9cab7aed1f90",
+   "sha256": "715069adfb3dd21fa900b27f96abfe43050ae7d84a0701e933b78cb2444d417e",
    "cells": {
     "pressure": 756.69,
     "pressure_max": 757.86,
@@ -6031,12 +6040,12 @@
    },
    "box": [
     150,
-    1811,
+    1813,
     1568,
-    1839
+    1841
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -6046,7 +6055,7 @@
    "day": 24,
    "date": "1886-04-24",
    "image": "gold_rows/14_000090_d24.png",
-   "sha256": "6adeb72bc5c2cc7ffd42facd864c1729ab55effb60c0c7dac7761334831d8227",
+   "sha256": "36c274ea89aad7cac3981ff774c2c1fd6d37b32aa88ec9a1937aaf7d82b4d888",
    "cells": {
     "pressure": 755.42,
     "pressure_max": 756.85,
@@ -6069,12 +6078,12 @@
    },
    "box": [
     150,
-    1839,
+    1841,
     1568,
-    1867
+    1869
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -6084,7 +6093,7 @@
    "day": 25,
    "date": "1886-04-25",
    "image": "gold_rows/14_000090_d25.png",
-   "sha256": "b5d58f0d51eadf38689869db7342ef802d4b06836a9713093d807d16d6a97ae4",
+   "sha256": "adc906355f239e2bb0cf1000f2f639b1fa02783c3e0971a020113b19850623c3",
    "cells": {
     "pressure": 756.34,
     "pressure_max": 757.88,
@@ -6106,12 +6115,12 @@
    },
    "box": [
     150,
-    1867,
+    1869,
     1568,
-    1895
+    1897
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -6121,7 +6130,7 @@
    "day": 26,
    "date": "1886-04-26",
    "image": "gold_rows/14_000090_d26.png",
-   "sha256": "5e7facbd36669237f24d789ce568899cc685667875f5b5a91dc813c6169135a8",
+   "sha256": "02abe38875b8e2972f388ecda333f5af0db6f31cd48b20f36c974589b8d04159",
    "cells": {
     "pressure": 757.72,
     "pressure_max": 758.33,
@@ -6143,12 +6152,12 @@
    },
    "box": [
     150,
-    1895,
+    1897,
     1568,
-    1923
+    1925
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -6158,7 +6167,7 @@
    "day": 27,
    "date": "1886-04-27",
    "image": "gold_rows/14_000090_d27.png",
-   "sha256": "38bc5fd50bdfa6692b1cb96a58fe519732b7a268776285aad8e8934181c297b1",
+   "sha256": "1c6e850998ba675a5849ee04fcbec8cc75c9d571f7ea800287d1984cd480f56e",
    "cells": {
     "pressure": 753.85,
     "pressure_max": 757.21,
@@ -6180,12 +6189,12 @@
    },
    "box": [
     150,
-    1923,
+    1925,
     1568,
-    1951
+    1953
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -6195,7 +6204,7 @@
    "day": 28,
    "date": "1886-04-28",
    "image": "gold_rows/14_000090_d28.png",
-   "sha256": "3f78a27ccfe9f173f7a6dff5cb2db94bb6f1b68093ee96b9593fb735ae0776a0",
+   "sha256": "172e29ff899f8caf16a3d028718693dd725970ab80b85232ec90d28709bb36f7",
    "cells": {
     "pressure": 754.87,
     "pressure_max": 757.69,
@@ -6217,12 +6226,12 @@
    },
    "box": [
     150,
-    1951,
+    1953,
     1568,
-    1979
+    1981
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -6232,7 +6241,7 @@
    "day": 29,
    "date": "1886-04-29",
    "image": "gold_rows/14_000090_d29.png",
-   "sha256": "e9ffd5123d144b0ebdf9d5aaa472b9b58105999d67b0a861fb07342aca0c1e34",
+   "sha256": "0bf7cdd40bf1776a9eb29f86d1abbfe6b2f338abbc04950e5ae2bdcfc7fb4572",
    "cells": {
     "pressure": 757.86,
     "pressure_max": 759.09,
@@ -6254,12 +6263,12 @@
    },
    "box": [
     150,
-    1979,
+    1981,
     1568,
-    2007
+    2009
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -6269,7 +6278,7 @@
    "day": 30,
    "date": "1886-04-30",
    "image": "gold_rows/14_000090_d30.png",
-   "sha256": "77dc009b0e8ed110f54562ca37f3802e438d0d4a3630331b16b3140de9790949",
+   "sha256": "1eff925696aad23dbffa9bf356362f8a2fa4d5dc357191eeeb717785a372e986",
    "cells": {
     "pressure": 758.69,
     "pressure_max": 759.73,
@@ -6292,12 +6301,12 @@
    },
    "box": [
     150,
-    2007,
+    2009,
     1568,
-    2035
+    2037
    ],
    "pitch": 28.0,
-   "skew_deg": 0.564,
+   "skew_deg": 0.753,
    "is_gold": true
   },
   {
@@ -6307,7 +6316,7 @@
    "day": 1,
    "date": "1886-05-01",
    "image": "gold_rows/14_000109_d01.png",
-   "sha256": "a1340beb53700dfa0e8548074c362dfde48b0a13ec2ca9cb5851ec75167067f0",
+   "sha256": "9c3879a3a4fcf0be4d5ea511eedd2b551672656d42253d9219704a23e1caac28",
    "cells": {
     "pressure": 759.73,
     "pressure_max": 761.12,
@@ -6335,8 +6344,8 @@
     1568,
     726
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6346,7 +6355,7 @@
    "day": 2,
    "date": "1886-05-02",
    "image": "gold_rows/14_000109_d02.png",
-   "sha256": "f9944fe3aa349b8c5d449f14bf62c0306913480e581c7de257bc93f2ab2bb65a",
+   "sha256": "0bd83d58ebfb6276609e10218e2dbf1c27f1ae11275a70f8717a9b34b621f150",
    "cells": {
     "pressure": 761.24,
     "pressure_max": 762.55,
@@ -6370,10 +6379,10 @@
     150,
     726,
     1568,
-    754
+    756
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6383,7 +6392,7 @@
    "day": 3,
    "date": "1886-05-03",
    "image": "gold_rows/14_000109_d03.png",
-   "sha256": "5897a0c7682f0afc7428bd6f28679017b6da3d7d5c8898e16e0bad38c9d2c644",
+   "sha256": "d4605f5c34055c38fb847c13336830627bf13ec78dfde730a31bde3c40a233c5",
    "cells": {
     "pressure": 760.02,
     "pressure_max": 761.17,
@@ -6406,12 +6415,12 @@
    },
    "box": [
     150,
-    754,
+    756,
     1568,
-    782
+    784
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6421,7 +6430,7 @@
    "day": 4,
    "date": "1886-05-04",
    "image": "gold_rows/14_000109_d04.png",
-   "sha256": "6d39e5403df3d8b2671fb2db09e7bbaafd450b65325f3c6f97664c9c21c09080",
+   "sha256": "3d9416531b2bc78d656fe79e78cbd5936a5c0767488bae2f40a4ecd5967a23e6",
    "cells": {
     "pressure": 756.17,
     "pressure_max": 757.9,
@@ -6444,12 +6453,12 @@
    },
    "box": [
     150,
-    783,
+    784,
     1568,
-    811
+    812
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6459,7 +6468,7 @@
    "day": 5,
    "date": "1886-05-05",
    "image": "gold_rows/14_000109_d05.png",
-   "sha256": "6261c3bacf47399bf0299d027cf7489a927a9f86580a9d77b34829f3b2499660",
+   "sha256": "da802d34110498caa275acfb1a7b96b5115cd59cf12ca5e9a6f8dd5240501711",
    "cells": {
     "pressure": 755.22,
     "pressure_max": 757.18,
@@ -6482,12 +6491,12 @@
    },
    "box": [
     150,
-    810,
+    812,
     1568,
-    838
+    840
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6497,7 +6506,7 @@
    "day": 6,
    "date": "1886-05-06",
    "image": "gold_rows/14_000109_d06.png",
-   "sha256": "8bf175ff187dc46648309049e1455269bf02b54e0dc77924a442a7459d2ed340",
+   "sha256": "bb1c754ed54285a2e1c2cf8f8b24e4fa7080404d7e9266a2cab85faf830b8878",
    "cells": {
     "pressure": 757.01,
     "pressure_max": 757.96,
@@ -6520,12 +6529,12 @@
    },
    "box": [
     150,
-    837,
+    838,
     1568,
-    865
+    868
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6535,7 +6544,7 @@
    "day": 7,
    "date": "1886-05-07",
    "image": "gold_rows/14_000109_d07.png",
-   "sha256": "d7d56229c22e9e1e681eb84649badfd26e090a9afd4926c05ae36c2bde788373",
+   "sha256": "f978180e66283e8a142c6bb2dd1dd2511ede00d31f2afe6e4803f072c4e50f8e",
    "cells": {
     "pressure": 756.62,
     "pressure_max": 758.13,
@@ -6558,12 +6567,12 @@
    },
    "box": [
     150,
-    865,
+    866,
     1568,
-    893
+    896
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6573,7 +6582,7 @@
    "day": 8,
    "date": "1886-05-08",
    "image": "gold_rows/14_000109_d08.png",
-   "sha256": "a08f9e092032259fbdc2be6954ce6d0728a07700aeae7233193b505558000eb1",
+   "sha256": "d3cd6fc9f891592fe415eee0fe2535d779778ae1dcd2431e82722c987c1e6cf5",
    "cells": {
     "pressure": 752.93,
     "pressure_max": 755.04,
@@ -6598,10 +6607,10 @@
     150,
     894,
     1568,
-    922
+    924
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6611,7 +6620,7 @@
    "day": 9,
    "date": "1886-05-09",
    "image": "gold_rows/14_000109_d09.png",
-   "sha256": "54b1462ab5019f459c8c03c994a1b84d847a274d0bf64ba79364ff451728e331",
+   "sha256": "0946776ef8218a9229f18962e044981fcfd88cdd2ac4d4976b52ed41d1c048d5",
    "cells": {
     "pressure": 753.56,
     "pressure_max": 756.51,
@@ -6634,12 +6643,12 @@
    },
    "box": [
     150,
-    921,
+    922,
     1568,
-    949
+    952
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6649,7 +6658,7 @@
    "day": 10,
    "date": "1886-05-10",
    "image": "gold_rows/14_000109_d10.png",
-   "sha256": "a2f9ee9b51b7304917b53a4aeb296e9d953dc1ff626c1721383327633cae95b9",
+   "sha256": "4eefe67fe48eb295e380be0163dafc03310a30d88960e5f4b71ae5077c78cf98",
    "cells": {
     "pressure": 756.39,
     "pressure_max": 757.74,
@@ -6672,12 +6681,12 @@
    },
    "box": [
     150,
-    949,
+    950,
     1568,
-    977
+    980
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6687,7 +6696,7 @@
    "day": 11,
    "date": "1886-05-11",
    "image": "gold_rows/14_000109_d11.png",
-   "sha256": "20dc8f39eed1cb3ff56317e5d9d6372a57027f134ea2fb3ad510b699c2325eec",
+   "sha256": "53d94042707c01ec000d5c025778965230cc6abed17caa6162e46e6da68d2c47",
    "cells": {
     "pressure": 755.41,
     "pressure_max": 758.01,
@@ -6710,12 +6719,12 @@
    },
    "box": [
     150,
-    977,
+    978,
     1568,
-    1005
+    1008
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6725,7 +6734,7 @@
    "day": 12,
    "date": "1886-05-12",
    "image": "gold_rows/14_000109_d12.png",
-   "sha256": "ac7c06b2c8fd5ec27125671fbe81942b3a2d2820c3a35f34aee794ffad39e632",
+   "sha256": "cb2c376199545634543502171aa9b583bedc7a41e476d06d76c691a44d5d4c59",
    "cells": {
     "pressure": 760.83,
     "pressure_max": 763.96,
@@ -6748,12 +6757,12 @@
    },
    "box": [
     150,
-    1005,
+    1006,
     1568,
-    1033
+    1034
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6763,7 +6772,7 @@
    "day": 13,
    "date": "1886-05-13",
    "image": "gold_rows/14_000109_d13.png",
-   "sha256": "09093bc52a90313bfc1fdb286050208c4ec9ce448574ea20998c558b82090f20",
+   "sha256": "1f3abe97dea4b05fd70d2c8c95a8037afe8d9a1e4d29230294143881936988a3",
    "cells": {
     "pressure": 764.66,
     "pressure_max": 765.9,
@@ -6785,12 +6794,12 @@
    },
    "box": [
     150,
-    1033,
+    1034,
     1568,
-    1061
+    1064
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6800,7 +6809,7 @@
    "day": 14,
    "date": "1886-05-14",
    "image": "gold_rows/14_000109_d14.png",
-   "sha256": "761ad673da288af183415c7d1d8a4b5364d76cee915fdcad4b378ffb57f228e2",
+   "sha256": "5fc738b24abfbca0cedc19c82e4b4744a3d00bdfed189c64b57f2cd252a37638",
    "cells": {
     "pressure": 764.65,
     "pressure_max": 765.75,
@@ -6823,12 +6832,12 @@
    },
    "box": [
     150,
-    1061,
+    1062,
     1568,
-    1089
+    1090
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6838,7 +6847,7 @@
    "day": 15,
    "date": "1886-05-15",
    "image": "gold_rows/14_000109_d15.png",
-   "sha256": "d43e59463ccabaa687d52f37aa4476b3abdb0cc51c1cde4a7b79d7d7a098c963",
+   "sha256": "931cee406beb697640277943a033b2465bf97abd01903710df5d8d0fa11db536",
    "cells": {
     "pressure": 763.3,
     "pressure_max": 764.36,
@@ -6861,12 +6870,12 @@
    },
    "box": [
     150,
-    1089,
+    1090,
     1568,
-    1117
+    1118
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6876,7 +6885,7 @@
    "day": 16,
    "date": "1886-05-16",
    "image": "gold_rows/14_000109_d16.png",
-   "sha256": "4bd3b5cfa07ce504b4b23b6b0b73b65fc3c957c216cf90b7fceb06f96d728950",
+   "sha256": "73859b768b1af2ad62a5b283bd11ad7ed7f0984d1328aedbe5bb216bdbdb14a9",
    "cells": {
     "pressure": 761.5,
     "pressure_max": 762.49,
@@ -6899,12 +6908,12 @@
    },
    "box": [
     150,
-    1116,
+    1118,
     1568,
-    1144
+    1146
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6914,7 +6923,7 @@
    "day": 17,
    "date": "1886-05-17",
    "image": "gold_rows/14_000109_d17.png",
-   "sha256": "c4a13de1b98fc52db2d30df41d244eb5eecaf43b14a77dd5e8442f156285f833",
+   "sha256": "404b3aa228b6a65c8f94f495b5344e76a7ea5be05aaeacc11389d0a604211177",
    "cells": {
     "pressure": 760.29,
     "pressure_max": 761.32,
@@ -6937,12 +6946,12 @@
    },
    "box": [
     150,
-    1144,
+    1146,
     1568,
-    1172
+    1174
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6952,7 +6961,7 @@
    "day": 18,
    "date": "1886-05-18",
    "image": "gold_rows/14_000109_d18.png",
-   "sha256": "14dd5a37c029b34fa79f01236660d96400d10f2aa388dc14467fe3c27d84acd9",
+   "sha256": "498dd8c1424b8fe7f13aceac2f060f3f57f15f3acfcf7e531d1a914377281b02",
    "cells": {
     "pressure": 761.91,
     "pressure_max": 763.58,
@@ -6974,12 +6983,12 @@
    },
    "box": [
     150,
-    1172,
+    1174,
     1568,
-    1200
+    1202
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -6989,7 +6998,7 @@
    "day": 19,
    "date": "1886-05-19",
    "image": "gold_rows/14_000109_d19.png",
-   "sha256": "4cd72b5cfe5359bba3951d081b1dd71629fbea5b7de43cbbf17c2b8ff5d7f94b",
+   "sha256": "bdb39c8f626b953fe0b7dadf33bb0b025717bec8f079bdf6fa04289bbf9676de",
    "cells": {
     "pressure": 762.0,
     "pressure_max": 763.33,
@@ -7012,12 +7021,12 @@
    },
    "box": [
     150,
-    1200,
+    1202,
     1568,
-    1228
+    1230
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7027,7 +7036,7 @@
    "day": 20,
    "date": "1886-05-20",
    "image": "gold_rows/14_000109_d20.png",
-   "sha256": "561b87b3962c0ab2518c7797b3161bcdbd081a873e28b6beacf53babc03d54e7",
+   "sha256": "cea152fb70b5ed4605fc8ea0e24578f4fc0004d250637b59d7e7793745cfcc7a",
    "cells": {
     "pressure": 761.83,
     "pressure_max": 762.93,
@@ -7052,10 +7061,10 @@
     150,
     1228,
     1568,
-    1256
+    1258
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7065,7 +7074,7 @@
    "day": 21,
    "date": "1886-05-21",
    "image": "gold_rows/14_000109_d21.png",
-   "sha256": "21f9d0f351660624f963cee158b446322d7a895ade9d0ae438a40293f7ee7a06",
+   "sha256": "2240446186ec5ad0741df90d82e955b4a301ceea93cea79f29e09ffc6040f13f",
    "cells": {
     "pressure": 760.97,
     "pressure_max": 762.14,
@@ -7089,10 +7098,10 @@
     150,
     1256,
     1568,
-    1284
+    1286
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7102,7 +7111,7 @@
    "day": 22,
    "date": "1886-05-22",
    "image": "gold_rows/14_000109_d22.png",
-   "sha256": "e5aa9702f0a1c8999d7d379ac1ba39610cb47136e0978532800878b8cdadee39",
+   "sha256": "670fa67282840f58a0af9a98e1525072ec4705b5c433abf802eb0a0ca3fee955",
    "cells": {
     "pressure": 760.06,
     "pressure_max": 761.47,
@@ -7125,12 +7134,12 @@
    },
    "box": [
     150,
-    1283,
+    1284,
     1568,
-    1311
+    1314
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7140,7 +7149,7 @@
    "day": 23,
    "date": "1886-05-23",
    "image": "gold_rows/14_000109_d23.png",
-   "sha256": "ee0d6227dc3090dd62db71d4b2e747da187af5142192ed88dfa1bcc6a92d84f4",
+   "sha256": "acc58cdc4400546ff70c902cd0fc6d9febc2f996c9a1b4b70a8d983295309608",
    "cells": {
     "pressure": 759.06,
     "pressure_max": 760.06,
@@ -7163,12 +7172,12 @@
    },
    "box": [
     150,
-    1311,
+    1312,
     1568,
-    1339
+    1342
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7178,7 +7187,7 @@
    "day": 24,
    "date": "1886-05-24",
    "image": "gold_rows/14_000109_d24.png",
-   "sha256": "d193561c5a925fe2b7ccfec36d47bb59977786c3bc1026deb1961f025b765854",
+   "sha256": "28a8a653bc1e9d27dfe42ef98f42ba707b8d4c2e8193eeeac3e5c5467279b160",
    "cells": {
     "pressure": 758.95,
     "pressure_max": 760.41,
@@ -7201,12 +7210,12 @@
    },
    "box": [
     150,
-    1339,
+    1340,
     1568,
-    1367
+    1370
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7216,7 +7225,7 @@
    "day": 25,
    "date": "1886-05-25",
    "image": "gold_rows/14_000109_d25.png",
-   "sha256": "d349dfae4bf2717fbc81c65c0f4f7ac614f68a35c3d011ba71efeddf95523880",
+   "sha256": "0d68493ae05c10ad4deed548cc111dfe18657e86c6ce9b43aef5214a1c1f3af8",
    "cells": {
     "pressure": 761.5,
     "pressure_max": 762.72,
@@ -7239,12 +7248,12 @@
    },
    "box": [
     150,
-    1367,
+    1368,
     1568,
-    1395
+    1398
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7254,7 +7263,7 @@
    "day": 26,
    "date": "1886-05-26",
    "image": "gold_rows/14_000109_d26.png",
-   "sha256": "00b14cefbbb3302d81bea74cce513607fe5520e154a987c08256c390211d3c54",
+   "sha256": "310a23fd36a137e208e6a9e372db259a3cc91acf097c653b7743855e5fee95da",
    "cells": {
     "pressure": 761.65,
     "pressure_max": 762.89,
@@ -7277,12 +7286,12 @@
    },
    "box": [
     150,
-    1395,
+    1396,
     1568,
-    1423
+    1426
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7292,7 +7301,7 @@
    "day": 27,
    "date": "1886-05-27",
    "image": "gold_rows/14_000109_d27.png",
-   "sha256": "2c42f7fbb0ec32de27bd05a4671cd1bb84c40bfc34b88fd0c8b4452d41fd18a9",
+   "sha256": "85aeb2d16682819a20aa400da2c1db65aa653df94201870ecc95203694082e06",
    "cells": {
     "pressure": 761.59,
     "pressure_max": 762.68,
@@ -7315,12 +7324,12 @@
    },
    "box": [
     150,
-    1423,
+    1424,
     1568,
-    1451
+    1454
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7330,7 +7339,7 @@
    "day": 28,
    "date": "1886-05-28",
    "image": "gold_rows/14_000109_d28.png",
-   "sha256": "580eb5a76e330f4b3586f2df973e23a1fcf0c612e6d13a56d754f2f45fa0b169",
+   "sha256": "a11b525f69b4ab935c40aeed6d94d2e25184c866b7abe29ea3c8ec9bf83dd3d0",
    "cells": {
     "pressure": 762.27,
     "pressure_max": 763.51,
@@ -7353,12 +7362,12 @@
    },
    "box": [
     150,
-    1451,
+    1452,
     1568,
-    1479
+    1480
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7368,7 +7377,7 @@
    "day": 29,
    "date": "1886-05-29",
    "image": "gold_rows/14_000109_d29.png",
-   "sha256": "31e356fb2851a5c6050e1be1d3b70b5e4e54d65a3a4ae2f3e77987fff64ffcc1",
+   "sha256": "1a995b60ddad035db5115ae1fc8938645db761aaefe7dae1d6efde431edc2266",
    "cells": {
     "pressure": 761.68,
     "pressure_max": 763.07,
@@ -7391,12 +7400,12 @@
    },
    "box": [
     150,
-    1479,
+    1480,
     1568,
-    1507
+    1510
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7406,7 +7415,7 @@
    "day": 30,
    "date": "1886-05-30",
    "image": "gold_rows/14_000109_d30.png",
-   "sha256": "2371931ff91581fd39ed9d52c84eaafd7a9da5d684cbbc34aeddc2f59dd3a89d",
+   "sha256": "071943fd32f8719b64200858f88c9b056c5af5113b7c2bf3fc710b23e9bd7902",
    "cells": {
     "pressure": 759.94,
     "pressure_max": 761.3,
@@ -7429,12 +7438,12 @@
    },
    "box": [
     150,
-    1507,
+    1508,
     1568,
-    1535
+    1538
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7444,7 +7453,7 @@
    "day": 31,
    "date": "1886-05-31",
    "image": "gold_rows/14_000109_d31.png",
-   "sha256": "6786fb0b08acbcf35bb56bf069260dfa9d71fd76b518c1cc1f524f857a589da0",
+   "sha256": "f4d0af9b8eb26b48098a2f4bd7ed2ff35c9ae07acafa0ea8fbed9efce1ac0012",
    "cells": {
     "pressure": 758.05,
     "pressure_max": 759.64,
@@ -7467,12 +7476,12 @@
    },
    "box": [
     150,
-    1535,
+    1536,
     1568,
-    1563
+    1564
    ],
-   "pitch": 28.0,
-   "skew_deg": 0.0,
+   "pitch": 29.0,
+   "skew_deg": 0.188,
    "is_gold": true
   },
   {
@@ -7482,7 +7491,7 @@
    "day": 1,
    "date": "1886-07-01",
    "image": "gold_rows/14_000142_d01.png",
-   "sha256": "bce0cf81f502ce514063c65fd973cacd7e90aef03f85f2c0eba9b51a8e1ed150",
+   "sha256": "60834513f04c2da03f34a647df802859cdeb30ff3a373aa4cf2f2ae6c5b7cfc0",
    "cells": {
     "pressure": 759.06,
     "pressure_max": 760.65,
@@ -7505,12 +7514,12 @@
    },
    "box": [
     150,
-    745,
+    746,
     1568,
-    773
+    774
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7520,7 +7529,7 @@
    "day": 2,
    "date": "1886-07-02",
    "image": "gold_rows/14_000142_d02.png",
-   "sha256": "dda67b55af0f69ad153434deebbc36e3904f796cc1240cd1d157e616bd8c68af",
+   "sha256": "12b451d21b0a211f28eb7d159b8f87a609fddb1af306a193e278f0d37c960e9f",
    "cells": {
     "pressure": 757.04,
     "pressure_max": 758.9,
@@ -7543,12 +7552,12 @@
    },
    "box": [
     150,
-    773,
+    774,
     1568,
-    801
+    802
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7558,7 +7567,7 @@
    "day": 3,
    "date": "1886-07-03",
    "image": "gold_rows/14_000142_d03.png",
-   "sha256": "766fe20ff7923739e128ea60bafa60040a325adb1fa7241c9ad8c5ac3e7e991c",
+   "sha256": "d6b575c25c471ac27cb2dd49b5bdf08dab885defd966ac720888b8e64f2c43c2",
    "cells": {
     "pressure": 759.18,
     "pressure_max": 760.27,
@@ -7581,12 +7590,12 @@
    },
    "box": [
     150,
-    801,
+    802,
     1568,
-    829
+    830
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7596,7 +7605,7 @@
    "day": 4,
    "date": "1886-07-04",
    "image": "gold_rows/14_000142_d04.png",
-   "sha256": "c2a6c8b17328a314dc064ecc4435a522126203ca6f944cf6fc7a004cff6858af",
+   "sha256": "381c6951426fd89701ba322b6f8ca0efa7eec7d7545136493277a08454ac204f",
    "cells": {
     "pressure": 762.02,
     "pressure_max": 763.45,
@@ -7618,12 +7627,12 @@
    },
    "box": [
     150,
-    829,
+    830,
     1568,
-    857
+    858
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7633,7 +7642,7 @@
    "day": 5,
    "date": "1886-07-05",
    "image": "gold_rows/14_000142_d05.png",
-   "sha256": "30ac4a58665540eb821fdf5707186a4f987523c2e14bb7951f129aacf8cffac8",
+   "sha256": "37eb48d5edaaffbdb199b551773c496cdd8a902b2bf45daa1e829004815471ce",
    "cells": {
     "pressure": 761.24,
     "pressure_max": 762.18,
@@ -7655,12 +7664,12 @@
    },
    "box": [
     150,
-    856,
+    858,
     1568,
-    884
+    886
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7670,7 +7679,7 @@
    "day": 6,
    "date": "1886-07-06",
    "image": "gold_rows/14_000142_d06.png",
-   "sha256": "b4322868602ed864dd469287a9c199a6bdc3628bd794b8439eb06304cc37be0d",
+   "sha256": "9eeeef13457b72d0880d254aa11883c244856821a87d8832950333c0d1289207",
    "cells": {
     "pressure": 760.14,
     "pressure_max": 761.68,
@@ -7693,12 +7702,12 @@
    },
    "box": [
     150,
-    884,
+    885,
     1568,
-    912
+    913
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7708,7 +7717,7 @@
    "day": 7,
    "date": "1886-07-07",
    "image": "gold_rows/14_000142_d07.png",
-   "sha256": "daf36d0641bfe8f5147a9c462d030f220b70d986f494adcfb8360f6439de6b20",
+   "sha256": "13da1548af95ddffaf2992a4f20ee80d8c905f2f02331a7b8e624864961023bd",
    "cells": {
     "pressure": 758.34,
     "pressure_max": 760.72,
@@ -7731,12 +7740,12 @@
    },
    "box": [
     150,
-    912,
+    913,
     1568,
-    940
+    941
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7746,7 +7755,7 @@
    "day": 8,
    "date": "1886-07-08",
    "image": "gold_rows/14_000142_d08.png",
-   "sha256": "52a9d4f59a6aceac7d3b2f11b272f6181568aca9e9593ee20d6445b20620adf1",
+   "sha256": "f94e5de7de47b71b3c6e614df214893b16e174f2e8324170489a0e3ebf51af28",
    "cells": {
     "pressure": 759.5,
     "pressure_max": 761.2,
@@ -7769,12 +7778,12 @@
    },
    "box": [
     150,
-    940,
+    941,
     1568,
-    968
+    969
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7784,7 +7793,7 @@
    "day": 9,
    "date": "1886-07-09",
    "image": "gold_rows/14_000142_d09.png",
-   "sha256": "39a879477bc22b749271b5ef36e95af5d0fcde1bc0f3e652afc7cc7a04cbe9ea",
+   "sha256": "4cceeed50f71622541365f38dbb184ba1ec182619f5e2c4bd5a33e7871561b30",
    "cells": {
     "pressure": 757.29,
     "pressure_max": 758.43,
@@ -7807,12 +7816,12 @@
    },
    "box": [
     150,
-    967,
+    968,
     1568,
-    995
+    996
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7822,7 +7831,7 @@
    "day": 10,
    "date": "1886-07-10",
    "image": "gold_rows/14_000142_d10.png",
-   "sha256": "6c4e14a3d99878e4fa95a042f7d3858789a1af24c819e4001f8a43ef85c4c7e9",
+   "sha256": "77c41fb7953eee08ccc22ed675964bb13a35bfec83252318e77ee4fe7bf55199",
    "cells": {
     "pressure": 761.74,
     "pressure_max": 765.34,
@@ -7844,12 +7853,12 @@
    },
    "box": [
     150,
-    995,
+    996,
     1568,
-    1023
+    1024
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7859,7 +7868,7 @@
    "day": 11,
    "date": "1886-07-11",
    "image": "gold_rows/14_000142_d11.png",
-   "sha256": "654e0fcaf0eb1da81f6aa5e98a9e7fb531dcfbce794e083431b1d0cec6c79684",
+   "sha256": "b88366bcd569fabc05f9ab5bebc8b7d2d2ae53be572886f71f8cca6db210f65e",
    "cells": {
     "pressure": 765.13,
     "pressure_max": 766.13,
@@ -7882,12 +7891,12 @@
    },
    "box": [
     150,
-    1023,
+    1024,
     1568,
-    1051
+    1052
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7897,7 +7906,7 @@
    "day": 12,
    "date": "1886-07-12",
    "image": "gold_rows/14_000142_d12.png",
-   "sha256": "3a78aed8f41152808de51e352ba10c35527d732686e7d10a877ffb92cacdf3e6",
+   "sha256": "10fe5a1e392c588c1fa0c235f5c481a90f5652ef21515f1e7817a692d79368b5",
    "cells": {
     "pressure": 764.34,
     "pressure_max": 765.84,
@@ -7920,12 +7929,12 @@
    },
    "box": [
     150,
-    1051,
+    1052,
     1568,
-    1079
+    1080
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7935,7 +7944,7 @@
    "day": 13,
    "date": "1886-07-13",
    "image": "gold_rows/14_000142_d13.png",
-   "sha256": "f4f2858230ba6e65b010f53600b59028c8c61dc6b8513ca781950e26d0d8a495",
+   "sha256": "78931802e6357a511f75863cf476a4b9f78dce649187e3014f34ade97995a61c",
    "cells": {
     "pressure": 762.69,
     "pressure_max": 763.75,
@@ -7958,12 +7967,12 @@
    },
    "box": [
     150,
-    1078,
+    1079,
     1568,
-    1106
+    1107
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -7973,7 +7982,7 @@
    "day": 14,
    "date": "1886-07-14",
    "image": "gold_rows/14_000142_d14.png",
-   "sha256": "565daa5e64e28bcdcb7e0e62c5584e675073f8b2e1248aa0a7b52a036961180f",
+   "sha256": "f8e6ccf9723561000012a9d08b2096ba8dd9bec12b3193cd8f5b1949e71ddf69",
    "cells": {
     "pressure": 763.8,
     "pressure_max": 765.35,
@@ -7995,12 +8004,12 @@
    },
    "box": [
     150,
-    1106,
+    1107,
     1568,
-    1134
+    1135
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8010,7 +8019,7 @@
    "day": 15,
    "date": "1886-07-15",
    "image": "gold_rows/14_000142_d15.png",
-   "sha256": "43755d4120d346cfc0a81be0af1a543d9ea6bc80b6b05fa1d539f0adea2a57d7",
+   "sha256": "8b911169d38a09b55460e814fc5cd3c87506e6df1ea6c3cd52cea52ea142aef4",
    "cells": {
     "pressure": 764.37,
     "pressure_max": 765.55,
@@ -8032,12 +8041,12 @@
    },
    "box": [
     150,
-    1133,
+    1134,
     1568,
-    1161
+    1162
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8047,7 +8056,7 @@
    "day": 16,
    "date": "1886-07-16",
    "image": "gold_rows/14_000142_d16.png",
-   "sha256": "ca31c6975d55f5bc505c273d93822b70dba97e2a2908a635f9561fa773165f41",
+   "sha256": "6c96d03fe05601d02e506bf5ae39e96e033e9b62c58e4d128718c7f8f43e7409",
    "cells": {
     "pressure": 760.97,
     "pressure_max": 763.71,
@@ -8070,12 +8079,12 @@
    },
    "box": [
     150,
-    1161,
+    1162,
     1568,
-    1189
+    1190
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8085,7 +8094,7 @@
    "day": 17,
    "date": "1886-07-17",
    "image": "gold_rows/14_000142_d17.png",
-   "sha256": "989b3f1d54cebe69206d74963282ad5740313de6916b8d537b08cc0bab78f37c",
+   "sha256": "dddf73613b8dd4be866396f5ce77edc1dc01b5158d5b8ce4de60a848055ef52e",
    "cells": {
     "pressure": 761.89,
     "pressure_max": 763.11,
@@ -8107,12 +8116,12 @@
    },
    "box": [
     150,
-    1189,
+    1190,
     1568,
-    1217
+    1218
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8122,7 +8131,7 @@
    "day": 18,
    "date": "1886-07-18",
    "image": "gold_rows/14_000142_d18.png",
-   "sha256": "a14ad97477e4e55a1e2086e492817b3a1c25256cde45bdbe64822a841c917526",
+   "sha256": "8e71e33eed9bab9bb9f43a8e1cec0502c1af0974349310c230ab42ed31da4eb8",
    "cells": {
     "pressure": 763.97,
     "pressure_max": 765.36,
@@ -8144,12 +8153,12 @@
    },
    "box": [
     150,
-    1216,
+    1217,
     1568,
-    1244
+    1245
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8159,7 +8168,7 @@
    "day": 19,
    "date": "1886-07-19",
    "image": "gold_rows/14_000142_d19.png",
-   "sha256": "4fb91934f1ca6171fed0b080660addb72353d63b78fb59e784e8091dc5f4577d",
+   "sha256": "5d0242a97e53d03146428b95ef2d30a116f5a07f595274717d3ec54095ced7af",
    "cells": {
     "pressure": 764.47,
     "pressure_max": 795.72,
@@ -8183,12 +8192,12 @@
    },
    "box": [
     150,
-    1244,
+    1245,
     1568,
-    1272
+    1273
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8198,7 +8207,7 @@
    "day": 20,
    "date": "1886-07-20",
    "image": "gold_rows/14_000142_d20.png",
-   "sha256": "2ac317a757657d3f747309631078afc503052c9a0d67708600786e7d27f2e08c",
+   "sha256": "88d1ce5696b31107566be52e2fdd7ea663dfae878d6a2f44d8821c3cbc5b1740",
    "cells": {
     "pressure": 762.49,
     "pressure_max": 764.27,
@@ -8221,12 +8230,12 @@
    },
    "box": [
     150,
-    1272,
+    1273,
     1568,
-    1300
+    1301
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8236,7 +8245,7 @@
    "day": 21,
    "date": "1886-07-21",
    "image": "gold_rows/14_000142_d21.png",
-   "sha256": "91173e6977c357931e445f689265313a4126182433ca6afe9433cb6140f2be37",
+   "sha256": "cd73a9db0a303b1318bcec29c6ca2bdbfec73760dbf903a487d485ad19c3a6f9",
    "cells": {
     "pressure": 760.81,
     "pressure_max": 761.96,
@@ -8259,12 +8268,12 @@
    },
    "box": [
     150,
-    1299,
+    1300,
     1568,
-    1327
+    1328
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8274,7 +8283,7 @@
    "day": 22,
    "date": "1886-07-22",
    "image": "gold_rows/14_000142_d22.png",
-   "sha256": "0cddd77a7a089282d8506ba757c73c6347af888f89ee9aa16f3e51a22c4f54a6",
+   "sha256": "39159cbd556f5f51e028623ee8e4f6ee4bfd10e9ed4f802c14e0b649fe4d50c1",
    "cells": {
     "pressure": 760.93,
     "pressure_max": 762.98,
@@ -8297,12 +8306,12 @@
    },
    "box": [
     150,
-    1327,
+    1328,
     1568,
-    1355
+    1356
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8312,7 +8321,7 @@
    "day": 23,
    "date": "1886-07-23",
    "image": "gold_rows/14_000142_d23.png",
-   "sha256": "a721ff651c334dac8d4634af548a9fb7bc69c2db798323c79f829d2528fbe4d5",
+   "sha256": "7de0b252a151ec47ddf5aaa59f7a8f97f3cbfcf251aed14b71facac630567185",
    "cells": {
     "pressure": 764.07,
     "pressure_max": 765.43,
@@ -8335,12 +8344,12 @@
    },
    "box": [
     150,
-    1355,
+    1356,
     1568,
-    1383
+    1384
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8350,7 +8359,7 @@
    "day": 24,
    "date": "1886-07-24",
    "image": "gold_rows/14_000142_d24.png",
-   "sha256": "91e7e4b64fd27d99d1a13a6403c9ad08c78f0e9cd89e2376ca7982eaa733cf8a",
+   "sha256": "4efc04e5708fef08da9cd79bc885f627a39b9d9f86a3a2415d4f4ad8e64ff1fe",
    "cells": {
     "pressure": 763.48,
     "pressure_max": 764.34,
@@ -8373,12 +8382,12 @@
    },
    "box": [
     150,
-    1383,
+    1384,
     1568,
-    1411
+    1412
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8388,7 +8397,7 @@
    "day": 25,
    "date": "1886-07-25",
    "image": "gold_rows/14_000142_d25.png",
-   "sha256": "94af1964221d43a480dcb045daf08115ad71609e13f4bc7afec6bc86d33141d8",
+   "sha256": "3215039427a4717ca2ce21312d6d6051aab80708157a16590a58d33d184ed6a3",
    "cells": {
     "pressure": 762.28,
     "pressure_max": 763.68,
@@ -8411,12 +8420,12 @@
    },
    "box": [
     150,
-    1410,
+    1411,
     1568,
-    1438
+    1439
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8426,7 +8435,7 @@
    "day": 26,
    "date": "1886-07-26",
    "image": "gold_rows/14_000142_d26.png",
-   "sha256": "55a54ba7aee94eea793d56626994be7abc624037a95a1b9f64034da43022d828",
+   "sha256": "f185b1ffbbd422fd2dca4c93272fab41bc074ffc93ff11ede3550ec9692f567b",
    "cells": {
     "pressure": 761.34,
     "pressure_max": 763.14,
@@ -8449,12 +8458,12 @@
    },
    "box": [
     150,
-    1438,
+    1439,
     1568,
-    1466
+    1467
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8464,7 +8473,7 @@
    "day": 27,
    "date": "1886-07-27",
    "image": "gold_rows/14_000142_d27.png",
-   "sha256": "06b54d499d92d3aed42a72b681db7e2ec11bd62445f5a31c96f816e7e20d96b8",
+   "sha256": "b88acf055514ddf0db479a249b42c27ab46f41009912a3f462a79a289b455013",
    "cells": {
     "pressure": 752.55,
     "pressure_max": 763.88,
@@ -8488,12 +8497,12 @@
    },
    "box": [
     150,
-    1466,
+    1467,
     1568,
-    1494
+    1495
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8503,7 +8512,7 @@
    "day": 28,
    "date": "1886-07-28",
    "image": "gold_rows/14_000142_d28.png",
-   "sha256": "18ebbee76c71ffc9c55b04864cac989674e87f4b5d7d6df8da9e262298453b42",
+   "sha256": "9f961955d1104ba2963aecfa00fcf789e59061ea075e926194a98d264205fb38",
    "cells": {
     "pressure": 761.22,
     "pressure_max": 763.01,
@@ -8526,12 +8535,12 @@
    },
    "box": [
     150,
-    1493,
+    1494,
     1568,
-    1521
+    1522
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8541,7 +8550,7 @@
    "day": 29,
    "date": "1886-07-29",
    "image": "gold_rows/14_000142_d29.png",
-   "sha256": "e711665ab009bae5b6d606d843a8f2e96088c8c3f71d37b63b441e4b2c450653",
+   "sha256": "897887c0fccf15ebf48c7a8bcd556fe136329c9f98781a12021308881c78916f",
    "cells": {
     "pressure": 758.52,
     "pressure_max": 759.91,
@@ -8564,12 +8573,12 @@
    },
    "box": [
     150,
-    1521,
+    1522,
     1568,
-    1549
+    1550
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8579,7 +8588,7 @@
    "day": 30,
    "date": "1886-07-30",
    "image": "gold_rows/14_000142_d30.png",
-   "sha256": "80a498e77a1d45acdc2e8d44af2a13bd4c2540a1f94db023a529709258ee0b7d",
+   "sha256": "d8c5a8f64bf7e943a48c233089bf0edb329715d47217c572e749aeefe73787d1",
    "cells": {
     "pressure": 759.91,
     "pressure_max": 762.34,
@@ -8602,12 +8611,12 @@
    },
    "box": [
     150,
-    1549,
+    1550,
     1568,
-    1577
+    1578
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8617,7 +8626,7 @@
    "day": 31,
    "date": "1886-07-31",
    "image": "gold_rows/14_000142_d31.png",
-   "sha256": "8719b229b18b81955d323c021b342eda170bc4a2f7cdd7ab6398762f93591c2a",
+   "sha256": "93b1f6258ddc1fcc15852fc88deedab70f05b6b3b1b0550feb6cf0f6a95f3c41",
    "cells": {
     "pressure": 760.74,
     "pressure_max": 762.96,
@@ -8640,12 +8649,12 @@
    },
    "box": [
     150,
-    1577,
+    1578,
     1568,
-    1605
+    1606
    ],
    "pitch": 28.0,
-   "skew_deg": 0.847,
+   "skew_deg": 0.941,
    "is_gold": true
   },
   {
@@ -8655,7 +8664,7 @@
    "day": 1,
    "date": "1886-09-01",
    "image": "gold_rows/14_000179_d01.png",
-   "sha256": "803989c582b101595239ecdd52141be32c2e777c35a7ec51982350e11b81842a",
+   "sha256": "14a737642feeb546ede0fb7c79cd064da6f26484c4884686ccb6f690d3accd48",
    "cells": {
     "pressure": 765.96,
     "pressure_max": 766.97,
@@ -8677,12 +8686,12 @@
    },
    "box": [
     150,
-    1050,
+    1051,
     1572,
-    1078
+    1079
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -8692,7 +8701,7 @@
    "day": 2,
    "date": "1886-09-02",
    "image": "gold_rows/14_000179_d02.png",
-   "sha256": "d53da9d2dd327485b06e024261074b35d52167a8405c785dda3a92eb62f37cac",
+   "sha256": "6e21c181f45a2043d3c259a2a6479d54b28336b1e94dc7d40f808f679dfa36ef",
    "cells": {
     "pressure": 764.35,
     "pressure_max": 765.52,
@@ -8715,12 +8724,12 @@
    },
    "box": [
     150,
-    1078,
+    1079,
     1572,
-    1106
+    1107
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -8730,7 +8739,7 @@
    "day": 3,
    "date": "1886-09-03",
    "image": "gold_rows/14_000179_d03.png",
-   "sha256": "08eb0fe85cb3b7f1000e1650f8a2112ae45fa97389d4c7bf287c7ff215a8c364",
+   "sha256": "b86b60710a42f9b693205385cc47140bec3a55ad1838c63f268b1553df6293bf",
    "cells": {
     "pressure": 763.21,
     "pressure_max": 764.41,
@@ -8753,12 +8762,12 @@
    },
    "box": [
     150,
-    1106,
+    1107,
     1572,
-    1134
+    1135
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -8768,7 +8777,7 @@
    "day": 4,
    "date": "1886-09-04",
    "image": "gold_rows/14_000179_d04.png",
-   "sha256": "d0ad4ebbf47a64ea47349388f79f70d8d6caa93fff9acea1199492d868bcaa37",
+   "sha256": "1fa71ec1bc3a956452a2ea1dcf7455521d95fddf9dc256cafa358ddb55b457f4",
    "cells": {
     "pressure": 761.64,
     "pressure_max": 763.09,
@@ -8791,12 +8800,12 @@
    },
    "box": [
     150,
-    1134,
+    1135,
     1572,
-    1162
+    1163
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -8806,7 +8815,7 @@
    "day": 5,
    "date": "1886-09-05",
    "image": "gold_rows/14_000179_d05.png",
-   "sha256": "b804483c5a3717bab1e10a281a631a930be9e97c28b6fa760666fd7c55821e5c",
+   "sha256": "db0c269fcd628cbde26c8a817a3b8e7e91d0b5c0fd2020e668cba52cc548b255",
    "cells": {
     "pressure": 759.4,
     "pressure_max": 760.54,
@@ -8829,12 +8838,12 @@
    },
    "box": [
     150,
-    1162,
+    1163,
     1572,
-    1190
+    1191
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -8844,7 +8853,7 @@
    "day": 6,
    "date": "1886-09-06",
    "image": "gold_rows/14_000179_d06.png",
-   "sha256": "d7a0c1e4b2776580dffc5b38e250866348eb75ab271ce56e89331c371b4687c4",
+   "sha256": "4f6e6afeff89f1f2e8efe72fb96ba46a7a7535d816a41e59effbbfd37e1c3213",
    "cells": {
     "pressure": 758.9,
     "pressure_max": 759.85,
@@ -8867,12 +8876,12 @@
    },
    "box": [
     150,
-    1189,
+    1190,
     1572,
-    1217
+    1218
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -8882,7 +8891,7 @@
    "day": 7,
    "date": "1886-09-07",
    "image": "gold_rows/14_000179_d07.png",
-   "sha256": "fbe3247853b81ce1e298c2ff337466389c9b56fbecaa9efb6d150fd845bc9883",
+   "sha256": "f90098dd9ba9f2669ff6f9712925a748e9dab467a4b38e2147e00836576645ac",
    "cells": {
     "pressure": 758.17,
     "pressure_max": 759.78,
@@ -8905,12 +8914,12 @@
    },
    "box": [
     150,
-    1216,
+    1217,
     1572,
-    1244
+    1245
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -8920,7 +8929,7 @@
    "day": 8,
    "date": "1886-09-08",
    "image": "gold_rows/14_000179_d08.png",
-   "sha256": "f037a62d05f2e309774537f0bdfc99a2ecfd4349181f47a0073158a45c02a13b",
+   "sha256": "18a4bbbcbbf3dee48f05a2d8c0f537a1477ae6c059822743e2ea3e4cbbc70ee7",
    "cells": {
     "pressure": 756.45,
     "pressure_max": 757.71,
@@ -8943,12 +8952,12 @@
    },
    "box": [
     150,
-    1244,
+    1245,
     1572,
-    1272
+    1273
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -8958,7 +8967,7 @@
    "day": 9,
    "date": "1886-09-09",
    "image": "gold_rows/14_000179_d09.png",
-   "sha256": "54201e3339db688d4b8cbb2f9c1fc4bdc66dbbb1ca474325a63abac65bb66e9a",
+   "sha256": "f9c5438f6a824698a30fbb847fd661d6b10a2c2b6fcee400352743c10354168a",
    "cells": {
     "pressure": 755.08,
     "pressure_max": 756.94,
@@ -8981,12 +8990,12 @@
    },
    "box": [
     150,
-    1271,
+    1272,
     1572,
-    1299
+    1300
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -8996,7 +9005,7 @@
    "day": 10,
    "date": "1886-09-10",
    "image": "gold_rows/14_000179_d10.png",
-   "sha256": "b2147b7652e078cccc10e482a58cffae9c138b47b56bad2d41985ddac8d8274b",
+   "sha256": "c590075f4a6676831a54b5a8baf84cdc748ee795769c83d58d671aae2c1bee20",
    "cells": {
     "pressure": 756.6,
     "pressure_max": 759.93,
@@ -9019,12 +9028,12 @@
    },
    "box": [
     150,
-    1299,
+    1300,
     1572,
-    1327
+    1328
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9034,7 +9043,7 @@
    "day": 11,
    "date": "1886-09-11",
    "image": "gold_rows/14_000179_d11.png",
-   "sha256": "8efdde08454f0bfef5c394aa6a725d0c4a4cedc4aca2a22e8a2fc5394162d924",
+   "sha256": "3b8c12d187597f208047032463aa0323b7c6f2ec46d70cdc379d8ba8ff3cd55f",
    "cells": {
     "pressure": 760.91,
     "pressure_max": 763.41,
@@ -9056,12 +9065,12 @@
    },
    "box": [
     150,
-    1326,
+    1327,
     1572,
-    1354
+    1355
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9071,7 +9080,7 @@
    "day": 12,
    "date": "1886-09-12",
    "image": "gold_rows/14_000179_d12.png",
-   "sha256": "9a2321f3f4645ac917eade742b1bd028847993fdab001f5d896a2169bbccec17",
+   "sha256": "4160a7d84d7ed49c738860f2c2fac0a4697bac5a55d9a9153daff0fd69ee86c9",
    "cells": {
     "pressure": 763.95,
     "pressure_max": 765.0,
@@ -9094,12 +9103,12 @@
    },
    "box": [
     150,
-    1354,
+    1355,
     1572,
-    1382
+    1383
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9109,7 +9118,7 @@
    "day": 13,
    "date": "1886-09-13",
    "image": "gold_rows/14_000179_d13.png",
-   "sha256": "312f7cfb2af1283d93e5f52f621df90fbaeabe7c5e928d263015dcf6635e72ae",
+   "sha256": "66eb9940358efef265717f221b0d0541a4feccef6ca067d340418c97771cbb43",
    "cells": {
     "pressure": 762.77,
     "pressure_max": 764.23,
@@ -9132,12 +9141,12 @@
    },
    "box": [
     150,
-    1381,
+    1382,
     1572,
-    1409
+    1410
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9147,7 +9156,7 @@
    "day": 14,
    "date": "1886-09-14",
    "image": "gold_rows/14_000179_d14.png",
-   "sha256": "a25bc2080bffa7ced630c96e8aa536576f166a326e4b973267484aa959c6b784",
+   "sha256": "d32423a2bff8479210c7193c888a3a14b153442fabdec2d9c60bb4fe812e34d0",
    "cells": {
     "pressure": 760.32,
     "pressure_max": 762.66,
@@ -9170,12 +9179,12 @@
    },
    "box": [
     150,
-    1409,
+    1410,
     1572,
-    1437
+    1438
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9185,7 +9194,7 @@
    "day": 15,
    "date": "1886-09-15",
    "image": "gold_rows/14_000179_d15.png",
-   "sha256": "bf37d63506634955a68a3afa5c5720f8efaf8d2ea7eca4c9429faecaa4c30d4c",
+   "sha256": "66de4c5434e8495fb2de8ac868098596b16eab70233e86242f198de547a673a3",
    "cells": {
     "pressure": 756.84,
     "pressure_max": 758.0,
@@ -9208,12 +9217,12 @@
    },
    "box": [
     150,
-    1437,
+    1438,
     1572,
-    1465
+    1466
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9223,7 +9232,7 @@
    "day": 16,
    "date": "1886-09-16",
    "image": "gold_rows/14_000179_d16.png",
-   "sha256": "0dab084733ae8c02bcf047832a0d9d88024f77603372b53fdcefc7c0fa29fa2c",
+   "sha256": "0e3aa717f1bd7ca991e8d6f93f81a01fd0258c12ef966b4183845ef33c0b2773",
    "cells": {
     "pressure": 756.34,
     "pressure_max": 757.43,
@@ -9246,12 +9255,12 @@
    },
    "box": [
     150,
-    1464,
+    1465,
     1572,
-    1492
+    1493
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9261,7 +9270,7 @@
    "day": 17,
    "date": "1886-09-17",
    "image": "gold_rows/14_000179_d17.png",
-   "sha256": "73d09c75fe7ce567eaca4901ea3edb28416d6509a45fed62073c72d33eeb527b",
+   "sha256": "b0ae8a798109ccd14bb374ef89f814930f44102c8374b1a9efdeaa8e19971951",
    "cells": {
     "pressure": 754.79,
     "pressure_max": 756.43,
@@ -9284,12 +9293,12 @@
    },
    "box": [
     150,
-    1492,
+    1493,
     1572,
-    1520
+    1521
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9299,7 +9308,7 @@
    "day": 18,
    "date": "1886-09-18",
    "image": "gold_rows/14_000179_d18.png",
-   "sha256": "6926a30051c8661e34781ded1be0f3ee40a4c22ffc8caf82a96b77afd8d412e4",
+   "sha256": "1eb70209c72d2c6aca399115b7690d84682f141880e485213067a13ed37b7389",
    "cells": {
     "pressure": 758.29,
     "pressure_max": 759.58,
@@ -9322,12 +9331,12 @@
    },
    "box": [
     150,
-    1519,
+    1520,
     1572,
-    1547
+    1548
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9337,7 +9346,7 @@
    "day": 19,
    "date": "1886-09-19",
    "image": "gold_rows/14_000179_d19.png",
-   "sha256": "bf920634324a0240e7139804dc1e8c43a46ee8ac0ae9b1b6373e95df699c1561",
+   "sha256": "9b4dde39d2f273315b9007f7e9180a6d9422e310db1bf25c8a4206c3f82a4d80",
    "cells": {
     "pressure": 759.08,
     "pressure_max": 760.42,
@@ -9360,12 +9369,12 @@
    },
    "box": [
     150,
-    1546,
+    1548,
     1572,
-    1574
+    1576
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9375,7 +9384,7 @@
    "day": 20,
    "date": "1886-09-20",
    "image": "gold_rows/14_000179_d20.png",
-   "sha256": "ca47be29d1f1ec7ab6c71054636967e82d6d7e57d31d9d5fd5f36935abd764bc",
+   "sha256": "8730e5b25cd1904ac743fb61ad42dfc041f2ccf3b6a377033db0aa28b683dbd8",
    "cells": {
     "pressure": 756.3,
     "pressure_max": 757.93,
@@ -9398,12 +9407,12 @@
    },
    "box": [
     150,
-    1574,
+    1575,
     1572,
-    1602
+    1603
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9413,7 +9422,7 @@
    "day": 21,
    "date": "1886-09-21",
    "image": "gold_rows/14_000179_d21.png",
-   "sha256": "d42913ab6fcf2886845b0accd09fb5838342134db718c6da6b58cc62eb7e27a0",
+   "sha256": "c3f94b56d4a76aaa93f1e8d0d880ade633f211ba3e2a49c01f224a42547b7bb5",
    "cells": {
     "pressure": 756.69,
     "pressure_max": 758.13,
@@ -9436,12 +9445,12 @@
    },
    "box": [
     150,
-    1602,
+    1603,
     1572,
-    1630
+    1631
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9451,7 +9460,7 @@
    "day": 22,
    "date": "1886-09-22",
    "image": "gold_rows/14_000179_d22.png",
-   "sha256": "9414aa60bf4a30b85807743f7f2e6d719804f9c6b3b52900e4ac397327f0e7a0",
+   "sha256": "a82a35ba685a9fd7b829310d5f232019f6fa26f926fbb38a2426aa25858c93f5",
    "cells": {
     "pressure": 756.26,
     "pressure_max": 758.6,
@@ -9473,12 +9482,12 @@
    },
    "box": [
     150,
-    1630,
+    1631,
     1572,
-    1658
+    1659
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9488,7 +9497,7 @@
    "day": 23,
    "date": "1886-09-23",
    "image": "gold_rows/14_000179_d23.png",
-   "sha256": "b46afb2b55af22861057065b6dbe81185776b3317dfa65b35945182712a14390",
+   "sha256": "07a9af63354a301939ac68ba8aba1973e2cc50bb838f22ff827dd3920f3771c2",
    "cells": {
     "pressure": 759.34,
     "pressure_max": 761.07,
@@ -9510,12 +9519,12 @@
    },
    "box": [
     150,
-    1657,
+    1658,
     1572,
-    1685
+    1686
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9525,7 +9534,7 @@
    "day": 24,
    "date": "1886-09-24",
    "image": "gold_rows/14_000179_d24.png",
-   "sha256": "202ab13af1e9df93b45bae3ced41cc1cee090054b446b775a7928d9e2580e1e7",
+   "sha256": "bc2286f0277efe25df38d3d3ac5d46a391efa38560a6e5abf951554f102ca94e",
    "cells": {
     "pressure": 758.95,
     "pressure_max": 760.49,
@@ -9547,12 +9556,12 @@
    },
    "box": [
     150,
-    1685,
+    1686,
     1572,
-    1713
+    1714
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9562,7 +9571,7 @@
    "day": 25,
    "date": "1886-09-25",
    "image": "gold_rows/14_000179_d25.png",
-   "sha256": "297a60b8fcef1c80b43d2ddc9f8700885a72615bf184fa2ba5cad074beef4955",
+   "sha256": "a89037156228e95df8ffeaa9d18e30a21ea869495731bd806e3b8d071b1a9985",
    "cells": {
     "pressure": 758.63,
     "pressure_max": 759.54,
@@ -9584,12 +9593,12 @@
    },
    "box": [
     150,
-    1712,
+    1713,
     1572,
-    1740
+    1741
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9599,7 +9608,7 @@
    "day": 26,
    "date": "1886-09-26",
    "image": "gold_rows/14_000179_d26.png",
-   "sha256": "f51112d834691f6a59fcfa2b6de5c916f648fb84b54f8c9d084a044a90a3b516",
+   "sha256": "188441fc4722f45827d5fb320cb866273779db401c84cf6fb00cd91e98bb2fff",
    "cells": {
     "pressure": 761.05,
     "pressure_max": 762.88,
@@ -9621,12 +9630,12 @@
    },
    "box": [
     150,
-    1740,
+    1741,
     1572,
-    1768
+    1769
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9636,7 +9645,7 @@
    "day": 27,
    "date": "1886-09-27",
    "image": "gold_rows/14_000179_d27.png",
-   "sha256": "79348a07825b4b42a4246805481e515343ca70ed21689c379257d294e55abf0e",
+   "sha256": "e85494effbe5552042acc8134ed1e051d36b0dbb46d266af4f0328e193dfe0f0",
    "cells": {
     "pressure": 760.06,
     "pressure_max": 762.11,
@@ -9658,12 +9667,12 @@
    },
    "box": [
     150,
-    1767,
+    1768,
     1572,
-    1795
+    1796
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9673,7 +9682,7 @@
    "day": 28,
    "date": "1886-09-28",
    "image": "gold_rows/14_000179_d28.png",
-   "sha256": "e247365d6054bd48b860cd4c7863a79cac113a00de086ed6c87f2c4120b6589c",
+   "sha256": "cf5c30a1caeab39338e3f7ccecdeeec9dcc6d043b41a856664860df1ab2b9e6d",
    "cells": {
     "pressure": 756.87,
     "pressure_max": 757.63,
@@ -9695,12 +9704,12 @@
    },
    "box": [
     150,
-    1795,
+    1796,
     1572,
-    1823
+    1824
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9710,7 +9719,7 @@
    "day": 29,
    "date": "1886-09-29",
    "image": "gold_rows/14_000179_d29.png",
-   "sha256": "d43cd15f41b3283368e2b8df814d36931625b2c900860cc9a52f0986972ace0c",
+   "sha256": "1e1e79e966fc409256aa8ac8fc9c6d6c041de5cd6f8d150d3f6842150a2ce50a",
    "cells": {
     "pressure": 759.25,
     "pressure_max": 761.91,
@@ -9733,12 +9742,12 @@
    },
    "box": [
     150,
-    1823,
+    1824,
     1572,
-    1851
+    1852
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9748,7 +9757,7 @@
    "day": 30,
    "date": "1886-09-30",
    "image": "gold_rows/14_000179_d30.png",
-   "sha256": "2ccf611bae974ff7529990cd65e71bdacc7efa8b3037e611db46db9f59522074",
+   "sha256": "c3cdbbb515d7836a16165c293f7486331bc56c22c2e08ad491775bbe7ea6d1eb",
    "cells": {
     "pressure": 761.96,
     "pressure_max": 763.38,
@@ -9770,12 +9779,12 @@
    },
    "box": [
     150,
-    1850,
+    1851,
     1572,
-    1878
+    1879
    ],
    "pitch": 28.0,
-   "skew_deg": 0.657,
+   "skew_deg": 0.751,
    "is_gold": true
   },
   {
@@ -9785,7 +9794,7 @@
    "day": 1,
    "date": "1886-11-01",
    "image": "gold_rows/14_000212_d01.png",
-   "sha256": "f97ac353af6fdc93993f071877b83f661ef9e5a1eebb24120757b2ab0f0ea3ac",
+   "sha256": "958f76c310897797a7002e8b1ea0182ff1af9788faa3708543cddd950fc11b9d",
    "cells": {
     "pressure": 753.86,
     "pressure_max": 755.99,
@@ -9808,12 +9817,12 @@
    },
    "box": [
     154,
-    1214,
+    1215,
     1604,
-    1242
+    1243
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -9823,7 +9832,7 @@
    "day": 2,
    "date": "1886-11-02",
    "image": "gold_rows/14_000212_d02.png",
-   "sha256": "bb3de8f68da43783713b35de9c8bfc79e3a7d114bad7729da994669ef9851011",
+   "sha256": "ad905ea1eebb99f6178bc0565e1724dfadf05408a7046e763ffec83212ba417f",
    "cells": {
     "pressure": 756.62,
     "pressure_max": 758.08,
@@ -9845,12 +9854,12 @@
    },
    "box": [
     154,
-    1242,
+    1243,
     1604,
-    1270
+    1271
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -9860,7 +9869,7 @@
    "day": 3,
    "date": "1886-11-03",
    "image": "gold_rows/14_000212_d03.png",
-   "sha256": "429368357dfec29893b4be5868f783dc6232edd4dce618ad38278470371b6afc",
+   "sha256": "124a1d1c5b4b021709ecc6b2c99ae80d58f6e96586215d13826714ea5e6494ee",
    "cells": {
     "pressure": 753.38,
     "pressure_max": 760.95,
@@ -9884,12 +9893,12 @@
    },
    "box": [
     154,
-    1270,
+    1271,
     1604,
-    1298
+    1299
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -9899,7 +9908,7 @@
    "day": 4,
    "date": "1886-11-04",
    "image": "gold_rows/14_000212_d04.png",
-   "sha256": "7a3c9d81629dc5baf8a6ddbb59a7a10ee34a089d462f063aab336e7082cff2ff",
+   "sha256": "90e7a278809c0ddbf8b991f24cb743aaa1ca9bb583c335ed5147c2245c316fda",
    "cells": {
     "pressure": 758.9,
     "pressure_max": 759.95,
@@ -9923,12 +9932,12 @@
    },
    "box": [
     154,
-    1298,
+    1299,
     1604,
-    1326
+    1327
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -9938,7 +9947,7 @@
    "day": 5,
    "date": "1886-11-05",
    "image": "gold_rows/14_000212_d05.png",
-   "sha256": "e3e97b4345c6094e5ff372c3d9c33dcb7350f8a20be4aabc778f2bf2ce0eeba0",
+   "sha256": "daec325fe7fbbe3a87b1e66766f9cdc1702dd9fa0aa6bf059eeaff7e24eaac86",
    "cells": {
     "pressure": 759.53,
     "pressure_max": 761.17,
@@ -9961,12 +9970,12 @@
    },
    "box": [
     154,
-    1326,
+    1327,
     1604,
-    1354
+    1355
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -9976,7 +9985,7 @@
    "day": 6,
    "date": "1886-11-06",
    "image": "gold_rows/14_000212_d06.png",
-   "sha256": "5cb266b5a6c0a2c667d37a45a77e25b86f145e0d8217af852e9494c2aa9493a5",
+   "sha256": "a32f1e2d0a9f55a9f0d69a6fcddc52ef9e41fff3c4311648fb1460db21a1f241",
    "cells": {
     "pressure": 759.17,
     "pressure_max": 760.32,
@@ -9999,12 +10008,12 @@
    },
    "box": [
     154,
-    1354,
+    1355,
     1604,
-    1382
+    1383
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10014,7 +10023,7 @@
    "day": 7,
    "date": "1886-11-07",
    "image": "gold_rows/14_000212_d07.png",
-   "sha256": "76f0a175c4cd26a1828ae8c07111254f754debc9e7786676da976da6a3509c84",
+   "sha256": "15486798ac45d8837c12fac435086147c071ba06da13f1d11f95da7dfa9d04be",
    "cells": {
     "pressure": 757.41,
     "pressure_max": 757.97,
@@ -10036,12 +10045,12 @@
    },
    "box": [
     154,
-    1382,
+    1383,
     1604,
-    1410
+    1411
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10051,7 +10060,7 @@
    "day": 8,
    "date": "1886-11-08",
    "image": "gold_rows/14_000212_d08.png",
-   "sha256": "dc7a39e993a98dc2742f58a6eb693a8ff6ceeea0d89490415ecadec23e5703e8",
+   "sha256": "468d32b5f670dd9b619ee826dcb0b731d719fdbeac1d9cb2d9234ea7d12761ec",
    "cells": {
     "pressure": 756.25,
     "pressure_max": 757.31,
@@ -10078,7 +10087,7 @@
     1439
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10088,7 +10097,7 @@
    "day": 9,
    "date": "1886-11-09",
    "image": "gold_rows/14_000212_d09.png",
-   "sha256": "286f7b059583a4b4f5eec8efa34f4256a3402a46c27a1aaef41b99e2bdcdd1fe",
+   "sha256": "15158f4705a00b1e293b91c16c685859a0eb2159b90fd3710a0b39c2b4820cb2",
    "cells": {
     "pressure": 754.97,
     "pressure_max": 756.46,
@@ -10111,12 +10120,12 @@
    },
    "box": [
     154,
-    1439,
+    1440,
     1604,
-    1467
+    1468
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10126,7 +10135,7 @@
    "day": 10,
    "date": "1886-11-10",
    "image": "gold_rows/14_000212_d10.png",
-   "sha256": "147835b6cc2469bcdb36b87be7062575fd55562543cd30e1a274020d4bb57c54",
+   "sha256": "bd4cb33f147053b4942902acc0e1d44522757fbf6f6c534686b8fa1039b0994a",
    "cells": {
     "pressure": 754.37,
     "pressure_max": 755.5,
@@ -10149,12 +10158,12 @@
    },
    "box": [
     154,
-    1467,
+    1468,
     1604,
-    1495
+    1496
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10164,7 +10173,7 @@
    "day": 11,
    "date": "1886-11-11",
    "image": "gold_rows/14_000212_d11.png",
-   "sha256": "38493783f82360ae991ff860d7e15bcf1aa7edd9a3868e04508dc75543b6a1c3",
+   "sha256": "16043f8267ed68e18f3142135d274ce4529a9173e17b13ece036c7de4761ed4a",
    "cells": {
     "pressure": 755.89,
     "pressure_max": 759.36,
@@ -10192,7 +10201,7 @@
     1523
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10202,7 +10211,7 @@
    "day": 12,
    "date": "1886-11-12",
    "image": "gold_rows/14_000212_d12.png",
-   "sha256": "4f7bc1f59991c7a54aeb2742c4e100f0457959677558c0d1adb3103f5ee115d1",
+   "sha256": "5f4c972a40fa31c07ad6b129e40593409315f3b4db9685d55d82596c21e167e0",
    "cells": {
     "pressure": 762.39,
     "pressure_max": 764.71,
@@ -10225,12 +10234,12 @@
    },
    "box": [
     154,
-    1523,
+    1524,
     1604,
-    1551
+    1552
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10240,7 +10249,7 @@
    "day": 13,
    "date": "1886-11-13",
    "image": "gold_rows/14_000212_d13.png",
-   "sha256": "763fba58e9c21c44b2d4fb5bf13c6ceb80fe3c9822c8e407cddb2b9ffda6f4ab",
+   "sha256": "ec04323bd5032f58b11729015b9986fe5405177769dec5363aa9d5ba295eed37",
    "cells": {
     "pressure": 762.18,
     "pressure_max": 763.31,
@@ -10263,12 +10272,12 @@
    },
    "box": [
     154,
-    1551,
+    1552,
     1604,
-    1579
+    1580
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10278,7 +10287,7 @@
    "day": 14,
    "date": "1886-11-14",
    "image": "gold_rows/14_000212_d14.png",
-   "sha256": "6e1734634496abf6c41bc414b68dde8f912415905324a573bd93dad16a51acc5",
+   "sha256": "b6b1e44bf614e6cfa10de19fd1e76a299c419a974c4cbbf2ff335a56f58a1280",
    "cells": {
     "pressure": 755.85,
     "pressure_max": 759.93,
@@ -10300,12 +10309,12 @@
    },
    "box": [
     154,
-    1579,
+    1580,
     1604,
-    1607
+    1608
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10315,7 +10324,7 @@
    "day": 15,
    "date": "1886-11-15",
    "image": "gold_rows/14_000212_d15.png",
-   "sha256": "52f09f7c4e62a5a1737ca21be747ef374c466e8b12b9ffedf076c15e7c1c1844",
+   "sha256": "54896f4e45250270bc8869d561ac4a8b5b31c55c7bda30154e17e8e5635e01d0",
    "cells": {
     "pressure": 755.75,
     "pressure_max": 759.23,
@@ -10338,12 +10347,12 @@
    },
    "box": [
     154,
-    1607,
+    1608,
     1604,
-    1635
+    1636
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10353,7 +10362,7 @@
    "day": 16,
    "date": "1886-11-16",
    "image": "gold_rows/14_000212_d16.png",
-   "sha256": "e6fe4beb10825d5646c5f3ce8621eb43bfe6e1cf158061ab6ea7cd4666756751",
+   "sha256": "eb52f3403fda17bd8c8463ea5ddb4c4a197738d473ad9b0d2a5f14a16b6a9f96",
    "cells": {
     "pressure": 756.22,
     "pressure_max": 750.13,
@@ -10376,12 +10385,12 @@
    },
    "box": [
     154,
-    1635,
+    1636,
     1604,
-    1663
+    1664
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10391,7 +10400,7 @@
    "day": 17,
    "date": "1886-11-17",
    "image": "gold_rows/14_000212_d17.png",
-   "sha256": "a46196c4d78131ffa8fde13944842b0040ea02c7be3fd89dbc1a3ea35eef5949",
+   "sha256": "6f1a15e0a9f6da816dd76a9c0aa884e5b615ab69c74c0be29e7951edc75a28aa",
    "cells": {
     "pressure": 753.63,
     "pressure_max": 755.79,
@@ -10418,7 +10427,7 @@
     1692
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10428,7 +10437,7 @@
    "day": 18,
    "date": "1886-11-18",
    "image": "gold_rows/14_000212_d18.png",
-   "sha256": "4e4dec6b8d07dc8f1fb66da7d3a736247125d29a681487fa8921a4eef3229df0",
+   "sha256": "7146a65d97e6d4a9a120961136c529570f34c711727fc84ca0c20aaaa4aa637f",
    "cells": {
     "pressure": 755.64,
     "pressure_max": 758.37,
@@ -10451,12 +10460,12 @@
    },
    "box": [
     154,
-    1692,
+    1693,
     1604,
-    1720
+    1721
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10466,7 +10475,7 @@
    "day": 19,
    "date": "1886-11-19",
    "image": "gold_rows/14_000212_d19.png",
-   "sha256": "61bc6173b0ac8bbaf8e5e5204b46a3e5ce4c5a214c70e2ce78e71d974c50d7a6",
+   "sha256": "42a9cb0007868c1ab61f8b0e36fd395ea664bfa705f94269e4330814add2f995",
    "cells": {
     "pressure": 758.27,
     "pressure_max": 759.12,
@@ -10489,12 +10498,12 @@
    },
    "box": [
     154,
-    1720,
+    1721,
     1604,
-    1748
+    1749
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10504,7 +10513,7 @@
    "day": 20,
    "date": "1886-11-20",
    "image": "gold_rows/14_000212_d20.png",
-   "sha256": "80e97f843b460b5e7123b055157a04eed1e22a372665e61cbba346f580c7180a",
+   "sha256": "fbaf192b6aa865facab7c01a27740bea612a280cfec98a63f1b8c26f00997546",
    "cells": {
     "pressure": 758.15,
     "pressure_max": 758.91,
@@ -10527,12 +10536,12 @@
    },
    "box": [
     154,
-    1748,
+    1749,
     1604,
-    1776
+    1777
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10542,7 +10551,7 @@
    "day": 21,
    "date": "1886-11-21",
    "image": "gold_rows/14_000212_d21.png",
-   "sha256": "8e72ea3619072095236d71a01b9468436162ba07b230459f9494b83a30679ce5",
+   "sha256": "566c8bf2fa63586657fff10af88d0becc7674363027e0ac0cc1e2bda172f84ca",
    "cells": {
     "pressure": 755.9,
     "pressure_max": 757.78,
@@ -10566,12 +10575,12 @@
    },
    "box": [
     154,
-    1776,
+    1777,
     1604,
-    1804
+    1805
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10581,7 +10590,7 @@
    "day": 22,
    "date": "1886-11-22",
    "image": "gold_rows/14_000212_d22.png",
-   "sha256": "1ebfd6a0e1a706ec512c3e8737bcfd6072bffb923f672f3ff9f7416dfd9cc4ae",
+   "sha256": "23c147df72aa9795abf5dad4a5c430f1a4f954a89855c0d962ff401939796c35",
    "cells": {
     "pressure": 751.92,
     "pressure_max": 754.9,
@@ -10603,12 +10612,12 @@
    },
    "box": [
     154,
-    1804,
+    1805,
     1604,
-    1832
+    1833
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10618,7 +10627,7 @@
    "day": 23,
    "date": "1886-11-23",
    "image": "gold_rows/14_000212_d23.png",
-   "sha256": "334f59a3ccbb7b5d5c094edaef889a2978eedf2222506e7f2db58ba42b14cbf5",
+   "sha256": "23a48f030debba9350e627022b3272b8f1e26ef944184e9196b88780b8f617b8",
    "cells": {
     "pressure": 751.3,
     "pressure_max": 755.64,
@@ -10640,12 +10649,12 @@
    },
    "box": [
     154,
-    1832,
+    1833,
     1604,
-    1860
+    1861
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10655,7 +10664,7 @@
    "day": 24,
    "date": "1886-11-24",
    "image": "gold_rows/14_000212_d24.png",
-   "sha256": "88075717db4692ac91ae4eade48b503f1e408b47cb88afaeee036fa5b5645e72",
+   "sha256": "99df637a2458189f180c81f2f429c5d2a307b7a2e2ea9f06de86b27fc2df0add",
    "cells": {
     "pressure": 754.57,
     "pressure_max": 756.78,
@@ -10678,12 +10687,12 @@
    },
    "box": [
     154,
-    1861,
+    1862,
     1604,
-    1889
+    1890
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10693,7 +10702,7 @@
    "day": 25,
    "date": "1886-11-25",
    "image": "gold_rows/14_000212_d25.png",
-   "sha256": "3b7979a1cc601bac6854ccd19140b3ae98cfe410f9db8095f17934a0d0281ca8",
+   "sha256": "aa2499bd48fac88486e210cc410171d5c095b60e576d5bff33937c0b2fc41cd3",
    "cells": {
     "pressure": 754.09,
     "pressure_max": 756.33,
@@ -10716,12 +10725,12 @@
    },
    "box": [
     154,
-    1889,
+    1890,
     1604,
-    1917
+    1918
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10731,7 +10740,7 @@
    "day": 26,
    "date": "1886-11-26",
    "image": "gold_rows/14_000212_d26.png",
-   "sha256": "e8ef50d89cfbdf2f9e9da07855b61226e6759a824bc3e99f487badd98e78e685",
+   "sha256": "d9ee41494271c225f75b326679effd0cad8377353b9311ffa796e0fa4c104675",
    "cells": {
     "pressure": 760.69,
     "pressure_max": 754.52,
@@ -10755,12 +10764,12 @@
    },
    "box": [
     154,
-    1917,
+    1918,
     1604,
-    1945
+    1946
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10770,7 +10779,7 @@
    "day": 27,
    "date": "1886-11-27",
    "image": "gold_rows/14_000212_d27.png",
-   "sha256": "8ce32f8572a20d7f232a2498b38e8d394d8a0f542a7cf966fc17c3380ccc4bcc",
+   "sha256": "c3fb199d304db28d7a3cd2f9f7ea7b9469e69a5f059439e8f8c4fa3f2772880f",
    "cells": {
     "pressure": 753.03,
     "pressure_max": 754.79,
@@ -10793,12 +10802,12 @@
    },
    "box": [
     154,
-    1945,
+    1946,
     1604,
-    1973
+    1974
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10808,7 +10817,7 @@
    "day": 28,
    "date": "1886-11-28",
    "image": "gold_rows/14_000212_d28.png",
-   "sha256": "574a1cc8cd13ba105f20981ad825c79eee2b2bd61fdcdcd297162fc4533e2891",
+   "sha256": "5af3bfbe4f9473d3097418c9057ee77c65add4d704702d5fb6ab2bbbeee98c22",
    "cells": {
     "pressure": 754.7,
     "pressure_max": 753.83,
@@ -10832,12 +10841,12 @@
    },
    "box": [
     154,
-    1973,
+    1974,
     1604,
-    2001
+    2002
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10847,7 +10856,7 @@
    "day": 29,
    "date": "1886-11-29",
    "image": "gold_rows/14_000212_d29.png",
-   "sha256": "e50ec6bd8f552c7822636c1b99741211233744a1e6ae23e51331aa67e822cfab",
+   "sha256": "57f7028c47b22fc3ef5e82683a471a42cacd1ac6757752dc9279b7ba65f4629b",
    "cells": {
     "pressure": 752.17,
     "pressure_max": 753.58,
@@ -10870,12 +10879,12 @@
    },
    "box": [
     154,
-    2001,
+    2002,
     1604,
-    2029
+    2030
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   },
   {
@@ -10885,7 +10894,7 @@
    "day": 30,
    "date": "1886-11-30",
    "image": "gold_rows/14_000212_d30.png",
-   "sha256": "7ea5d931cfd006f73fdcc198e3dc4c267e9955f634b44bda8326f811db10302b",
+   "sha256": "e17c9b28b8e02cc08a2e35c8fa0dd2d7a57bcd14e78de83f420de73286013a94",
    "cells": {
     "pressure": 742.03,
     "pressure_max": 756.2,
@@ -10909,12 +10918,12 @@
    },
    "box": [
     154,
-    2029,
+    2030,
     1604,
-    2057
+    2058
    ],
    "pitch": 28.0,
-   "skew_deg": 0.184,
+   "skew_deg": 0.276,
    "is_gold": true
   }
  ]
