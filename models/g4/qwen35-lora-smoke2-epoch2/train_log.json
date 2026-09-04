@@ -1,0 +1,66 @@
+{
+ "args": {
+  "model": "qwen35",
+  "run": "smoke2",
+  "epochs": 2,
+  "lr": 0.0001,
+  "rank": 16,
+  "max_rows": 0,
+  "dev_pages": "15/60,16/159",
+  "eval_gold": true,
+  "eval_limit": 0,
+  "synthetic": "",
+  "grad_accum": 8,
+  "seed": 0,
+  "oversample": true,
+  "no_hint": false,
+  "save_every": 20,
+  "resume": "",
+  "stop_after_steps": 0
+ },
+ "model": "Qwen/Qwen3.5-2B",
+ "manifest_hash": "d8fe4e09f4da1b6c85322450fc0eba6758d30e99942c7a3dfea3932eea2f6985",
+ "device": "mps",
+ "train_rows": 792,
+ "dev_rows": 59,
+ "epochs": [
+  {
+   "epoch": 1,
+   "train_loss": 0.142959236194601,
+   "dev": {
+    "rows": 59,
+    "cells": 826,
+    "cell_acc": 0.9891041162227603,
+    "rows_with_14": 59,
+    "s_per_row": 5.81
+   },
+   "minutes": 210.9
+  },
+  {
+   "epoch": 2,
+   "train_loss": 0.030986655424394577,
+   "dev": {
+    "rows": 59,
+    "cells": 826,
+    "cell_acc": 0.9927360774818402,
+    "rows_with_14": 59,
+    "s_per_row": 5.72
+   },
+   "minutes": 262.9
+  }
+ ],
+ "pre_train_dev": {
+  "rows": 59,
+  "cells": 826,
+  "cell_acc": 0.11380145278450363,
+  "rows_with_14": 0,
+  "s_per_row": 8.16
+ },
+ "gold": {
+  "rows": 183,
+  "cells": 2562,
+  "cell_acc": 0.8477751756440282,
+  "rows_with_14": 183,
+  "s_per_row": 5.8
+ }
+}
