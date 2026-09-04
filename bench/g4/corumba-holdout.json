@@ -1,0 +1,13 @@
+{
+ "source": "docvirt obnacional/16 page 72, 'Resumo das observacoes meteorologicas feitas em Corumba, de 1 a 30 de Dezembro de 1889, pela commissao de engenharia militar de Matto-Grosso'",
+ "why": "Genuine held-out layout: never in training, never in gold. 62 rows (two readings per day, 10h and 4h), 16 printed columns, instruments absent from the Revista (Fortin, Aneroides, Hygrometro Saussure, Psychrometro) and four free-text columns.",
+ "printed_columns": ["dia", "horas", "barometro_fortin", "barometro_aneroides", "barometro_media",
+                     "thermometro_centigrados", "maxima_do_dia", "minima_da_noite",
+                     "hygrometro_saussure", "psychrometro", "pluviometro",
+                     "vento_direccao", "vento_velocidade", "forma_nuvens", "estado_do_tempo", "estado_do_ceo"],
+ "ground_truth_method": "read by hand from a 3x crop of the page; not machine-generated",
+ "rows": [
+  {"chain_index": 0, "cells": ["1", "10", "748.0", "747.9", "747.9", "28.1", null, "24.3", "87", "25.6", "0", "NW", "fraco", "c,n", "annuv.", "encoberto"]},
+  {"chain_index": 1, "cells": ["»", "4", "743.8", "744.4", "744.1", "28.0", "31.6", null, "86", "27.0", "0", "SW", "fraco", "c,n,k", "annuv.", "pouc. enc."]}
+ ]
+}
