@@ -32,7 +32,7 @@ GOLD_PAGES: frozenset[tuple[str, int]] = frozenset(
 )
 COLUMNS = ["pressure", "pressure_max", "pressure_min", "tmean", "tmax", "tmin", "vapor",
            "humidity", "wind_force", "cloudiness", "precip", "evap_sol", "evap_sombra", "ozone"]
-MAX_EXTRA_ROWS = 3   # a chain up to this many rows too long is resolved by the day-number oracle
+MAX_EXTRA_ROWS = 8   # a chain up to this many rows too long is resolved by the day-number oracle (reads every row)
 
 
 class GoldLeakageError(RuntimeError):

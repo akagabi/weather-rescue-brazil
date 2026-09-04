@@ -77,20 +77,26 @@ class DayOracle:
         return int(m.group()) if m else None
 
 
-def resolve_window(oracle: DayOracle, image: Image.Image, loc, day_count: int) -> list[int] | None:
-    """Pick the day_count-long window of an over-long chain whose first row
-    reads day 1 (and, as a tie-break, whose last row reads the last day)."""
-    cands = window_candidates(loc.chain, day_count)
+def resolve_window(oracle: DayOracle, image: Image.Image, loc, day_count: int,
+                   min_match: float = 0.8) -> list[int] | None:
+    """Pick the day_count-long window of an over-long chain by reading the
+    printed day number of EVERY chain row once, then choosing the offset
+    whose reads best match 1..day_count. Robust to a few misreads (a lone
+    thin '1' is the classic one): accept when >= min_match of the rows in
+    the window agree with their expected day."""
     width, height = image.size
-    scores = []
-    for w in cands:
-        boxes = boxes_for_centres(w, loc, width, height)
-        first, last = crop_boxes(image, [boxes[0], boxes[-1]], loc.skew_deg, scale=2.0)
-        d1, dn = oracle.read_day(first), oracle.read_day(last)
-        scores.append(((d1 == 1) + (dn == day_count), w, d1, dn))
-    scores.sort(key=lambda t: -t[0])
-    best = scores[0]
-    return best[1] if best[0] == 2 else None
+    boxes = boxes_for_centres(loc.chain, loc, width, height)
+    crops = crop_boxes(image, boxes, loc.skew_deg, scale=2.0)
+    reads = [oracle.read_day(c) for c in crops]
+    best, best_off = -1, None
+    for off in range(len(loc.chain) - day_count + 1):
+        hits = sum(1 for k in range(day_count) if reads[off + k] == k + 1)
+        if hits > best:
+            best, best_off = hits, off
+    if best_off is None or best < min_match * day_count:
+        print(f"  oracle reads {reads} -> best {best}/{day_count} at offset {best_off}", flush=True)
+        return None
+    return loc.chain[best_off:best_off + day_count]
 
 
 def main() -> None:

@@ -138,6 +138,8 @@ def main() -> None:
     ap.add_argument("--grad-accum", type=int, default=8)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--oversample", action="store_true", help="repeat vol-14 rows x4 (OVERSAMPLE)")
+    ap.add_argument("--oversample-factor", type=int, default=0, help="override the vol-14 repeat factor")
+    ap.add_argument("--augment", action="store_true", help="on-the-fly photometric/geometric jitter on training crops (wrb.synth.jitter)")
     ap.add_argument("--no-hint", action="store_true", help="disable the per-volume layout hint")
     ap.add_argument("--save-every", type=int, default=20, help="checkpoint adapter+optimizer every N optimizer steps")
     ap.add_argument("--resume", default="", help="checkpoint dir (runs/g4/<run>/latest) to resume from")
@@ -167,7 +169,8 @@ def main() -> None:
         assert_no_gold_leakage(sm, GOLD_PAGES, frozenset(e["sha256"] for e in gm["examples"]))
         train_ex = train_ex + sm["examples"]
     if args.oversample:
-        extra = [e for e in train_ex for _ in range(OVERSAMPLE.get(str(e["doc"]), 1) - 1)]
+        factor = {k: (args.oversample_factor or v) for k, v in OVERSAMPLE.items()}
+        extra = [e for e in train_ex for _ in range(factor.get(str(e["doc"]), 1) - 1)]
         train_ex = train_ex + extra
     random.shuffle(train_ex)
     if args.max_rows:
@@ -247,6 +250,9 @@ def main() -> None:
                 print(f"resuming mid-epoch {epoch} at row {i}/{len(order)}", flush=True)
             e = train_ex[k]
             im = Image.open(G4 / e["image"]).convert("RGB") if not e["image"].startswith("/") else Image.open(e["image"]).convert("RGB")
+            if args.augment:
+                from wrb.synth import jitter
+                im = jitter(im, random)
             inp, labels = build_batch(proc, im, row_target(e["cells"], e.get("flags")), dev, hint_for(e["doc"]))
             out = model(**inp, labels=labels)
             (out.loss / args.grad_accum).backward()
