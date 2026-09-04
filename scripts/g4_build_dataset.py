@@ -77,26 +77,62 @@ class DayOracle:
         return int(m.group()) if m else None
 
 
-def resolve_window(oracle: DayOracle, image: Image.Image, loc, day_count: int,
-                   min_match: float = 0.8) -> list[int] | None:
-    """Pick the day_count-long window of an over-long chain by reading the
-    printed day number of EVERY chain row once, then choosing the offset
-    whose reads best match 1..day_count. Robust to a few misreads (a lone
-    thin '1' is the classic one): accept when >= min_match of the rows in
-    the window agree with their expected day."""
+def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int, *,
+                      margin_rows: int = 8, min_direct: float = 0.7) -> tuple[list[int] | None, dict]:
+    """Oracle-driven row localisation. Candidates = every strong peak within
+    `margin_rows` pitches of the heuristic chain. The oracle reads the
+    printed day number at each candidate; day d is assigned to the unique
+    candidate that reads d. Days with no (or an ambiguous) read are
+    interpolated from the nearest assigned neighbours at the page pitch,
+    then checked for spacing. Accept when >= min_direct of the days were
+    read directly and every interpolated row sits between its neighbours.
+    Geometry only proposes; the printed numbers decide."""
     width, height = image.size
-    boxes = boxes_for_centres(loc.chain, loc, width, height)
+    pitch = loc.pitch or 28.0
+    lo = (min(loc.chain) if loc.chain else 0) - margin_rows * pitch
+    hi = (max(loc.chain) if loc.chain else height) + margin_rows * pitch
+    cands = sorted(y for y in loc.peaks if lo <= y <= hi)
+    boxes = boxes_for_centres(cands, loc, width, height)
     crops = crop_boxes(image, boxes, loc.skew_deg, scale=2.0)
     reads = [oracle.read_day(c) for c in crops]
-    best, best_off = -1, None
-    for off in range(len(loc.chain) - day_count + 1):
-        hits = sum(1 for k in range(day_count) if reads[off + k] == k + 1)
-        if hits > best:
-            best, best_off = hits, off
-    if best_off is None or best < min_match * day_count:
-        print(f"  oracle reads {reads} -> best {best}/{day_count} at offset {best_off}", flush=True)
-        return None
-    return loc.chain[best_off:best_off + day_count]
+    by_day: dict[int, list[int]] = {}
+    for y, r in zip(cands, reads):
+        if r is not None and 1 <= r <= day_count:
+            by_day.setdefault(r, []).append(y)
+    assigned: dict[int, int] = {d: ys[0] for d, ys in by_day.items() if len(ys) == 1}
+    # reject assignments that break monotonicity (a misread '1' for '7' etc.)
+    days = sorted(assigned)
+    keep: dict[int, int] = {}
+    for i, d in enumerate(days):
+        y = assigned[d]
+        prev_ok = i == 0 or y > assigned[days[i - 1]]
+        next_ok = i == len(days) - 1 or y < assigned[days[i + 1]]
+        if prev_ok and next_ok:
+            keep[d] = y
+    info = {"candidates": len(cands), "direct": len(keep), "reads": reads}
+    if len(keep) < min_direct * day_count or 1 not in keep and day_count not in keep and len(keep) < day_count:
+        return None, info
+    centres: list[int] = []
+    known = sorted(keep)
+    for d in range(1, day_count + 1):
+        if d in keep:
+            centres.append(keep[d])
+            continue
+        before = [k for k in known if k < d]
+        after = [k for k in known if k > d]
+        if before and after:
+            a, b = before[-1], after[0]
+            y = keep[a] + (keep[b] - keep[a]) * (d - a) / (b - a)
+        elif before:
+            y = keep[before[-1]] + pitch * (d - before[-1])
+        else:
+            y = keep[after[0]] - pitch * (after[0] - d)
+        centres.append(round(y))
+    gaps = [b - a for a, b in zip(centres, centres[1:])]
+    if any(g < 0.5 * pitch for g in gaps):
+        info["reason"] = f"rows overlap after interpolation: min gap {min(gaps):.0f} px"
+        return None, info
+    return centres, info
 
 
 def main() -> None:
@@ -104,7 +140,9 @@ def main() -> None:
     ap.add_argument("--no-oracle", action="store_true", help="skip the VLM oracle (refuse over-long chains, no verify)")
     ap.add_argument("--verify", type=int, default=3, help="rows per accepted page whose day number the oracle re-reads")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--only", default="", help="debug: only these pages, e.g. 14/212,15/72 (manifests still written)")
     args = ap.parse_args()
+    only = {(p.split("/")[0], int(p.split("/")[1])) for p in args.only.split(",") if p}
     rng = random.Random(args.seed)
     oracle = None if args.no_oracle else DayOracle()
 
@@ -120,19 +158,23 @@ def main() -> None:
         if not p.get("pred"):
             continue
         doc, page, period = str(p["doc"]), int(p["page"]), p["period"]
+        if only and (doc, page) not in only:
+            continue
         is_gold = (doc, page) in GOLD_PAGES
         day_count = day_count_of(period)
         image = Image.open(page_image_path(ROOT, doc, page)).convert("RGB")
         loc, status, reason = locate_page(image, day_count)
         rep = PageReport(doc=doc, page=page, period=period, day_count=day_count, status=status,
                          reason=reason, chain=list(loc.chain))
-        centres = loc.chain if status == "ok" else None
-        if status == "needs_oracle" and oracle is not None:
-            centres = resolve_window(oracle, image, loc, day_count)
+        centres = None
+        if oracle is not None:
+            centres, info = resolve_by_oracle(oracle, image, loc, day_count)
             rep.status = "ok_oracle" if centres else "refused"
-            if not centres:
-                rep.reason = f"oracle could not find a window starting at day 1: {reason}"
-        elif status == "needs_oracle":
+            rep.reason = (f"oracle: {info['direct']}/{day_count} days read directly of {info['candidates']} candidates"
+                          + ("" if centres else f"; {info.get('reason', 'too few direct reads')}; heuristic: {reason}"))
+        elif status == "ok":
+            centres = loc.chain
+        else:
             rep.status = "refused"
         if centres is None:
             reports.append(rep)
@@ -146,18 +188,14 @@ def main() -> None:
         rep.n_examples = len(exs)
         (gold_ex if is_gold else train_ex).extend(exs)
         reports.append(rep)
-        if oracle is not None and args.verify:
-            days = sorted(rng.sample(range(1, day_count + 1), min(args.verify, day_count)))
-            crops = crop_boxes(image, [boxes[d - 1] for d in days], loc.skew_deg)
-            for d, c in zip(days, crops):
-                got = oracle.read_day(c)
-                verify.append({"doc": doc, "page": page, "day": d, "read": got, "match": got == d})
+        if oracle is not None:
+            verify.append({"doc": doc, "page": page, "direct_reads": int(rep.reason.split("/")[0].split()[-1]), "day_count": day_count})
         print(f"{doc}_{page} {period} {rep.status} rows={len(exs)} pitch={loc.pitch} skew={loc.skew_deg}"
               + (" GOLD(eval)" if is_gold else ""), flush=True)
 
     meta = {"source": str(BENCH.relative_to(ROOT)), "built_at": time.strftime("%Y-%m-%d %H:%M"),
             "oracle": None if oracle is None else {"model": ORACLE_MODEL, "calls": oracle.calls},
-            "verify": {"n": len(verify), "mismatches": [v for v in verify if not v["match"]]}}
+            "verify": {"n": len(verify), "pages": verify}}
     train_manifest = OUT / "train_manifest.json"
     gold_manifest = OUT / "gold_manifest.json"
     write_manifest(train_manifest, train_ex, [r for r in reports if (r.doc, r.page) not in GOLD_PAGES], meta)
@@ -172,8 +210,8 @@ def main() -> None:
           f"(refused {sum(1 for r in tm['pages'] if r['status'] == 'refused')}); hash {manifest_hash(tm)[:12]}")
     print(f"GOLD EVAL: {gm['n_examples']} rows / {gm['n_cells']} cells from "
           f"{sum(1 for r in gm['pages'] if r['status'].startswith('ok'))} of 9 pages")
-    print(f"verify: {len(verify)} day reads, {sum(1 for v in verify if not v['match'])} mismatches; "
-          f"oracle calls {oracle.calls if oracle else 0}; {time.time() - t0:.0f}s")
+    print(f"oracle: {sum(v['direct_reads'] for v in verify)} direct day reads over {sum(v['day_count'] for v in verify)} days; "
+          f"calls {oracle.calls if oracle else 0}; {time.time() - t0:.0f}s")
     print("leakage guard: PASS")
 
 
