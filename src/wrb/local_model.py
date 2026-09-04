@@ -37,6 +37,84 @@ from wrb.vlm import G2BRow, G2BTable, _apply_barometer_reconstruction, assemble_
 SEP = " | "
 NULL = "null"
 
+# --- printed-order ("schema-free") target -----------------------------------
+# The fixed 14-column target teaches the model THIS corpus's semantics: on an
+# unseen layout (Corumba, 16 printed columns) it read the digits correctly and
+# then jammed them into the Revista slots. Reading a row AS PRINTED - every
+# cell left to right, day and wind text included, blanks as null - carries no
+# corpus semantics, so the same weights can read any ruled table; naming the
+# columns is left to the geometry downstream.
+PRINTED_LAYOUTS: dict[str, list[str]] = {
+    # Rio, Imperial Observatorio (vol 14): evaporation splits into sun + shade
+    "A": ["day", "pressure", "pressure_max", "pressure_min", "tmean", "tmax", "tmin",
+          "vapor", "humidity", "wind_dir", "wind_force", "cloudiness", "precip",
+          "evap_sol", "evap_sombra", "ozone"],
+    # Santa-Cruz (vols 15/16): a single evaporation column
+    "B": ["day", "pressure", "pressure_max", "pressure_min", "tmean", "tmax", "tmin",
+          "vapor", "humidity", "wind_dir", "wind_force", "cloudiness", "precip",
+          "evap", "ozone"],
+}
+LAYOUT_OF_DOC = {"14": "A"}
+DEFAULT_LAYOUT = "B"
+
+
+def layout_for(doc: str) -> str:
+    return LAYOUT_OF_DOC.get(str(doc), DEFAULT_LAYOUT)
+
+
+def row_target_printed(day: int, cells: dict[str, float | None], flags: dict[str, str] | None,
+                       layout: str) -> str:
+    """The row exactly as printed: one token per printed cell, left to right."""
+    flags = flags or {}
+    out: list[str] = []
+    for name in PRINTED_LAYOUTS[layout]:
+        if name == "day":
+            out.append(str(day))
+        elif name == "wind_dir":
+            out.append(flags.get("wind_dir") or NULL)
+        elif name == "evap":  # layout B prints one evaporation column
+            v = cells.get("evap_sombra")
+            v = cells.get("evap_sol") if v is None else v
+            out.append(_fmt(v))
+        else:
+            out.append(_fmt(cells.get(name)))
+    return SEP.join(out)
+
+
+def parse_row_printed(text: str, layout: str) -> tuple[int | None, dict[str, float | None], dict[str, str], list[str]]:
+    """Inverse of row_target_printed: (day, cells, flags, problems)."""
+    problems: list[str] = []
+    for stop in ("<|im_end|>", "<|endoftext|>", "</s>"):
+        text = text.split(stop)[0]
+    toks = [t.strip() for t in text.strip().strip("`").split("|")]
+    names = PRINTED_LAYOUTS[layout]
+    if len(toks) != len(names):
+        problems.append(f"{len(toks)} cells, expected {len(names)}")
+    day: int | None = None
+    cells: dict[str, float | None] = {c: None for c in COLUMNS}
+    flags: dict[str, str] = {}
+    for i, name in enumerate(names):
+        tok = toks[i] if i < len(toks) else NULL
+        blank = tok.lower() in (NULL, "", "-", "\u2014", "...", "\u2026")
+        if name == "day":
+            try:
+                day = int(float(tok))
+            except ValueError:
+                problems.append(f"day: unparsable {tok!r}")
+        elif name == "wind_dir":
+            if not blank:
+                flags["wind_dir"] = tok
+        else:
+            key = "evap_sombra" if name == "evap" else name
+            if blank:
+                cells[key] = None
+                continue
+            try:
+                cells[key] = float(tok.replace(",", "."))
+            except ValueError:
+                problems.append(f"{key}: unparsable {tok!r}")
+    return day, cells, flags, problems
+
 
 class RowReader(Protocol):
     def read_row(self, crop: Image.Image) -> str: ...

@@ -30,7 +30,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from wrb.dataset import GOLD_PAGES, assert_no_gold_leakage, load_manifest, manifest_hash  # noqa: E402
-from wrb.local_model import COLUMNS, parse_row_target, row_target  # noqa: E402
+from wrb.local_model import (  # noqa: E402
+    COLUMNS, layout_for, parse_row_printed, parse_row_target, row_target, row_target_printed,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 G4 = ROOT / "data" / "g4"
@@ -55,6 +57,13 @@ INSTRUCTION = ("Leia esta linha de tabela meteorológica impressa (século XIX).
                "numéricas na ordem das colunas, separadas por ' | ', 'null' para célula vazia, e no fim "
                "'dir=' com a direção do vento impressa. Transcreva fielmente o que está impresso.")
 
+# Schema-free instruction: no column count, no corpus semantics - just "read
+# what is printed, cell by cell". This is what should let one model read a
+# table it has never seen (see wrb.local_model.PRINTED_LAYOUTS).
+INSTRUCTION_PRINTED = ("Transcreva esta linha de tabela impressa exatamente como está, célula por célula, "
+                       "da esquerda para a direita, separando as células com ' | '. Inclua todas as colunas, "
+                       "inclusive número do dia e texto. Use 'null' para célula vazia. Só a lista.")
+
 
 def device() -> str:
     import torch
@@ -71,11 +80,11 @@ def split_pages(examples: list[dict], dev_pages: set[tuple[str, int]]) -> tuple[
     return train, dev
 
 
-def build_batch(proc, image, target: str | None, dev: str, hint: str = ""):
+def build_batch(proc, image, target: str | None, dev: str, hint: str = "", instruction: str | None = None):
     """Tokenise prompt(+target) through the chat template; labels mask the
     prompt so loss is on the target only."""
     import torch
-    user = [{"role": "user", "content": [{"type": "image", "image": image}, {"type": "text", "text": INSTRUCTION + (" " + hint if hint else "")}]}]
+    user = [{"role": "user", "content": [{"type": "image", "image": image}, {"type": "text", "text": (instruction or INSTRUCTION) + (" " + hint if hint else "")}]}]
     prompt = proc.apply_chat_template(user, add_generation_prompt=True, tokenize=True, return_dict=True,
                                       return_tensors="pt")
     if target is None:
@@ -90,7 +99,7 @@ def build_batch(proc, image, target: str | None, dev: str, hint: str = ""):
 
 
 def cell_accuracy(proc, model, examples: list[dict], dev: str, max_new: int = 120,
-                  limit: int = 0) -> dict:
+                  limit: int = 0, printed: bool = False) -> dict:
     """Generate for each row, parse, compare to the row's cells (exact
     numeric match at 0.005; barometer compared on the printed low-order
     value, i.e. before thousands restoration, so the metric is pure reading)."""
@@ -102,15 +111,19 @@ def cell_accuracy(proc, model, examples: list[dict], dev: str, max_new: int = 12
     for e in sample:
         from PIL import Image
         im = Image.open(G4 / e["image"]).convert("RGB")
-        inp, _ = build_batch(proc, im, None, dev, layout_hint(e["doc"]))
+        inp, _ = build_batch(proc, im, None, dev, "" if printed else layout_hint(e["doc"]),
+                             INSTRUCTION_PRINTED if printed else INSTRUCTION)
         n = inp["input_ids"].shape[1]
         with torch.no_grad():
             out = model.generate(**inp, max_new_tokens=max_new, do_sample=False)
         text = proc.decode(out[0][n:], skip_special_tokens=True)
         if dev == "mps":
             torch.mps.empty_cache()
-        cells, _, problems = parse_row_target(text)
-        rows14 += not any("tokens" in p for p in problems)
+        if printed:
+            _, cells, _, problems = parse_row_printed(text, layout_for(e["doc"]))
+        else:
+            cells, _, problems = parse_row_target(text)
+        rows14 += not any(("tokens" in p or "cells," in p) for p in problems)
         for col in COLUMNS:
             t += 1
             g, v = e["cells"].get(col), cells.get(col)
@@ -140,6 +153,7 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--oversample", action="store_true", help="repeat vol-14 rows x4 (OVERSAMPLE)")
     ap.add_argument("--oversample-factor", type=int, default=0, help="override the vol-14 repeat factor")
+    ap.add_argument("--printed", action="store_true", help="schema-free target: the row exactly as printed (see INSTRUCTION_PRINTED)")
     ap.add_argument("--augment", action="store_true", help="on-the-fly photometric/geometric jitter on training crops (wrb.synth.jitter)")
     ap.add_argument("--no-hint", action="store_true", help="disable the per-volume layout hint")
     ap.add_argument("--save-every", type=int, default=20, help="checkpoint adapter+optimizer every N optimizer steps")
@@ -181,7 +195,8 @@ def main() -> None:
     random.shuffle(train_ex)
     if args.max_rows:
         train_ex = train_ex[:args.max_rows]
-    hint_for = (lambda doc: "") if args.no_hint else layout_hint
+    hint_for = (lambda doc: "") if (args.no_hint or args.printed) else layout_hint
+    instruction = INSTRUCTION_PRINTED if args.printed else INSTRUCTION
     print(f"device={dev} train_rows={len(train_ex)} dev_rows={len(dev_ex)} dev_pages={sorted(dev_pages)} "
           f"manifest_hash={tm_hash[:12]}", flush=True)
 
@@ -222,7 +237,7 @@ def main() -> None:
         log = json.loads((Path(args.resume).parent / "log.json").read_text()) if (Path(args.resume).parent / "log.json").exists() else log
         print(f"RESUMED from {args.resume}: epoch {state['epoch']} idx {state['idx']} step {state['step']}", flush=True)
     else:
-        print("pre-train dev:", ev0 := cell_accuracy(proc, model, dev_ex, dev, limit=args.eval_limit), flush=True)
+        print("pre-train dev:", ev0 := cell_accuracy(proc, model, dev_ex, dev, limit=args.eval_limit, printed=args.printed), flush=True)
         log["pre_train_dev"] = ev0
 
     def checkpoint(epoch: int, idx: int, order: list[int]) -> None:
@@ -259,7 +274,9 @@ def main() -> None:
             if args.augment:
                 from wrb.synth import jitter
                 im = jitter(im, random)
-            inp, labels = build_batch(proc, im, row_target(e["cells"], e.get("flags")), dev, hint_for(e["doc"]))
+            target = (row_target_printed(e["day"], e["cells"], e.get("flags"), layout_for(e["doc"]))
+                      if args.printed else row_target(e["cells"], e.get("flags")))
+            inp, labels = build_batch(proc, im, target, dev, hint_for(e["doc"]), instruction)
             out = model(**inp, labels=labels)
             (out.loss / args.grad_accum).backward()
             losses.append(out.loss.item())
@@ -281,14 +298,14 @@ def main() -> None:
                           f"{(time.time() - t0) / 60:.1f} min", flush=True)
         model.save_pretrained(out_dir / f"epoch{epoch}")  # save BEFORE the slow eval: nothing is lost if killed here
         checkpoint(epoch + 1, 0, [])
-        ev = cell_accuracy(proc, model, dev_ex, dev, limit=args.eval_limit)
+        ev = cell_accuracy(proc, model, dev_ex, dev, limit=args.eval_limit, printed=args.printed)
         rec = {"epoch": epoch, "train_loss": (sum(losses) / len(losses)) if losses else None, "dev": ev,
                "minutes": round((time.time() - t0) / 60, 1)}
         log["epochs"].append(rec)
         print("EPOCH", json.dumps(rec), flush=True)
         (out_dir / "log.json").write_text(json.dumps(log, indent=1))
     if args.eval_gold:
-        log["gold"] = cell_accuracy(proc, model, gm["examples"], dev, limit=args.eval_limit)
+        log["gold"] = cell_accuracy(proc, model, gm["examples"], dev, limit=args.eval_limit, printed=args.printed)
         print("GOLD rows (final adapter):", json.dumps(log["gold"]), flush=True)
     (out_dir / "log.json").write_text(json.dumps(log, indent=1))
     print("done", out_dir)
