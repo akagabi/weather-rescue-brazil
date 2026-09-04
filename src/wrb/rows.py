@@ -162,7 +162,8 @@ def estimate_skew(gray: Image.Image, thr: int, *, probe_x_frac: tuple[float, flo
 
 
 def refine_skew(gray: Image.Image, thr: int, *, left: tuple[float, float] = PROBE_X_FRAC,
-                right: tuple[float, float] = RIGHT_X_FRAC, max_dy: int = FINE_SKEW_MAX_DY) -> float:
+                right: tuple[float, float] = RIGHT_X_FRAC, max_dy: int = FINE_SKEW_MAX_DY,
+                y_range: tuple[int, int] | None = None) -> float:
     """Fine skew (degrees, PIL rotate convention) from the vertical offset
     that best aligns the row profile of a RIGHT window onto the LEFT one.
     The coarse variance search is quantised to 0.1 deg and blind to what
@@ -174,6 +175,9 @@ def refine_skew(gray: Image.Image, thr: int, *, left: tuple[float, float] = PROB
     rx0, rx1 = round(right[0] * w), round(right[1] * w)
     pl, _ = row_profile(gray, lx0, lx1, thr)
     pr, _ = row_profile(gray, rx0, rx1, thr)
+    if y_range is not None:
+        y0, y1 = max(0, y_range[0]), min(len(pl), y_range[1])
+        pl, pr = pl[y0:y1], pr[y0:y1]
     ml, mr = sum(pl) / len(pl), sum(pr) / len(pr)
     a = [v - ml for v in pl]
     b = [v - mr for v in pr]
@@ -408,10 +412,6 @@ def locate_day_rows(
     angle = estimate_skew(gray, thr, probe_x_frac=probe_x_frac)
     if angle:
         gray = gray.rotate(angle, resample=Image.BICUBIC, fillcolor=255)
-    fine = refine_skew(gray, thr)
-    if abs(fine) > 0.02:
-        gray = gray.rotate(fine, resample=Image.BICUBIC, fillcolor=255)
-        angle = round(angle + fine, 3)
     prof, _ = row_profile(gray, px0, px1, thr)
     hist = gray.histogram()
     paper = max(range(256), key=lambda v: hist[v])
@@ -420,16 +420,36 @@ def locate_day_rows(
     dx0, dx1 = day_column(gray, rule_thr)
     day_prof, _ = row_profile(gray, dx0, dx1, thr)
 
-    tried: list[float] = []
-    results = []
-    for pitch in pitch_candidates(prof):
-        peaks = find_peaks(prof, pitch)
-        chain, dropped = _chain_for_pitch(peaks, pitch, rules, day_count, day_prof)
-        tried.append(pitch)
-        results.append((abs(len(chain) - day_count), pitch, peaks, chain, dropped))
-    # exact matches first, then the SMALLEST pitch among them: a 2x harmonic
-    # can also produce day_count rows by skipping every other line
-    best = min(results, key=lambda r: (r[0], r[1])) if results else None
+    def _search(prof, rules, day_prof):
+        tried: list[float] = []
+        best = None
+        for pitch in pitch_candidates(prof):
+            peaks = find_peaks(prof, pitch)
+            chain, dropped = _chain_for_pitch(peaks, pitch, rules, day_count, day_prof)
+            tried.append(pitch)
+            cand = (abs(len(chain) - day_count), pitch, peaks, chain, dropped)
+            if best is None or cand[0] < best[0]:
+                best = cand
+            if cand[0] == 0:
+                break
+        return best, tried
+
+    best, tried = _search(prof, rules, day_prof)
+    # pass 2: fine skew measured on the table body only (the chain's span);
+    # an article above the table (page 14/41) otherwise dominates the
+    # right-window profile and the estimate collapses to 0
+    span = [y for y, _ in best[3]] if best and best[3] else ([y for y, _ in best[2]] if best else [])
+    if span:
+        pad = int(2 * (best[1] or 28))
+        fine = refine_skew(gray, thr, y_range=(min(span) - pad, max(span) + pad))
+        if abs(fine) > 0.02:
+            gray = gray.rotate(fine, resample=Image.BICUBIC, fillcolor=255)
+            angle = round(angle + fine, 3)
+            prof, _ = row_profile(gray, px0, px1, thr)
+            rules = horizontal_rules(gray, x0, x1, thr)
+            dx0, dx1 = day_column(gray, rule_thr)
+            day_prof, _ = row_profile(gray, dx0, dx1, thr)
+            best, tried = _search(prof, rules, day_prof)
     assert best is not None
     _, pitch, peaks, chain, dropped = best
     loc = RowLocation([], [y for y, _ in peaks], dropped=dropped, pitch=pitch,
