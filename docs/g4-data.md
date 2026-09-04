@@ -95,3 +95,41 @@ python scripts/g4_build_dataset.py --verify 3     # ~2 min no M4 (oráculo local
 python scripts/g4_baselines.py --vlm-rows 40      # tesseract em 183 linhas + VLM zero-shot em 40
 python -m pytest -q
 ```
+
+---
+
+## 7. Atualização 2026-09-04 (madrugada): smokes 1–2, geometria corrigida, rebuild por oráculo
+
+**Treinos no M4 (Qwen3.5-2B, LoRA r=16 só no LM, R$ 0):**
+
+| Run | Dados | Dev (59 linhas, vols. 15/16) | Gold (linhas, vol. 14) | Notas |
+|---|---|---|---|---|
+| smoke1 | 609 linhas reais, 1 época | 98,4% | **80,4%** (183 linhas, 6 páginas) | 364/501 erros nas 3 colunas da direita: modelo aprendeu o layout dos vols. 15/16 (sem "Sol") |
+| smoke2 | idem + hint de layout por volume + vol. 14 ×4, 2 épocas | 99,3% | **84,8%** (183 linhas) | 183/183 linhas no formato; por página 63–98% |
+
+**Diagnóstico do smoke2 (bench/g4/smoke2-epoch2.json):** três páginas gold a 96–98% (75, 109, 212)
+e três a 63–80% (90, 142, 179). Nos recortes das páginas ruins, o lado direito da linha estava
+meia linha deslocado: o deskew grosseiro (janela estreita à esquerda, passo 0,1°) não vê a
+deriva 1200 px à direita, e o modelo lia as células da vizinha. **Erro de geometria, não de leitura.**
+
+**Correções (commits d26d2e1, f5fb886):**
+1. `rows.refine_skew`: ângulo fino pela correlação dos perfis de linha entre a janela esquerda
+   (coluna do dia) e uma janela nas colunas vapor/umidade. Alinhamento verificado visualmente
+   borda a borda nas páginas 22, 75, 90, 142, 179.
+2. Localização **dirigida pelo oráculo em toda página**: o localizador só propõe candidatos; o
+   Qwen3-VL-2B lê o número do dia impresso em cada candidato e a linha d vai para o candidato que
+   lê d (monotonicidade + espaçamento checados; dias sem leitura interpolados dos vizinhos). A
+   verificação amostral anterior tinha pego páginas "ok" deslocadas em 2–3 linhas (14/212, 15/72,
+   15/141) — o que teria envenenado rótulos e o gold.
+
+**Rebuild (commit efb86ed):**
+
+| | Treino | Gold |
+|---|---|---|
+| Páginas | 25 de 28 (recusadas 14/141, 16/38, 16/174: poucas leituras diretas) | **9 de 9** |
+| Linhas / células | 762 / 9.104 | 273 / 3.622 (de 3.822) |
+| Dias lidos diretamente pelo oráculo | 899 de 1.035 (87%); resto interpolado | |
+| Linhas vol. 14 no treino | 62 (páginas 158 e 195) | |
+
+**smoke3 (rodando):** dados rebuildados, vol. 14 ×8, augmentação fotométrica/geométrica
+on-the-fly, 3 épocas, checkpoint a cada 20 passos, gold 9/9 ao fim.
