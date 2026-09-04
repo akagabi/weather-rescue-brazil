@@ -64,6 +64,8 @@ def parse_row_target(text: str) -> tuple[dict[str, float | None], dict[str, str]
     ignored + a note; unparsable token -> None + note."""
     problems: list[str] = []
     flags: dict[str, str] = {}
+    for stop in ("<|im_end|>", "<|endoftext|>", "</s>"):  # some runtimes return the EOS token as text
+        text = text.split(stop)[0]
     toks = [t.strip() for t in text.strip().strip("`").split("|")]
     if toks and toks[-1].startswith("dir="):
         flags["wind_dir"] = toks[-1][4:].strip()
