@@ -34,7 +34,7 @@ direita, mesmo perfil do residual da API.
 |---|---|---|---|
 | smoke1 | 609 linhas reais, 1 época | 80,4% (6 págs) | — |
 | smoke2 | + hint de layout por volume, vol. 14 ×4, 2 épocas | 84,8% (6 págs) | **98,90%** |
-| smoke3 | + vol. 14 ×8, augmentação, 3 épocas | 95,7% (9 págs) | pendente |
+| smoke3 | + vol. 14 ×8, augmentação, 3 épocas | 95,7% (9 págs) | 99,08% |
 | smoke4 | receita do smoke2 nos dados reconstruídos | 95,4% (9 págs) | **99,08%** |
 
 O salto de 85% para 99% **não foi o modelo, foi a geometria**: os recortes de linha derivavam
