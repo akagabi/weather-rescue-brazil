@@ -46,7 +46,9 @@ DAY_COL_SEARCH_X_FRAC = (0.09, 0.26)  # the day-number column (between the first
 RULE_CELL_FILL = 0.7       # a 20-px cell counts as rule if >= this fraction of it is ink
 RULE_THR_FRAC = 0.5        # rules print lighter than digits: rule threshold = thr + frac * (paper mode - thr)
 DAY_COL_MIN_FRAC = 0.1     # chain-end row is not a day row if its day-column ink < this x median (a lone '1' is thin; the units line is exactly 0)
-SKEW_ANGLES = [a / 10 for a in range(-15, 16)]  # degrees tried by `estimate_skew`
+SKEW_ANGLES = [a / 10 for a in range(-15, 16)]  # degrees tried by `estimate_skew` (coarse)
+RIGHT_X_FRAC = (0.48, 0.60)  # second probe window for the fine skew: vapor/humidity columns (dense digits every row)
+FINE_SKEW_MAX_DY = 14        # px of vertical offset searched between the two windows
 PITCH_RANGE = (12, 80)     # px; autocorrelation lags searched for the row pitch
 WEAK_PEAK_FRAC = 0.15      # peaks below this x median peak height are noise
 CHAIN_GAP_RANGE = (0.8, 1.2)  # consecutive-centre gap / pitch allowed inside the day chain (typeset rows are very regular)
@@ -157,6 +159,35 @@ def estimate_skew(gray: Image.Image, thr: int, *, probe_x_frac: tuple[float, flo
         if v > best:
             best, best_a = v, a
     return best_a
+
+
+def refine_skew(gray: Image.Image, thr: int, *, left: tuple[float, float] = PROBE_X_FRAC,
+                right: tuple[float, float] = RIGHT_X_FRAC, max_dy: int = FINE_SKEW_MAX_DY) -> float:
+    """Fine skew (degrees, PIL rotate convention) from the vertical offset
+    that best aligns the row profile of a RIGHT window onto the LEFT one.
+    The coarse variance search is quantised to 0.1 deg and blind to what
+    happens 1200 px to the right; smoke2 gold pages 90/142/179 lost their
+    tail columns to exactly that (half a row of drift at the right edge)."""
+    import math
+    w = gray.width
+    lx0, lx1 = round(left[0] * w), round(left[1] * w)
+    rx0, rx1 = round(right[0] * w), round(right[1] * w)
+    pl, _ = row_profile(gray, lx0, lx1, thr)
+    pr, _ = row_profile(gray, rx0, rx1, thr)
+    ml, mr = sum(pl) / len(pl), sum(pr) / len(pr)
+    a = [v - ml for v in pl]
+    b = [v - mr for v in pr]
+    n = len(a)
+    best, best_dy = -1e18, 0
+    for dy in range(-max_dy, max_dy + 1):
+        c = sum(a[y] * b[y + dy] for y in range(max(0, -dy), min(n, n - dy)))
+        if c > best:
+            best, best_dy = c, dy
+    dx = (rx0 + rx1) / 2 - (lx0 + lx1) / 2
+    # right window's rows sit `best_dy` px LOWER on the page than the left's
+    # when best_dy > 0 -> the page is rotated clockwise -> PIL rotate(+angle)
+    # (counter-clockwise) straightens it.
+    return math.degrees(math.atan2(best_dy, dx))
 
 
 def pitch_candidates(prof: list[float], lo: int = PITCH_RANGE[0], hi: int = PITCH_RANGE[1],
@@ -377,6 +408,10 @@ def locate_day_rows(
     angle = estimate_skew(gray, thr, probe_x_frac=probe_x_frac)
     if angle:
         gray = gray.rotate(angle, resample=Image.BICUBIC, fillcolor=255)
+    fine = refine_skew(gray, thr)
+    if abs(fine) > 0.02:
+        gray = gray.rotate(fine, resample=Image.BICUBIC, fillcolor=255)
+        angle = round(angle + fine, 3)
     prof, _ = row_profile(gray, px0, px1, thr)
     hist = gray.histogram()
     paper = max(range(256), key=lambda v: hist[v])

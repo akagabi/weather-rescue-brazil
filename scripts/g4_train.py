@@ -132,6 +132,7 @@ def main() -> None:
     ap.add_argument("--rank", type=int, default=16)
     ap.add_argument("--max-rows", type=int, default=0, help="cap training rows (smoke runs)")
     ap.add_argument("--dev-pages", default="15/60,16/159")
+    ap.add_argument("--exclude-pages", default="", help="pages dropped from training (e.g. verify mismatches): 15/72,16/39")
     ap.add_argument("--eval-gold", action="store_true", help="also score the gold rows at the end")
     ap.add_argument("--eval-limit", type=int, default=0, help="cap rows per eval (0 = all)")
     ap.add_argument("--synthetic", default="", help="optional extra manifest (synthetic rows)")
@@ -164,6 +165,11 @@ def main() -> None:
     tm_hash = manifest_hash(tm)
     dev_pages = {(p.split("/")[0], int(p.split("/")[1])) for p in args.dev_pages.split(",") if p}
     train_ex, dev_ex = split_pages(tm["examples"], dev_pages)
+    excl = {(p.split("/")[0], int(p.split("/")[1])) for p in args.exclude_pages.split(",") if p}
+    if excl:
+        before = len(train_ex)
+        train_ex = [e for e in train_ex if (e["doc"], e["page"]) not in excl]
+        print(f"excluded pages {sorted(excl)}: {before - len(train_ex)} rows dropped", flush=True)
     if args.synthetic:
         sm = load_manifest(Path(args.synthetic))
         assert_no_gold_leakage(sm, GOLD_PAGES, frozenset(e["sha256"] for e in gm["examples"]))
