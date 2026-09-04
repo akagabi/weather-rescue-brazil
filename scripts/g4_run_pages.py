@@ -26,7 +26,7 @@ from PIL import Image
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from g4_build_dataset import DayOracle, resolve_by_oracle  # noqa: E402
+from g4_build_dataset import resolve_by_oracle  # noqa: E402
 from g4_train import INSTRUCTION, layout_hint  # noqa: E402
 from wrb.dataset import COLUMNS, boxes_for_centres, crop_boxes, day_count_of, page_image_path  # noqa: E402
 from wrb.gold import Sheet, load_gold  # noqa: E402
@@ -40,6 +40,40 @@ ROOT = Path(__file__).resolve().parents[1]
 BENCH = ROOT / "bench" / "g3" / "revista-full.json"
 
 
+ORACLE_MLX = "mlx-community/Qwen3-VL-2B-Instruct-bf16"
+DAY_PROMPT = ("Qual é o número do dia impresso no início desta linha (o primeiro número, à esquerda)? "
+              "Responda só o número inteiro.")
+
+
+class MlxDayOracle:
+    """Same contract as g4_build_dataset.DayOracle, on MLX (no torch in the
+    runner: torch + mlx in one process corrupt each other's tensors)."""
+
+    def __init__(self, model_path: str = ORACLE_MLX) -> None:
+        from mlx_vlm import load
+        self.model, self.proc = load(model_path)
+        self.calls = 0
+
+    def read_day(self, crop: Image.Image) -> int | None:
+        import re
+        import tempfile
+        from mlx_vlm import generate
+        from mlx_vlm.prompt_utils import apply_chat_template
+        left = crop.crop((0, 0, max(1, int(crop.width * 0.22)), crop.height))
+        prompt = apply_chat_template(self.proc, self.model.config, DAY_PROMPT, num_images=1)
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
+            left.save(f, format="PNG")
+            path = f.name
+        try:
+            out = generate(self.model, self.proc, prompt, [path], max_tokens=6, verbose=False)
+        finally:
+            Path(path).unlink(missing_ok=True)
+        self.calls += 1
+        text = out.text if hasattr(out, "text") else str(out)
+        m = re.search(r"\d+", text)
+        return int(m.group()) if m else None
+
+
 class MlxRowReader:
     def __init__(self, model_path: str, max_tokens: int = 80) -> None:
         from mlx_vlm import load
@@ -51,7 +85,15 @@ class MlxRowReader:
         from mlx_vlm import generate
         from mlx_vlm.prompt_utils import apply_chat_template
         prompt = apply_chat_template(self.proc, self.model.config, INSTRUCTION + " " + hint, num_images=1)
-        out = generate(self.model, self.proc, prompt, [crop], max_tokens=self.max_tokens, verbose=False)
+        # mlx-vlm's image path handles files robustly; pass a temp PNG (the gold eval script does the same)
+        import tempfile
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
+            crop.save(f, format="PNG")
+            path = f.name
+        try:
+            out = generate(self.model, self.proc, prompt, [path], max_tokens=self.max_tokens, verbose=False)
+        finally:
+            Path(path).unlink(missing_ok=True)
         self.calls += 1
         return out.text if hasattr(out, "text") else str(out)
 
@@ -75,12 +117,13 @@ def main() -> None:
     ap.add_argument("--model", required=True)
     ap.add_argument("--pages", default="", help="subset like 14/22,15/44 (default: all transcribed pages)")
     ap.add_argument("--out", default="")
+    ap.add_argument("--oracle", default=ORACLE_MLX)
     args = ap.parse_args()
     only = {(p.split("/")[0], int(p.split("/")[1])) for p in args.pages.split(",") if p}
 
     bench = json.loads(BENCH.read_text())
     gold = {int(s.page): s for s in load_gold(ROOT / "gold")}
-    oracle = DayOracle()
+    oracle = MlxDayOracle(args.oracle)
     reader = MlxRowReader(args.model)
     results = []
     t_all = time.time()
