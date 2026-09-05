@@ -1,0 +1,197 @@
+{
+ "id": "revista-rio-1886",
+ "name": "Revista do Observatório — Imperial Observatório, Rio de Janeiro",
+ "columns": [
+  {
+   "key": "day",
+   "label": "Data",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "pressure",
+   "label": "Barômetro a 0° — médias diurnas",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    650.0,
+    800.0
+   ],
+   "elided": true,
+   "note": ""
+  },
+  {
+   "key": "pressure_max",
+   "label": "Barômetro — máximas",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    650.0,
+    800.0
+   ],
+   "elided": true,
+   "note": ""
+  },
+  {
+   "key": "pressure_min",
+   "label": "Barômetro — mínimas",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    650.0,
+    800.0
+   ],
+   "elided": true,
+   "note": ""
+  },
+  {
+   "key": "tmean",
+   "label": "Temperat. C. à sombra — médias diurnas",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "tmax",
+   "label": "Temperat. — máximas",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "tmin",
+   "label": "Temperat. — mínimas",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "vapor",
+   "label": "Tensão do vapor",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "humidity",
+   "label": "Humidade relativa",
+   "kind": "number",
+   "unit": "%",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "wind_dir",
+   "label": "Ventos dominantes — direcção",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "wind_force",
+   "label": "Ventos — força média",
+   "kind": "number",
+   "unit": "m/s",
+   "range": [
+    0.0,
+    30.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "cloudiness",
+   "label": "Nebulosidade média",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "precip",
+   "label": "Chuva caída em 24 horas",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    400.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "evap_sol",
+   "label": "Evaporação — sol",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "evap_sombra",
+   "label": "Evaporação à sombra",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "ozone",
+   "label": "Ozone em 24 h",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    21.0
+   ],
+   "elided": false,
+   "note": ""
+  }
+ ],
+ "source": "DocVirt obnacional/14 (1886)",
+ "rows_per_page": "days_in_month",
+ "adapter": "models/g4/qwen35-lora-smoke4-epoch2",
+ "notes": "Layout A. Evaporação em duas colunas (Sol, Sombra). Barômetro impresso sem o dígito dos milhares.",
+ "extra": {}
+}

@@ -1,0 +1,185 @@
+{
+ "id": "corumba-1889",
+ "name": "Commissão de Engenharia Militar de Matto-Grosso — Corumbá",
+ "columns": [
+  {
+   "key": "day",
+   "label": "Dias do mez",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "hour",
+   "label": "Horas",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    24.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "baro_fortin",
+   "label": "Barometro — Fortin",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    650.0,
+    800.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "baro_aneroides",
+   "label": "Barometro — Aneroides",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    650.0,
+    800.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "baro_media",
+   "label": "Barometro — Média",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    650.0,
+    800.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "t_centigrados",
+   "label": "Thermometr. — centigrados",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "t_maxima_dia",
+   "label": "Máxima do dia",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "t_minima_noite",
+   "label": "Mínima da noite",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "hygrometro",
+   "label": "Hygrometro Saussure",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    100.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "psychrometro",
+   "label": "Psychrometro",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    -10.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "pluviometro",
+   "label": "Pluviometro",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    400.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "vento_direccao",
+   "label": "Vento — direcção",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "vento_velocidade",
+   "label": "Vento — velocidade",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "forma_nuvens",
+   "label": "Fórma e direcção das nuvens",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "estado_tempo",
+   "label": "Estado do tempo",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "estado_ceo",
+   "label": "Estado do céo",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "note": ""
+  }
+ ],
+ "source": "DocVirt obnacional/16 p.72 (Dezembro 1889)",
+ "rows_per_page": "days_in_month_x2",
+ "adapter": "",
+ "notes": "Layout inédito, usado como teste de generalização (docs/g4-generalisation.md). Duas leituras por dia (10h e 4h); instrumentos ausentes na Revista; quatro colunas de texto livre. Barômetro impresso POR EXTENSO (não elidido).",
+ "extra": {}
+}
