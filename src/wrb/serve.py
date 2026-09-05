@@ -113,8 +113,59 @@ async def validate(payload: dict) -> JSONResponse:
 
 @app.post("/api/train")
 async def train(payload: dict) -> JSONResponse:
-    return JSONResponse(wb.start_training(payload["profile"], payload.get("run", "workbench"),
+    """profile omitted/null -> train ONE shared model on every labelled
+    publication, which is also what teaches it to stop assuming a cell count."""
+    return JSONResponse(wb.start_training(payload.get("profile"), payload.get("run", "workbench"),
                                           int(payload.get("epochs", 2))))
+
+
+@app.post("/api/profiles")
+async def create_profile(payload: dict) -> JSONResponse:
+    """Onboard a publication from the printed column labels - no JSON by hand."""
+    pid = (payload.get("id") or "").strip()
+    labels = [x.strip() for x in (payload.get("labels") or []) if x.strip()]
+    if not pid or len(labels) < 2:
+        raise HTTPException(400, "need an id and at least two column labels")
+    if pid in prof.available():
+        raise HTTPException(409, f"profile {pid} already exists")
+    p = prof.blank(pid, payload.get("name") or pid, labels)
+    p.rows_per_page = payload.get("rows_per_page") or "days_in_month"
+    p.source = payload.get("source", "")
+    p.notes = payload.get("notes", "")
+    for key in (payload.get("text_columns") or []):
+        try:
+            p.column(key).kind = "text"
+        except KeyError:
+            pass
+    p.save()
+    return JSONResponse({"created": p.id, "n_cells": p.n_cells, "keys": p.keys})
+
+
+@app.post("/api/upload")
+async def upload(payload: dict) -> JSONResponse:
+    """Register page images already on this machine under a doc id, so a new
+    publication can be labelled without touching the filesystem layout."""
+    import shutil
+    doc = str(payload.get("doc") or "").strip()
+    paths = payload.get("paths") or []
+    if not doc or not paths:
+        raise HTTPException(400, "need doc and paths")
+    dest = wb.RAW / doc
+    dest.mkdir(parents=True, exist_ok=True)
+    added = []
+    for i, src in enumerate(paths):
+        sp = Path(src).expanduser()
+        if not sp.exists():
+            continue
+        n = int(payload.get("start_page", 1)) + i
+        out = dest / f"{n:06d}.webp"
+        try:
+            from PIL import Image as PILImage
+            PILImage.open(sp).convert("RGB").save(out, format="WEBP", quality=92)
+        except Exception:
+            shutil.copy(sp, out)
+        added.append(n)
+    return JSONResponse({"doc": doc, "pages": added})
 
 
 @app.get("/api/train")

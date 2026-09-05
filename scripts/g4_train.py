@@ -153,6 +153,7 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--oversample", action="store_true", help="repeat vol-14 rows x4 (OVERSAMPLE)")
     ap.add_argument("--oversample-factor", type=int, default=0, help="override the vol-14 repeat factor")
+    ap.add_argument("--manifest", default="", help="train from this manifest instead of data/g4/train_manifest.json (workbench labels; each example carries its own target and profile)")
     ap.add_argument("--printed", action="store_true", help="schema-free target: the row exactly as printed (see INSTRUCTION_PRINTED)")
     ap.add_argument("--augment", action="store_true", help="on-the-fly photometric/geometric jitter on training crops (wrb.synth.jitter)")
     ap.add_argument("--no-hint", action="store_true", help="disable the per-volume layout hint")
@@ -173,7 +174,7 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # --- guards -------------------------------------------------------------
-    tm = load_manifest(G4 / "train_manifest.json")
+    tm = load_manifest(Path(args.manifest) if args.manifest else G4 / "train_manifest.json")
     gm = load_manifest(G4 / "gold_manifest.json")
     assert_no_gold_leakage(tm, GOLD_PAGES, frozenset(e["sha256"] for e in gm["examples"]))
     tm_hash = manifest_hash(tm)
@@ -274,8 +275,12 @@ def main() -> None:
             if args.augment:
                 from wrb.synth import jitter
                 im = jitter(im, random)
-            target = (row_target_printed(e["day"], e["cells"], e.get("flags"), layout_for(e["doc"]))
-                      if args.printed else row_target(e["cells"], e.get("flags")))
+            if e.get("target"):
+                target = e["target"]                      # workbench label, profile-shaped
+            elif args.printed:
+                target = row_target_printed(e["day"], e["cells"], e.get("flags"), layout_for(e["doc"]))
+            else:
+                target = row_target(e["cells"], e.get("flags"))
             inp, labels = build_batch(proc, im, target, dev, hint_for(e["doc"]), instruction)
             out = model(**inp, labels=labels)
             (out.loss / args.grad_accum).backward()

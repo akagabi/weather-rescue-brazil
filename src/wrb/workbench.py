@@ -22,6 +22,7 @@ import json
 import subprocess
 import sys
 import threading
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -143,22 +144,91 @@ def known_periods() -> dict:
 
 
 # --------------------------------------------------------------------------
+# labels -> training manifest. This is the bridge that makes the Treinar
+# button train on what YOU typed, across every publication at once: one shared
+# model, many profiles. Training on several layouts is also the fix for the
+# model memorising a cell count (docs/g4-generalisation.md).
+# --------------------------------------------------------------------------
+def build_manifest(profile_ids: list[str] | None = None, out: Path | None = None) -> dict:
+    import hashlib
+    out = out or ROOT / "data" / "g4" / "workbench_manifest.json"
+    crops_dir = ROOT / "data" / "g4" / "workbench_rows"
+    crops_dir.mkdir(parents=True, exist_ok=True)
+    ids = profile_ids or prof.available()
+    examples, pages, skipped = [], [], []
+    for pid in ids:
+        p = prof.load(pid)
+        d = LABELS / pid
+        if not d.exists():
+            continue
+        for f in sorted(d.glob("*.json")):
+            data = json.loads(f.read_text())
+            period = data.get("period")
+            doc, page = f.stem.split("_")[0], int(f.stem.split("_")[1])
+            if not period:
+                skipped.append(f"{pid}/{f.stem}: no period recorded")
+                continue
+            st = page_state(pid, doc, page, period)
+            if not st.boxes:
+                skipped.append(f"{pid}/{f.stem}: {st.reason or 'no rows located'}")
+                continue
+            image = Image.open(page_image_path(ROOT, doc, page)).convert("RGB")
+            n = 0
+            for idx_s, values in data.get("rows", {}).items():
+                idx = int(idx_s)
+                if idx >= len(st.boxes):
+                    continue
+                if not any(v not in (None, "") for v in values.values()):
+                    continue
+                crop = crop_boxes(image, [tuple(st.boxes[idx])], st.skew, scale=2.0)[0]
+                buf = io.BytesIO()
+                crop.save(buf, format="PNG")
+                blob = buf.getvalue()
+                name = f"{pid}_{doc}_{page:06d}_r{idx:03d}.png"
+                (crops_dir / name).write_bytes(blob)
+                examples.append({
+                    "profile": pid, "doc": doc, "page": page, "period": period, "row": idx,
+                    "day": values.get(p.day_key) if p.day_key else None,
+                    "image": str((crops_dir / name).relative_to(ROOT / "data" / "g4")),
+                    "sha256": hashlib.sha256(blob).hexdigest(),
+                    "target": p.target(values), "values": values, "is_gold": False,
+                })
+                n += 1
+            if n:
+                pages.append({"profile": pid, "doc": doc, "page": page, "rows": n})
+    doc_out = {"meta": {"built_at": time.strftime("%Y-%m-%d %H:%M"), "profiles": ids,
+                        "skipped": skipped, "source": "workbench labels"},
+               "n_examples": len(examples), "pages": pages, "examples": examples}
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(doc_out, ensure_ascii=False, indent=1))
+    return {"manifest": str(out.relative_to(ROOT)), "rows": len(examples),
+            "pages": len(pages), "profiles": ids, "skipped": skipped}
+
+
+# --------------------------------------------------------------------------
 # training kick-off (fire and forget; the log is the progress view)
 # --------------------------------------------------------------------------
 _train: dict = {"running": False, "log": "", "cmd": ""}
 
 
-def start_training(profile_id: str, run: str, epochs: int = 2) -> dict:
+def start_training(profile_id: str | None, run: str, epochs: int = 2) -> dict:
+    """Train ONE shared model on every labelled publication (profile_id=None)
+    or on one of them. Several layouts in the mix is what teaches the model to
+    take the column count from the image instead of from memory."""
     if _train["running"]:
         return {"started": False, "why": "a training run is already going"}
-    stats = label_stats(profile_id)
-    if stats["rows"] < 20:
-        return {"started": False, "why": f"only {stats['rows']} labelled rows; label ~50 first"}
+    ids = [profile_id] if profile_id else prof.available()
+    total = sum(label_stats(i)["rows"] for i in ids)
+    if total < 20:
+        return {"started": False, "why": f"only {total} labelled rows; label ~50 first"}
+    built = build_manifest(ids)
     log = ROOT / "runs" / "g4" / run / "train.log"
     log.parent.mkdir(parents=True, exist_ok=True)
     cmd = [sys.executable, str(ROOT / "scripts" / "g4_train.py"), "--model", "qwen35",
-           "--run", run, "--epochs", str(epochs), "--printed", "--save-every", "20"]
-    _train.update(running=True, log=str(log), cmd=" ".join(cmd))
+           "--run", run, "--epochs", str(epochs), "--printed", "--save-every", "20",
+           "--manifest", built["manifest"]]
+    _train.update(running=True, log=str(log), cmd=" ".join(cmd), rows=built["rows"],
+                  profiles=ids, skipped=built["skipped"])
 
     def _run():
         with open(log, "w") as fh:
@@ -166,7 +236,8 @@ def start_training(profile_id: str, run: str, epochs: int = 2) -> dict:
         _train["running"] = False
 
     threading.Thread(target=_run, daemon=True).start()
-    return {"started": True, "log": str(log.relative_to(ROOT)), "rows": stats["rows"]}
+    return {"started": True, "log": str(log.relative_to(ROOT)), "rows": built["rows"],
+            "pages": built["pages"], "profiles": ids, "skipped": built["skipped"]}
 
 
 def training_status() -> dict:

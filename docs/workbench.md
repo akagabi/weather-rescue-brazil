@@ -47,3 +47,23 @@ Escreva `profiles/<id>.json` — veja `wrb.profile.Profile` para os campos e
 `profiles/corumba-1889.json` como exemplo de layout bem diferente (16 colunas, duas leituras por
 dia, quatro colunas de texto livre). `wrb.profile.blank()` gera o esqueleto a partir dos rótulos
 impressos das colunas.
+
+## Adicionar uma publicação pela interface
+
+Botão **+ Publicação**. Você cola os rótulos das colunas **como aparecem impressos**, um por
+linha, da esquerda para a direita — incluindo a coluna do dia e as de texto. O perfil é criado na
+hora e já aparece na lista; nenhum JSON é editado à mão. Depois registre as imagens em
+`data/raw/docvirt/<doc>/000001.webp` (ou `POST /api/upload` com os caminhos dos arquivos).
+
+## Um modelo, várias publicações
+
+**Treinar** treina UM modelo com tudo que estiver rotulado, em todas as publicações — não um
+modelo por publicação. Isso não é só arrumação: o motivo pelo qual o modelo falhou em Corumbá é
+que 91% do treino era um único layout de 15 colunas, então ele decorou "15 células"
+(`docs/g4-generalisation.md`). Ter dois ou três layouts na mistura é exatamente o que ensina a
+contar colunas a partir da imagem. **Cada publicação que você rotula melhora o modelo para a
+próxima.**
+
+O caminho é: rótulos → `data/g4/workbench_manifest.json` (cada exemplo carrega o próprio alvo,
+no formato do seu perfil) → `scripts/g4_train.py --manifest`. O gold congelado continua fora do
+treino, com a mesma guarda de vazamento de sempre.

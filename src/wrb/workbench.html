@@ -59,6 +59,15 @@
   .prog{height:6px;background:var(--rule);border-radius:3px;flex:1;min-width:140px;overflow:hidden}
   .prog i{display:block;height:100%;background:var(--accent);width:0}
   code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+  .panel{border:1px solid var(--rule);background:var(--card);border-radius:6px;padding:14px;
+         display:flex;flex-direction:column;gap:10px}
+  .panel p{margin:0}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+  .panel label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
+  .panel input,.panel textarea,.panel select{font:inherit;color:var(--ink);background:var(--field);
+        border:1px solid var(--rule);border-radius:4px;padding:6px 8px}
+  .panel textarea{font:13px/1.45 ui-monospace,Menlo,monospace;resize:vertical}
+  .rowbtns{display:flex;gap:8px;align-items:center}
   .log{white-space:pre-wrap;font:11px ui-monospace,Menlo,monospace;color:var(--muted);
        max-height:130px;overflow:auto}
 </style>
@@ -72,7 +81,8 @@
   <button id="open">Abrir</button>
   <span class="sub" id="status">—</span>
   <span style="flex:1"></span>
-  <button class="ghost" id="trainBtn" title="Treina um adaptador com as linhas rotuladas">Treinar</button>
+  <button class="ghost" id="newBtn" title="Adicionar uma publicação">+ Publicação</button>
+  <button class="ghost" id="trainBtn" title="Treina UM modelo com tudo que você rotulou">Treinar</button>
 </header>
 
 <main>
@@ -80,6 +90,34 @@
     <span class="sub" id="profileNote">Escolha uma publicação e uma página.</span>
     <div class="prog"><i id="prog"></i></div>
     <span class="sub" id="count">0 / 0</span>
+  </div>
+  <div id="newbox" hidden class="panel">
+    <b>Nova publicação</b>
+    <p class="sub">Copie os rótulos das colunas <b>como aparecem impressos</b>, da esquerda para a
+      direita, um por linha — incluindo a coluna do dia e as colunas de texto. É isso que define a
+      tabela; nenhum arquivo precisa ser editado à mão.</p>
+    <div class="grid2">
+      <label>Identificador <input id="np_id" placeholder="jornal-recife-1902"></label>
+      <label>Nome <input id="np_name" placeholder="Jornal do Recife — observações diárias"></label>
+      <label>Origem <input id="np_source" placeholder="acervo, volume, ano"></label>
+      <label>Linhas por página
+        <select id="np_rows">
+          <option value="days_in_month">uma por dia do mês</option>
+          <option value="days_in_month_x2">duas por dia (manhã e tarde)</option>
+          <option value="fixed:31">fixo: 31</option>
+        </select></label>
+    </div>
+    <label>Colunas impressas, uma por linha
+      <textarea id="np_cols" rows="8" placeholder="Data&#10;Barômetro — médias&#10;Barômetro — máximas&#10;Temperatura&#10;Ventos — direcção"></textarea></label>
+    <label>Quais dessas são texto (não números)? Separe por vírgula, pelo rótulo
+      <input id="np_text" placeholder="Ventos — direcção, Estado do céo"></label>
+    <div class="rowbtns">
+      <button id="np_save">Criar publicação</button>
+      <button class="ghost" id="np_cancel">Cancelar</button>
+      <span class="sub" id="np_msg"></span>
+    </div>
+    <p class="sub">Depois: registre as imagens das páginas em <code>data/raw/docvirt/&lt;doc&gt;/000001.webp</code>
+      (ou use <code>POST /api/upload</code> com os caminhos dos arquivos), rotule ~50 linhas e clique Treinar.</p>
   </div>
   <div id="trainbox" hidden class="note"><div class="log" id="trainlog"></div></div>
   <div id="notes"></div>
@@ -222,11 +260,38 @@ function progress(){
   $('#prog').style.width = (100*done/Math.max(1,PAGE.found_rows)) + '%';
 }
 async function train(){
+  // no profile -> ONE shared model over every labelled publication; several
+  // layouts in the mix is what stops it assuming a column count
   const r = await api('/api/train', {method:'POST', headers:{'Content-Type':'application/json'},
-                      body: JSON.stringify({profile:P.id, run:'workbench-'+P.id, epochs:2})});
+                      body: JSON.stringify({run:'workbench', epochs:2})});
   $('#trainbox').hidden = false;
-  $('#trainlog').textContent = r.started ? `treinando com ${r.rows} linhas · log ${r.log}` : r.why;
+  $('#trainlog').textContent = r.started
+    ? `treinando um modelo com ${r.rows} linhas de ${r.profiles.length} publicações · log ${r.log}`
+      + (r.skipped && r.skipped.length ? `\npuladas: ${r.skipped.join('; ')}` : '')
+    : r.why;
   if (r.started) pollTrain();
+}
+async function createProfile(){
+  const labels = $('#np_cols').value.split('\n').map(x=>x.trim()).filter(Boolean);
+  const textLabels = $('#np_text').value.split(',').map(x=>x.trim().toLowerCase()).filter(Boolean);
+  const body = {id:$('#np_id').value.trim(), name:$('#np_name').value.trim(),
+                source:$('#np_source').value.trim(), rows_per_page:$('#np_rows').value, labels};
+  const res = await fetch('/api/profiles', {method:'POST', headers:{'Content-Type':'application/json'},
+                          body: JSON.stringify(body)});
+  const r = await res.json();
+  if (!res.ok){ $('#np_msg').textContent = r.detail || 'erro'; return; }
+  // mark the text columns by their printed label
+  if (textLabels.length){
+    const keys = labels.map((lab,i)=>({lab:lab.toLowerCase(), key:r.keys[i]}))
+                       .filter(x=>textLabels.includes(x.lab)).map(x=>x.key);
+    if (keys.length) await fetch('/api/profiles', {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({...body, id: body.id, text_columns: keys})}).catch(()=>{});
+  }
+  $('#np_msg').textContent = `criada: ${r.created} · ${r.n_cells} colunas`;
+  PROFILES = await api('/api/profiles');
+  $('#profile').innerHTML = PROFILES.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+  $('#profile').value = r.created; onProfile();
+  setTimeout(()=>{ $('#newbox').hidden = true; $('#np_msg').textContent=''; }, 1500);
 }
 async function pollTrain(){
   const s = await api('/api/train');
@@ -239,6 +304,9 @@ $('#doc').addEventListener('change', onDoc);
 $('#page').addEventListener('change', onPage);
 $('#open').addEventListener('click', openPage);
 $('#trainBtn').addEventListener('click', train);
+$('#newBtn').addEventListener('click', () => { $('#newbox').hidden = !$('#newbox').hidden; });
+$('#np_save').addEventListener('click', createProfile);
+$('#np_cancel').addEventListener('click', () => { $('#newbox').hidden = true; });
 window.addEventListener('beforeunload', flush);
 boot();
 </script>
