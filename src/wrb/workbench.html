@@ -1,0 +1,244 @@
+<!-- Transcription workbench UI. Columns, ranges and row counts all come from
+     the active profile, so this screen serves any ruled table. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transcription Workbench</title>
+<style>
+  :root{
+    --paper:#f3efe2; --ink:#221f1a; --muted:#6b6455; --rule:#d8d1bd;
+    --card:#fbf8ee; --accent:#7a4a24; --accent-ink:#fff;
+    --warn:#a3411f; --ok:#3d6b4a; --field:#fff;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --paper:#16150f; --ink:#ece5d4; --muted:#9a9280; --rule:#332f24;
+    --card:#1e1c14; --accent:#c98a52; --accent-ink:#16150f;
+    --warn:#e08163; --ok:#7fb18d; --field:#100f0a;
+  }}
+  :root[data-theme="dark"]{
+    --paper:#16150f; --ink:#ece5d4; --muted:#9a9280; --rule:#332f24;
+    --card:#1e1c14; --accent:#c98a52; --accent-ink:#16150f;
+    --warn:#e08163; --ok:#7fb18d; --field:#100f0a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:14px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{position:sticky;top:0;z-index:5;background:var(--paper);
+         border-bottom:1px solid var(--rule);padding:10px 16px;
+         display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  h1{font-size:15px;margin:0;font-weight:650;letter-spacing:.02em}
+  .sub{color:var(--muted);font-size:12px}
+  select,input,button{font:inherit;color:inherit;background:var(--field);
+        border:1px solid var(--rule);border-radius:4px;padding:5px 7px}
+  button{background:var(--accent);color:var(--accent-ink);border-color:transparent;
+         cursor:pointer;font-weight:600}
+  button.ghost{background:transparent;color:var(--ink);border-color:var(--rule);font-weight:500}
+  button:disabled{opacity:.5;cursor:default}
+  main{padding:16px;max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .note{border:1px solid var(--rule);border-left:3px solid var(--warn);
+        background:var(--card);padding:9px 12px;border-radius:4px;color:var(--muted)}
+  .row{background:var(--card);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+  .row.done{border-color:var(--ok)}
+  .rowhead{display:flex;align-items:center;gap:10px;padding:5px 10px;
+           border-bottom:1px solid var(--rule);font-size:12px;color:var(--muted)}
+  .rowhead b{color:var(--ink);font-size:13px}
+  /* scan and fields live in ONE scroll container so a printed cell stays above
+     its input; the fields are stretched to the scan's rendered width. */
+  .body{overflow-x:auto}
+  .scan{background:#efe9d6;border-bottom:1px solid var(--rule)}
+  .scan img{display:block;height:56px;image-rendering:-webkit-optimize-contrast}
+  .cells{display:flex;gap:0;padding:8px 10px 10px}
+  .cell{display:flex;flex-direction:column;gap:3px;min-width:92px;flex:1 1 0}
+  .cell label{font-size:10px;color:var(--muted);text-transform:uppercase;
+              letter-spacing:.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cell input{width:100%;font-variant-numeric:tabular-nums}
+  .cell input.text{font-variant-numeric:normal}
+  .cell input.bad{border-color:var(--warn);outline:1px solid var(--warn)}
+  .cell input:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+  .bar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+       border:1px solid var(--rule);background:var(--card);border-radius:6px;padding:10px 12px}
+  .prog{height:6px;background:var(--rule);border-radius:3px;flex:1;min-width:140px;overflow:hidden}
+  .prog i{display:block;height:100%;background:var(--accent);width:0}
+  code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+  .log{white-space:pre-wrap;font:11px ui-monospace,Menlo,monospace;color:var(--muted);
+       max-height:130px;overflow:auto}
+</style>
+
+<header>
+  <h1>Transcription Workbench</h1>
+  <select id="profile"></select>
+  <select id="doc"></select>
+  <select id="page"></select>
+  <input id="period" size="8" placeholder="1886-01" title="Período (AAAA-MM)">
+  <button id="open">Abrir</button>
+  <span class="sub" id="status">—</span>
+  <span style="flex:1"></span>
+  <button class="ghost" id="trainBtn" title="Treina um adaptador com as linhas rotuladas">Treinar</button>
+</header>
+
+<main>
+  <div class="bar">
+    <span class="sub" id="profileNote">Escolha uma publicação e uma página.</span>
+    <div class="prog"><i id="prog"></i></div>
+    <span class="sub" id="count">0 / 0</span>
+  </div>
+  <div id="trainbox" hidden class="note"><div class="log" id="trainlog"></div></div>
+  <div id="notes"></div>
+  <div id="rows"></div>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+let PROFILES = [], P = null, DOCS = [], PERIODS = {}, PAGE = null, DIRTY = {}, SAVER = null;
+
+const api = (u, o) => fetch(u, o).then(r => r.json());
+
+async function boot(){
+  PROFILES = await api('/api/profiles');
+  $('#profile').innerHTML = PROFILES.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+  const d = await api('/api/docs');
+  DOCS = d.docs; PERIODS = d.periods;
+  $('#doc').innerHTML = DOCS.map(x => `<option value="${x.doc}">doc ${x.doc} (${x.n_pages} pág.)</option>`).join('');
+  onProfile(); onDoc();
+  // deep link: /?profile=...&doc=16&page=72&period=1889-12  (shareable, and how
+  // the review queue will hand you a specific page)
+  const q = new URLSearchParams(location.search);
+  if (q.get('profile')) { $('#profile').value = q.get('profile'); onProfile(); }
+  if (q.get('doc')) { $('#doc').value = q.get('doc'); onDoc(); }
+  if (q.get('page')) { $('#page').value = q.get('page'); onPage(); }
+  if (q.get('period')) $('#period').value = q.get('period');
+  if (q.get('doc') && q.get('page')) openPage();
+}
+function onProfile(){
+  P = PROFILES.find(p => p.id === $('#profile').value);
+  $('#profileNote').textContent =
+    `${P.n_cells} colunas · ${P.labelled.rows} linhas rotuladas em ${P.labelled.pages} páginas` +
+    (P.notes ? ` · ${P.notes}` : '');
+}
+function onDoc(){
+  const doc = DOCS.find(x => x.doc === $('#doc').value);
+  $('#page').innerHTML = doc.pages.map(n => `<option value="${n}">p. ${n}</option>`).join('');
+  onPage();
+}
+function onPage(){
+  const key = `${$('#doc').value}/${parseInt($('#page').value,10)}`;
+  if (PERIODS[key]) $('#period').value = PERIODS[key];
+}
+function syncUrl(){
+  const q = new URLSearchParams({profile:$('#profile').value, doc:$('#doc').value,
+                                page:$('#page').value, period:$('#period').value});
+  history.replaceState(null, '', '?' + q);
+}
+async function openPage(){
+  syncUrl();
+  const q = new URLSearchParams({profile:$('#profile').value, doc:$('#doc').value,
+                                page:$('#page').value, period:$('#period').value});
+  $('#status').textContent = 'carregando…';
+  PAGE = await api('/api/page?' + q);
+  if (PAGE.detail){ $('#status').textContent = PAGE.detail; return; }
+  $('#notes').innerHTML = PAGE.located ? '' :
+    `<div class="note"><b>Linhas não fecharam.</b> Esperava ${PAGE.expected_rows}, achei
+     ${PAGE.found_rows}. ${PAGE.reason||''} Você ainda pode rotular o que está abaixo;
+     confira se cada recorte é uma linha só.</div>`;
+  render();
+  $('#status').textContent = `${PAGE.found_rows} linhas · inclinação ${PAGE.skew}°`;
+}
+const esc = u => String(u).replace(/&/g, '&amp;');
+// stretch the field row to the scan's width so column n sits under cell n
+function fit(img){
+  const cells = img.closest('.body').querySelector('.cells');
+  if (img.offsetWidth > 400) cells.style.minWidth = img.offsetWidth + 'px';
+}
+function render(){
+  const rows = PAGE.rows.map(r => {
+    const saved = PAGE.labels[String(r.index)] || {};
+    const cells = P.columns.map(c => {
+      const v = saved[c.key] ?? '';
+      const t = c.kind === 'text' ? ' text' : '';
+      const hint = c.range ? `${c.label} (${c.range[0]}–${c.range[1]}${c.unit?' '+c.unit:''})` : c.label;
+      return `<div class="cell"><label title="${hint}">${c.label}</label>
+        <input class="${t}" data-row="${r.index}" data-key="${c.key}" value="${String(v).replace(/"/g,'&quot;')}"
+               autocomplete="off" spellcheck="false"></div>`;
+    }).join('');
+    const done = Object.values(saved).some(v => v !== '' && v !== null);
+    return `<div class="row ${done?'done':''}" id="row${r.index}">
+      <div class="rowhead"><b>linha ${r.index+1}</b><span>de ${PAGE.found_rows}</span>
+        <span class="viol" id="v${r.index}"></span></div>
+      <div class="body"><div class="scan"><img src="${esc(r.crop)}" alt="linha ${r.index+1}"
+        onload="fit(this)"></div>
+      <div class="cells">${cells}</div></div></div>`;
+  }).join('');
+  $('#rows').innerHTML = rows;
+  $('#rows').querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('input', onEdit);
+    inp.addEventListener('keydown', onKey);
+  });
+  progress();
+}
+function onEdit(e){
+  const r = e.target.dataset.row;
+  DIRTY[r] = DIRTY[r] || {};
+  DIRTY[r][e.target.dataset.key] = e.target.value;
+  PAGE.labels[r] = Object.assign({}, PAGE.labels[r], DIRTY[r]);
+  document.getElementById('row'+r).classList.add('done');
+  clearTimeout(SAVER); SAVER = setTimeout(flush, 700);
+  validate(r);
+}
+function onKey(e){
+  if (e.key !== 'Enter') return;
+  e.preventDefault();
+  const r = parseInt(e.target.dataset.row,10), k = e.target.dataset.key;
+  const next = document.querySelector(`input[data-row="${r+1}"][data-key="${k}"]`);
+  if (next){ next.focus(); next.select(); next.scrollIntoView({block:'center'}); }
+}
+async function validate(r){
+  const values = PAGE.labels[r] || {};
+  const out = await api('/api/validate', {method:'POST', headers:{'Content-Type':'application/json'},
+                    body: JSON.stringify({profile:P.id, values})});
+  const el = document.getElementById('v'+r);
+  el.textContent = out.violations.length ? '⚠ ' + out.violations.join(' · ') : '';
+  el.style.color = 'var(--warn)';
+  P.columns.forEach(c => {
+    const inp = document.querySelector(`input[data-row="${r}"][data-key="${c.key}"]`);
+    if (inp) inp.classList.toggle('bad', out.violations.some(v => v.startsWith(c.key+'=')));
+  });
+}
+async function flush(){
+  if (!Object.keys(DIRTY).length) return;
+  const rows = DIRTY; DIRTY = {};
+  const res = await api('/api/labels', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({profile:P.id, doc:PAGE.doc, page:PAGE.page, period:PAGE.period, rows})});
+  if (res.stats){ P.labelled = res.stats; onProfileCount(); }
+  progress();
+}
+function onProfileCount(){
+  $('#profileNote').textContent =
+    `${P.n_cells} colunas · ${P.labelled.rows} linhas rotuladas em ${P.labelled.pages} páginas` +
+    (P.notes ? ` · ${P.notes}` : '');
+}
+function progress(){
+  if (!PAGE) return;
+  const done = Object.values(PAGE.labels).filter(r => Object.values(r).some(v => v!=='' && v!==null)).length;
+  $('#count').textContent = `${done} / ${PAGE.found_rows} linhas nesta página`;
+  $('#prog').style.width = (100*done/Math.max(1,PAGE.found_rows)) + '%';
+}
+async function train(){
+  const r = await api('/api/train', {method:'POST', headers:{'Content-Type':'application/json'},
+                      body: JSON.stringify({profile:P.id, run:'workbench-'+P.id, epochs:2})});
+  $('#trainbox').hidden = false;
+  $('#trainlog').textContent = r.started ? `treinando com ${r.rows} linhas · log ${r.log}` : r.why;
+  if (r.started) pollTrain();
+}
+async function pollTrain(){
+  const s = await api('/api/train');
+  if (s.tail) $('#trainlog').textContent = s.tail.join('\n');
+  if (s.running) setTimeout(pollTrain, 5000);
+  else $('#trainlog').textContent += '\n— fim —';
+}
+$('#profile').addEventListener('change', onProfile);
+$('#doc').addEventListener('change', onDoc);
+$('#page').addEventListener('change', onPage);
+$('#open').addEventListener('click', openPage);
+$('#trainBtn').addEventListener('click', train);
+window.addEventListener('beforeunload', flush);
+boot();
+</script>
