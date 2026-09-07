@@ -1,0 +1,116 @@
+{
+ "id": "rio-1883-vapeur",
+ "name": "Observations météorologiques de Rio de Janeiro (1883) — tension de la vapeur",
+ "columns": [
+  {
+   "key": "date",
+   "label": "Date",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "h04m",
+   "label": "4 h. M.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "h07m",
+   "label": "7 h. M.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "h10m",
+   "label": "10 h. M.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "h01s",
+   "label": "1 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "h04s",
+   "label": "4 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "h07s",
+   "label": "7 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "h10s",
+   "label": "10 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "moyenne",
+   "label": "Moyenne",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "note": "média das 7 leituras — checksum interno"
+  }
+ ],
+ "source": "DocVirt obnacional/8 p.95 (Novembre 1883)",
+ "rows_per_page": "days_in_month",
+ "adapter": "",
+ "notes": "Quinto layout, SEGUNDO TESTE CEGO e primeira PUBLICAÇÃO diferente: não é a Revista do Observatório. Cabeçalho em FRANCÊS. 9 colunas; a estrutura não é instrumento-por-coluna e sim a MESMA medida em 7 horários do dia + a média. Checksum por linha: Moyenne = média das 7 leituras.",
+ "extra": {}
+}

@@ -1,0 +1,89 @@
+{
+ "source": "docvirt obnacional/8 p.95, Rio de Janeiro, Novembre 1883",
+ "why": "SECOND BLIND TEST and first DIFFERENT PUBLICATION: not the Revista; French header; 9 columns; structure is one measurement at 7 times of day plus the mean. Training saw 15- and 16-cell layouts only.",
+ "profile": "rio-1883-vapeur",
+ "printed_columns": [
+  "date",
+  "h04m",
+  "h07m",
+  "h10m",
+  "h01s",
+  "h04s",
+  "h07s",
+  "h10s",
+  "moyenne"
+ ],
+ "verification": "per-row checksum: Moyenne is the mean of the 7 readings; all rows verify",
+ "rows": [
+  {
+   "row": 0,
+   "cells": [
+    "1",
+    "15.32",
+    "14.09",
+    "15.24",
+    "14.73",
+    "16.04",
+    "15.86",
+    "15.39",
+    "15.24"
+   ]
+  },
+  {
+   "row": 1,
+   "cells": [
+    "2",
+    "15.43",
+    "15.71",
+    "13.93",
+    "13.95",
+    "14.01",
+    "14.23",
+    "14.41",
+    "14.52"
+   ]
+  },
+  {
+   "row": 2,
+   "cells": [
+    "3",
+    "12.92",
+    "14.05",
+    "15.11",
+    "13.01",
+    "13.01",
+    "15.64",
+    "13.80",
+    "13.93"
+   ]
+  },
+  {
+   "row": 3,
+   "cells": [
+    "4",
+    "13.08",
+    "13.19",
+    "13.43",
+    "12.70",
+    "12.77",
+    "11.52",
+    "12.07",
+    "12.68"
+   ]
+  },
+  {
+   "row": 4,
+   "cells": [
+    "5",
+    "14.11",
+    "13.37",
+    "13.14",
+    "13.68",
+    "13.06",
+    "13.80",
+    "12.30",
+    "13.35"
+   ]
+  }
+ ]
+}
