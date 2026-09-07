@@ -1,0 +1,293 @@
+{
+ "adapter": "runs/g4/gen3/epoch2",
+ "profile": "rio-1883-vapeur",
+ "doc": "8",
+ "page": 15,
+ "period": "1883-01",
+ "rows_located": 33,
+ "scoreable": 31,
+ "closed": 27,
+ "cell_counts": {
+  "10": 3,
+  "15": 1,
+  "9": 29
+ },
+ "rows": [
+  {
+   "row": 0,
+   "text": "1 | Date | 4 h. M. | 7 h. M. | 10 h. M. | 1 h. S. | 4 h. S. | 7 h. S. | 10 h. S. | Moyenne",
+   "problems": [
+    "10 cells, expected 9",
+    "h04m: unparsable 'Date'",
+    "h07m: unparsable '4 h. M.'",
+    "h10m: unparsable '7 h. M.'",
+    "h01s: unparsable '10 h. M.'",
+    "h04s: unparsable '1 h. S.'",
+    "h07s: unparsable '4 h. S.'",
+    "h10s: unparsable '7 h. S.'",
+    "moyenne: unparsable '10 h. S.'"
+   ],
+   "closes": null
+  },
+  {
+   "row": 1,
+   "text": "10 | null | null | null | null | null | null | null | null | null | null | null | null | null | null",
+   "problems": [
+    "15 cells, expected 9"
+   ],
+   "closes": null
+  },
+  {
+   "row": 2,
+   "text": "1 | 14.21 | 14.86 | 15.01 | 15.55 | 13.35 | 16.73 | 13.71 | 14.77",
+   "problems": [],
+   "mean": 14.7743,
+   "printed": 14.77,
+   "closes": true
+  },
+  {
+   "row": 3,
+   "text": "2 | 14.66 | 16.65 | 20.25 | 16.9 | 19.4 | 18.54 | 17.51 | 17.7",
+   "problems": [],
+   "mean": 17.7014,
+   "printed": 17.7,
+   "closes": true
+  },
+  {
+   "row": 4,
+   "text": "3 | 17.31 | 17.75 | 18.71 | 18.91 | 17.81 | 18.1 | 14.62 | 17.6",
+   "problems": [],
+   "mean": 17.6014,
+   "printed": 17.6,
+   "closes": true
+  },
+  {
+   "row": 5,
+   "text": "4 | 17.46 | 17.42 | 18.35 | 17.99 | 18.55 | 19.8 | 19.65 | 18.46",
+   "problems": [],
+   "mean": 18.46,
+   "printed": 18.46,
+   "closes": true
+  },
+  {
+   "row": 6,
+   "text": "5 | 19.21 | 17.62 | 16.76 | 20.56 | 20.98 | 17.03 | 19.14 | 18.76",
+   "problems": [],
+   "mean": 18.7571,
+   "printed": 18.76,
+   "closes": true
+  },
+  {
+   "row": 7,
+   "text": "6 | 17.74 | 18.03 | 23.5 | 19.31 | 18.04 | 20.08 | 18.52 | 19.32",
+   "problems": [],
+   "mean": 19.3171,
+   "printed": 19.32,
+   "closes": true
+  },
+  {
+   "row": 8,
+   "text": "7 | 17.26 | 17.81 | 16.93 | 19.95 | 13.1 | 20.61 | 18.9 | 17.79",
+   "problems": [],
+   "mean": 17.7943,
+   "printed": 17.79,
+   "closes": true
+  },
+  {
+   "row": 9,
+   "text": "8 | 19.65 | 19.02 | 23.73 | 17.67 | 18.54 | 22.22 | 17.12 | 19.71",
+   "problems": [],
+   "mean": 19.7071,
+   "printed": 19.71,
+   "closes": true
+  },
+  {
+   "row": 10,
+   "text": "9 | 17.87 | 19.03 | 20.27 | 18.78 | 19.88 | 19.65 | 20.02 | 19.36",
+   "problems": [],
+   "mean": 19.3571,
+   "printed": 19.36,
+   "closes": true
+  },
+  {
+   "row": 11,
+   "text": "10 | 19.65 | 19.83 | 23.18 | 22.5 | 18.09 | 20.12 | 17.68 | 20.15",
+   "problems": [],
+   "mean": 20.15,
+   "printed": 20.15,
+   "closes": true
+  },
+  {
+   "row": 12,
+   "text": "11 | 13.96 | 17.79 | 18.21 | 17.12 | 16.57 | 18.97 | 18.3 | 17.27",
+   "problems": [],
+   "mean": 17.2743,
+   "printed": 17.27,
+   "closes": true
+  },
+  {
+   "row": 13,
+   "text": "12 | 19.16 | 15.54 | 22.86 | 22.77 | 17.83 | 18.34 | 15.84 | 18.91",
+   "problems": [],
+   "mean": 18.9057,
+   "printed": 18.91,
+   "closes": true
+  },
+  {
+   "row": 14,
+   "text": "13 | 25.76 | 15.16 | 20.08 | 20.98 | 18.21 | 17.31 | 17.2 | 19.24",
+   "problems": [],
+   "mean": 19.2429,
+   "printed": 19.24,
+   "closes": true
+  },
+  {
+   "row": 15,
+   "text": "14 | 17.93 | 18.05 | 20.28 | 18.41 | 18.3 | 19.17 | 19.53 | 18.81",
+   "problems": [],
+   "mean": 18.81,
+   "printed": 18.81,
+   "closes": true
+  },
+  {
+   "row": 16,
+   "text": "15 | 17.81 | 17.93 | 17.81 | 17.24 | 18.36 | 17.12 | 17.12 | 17.63",
+   "problems": [],
+   "mean": 17.6271,
+   "printed": 17.63,
+   "closes": true
+  },
+  {
+   "row": 17,
+   "text": "16 | 18.49 | 18.6 | 18.42 | 20.33 | 18.28 | 19.57 | 17.27 | 18.71",
+   "problems": [],
+   "mean": 18.7086,
+   "printed": 18.71,
+   "closes": true
+  },
+  {
+   "row": 18,
+   "text": "17 | 17.68 | 17.24 | 18.8 | 17.86 | 16.92 | 17.75 | 17.76 | 17.71",
+   "problems": [],
+   "mean": 17.7157,
+   "printed": 17.71,
+   "closes": true
+  },
+  {
+   "row": 19,
+   "text": "18 | 17.53 | 18.91 | 19.54 | 17.87 | 18.72 | 17.49 | 18 | 18.29",
+   "problems": [],
+   "mean": 18.2943,
+   "printed": 18.29,
+   "closes": true
+  },
+  {
+   "row": 20,
+   "text": "19 | 18.9 | 18.24 | 18.67 | 18.72 | 17.69 | 22.9 | 18.67 | 19.1",
+   "problems": [],
+   "mean": 19.1129,
+   "printed": 19.1,
+   "closes": false
+  },
+  {
+   "row": 21,
+   "text": "20 | 16.26 | 19.65 | 22.04 | 19.52 | 21.2 | 17.86 | 18 | 19.22",
+   "problems": [],
+   "mean": 19.2186,
+   "printed": 19.22,
+   "closes": true
+  },
+  {
+   "row": 22,
+   "text": "21 | 17.07 | 19.27 | 20.49 | 19.32 | 17.7 | 20.56 | 20.27 | 19.24",
+   "problems": [],
+   "mean": 19.24,
+   "printed": 19.24,
+   "closes": true
+  },
+  {
+   "row": 23,
+   "text": "22 | 20.27 | 19.76 | 20.61 | 18.78 | 18.06 | 12.57 | 18.28 | 19.33",
+   "problems": [],
+   "mean": 18.3329,
+   "printed": 19.33,
+   "closes": false
+  },
+  {
+   "row": 24,
+   "text": "23 | 19.03 | 19.02 | 19.62 | 17.31 | 17.43 | 21.2 | 19.82 | 19.06",
+   "problems": [],
+   "mean": 19.0614,
+   "printed": 19.06,
+   "closes": true
+  },
+  {
+   "row": 25,
+   "text": "24 | 17.98 | 18.79 | 20.21 | 18.05 | 17.42 | 24.47 | 19.82 | 19.53",
+   "problems": [],
+   "mean": 19.5343,
+   "printed": 19.53,
+   "closes": true
+  },
+  {
+   "row": 26,
+   "text": "25 | 18.66 | 19.19 | 19.62 | 18.23 | 18.2 | 17.45 | 18.58 | 18.56",
+   "problems": [],
+   "mean": 18.5614,
+   "printed": 18.56,
+   "closes": true
+  },
+  {
+   "row": 27,
+   "text": "26 | 16.7 | 19.52 | 18.63 | 19.02 | 17.06 | 17.36 | 17.56 | 17.98",
+   "problems": [],
+   "mean": 17.9786,
+   "printed": 17.98,
+   "closes": true
+  },
+  {
+   "row": 28,
+   "text": "27 | 20.54 | 20.56 | 19.89 | 18.85 | 16.21 | 14.17 | 15.07 | 17.9",
+   "problems": [],
+   "mean": 17.8986,
+   "printed": 17.9,
+   "closes": true
+  },
+  {
+   "row": 29,
+   "text": "28 | 15.59 | 15.98 | 15.57 | 14.8 | 12.83 | 13.75 | 15.81 | 14.9",
+   "problems": [],
+   "mean": 14.9043,
+   "printed": 14.9,
+   "closes": true
+  },
+  {
+   "row": 30,
+   "text": "29 | 14.41 | 15.93 | 15.43 | 16.04 | 15.07 | 14.87 | 15.3 | 15.29",
+   "problems": [],
+   "mean": 15.2929,
+   "printed": 15.29,
+   "closes": true
+  },
+  {
+   "row": 31,
+   "text": "1 | 30 | 15.22 | 15.22 | 16.16 | 15.8 | 15.67 | 15.61 | 15.86 | 15.65",
+   "problems": [
+    "10 cells, expected 9"
+   ],
+   "mean": 17.6686,
+   "printed": 15.86,
+   "closes": false
+  },
+  {
+   "row": 32,
+   "text": "20 | 31 | 15.42 | 15.93 | 16.53 | 16.14 | 17.76 | 16.16 | 15.47 | 16.2",
+   "problems": [
+    "10 cells, expected 9"
+   ],
+   "mean": 18.42,
+   "printed": 15.47,
+   "closes": false
+  }
+ ]
+}
