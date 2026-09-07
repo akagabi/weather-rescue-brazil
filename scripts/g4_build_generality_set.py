@@ -28,6 +28,12 @@ ROOT = Path(__file__).resolve().parents[1]
 G4 = ROOT / "data" / "g4"
 OUT = G4 / "generality_manifest.json"
 PER_SIDE = 200
+# Balance DISTINCT examples, not just row counts. gen2 balanced rows (200 vs
+# 40x5) and still learned the elided-barometer convention, because it saw 200
+# distinct elided rows against 40 distinct full-barometer ones. Every
+# non-barometer cell was perfect in both gen1 and gen2; the whole error was
+# this one convention. See docs/g4-print-fidelity.md.
+BALANCE_DISTINCT = True
 
 
 def main() -> None:
@@ -39,7 +45,10 @@ def main() -> None:
     tm = load_manifest(G4 / "train_manifest.json")
     pool = [e for e in tm["examples"] if e["doc"] != "14"]
     rng.shuffle(pool)
-    for e in pool[:PER_SIDE]:
+    cor_n = len([e for e in load_manifest(G4 / "workbench_manifest.json")["examples"]
+                 if e["profile"] == "corumba-1889"]) or PER_SIDE
+    n_sc = min(cor_n, PER_SIDE) if BALANCE_DISTINCT else PER_SIDE
+    for e in pool[:n_sc]:
         cells = dict(e["cells"])
         # the single Santa-Cruz evaporation column: the API put it in either
         # slot depending on the page (docs/g4-scale-demo.md section 3)
@@ -68,8 +77,11 @@ def main() -> None:
     reps = max(1, round(PER_SIDE / len(cor_rows)))
     for _ in range(reps):
         examples.extend(dict(e) for e in cor_rows)
-    print(f"Santa-Cruz {PER_SIDE} rows (15 cells) | Corumba {len(cor_rows)} rows x{reps} "
-          f"= {len(cor_rows) * reps} (16 cells)")
+    sc_rows = [e for e in examples if e["profile"] == sc.id]
+    for _ in range(reps - 1):
+        examples.extend(dict(e) for e in sc_rows)
+    print(f"Santa-Cruz {len(sc_rows)} DISTINCT rows x{reps} (15 cells, barometer elided) | "
+          f"Corumba {len(cor_rows)} DISTINCT rows x{reps} (16 cells, barometer in full)")
 
     rng.shuffle(examples)
     doc = {"meta": {"experiment": "generality: train on 15- and 16-cell layouts, balanced; hold out Rio",
