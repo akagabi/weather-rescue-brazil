@@ -1,0 +1,185 @@
+{
+ "id": "rio-1883-thermo",
+ "name": "Observations météorologiques de Rio de Janeiro (1883) — thermomètres, pluie, évaporation, ozone",
+ "columns": [
+  {
+   "key": "dates",
+   "label": "Dates",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "abrite_max",
+   "label": "Thermomètres abrités — Max.",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    60.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "abrite_min",
+   "label": "Thermomètres abrités — Min.",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    60.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "abrite_oscil",
+   "label": "Thermomètres abrités — Oscil.",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "sansabri_max",
+   "label": "Thermomètres sans abri — Max.",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    60.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "sansabri_min",
+   "label": "Thermomètres sans abri — Min.",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    60.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "sansabri_oscil",
+   "label": "Thermomètres sans abri — Oscil.",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "pluie_terrasse",
+   "label": "Pluie — Terrasse",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "pluie_cour",
+   "label": "Pluie — Cour",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "evap_sansabri",
+   "label": "Évaporomètres — Sans abri",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    50.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "evap_abrite",
+   "label": "Évaporomètres — Abrité",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    50.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "ozone_jour",
+   "label": "Ozone — De jour",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    21.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "ozone_nuit",
+   "label": "Ozone — De nuit",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    21.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "source": "DocVirt obnacional/8 (1883), uma página por mês",
+ "rows_per_page": "days_in_month",
+ "adapter": "",
+ "checks": [
+  {
+   "kind": "diff",
+   "result": "abrite_oscil",
+   "a": "abrite_max",
+   "b": "abrite_min"
+  },
+  {
+   "kind": "diff",
+   "result": "sansabri_oscil",
+   "a": "sansabri_max",
+   "b": "sansabri_min"
+  }
+ ],
+ "notes": "Sexto layout. 13 colunas com cabeçalhos ANINHADOS (Thermomètres > Abrités/Sans abri > Max/Min/Oscil). As colunas de chuva trazem texto ('Inap.' = inapreciável) misturado a números. Dois checksums por linha: Oscil = Max - Min.",
+ "extra": {}
+}

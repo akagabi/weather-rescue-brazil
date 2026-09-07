@@ -75,6 +75,7 @@ class Profile:
     source: str = ""
     rows_per_page: str = "days_in_month"   # days_in_month | days_in_month_x2 | fixed:<n>
     adapter: str = ""
+    checks: list[dict] = field(default_factory=list)   # arithmetic the page itself asserts
     notes: str = ""
     extra: dict = field(default_factory=dict)
 
@@ -180,6 +181,30 @@ class Profile:
                     out[col.key] = restore_thousands(float(v), band)
                 except ValueError:
                     pass
+        return out
+
+    def verify(self, values: dict, tol: float = 0.051) -> list[str]:
+        """Check the arithmetic the PAGE asserts about its own numbers - a row's
+        oscillation equalling max minus min, a mean equalling the mean of its
+        readings. Free ground truth: it needs no human and it localises the
+        suspect cell. Declared per publication in `checks`:
+
+            {"kind": "diff", "result": k, "a": k, "b": k}
+            {"kind": "mean", "result": k, "of": [k, ...]}
+        """
+        out: list[str] = []
+        for c in self.checks:
+            keys = [c.get("result")] + ([c["a"], c["b"]] if c["kind"] == "diff" else list(c.get("of", [])))
+            vals = [values.get(k) for k in keys]
+            if any(not isinstance(v, (int, float)) for v in vals):
+                continue                      # a blank row is not a failure
+            got = float(vals[0])
+            if c["kind"] == "diff":
+                want = float(vals[1]) - float(vals[2])
+            else:
+                want = sum(float(v) for v in vals[1:]) / (len(vals) - 1)
+            if abs(got - want) > tol:
+                out.append(f"{c['result']}={got} but {c['kind']} gives {want:.4f}")
         return out
 
     def resolve_dittos(self, rows: list[dict]) -> list[dict]:
