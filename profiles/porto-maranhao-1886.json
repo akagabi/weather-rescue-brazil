@@ -1,0 +1,149 @@
+{
+ "id": "porto-maranhao-1886",
+ "name": "Commissão Hydraulica do Maranhão — Porto do Maranhão",
+ "columns": [
+  {
+   "key": "datas",
+   "label": "Datas",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "baro_media",
+   "label": "Barometro a 0° — média diurna",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    650.0,
+    800.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "baro_maximo",
+   "label": "Barometro — máximo",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    650.0,
+    800.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "baro_minimo",
+   "label": "Barometro — mínimo",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    650.0,
+    800.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "t_media",
+   "label": "Thermom. centigr. — média diurna",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "t_maximo",
+   "label": "Thermom. — máximo",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "t_minimo",
+   "label": "Thermom. — mínimo",
+   "kind": "number",
+   "unit": "°C",
+   "range": [
+    -10.0,
+    50.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "vapor",
+   "label": "Tensão do vapor",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    40.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "humidade",
+   "label": "Humidade relativa",
+   "kind": "number",
+   "unit": "%",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "chuva",
+   "label": "Chuva",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    400.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "nebulosidade",
+   "label": "Nebulosidade media",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "note": ""
+  },
+  {
+   "key": "observacoes",
+   "label": "Observações",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "note": ""
+  }
+ ],
+ "source": "DocVirt obnacional/14 p.159 (Fevereiro de 1886)",
+ "rows_per_page": "fixed:24",
+ "adapter": "",
+ "notes": "Quarto layout, usado como TESTE CEGO (docs/g4-generality-result.md). 12 colunas impressas — o treino só viu 15 e 16. Dias 7, 14, 21 e 28 não aparecem (domingos). A coluna Observações traz uma legenda nas 3 primeiras linhas, não dado por linha.",
+ "extra": {}
+}
