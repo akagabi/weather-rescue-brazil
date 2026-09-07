@@ -37,6 +37,12 @@ BALANCE_DISTINCT = True
 
 
 def main() -> None:
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--per-layout", type=int, default=0,
+                    help="distinct rows per layout (the learning-curve variable); 0 = all available")
+    ap.add_argument("--out", default="")
+    args = ap.parse_args()
     rng = random.Random(0)
     sc = prof.load("revista-santacruz-1889")
     examples = []
@@ -45,9 +51,10 @@ def main() -> None:
     tm = load_manifest(G4 / "train_manifest.json")
     pool = [e for e in tm["examples"] if e["doc"] != "14"]
     rng.shuffle(pool)
-    cor_n = len([e for e in load_manifest(G4 / "workbench_manifest.json")["examples"]
-                 if e["profile"] == "corumba-1889"]) or PER_SIDE
-    n_sc = min(cor_n, PER_SIDE) if BALANCE_DISTINCT else PER_SIDE
+    cor_all = [e for e in load_manifest(G4 / "workbench_manifest.json")["examples"]
+               if e["profile"] == "corumba-1889"]
+    per = args.per_layout or len(cor_all)
+    n_sc = min(len(cor_all), per) if BALANCE_DISTINCT else PER_SIDE
     for e in pool[:n_sc]:
         cells = dict(e["cells"])
         # the single Santa-Cruz evaporation column: the API put it in either
@@ -72,6 +79,8 @@ def main() -> None:
     cor = prof.load("corumba-1889")
     wb = load_manifest(G4 / "workbench_manifest.json")
     cor_rows = [e for e in wb["examples"] if e["profile"] == cor.id]
+    rng.shuffle(cor_rows)
+    cor_rows = cor_rows[:per]
     if not cor_rows:
         raise SystemExit("no Corumba labels; label them in the workbench first")
     reps = max(1, round(PER_SIDE / len(cor_rows)))
@@ -86,15 +95,16 @@ def main() -> None:
     rng.shuffle(examples)
     doc = {"meta": {"experiment": "generality: train on 15- and 16-cell layouts, balanced; hold out Rio",
                     "held_out": "revista-rio-1886 (doc 14) entirely",
-                    "per_side": PER_SIDE, "corumba_reps": reps},
+                    "per_side": PER_SIDE, "corumba_reps": reps, "distinct_per_layout": per},
            "n_examples": len(examples), "examples": examples}
-    OUT.write_text(json.dumps(doc, ensure_ascii=False, indent=1))
+    out_path = Path(args.out) if args.out else OUT
+    out_path.write_text(json.dumps(doc, ensure_ascii=False, indent=1))
     counts: dict[str, int] = {}
     for e in examples:
         n = len(e["target"].split("|"))
         counts[f"{n} cells"] = counts.get(f"{n} cells", 0) + 1
     assert not any(e["doc"] == "14" for e in examples), "Rio leaked into the training set"
-    print(f"wrote {OUT.relative_to(ROOT)}: {len(examples)} rows, {counts}")
+    print(f"wrote {out_path}: {len(examples)} rows, {counts}")
 
 
 if __name__ == "__main__":
