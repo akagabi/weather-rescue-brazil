@@ -49,3 +49,39 @@ regra do corpus em vez de aprender a ler.
 **Lição para o método (vale para o paper):** qualquer transformação específica do domínio aplicada
 aos rótulos vira comportamento aprendido e viaja com o modelo. Alvo de treino = o que está
 impresso. Convenções = código, depois.
+
+## Resolução: diversidade de convenção, não só equilíbrio de linhas (gen3)
+
+Corrigir os alvos (gen2) consertou o teste de 1883 **e quebrou o do Maranhão**: o modelo trocou um
+viés pelo oposto. gen1 sempre **acrescentava** um 7 que não existe; gen2 sempre **removia** um 7
+que existe.
+
+Causa: eu equilibrei **contagem de linhas**, não **exemplos distintos**. gen2 viu 200 linhas
+distintas de Santa-Cruz (barômetro sempre elidido) contra 40 distintas de Corumbá (barômetro
+sempre por extenso), repetidas ×5. Repetição não acrescenta diversidade.
+
+gen3: 40 distintas de cada convenção, ×5 cada.
+
+| modelo | Maranhão barômetro | Maranhão não-barômetro | Maranhão numérico | 1883 francês |
+|---|---|---|---|---|
+| gen1 (alvos contaminados) | 72/72 | 192/192 | **100%** | 67% |
+| gen2 (fiel ao impresso) | 30/72 | 192/192 | 84,1% | **100%** |
+| **gen3 (diversidade equilibrada)** | **69/72** | 184/192 | **95,8%** | **98,4%** (época 2: 99,2%) |
+
+**Em gen1 e gen2 as células NÃO-barômetro são 192/192 = 100%.** O erro inteiro, nos dois casos,
+estava numa única convenção tipográfica. Os erros que restam em gen3 são falhas isoladas de linha,
+não uma regra sistemática.
+
+### A lição, e é a contribuição metodológica do trabalho
+
+Um modelo pequeno **aprende as convenções de impressão da distribuição de treino** e as aplica onde
+não valem. Duas consequências práticas:
+
+1. **Alvo de treino = o que está impresso.** Convenções (dígitos elididos, arredondamentos,
+   normalizações) vão em código, depois da leitura.
+2. **Equilibre exemplos DISTINTOS de cada convenção**, não linhas. Repetir 40 linhas ×5 não ensina
+   variedade.
+
+E o ponto de método que só um corpus múltiplo revela: **no gold da própria Revista, gen1 e gen2
+marcam ~99% igualmente.** A contaminação era invisível dentro do corpus de origem. Só duas
+publicações diferentes, puxando em direções opostas, tornaram o viés mensurável.
