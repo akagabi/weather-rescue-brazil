@@ -47,10 +47,34 @@ Consequência prática para o arquivo brasileiro: **cada publicação nova entra
 rotuladas à mão** (uma hora de trabalho no workbench) e o modelo compartilhado melhora para a
 próxima. Não é um modelo por publicação; é um leitor de tabelas.
 
+## 4b. TESTE CEGO num quarto layout (2026-09-07)
+
+Achado varrendo o volume 14 por tabelas não mapeadas: a página 159 é do **Porto do Maranhão**,
+commissão hydraulica, Fevereiro de 1886. **Estação diferente, 12 colunas impressas** — o treino só
+viu 15 e 16 —, uma coluna de texto livre (`Observações`) e os dias 7, 14, 21 e 28 ausentes
+(domingos). Seis linhas lidas à mão e **commitadas antes** de qualquer modelo ser consultado
+(`bench/g4/maranhao-blind.json`, commit d9d0c23).
+
+| | |
+|---|---|
+| Células numéricas + dia | **66/66 = 100%** |
+| Células de texto livre | 4/6 |
+| **Total** | **70/72 = 97,2%** |
+| Contagem emitida | 12 células em 3 linhas; 11 nas outras 3 — porque nessas a última coluna está VAZIA e o modelo simplesmente parou em vez de emitir um `null` final |
+
+As duas falhas são as duas únicas células de texto com conteúdo, e ambas são cosméticas:
+`Encoberto = 1` (comeu o `.0.` final) e `Limpo = o. o.` — esta última, aliás, é possivelmente
+**mais fiel ao impresso do que a minha transcrição**: a tipografia da época usa um `o` minúsculo
+para o zero, e foi isso que o modelo leu.
+
+**Todos os 66 números saíram certos, num layout inédito, de outra estação, com um número de
+colunas que o modelo nunca tinha visto.** É o resultado mais forte do projeto para a tese de
+generalidade.
+
 ## 5. Ressalvas
 
-- **N pequeno**: 30 linhas de teste, 2 épocas, um único layout inédito. É sinal forte, não prova.
-  O próximo passo é um quarto layout, de outra publicação, como teste realmente cego.
+- **N pequeno**: 30 linhas no teste do Rio, 6 no teste cego do Maranhão, 2 épocas. É sinal forte,
+  não prova. O próximo passo é rotular o Maranhão inteiro e medir sobre as 24 linhas.
 - As 3 linhas com 15 células mostram que a contagem ainda falha às vezes; o QC do perfil pega isso
   (`N células, esperava 16`) e manda para revisão em vez de gravar errado.
 - Os rótulos de Corumbá são meus, lidos à mão de recortes 3×, não triplamente verificados como o
