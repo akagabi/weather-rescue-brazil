@@ -55,26 +55,32 @@ viu 15 e 16 —, uma coluna de texto livre (`Observações`) e os dias 7, 14, 21
 (domingos). Seis linhas lidas à mão e **commitadas antes** de qualquer modelo ser consultado
 (`bench/g4/maranhao-blind.json`, commit d9d0c23).
 
-| | |
-|---|---|
-| Células numéricas + dia | **66/66 = 100%** |
-| Células de texto livre | 4/6 |
-| **Total** | **70/72 = 97,2%** |
-| Contagem emitida | 12 células em 3 linhas; 11 nas outras 3 — porque nessas a última coluna está VAZIA e o modelo simplesmente parou em vez de emitir um `null` final |
+| | 6 linhas (primeiro teste) | **24 linhas (página inteira)** |
+|---|---|---|
+| Células numéricas + dia | 66/66 = 100% | **264/264 = 100%** |
+| Células de texto livre | 4/6 | 22/24 |
+| **Total** | 70/72 = 97,2% | **286/288 = 99,31%** |
+| Contagem emitida | 12 em 3 linhas, 11 nas outras | 12 em 3, 11 em 21 — as 11 são as linhas cuja última coluna está VAZIA: o modelo para em vez de emitir um `null` final |
 
-As duas falhas são as duas únicas células de texto com conteúdo, e ambas são cosméticas:
-`Encoberto = 1` (comeu o `.0.` final) e `Limpo = o. o.` — esta última, aliás, é possivelmente
-**mais fiel ao impresso do que a minha transcrição**: a tipografia da época usa um `o` minúsculo
-para o zero, e foi isso que o modelo leu.
+**Verificação independente pelo próprio documento.** A página imprime o total mensal de chuva:
+**150,90 mm**. A coluna de chuva lida **pelo modelo** soma **exatamente 150,90** — e o modelo
+nunca viu esse total. (A minha transcrição à mão também fecha em 150,90; foi assim que validei o
+gabarito antes de perguntar.)
 
-**Todos os 66 números saíram certos, num layout inédito, de outra estação, com um número de
+As duas únicas falhas são as duas células de texto com conteúdo, ambas cosméticas:
+`Encoberto = 1` (comeu o `.0.` final) e `Limpo = o. o.` — esta possivelmente **mais fiel ao
+impresso do que a minha transcrição**, já que a tipografia da época compõe o zero como um `o`
+minúsculo.
+
+**Todos os 264 números saíram certos, num layout inédito, de outra estação, com um número de
 colunas que o modelo nunca tinha visto.** É o resultado mais forte do projeto para a tese de
 generalidade.
 
 ## 5. Ressalvas
 
-- **N pequeno**: 30 linhas no teste do Rio, 6 no teste cego do Maranhão, 2 épocas. É sinal forte,
-  não prova. O próximo passo é rotular o Maranhão inteiro e medir sobre as 24 linhas.
+- **N**: 30 linhas no teste do Rio, **24 (a página inteira) no teste cego do Maranhão**, 2 épocas.
+  O próximo passo é um layout de outra PUBLICAÇÃO (não só outra estação da mesma revista); a
+  varredura do volume 14 achou ~44 páginas de tabela ainda não mapeadas.
 - As 3 linhas com 15 células mostram que a contagem ainda falha às vezes; o QC do perfil pega isso
   (`N células, esperava 16`) e manda para revisão em vez de gravar errado.
 - Os rótulos de Corumbá são meus, lidos à mão de recortes 3×, não triplamente verificados como o
