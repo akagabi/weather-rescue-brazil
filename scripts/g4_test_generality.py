@@ -73,6 +73,9 @@ def main() -> None:
         if dev == "mps":
             torch.mps.empty_cache()
         values, problems = p.parse(text)
+        # the model reads what is PRINTED; elided digits go back in code, which
+        # is the production path (docs/g4-print-fidelity.md)
+        values = p.from_printed(values)
         n_cells = len([c for c in text.split("<|im_end|>")[0].split("|")])
         counts[n_cells] += 1
         # score the numeric columns against the frozen gold
