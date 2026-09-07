@@ -49,6 +49,11 @@ def main() -> None:
         values["day"] = e["day"]
         values["evap_sombra"] = evap
         values["wind_dir"] = (e.get("flags") or {}).get("wind_dir")
+        # TARGETS MUST BE FAITHFUL TO PRINT. The API labels already carry the
+        # barometer thousands restored (754.44 where the page prints 54.44);
+        # teaching that taught the model to invent a leading 7, which it then
+        # applied to an unrelated 1883 vapour table. See docs/g4-print-fidelity.md.
+        values = sc.to_printed(values)
         examples.append({"profile": sc.id, "doc": e["doc"], "page": e["page"], "row": e["day"],
                          "image": e["image"], "sha256": e["sha256"],
                          "target": sc.target(values), "cells": cells, "day": e["day"],

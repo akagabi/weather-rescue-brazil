@@ -55,6 +55,7 @@ class Column:
     unit: str | None = None
     range: tuple[float, float] | None = None
     elided: bool = False           # printed without its leading digit(s), e.g. 54.44 for 754.44
+    elided_range: tuple[float, float] | None = None  # the narrow band the true value sits in, for reconstruction
     note: str = ""
 
     def __post_init__(self) -> None:
@@ -62,6 +63,8 @@ class Column:
             raise ValueError(f"{self.key}: unknown kind {self.kind!r}")
         if self.range is not None:
             self.range = (float(self.range[0]), float(self.range[1]))
+        if self.elided_range is not None:
+            self.elided_range = (float(self.elided_range[0]), float(self.elided_range[1]))
 
 
 @dataclass
@@ -149,6 +152,36 @@ class Profile:
                 problems.append(f"{col.key}: unparsable {tok!r}")
         return values, problems
 
+    def to_printed(self, values: dict, threshold: float = 100.0) -> dict:
+        """Undo a domain convention before writing a TRAINING TARGET: columns
+        flagged `elided` are printed without their leading digits, so the page
+        shows 58.36 where the value is 758.36. Teaching the reconstructed form
+        taught the model to invent a leading 7 and it then applied that to an
+        unrelated 1883 vapour table (docs/g4-print-fidelity.md). Targets must
+        be faithful to print; `restore_thousands` puts the digits back
+        downstream, where it belongs."""
+        out = dict(values)
+        for col in self.columns:
+            v = out.get(col.key)
+            if col.elided and isinstance(v, (int, float)) and v >= threshold:
+                out[col.key] = round(float(v) % threshold, 4)
+        return out
+
+    def from_printed(self, values: dict, threshold: float = 100.0) -> dict:
+        """Inverse of `to_printed`: put the elided digits back, using the
+        column's physical range to choose them."""
+        from wrb.reconstruct import restore_thousands
+        out = dict(values)
+        for col in self.columns:
+            v = out.get(col.key)
+            band = col.elided_range or (700.0, 800.0)
+            if col.elided and isinstance(v, (int, float)) and v < threshold:
+                try:
+                    out[col.key] = restore_thousands(float(v), band)
+                except ValueError:
+                    pass
+        return out
+
     def resolve_dittos(self, rows: list[dict]) -> list[dict]:
         """Replace ditto marks with the value they repeat from the row above.
         A ditto in the first row has nothing to repeat and becomes None."""
@@ -179,8 +212,9 @@ class Profile:
     def to_dict(self) -> dict:
         d = asdict(self)
         for c in d["columns"]:
-            if c["range"] is not None:
-                c["range"] = list(c["range"])
+            for k in ("range", "elided_range"):
+                if c.get(k) is not None:
+                    c[k] = list(c[k])
         return d
 
     def save(self, path: Path | None = None) -> Path:

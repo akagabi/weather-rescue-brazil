@@ -18,8 +18,12 @@ from wrb.dataset import boxes_for_centres, crop_boxes  # noqa: E402
 from wrb.rows import locate_day_rows  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
-SPEC = ROOT / "bench" / "g4" / "maranhao-blind.json"
-PAGE = ROOT / "data" / "raw" / "docvirt" / "14" / "000159.webp"
+SPECS = {
+    "maranhao": (ROOT / "bench" / "g4" / "maranhao-blind.json",
+                 ROOT / "data" / "raw" / "docvirt" / "14" / "000159.webp", "1886-02"),
+    "rio1883": (ROOT / "bench" / "g4" / "rio1883-blind.json",
+                ROOT / "data" / "raw" / "docvirt" / "8" / "000095.webp", "1883-11"),
+}
 
 
 def norm(t):
@@ -44,7 +48,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--adapter", required=True)
     ap.add_argument("--base", default="Qwen/Qwen3.5-2B")
+    ap.add_argument("--set", default="maranhao", choices=sorted(SPECS))
     args = ap.parse_args()
+    SPEC, PAGE, PERIOD = SPECS[args.set]
     spec = json.loads(SPEC.read_text())
     p = prof.load(spec["profile"])
     from PIL import Image
@@ -52,8 +58,8 @@ def main():
     from peft import PeftModel
     from transformers import AutoModelForImageTextToText, AutoProcessor
     image = Image.open(PAGE).convert("RGB")
-    loc = locate_day_rows(image, p.expected_rows("1886-02"))
-    print(f"localiser: {len(loc.chain)} rows found (expected {p.expected_rows('1886-02')}), "
+    loc = locate_day_rows(image, p.expected_rows(PERIOD))
+    print(f"localiser: {len(loc.chain)} rows found (expected {p.expected_rows(PERIOD)}), "
           f"pitch {loc.pitch}, skew {loc.skew_deg}, ok={loc.ok}")
     dev = "mps" if torch.backends.mps.is_available() else "cpu"
     procr = AutoProcessor.from_pretrained(args.base)
@@ -90,7 +96,7 @@ def main():
         print(f"   want: {' | '.join('null' if c is None else c for c in r['cells'])}"[:200])
     print(f"\nprofile expects {p.n_cells} cells | EMITTED: {dict(sorted(counts.items()))}")
     print(f"BLIND CELL ACCURACY: {hit}/{tot} = {hit / tot:.3f}")
-    out = ROOT / "bench" / "g4" / f"blind-{Path(args.adapter).parent.name}.json"
+    out = ROOT / "bench" / "g4" / f"blind-{args.set}-{Path(args.adapter).parent.name}.json"
     out.write_text(json.dumps({"adapter": args.adapter, "profile": p.id, "expected_cells": p.n_cells,
                                "cell_counts": dict(counts), "matched": hit, "total": tot,
                                "accuracy": hit / tot, "rows": out_rows}, indent=1, ensure_ascii=False))
