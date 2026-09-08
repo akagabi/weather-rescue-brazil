@@ -180,6 +180,11 @@
    "b": "sansabri_min"
   }
  ],
+ "markers": [
+  "Inap."
+ ],
+ "probe_x_frac": null,
+ "table_x_frac": null,
  "notes": "Sexto layout. 13 colunas com cabeçalhos ANINHADOS (Thermomètres > Abrités/Sans abri > Max/Min/Oscil). As colunas de chuva trazem texto ('Inap.' = inapreciável) misturado a números. Dois checksums por linha: Oscil = Max - Min.",
  "extra": {}
 }

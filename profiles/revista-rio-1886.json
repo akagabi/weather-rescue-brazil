@@ -217,6 +217,15 @@
  "source": "DocVirt obnacional/14 (1886)",
  "rows_per_page": "days_in_month",
  "adapter": "models/g4/qwen35-lora-smoke4-epoch2",
+ "checks": [],
+ "markers": [
+  "Gottas",
+  "Gott.",
+  "Inap.",
+  "Traços"
+ ],
+ "probe_x_frac": null,
+ "table_x_frac": null,
  "notes": "Layout A. Evaporação em duas colunas (Sol, Sombra). Barômetro impresso sem o dígito dos milhares.",
  "extra": {}
 }

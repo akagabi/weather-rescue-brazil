@@ -204,6 +204,15 @@
  "source": "DocVirt obnacional/15 e 16 (1889-1890)",
  "rows_per_page": "days_in_month",
  "adapter": "models/g4/qwen35-lora-smoke4-epoch2",
+ "checks": [],
+ "markers": [
+  "Gottas",
+  "Gott.",
+  "Inap.",
+  "Traços"
+ ],
+ "probe_x_frac": null,
+ "table_x_frac": null,
  "notes": "Layout B. UMA coluna de evaporação (à sombra). Os rótulos da API misturaram evap_sol/evap_sombra nestas páginas — ver docs/g4-scale-demo.md §3.",
  "extra": {}
 }

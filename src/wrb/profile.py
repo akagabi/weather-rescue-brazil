@@ -79,6 +79,9 @@ class Profile:
     # page geometry, per publication: where the row-index column sits and how
     # wide the table runs, as fractions of page width. Defaults suit the
     # Brazilian layouts; Oxford's year column sits elsewhere (docs/g4-blind-summary.md).
+    # words historical tables print instead of a number: trace rain, no reading.
+    # They are data, not parse failures - recorded as a marker with a null value.
+    markers: list[str] = field(default_factory=list)
     probe_x_frac: tuple[float, float] | None = None
     table_x_frac: tuple[float, float] | None = None
     notes: str = ""
@@ -136,6 +139,8 @@ class Profile:
             text = text.split(stop)[0]
         toks = [t.strip() for t in text.strip().strip("`").split("|")]
         problems: list[str] = []
+        markers: dict[str, str] = {}
+        self.last_markers = markers
         if len(toks) != self.n_cells:
             problems.append(f"{len(toks)} cells, expected {self.n_cells}")
         values: dict = {}
@@ -155,7 +160,11 @@ class Profile:
                 values[col.key] = int(float(tok)) if col.kind == "day" else float(tok.replace(",", "."))
             except ValueError:
                 values[col.key] = None
-                problems.append(f"{col.key}: unparsable {tok!r}")
+                low = tok.lower().rstrip(".").strip()
+                if any(low.startswith(m.lower().rstrip(".")[:4]) for m in self.markers if m):
+                    markers[col.key] = tok          # a printed word, kept verbatim
+                else:
+                    problems.append(f"{col.key}: unparsable {tok!r}")
         return values, problems
 
     def to_printed(self, values: dict, threshold: float = 100.0) -> dict:
