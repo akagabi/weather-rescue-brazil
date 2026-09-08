@@ -1,0 +1,218 @@
+{
+ "id": "cuyaba-1889",
+ "name": "Cuyabá, Mato Grosso — observações do major Américo Rodrigues de Vasconcellos",
+ "columns": [
+  {
+   "key": "datas",
+   "label": "Datas",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_media",
+   "label": "Baro media das observações",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    730.0,
+    760.0
+   ],
+   "elided": true,
+   "elided_range": [
+    730.0,
+    760.0
+   ],
+   "note": ""
+  },
+  {
+   "key": "baro_maxima",
+   "label": "Baro maxima",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    730.0,
+    760.0
+   ],
+   "elided": true,
+   "elided_range": [
+    730.0,
+    760.0
+   ],
+   "note": ""
+  },
+  {
+   "key": "baro_minima",
+   "label": "Baro minima",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    730.0,
+    760.0
+   ],
+   "elided": true,
+   "elided_range": [
+    730.0,
+    760.0
+   ],
+   "note": ""
+  },
+  {
+   "key": "t_media",
+   "label": "Therm media das observações",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    10.0,
+    45.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_maxima_dia",
+   "label": "Therm maxima do dia",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    15.0,
+    48.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_minima_noite",
+   "label": "Therm minima da noite",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    5.0,
+    35.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vapor",
+   "label": "Tensão do vapor",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    5.0,
+    35.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "humidade",
+   "label": "Humidade relativa",
+   "kind": "number",
+   "unit": "%",
+   "range": [
+    20.0,
+    100.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_direccao",
+   "label": "Vento direcção",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_forca",
+   "label": "Vento força",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    30.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "chuva",
+   "label": "Chuva em millim. em 24 horas",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    300.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "rio_altura",
+   "label": "Altura das aguas do Rio Cuyabá",
+   "kind": "number",
+   "unit": "m",
+   "range": [
+    0.0,
+    15.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "estado_ceo",
+   "label": "Estado do céo",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "source": "Revista do Observatório, DocVirt obnacional doc 15 (Cuyabá, 1888-1889)",
+ "rows_per_page": "days_in_month",
+ "adapter": "",
+ "checks": [
+  {
+   "kind": "order",
+   "result": "baro_media",
+   "of": [
+    "baro_minima",
+    "baro_maxima"
+   ]
+  },
+  {
+   "kind": "order",
+   "result": "t_media",
+   "of": [
+    "t_minima_noite",
+    "t_maxima_dia"
+   ]
+  }
+ ],
+ "markers": [
+  "Inap.",
+  "Gott.",
+  "Gottas"
+ ],
+ "probe_x_frac": null,
+ "table_x_frac": null,
+ "notes": "Estacao NOVA, nunca transcrita. Mesma convencao de milhar elidido da Revista (742.87 depois 43 12). Traz uma coluna que nenhuma outra publicacao do corpus tem: ALTURA DAS AGUAS DO RIO CUYABA - serie hidrologica diaria. A pagina traz linhas de resumo por decada e uma linha 'Mez', logo valida-se sozinha ao nivel da pagina.",
+ "extra": {}
+}

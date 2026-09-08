@@ -1,0 +1,10 @@
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights:  49%|████▉     | 305/617 [00:00<00:00, 3020.88it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 5229.25it/s]
+  0/39  0.2min  14/22: revista-rio-1886 1885-12 | RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO IMPERIAL OBSERVAT
+  10/39  2.9min  14/195: revista-rio-1886 1886-10 | RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO IMPERIAL OBSERVAT
+  20/39  4.1min  15/139: revista-rio-1886 1889-07 | RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO IMPERIAL OBSERVAT
+  30/39  5.3min  16/55: revista-rio-1886 1890-01 | RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO DO R
+
+39/39 pages read as a weather table
+identified 35/39 pages with a profile AND a period
+Counter({'revista-rio-1886': 24, 'revista-santacruz-1889': 8, None: 4, 'corumba-1889': 2, 'porto-maranhao-1886': 1})
+wrote /Users/bueno/detail/weather-rescue-brazil/data/g4/worklist_identified.json

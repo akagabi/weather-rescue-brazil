@@ -1,6 +1,6 @@
 {
  "id": "revista-santacruz-1889",
- "name": "Revista do Observatório — Observatório de Santa-Cruz",
+ "name": "Revista do Observatório — forma de 15 colunas (usada por Santa-Cruz e, a partir de 1888, pelo Imperial Observatório)",
  "columns": [
   {
    "key": "day",
@@ -230,6 +230,6 @@
  ],
  "probe_x_frac": null,
  "table_x_frac": null,
- "notes": "Layout B. UMA coluna de evaporação (à sombra). Os rótulos da API misturaram evap_sol/evap_sombra nestas páginas — ver docs/g4-scale-demo.md §3.",
+ "notes": "Layout B. UMA coluna de evaporação (à sombra). Os rótulos da API misturaram evap_sol/evap_sombra nestas páginas — ver docs/g4-scale-demo.md §3. ATENCAO: o id nomeia um LAYOUT, nao uma estacao. A mesma forma impressa de 15 colunas serve Santa-Cruz e o Imperial Observatorio a partir de 1888; a estacao vem da legenda da pagina, no campo 'station' de cada linha, nunca do id do perfil. Confundir os dois atribuiu 37% do dataset v0.1 a estacao errada (docs/g4-qc-audit.md).",
  "extra": {}
 }

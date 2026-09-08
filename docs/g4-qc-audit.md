@@ -87,3 +87,73 @@ A verificação mais forte disponível para a Revista continua por fazer: cada m
 traz uma tabela-resumo impressa ("Revista climatologica do mez"), e a média das
 nossas linhas devia bater com ela. É um check ao nível da PÁGINA, não da linha,
 e não precisa de modelo nenhum — só de ler as tabelas-resumo.
+
+## Segundo achado: 37% das linhas atribuídas à estação errada
+
+Data: 2026-09-08, mesma sessão. A verificação ao nível da página (abaixo) falhou
+de forma estranha — a pressão saía com um desvio **constante** de −3,3 mmHg — o
+que não parece erro de leitura, e não era.
+
+A página 15/22, rotulada `revista-santacruz-1889` no worklist, está encimada por
+**"Resumo das observações meteorologicas feitas no Imperial Observatorio no mez
+de Dezembro de 1888"**. É o Rio, não Santa-Cruz. O desvio constante era a
+diferença de altitude entre as duas estações.
+
+Verificadas as 39 páginas do dataset contra a legenda impressa: **15 páginas,
+445 linhas (37,3%)**, atribuídas à estação errada.
+
+| | |
+|---|---|
+| 415 linhas | rotuladas Santa-Cruz, na verdade Imperial Observatório |
+| 30 linhas | rotuladas Santa-Cruz, na verdade Corumbá |
+
+### A causa é de desenho, não de digitação
+
+O perfil confundia **layout** com **estação**. `revista-santacruz-1889` nunca foi
+"Santa-Cruz": é a **forma impressa de 15 colunas** da Revista, que Santa-Cruz usa
+e que o Imperial Observatório passou a usar em 1888 (em 1886 usava a de 16
+colunas, com duas colunas de evaporação). Como a forma é a mesma, a transcrição
+saiu perfeita — só o nome estava errado.
+
+**É por isso que os valores estão certos e a proveniência estava errada.** Para
+dados climáticos a estação não é um detalhe: define altitude, latitude e a
+comparabilidade da série.
+
+### Correcção
+
+- cada linha do dataset passa a ter `station` e `station_source`, lidos da
+  **legenda impressa da página**, não do id do perfil;
+- 1.130 linhas têm a estação confirmada pela legenda; 64 continuam assumidas do
+  worklist porque a legenda não foi legível, e dizem isso;
+- os perfis passaram a chamar-se pelo layout que descrevem.
+
+| estação (corrigido) | linhas |
+|---|---|
+| Imperial Observatório, Rio de Janeiro | 842 |
+| Observatório de Santa-Cruz, Rio de Janeiro | 235 |
+| Corumbá, Mato Grosso | 92 |
+| Porto do Maranhão, Maranhão | 25 |
+
+## Verificação ao nível da página: a transcrição em si passa
+
+Cada página da Revista imprime a sua própria linha de resumo mensal (`Mez`).
+Comparando as 31 linhas diárias transcritas de Dezembro de 1888 com a linha
+`Mez` impressa **na mesma página**:
+
+| coluna | agregado | nosso | impresso | dif |
+|---|---|---|---|---|
+| pressão | média | 755,61 | 755,63 | −0,02 |
+| pressão máx | máx | 762,45 | 762,45 | **0,00** |
+| pressão mín | mín | 746,88 | 746,88 | **0,00** |
+| temp média | média | 26,20 | 26,10 | +0,10 |
+| temp máx | máx | 36,00 | 36,00 | **0,00** |
+| temp mín | mín | 17,60 | 17,60 | **0,00** |
+| tensão vapor | média | 18,36 | 18,30 | +0,06 |
+| humidade | média | 73,19 | 73,60 | −0,41 |
+| vento força | média | 3,41 | 3,40 | +0,01 |
+| nebulosidade | média | 5,50 | 5,10 | +0,40 |
+| evaporação | soma | 106,00 | 106,90 | −0,90 |
+| ozone | média | 2,42 | 2,50 | −0,08 |
+
+**12/12.** É o equivalente brasileiro do teste de Oxford, e passa inteiro. O
+problema do dataset v0.1 nunca foi a leitura — foi aquilo que dizíamos sobre ela.

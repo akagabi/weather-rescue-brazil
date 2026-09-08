@@ -11,9 +11,25 @@ modelo aberto de 2B rodando num laptop. Gerado por `scripts/g4_produce.py` com o
 | Linhas | 1.194 (883 utilizáveis, 74,0%) |
 | Valores nas linhas utilizáveis | **12.406** |
 | Páginas | 39 |
+| Estações (corrigido) | Imperial Observatório 842, Santa-Cruz 235, Corumbá 92, Porto do Maranhão 25 |
 | Publicações | 4 layouts / 2 obras |
 | Período | 1885-12 a 1890-11 |
 | **Ausente dos arquivos internacionais** | **as 1.194 linhas** — ver *Ineditismo* abaixo |
+
+## Correcção de proveniência (2026-09-08) — leia isto antes de usar
+
+**37% das linhas da v0.1 estavam atribuídas à estação errada.** 445 linhas
+diziam Santa-Cruz quando a página impressa diz Imperial Observatório (415) ou
+Corumbá (30). Causa: o perfil confundia *layout* com *estação* — a forma de 15
+colunas serve Santa-Cruz **e** o Imperial Observatório a partir de 1888.
+
+Corrigido: cada linha traz agora `station` e `station_source`, lidos da legenda
+impressa da página. 1.130 linhas confirmadas pela legenda, 64 continuam
+assumidas e dizem-no. Ver `docs/g4-qc-audit.md`.
+
+**Os valores em si estão certos** — as 31 linhas de Dezembro de 1888 reproduzem
+a linha `Mez` impressa na própria página em **12 de 12** agregados, com a
+pressão máxima e mínima exactas ao centésimo.
 
 ## Auditoria de QC (2026-09-08) — leia isto antes de usar
 
