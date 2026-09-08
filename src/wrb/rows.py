@@ -140,6 +140,85 @@ def row_profile(gray: Image.Image, x0: int, x1: int, thr: int) -> tuple[list[flo
     return [row[0, y] / 255 for y in range(height)], keep
 
 
+def ink_runs(prof: list[float], *, floor: float = 0.06, min_h: int = 3) -> list[tuple[int, int]]:
+    """Contiguous vertical runs of ink: one run per printed text line.
+
+    The chain search assumes rows sit at a constant pitch. That holds for a
+    dense numeric table and breaks the moment a layout carries a free-text
+    column that WRAPS - Cuyaba's "Estado do ceo" pushes the next day's numbers
+    down by a whole line, so the real gaps run 61, 65, 212, 87, 73 px. Runs do
+    not care about pitch: each printed line is one run, whatever the spacing.
+    """
+    runs: list[tuple[int, int]] = []
+    start = None
+    for y, v in enumerate(prof):
+        if v > floor and start is None:
+            start = y
+        elif v <= floor and start is not None:
+            if y - start >= min_h:
+                runs.append((start, y))
+            start = None
+    if start is not None and len(prof) - start >= min_h:
+        runs.append((start, len(prof)))
+    return runs
+
+
+def _day_runs(gray: Image.Image, dx0: int, dx1: int, thr: int, floor: float) -> list[tuple[int, int]]:
+    """Narrow ink runs between the day column's first and last full-width rule.
+
+    A day is one or two digits and sits right-aligned; the decade sub-total
+    ("Dec."), the month total ("Mez") and the rules all span most of the
+    column. Width separates them, and the left inset separates them again.
+    """
+    prof, _ = row_profile(gray, dx0, dx1, thr)
+    col_w = dx1 - dx0
+    bw = gray.point(lambda v: 255 if v < thr else 0, mode="L")
+    px = bw.load()
+    spans = []
+    for y0, y1 in ink_runs(prof, floor=floor, min_h=3):
+        xs = [x for x in range(dx0, dx1) if any(px[x, y] for y in range(y0, y1))]
+        if xs:
+            spans.append((y0, y1, max(xs) - min(xs) + 1, min(xs) - dx0))
+    rules = [i for i, sp in enumerate(spans) if sp[2] >= 0.85 * col_w]
+    if not rules:
+        return []
+    body = spans[rules[0] + 1:rules[-1]]
+    return [(a, b) for a, b, w, inset in body
+            if 6 <= w <= 0.6 * col_w and (b - a) >= 6 and inset >= 0.04 * col_w]
+
+
+def locate_rows_by_runs(gray: Image.Image, day_count: int, dx0: int, dx1: int,
+                        thr: int) -> list[float]:
+    """Row centres from ink runs in the day-number column, for layouts whose
+    rows are NOT evenly pitched.
+
+    The chain search assumes a constant pitch. That breaks the moment a layout
+    carries a free-text column that wraps: Cuyaba's "Estado do ceo" pushes the
+    next day's numbers down by a line, so real gaps run 61, 65, 212, 87, 73 px.
+
+    `day_column` brackets that column from the vertical rules and its width
+    comes out inconsistent page to page (42-74 px on five pages of one
+    publication), so rather than trust one bracket we try several and accept
+    only a window that yields EXACTLY the expected number of days. A wrong
+    count here would be worse than no answer: every later stage trusts these
+    centres.
+    """
+    col_w = dx1 - dx0
+    windows = [(dx0, dx1)]
+    for frac in (0.62, 0.48, 0.75):
+        w = max(18, round(col_w * frac))
+        windows.append((dx0, dx0 + w))
+    for wx0, wx1 in windows:
+        if wx1 - wx0 < 18:
+            continue
+        for floor in (0.06, 0.04, 0.09, 0.12):
+            days = _day_runs(gray, wx0, wx1, thr, floor)
+            if len(days) == day_count:
+                return [(a + b) / 2 for a, b in days]
+    return []
+
+
+
 def _profile_variance(gray: Image.Image, x0: int, x1: int, thr: int) -> float:
     bw = gray.point(lambda v: 255 if v < thr else 0, mode="L").crop((x0, 0, x1, gray.height))
     col = bw.resize((1, gray.height), Image.BOX).load()
@@ -463,6 +542,20 @@ def locate_day_rows(
                               probe_x_frac=probe_x_frac, band_frac=band_frac, _upscaled=True)
         if alt.ok and len(alt.chain) == day_count:
             return _rescale(alt, k)
+    if len(chain) != day_count:
+        # constant pitch failed; try the day column's own ink runs
+        centres = locate_rows_by_runs(gray, day_count, dx0, dx1, thr)
+        if centres:
+            gaps = [b - a for a, b in zip(centres, centres[1:])]
+            run_pitch = _median(gaps) if gaps else pitch
+            loc = RowLocation([], [round(c) for c in centres], dropped={"isolated": []},
+                              pitch=run_pitch, ink_threshold=thr, skew_deg=angle,
+                              rules=rules, day_col=(dx0, dx1), chain=[round(c) for c in centres])
+            half = band_frac * run_pitch / 2
+            loc.day_boxes = [(x0, max(0, round(c - half)), x1, min(height, round(c + half)))
+                             for c in centres]
+            loc.reason = "located by day-column ink runs (row pitch is not constant)"
+            return loc
     loc = RowLocation([], [y for y, _ in peaks], dropped=dropped, pitch=pitch,
                       ink_threshold=thr, skew_deg=angle, rules=rules, day_col=(dx0, dx1), chain=[y for y, _ in chain])
     if len(chain) != day_count:

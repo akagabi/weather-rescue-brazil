@@ -157,3 +157,64 @@ Comparando as 31 linhas diárias transcritas de Dezembro de 1888 com a linha
 
 **12/12.** É o equivalente brasileiro do teste de Oxford, e passa inteiro. O
 problema do dataset v0.1 nunca foi a leitura — foi aquilo que dizíamos sobre ela.
+
+## Terceiro achado: 402 linhas que não são dias
+
+Ao testar o localizador na estação nova (Cuyabá), reparei num campo que já
+estava gravado no dataset e que nenhum verdict usava: `page_rows_located_ok`.
+
+**402 linhas (33,7%) vêm de páginas cuja contagem de linhas não fecha com os
+dias do mês.**
+
+```
+doc 16 p22 1889-12: 36 linhas localizadas, 31 dias no mês  (+5)
+doc 14 p41 1886-01: 34 linhas localizadas, 31 dias no mês  (+3)
+doc 14 p142 1886-07: 33 linhas localizadas, 31 dias no mês (+2)
+```
+
+A causa está à vista na própria página: a Revista imprime, **na mesma coluna dos
+dias**, um subtotal por década (`Dec.`) e um total do mês (`Mez`). O localizador
+conta-os como dias.
+
+São **médias a passar por observações diárias**. E o ponto importante: nenhuma
+verificação por linha as pode apanhar — os números são plausíveis, caem dentro
+das faixas físicas e respeitam `min <= media <= max`, porque *são* médias
+legítimas. Só a contagem ao nível da página as denuncia.
+
+303 destas linhas saíam marcadas como utilizáveis.
+
+### Correcção
+
+Nenhuma linha de uma página cuja contagem não fecha pode ser `utilizável`.
+É conservador de propósito: perde-se linha boa junto com a má, porque não
+sabemos *quais* das 34 linhas são os 31 dias.
+
+| | antes | depois |
+|---|---|---|
+| utilizáveis | 883 (74,0%) | **580 (48,6%)** |
+| valores utilizáveis | 12.406 | **8.233** |
+
+**O dataset perdeu um terço e é a primeira versão em que "utilizável" quer
+mesmo dizer alguma coisa.** As três correcções desta sessão foram todas na mesma
+direcção: menos linhas, afirmações verdadeiras.
+
+## Estação nova (Cuyabá): o que falhou e porquê
+
+Perfil criado (`cuyaba-1889`, 14 colunas, incluindo **altura das águas do Rio
+Cuyabá** — série hidrológica diária que nenhuma outra publicação do corpus tem).
+
+O localizador falha em 4 das 5 páginas. Diagnóstico, não palpite: as linhas
+**não têm passo constante**. A coluna de texto livre "Estado do céo" quebra
+linha, empurrando os números do dia seguinte, e os intervalos reais medem
+61, 65, 212, 87, 73 px. Todo o `_chain_for_pitch` assume passo constante.
+
+Adicionado `locate_rows_by_runs`: em vez de periodicidade, usa os **corridos de
+tinta da coluna do dia**, filtrados por largura (um dia é 1-2 dígitos, ~10 e
+~20 px; `Dec.`, `Mez` e as réguas ocupam quase toda a coluna). Só aceita uma
+janela que devolva a contagem **exacta**.
+
+**Resultado honesto: 1 das 5 páginas.** A detecção automática da coluna do dia
+devolve larguras entre 42 e 74 px nas cinco páginas da mesma publicação, e o
+filtro por largura não sobrevive a isso. Fica por resolver; a via provável é o
+perfil declarar `day_x_frac`, como já teve de declarar `probe_x_frac` para
+Oxford.

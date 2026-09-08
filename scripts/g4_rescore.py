@@ -28,9 +28,19 @@ for r in rows:
     fails = p.verify(restored) if p.checks else []
     hard = [x for x in problems if x != PADDED_TRAILING]
     scoreable = bool(p.checks) and any(isinstance(restored.get(c["result"]), (int, float)) for c in p.checks)
-    verdict = ("checks_pass" if scoreable and not fails and not viol and not hard
+    # A page whose located row count does not equal the days in its month has
+    # picked up rows that are not days - the Revista prints a decade sub-total
+    # ("Dec.") and a month total ("Mez") in the same column, and the locator
+    # takes them for days. Those rows ARE plausible numbers in plausible
+    # ranges, so no per-row check can catch them; only the page-level count
+    # can. Until the page closes, none of its rows may be called usable.
+    page_ok = r.get("page_rows_located_ok", True)
+    verdict = ("flagged" if not page_ok
+               else "checks_pass" if scoreable and not fails and not viol and not hard
                else "qc_clean" if not viol and not hard and not fails
                else "flagged")
+    if not page_ok:
+        problems = problems + ["page_row_count_did_not_close"]
     r.update(values_as_printed=values, values=restored, markers=markers, verdict=verdict,
              padded_trailing=PADDED_TRAILING in problems, problems=problems,
              range_violations=viol, check_failures=fails)

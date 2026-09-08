@@ -1,0 +1,9 @@
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 9522.90it/s]
+  Cuyaba 15/35 1888-10: 11 rows  checks_pass=3 qc_clean=1 flagged=7  [rows did not close]
+  Cuyaba 15/76 1889-01: 6 rows  checks_pass=0 qc_clean=0 flagged=6  [rows did not close]
+  Cuyaba 15/93 1889-02: 10 rows  checks_pass=1 qc_clean=1 flagged=8  [rows did not close]
+  Cuyaba 15/109 1889-03: 8 rows  checks_pass=1 qc_clean=0 flagged=7  [rows did not close]
+  Cuyaba 15/124 1889-04: 9 rows  checks_pass=0 qc_clean=0 flagged=9  [rows did not close]
+
+{"pages": 5, "refused": 0, "rows": 44, "checks_pass": 5, "qc_clean": 2, "flagged": 37, "minutes": 5.8}
+wrote data/dataset/cuyaba-1889.jsonl

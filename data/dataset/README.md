@@ -8,13 +8,32 @@ modelo aberto de 2B rodando num laptop. Gerado por `scripts/g4_produce.py` com o
 
 | | |
 |---|---|
-| Linhas | 1.194 (883 utilizáveis, 74,0%) |
-| Valores nas linhas utilizáveis | **12.406** |
+| Linhas | 1.194 (580 utilizáveis, 48,6%) |
+| Valores nas linhas utilizáveis | **8.233** |
 | Páginas | 39 |
 | Estações (corrigido) | Imperial Observatório 842, Santa-Cruz 235, Corumbá 92, Porto do Maranhão 25 |
 | Publicações | 4 layouts / 2 obras |
 | Período | 1885-12 a 1890-11 |
 | **Ausente dos arquivos internacionais** | **as 1.194 linhas** — ver *Ineditismo* abaixo |
+
+## Terceira correcção (2026-09-08): linhas que não são dias
+
+A Revista imprime, na mesma coluna dos dias, um subtotal por década (`Dec.`) e
+um total do mês (`Mez`). Em 402 linhas (33,7%) o localizador contou essas linhas
+como se fossem dias — doc 16 p.22 devolveu **36 linhas para um mês de 31 dias**.
+
+São médias mensais a passar por observações diárias. **Nenhuma verificação por
+linha as pode apanhar**: os números são plausíveis e caem dentro das faixas
+físicas. Só a contagem ao nível da página as denuncia.
+
+Corrigido: nenhuma linha de uma página cuja contagem não fecha pode ser
+`utilizável`. Custou 303 linhas que antes saíam como boas.
+
+| | antes | depois |
+|---|---|---|
+| utilizáveis | 883 (74,0%) | **580 (48,6%)** |
+| `checks_pass` | 868 | 573 |
+| `flagged` | 311 | 614 |
 
 ## Correcção de proveniência (2026-09-08) — leia isto antes de usar
 
