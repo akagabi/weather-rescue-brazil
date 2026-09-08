@@ -183,8 +183,11 @@ def _day_runs(gray: Image.Image, dx0: int, dx1: int, thr: int, floor: float) -> 
     if not rules:
         return []
     body = spans[rules[0] + 1:rules[-1]]
-    return [(a, b) for a, b, w, inset in body
-            if 6 <= w <= 0.6 * col_w and (b - a) >= 6 and inset >= 0.04 * col_w]
+    # NB: do not filter on the left inset. Day numbers are right-aligned on
+    # some pages of this same publication and flush left on others, so an
+    # inset rule silently deletes every day on half the corpus.
+    return [(a, b) for a, b, w, _inset in body
+            if 6 <= w <= 0.6 * col_w and (b - a) >= 6]
 
 
 def locate_rows_by_runs(gray: Image.Image, day_count: int, dx0: int, dx1: int,
@@ -196,25 +199,27 @@ def locate_rows_by_runs(gray: Image.Image, day_count: int, dx0: int, dx1: int,
     carries a free-text column that wraps: Cuyaba's "Estado do ceo" pushes the
     next day's numbers down by a line, so real gaps run 61, 65, 212, 87, 73 px.
 
-    `day_column` brackets that column from the vertical rules and its width
-    comes out inconsistent page to page (42-74 px on five pages of one
-    publication), so rather than trust one bracket we try several and accept
-    only a window that yields EXACTLY the expected number of days. A wrong
-    count here would be worse than no answer: every later stage trusts these
-    centres.
+    `day_column` brackets that column from the vertical rules, and across five
+    pages of ONE publication it returned widths from 42 to 74 px - sometimes
+    swallowing the next column. So rather than trust one bracket, sweep a band
+    of windows around it and accept only a window that yields EXACTLY the
+    expected number of days. The exact count is what makes the sweep safe: a
+    window that clips a digit or admits a neighbouring column almost never
+    lands on the right total.
     """
-    col_w = dx1 - dx0
-    windows = [(dx0, dx1)]
-    for frac in (0.62, 0.48, 0.75):
-        w = max(18, round(col_w * frac))
-        windows.append((dx0, dx0 + w))
-    for wx0, wx1 in windows:
-        if wx1 - wx0 < 18:
-            continue
-        for floor in (0.06, 0.04, 0.09, 0.12):
-            days = _day_runs(gray, wx0, wx1, thr, floor)
-            if len(days) == day_count:
-                return [(a + b) / 2 for a, b in days]
+    page_w = gray.width
+    seen: set[tuple[int, int]] = set()
+    for shift in (0, -8, 8, -16, 16, -24, 24):
+        for width in (dx1 - dx0, 46, 40, 34, 28, 54, 62):
+            wx0 = max(0, dx0 + shift)
+            wx1 = min(page_w, wx0 + width)
+            if wx1 - wx0 < 18 or (wx0, wx1) in seen:
+                continue
+            seen.add((wx0, wx1))
+            for floor in (0.06, 0.04, 0.09, 0.12):
+                days = _day_runs(gray, wx0, wx1, thr, floor)
+                if len(days) == day_count:
+                    return [(a + b) / 2 for a, b in days]
     return []
 
 

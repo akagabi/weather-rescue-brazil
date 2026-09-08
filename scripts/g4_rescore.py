@@ -13,42 +13,122 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from wrb import profile as prof  # noqa: E402
 from wrb.profile import PADDED_TRAILING  # noqa: E402
+import calendar  # noqa: E402
+from collections import defaultdict  # noqa: E402
 
-src = Path(sys.argv[1])
-rows = [json.loads(l) for l in src.open()]
-cache: dict[str, prof.Profile] = {}
-stats: Counter = Counter()
-out = src.with_name(src.stem + ".rescored.jsonl").open("w")
-for r in rows:
-    p = cache.setdefault(r["profile"], prof.load(r["profile"]))
-    values, problems = p.parse(r["raw"])
-    markers = dict(getattr(p, "last_markers", {}) or {})
-    restored = p.from_printed(values)
-    viol = p.violations(restored)
-    fails = p.verify(restored) if p.checks else []
-    hard = [x for x in problems if x != PADDED_TRAILING]
-    scoreable = bool(p.checks) and any(isinstance(restored.get(c["result"]), (int, float)) for c in p.checks)
-    # A page whose located row count does not equal the days in its month has
-    # picked up rows that are not days - the Revista prints a decade sub-total
-    # ("Dec.") and a month total ("Mez") in the same column, and the locator
-    # takes them for days. Those rows ARE plausible numbers in plausible
-    # ranges, so no per-row check can catch them; only the page-level count
-    # can. Until the page closes, none of its rows may be called usable.
-    page_ok = r.get("page_rows_located_ok", True)
-    verdict = ("flagged" if not page_ok
-               else "checks_pass" if scoreable and not fails and not viol and not hard
-               else "qc_clean" if not viol and not hard and not fails
-               else "flagged")
-    if not page_ok:
-        problems = problems + ["page_row_count_did_not_close"]
-    r.update(values_as_printed=values, values=restored, markers=markers, verdict=verdict,
-             padded_trailing=PADDED_TRAILING in problems, problems=problems,
-             range_violations=viol, check_failures=fails)
-    stats[verdict] += 1
-    stats["padded"] += PADDED_TRAILING in problems
-    out.write(json.dumps(r, ensure_ascii=False) + "\n")
-out.close()
-usable = stats["checks_pass"] + stats["qc_clean"]
-print(f"{len(rows)} rows -> {dict(stats)}")
-print(f"usable (checks_pass + qc_clean): {usable}/{len(rows)} = {usable / len(rows):.1%}")
-print("wrote", src.with_name(src.stem + ".rescored.jsonl").name)
+
+def day_rows_for_page(page_rows: list[dict], period: str, day_key: str) -> tuple[set[int], bool]:
+    """Which rows of a page are actually DAY rows, decided by what was read.
+
+    The locator over-counts on a third of pages: the Revista prints a decade
+    sub-total ("Dec.") and a month total ("Mez") in the day column, and pitch
+    geometry cannot tell those from days. But the model reads the day number,
+    and days form a run that either repeats or advances by one.
+
+    Three things this must not assume, each learned from a page that broke it:
+
+    * that the column is called "day" - Porto do Maranhao calls it "datas";
+    * that the run starts at 1 - the locator often misses a page's first rows,
+      and days 4..28 are 25 good rows plus a coverage gap, not 26 bad ones;
+    * that a day appears once - Corumba prints two readings a day and marks the
+      second with a ditto, so its column reads 1, », 2, », 3 ...
+    """
+    year, month = (int(x) for x in period.split("-")[:2])
+    want = calendar.monthrange(year, month)[1]
+    days: list[int | None] = []
+    last: int | None = None
+    for r in page_rows:
+        d = r.get("values", {}).get(day_key)
+        if isinstance(d, str) and d.strip() == prof.DITTO:
+            days.append(last)              # ditto = the same day again
+        elif isinstance(d, (int, float)) and 1 <= d <= 31:
+            last = int(d)
+            days.append(last)
+        else:
+            days.append(None)
+    best: list[int] = []
+    cur: list[int] = []
+    for i, d in enumerate(days):
+        if d is None:
+            cur = []
+            continue
+        prev = days[cur[-1]] if cur else None
+        if cur and prev is not None and d in (prev, prev + 1):
+            cur.append(i)
+        else:
+            cur = [i]
+        if len(cur) > len(best):
+            best = list(cur)
+    distinct = {days[i] for i in best}
+    return set(best), (len(distinct) == want and min(distinct, default=0) == 1)
+
+
+
+def main() -> None:
+    src = Path(sys.argv[1])
+    rows = [json.loads(l) for l in src.open()]
+    cache: dict[str, prof.Profile] = {}
+    stats: Counter = Counter()
+    # first pass: parse every row, so the day sequence can be read off the page
+    for r in rows:
+        p = cache.setdefault(r["profile"], prof.load(r["profile"]))
+        vals, _ = p.parse(r["raw"])
+        r["values"] = p.from_printed(vals)
+    by_page: dict = defaultdict(list)
+    for r in rows:
+        by_page[(r["item"], r["page"], r["period"])].append(r)
+    is_day: dict[int, bool] = {}
+    page_complete: dict[int, bool] = {}
+    for key, prs in by_page.items():
+        pk = cache.setdefault(prs[0]["profile"], prof.load(prs[0]["profile"]))
+        day_key = next((c.key for c in pk.columns if c.kind == "day"), "day")
+        keep, complete = day_rows_for_page(prs, key[2], day_key)
+        for i, r in enumerate(prs):
+            is_day[id(r)] = i in keep
+            page_complete[id(r)] = complete
+
+    out = src.with_name(src.stem + ".rescored.jsonl").open("w")
+    for r in rows:
+        p = cache.setdefault(r["profile"], prof.load(r["profile"]))
+        values, problems = p.parse(r["raw"])
+        markers = dict(getattr(p, "last_markers", {}) or {})
+        restored = p.from_printed(values)
+        viol = p.violations(restored)
+        fails = p.verify(restored) if p.checks else []
+        hard = [x for x in problems if x != PADDED_TRAILING]
+        scoreable = bool(p.checks) and any(isinstance(restored.get(c["result"]), (int, float)) for c in p.checks)
+        # A page whose located row count does not equal the days in its month has
+        # picked up rows that are not days - the Revista prints a decade sub-total
+        # ("Dec.") and a month total ("Mez") in the same column, and the locator
+        # takes them for days. Those rows ARE plausible numbers in plausible
+        # ranges, so no per-row check can catch them; only the page-level count
+        # can. Until the page closes, none of its rows may be called usable.
+        # geometry may over-count, but the day numbers the model read settle it
+        page_ok = page_complete[id(r)]
+        row_is_day = is_day[id(r)]
+        if not row_is_day:
+            problems = problems + ["not_a_day_row"]
+        if not page_ok:
+            # a coverage gap, not a correctness one: the row's date is fixed by its
+            # neighbours in the consecutive run, so it stays usable and says so
+            problems = problems + ["page_day_sequence_incomplete"]
+        verdict = ("flagged" if not row_is_day
+                   else "checks_pass" if scoreable and not fails and not viol and not hard
+                   else "qc_clean" if not viol and not hard and not fails
+                   else "flagged")
+        r["is_day_row"] = row_is_day
+        r.update(values_as_printed=values, values=restored, markers=markers, verdict=verdict,
+                 padded_trailing=PADDED_TRAILING in problems, problems=problems,
+                 range_violations=viol, check_failures=fails)
+        stats[verdict] += 1
+        stats["padded"] += PADDED_TRAILING in problems
+        out.write(json.dumps(r, ensure_ascii=False) + "\n")
+    out.close()
+    usable = stats["checks_pass"] + stats["qc_clean"]
+    print(f"{len(rows)} rows -> {dict(stats)}")
+    print(f"usable (checks_pass + qc_clean): {usable}/{len(rows)} = {usable / len(rows):.1%}")
+    print("wrote", src.with_name(src.stem + ".rescored.jsonl").name)
+
+
+if __name__ == "__main__":
+    main()

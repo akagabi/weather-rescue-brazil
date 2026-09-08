@@ -144,3 +144,18 @@ def test_verify_rejects_a_mean_outside_its_own_min_and_max() -> None:
     assert p.verify({"day": 1, "min": 755.5, "mean": 756.5, "max": 757.6}) == []
     bad = p.verify({"day": 1, "min": 755.56, "mean": 706.56, "max": 757.62})
     assert bad and "outside" in bad[0]
+
+
+def test_day_run_survives_a_ditto_and_a_late_start() -> None:
+    """Two things real pages do that a naive 1..N walk gets wrong: Corumba
+    marks its second daily reading with a ditto, and the locator often misses
+    a page's opening rows, so the run starts at 4 rather than 1."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    from g4_rescore import day_rows_for_page
+    rows = [{"values": {"d": 4}}, {"values": {"d": "»"}}, {"values": {"d": 5}},
+            {"values": {"d": "Mez"}}, {"values": {"d": 10}}]
+    keep, complete = day_rows_for_page(rows, "1889-01", "d")
+    assert keep == {0, 1, 2}          # the ditto belongs to day 4
+    assert not complete               # January needs 31 days, starting at 1

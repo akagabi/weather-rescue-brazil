@@ -8,8 +8,8 @@ modelo aberto de 2B rodando num laptop. Gerado por `scripts/g4_produce.py` com o
 
 | | |
 |---|---|
-| Linhas | 1.194 (580 utilizáveis, 48,6%) |
-| Valores nas linhas utilizáveis | **8.233** |
+| Linhas | 1.194 (835 utilizáveis, 69,9%) |
+| Valores nas linhas utilizáveis | **11.909** |
 | Páginas | 39 |
 | Estações (corrigido) | Imperial Observatório 842, Santa-Cruz 235, Corumbá 92, Porto do Maranhão 25 |
 | Publicações | 4 layouts / 2 obras |
@@ -26,14 +26,19 @@ São médias mensais a passar por observações diárias. **Nenhuma verificaçã
 linha as pode apanhar**: os números são plausíveis e caem dentro das faixas
 físicas. Só a contagem ao nível da página as denuncia.
 
-Corrigido: nenhuma linha de uma página cuja contagem não fecha pode ser
-`utilizável`. Custou 303 linhas que antes saíam como boas.
+Corrigido pela leitura, não pela geometria: **o modelo lê o número do dia**, e
+os dias formam uma sequência que repete ou avança de um. Fica a maior sequência
+consecutiva; o resto não é dia. 114 linhas eliminadas — são os `Dec.` e `Mez`.
+
+A sequência **não precisa de começar em 1**: o localizador falha muitas vezes as
+primeiras linhas da página, e dias 4..28 são 25 linhas boas mais uma falha de
+cobertura, não 26 linhas más.
 
 | | antes | depois |
 |---|---|---|
-| utilizáveis | 883 (74,0%) | **580 (48,6%)** |
-| `checks_pass` | 868 | 573 |
-| `flagged` | 311 | 614 |
+| utilizáveis | 883 (74,0%) | **835 (69,9%)** |
+| valores | 12.406 | **11.909** |
+| linhas que não são dias | 0 detectadas | **114 eliminadas** |
 
 ## Correcção de proveniência (2026-09-08) — leia isto antes de usar
 
