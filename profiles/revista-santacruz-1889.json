@@ -204,7 +204,24 @@
  "source": "DocVirt obnacional/15 e 16 (1889-1890)",
  "rows_per_page": "days_in_month",
  "adapter": "models/g4/qwen35-lora-smoke4-epoch2",
- "checks": [],
+ "checks": [
+  {
+   "kind": "order",
+   "result": "pressure",
+   "of": [
+    "pressure_min",
+    "pressure_max"
+   ]
+  },
+  {
+   "kind": "order",
+   "result": "tmean",
+   "of": [
+    "tmin",
+    "tmax"
+   ]
+  }
+ ],
  "markers": [
   "Gottas",
   "Gott.",

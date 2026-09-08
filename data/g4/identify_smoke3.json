@@ -1,0 +1,50 @@
+[
+ {
+  "doc": "14",
+  "page": 21,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 23,
+  "caption": "REVISTA DO OBSERVATORIO",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 24,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NA CIDADE DO RIO GRANDE DO SUL NOS ANOS DE 1882 A 1884.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 37,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 39,
+  "caption": "REVISTA DO OBSERVATORIO\nPHENOMENOS APRESENTADOS PELOS SATELITES DE JUPITER\nRevista climatologica do mez de Janeiro de 1886",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1886-01"
+ },
+ {
+  "doc": "14",
+  "page": 43,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ }
+]

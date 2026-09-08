@@ -9,6 +9,7 @@
    "unit": null,
    "range": null,
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -21,6 +22,7 @@
     24.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -33,6 +35,7 @@
     800.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -45,6 +48,7 @@
     800.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -57,6 +61,7 @@
     800.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -69,6 +74,7 @@
     50.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -81,6 +87,7 @@
     50.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -93,6 +100,7 @@
     50.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -105,6 +113,7 @@
     100.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -117,6 +126,7 @@
     50.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -129,6 +139,7 @@
     400.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -138,6 +149,7 @@
    "unit": null,
    "range": null,
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -147,6 +159,7 @@
    "unit": null,
    "range": null,
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -156,6 +169,7 @@
    "unit": null,
    "range": null,
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -165,6 +179,7 @@
    "unit": null,
    "range": null,
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -174,12 +189,34 @@
    "unit": null,
    "range": null,
    "elided": false,
+   "elided_range": null,
    "note": ""
   }
  ],
  "source": "DocVirt obnacional/16 p.72 (Dezembro 1889)",
  "rows_per_page": "days_in_month_x2",
  "adapter": "",
+ "checks": [
+  {
+   "kind": "order",
+   "result": "t_centigrados",
+   "of": [
+    "t_minima_noite",
+    "t_maxima_dia"
+   ]
+  },
+  {
+   "kind": "order",
+   "result": "baro_media",
+   "of": [
+    "baro_fortin",
+    "baro_aneroides"
+   ]
+  }
+ ],
+ "markers": [],
+ "probe_x_frac": null,
+ "table_x_frac": null,
  "notes": "Layout inédito, usado como teste de generalização (docs/g4-generalisation.md). Duas leituras por dia (10h e 4h); instrumentos ausentes na Revista; quatro colunas de texto livre. Barômetro impresso POR EXTENSO (não elidido).",
  "extra": {}
 }

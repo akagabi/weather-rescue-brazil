@@ -156,7 +156,24 @@
  "source": "DocVirt obnacional/14 p.159 (Fevereiro de 1886)",
  "rows_per_page": "fixed:24",
  "adapter": "",
- "checks": [],
+ "checks": [
+  {
+   "kind": "order",
+   "result": "baro_media",
+   "of": [
+    "baro_minimo",
+    "baro_maximo"
+   ]
+  },
+  {
+   "kind": "order",
+   "result": "t_media",
+   "of": [
+    "t_minimo",
+    "t_maximo"
+   ]
+  }
+ ],
  "markers": [
   "Inap.",
   "Gottas"

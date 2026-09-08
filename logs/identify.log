@@ -1,0 +1,37 @@
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 9498.61it/s]
+  0/269  0.1min  10/25: None None | NOT_WEATHER
+  10/269  0.9min  11/65: None 1853-10 | OUTUBRO DE 1853.
+  20/269  1.7min  12/15: None None | NOT_WEATHER
+  30/269  2.5min  14/24: None None | RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NA CIDADE DO RIO GRA
+  40/269  3.4min  14/97: None None | NOT_WEATHER
+  50/269  4.3min  14/134: None None | NOT_WEATHER
+  60/269  5.1min  14/174: None None | NOT_WEATHER
+  70/269  6.0min  14/215: None None | NOT_WEATHER
+  80/269  6.8min  15/15: None None | NOT_WEATHER
+  90/269  7.8min  15/28: None None | NOT_WEATHER
+  100/269  8.6min  15/43: None None | NOT_WEATHER
+  110/269  9.5min  15/63: None None | NOT_WEATHER
+  120/269  10.3min  15/110: None 1859-03 | Redução das observações meteorológicas feitas em Cuyabá, no mês d
+  130/269  11.2min  15/151: None None | NOT_WEATHER
+  140/269  12.2min  15/171: None 1889-10 | RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO NO M
+  150/269  13.2min  15/199: None None | RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS
+Estação, Maciço; Observ
+  160/269  14.0min  16/23: corumba-1889 1889-10 | RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS
+feitas em Corumbá, de 1 a 3
+  170/269  14.9min  16/44: None None | NOT_WEATHER
+  180/269  15.8min  16/62: None None | NOT_WEATHER
+  190/269  16.8min  16/106: None None | NOT_WEATHER
+  200/269  17.7min  16/167: None None | NOT_WEATHER
+  210/269  18.5min  4/15: None None | NOT_WEATHER
+  220/269  19.4min  5/25: revista-rio-1886 1881-01 | DE RIO DE JANEIRO
+Observations faites à la lunette méridienne en 
+  230/269  20.3min  5/125: revista-rio-1886 None | DE RIO DE JANEIRO
+  240/269  21.1min  6/75: None None | NOT_WEATHER
+  250/269  22.1min  8/95: revista-rio-1886 1883-01 | DE RIO DE JANEIRO
+Observations météorologiques du mois de Novembr
+  260/269  23.2min  sim_monthly-weather-review_1883-04_11_4/6: None None | NOT_WEATHER
+
+95/269 pages read as a weather table
+identified 24/269 pages with a profile AND a period
+Counter({None: 236, 'revista-rio-1886': 26, 'revista-santacruz-1889': 5, 'corumba-1889': 2})
+wrote /Users/bueno/detail/weather-rescue-brazil/data/g4/identified.json

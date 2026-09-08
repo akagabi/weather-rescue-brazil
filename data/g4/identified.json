@@ -1,0 +1,2154 @@
+[
+ {
+  "doc": "10",
+  "page": 25,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 35,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 45,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 55,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 105,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 15,
+  "caption": "MARÇO DE 1855.\nAO MEIO DIA MEDIO NO RIO DE JANEIRO.",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1855-01"
+ },
+ {
+  "doc": "11",
+  "page": 25,
+  "caption": "AGOSTO DE 1855.\nAO MEIO DIA MEDIO NO RIO DE JANEIRO.",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1855-01"
+ },
+ {
+  "doc": "11",
+  "page": 35,
+  "caption": "Fevereiro de 1853.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1853-02"
+ },
+ {
+  "doc": "11",
+  "page": 45,
+  "caption": "DEZEMBRO DE 1853.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1853-12"
+ },
+ {
+  "doc": "11",
+  "page": 55,
+  "caption": "MAIO DE 1853.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1853-05"
+ },
+ {
+  "doc": "11",
+  "page": 65,
+  "caption": "OUTUBRO DE 1853.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1853-10"
+ },
+ {
+  "doc": "11",
+  "page": 75,
+  "caption": "TEMPO MÉDIO NO RIO DE JANEIRO. 1853. Passagem meridiana. Asc. recta. Declinação a 0h.",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1853-01"
+ },
+ {
+  "doc": "11",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 95,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 105,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 115,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 125,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 135,
+  "caption": "DISTANCIAS LUNARES.\nFEBREIRO DE 1855.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 145,
+  "caption": "DISTANCIAS LUNARES.\nMARÇO DE 1853.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1853-03"
+ },
+ {
+  "doc": "11",
+  "page": 165,
+  "caption": "DISTANCIAS LUNARES.\nMAIO DE 1853.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1853-05"
+ },
+ {
+  "doc": "12",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 25,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 35,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 45,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 55,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 65,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 75,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 21,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 23,
+  "caption": "REVISTA DO OBSERVATORIO",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 24,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NA CIDADE DO RIO GRANDE DO SUL NOS ANOS DE 1882 A 1884.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 37,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 39,
+  "caption": "REVISTA DO OBSERVATORIO\nPHENOMENOS APRESENTADOS PELOS SATELITES DE JUPITER\nRevista climatologica do mez de Janeiro de 1886",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1886-01"
+ },
+ {
+  "doc": "14",
+  "page": 43,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 44,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 56,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 58,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 73,
+  "caption": "REVISTA DO OBSERVATORIO\n61\n\nPHENOMENOS APRESENTADOS PELOS SATELLITES\nDE JUPITER\n\n| Dias | Horas | | SATELLITES |\n|---|---|---|---|\n| 1 | 9.47 T | | Passagem do 1º satellite. |\n| 2 | 10.40 T | | Entrada",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 91,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 92,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 97,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 98,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 108,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 110,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 117,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 119,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 125,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 126,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 127,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 130,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 134,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 136,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 138,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 140,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO IMPERIAL OBSERVATORIO NO MEZ DE JUNHO DE 1886",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1886-06"
+ },
+ {
+  "doc": "14",
+  "page": 144,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 157,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 161,
+  "caption": "REVISTA DO OBSERVATORIO\nEm Maio de 1886",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1886-05"
+ },
+ {
+  "doc": "14",
+  "page": 163,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 164,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 172,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 174,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 176,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 178,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 193,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 197,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 200,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 201,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 210,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 211,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 213,
+  "caption": "REVISTA DO OBSERVATORIO\n191\n\nDia 1 - Chuva á noite. 2 - Chuvisco ás 4 h. da tarde. 3 - Ligeiro nevoeiro no horizonte. 4 - Nevoeiro no horizonte ás 4 e ás 7 h. da manhã. 5 - Ligeiro nevoeiro ás 7 h. da manhã. 6 - Nevoeiro",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 215,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 3,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 5,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 6,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 7,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 9,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 10,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 11,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 13,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 14,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 16,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 18,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 19,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 20,
+  "caption": "REVISTA DO OBSERVATORIO\n11",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 21,
+  "caption": "REVISTA DO OBSERVATORIO\nOBSERVATORIO DE GRACA FILHO\n12\nELEMENTOS CLIMATOLÓGICOS\nVALORES NORMAES E\nEXTREMOS\n1888\nAltura barometrica média... 754mm,53 755,63\nIdem, idem, a mais alta... 757mm,91 75",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1888-05"
+ },
+ {
+  "doc": "15",
+  "page": 23,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 24,
+  "caption": "OBSERVATORIO DE SANTA-CRUZ\nResumo das observações meteorológicas feitas no mês de Dezembro de 1888\nem Santa-Cruz",
+  "is_weather_table": true,
+  "profile": "revista-santacruz-1889",
+  "period": "1888-12"
+ },
+ {
+  "doc": "15",
+  "page": 25,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO IMPERIAL OBSERVATÓRIO EM 1888\nMÉDIAS MENSAIS E ANUAIS",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 26,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 28,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 30,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 32,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 34,
+  "caption": "Redução das observações meteorológicas feitas em Cuyabá, no meio de Outubro de 1888 pelo maior Américo Rodrigues de Vasconcelos.\nObservatório de Cuyabá, 1888",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1888-05"
+ },
+ {
+  "doc": "15",
+  "page": 35,
+  "caption": "RESUMO DAS OBSERAÇÕES METEOROLÓGICAS FEITAS EM CUYABÁ NO MEZ DE OUTUBRO DE 1888 PELO MAIOR AMÉRICO RODRIGUES DE VAZCONCELOS",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1888-05"
+ },
+ {
+  "doc": "15",
+  "page": 37,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 39,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 40,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 41,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 42,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 43,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 45,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 46,
+  "caption": "OBSERVATORIO DE SANTA-CRUZ\n\nResumo das observações meteorológicas feitas no mês de Janeiro de 1889\nem Santa-Cruz",
+  "is_weather_table": true,
+  "profile": "revista-santacruz-1889",
+  "period": "1889-01"
+ },
+ {
+  "doc": "15",
+  "page": 47,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 49,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 51,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 53,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 55,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 57,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 59,
+  "caption": "REVISTA DO OBSERVATORIO\n49\nDiário meteorológico do mês de Fevereiro\nde 1889",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-02"
+ },
+ {
+  "doc": "15",
+  "page": 63,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 67,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 75,
+  "caption": "Registro das observações meteorológicas feitas em Cuyabá, em Janeiro de 1889, sob a direção do major Americo Rodrigues de Vasconcellos.\n\nObservatório: Cuyabá (Guiana Francesa)\nMês: Janeiro\nAno: 1889",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-01"
+ },
+ {
+  "doc": "15",
+  "page": 76,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS EM CUYABÁ NO MEZ DE JANEIRO DE 1889 PELO AMORÍCIO RODRIGUES DE VASCONELOS",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-01"
+ },
+ {
+  "doc": "15",
+  "page": 77,
+  "caption": "Redução das observações meteorológicas feitas em Cuyabá, no mês de Janeiro de 1889 pelo major Americo Rodrigues de Vasconcellos.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-01"
+ },
+ {
+  "doc": "15",
+  "page": 78,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS EM SANTA-CRUZ DURANTE O ANO DE 1888\nMÉDIAS MENSAL E ANUAL\nMEZES\nBAROMETRO A 0°\nTEMPER. CENTIGR.\nTEMPER.\nMÉDIA DO VAPOR\nHUMIDADE\nVENTOS\nDOMINANTES\nNEB",
+  "is_weather_table": true,
+  "profile": "revista-santacruz-1889",
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 92,
+  "caption": "Redução das observações meteorológicas feitas em Cuyabá, no meio de Fevereiro de 1888 pelo major Americo Rodrigues de Vasconcellos.\n\nObservatório: Observatório do Rio Negro (Cuyabá, Paraguai)\nMês: Fevereiro\nAno: 1888",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1888-02"
+ },
+ {
+  "doc": "15",
+  "page": 93,
+  "caption": "RESUMO DAS OBSERAÇÕES METEOROLÓGICAS FEITAS EM CUYABÁ NO MEZ DE PEREÇÓRIO DE 1889 PELO MAJOR ALEMÃO RODRIGUES DE VASCONCELOS",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 94,
+  "caption": "Registro das observações meteorológicas feitas em Cuyabá, em Fevereiro de 1889, sob a direção do major Amerigo Rodrigues de Vasconcellos.\n\nREVISÃO DO OBSERVATÓRIO",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-02"
+ },
+ {
+  "doc": "15",
+  "page": 109,
+  "caption": "RESUMO DAS OBSERAÇÕES METEOROLÓGICAS FEITAS EM CUBÁY NO MEZ DE MARÇO DE 1859 PELO MAJOR AMÉRICO RODRIGUES DE VASCONCELLOS",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1859-03"
+ },
+ {
+  "doc": "15",
+  "page": 110,
+  "caption": "Redução das observações meteorológicas feitas em Cuyabá, no mês de Março de 1859 pelo major Amerio Rodrigues de Vasconcellos.\nObservatório: Observatório de Cuyabá\nMês: Março\nAno: 1859",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1859-03"
+ },
+ {
+  "doc": "15",
+  "page": 115,
+  "caption": "COMISSÃO DE MELHORAMENTOS DA BARRA DO RIO GRANDE DO SUL\nObservações meteorológicas feitas em diversos pontos da Província do Rio Grande Sul, durante o ano de 1888\n\n| ESTAÇÕES | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 116,
+  "caption": "COMISSÃO DE MELHORAMENTOS DA BARRA DO RIO GRANDE DO SUL\nMappa anual da chuva caída na Provincia do Rio Grande do Sul, correspondente ao anno de 1888\n\nESTÁGES\nJANEIRO\nFEBREIRO\nMARÇO\nABRIL\nMAIO\nJUNHO\nJULHO\nAGOSTO\nSETEMBRO\nOUTUBRO\nNOVEMBRO",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1888-01"
+ },
+ {
+  "doc": "15",
+  "page": 117,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 124,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS EM CUYABÁ EM ABRIL DE 1889 PELO TENENTE-CORONEL AMÉRIO RODRIGUES DE VASCONCELOS",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-04"
+ },
+ {
+  "doc": "15",
+  "page": 125,
+  "caption": "Redução das observações meteorológicas feitas em Cuyabá, em Abril de 1889 pelo tenente-coronel Amerio Rodrigues de Vasconcellos\n\nObservatório: Cuyabá (Guiana Francesa)\nMês: Abril\nAno: 1889",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-04"
+ },
+ {
+  "doc": "15",
+  "page": 126,
+  "caption": "RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS\nEstação, Maceió; Observador, Pedro Rodrigues Soares; Latitude, 8°30' E; Longitude, 0h.30' E; Hora local, 9h.30' E; Altura do Barometro, 10m\nVENTOS (numero de vezes)\nN\nNNE\nENE\nE\nESE",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 142,
+  "caption": "RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS\nMez do Junho de 1889\nEstação, Maceió; Observador, Pedro Rodrigues Soares; Latitude, 9º38' N; Longitude, 0h.30m E; Hora local, 9h.36m; Altura do Barometro, 10m",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-06"
+ },
+ {
+  "doc": "15",
+  "page": 147,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 149,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 151,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 153,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 155,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO IMPERIAL OBSERVATÓRIO NO MEZ DE AGOSTO DE 1889",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1889-08"
+ },
+ {
+  "doc": "15",
+  "page": 158,
+  "caption": "RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS\nEstação, Cruzador Almirante Barroso; Observador, 2º tenente A. Silvano; Latitude, var; Longitude, var; Hora local, var; Alt. do Bar., 2m,5",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 161,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 162,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 163,
+  "caption": "REVISTA DO OBSERVATORIO\n153\n\nRevista climatologica do mez de Setembro\nde 1889 no Rio de Janeiro\n\nHa entre os factores climatologica deste mez\ne os valores de comparacao, certas divergencias,\nque vamos mostrar nas linhas que seguem.\n\nA media mensal da pressao atmosferica foi,\ncomo se ve no quadro junto, de 0mm.34 maior",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1889-01"
+ },
+ {
+  "doc": "15",
+  "page": 165,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO NO MEZ DE SETEMBRO DE 1889",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-09"
+ },
+ {
+  "doc": "15",
+  "page": 167,
+  "caption": "Jornal meteorológico do meio do Setembro de 1889 em Santa-Cruz",
+  "is_weather_table": true,
+  "profile": "revista-santacruz-1889",
+  "period": "1889-09"
+ },
+ {
+  "doc": "15",
+  "page": 169,
+  "caption": "REVISTA DO OBSERVATORIO\n159\n\nRevista climatológica do mez de Outubro\nde 1889 no Rio de Janeiro\n\nELEMENTOS CLIMATÓLOGICOS\nVALORES NORMAES E\nEXTREMOS\n1889\n\nAltura barométrica média. . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1889-01"
+ },
+ {
+  "doc": "15",
+  "page": 171,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO NO MEZ DE OUTUBRO DE 1889",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-10"
+ },
+ {
+  "doc": "15",
+  "page": 173,
+  "caption": "OBSERVATORIO DE SANTA-CRUZ\nResumo das observações meteorológicas feitas no mês de Outubro de 1889\nem Santa-Cruz",
+  "is_weather_table": true,
+  "profile": "revista-santacruz-1889",
+  "period": "1889-10"
+ },
+ {
+  "doc": "15",
+  "page": 174,
+  "caption": "RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS\nMez de Agosto de 1889\nEstação,Maciéo; Observador, Pedro Rodrigues Soares; Latitude, 9º,38' Longitude, 04,30' E; Hora local, 9º,86' Alt. do Bar, 10m",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-08"
+ },
+ {
+  "doc": "15",
+  "page": 177,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 179,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 188,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 192,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 194,
+  "caption": "REVISTA DO OBSERVATORIO\n183\n\nELEMENTOS CLIMATOLOGICOS\nVALORES NORMAES E\nEXTREMOS\n1889\n\nAltura barometrica media... 755mm,56 754,42\nIdem, idem, a mais alta... 750mm,39\nIdem, idem, a mais baixa... 75",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-05"
+ },
+ {
+  "doc": "15",
+  "page": 196,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 198,
+  "caption": "COMISSÃO GEOGRÁFICA E GEOLOGICA DO ESTADO DE S. PAULO\nQUADRO CLIMATICOLOGICO DO ANO DE 1887 - Estacao de S. Paulo\nELEMENTOS CLIMATOLÓGICOS\n| | Janeiro | Fevereiro | Março | Abril | Maio | Junho | Julho | Agosto | Setembro | Outubro | Novembro | Dezembro | SOMMA |\n|---|---|---",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1887-01"
+ },
+ {
+  "doc": "15",
+  "page": 199,
+  "caption": "RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS\nEstação, Maciço; Observador, Pedro Rodrigues Soares; Latitude, 9º,38' E; Longitude, 0º,50' E; Hora local, 9º,36'; Alt. do Bar, 16m\nVENTOS (numero de vezes)\nN NNE ENE ESE S SSW SW",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 3,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 5,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 7,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 9,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 11,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 14,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 16,
+  "caption": "REVISTA DO OBSERVATORIO\nRevista climatologica do mez de Dezembro de 1889",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-12"
+ },
+ {
+  "doc": "16",
+  "page": 20,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO ASTRONÔMICO NO MEZ DE DEZEMBRO DE 1889",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-12"
+ },
+ {
+  "doc": "16",
+  "page": 21,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 23,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS\nfeitas em Corumbá, de 1 a 31 de Outubro de 1889, pela comissão de engenharia\nmilitar de Matto-Grosso",
+  "is_weather_table": true,
+  "profile": "corumba-1889",
+  "period": "1889-10"
+ },
+ {
+  "doc": "16",
+  "page": 24,
+  "caption": "COMISSÃO GEOGRÁFICA E GEOLOGICA DO ESTADO DE S. PAULO\nQUADRO CLIMATOLOGICO DO ANNO DE 1888 — Estação de S. Paulo",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 26,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 28,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 30,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 32,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 34,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS EM S. JOÃO D'EL-REI, PELA SR. JOÃO PACHECO, ENCARGADO DAS OBSERVAÇÕES\nMEZ DE JANEIRO DE 1890",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1890-01"
+ },
+ {
+  "doc": "16",
+  "page": 40,
+  "caption": "COMISSÃO GEOGRÁFICA E GEOLOGICA DO ESTADO DE S. PAULO\nQUADRO CLIMATICO DO ANO DE 1888 — Estação de Tatuhy\nELEMENTOS CLIMATOLÓGICOS\nJan.  Feb.  Mar.  Abr.  Mai.  Jun.  Jul.  Ago.  Set.  Out.  Nov.  Dez.  SOMA",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1888-05"
+ },
+ {
+  "doc": "16",
+  "page": 41,
+  "caption": "RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS\nEstação, S. Paulo; Observador, Alberto Leongren; Latitude, 23°36' S; Longitude, 92°26' W; Hora local, 8h25'37'; Alt. do Bar. 735'42\nMEZ DE OUTUBRO DE 1889",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-10"
+ },
+ {
+  "doc": "16",
+  "page": 42,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 44,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 46,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 48,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 50,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 52,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 54,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 56,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS\nfeitas em Corumbá, de 1 a 30 de Dezembro de 1889, pela comissão de engenharia\nmilitar de Matto-Grosso\n\nCorumbá, 1 de Dezembro de 1889.\nCapitão JORGE DOS SANTOS ALMEIDA, Chefe da Comissão.",
+  "is_weather_table": true,
+  "profile": "corumba-1889",
+  "period": "1889-12"
+ },
+ {
+  "doc": "16",
+  "page": 57,
+  "caption": "RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS\nEstação, S. Paulo; Observador, Alberto Lofgren; Latitude, 25°36' S; Longitude, 3°28' W; Hora local, 8h56m27; Alt. do Bar. 735m42\nPonte Buarque de Macedo; Observador, Manoel",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 58,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 60,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 62,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 64,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 66,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 68,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 70,
+  "caption": "REVISTA DO OBSERVATORIO\n61\n\nELEMENTOS CLIMATOLOGICOS\nVALORES NORMAES E\nEXTREMOS\n1890\n\nAltura barometrica média... 755mm,45 756mm,28\nIdem, idem, a mais alta... 760mm,62 759mm,64\nIdem, idem",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1890-05"
+ },
+ {
+  "doc": "16",
+  "page": 73,
+  "caption": "RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS\nMez de Março de 1890\nEstação, S. Paulo; Observador, F. de Paula Felicidade; Latitude, 25°30' S; Longitude, 3°28' W; Hora local, 7h.55m.57' ; Alt. do Bar. 735,4",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1890-03"
+ },
+ {
+  "doc": "16",
+  "page": 78,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 82,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 90,
+  "caption": "RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS\nEstação, Cidade do Rio Grande; Observador, Comissão da Barra; Latitude, 31°59'53\"; Longitude, 0°36m30\"; Hora local, 8h,31m; Alt. do Bar. 16m,50\nCidade do Rio Grande; Observador, Comissão da Barra;",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 106,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 112,
+  "caption": "ESTRELLAS\nPASSAGEM\nOBSERVADA\nCORREÇÕES\nDO INSTRUM.\nPASSAGEM\nCORRETA\nR\nTABULAR\nESTADO\nABSOL.\nDO\nCHRONOM.\n13 DE JULHO DE 1888\nα Serpentis.\n15.44.33.80\n+ 0.04\n33.84",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1888-07"
+ },
+ {
+  "doc": "16",
+  "page": 125,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 143,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO DA ESCOLA DE MINAS DE OURO PRETO DE 1º DO SETEMBRO DE 1889 A 1º DE SETEMBRO DE 1890. MÉDIAS MENSAS E ANUAL.\n\nMEZES\tBardometro a 0°\tTemperat. centí-",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-09"
+ },
+ {
+  "doc": "16",
+  "page": 155,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 157,
+  "caption": "REVISTA DO OBSERVATORIO",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 161,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 162,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 163,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 165,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 167,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 168,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 169,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 170,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 171,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 172,
+  "caption": "REVISTA DO OBSERVATORIO\n161",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 173,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 175,
+  "caption": "RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS\nMes de Junho de 1890\nEstação, Ouro Preto; Observador, Eulalo T. Ferreira; Latitude, 20°28'5\" N; Longitude, 3 W; Hora local, 9h,55' Alt. do Bar. 1145",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1890-06"
+ },
+ {
+  "doc": "2",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "2",
+  "page": 35,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 45,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 65,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 95,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 105,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 115,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 125,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 135,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 25,
+  "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1881-01"
+ },
+ {
+  "doc": "5",
+  "page": 35,
+  "caption": "Observations faites à la lunette méridienne en 1881-82 par J. O. LACAILLE",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 45,
+  "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nDE RIO DE JANEIRO\nxxiiij",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1882-01"
+ },
+ {
+  "doc": "5",
+  "page": 55,
+  "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 65,
+  "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nDE RIO DE JANEIRO\nxliij",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1882-01"
+ },
+ {
+  "doc": "5",
+  "page": 75,
+  "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nRio de Janeiro\n1882",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1882-01"
+ },
+ {
+  "doc": "5",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 95,
+  "caption": "DE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 105,
+  "caption": "DE RIO DE JANEIRO\nlxxxv",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 115,
+  "caption": "DE RIO DE JANEIRO\nXCV",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 125,
+  "caption": "DE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 135,
+  "caption": "DE RIO DE JANEIRO\nCXV",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 145,
+  "caption": "DE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 165,
+  "caption": "DE RIO DE JANEIRO\ncxlvij",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 25,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 35,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 45,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 55,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 65,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 75,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 95,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 115,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "8",
+  "page": 15,
+  "caption": "Observations météorologiques du mois de Janvier 1883\nTension de la vapeur atmosphérique en millimètres\nDate | 4 h. M. | 7 h. M. | 10 h. M. | 1 h. S. | 4 h. S. | 7 h. S. | 10 h. S. | Moyenne\n--- | --- | --- |",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 25,
+  "caption": "Observations météorologiques du mois de Février 1883\nDE RIO DE JANEIRO\n13",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 35,
+  "caption": "Observations météorologiques du mois de Mars 1883\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 55,
+  "caption": "Observations météorologiques du mois de Juin 1883\nTension de la vapeur atmosphérique en millimètres\nDate | 4 h. M. | 7 h. M. | 10 h. M. | 1 h. S. | 4 h. S. | 7 h. S. | 10 h. S. | Moyenne\n--- | --- | --- |",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1883-06"
+ },
+ {
+  "doc": "8",
+  "page": 75,
+  "caption": "Observations météorologiques du mois d'Aout 1883\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 85,
+  "caption": "ANNALES DE L'OBSERVATOIRE IMPÉRIAL\nObservations météorologiques du mois d'Octobre 1883\nBaromètre réduit à 0°, 700mm +",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1883-10"
+ },
+ {
+  "doc": "8",
+  "page": 95,
+  "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Novembre 1883\nTension de la vapeur atmosphérique en millimètres",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 105,
+  "caption": "Observations météorologiques du mois de Décembre 1883\nDE RIO DE JANEIRO\n93",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 115,
+  "caption": "DE RIO DE JANEIRO\n103\nRÉSUMÉ MÉTÉOROLOGIQUE DU MOIS D'AVRIL 1883\nBaromètre à 0°\nTempérature centigrade à l'ombre\nTension de la vapeur\nHumidité relative\nNébulosité en dixièmes du ciel couvert\nPLUIE\nJOURS\nOZONE\nEVAPORATION",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 135,
+  "caption": "DE RIO DE JANEIRO\nRÉSUMÉ MÉTÉOROLOGIQUE DE L'ANNÉE 1883\nMaxima diurnes de la température à l'ombre, moyennes décadiques et mensuelles",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 145,
+  "caption": "RESUMÉ MÉTÉOROLOGIQUE DE L'ANNÉE 1883\nValeurs extrêmes\nMOIS\nBAROMÈTRE A 0,700\" MAX.\nDate\nHeure\nMINIMA\nDate\nHeure\nOscillation\nTEMPÉRATURE A L'OMBRE\nDate\nMin.\nDate\nOscillation\nMoy. des\nMax.\nMoy",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "8",
+  "page": 185,
+  "caption": "Observations météorologiques du mois de Mai 1884\nNebulosity en dixièmes du ciel couvert\nDate\t4 h. M.\t7 h. M.\t10 h. M.\t1 h. S.\t4 h. S.\t7 h. S.\t13 h. S.\tMoyenne\nMois\t5,2\t7,3\t5,",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1884-05"
+ },
+ {
+  "doc": "9",
+  "page": 2,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "astronomicaland03obsegoog",
+  "page": 40,
+  "caption": "The table is titled “Readings of Two Thermometers placed above the Tower,” and it contains daily observations of dry and wet bulb temperatures with differences, along with means and dew-point corrections. The data spans November and December 1876.\n\nTherefore, the correct reply is:\n\nNOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "astronomicaland03obsegoog",
+  "page": 80,
+  "caption": "SOUTH.\nMean Day. Mean Barom. Mean Temp. of Air. Mean Temp. of Evap.\nElastic Force of Vapour. Reduction to Annual Pressure. Mean Annual Pressure of Dry Air. Reduction to Annual Temperature. Mean Annual Temperature. Number of Obs. and Sum.\n1877. Inches. ° ° Inches. Inches. Inches. ° ° Inches. ° °\nJan. 14",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "astronomicaland03obsegoog",
+  "page": 120,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "sim_monthly-weather-review_1883-04_11_4",
+  "page": 6,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "sim_monthly-weather-review_1883-04_11_4",
+  "page": 8,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "sim_monthly-weather-review_1883-04_11_4",
+  "page": 10,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "sim_monthly-weather-review_1883-04_11_4",
+  "page": 12,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "sim_monthly-weather-review_1883-04_11_4",
+  "page": 25,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "sim_monthly-weather-review_1883-04_11_4",
+  "page": 26,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "sim_monthly-weather-review_1883-04_11_4",
+  "page": 28,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "sim_monthly-weather-review_1883-04_11_4",
+  "page": 30,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "sim_monthly-weather-review_1883-04_11_4",
+  "page": 32,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ }
+]

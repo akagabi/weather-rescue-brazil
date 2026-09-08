@@ -125,3 +125,22 @@ def test_unknown_kind_rejected():
 def test_missing_profile_is_explicit():
     with pytest.raises(FileNotFoundError):
         load("does-not-exist")
+
+
+def test_verify_supports_a_sum_check() -> None:
+    """A rainfall table asserts Yearly Sum = the 12 months added, not averaged."""
+    p = blank("t-sum", "t", ["Year", "Jan", "Feb", "Sum"])
+    p.checks = [{"kind": "sum", "result": "sum", "of": ["jan", "feb"]}]
+    assert p.verify({"year": 1851, "jan": 2.0, "feb": 3.0, "sum": 5.0}) == []
+    bad = p.verify({"year": 1851, "jan": 2.0, "feb": 3.0, "sum": 2.5})
+    assert bad and "sum gives 5.0000" in bad[0]
+
+
+def test_verify_rejects_a_mean_outside_its_own_min_and_max() -> None:
+    """A printed mean below its printed minimum is impossible, not merely odd:
+    this is the only arithmetic the Brazilian day-rows carry."""
+    p = blank("t-order", "t", ["Day", "Min", "Mean", "Max"])
+    p.checks = [{"kind": "order", "result": "mean", "of": ["min", "max"]}]
+    assert p.verify({"day": 1, "min": 755.5, "mean": 756.5, "max": 757.6}) == []
+    bad = p.verify({"day": 1, "min": 755.56, "mean": 706.56, "max": 757.62})
+    assert bad and "outside" in bad[0]

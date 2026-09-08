@@ -8,12 +8,64 @@ modelo aberto de 2B rodando num laptop. Gerado por `scripts/g4_produce.py` com o
 
 | | |
 |---|---|
-| Linhas | 1.194 (954 utilizáveis, 79,9%) |
-| Valores nas linhas utilizáveis | **13.441** |
+| Linhas | 1.194 (883 utilizáveis, 74,0%) |
+| Valores nas linhas utilizáveis | **12.406** |
 | Páginas | 39 |
 | Publicações | 4 layouts / 2 obras |
 | Período | 1885-12 a 1890-11 |
-| **Nunca digitalizado antes** | **85 linhas** — Porto do Maranhão (Fev 1886) e Corumbá (Dez 1889), ambos localizados nesta sessão |
+| **Ausente dos arquivos internacionais** | **as 1.194 linhas** — ver *Ineditismo* abaixo |
+
+## Auditoria de QC (2026-09-08) — leia isto antes de usar
+
+A v0.1 anunciava 954 linhas utilizáveis e um nível `checks_pass` descrito como
+"a aritmética da própria página fecha". **Nenhuma linha tinha isso**: os quatro
+perfis declaravam `checks: []`, portanto nenhuma aritmética foi alguma vez
+verificada. Auditado e corrigido — ver `docs/g4-qc-audit.md`.
+
+Foi declarada a única aritmética que estas linhas de facto carregam, uma
+restrição exacta: `minimo <= media <= maximo`. Uma média impressa fora do seu
+próprio mínimo e máximo é impossível, não é um caso limite.
+
+| verdict | antes | depois |
+|---|---|---|
+| `checks_pass` | 0 | **868** |
+| `qc_clean` | 954 | 15 |
+| `flagged` | 240 | **311** |
+
+71 linhas que saíam como utilizáveis afirmavam uma ordenação impossível e agora
+estão sinalizadas com o motivo. O dataset encolheu 7,4% e ficou mais honesto.
+
+**`checks_pass` significa "esta linha não se contradiz", não "esta linha está
+certa".** O teste externo contra Oxford (`docs/g4-external-oxford.md`) mostra o
+limite: o checksum apanha uma linha invertida, mas fica calado num erro de um
+dígito que ainda respeite a ordem.
+
+## Ineditismo
+
+A versão anterior deste README dizia "85 linhas nunca digitalizadas". **Estava
+errado, e errado para menos.** O número saiu de uma suposição conservadora, não
+de uma verificação. A verificação foi feita depois, contra as fontes primárias:
+
+- **GHCN-Daily** (NOAA, arquivo diário global): baixado o inventário de estações
+  (`ghcnd-inventory.txt`, 782.552 linhas), filtrado por prefixo `BR`. Registros
+  brasileiros anteriores a 1900: **zero**. O mais antigo começa em **1901**.
+- **EMERLAC** (Domínguez-Castro et al. 2017, *Scientific Data*; coleção no
+  PANGAEA doi:10.1594/PANGAEA.871490), o resgate de referência dos registros
+  instrumentais antigos da América Latina: **14 séries brasileiras**, a mais
+  recente terminando em **dezembro de 1856**. Nenhuma estação chamada Santa
+  Cruz, Corumbá, Maranhão ou Rio Grande do Sul.
+
+Ou seja: os dados diários brasileiros entre **1857 e 1900** estão essencialmente
+ausentes dos arquivos internacionais. Este conjunto cobre 1885–1890 e cai dentro
+dessa lacuna. A lacuna não é acidental — o Observatório do Rio fundou a primeira
+rede meteorológica brasileira em 1886, e a *Revista do Observatório* é a
+publicação dessa rede.
+
+**O que não foi verificado**, e portanto não é afirmado: o ISPD v4 (banco de
+pressão à superfície) exige login para a lista de estações, então a pressão
+especificamente não foi conferida; e a verificação cobriu arquivos
+internacionais, não acervos nacionais brasileiros (INMET), que podem guardar
+digitalizações que nunca saíram do país.
 
 ## Formato
 

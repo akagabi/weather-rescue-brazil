@@ -1,0 +1,219 @@
+{
+ "id": "radcliffe-rain-1851-1879",
+ "name": "Radcliffe Observatory, Oxford — monthly rainfall 1851-1879 (Table IV)",
+ "columns": [
+  {
+   "key": "year",
+   "label": "Year",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "jan",
+   "label": "Jan.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "feb",
+   "label": "Feb.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "mar",
+   "label": "Mar.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "apr",
+   "label": "Apr.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "may",
+   "label": "May",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "jun",
+   "label": "June",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "jul",
+   "label": "July",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "aug",
+   "label": "Aug.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "sep",
+   "label": "Sept.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "oct",
+   "label": "Oct.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "nov",
+   "label": "Nov.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "dec",
+   "label": "Dec.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    0.0,
+    12.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "yearly_sum",
+   "label": "Yearly Sum",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    5.0,
+    60.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "source": "Internet Archive astronomicaland03obsegoog p.141 (Table IV)",
+ "rows_per_page": "fixed:29",
+ "adapter": "",
+ "checks": [
+  {
+   "kind": "sum",
+   "result": "yearly_sum",
+   "of": [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "may",
+    "jun",
+    "jul",
+    "aug",
+    "sep",
+    "oct",
+    "nov",
+    "dec"
+   ]
+  }
+ ],
+ "markers": [],
+ "probe_x_frac": [
+  0.11,
+  0.19
+ ],
+ "table_x_frac": [
+  0.06,
+  0.96
+ ],
+ "notes": "QUARTO CORPUS e o primeiro com VERDADE EXTERNA. Chuva mensal em POLEGADAS, linhas = ANOS (1851-1879), ponto decimal elevado (2·899). Oxford publica a mesma serie em mm (geog.ox.ac.uk, monthly-pptn-1767-to-date), homogeneizada: a razao oxford_mm/(polegadas*25.4) e ~0.92 e CONSTANTE, portanto qualquer celula que quebre a razao e erro de transcricao, nao de medicao. Checksum proprio: Yearly Sum = soma dos 12 meses.",
+ "extra": {}
+}

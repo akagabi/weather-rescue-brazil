@@ -227,6 +227,15 @@ class Profile:
 
             {"kind": "diff", "result": k, "a": k, "b": k}
             {"kind": "mean", "result": k, "of": [k, ...]}
+            {"kind": "sum",  "result": k, "of": [k, ...]}
+            {"kind": "order", "result": k, "of": [low_k, high_k]}
+
+        `order` is the strongest of the four and needs no tolerance to speak of:
+        a printed mean that sits outside its own printed min and max is not a
+        close call, it is impossible, so the cell is certainly misread. It costs
+        nothing to declare and it is the only arithmetic these Brazilian
+        day-rows actually carry - their "mean" is the mean of the day's
+        readings, which the row does not print (docs/g4-qc-audit.md).
         """
         out: list[str] = []
         for c in self.checks:
@@ -235,8 +244,15 @@ class Profile:
             if any(not isinstance(v, (int, float)) for v in vals):
                 continue                      # a blank row is not a failure
             got = float(vals[0])
+            if c["kind"] == "order":
+                lo, hi = float(vals[1]), float(vals[2])
+                if not (lo - tol <= got <= hi + tol):
+                    out.append(f"{c['result']}={got} outside [{lo}, {hi}]")
+                continue
             if c["kind"] == "diff":
                 want = float(vals[1]) - float(vals[2])
+            elif c["kind"] == "sum":
+                want = sum(float(v) for v in vals[1:])
             else:
                 want = sum(float(v) for v in vals[1:]) / (len(vals) - 1)
             if abs(got - want) > tol:

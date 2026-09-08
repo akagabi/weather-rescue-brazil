@@ -32,6 +32,106 @@
       "n_rules": 16
     },
     {
+      "doc": "15",
+      "page": 106,
+      "n_rules": 13
+    },
+    {
+      "doc": "15",
+      "page": 108,
+      "n_rules": 18
+    },
+    {
+      "doc": "15",
+      "page": 139,
+      "n_rules": 6
+    },
+    {
+      "doc": "15",
+      "page": 141,
+      "n_rules": 18
+    },
+    {
+      "doc": "15",
+      "page": 157,
+      "n_rules": 17
+    },
+    {
+      "doc": "15",
+      "page": 166,
+      "n_rules": 17
+    },
+    {
+      "doc": "15",
+      "page": 197,
+      "n_rules": 18
+    },
+    {
+      "doc": "16",
+      "page": 18,
+      "n_rules": 8
+    },
+    {
+      "doc": "16",
+      "page": 22,
+      "n_rules": 17
+    },
+    {
+      "doc": "16",
+      "page": 36,
+      "n_rules": 9
+    },
+    {
+      "doc": "16",
+      "page": 38,
+      "n_rules": 16
+    },
+    {
+      "doc": "16",
+      "page": 39,
+      "n_rules": 12
+    },
+    {
+      "doc": "16",
+      "page": 55,
+      "n_rules": 12
+    },
+    {
+      "doc": "16",
+      "page": 71,
+      "n_rules": 18
+    },
+    {
+      "doc": "16",
+      "page": 72,
+      "n_rules": 21
+    },
+    {
+      "doc": "16",
+      "page": 106,
+      "n_rules": 6
+    },
+    {
+      "doc": "16",
+      "page": 107,
+      "n_rules": 13
+    },
+    {
+      "doc": "16",
+      "page": 142,
+      "n_rules": 11
+    },
+    {
+      "doc": "16",
+      "page": 156,
+      "n_rules": 11
+    },
+    {
+      "doc": "16",
+      "page": 159,
+      "n_rules": 11
+    },
+    {
       "doc": "16",
       "page": 174,
       "n_rules": 15
@@ -832,11 +932,227 @@
     },
     {
       "doc": "15",
+      "page": 100,
+      "w": 1658,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 101,
+      "w": 1649,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 102,
+      "w": 1658,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 103,
+      "w": 1649,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 104,
+      "w": 1658,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 105,
+      "w": 1649,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 106,
+      "w": 1658,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 13
+    },
+    {
+      "doc": "15",
+      "page": 107,
+      "w": 1649,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 108,
+      "w": 1658,
+      "h": 2459,
+      "orient": "portrait",
+      "n_rules": 18
+    },
+    {
+      "doc": "15",
+      "page": 109,
+      "w": 2451,
+      "h": 1647,
+      "orient": "landscape",
+      "n_rules": 9
+    },
+    {
+      "doc": "15",
       "page": 110,
       "w": 2462,
       "h": 1631,
       "orient": "landscape",
       "n_rules": 8
+    },
+    {
+      "doc": "15",
+      "page": 111,
+      "w": 1647,
+      "h": 2451,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 112,
+      "w": 1652,
+      "h": 2468,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 113,
+      "w": 1647,
+      "h": 2451,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 114,
+      "w": 1652,
+      "h": 2468,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 115,
+      "w": 2456,
+      "h": 1636,
+      "orient": "landscape",
+      "n_rules": 21
+    },
+    {
+      "doc": "15",
+      "page": 116,
+      "w": 2462,
+      "h": 1668,
+      "orient": "landscape",
+      "n_rules": 29
+    },
+    {
+      "doc": "15",
+      "page": 117,
+      "w": 2456,
+      "h": 1636,
+      "orient": "landscape",
+      "n_rules": 16
+    },
+    {
+      "doc": "15",
+      "page": 118,
+      "w": 1663,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 119,
+      "w": 1647,
+      "h": 2451,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 120,
+      "w": 1663,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "15",
+      "page": 121,
+      "w": 1647,
+      "h": 2451,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 122,
+      "w": 1663,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 123,
+      "w": 1647,
+      "h": 2451,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 124,
+      "w": 2468,
+      "h": 1642,
+      "orient": "landscape",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 125,
+      "w": 2472,
+      "h": 1664,
+      "orient": "landscape",
+      "n_rules": 22
+    },
+    {
+      "doc": "15",
+      "page": 126,
+      "w": 2468,
+      "h": 1642,
+      "orient": "landscape",
+      "n_rules": 25
+    },
+    {
+      "doc": "15",
+      "page": 127,
+      "w": 1696,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 0
     },
     {
       "doc": "15",
@@ -848,9 +1164,521 @@
     },
     {
       "doc": "15",
+      "page": 129,
+      "w": 1696,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 130,
+      "w": 1652,
+      "h": 2468,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 131,
+      "w": 1696,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 132,
+      "w": 1652,
+      "h": 2468,
+      "orient": "portrait",
+      "n_rules": 4
+    },
+    {
+      "doc": "15",
+      "page": 133,
+      "w": 1696,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 134,
+      "w": 1652,
+      "h": 2468,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 135,
+      "w": 1696,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 136,
+      "w": 1652,
+      "h": 2468,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 137,
+      "w": 1696,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 138,
+      "w": 1652,
+      "h": 2468,
+      "orient": "portrait",
+      "n_rules": 4
+    },
+    {
+      "doc": "15",
+      "page": 139,
+      "w": 1696,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 6
+    },
+    {
+      "doc": "15",
+      "page": 140,
+      "w": 1652,
+      "h": 2468,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 141,
+      "w": 1696,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 18
+    },
+    {
+      "doc": "15",
+      "page": 142,
+      "w": 2468,
+      "h": 1619,
+      "orient": "landscape",
+      "n_rules": 23
+    },
+    {
+      "doc": "15",
+      "page": 143,
+      "w": 1696,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 144,
+      "w": 1664,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 145,
+      "w": 1696,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 146,
+      "w": 1664,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 147,
+      "w": 1680,
+      "h": 2454,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 148,
+      "w": 1664,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 149,
+      "w": 1680,
+      "h": 2454,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 150,
+      "w": 1664,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 151,
+      "w": 1680,
+      "h": 2454,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 152,
+      "w": 1664,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 153,
+      "w": 1680,
+      "h": 2454,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 154,
+      "w": 1664,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "15",
+      "page": 155,
+      "w": 1680,
+      "h": 2454,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 156,
+      "w": 1664,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 157,
+      "w": 1680,
+      "h": 2454,
+      "orient": "portrait",
+      "n_rules": 17
+    },
+    {
+      "doc": "15",
+      "page": 158,
+      "w": 2468,
+      "h": 1641,
+      "orient": "landscape",
+      "n_rules": 11
+    },
+    {
+      "doc": "15",
+      "page": 159,
+      "w": 1680,
+      "h": 2454,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 160,
+      "w": 1675,
+      "h": 2471,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "15",
+      "page": 161,
+      "w": 1680,
+      "h": 2454,
+      "orient": "portrait",
+      "n_rules": 4
+    },
+    {
+      "doc": "15",
+      "page": 162,
+      "w": 1675,
+      "h": 2474,
+      "orient": "portrait",
+      "n_rules": 4
+    },
+    {
+      "doc": "15",
+      "page": 163,
+      "w": 1680,
+      "h": 2454,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
+      "page": 164,
+      "w": 1675,
+      "h": 2474,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 165,
+      "w": 1680,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "15",
+      "page": 166,
+      "w": 1675,
+      "h": 2474,
+      "orient": "portrait",
+      "n_rules": 17
+    },
+    {
+      "doc": "15",
+      "page": 167,
+      "w": 1680,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 168,
+      "w": 1675,
+      "h": 2480,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 169,
+      "w": 1680,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 4
+    },
+    {
+      "doc": "15",
+      "page": 170,
+      "w": 1675,
+      "h": 2480,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 171,
+      "w": 1680,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "15",
       "page": 172,
       "w": 1675,
       "h": 2482,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 173,
+      "w": 1680,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "15",
+      "page": 174,
+      "w": 2484,
+      "h": 1641,
+      "orient": "landscape",
+      "n_rules": 12
+    },
+    {
+      "doc": "15",
+      "page": 175,
+      "w": 1680,
+      "h": 2462,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 176,
+      "w": 1667,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 177,
+      "w": 1669,
+      "h": 2452,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 178,
+      "w": 1667,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 179,
+      "w": 1669,
+      "h": 2452,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 180,
+      "w": 1667,
+      "h": 2489,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 181,
+      "w": 1669,
+      "h": 2452,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 182,
+      "w": 1667,
+      "h": 2490,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 183,
+      "w": 2378,
+      "h": 1814,
+      "orient": "landscape",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 184,
+      "w": 1669,
+      "h": 2452,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 185,
+      "w": 1667,
+      "h": 2490,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 186,
+      "w": 1669,
+      "h": 2436,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 187,
+      "w": 1667,
+      "h": 2490,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 188,
+      "w": 1669,
+      "h": 2436,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 189,
+      "w": 1667,
+      "h": 2490,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 190,
+      "w": 1669,
+      "h": 2447,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 191,
+      "w": 1673,
+      "h": 2486,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 192,
+      "w": 1669,
+      "h": 2447,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 193,
+      "w": 1673,
+      "h": 2486,
       "orient": "portrait",
       "n_rules": 1
     },
@@ -869,6 +1697,30 @@
       "h": 2492,
       "orient": "portrait",
       "n_rules": 0
+    },
+    {
+      "doc": "15",
+      "page": 196,
+      "w": 1669,
+      "h": 2447,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "15",
+      "page": 197,
+      "w": 1681,
+      "h": 2499,
+      "orient": "portrait",
+      "n_rules": 18
+    },
+    {
+      "doc": "15",
+      "page": 198,
+      "w": 2440,
+      "h": 1636,
+      "orient": "landscape",
+      "n_rules": 20
     },
     {
       "doc": "15",
@@ -904,11 +1756,307 @@
     },
     {
       "doc": "16",
+      "page": 3,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 4,
+      "w": 1657,
+      "h": 2451,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 5,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 6,
+      "w": 1652,
+      "h": 2445,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 7,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 8,
+      "w": 1652,
+      "h": 2445,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 9,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 10,
+      "w": 1652,
+      "h": 2445,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 11,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 12,
+      "w": 1652,
+      "h": 2445,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 13,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 14,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 4
+    },
+    {
+      "doc": "16",
+      "page": 15,
+      "w": 1668,
+      "h": 2451,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 16,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 5
+    },
+    {
+      "doc": "16",
+      "page": 17,
+      "w": 1668,
+      "h": 2451,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 18,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 8
+    },
+    {
+      "doc": "16",
+      "page": 19,
+      "w": 1668,
+      "h": 2451,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
       "page": 20,
       "w": 1652,
       "h": 2478,
       "orient": "portrait",
       "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 21,
+      "w": 1668,
+      "h": 2451,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 22,
+      "w": 1652,
+      "h": 2478,
+      "orient": "portrait",
+      "n_rules": 17
+    },
+    {
+      "doc": "16",
+      "page": 23,
+      "w": 1668,
+      "h": 2451,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 24,
+      "w": 2467,
+      "h": 1592,
+      "orient": "landscape",
+      "n_rules": 17
+    },
+    {
+      "doc": "16",
+      "page": 25,
+      "w": 2451,
+      "h": 1630,
+      "orient": "landscape",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 26,
+      "w": 1598,
+      "h": 2464,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 27,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 28,
+      "w": 1598,
+      "h": 2464,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 29,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 30,
+      "w": 1598,
+      "h": 2464,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 31,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 32,
+      "w": 1598,
+      "h": 2464,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 33,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 34,
+      "w": 1598,
+      "h": 2464,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 35,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 36,
+      "w": 1598,
+      "h": 2464,
+      "orient": "portrait",
+      "n_rules": 9
+    },
+    {
+      "doc": "16",
+      "page": 37,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 38,
+      "w": 1598,
+      "h": 2464,
+      "orient": "portrait",
+      "n_rules": 16
+    },
+    {
+      "doc": "16",
+      "page": 39,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 12
+    },
+    {
+      "doc": "16",
+      "page": 40,
+      "w": 2462,
+      "h": 1603,
+      "orient": "landscape",
+      "n_rules": 15
     },
     {
       "doc": "16",
@@ -920,9 +2068,1025 @@
     },
     {
       "doc": "16",
+      "page": 42,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 43,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 44,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 45,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 46,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 47,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 48,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 49,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 50,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 51,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 52,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 53,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 54,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 55,
+      "w": 1636,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 12
+    },
+    {
+      "doc": "16",
+      "page": 56,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 57,
+      "w": 2461,
+      "h": 1647,
+      "orient": "landscape",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 58,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 59,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 60,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 61,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 62,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 63,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 64,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 65,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 66,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 67,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 68,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 69,
+      "w": 1630,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 70,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 71,
+      "w": 1630,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 18
+    },
+    {
+      "doc": "16",
+      "page": 72,
+      "w": 1604,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 21
+    },
+    {
+      "doc": "16",
+      "page": 73,
+      "w": 2461,
+      "h": 1608,
+      "orient": "landscape",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 74,
+      "w": 1614,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 75,
+      "w": 1607,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 76,
+      "w": 1614,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 77,
+      "w": 1607,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 78,
+      "w": 1614,
+      "h": 2467,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 79,
+      "w": 1607,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 80,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 81,
+      "w": 1607,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 82,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 83,
+      "w": 1618,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 84,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 85,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 86,
+      "w": 1618,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 87,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 88,
+      "w": 1618,
+      "h": 2460,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 89,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 90,
+      "w": 2461,
+      "h": 1620,
+      "orient": "landscape",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 91,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 92,
+      "w": 1597,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 93,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 94,
+      "w": 1603,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
       "page": 95,
       "w": 1614,
       "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 96,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 97,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 98,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 99,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 100,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 101,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 102,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 103,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 104,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 105,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 106,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 6
+    },
+    {
+      "doc": "16",
+      "page": 107,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 13
+    },
+    {
+      "doc": "16",
+      "page": 108,
+      "w": 1614,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 109,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 110,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 111,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 112,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 113,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 114,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 115,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 116,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 4
+    },
+    {
+      "doc": "16",
+      "page": 117,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 118,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 119,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 120,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 121,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 122,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 123,
+      "w": 1620,
+      "h": 2470,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 124,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 125,
+      "w": 2479,
+      "h": 1608,
+      "orient": "landscape",
+      "n_rules": 10
+    },
+    {
+      "doc": "16",
+      "page": 126,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 127,
+      "w": 1636,
+      "h": 2471,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 128,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 129,
+      "w": 1636,
+      "h": 2471,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 130,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 131,
+      "w": 1636,
+      "h": 2471,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 132,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 133,
+      "w": 1636,
+      "h": 2471,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 134,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 135,
+      "w": 1636,
+      "h": 2471,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 136,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 137,
+      "w": 1636,
+      "h": 2471,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 138,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 139,
+      "w": 1632,
+      "h": 2476,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 140,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 141,
+      "w": 1632,
+      "h": 2476,
+      "orient": "portrait",
+      "n_rules": 3
+    },
+    {
+      "doc": "16",
+      "page": 142,
+      "w": 1624,
+      "h": 2456,
+      "orient": "portrait",
+      "n_rules": 11
+    },
+    {
+      "doc": "16",
+      "page": 143,
+      "w": 2483,
+      "h": 1608,
+      "orient": "landscape",
+      "n_rules": 10
+    },
+    {
+      "doc": "16",
+      "page": 144,
+      "w": 1624,
+      "h": 2440,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 145,
+      "w": 1652,
+      "h": 2494,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 146,
+      "w": 1624,
+      "h": 2440,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 147,
+      "w": 1652,
+      "h": 2494,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 148,
+      "w": 1624,
+      "h": 2440,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 149,
+      "w": 1652,
+      "h": 2494,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 150,
+      "w": 1624,
+      "h": 2434,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 151,
+      "w": 1652,
+      "h": 2487,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 152,
+      "w": 1624,
+      "h": 2434,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 153,
+      "w": 1652,
+      "h": 2487,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 154,
+      "w": 1624,
+      "h": 2434,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 155,
+      "w": 1652,
+      "h": 2479,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 156,
+      "w": 1624,
+      "h": 2428,
+      "orient": "portrait",
+      "n_rules": 11
+    },
+    {
+      "doc": "16",
+      "page": 157,
+      "w": 1652,
+      "h": 2479,
+      "orient": "portrait",
+      "n_rules": 2
+    },
+    {
+      "doc": "16",
+      "page": 158,
+      "w": 1624,
+      "h": 2428,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 159,
+      "w": 1652,
+      "h": 2479,
+      "orient": "portrait",
+      "n_rules": 11
+    },
+    {
+      "doc": "16",
+      "page": 160,
+      "w": 1624,
+      "h": 2423,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 161,
+      "w": 1652,
+      "h": 2479,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 162,
+      "w": 1624,
+      "h": 2423,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 163,
+      "w": 1652,
+      "h": 2482,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 164,
+      "w": 1624,
+      "h": 2423,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 165,
+      "w": 1652,
+      "h": 2482,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 166,
+      "w": 1624,
+      "h": 2423,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 167,
+      "w": 1652,
+      "h": 2488,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 168,
+      "w": 1624,
+      "h": 2423,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 169,
+      "w": 1652,
+      "h": 2488,
       "orient": "portrait",
       "n_rules": 0
     },
@@ -936,11 +3100,43 @@
     },
     {
       "doc": "16",
+      "page": 171,
+      "w": 1652,
+      "h": 2493,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
+      "page": 172,
+      "w": 1624,
+      "h": 2423,
+      "orient": "portrait",
+      "n_rules": 1
+    },
+    {
+      "doc": "16",
+      "page": 173,
+      "w": 1652,
+      "h": 2488,
+      "orient": "portrait",
+      "n_rules": 0
+    },
+    {
+      "doc": "16",
       "page": 174,
       "w": 1624,
       "h": 2418,
       "orient": "portrait",
       "n_rules": 15
+    },
+    {
+      "doc": "16",
+      "page": 175,
+      "w": 2489,
+      "h": 1680,
+      "orient": "landscape",
+      "n_rules": 3
     },
     {
       "doc": "16",

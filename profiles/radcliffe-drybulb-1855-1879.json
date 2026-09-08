@@ -1,0 +1,219 @@
+{
+ "id": "radcliffe-drybulb-1855-1879",
+ "name": "Radcliffe Observatory, Oxford — mean monthly dry bulb 1855-1879 (Table II)",
+ "columns": [
+  {
+   "key": "year",
+   "label": "Year",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "jan",
+   "label": "Jan.",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "feb",
+   "label": "Feb.",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "mar",
+   "label": "Mar.",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "apr",
+   "label": "Apr.",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "may",
+   "label": "May",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "jun",
+   "label": "June",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "jul",
+   "label": "July",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "aug",
+   "label": "Aug.",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "sep",
+   "label": "Sept.",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "oct",
+   "label": "Oct.",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "nov",
+   "label": "Nov.",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "dec",
+   "label": "Dec.",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    20.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "yearly_mean",
+   "label": "Yearly Mean",
+   "kind": "number",
+   "unit": "F",
+   "range": [
+    40.0,
+    60.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "source": "Internet Archive astronomicaland03obsegoog p.139 (Table II)",
+ "rows_per_page": "fixed:25",
+ "adapter": "",
+ "checks": [
+  {
+   "kind": "mean",
+   "result": "yearly_mean",
+   "of": [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "may",
+    "jun",
+    "jul",
+    "aug",
+    "sep",
+    "oct",
+    "nov",
+    "dec"
+   ]
+  }
+ ],
+ "markers": [],
+ "probe_x_frac": [
+  0.11,
+  0.19
+ ],
+ "table_x_frac": [
+  0.06,
+  0.96
+ ],
+ "notes": "Termometro seco em FAHRENHEIT, linhas = ANOS. Oxford publica Tmean (media de max e min) em Celsius - definicao DIFERENTE, logo compara-se por deslocamento constante, nao por igualdade.",
+ "extra": {}
+}
