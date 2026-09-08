@@ -249,7 +249,8 @@ class Profile:
         out = []
         for col in self.columns:
             v = values.get(col.key)
-            if v is None or col.range is None or col.kind == "text":
+            # a ditto mark is a legitimate value and not a number: skip, do not crash
+            if not isinstance(v, (int, float)) or col.range is None or col.kind == "text":
                 continue
             lo, hi = col.range
             if not (lo <= float(v) <= hi):
