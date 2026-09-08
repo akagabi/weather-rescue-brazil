@@ -1,0 +1,210 @@
+{
+ "id": "radcliffe-1855-1879",
+ "name": "Radcliffe Observatory, Oxford — mean monthly barometer readings 1855-1879",
+ "columns": [
+  {
+   "key": "year",
+   "label": "Year",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "jan",
+   "label": "Jan.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "feb",
+   "label": "Feb.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "mar",
+   "label": "Mar.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "apr",
+   "label": "Apr.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "may",
+   "label": "May.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "jun",
+   "label": "June.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "jul",
+   "label": "July.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "aug",
+   "label": "Aug.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "sep",
+   "label": "Sept.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "oct",
+   "label": "Oct.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "nov",
+   "label": "Nov.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "dec",
+   "label": "Dec.",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "yearly_mean",
+   "label": "Yearly Means",
+   "kind": "number",
+   "unit": "in",
+   "range": [
+    28.0,
+    31.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "source": "Internet Archive astronomicaland03obsegoog p.138 (Table I)",
+ "rows_per_page": "fixed:25",
+ "adapter": "",
+ "checks": [
+  {
+   "kind": "mean",
+   "result": "yearly_mean",
+   "of": [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "may",
+    "jun",
+    "jul",
+    "aug",
+    "sep",
+    "oct",
+    "nov",
+    "dec"
+   ]
+  }
+ ],
+ "notes": "TERCEIRO CORPUS, de outro arquivo e outro país. Inglaterra, inglês, barômetro em POLEGADAS. A semântica da tabela é invertida: linhas = ANOS, colunas = MESES. O ponto decimal é elevado e a parte inteira (29) é elidida, sendo impressa só quando muda (30·100, 29·721). Checksum: Yearly Means = média dos 12 meses.",
+ "extra": {}
+}

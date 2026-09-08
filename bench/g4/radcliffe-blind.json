@@ -1,0 +1,139 @@
+{
+ "source": "Internet Archive astronomicaland03obsegoog p.138, Radcliffe Observatory Oxford, Table I",
+ "why": "THIRD CORPUS, different archive and country: England, English, barometer in INCHES, rows=years and columns=months, raised decimal point with the integer part elided. Training saw only Brazilian tables with rows=days.",
+ "profile": "radcliffe-1855-1879",
+ "printed_columns": [
+  "year",
+  "jan",
+  "feb",
+  "mar",
+  "apr",
+  "may",
+  "jun",
+  "jul",
+  "aug",
+  "sep",
+  "oct",
+  "nov",
+  "dec",
+  "yearly_mean"
+ ],
+ "verification": "per-row checksum: yearly mean equals the mean of the 12 months in 6/6 rows",
+ "note": "cells are FAITHFUL TO PRINT: '.404' is printed as a raised point with the leading 29 elided",
+ "rows": [
+  {
+   "row": 0,
+   "cells": [
+    "1856",
+    ".404",
+    ".840",
+    ".972",
+    ".554",
+    ".621",
+    ".831",
+    ".784",
+    ".691",
+    ".600",
+    ".936",
+    ".876",
+    ".584",
+    ".724"
+   ]
+  },
+  {
+   "row": 1,
+   "cells": [
+    "1857",
+    ".589",
+    ".891",
+    ".651",
+    ".583",
+    ".732",
+    ".790",
+    ".792",
+    ".786",
+    ".724",
+    ".640",
+    ".898",
+    "30.100",
+    ".765"
+   ]
+  },
+  {
+   "row": 2,
+   "cells": [
+    "1858",
+    "30.108",
+    ".787",
+    ".715",
+    ".719",
+    ".727",
+    ".864",
+    ".733",
+    ".769",
+    ".801",
+    ".792",
+    ".688",
+    "29.721",
+    ".785"
+   ]
+  },
+  {
+   "row": 3,
+   "cells": [
+    "1859",
+    "29.968",
+    ".761",
+    ".750",
+    ".557",
+    ".758",
+    ".725",
+    ".885",
+    ".757",
+    ".648",
+    ".453",
+    ".767",
+    ".570",
+    ".717"
+   ]
+  },
+  {
+   "row": 4,
+   "cells": [
+    "1860",
+    ".455",
+    ".824",
+    ".591",
+    ".776",
+    ".680",
+    ".555",
+    ".790",
+    ".478",
+    ".701",
+    ".791",
+    ".636",
+    ".431",
+    ".642"
+   ]
+  },
+  {
+   "row": 5,
+   "cells": [
+    "1861",
+    ".965",
+    ".608",
+    ".557",
+    ".960",
+    ".889",
+    ".738",
+    ".529",
+    ".807",
+    ".655",
+    ".777",
+    ".515",
+    ".933",
+    ".744"
+   ]
+  }
+ ]
+}

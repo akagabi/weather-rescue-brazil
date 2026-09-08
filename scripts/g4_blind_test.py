@@ -23,6 +23,8 @@ SPECS = {
                  ROOT / "data" / "raw" / "docvirt" / "14" / "000159.webp", "1886-02"),
     "rio1883": (ROOT / "bench" / "g4" / "rio1883-blind.json",
                 ROOT / "data" / "raw" / "docvirt" / "8" / "000095.webp", "1883-11"),
+    "radcliffe": (ROOT / "bench" / "g4" / "radcliffe-blind.json",
+                  ROOT / "data" / "raw" / "ia" / "astronomicaland03obsegoog" / "000120.jpg", "1856-01"),
 }
 
 
