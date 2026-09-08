@@ -18,6 +18,7 @@ from wrb.dataset import boxes_for_centres, crop_boxes  # noqa: E402
 from wrb.rows import locate_day_rows  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
+PROBE = {"radcliffe": (0.11, 0.19)}   # the year column sits where a Brazilian day column does not
 SPECS = {
     "maranhao": (ROOT / "bench" / "g4" / "maranhao-blind.json",
                  ROOT / "data" / "raw" / "docvirt" / "14" / "000159.webp", "1886-02"),
@@ -60,7 +61,8 @@ def main():
     from peft import PeftModel
     from transformers import AutoModelForImageTextToText, AutoProcessor
     image = Image.open(PAGE).convert("RGB")
-    loc = locate_day_rows(image, p.expected_rows(PERIOD))
+    kw = {"probe_x_frac": PROBE[args.set]} if args.set in PROBE else {}
+    loc = locate_day_rows(image, p.expected_rows(PERIOD), **kw)
     print(f"localiser: {len(loc.chain)} rows found (expected {p.expected_rows(PERIOD)}), "
           f"pitch {loc.pitch}, skew {loc.skew_deg}, ok={loc.ok}")
     dev = "mps" if torch.backends.mps.is_available() else "cpu"

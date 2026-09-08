@@ -36,3 +36,37 @@ Tudo é impresso, brasileiro, das décadas de 1880, do mesmo acervo digitalizado
 varredura de 56 páginas nas outras 12 obras do acervo não achou mais tabelas — são texto corrido.
 Um terceiro corpus, de outro arquivo e de preferência não brasileiro, é o próximo passo para a
 afirmação valer além disso.
+
+## Terceiro corpus: Radcliffe Observatory, Oxford (arquivo e país diferentes)
+
+Buscado e baixado do Internet Archive (domínio público, educado: sequencial, ≥2 s, UA do projeto).
+`astronomicaland03obsegoog` p.138, Tabela I: **médias mensais do barômetro, 1855–1879**.
+
+Nada aqui se parece com o treino: **Inglaterra, inglês, barômetro em POLEGADAS**, digitalização do
+Google (não DocVirt), e a **semântica da tabela é invertida — linhas são ANOS, colunas são MESES**.
+Ponto decimal elevado, com a parte inteira (29) elidida e impressa só quando muda (`30·108`,
+`29·721`). Seis linhas lidas à mão, **todas verificadas pelo checksum da própria página** (a média
+anual impressa = média dos 12 meses).
+
+| | resultado |
+|---|---|
+| Células corretas (alinhamento corrigido) | **62/70 = 88,6%** |
+| Só as colunas de dados (excluindo a do ano) | **~94%** |
+
+**Erros, todos diagnosticáveis:** 4 dos 8 são a coluna do ANO lida como `18` em vez de `1856` — o
+recorte corta o ano na borda esquerda (`table_x_frac` calibrado para tabelas brasileiras), ou seja
+geometria, não leitura. Restam uma troca de duas colunas e um `29·968` lido sem a parte inteira.
+
+### Duas limitações reais que este corpus expôs
+
+1. **Resolução mínima.** O scan tem 898 px de largura (o máximo que o Google produziu) para 14
+   colunas; o localizador achava 4 linhas de 25. Corrigido de forma geral: `wrb.rows` agora detecta
+   passo abaixo de `MIN_PITCH_PX` e refaz a localização com a página em 2×, devolvendo as caixas na
+   escala original. Passou a achar 25/25. Nenhuma página brasileira mudou; 171 testes verdes.
+2. **A janela de sondagem é calibrada para a coluna do dia** brasileira. Aqui a coluna do ano fica
+   noutro lugar, e foi preciso passar `probe_x_frac` explicitamente. Isso deveria ser um campo do
+   perfil, não um argumento — pendência anotada.
+
+**Leitura honesta:** o primeiro teste deu **0/56**, e valeu mais do que teria valido um acerto: o
+zero era localização (o modelo lia linhas reais, só que não as que eu havia rotulado), e apontou um
+limite de resolução que nenhum corpus brasileiro teria revelado.

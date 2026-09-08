@@ -54,7 +54,9 @@ WEAK_PEAK_FRAC = 0.15      # peaks below this x median peak height are noise
 CHAIN_GAP_RANGE = (0.8, 1.2)  # consecutive-centre gap / pitch allowed inside the day chain (typeset rows are very regular)
 ISOLATED_MAX_GAP = 3.4     # x pitch: a lone peak with gaps up to this on both sides is a summary row
 UNITS_INK_FRAC = 0.45      # chain end is the units line if its peak < this x median chain peak
-RULE_MIN_FRAC = 0.35       # a y-line is a horizontal rule if > this fraction of the table width is ink
+RULE_MIN_FRAC = 0.35
+MIN_PITCH_PX = 34.0        # below this the row profile is too coarse to separate lines;
+                           # the page is upscaled and the boxes scaled back (Radcliffe, 898 px wide)       # a y-line is a horizontal rule if > this fraction of the table width is ink
 
 
 @dataclass
@@ -399,6 +401,7 @@ def locate_day_rows(
     table_x_frac: tuple[float, float] = _TABLE_X_FRAC,
     probe_x_frac: tuple[float, float] = PROBE_X_FRAC,
     band_frac: float = 1.0,
+    _upscaled: bool = False,
 ) -> RowLocation:
     """Find the `day_count` day rows. See the module docstring. Boxes are
     `band_frac * pitch` tall, centred on each row's ink centroid, and span
@@ -452,6 +455,14 @@ def locate_day_rows(
             best, tried = _search(prof, rules, day_prof)
     assert best is not None
     _, pitch, peaks, chain, dropped = best
+    if not _upscaled and (pitch < MIN_PITCH_PX or len(chain) != day_count):
+        # too few pixels per row for the profile to separate lines: redo at 2x
+        k = 2
+        big = image.resize((image.width * k, image.height * k), Image.LANCZOS)
+        alt = locate_day_rows(big, day_count, table_x_frac=table_x_frac,
+                              probe_x_frac=probe_x_frac, band_frac=band_frac, _upscaled=True)
+        if alt.ok and len(alt.chain) == day_count:
+            return _rescale(alt, k)
     loc = RowLocation([], [y for y, _ in peaks], dropped=dropped, pitch=pitch,
                       ink_threshold=thr, skew_deg=angle, rules=rules, day_col=(dx0, dx1), chain=[y for y, _ in chain])
     if len(chain) != day_count:
@@ -461,6 +472,16 @@ def locate_day_rows(
         return loc
     half = band_frac * pitch / 2
     loc.day_boxes = [(x0, max(0, round(y - half)), x1, min(height, round(y + half))) for y, _ in chain]
+    return loc
+
+
+def _rescale(loc: RowLocation, k: float) -> RowLocation:
+    loc.day_boxes = [tuple(round(v / k) for v in b) for b in loc.day_boxes]
+    loc.peaks = [round(y / k) for y in loc.peaks]
+    loc.chain = [round(y / k) for y in loc.chain]
+    loc.rules = [round(y / k) for y in loc.rules]
+    loc.pitch = loc.pitch / k
+    loc.day_col = tuple(round(v / k) for v in loc.day_col)
     return loc
 
 
