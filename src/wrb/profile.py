@@ -76,6 +76,11 @@ class Profile:
     rows_per_page: str = "days_in_month"   # days_in_month | days_in_month_x2 | fixed:<n>
     adapter: str = ""
     checks: list[dict] = field(default_factory=list)   # arithmetic the page itself asserts
+    # page geometry, per publication: where the row-index column sits and how
+    # wide the table runs, as fractions of page width. Defaults suit the
+    # Brazilian layouts; Oxford's year column sits elsewhere (docs/g4-blind-summary.md).
+    probe_x_frac: tuple[float, float] | None = None
+    table_x_frac: tuple[float, float] | None = None
     notes: str = ""
     extra: dict = field(default_factory=dict)
 
@@ -183,6 +188,15 @@ class Profile:
                     pass
         return out
 
+    def geometry(self) -> dict:
+        """Keyword arguments for `wrb.rows.locate_day_rows`, from the profile."""
+        kw = {}
+        if self.probe_x_frac:
+            kw["probe_x_frac"] = tuple(self.probe_x_frac)
+        if self.table_x_frac:
+            kw["table_x_frac"] = tuple(self.table_x_frac)
+        return kw
+
     def verify(self, values: dict, tol: float = 0.051) -> list[str]:
         """Check the arithmetic the PAGE asserts about its own numbers - a row's
         oscillation equalling max minus min, a mean equalling the mean of its
@@ -236,6 +250,9 @@ class Profile:
     # --- io -------------------------------------------------------------
     def to_dict(self) -> dict:
         d = asdict(self)
+        for k in ("probe_x_frac", "table_x_frac"):
+            if d.get(k) is not None:
+                d[k] = list(d[k])
         for c in d["columns"]:
             for k in ("range", "elided_range"):
                 if c.get(k) is not None:

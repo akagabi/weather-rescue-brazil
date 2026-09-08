@@ -1,0 +1,135 @@
+"""Production run: read every page in a worklist and emit the dataset.
+
+    python scripts/g4_produce.py --adapter runs/g4/gen3/epoch2 --worklist data/g4/worklist.json
+
+Each output row carries its value, its provenance (archive, item, page, row)
+and a QC verdict, so a consumer can filter to the guaranteed subset:
+
+    checks_pass   the page's own arithmetic closes for this row (strongest)
+    qc_clean      every value inside the profile's physical range
+    flagged       something to review; the reason is recorded
+
+Nothing is silently corrected: values are stored AS PRINTED, with the
+publication's conventions (elided digits) recorded in the profile so a
+consumer can restore them deterministically.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+
+from g4_train import INSTRUCTION_PRINTED  # noqa: E402
+from wrb import profile as prof  # noqa: E402
+from wrb.dataset import boxes_for_centres, crop_boxes  # noqa: E402
+from wrb.rows import locate_day_rows  # noqa: E402
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def page_path(item: dict) -> Path:
+    if item.get("archive") == "ia":
+        return ROOT / "data" / "raw" / "ia" / item["item"] / f"{item['page']:06d}.jpg"
+    return ROOT / "data" / "raw" / "docvirt" / item["doc"] / f"{int(item['page']):06d}.webp"
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--adapter", required=True)
+    ap.add_argument("--base", default="Qwen/Qwen3.5-2B")
+    ap.add_argument("--worklist", required=True)
+    ap.add_argument("--out", default="data/dataset/weather-rescue-brazil.jsonl")
+    ap.add_argument("--limit", type=int, default=0)
+    args = ap.parse_args()
+
+    work = json.loads(Path(args.worklist).read_text())["pages"]
+    if args.limit:
+        work = work[:args.limit]
+    from PIL import Image
+    import torch
+    from peft import PeftModel
+    from transformers import AutoModelForImageTextToText, AutoProcessor
+    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    procr = AutoProcessor.from_pretrained(args.base)
+    model = AutoModelForImageTextToText.from_pretrained(args.base, dtype=torch.bfloat16).to(dev)
+    model = PeftModel.from_pretrained(model, args.adapter).to(dev)
+    model.eval()
+
+    out_path = ROOT / args.out
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    fh = out_path.open("w")
+    stats = {"pages": 0, "refused": 0, "rows": 0, "checks_pass": 0, "qc_clean": 0, "flagged": 0}
+    t0 = time.time()
+    for w in work:
+        p = prof.load(w["profile"])
+        img_path = page_path(w)
+        if not img_path.exists():
+            print(f"  {w.get('label', img_path.name)}: image missing, skipped", flush=True)
+            stats["refused"] += 1
+            continue
+        image = Image.open(img_path).convert("RGB")
+        want = p.expected_rows(w["period"])
+        loc = locate_day_rows(image, want, **p.geometry())
+        if not loc.chain:
+            print(f"  {w.get('label')}: no rows located, skipped", flush=True)
+            stats["refused"] += 1
+            continue
+        located_ok = loc.ok
+        crops = crop_boxes(image, boxes_for_centres(loc.chain, loc, *image.size), loc.skew_deg, scale=2.0)
+        n_pass = n_clean = n_flag = 0
+        for idx, crop in enumerate(crops):
+            msgs = [{"role": "user", "content": [{"type": "image", "image": crop},
+                                                 {"type": "text", "text": INSTRUCTION_PRINTED}]}]
+            inp = procr.apply_chat_template(msgs, add_generation_prompt=True, tokenize=True,
+                                            return_dict=True, return_tensors="pt").to(dev)
+            n = inp["input_ids"].shape[1]
+            with torch.no_grad():
+                o = model.generate(**inp, max_new_tokens=140, do_sample=False)
+            text = procr.decode(o[0][n:], skip_special_tokens=True).split("<|im_end|>")[0].strip()
+            if dev == "mps":
+                torch.mps.empty_cache()
+            values, problems = p.parse(text)
+            # read AS PRINTED, then restore the publication's elided digits in
+            # code before any QC - checking a printed 54.44 against a barometer
+            # range of 650-800 flags every cell (docs/g4-print-fidelity.md)
+            restored = p.from_printed(values)
+            viol = p.violations(restored)
+            check_fail = p.verify(restored) if p.checks else []
+            scoreable = bool(p.checks) and any(
+                isinstance(restored.get(c["result"]), (int, float)) for c in p.checks)
+            verdict = ("checks_pass" if scoreable and not check_fail and not viol and not problems
+                       else "qc_clean" if not viol and not problems and not check_fail
+                       else "flagged")
+            n_pass += verdict == "checks_pass"
+            n_clean += verdict == "qc_clean"
+            n_flag += verdict == "flagged"
+            fh.write(json.dumps({
+                "profile": p.id, "publication": p.name, "source": p.source,
+                "archive": w.get("archive", "docvirt"), "item": w.get("item", w.get("doc")),
+                "page": w["page"], "period": w["period"], "row": idx,
+                "values_as_printed": values, "values": restored, "raw": text,
+                "verdict": verdict, "problems": problems, "range_violations": viol,
+                "check_failures": check_fail, "page_rows_located_ok": located_ok,
+            }, ensure_ascii=False) + "\n")
+        stats["pages"] += 1
+        stats["rows"] += len(crops)
+        stats["checks_pass"] += n_pass
+        stats["qc_clean"] += n_clean
+        stats["flagged"] += n_flag
+        print(f"  {w.get('label')}: {len(crops)} rows  "
+              f"checks_pass={n_pass} qc_clean={n_clean} flagged={n_flag}"
+              + ("" if located_ok else "  [rows did not close]"), flush=True)
+    fh.close()
+    stats["minutes"] = round((time.time() - t0) / 60, 1)
+    (out_path.with_suffix(".summary.json")).write_text(json.dumps(stats, indent=1))
+    print(f"\n{json.dumps(stats)}\nwrote {out_path.relative_to(ROOT)}")
+
+
+if __name__ == "__main__":
+    main()

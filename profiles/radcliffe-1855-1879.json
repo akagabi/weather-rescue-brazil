@@ -205,6 +205,14 @@
    ]
   }
  ],
+ "probe_x_frac": [
+  0.11,
+  0.19
+ ],
+ "table_x_frac": [
+  0.06,
+  0.96
+ ],
  "notes": "TERCEIRO CORPUS, de outro arquivo e outro país. Inglaterra, inglês, barômetro em POLEGADAS. A semântica da tabela é invertida: linhas = ANOS, colunas = MESES. O ponto decimal é elevado e a parte inteira (29) é elidida, sendo impressa só quando muda (30·100, 29·721). Checksum: Yearly Means = média dos 12 meses.",
  "extra": {}
 }
