@@ -95,6 +95,8 @@ def main() -> None:
             if dev == "mps":
                 torch.mps.empty_cache()
             values, problems = p.parse(text)
+            # words the page prints instead of a number, kept verbatim
+            markers = dict(getattr(p, 'last_markers', {}) or {})
             # read AS PRINTED, then restore the publication's elided digits in
             # code before any QC - checking a printed 54.44 against a barometer
             # range of 650-800 flags every cell (docs/g4-print-fidelity.md)
@@ -113,7 +115,7 @@ def main() -> None:
                 "profile": p.id, "publication": p.name, "source": p.source,
                 "archive": w.get("archive", "docvirt"), "item": w.get("item", w.get("doc")),
                 "page": w["page"], "period": w["period"], "row": idx,
-                "values_as_printed": values, "values": restored, "raw": text,
+                "values_as_printed": values, "values": restored, "markers": markers, "raw": text,
                 "verdict": verdict, "problems": problems, "range_violations": viol,
                 "check_failures": check_fail, "page_rows_located_ok": located_ok,
             }, ensure_ascii=False) + "\n")
