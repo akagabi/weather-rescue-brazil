@@ -105,8 +105,11 @@ def main() -> None:
             check_fail = p.verify(restored) if p.checks else []
             scoreable = bool(p.checks) and any(
                 isinstance(restored.get(c["result"]), (int, float)) for c in p.checks)
-            verdict = ("checks_pass" if scoreable and not check_fail and not viol and not problems
-                       else "qc_clean" if not viol and not problems and not check_fail
+            from wrb.profile import PADDED_TRAILING
+            hard = [x for x in problems if x != PADDED_TRAILING]
+            padded = PADDED_TRAILING in problems
+            verdict = ("checks_pass" if scoreable and not check_fail and not viol and not hard
+                       else "qc_clean" if not viol and not hard and not check_fail
                        else "flagged")
             n_pass += verdict == "checks_pass"
             n_clean += verdict == "qc_clean"
@@ -116,7 +119,7 @@ def main() -> None:
                 "archive": w.get("archive", "docvirt"), "item": w.get("item", w.get("doc")),
                 "page": w["page"], "period": w["period"], "row": idx,
                 "values_as_printed": values, "values": restored, "markers": markers, "raw": text,
-                "verdict": verdict, "problems": problems, "range_violations": viol,
+                "verdict": verdict, "padded_trailing": padded, "problems": problems, "range_violations": viol,
                 "check_failures": check_fail, "page_rows_located_ok": located_ok,
             }, ensure_ascii=False) + "\n")
         stats["pages"] += 1

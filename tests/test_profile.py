@@ -76,10 +76,22 @@ def test_ditto_marks_resolve_against_the_row_above():
 
 
 def test_parse_reports_a_short_row_instead_of_guessing():
+    """One missing cell is padded at the tail - the common case is a blank last
+    column - but the assumption is recorded, never silent."""
+    from wrb.profile import PADDED_TRAILING
     p = load("corumba-1889")
     values, problems = p.parse(" | ".join(["1"] * 15))       # 15 cells, layout has 16
-    assert any("expected 16" in x for x in problems)
+    assert PADDED_TRAILING in problems
     assert values["estado_ceo"] is None
+    # anything further off is a real mismatch and says so
+    _, problems = p.parse(" | ".join(["1"] * 12))
+    assert any("expected 16" in x for x in problems)
+
+
+def test_trailing_blank_extra_is_trimmed_quietly():
+    p = load("corumba-1889")
+    _, problems = p.parse(" | ".join(["1"] * 16 + ["null"]))
+    assert problems == []
 
 
 def test_violations_use_profile_ranges():

@@ -34,6 +34,7 @@ NULL = "null"
 # 19th-century tables repeat a value with a ditto mark rather than reprinting
 # it - Corumba writes the day once and dittos the second reading of that day.
 # Treated as a first-class value, resolved against the previous row.
+PADDED_TRAILING = "padded 1 trailing cell (assumed the last column is blank)"
 DITTO = "\u00bb"
 DITTO_TOKENS = {"\u00bb", "\u00ab", '"', "\u201d", "\u2033", "''", ",,", "idem", "id.", "ditto", "\u3003"}
 
@@ -141,6 +142,18 @@ class Profile:
         problems: list[str] = []
         markers: dict[str, str] = {}
         self.last_markers = markers
+        # A row whose LAST printed cell is blank comes back one short (the model
+        # stops) or one long (a trailing null). Both are the tail, not a
+        # misalignment, so trim/pad quietly; any other mismatch is a real problem.
+        blank = (NULL, "", "-", "\u2014", "...", "\u2026", "....")
+        while len(toks) == self.n_cells + 1 and toks[-1].lower() in blank:
+            toks = toks[:-1]
+        if len(toks) == self.n_cells - 1:
+            # ASSUMPTION, recorded not hidden: the absent cell is the last one.
+            # If it is not, every value after it is shifted - the failure this
+            # whole pipeline exists to avoid - so the row stays distinguishable.
+            toks = toks + [NULL]
+            problems.append(PADDED_TRAILING)
         if len(toks) != self.n_cells:
             problems.append(f"{len(toks)} cells, expected {self.n_cells}")
         values: dict = {}
