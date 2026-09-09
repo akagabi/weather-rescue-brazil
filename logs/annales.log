@@ -1,0 +1,10 @@
+257 páginas candidatas em doc 8
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 9251.04it/s]
+  0/257  0.1min  p9: None None | NOT_WEATHER
+  10/257  3.3min  p27: rio-1883-thermo 1883-02 | Observations météorologiques du mois de Février 1883
+  20/257  6.6min  p41: None 1883-04 | Observations météorologiques du mois d'Avril 1883
+  30/257  10.0min  p55: None 1883-06 | Observations météorologiques du mois de Juin 1883
+  40/257  13.5min  p73: None 1883-08 | Observations météorologiques du mois d'Aout 1883
+  50/257  17.1min  p87: None 1883-10 | Observations météorologiques du mois d'Octobre 1883
+  60/257  20.6min  p101: None 1883-12 | Observations météorologiques du mois de Décembre 188
+  70/257  24.3min  p119: None 1883-06 | Résumé météorologique du mois de Juin 1883

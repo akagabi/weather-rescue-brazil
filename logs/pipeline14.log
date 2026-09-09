@@ -1,0 +1,14 @@
+== 1/4 varrendo doc 14 ==
+  130 candidatas
+== 2/4 lendo legendas ==
+8/130 pages read as a weather table
+identified 0/130 pages with a profile AND a period
+Counter({None: 130})
+wrote /Users/bueno/detail/weather-rescue-brazil/data/g4/identified_14.json
+== 3/4 montando worklist ==
+  0 páginas com perfil E período
+== 4/4 transcrevendo (preflight rejeita o que não for tabela) ==
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 7150.57it/s]
+
+{"pages": 0, "refused": 0, "rows": 0, "checks_pass": 0, "qc_clean": 0, "flagged": 0, "minutes": 0.0}
+wrote data/dataset/doc14.jsonl

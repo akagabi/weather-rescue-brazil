@@ -1,0 +1,180 @@
+{
+ "id": "rio-1883-barometre",
+ "name": "Annales de l'Observatoire Impérial — baromètre réduit à 0°, 7 leituras diárias (1883)",
+ "columns": [
+  {
+   "key": "date",
+   "label": "Date",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h04m",
+   "label": "4 h. M.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700.0,
+    800.0
+   ],
+   "elided": true,
+   "elided_range": [
+    700.0,
+    800.0
+   ],
+   "note": ""
+  },
+  {
+   "key": "h07m",
+   "label": "7 h. M.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700.0,
+    800.0
+   ],
+   "elided": true,
+   "elided_range": [
+    700.0,
+    800.0
+   ],
+   "note": ""
+  },
+  {
+   "key": "h10m",
+   "label": "10 h. M.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700.0,
+    800.0
+   ],
+   "elided": true,
+   "elided_range": [
+    700.0,
+    800.0
+   ],
+   "note": ""
+  },
+  {
+   "key": "h01s",
+   "label": "1 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700.0,
+    800.0
+   ],
+   "elided": true,
+   "elided_range": [
+    700.0,
+    800.0
+   ],
+   "note": ""
+  },
+  {
+   "key": "h04s",
+   "label": "4 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700.0,
+    800.0
+   ],
+   "elided": true,
+   "elided_range": [
+    700.0,
+    800.0
+   ],
+   "note": ""
+  },
+  {
+   "key": "h07s",
+   "label": "7 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700.0,
+    800.0
+   ],
+   "elided": true,
+   "elided_range": [
+    700.0,
+    800.0
+   ],
+   "note": ""
+  },
+  {
+   "key": "h10s",
+   "label": "10 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700.0,
+    800.0
+   ],
+   "elided": true,
+   "elided_range": [
+    700.0,
+    800.0
+   ],
+   "note": ""
+  },
+  {
+   "key": "moyenne",
+   "label": "Moyenne",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700.0,
+    800.0
+   ],
+   "elided": true,
+   "elided_range": [
+    700.0,
+    800.0
+   ],
+   "note": ""
+  },
+  {
+   "key": "oscillation",
+   "label": "Oscillation",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    -15.0,
+    15.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "source": "DocVirt obnacional/8 — Annales de l'Observatoire Impérial, 1883",
+ "rows_per_page": "days_in_month",
+ "adapter": "",
+ "checks": [
+  {
+   "kind": "mean",
+   "result": "moyenne",
+   "of": [
+    "h04m",
+    "h07m",
+    "h10m",
+    "h01s",
+    "h04s",
+    "h07s",
+    "h10s"
+   ]
+  }
+ ],
+ "markers": [],
+ "probe_x_frac": null,
+ "table_x_frac": null,
+ "notes": "Terceiro layout do doc 8, ao lado de rio-1883-vapeur (9 celulas) e rio-1883-thermo (13 celulas). O cabecalho imprime 'Barometre reduit a 0, 700mm +': os milhares sao ELIDIDOS, 59.68 significa 759.68. A pagina traz linha 'Mois' e a Moyenne e a media das 7 leituras, portanto valida-se sozinha. A coluna Oscillation NAO e max-min nem diferenca da media do dia anterior - nao foi identificada, por isso nao tem check declarado.",
+ "extra": {}
+}

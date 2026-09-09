@@ -5,3 +5,13 @@
   Santa-Cruz 15/173 1889-10: 33 rows  checks_pass=27 qc_clean=2 flagged=4  [rows did not close]
   Imperial Observatório 15/155 1889-08: 35 rows  checks_pass=24 qc_clean=1 flagged=10  [rows did not close]
   Imperial Observatório 15/165 1889-09: 30 rows  checks_pass=20 qc_clean=0 flagged=10
+  Imperial Observatório 15/171 1889-10: 33 rows  checks_pass=25 qc_clean=0 flagged=8  [rows did not close]
+  Imperial Observatório 16/20 1889-12: 31 rows  checks_pass=26 qc_clean=0 flagged=5
+  Cuyabá 15/35 1888-10: 11 rows  checks_pass=3 qc_clean=1 flagged=7  [rows did not close]
+  Cuyabá 15/76 1889-01: 31 rows  checks_pass=14 qc_clean=0 flagged=17
+  Cuyabá 15/93 1889-02: 10 rows  checks_pass=1 qc_clean=1 flagged=8  [rows did not close]
+  Cuyabá 15/109 1889-03: 31 rows  checks_pass=0 qc_clean=0 flagged=31
+  Cuyabá 15/124 1889-04: 9 rows  checks_pass=0 qc_clean=0 flagged=9  [rows did not close]
+
+{"pages": 13, "refused": 0, "rows": 346, "checks_pass": 176, "qc_clean": 5, "flagged": 165, "minutes": 42.1}
+wrote data/dataset/backlog.jsonl

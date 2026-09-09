@@ -1,0 +1,1042 @@
+[
+ {
+  "doc": "14",
+  "page": 4,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 6,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 8,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 10,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 18,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 20,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 21,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 23,
+  "caption": "REVISTA DO OBSERVATORIO",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 24,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NA CIDADE DO RIO GRANDE DO SUL NOS ANOS DE 1882 A 1884.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 26,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 27,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 29,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 31,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 33,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 35,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 37,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 38,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 39,
+  "caption": "REVISTA DO OBSERVATORIO\nPHENOMENOS APRESENTADOS PELOS SATELITES DE JUPITER\nRevista climatologica do mez de Janeiro de 1886",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1886-01"
+ },
+ {
+  "doc": "14",
+  "page": 42,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 43,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 44,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 46,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 47,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 48,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 50,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 52,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 53,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 54,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 56,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 58,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 59,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 60,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 61,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 62,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 65,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 67,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 69,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 71,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 73,
+  "caption": "REVISTA DO OBSERVATORIO\n61\n\nPHENOMENOS APRESENTADOS PELOS SATELLITES\nDE JUPITER\n\n| Dias | Horas | | SATELLITES |\n|---|---|---|---|\n| 1 | 9.47 T | | Passagem do 1º satellite. |\n| 2 | 10.40 T | | Entrada",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 77,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 78,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 80,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 82,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 83,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 84,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 87,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 88,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 89,
+  "caption": "OBSERVACIONES METEOROLÓGICAS NOS CAMPOS DO JORDÃO pelo Dr. Jacy Junior\nDEZEMBRO DE 1885\nTemperatura centigrada à sombra",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1885-12"
+ },
+ {
+  "doc": "14",
+  "page": 91,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 92,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 93,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 94,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 95,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 97,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 98,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 99,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 101,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 103,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 105,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 106,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 107,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 108,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 110,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 111,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 113,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 115,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 116,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 117,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 118,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 119,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 121,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 123,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 125,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 126,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 127,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 129,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 130,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 134,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 136,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 138,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 144,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 145,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 146,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 147,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 148,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 149,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 153,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 155,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 157,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 160,
+  "caption": "REVISTA DO OBSERVATORIO\nEm Março de 1886",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1886-03"
+ },
+ {
+  "doc": "14",
+  "page": 161,
+  "caption": "REVISTA DO OBSERVATORIO\nEm Maio de 1886",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1886-05"
+ },
+ {
+  "doc": "14",
+  "page": 163,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 164,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 168,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 171,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 172,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 174,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 175,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 176,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 178,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 180,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 181,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 182,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 183,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 184,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 185,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 187,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 188,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 189,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 190,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 191,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 192,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 193,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 194,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 197,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 200,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 201,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 202,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 203,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 204,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 205,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 206,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 207,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 208,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 209,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 210,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 211,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 213,
+  "caption": "REVISTA DO OBSERVATORIO\n191\n\nDia 1 - Chuva á noite. 2 - Chuvisco ás 4 h. da tarde. 3 - Ligeiro nevoeiro no horizonte. 4 - Nevoeiro no horizonte ás 4 e ás 7 h. da manhã. 5 - Ligeiro nevoeiro ás 7 h. da manhã. 6 - Nevoeiro",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 215,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ }
+]
