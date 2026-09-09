@@ -8,3 +8,29 @@
   50/257  17.1min  p87: None 1883-10 | Observations météorologiques du mois d'Octobre 1883
   60/257  20.6min  p101: None 1883-12 | Observations météorologiques du mois de Décembre 188
   70/257  24.3min  p119: None 1883-06 | Résumé météorologique du mois de Juin 1883
+  80/257  28.3min  p139: None None | DE RIO DE JANEIRO 1883
+  90/257  31.6min  p156: rio-1883-thermo 1884-02 | Observations météorologiques du mois de Février 1884
+  100/257  34.7min  p170: None 1884-03 | Observations météorologiques du mois de Mars 1884
+  110/257  37.8min  p185: None 1884-05 | Observations météorologiques du mois de Mai 1884
+  120/257  40.9min  p198: None 1884-07 | Observations météorologiques du mois de Juillet 1884
+  130/257  44.0min  p216: None 1883-09 | Observations météorologiques du mois de Septembre 18
+  140/257  47.3min  p228: None 1884-11 | Observations météorologiques du mois de Novembre 188
+  150/257  50.7min  p244: None 1884-01 | Résumé météorologique du mois de Janvier 1884
+  160/257  54.7min  p264: None 1884-11 | Résumé météorologique du mois de Novembre 1884
+  170/257  58.5min  p285: None 1885-01 | Observations météorologiques du mois de Janvier 1885
+  180/257  61.8min  p298: None 1885-02 | Observations météorologiques du mois de Février 1885
+  190/257  64.8min  p313: None 1885-04 | Observations météorologiques du mois d'Avril 1885
+  200/257  67.8min  p330: None 1885-06 | Observations météorologiques du mois de Juin 1885
+  210/257  70.7min  p344: None 1885-08 | Observations météorologiques du mois d'Août 1885
+  220/257  73.7min  p357: None 1885-10 | Observations météorologiques du mois d'Octobre 1885
+  230/257  76.4min  p374: None None | DE RIO DE JANEIRO 1885
+  240/257  79.9min  p390: None 1885-07 | Résumé météorologique du mois de Juillet 1885
+  250/257  83.6min  p405: None None | DE RIO DE JANEIRO 1885
+
+15/257 páginas com perfil E período
+Counter({None: 242, 'rio-1883-thermo': 12, 'rio-1883-barometre': 3})
+worklist: data/g4/worklist_annales1883.json 15 páginas
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 9774.53it/s]
+  Annales 8/27 1883-02 rio-1883-thermo: 19 rows  checks_pass=0 qc_clean=0 flagged=19  [rows did not close]
+/Users/bueno/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

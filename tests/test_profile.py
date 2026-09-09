@@ -159,3 +159,14 @@ def test_day_run_survives_a_ditto_and_a_late_start() -> None:
     keep, complete = day_rows_for_page(rows, "1889-01", "d")
     assert keep == {0, 1, 2}          # the ditto belongs to day 4
     assert not complete               # January needs 31 days, starting at 1
+
+
+def test_1883_hourly_profiles_all_declare_their_mean_check() -> None:
+    """Barometre and vapeur both print Moyenne as the mean of the seven daily
+    readings on the same row. Leaving the check undeclared silently downgrades
+    verified rows to merely plausible ones."""
+    for pid in ("rio-1883-barometre", "rio-1883-vapeur"):
+        p = load(pid)
+        assert p.checks, f"{pid} declara nenhum check"
+        assert p.checks[0]["kind"] == "mean" and p.checks[0]["result"] == "moyenne"
+        assert len(p.checks[0]["of"]) == 7

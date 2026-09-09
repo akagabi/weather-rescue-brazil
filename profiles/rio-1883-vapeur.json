@@ -9,6 +9,7 @@
    "unit": null,
    "range": null,
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -21,6 +22,7 @@
     40.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -33,6 +35,7 @@
     40.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -45,6 +48,7 @@
     40.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -57,6 +61,7 @@
     40.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -69,6 +74,7 @@
     40.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -81,6 +87,7 @@
     40.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -93,6 +100,7 @@
     40.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": ""
   },
   {
@@ -105,12 +113,31 @@
     40.0
    ],
    "elided": false,
+   "elided_range": null,
    "note": "média das 7 leituras — checksum interno"
   }
  ],
  "source": "DocVirt obnacional/8 p.95 (Novembre 1883)",
  "rows_per_page": "days_in_month",
  "adapter": "",
- "notes": "Quinto layout, SEGUNDO TESTE CEGO e primeira PUBLICAÇÃO diferente: não é a Revista do Observatório. Cabeçalho em FRANCÊS. 9 colunas; a estrutura não é instrumento-por-coluna e sim a MESMA medida em 7 horários do dia + a média. Checksum por linha: Moyenne = média das 7 leituras.",
+ "checks": [
+  {
+   "kind": "mean",
+   "result": "moyenne",
+   "of": [
+    "h04m",
+    "h07m",
+    "h10m",
+    "h01s",
+    "h04s",
+    "h07s",
+    "h10s"
+   ]
+  }
+ ],
+ "markers": [],
+ "probe_x_frac": null,
+ "table_x_frac": null,
+ "notes": "Quinto layout, SEGUNDO TESTE CEGO e primeira PUBLICAÇÃO diferente: não é a Revista do Observatório. Cabeçalho em FRANCÊS. 9 colunas; a estrutura não é instrumento-por-coluna e sim a MESMA medida em 7 horários do dia + a média. Checksum por linha: Moyenne = média das 7 leituras. A coluna Moyenne e a media das 7 leituras impressas na propria linha, portanto a pagina valida-se sozinha - o check estava por declarar.",
  "extra": {}
 }
