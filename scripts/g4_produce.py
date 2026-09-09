@@ -82,6 +82,36 @@ def main() -> None:
             continue
         located_ok = loc.ok
         crops = crop_boxes(image, boxes_for_centres(loc.chain, loc, *image.size), loc.skew_deg, scale=2.0)
+
+        # Preflight. A caption read off the whole page is NOT evidence that the
+        # page is a daily table: doc 14 p140 is prose whose caption belongs to a
+        # table on a neighbouring leaf, and it produced 28 junk rows before the
+        # QC caught it. Read three rows first and require two of them to start
+        # with a plausible day number. One generation per row instead of thirty.
+        day_key = next((c.key for c in p.columns if c.kind == "day"), None)
+        if day_key and len(crops) >= 3:
+            seen = 0
+            for probe in crops[:3]:
+                msgs = [{"role": "user", "content": [{"type": "image", "image": probe},
+                                                     {"type": "text", "text": INSTRUCTION_PRINTED}]}]
+                inp = procr.apply_chat_template(msgs, add_generation_prompt=True, tokenize=True,
+                                                return_dict=True, return_tensors="pt").to(dev)
+                n = inp["input_ids"].shape[1]
+                with torch.no_grad():
+                    o = model.generate(**inp, max_new_tokens=140, do_sample=False)
+                txt = procr.decode(o[0][n:], skip_special_tokens=True).split("<|im_end|>")[0].strip()
+                if dev == "mps":
+                    torch.mps.empty_cache()
+                vals, _ = p.parse(txt)
+                d = vals.get(day_key)
+                if isinstance(d, (int, float)) and 1 <= d <= 31:
+                    seen += 1
+            if seen < 2:
+                print(f"  {w.get('label')}: preflight falhou "
+                      f"({seen}/3 linhas com número de dia), página ignorada", flush=True)
+                stats["refused"] += 1
+                continue
+
         n_pass = n_clean = n_flag = 0
         for idx, crop in enumerate(crops):
             msgs = [{"role": "user", "content": [{"type": "image", "image": crop},

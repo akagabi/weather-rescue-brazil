@@ -1,0 +1,134 @@
+{
+ "pages": [
+  {
+   "profile": "revista-rio-1886",
+   "archive": "docvirt",
+   "doc": "14",
+   "page": 140,
+   "period": "1886-06",
+   "station": "Imperial Observatório",
+   "station_source": "legenda impressa",
+   "label": "Imperial Observatório 14/140 1886-06"
+  },
+  {
+   "profile": "revista-santacruz-1889",
+   "archive": "docvirt",
+   "doc": "15",
+   "page": 24,
+   "period": "1888-12",
+   "station": "Santa-Cruz",
+   "station_source": "legenda impressa",
+   "label": "Santa-Cruz 15/24 1888-12"
+  },
+  {
+   "profile": "revista-santacruz-1889",
+   "archive": "docvirt",
+   "doc": "15",
+   "page": 46,
+   "period": "1889-01",
+   "station": "Santa-Cruz",
+   "station_source": "legenda impressa",
+   "label": "Santa-Cruz 15/46 1889-01"
+  },
+  {
+   "profile": "revista-santacruz-1889",
+   "archive": "docvirt",
+   "doc": "15",
+   "page": 173,
+   "period": "1889-10",
+   "station": "Santa-Cruz",
+   "station_source": "legenda impressa",
+   "label": "Santa-Cruz 15/173 1889-10"
+  },
+  {
+   "profile": "revista-santacruz-1889",
+   "archive": "docvirt",
+   "doc": "15",
+   "page": 155,
+   "period": "1889-08",
+   "station": "Imperial Observatório",
+   "station_source": "legenda impressa",
+   "label": "Imperial Observatório 15/155 1889-08"
+  },
+  {
+   "profile": "revista-santacruz-1889",
+   "archive": "docvirt",
+   "doc": "15",
+   "page": 165,
+   "period": "1889-09",
+   "station": "Imperial Observatório",
+   "station_source": "legenda impressa",
+   "label": "Imperial Observatório 15/165 1889-09"
+  },
+  {
+   "profile": "revista-santacruz-1889",
+   "archive": "docvirt",
+   "doc": "15",
+   "page": 171,
+   "period": "1889-10",
+   "station": "Imperial Observatório",
+   "station_source": "legenda impressa",
+   "label": "Imperial Observatório 15/171 1889-10"
+  },
+  {
+   "profile": "revista-santacruz-1889",
+   "archive": "docvirt",
+   "doc": "16",
+   "page": 20,
+   "period": "1889-12",
+   "station": "Imperial Observatório",
+   "station_source": "legenda impressa",
+   "label": "Imperial Observatório 16/20 1889-12"
+  },
+  {
+   "profile": "cuyaba-1889",
+   "archive": "docvirt",
+   "doc": "15",
+   "page": 35,
+   "period": "1888-10",
+   "station": "Cuyabá",
+   "station_source": "legenda impressa",
+   "label": "Cuyabá 15/35 1888-10"
+  },
+  {
+   "profile": "cuyaba-1889",
+   "archive": "docvirt",
+   "doc": "15",
+   "page": 76,
+   "period": "1889-01",
+   "station": "Cuyabá",
+   "station_source": "legenda impressa",
+   "label": "Cuyabá 15/76 1889-01"
+  },
+  {
+   "profile": "cuyaba-1889",
+   "archive": "docvirt",
+   "doc": "15",
+   "page": 93,
+   "period": "1889-02",
+   "station": "Cuyabá",
+   "station_source": "legenda impressa",
+   "label": "Cuyabá 15/93 1889-02"
+  },
+  {
+   "profile": "cuyaba-1889",
+   "archive": "docvirt",
+   "doc": "15",
+   "page": 109,
+   "period": "1889-03",
+   "station": "Cuyabá",
+   "station_source": "legenda impressa",
+   "label": "Cuyabá 15/109 1889-03"
+  },
+  {
+   "profile": "cuyaba-1889",
+   "archive": "docvirt",
+   "doc": "15",
+   "page": 124,
+   "period": "1889-04",
+   "station": "Cuyabá",
+   "station_source": "legenda impressa",
+   "label": "Cuyabá 15/124 1889-04"
+  }
+ ]
+}
