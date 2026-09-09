@@ -8,8 +8,9 @@ modelo aberto de 2B rodando num laptop. Gerado por `scripts/g4_produce.py` com o
 
 | | |
 |---|---|
-| Linhas | 2.708 (1.827 utilizáveis, 67,5%) |
-| Valores nas linhas utilizáveis | **22.198** |
+| Linhas | 2.708 (1.862 utilizáveis) |
+| Valores nas linhas utilizáveis | **22.548** |
+| Linhas que são de facto dias | 2.280 — **81,7% delas aproveitáveis** (as outras 428 são resumos `Dec.`/`Mez` que o localizador captura e o filtro remove) |
 | Páginas | 98 |
 | Estações (linhas utilizáveis) | Imperial Observatório 1.567, Santa-Cruz 230, Corumbá 20, Porto do Maranhão 6, Cuyabá 4 |
 | Publicações | Revista do Observatório (1886-91) e **Annales de l'Observatoire Impérial (1883-85)** |

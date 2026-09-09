@@ -170,7 +170,13 @@ class Profile:
                 values[col.key] = tok
                 continue
             try:
-                values[col.key] = int(float(tok)) if col.kind == "day" else float(tok.replace(",", "."))
+                # 19th-century tables print a signed value with a space after
+                # the sign ("+ 0.35", "— 1.23"), and the em-dash IS a minus
+                # sign here, not punctuation. 36 rows of the 1883 barometer
+                # were being thrown away over the space alone.
+                num = (tok.replace(",", ".").replace("\u2014", "-").replace("\u2013", "-")
+                          .replace("+ ", "+").replace("- ", "-"))
+                values[col.key] = int(float(num)) if col.kind == "day" else float(num)
             except ValueError:
                 values[col.key] = None
                 low = tok.lower().rstrip(".").strip()

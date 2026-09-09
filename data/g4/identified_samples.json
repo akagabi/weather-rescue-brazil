@@ -1,0 +1,586 @@
+[
+ {
+  "doc": "2",
+  "page": 1,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "2",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "2",
+  "page": 25,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "2",
+  "page": 35,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "2",
+  "page": 45,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "2",
+  "page": 55,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "2",
+  "page": 65,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 1,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 25,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 35,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 45,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 55,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 65,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 75,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 95,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 105,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 115,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 125,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 135,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 145,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 165,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 1,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 25,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 35,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 45,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 55,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 65,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 75,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 95,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 105,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 115,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 125,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 1,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 2,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 25,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 35,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 45,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 55,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 65,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 75,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 95,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 1,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 2,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 25,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 35,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 45,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 55,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 65,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 75,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 95,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 105,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 115,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 125,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 135,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 145,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 1,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 2,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 25,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 35,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 45,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 55,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 65,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 75,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 85,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ }
+]

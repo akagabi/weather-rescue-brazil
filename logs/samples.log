@@ -1,0 +1,14 @@
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 6927.04it/s]
+  0/73  0.2min  2/1: None None | NOT_WEATHER
+  10/73  1.3min  4/35: None None | NOT_WEATHER
+  20/73  2.8min  4/135: None None | NOT_WEATHER
+  30/73  4.1min  7/75: None None | NOT_WEATHER
+  40/73  5.3min  9/35: None None | NOT_WEATHER
+  50/73  6.2min  10/25: None None | NOT_WEATHER
+  60/73  7.8min  10/125: None None | NOT_WEATHER
+  70/73  9.2min  12/65: None None | NOT_WEATHER
+
+0/73 pages read as a weather table
+identified 0/73 pages with a profile AND a period
+Counter({None: 73})
+wrote /Users/bueno/detail/weather-rescue-brazil/data/g4/identified_samples.json

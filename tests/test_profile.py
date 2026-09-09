@@ -170,3 +170,14 @@ def test_1883_hourly_profiles_all_declare_their_mean_check() -> None:
         assert p.checks, f"{pid} declara nenhum check"
         assert p.checks[0]["kind"] == "mean" and p.checks[0]["result"] == "moyenne"
         assert len(p.checks[0]["of"]) == 7
+
+
+def test_parses_a_sign_separated_from_its_number() -> None:
+    """The 1883 barometer prints its oscillation as "+ 0.35" and "— 1.23",
+    with a space after the sign and an em-dash standing in for the minus."""
+    p = blank("t-sign", "t", ["Date", "Oscillation"])
+    p.column("oscillation").range = (-20.0, 20.0)
+    vals, probs = p.parse("1 | + 0.35")
+    assert vals["oscillation"] == 0.35 and not probs
+    vals, probs = p.parse("2 | — 1.23")
+    assert vals["oscillation"] == -1.23 and not probs
