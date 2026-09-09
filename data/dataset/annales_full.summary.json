@@ -1,0 +1,9 @@
+{
+ "pages": 49,
+ "refused": 2,
+ "rows": 1300,
+ "checks_pass": 900,
+ "qc_clean": 33,
+ "flagged": 367,
+ "minutes": 104.3
+}

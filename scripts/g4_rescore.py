@@ -117,6 +117,13 @@ def main() -> None:
                    else "qc_clean" if not viol and not hard and not fails
                    else "flagged")
         r["is_day_row"] = row_is_day
+        # `publication` used to be copied from the profile's name at production
+        # time, which froze a mutable field: renaming two profiles yesterday (from
+        # station names to layout names, fixing the provenance bug) left rows
+        # produced before and after the rename carrying different strings for the
+        # SAME source. Nine publications appeared where five exist. Derive it here
+        # instead, so it always matches the profile the row actually used.
+        r["publication"] = p.name
         r.update(values_as_printed=values, values=restored, markers=markers, verdict=verdict,
                  padded_trailing=PADDED_TRAILING in problems, problems=problems,
                  range_violations=viol, check_failures=fails)
