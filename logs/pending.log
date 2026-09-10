@@ -1,0 +1,40 @@
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights:  79%|███████▉  | 488/617 [00:00<00:00, 4878.68it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 5611.19it/s]
+  0/331  0.2min  10/5: None None | NOT_WEATHER
+  10/331  1.4min  10/35: None None | NOT_WEATHER
+  20/331  2.7min  10/55: None None | NOT_WEATHER
+  30/331  3.4min  10/76: None None | NOT_WEATHER
+  40/331  4.3min  10/99: None None | NOT_WEATHER
+  50/331  5.1min  10/150: None None | NOT_WEATHER
+  60/331  6.0min  12/10: None None | NOT_WEATHER
+  70/331  6.9min  12/20: None None | NOT_WEATHER
+  80/331  7.9min  12/30: None None | NOT_WEATHER
+  90/331  8.9min  12/40: None None | NOT_WEATHER
+  100/331  9.8min  12/50: None None | NOT_WEATHER
+  110/331  10.6min  12/61: None None | NOT_WEATHER
+  120/331  11.0min  12/71: None None | NOT_WEATHER
+  130/331  11.5min  12/81: None None | NOT_WEATHER
+  140/331  12.1min  2/35: None None | NOT_WEATHER
+  150/331  12.8min  4/8: None None | NOT_WEATHER
+  160/331  13.6min  4/28: None None | NOT_WEATHER
+  170/331  14.4min  4/45: None None | NOT_WEATHER
+  180/331  15.2min  4/65: None None | NOT_WEATHER
+  190/331  16.0min  4/85: None None | NOT_WEATHER
+  200/331  16.8min  4/106: None None | NOT_WEATHER
+  210/331  17.7min  4/127: None None | NOT_WEATHER
+  220/331  18.6min  4/154: None None | NOT_WEATHER
+  230/331  19.5min  4/177: None None | NOT_WEATHER
+  240/331  20.3min  4/196: None None | NOT_WEATHER
+  250/331  21.1min  4/215: None None | NOT_WEATHER
+  260/331  21.9min  4/246: None None | NOT_WEATHER
+  270/331  22.7min  4/259: None None | NOT_WEATHER
+  280/331  23.5min  4/273: None None | NOT_WEATHER
+  290/331  24.2min  4/293: None None | NOT_WEATHER
+  300/331  25.0min  7/28: None None | NOT_WEATHER
+  310/331  25.9min  7/52: None None | NOT_WEATHER
+  320/331  26.6min  7/122: None None | NOT_WEATHER
+  330/331  27.3min  9/94: None None | NOT_WEATHER
+
+3/331 pages read as a weather table
+identified 0/331 pages with a profile AND a period
+Counter({None: 330, 'revista-rio-1886': 1})
+wrote /Users/bueno/detail/weather-rescue-brazil/data/g4/identified_pending.json

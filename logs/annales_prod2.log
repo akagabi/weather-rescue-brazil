@@ -1,0 +1,90 @@
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 9197.84it/s]
+  Annales 8/13 1883-01 rio-1883-barometre: 33 rows  checks_pass=29 qc_clean=0 flagged=4  [rows did not close]
+  Annales 8/15 1883-01 rio-1883-barometre: 33 rows  checks_pass=28 qc_clean=0 flagged=5  [rows did not close]
+  Annales 8/17 1883-01 rio-1883-thermo: 31 rows  checks_pass=24 qc_clean=0 flagged=7
+  Annales 8/25 1883-02 rio-1883-thermo: 28 rows  checks_pass=19 qc_clean=0 flagged=9
+  Annales 8/29 1883-03 rio-1883-barometre: 31 rows  checks_pass=29 qc_clean=0 flagged=2
+  Annales 8/31 1883-03 rio-1883-vapeur: 33 rows  checks_pass=30 qc_clean=0 flagged=3  [rows did not close]
+  Annales 8/33 1883-03 rio-1883-thermo: 31 rows  checks_pass=28 qc_clean=0 flagged=3
+  Annales 8/37 1883-04 rio-1883-barometre: 31 rows  checks_pass=28 qc_clean=0 flagged=3  [rows did not close]
+  Annales 8/39 1883-04 rio-1883-barometre: 33 rows  checks_pass=27 qc_clean=1 flagged=5  [rows did not close]
+  Annales 8/41 1883-04 rio-1883-thermo: 30 rows  checks_pass=25 qc_clean=0 flagged=5
+  Annales 8/45 1883-05 rio-1883-barometre: 35 rows  checks_pass=32 qc_clean=0 flagged=3  [rows did not close]
+  Annales 8/47 1883-05 rio-1883-vapeur: 31 rows  checks_pass=31 qc_clean=0 flagged=0
+  Annales 8/52 1883-05 rio-1883-actinometrie: 31 rows  checks_pass=18 qc_clean=0 flagged=13
+  Annales 8/53 1883-06 rio-1883-barometre: 30 rows  checks_pass=29 qc_clean=0 flagged=1
+  Annales 8/57 1883-06 rio-1883-thermo: 30 rows  checks_pass=25 qc_clean=0 flagged=5
+  Annales 8/60 1883-06 rio-1883-actinometrie: 8 rows  checks_pass=2 qc_clean=0 flagged=6  [rows did not close]
+  Annales 8/61 1883-07 rio-1883-barometre: 33 rows  checks_pass=31 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/63 1883-07 rio-1883-vapeur: 31 rows  checks_pass=29 qc_clean=0 flagged=2
+  Annales 8/65 1883-07 rio-1883-thermo: 34 rows  checks_pass=23 qc_clean=1 flagged=10  [rows did not close]
+  Annales 8/69 1883-08 rio-1883-barometre: 33 rows  checks_pass=31 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/71 1883-08 rio-1883-vapeur: 33 rows  checks_pass=29 qc_clean=0 flagged=4  [rows did not close]
+  Annales 8/73 1883-08 rio-1883-thermo: 31 rows  checks_pass=18 qc_clean=0 flagged=13
+  Annales 8/77 1883-09 rio-1883-barometre: 34 rows  checks_pass=28 qc_clean=0 flagged=6  [rows did not close]
+  Annales 8/85 1883-10 rio-1883-barometre: 33 rows  checks_pass=29 qc_clean=0 flagged=4  [rows did not close]
+  Annales 8/89 1883-10 rio-1883-thermo: 32 rows  checks_pass=22 qc_clean=0 flagged=10  [rows did not close]
+  Annales 8/93 1883-11 rio-1883-barometre: 32 rows  checks_pass=27 qc_clean=0 flagged=5  [rows did not close]
+  Annales 8/95 1883-11 rio-1883-vapeur: 32 rows  checks_pass=30 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/97 1883-11 rio-1883-thermo: 30 rows  checks_pass=26 qc_clean=0 flagged=4
+  Annales 8/101 1883-12 rio-1883-barometre: 30 rows  checks_pass=25 qc_clean=0 flagged=5  [rows did not close]
+  Annales 8/103 1883-12 rio-1883-vapeur: 34 rows  checks_pass=26 qc_clean=1 flagged=7  [rows did not close]
+  Annales 8/105 1883-12 rio-1883-thermo: 31 rows  checks_pass=26 qc_clean=0 flagged=5
+  Annales 8/111 1883-02 rio-1883-barometre: preflight falhou (1/3 linhas com número de dia), página ignorada
+  Annales 8/119 1883-06 rio-1883-barometre: preflight falhou (1/3 linhas com número de dia), página ignorada
+  Annales 8/121 1883-07 rio-1883-vapeur: 5 rows  checks_pass=1 qc_clean=0 flagged=4  [rows did not close]
+  Annales 8/123 1883-08 rio-1883-barometre: 5 rows  checks_pass=1 qc_clean=0 flagged=4  [rows did not close]
+  Annales 8/129 1883-11 rio-1883-vapeur: 5 rows  checks_pass=2 qc_clean=1 flagged=2  [rows did not close]
+  Annales 8/148 1884-01 rio-1883-barometre: 34 rows  checks_pass=29 qc_clean=0 flagged=5  [rows did not close]
+  Annales 8/150 1884-01 rio-1883-vapeur: 21 rows  checks_pass=19 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/156 1884-02 rio-1883-barometre: 29 rows  checks_pass=29 qc_clean=0 flagged=0
+  Annales 8/158 1884-02 rio-1883-vapeur: 21 rows  checks_pass=20 qc_clean=0 flagged=1  [rows did not close]
+  Annales 8/160 1884-02 rio-1883-thermo: 31 rows  checks_pass=27 qc_clean=0 flagged=4  [rows did not close]
+  Annales 8/164 1884-03 rio-1883-barometre: 33 rows  checks_pass=31 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/166 1884-03 rio-1883-vapeur: 33 rows  checks_pass=29 qc_clean=0 flagged=4  [rows did not close]
+  Annales 8/172 1884-04 rio-1883-barometre: 32 rows  checks_pass=30 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/174 1884-04 rio-1883-barometre: 21 rows  checks_pass=21 qc_clean=0 flagged=0  [rows did not close]
+  Annales 8/176 1884-04 rio-1883-thermo: 32 rows  checks_pass=27 qc_clean=0 flagged=5  [rows did not close]
+  Annales 8/180 1884-05 rio-1883-barometre: 16 rows  checks_pass=14 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/184 1884-05 rio-1883-thermo: 31 rows  checks_pass=27 qc_clean=0 flagged=4
+  Annales 8/188 1884-06 rio-1883-barometre: 32 rows  checks_pass=28 qc_clean=0 flagged=4  [rows did not close]
+  Annales 8/190 1884-06 rio-1883-barometre: 31 rows  checks_pass=25 qc_clean=1 flagged=5  [rows did not close]
+  Annales 8/192 1884-06 rio-1883-thermo: 30 rows  checks_pass=29 qc_clean=0 flagged=1
+  Annales 8/196 1884-07 rio-1883-barometre: 31 rows  checks_pass=24 qc_clean=0 flagged=7
+  Annales 8/198 1884-07 rio-1883-vapeur: 31 rows  checks_pass=30 qc_clean=0 flagged=1
+  Annales 8/208 1884-08 rio-1883-thermo: 31 rows  checks_pass=29 qc_clean=0 flagged=2
+  Annales 8/212 1884-09 rio-1883-barometre: 3 rows  checks_pass=1 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/216 1883-09 rio-1883-thermo: 22 rows  checks_pass=14 qc_clean=0 flagged=8  [rows did not close]
+  Annales 8/220 1884-10 rio-1883-barometre: 33 rows  checks_pass=29 qc_clean=0 flagged=4  [rows did not close]
+  Annales 8/222 1884-10 rio-1883-vapeur: 9 rows  checks_pass=6 qc_clean=0 flagged=3  [rows did not close]
+  Annales 8/228 1884-11 rio-1883-barometre: 4 rows  checks_pass=4 qc_clean=0 flagged=0  [rows did not close]
+  Annales 8/230 1884-11 rio-1883-vapeur: 31 rows  checks_pass=28 qc_clean=1 flagged=2  [rows did not close]
+  Annales 8/232 1884-11 rio-1883-thermo: 30 rows  checks_pass=28 qc_clean=0 flagged=2
+  Annales 8/236 1884-12 rio-1883-barometre: 33 rows  checks_pass=31 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/243 1884-12 rio-1883-actinometrie: 21 rows  checks_pass=16 qc_clean=0 flagged=5  [rows did not close]
+  Annales 8/254 1884-06 rio-1883-barometre: 5 rows  checks_pass=3 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/260 1884-09 rio-1883-barometre: 4 rows  checks_pass=2 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/285 1885-01 rio-1883-barometre: 24 rows  checks_pass=18 qc_clean=0 flagged=6  [rows did not close]
+  Annales 8/287 1885-01 rio-1883-thermo: 33 rows  checks_pass=26 qc_clean=0 flagged=7  [rows did not close]
+  Annales 8/291 1885-02 rio-1883-barometre: 21 rows  checks_pass=20 qc_clean=0 flagged=1  [rows did not close]
+  Annales 8/299 1885-03 rio-1883-barometre: 31 rows  checks_pass=31 qc_clean=0 flagged=0
+  Annales 8/303 1885-03 rio-1883-thermo: 31 rows  checks_pass=25 qc_clean=0 flagged=6
+  Annales 8/306 1885-03 rio-1883-actinometrie: 11 rows  checks_pass=0 qc_clean=0 flagged=11  [rows did not close]
+  Annales 8/307 1885-04 rio-1883-barometre: 23 rows  checks_pass=22 qc_clean=0 flagged=1  [rows did not close]
+  Annales 8/309 1885-04 rio-1883-vapeur: 21 rows  checks_pass=20 qc_clean=0 flagged=1  [rows did not close]
+  Annales 8/333 1885-07 rio-1883-barometre: 8 rows  checks_pass=0 qc_clean=0 flagged=8  [rows did not close]
+  Annales 8/335 1885-07 rio-1883-thermo: 25 rows  checks_pass=16 qc_clean=0 flagged=9  [rows did not close]
+  Annales 8/343 1885-08 rio-1883-thermo: 31 rows  checks_pass=24 qc_clean=0 flagged=7
+  Annales 8/346 1885-08 rio-1883-actinometrie: 3 rows  checks_pass=0 qc_clean=0 flagged=3  [rows did not close]
+  Annales 8/349 1885-09 rio-1883-barometre: 30 rows  checks_pass=1 qc_clean=0 flagged=29
+  Annales 8/351 1885-09 rio-1883-thermo: 30 rows  checks_pass=28 qc_clean=0 flagged=2
+  Annales 8/357 1885-10 rio-1883-barometre: 25 rows  checks_pass=0 qc_clean=0 flagged=25  [rows did not close]
+  Annales 8/359 1885-10 rio-1883-thermo: 28 rows  checks_pass=26 qc_clean=0 flagged=2  [rows did not close]
+  Annales 8/372 1885-12 rio-1883-barometre: 15 rows  checks_pass=0 qc_clean=0 flagged=15  [rows did not close]
+  Annales 8/381 1885-03 rio-1883-vapeur: 10 rows  checks_pass=1 qc_clean=1 flagged=8  [rows did not close]
+  Annales 8/389 1885-07 rio-1883-barometre: 6 rows  checks_pass=1 qc_clean=0 flagged=5  [rows did not close]
+  Annales 8/391 1885-08 rio-1883-barometre: 5 rows  checks_pass=0 qc_clean=0 flagged=5  [rows did not close]
+  Annales 8/397 1885-11 rio-1883-barometre: 12 rows  checks_pass=0 qc_clean=0 flagged=12  [rows did not close]
+
+{"pages": 84, "refused": 2, "rows": 2115, "checks_pass": 1697, "qc_clean": 7, "flagged": 411, "minutes": 173.1}
+wrote data/dataset/annales_v2.jsonl

@@ -1,0 +1,230 @@
+{
+ "id": "rio-1883-actinometrie",
+ "name": "Annales de l'Observatoire Impérial — observations actinométriques, 3x ao dia (1883-85)",
+ "columns": [
+  {
+   "key": "date",
+   "label": "Date",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "m09_T",
+   "label": "9 h. Matin T",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    10.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "m09_t",
+   "label": "9 h. Matin t",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    5.0,
+    60.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "m09_theta",
+   "label": "9 h. Matin theta",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    0.0,
+    35.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "m09_neb",
+   "label": "9 h. Matin nébulosité",
+   "kind": "number",
+   "unit": "décimos",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "m09_nuvens",
+   "label": "9 h. Matin nuvens",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "midi_T",
+   "label": "Midi T",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    10.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "midi_t",
+   "label": "Midi t",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    5.0,
+    60.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "midi_theta",
+   "label": "Midi theta",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    0.0,
+    35.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "midi_neb",
+   "label": "Midi nébulosité",
+   "kind": "number",
+   "unit": "décimos",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "midi_nuvens",
+   "label": "Midi nuvens",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "s15_T",
+   "label": "3 h. Soir T",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    10.0,
+    80.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "s15_t",
+   "label": "3 h. Soir t",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    5.0,
+    60.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "s15_theta",
+   "label": "3 h. Soir theta",
+   "kind": "number",
+   "unit": "C",
+   "range": [
+    0.0,
+    35.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "s15_neb",
+   "label": "3 h. Soir nébulosité",
+   "kind": "number",
+   "unit": "décimos",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "s15_nuvens",
+   "label": "3 h. Soir nuvens",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "source": "DocVirt obnacional/8 — Annales de l'Observatoire Impérial, 1883-85",
+ "rows_per_page": "days_in_month",
+ "adapter": "",
+ "checks": [
+  {
+   "kind": "diff",
+   "result": "m09_theta",
+   "a": "m09_T",
+   "b": "m09_t"
+  },
+  {
+   "kind": "diff",
+   "result": "midi_theta",
+   "a": "midi_T",
+   "b": "midi_t"
+  },
+  {
+   "kind": "diff",
+   "result": "s15_theta",
+   "a": "s15_T",
+   "b": "s15_t"
+  }
+ ],
+ "markers": [],
+ "probe_x_frac": null,
+ "table_x_frac": null,
+ "notes": "Radiacao solar: termometro ao sol (T), a sombra (t) e a diferenca (theta), tres vezes ao dia, com nebulosidade em decimos e forma das nuvens em texto (C, K, C-K, K-N, N). Checksum proprio e forte: theta = T - t, tres vezes por linha. Serie actinometrica tropical do seculo XIX - nao consta do EMERLAC nem do GHCN.",
+ "extra": {}
+}

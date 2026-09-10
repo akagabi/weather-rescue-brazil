@@ -36,6 +36,13 @@ RAW = ROOT / "data" / "raw" / "docvirt" / "8"
 SRC = ROOT / "data" / "g4" / "annales1883.json"
 OUT = ROOT / "data" / "g4" / "annales_assigned.json"
 BY_CELLS = {10: "rio-1883-barometre", 9: "rio-1883-vapeur", 13: "rio-1883-thermo"}
+# 16 cells is ambiguous: both the hourly cloud table and the actinometry table
+# (temperature in sun/shade, three times a day) land there by accident. They
+# separate on content the same way wind does - actinometry rows are numbers
+# with one compass-free text field per block, cloud rows are dominated by
+# compass/cloud codes. A decimal number followed by "." in the third slot of
+# each 5-cell block (theta) is actinometry's signature; check for two decimals
+# in the first three cells of a block instead of counting compass points.
 # The cell count alone is not enough: the hourly WIND table also has 13 cells
 # (day plus six direction/force pairs), colliding with the thermometer table.
 # They separate on content - a thermometer row is numbers, a wind row is
@@ -81,22 +88,48 @@ def main() -> None:
         if loc.chain:
             crops = crop_boxes(im, boxes_for_centres(loc.chain, loc, *im.size),
                                loc.skew_deg, scale=2.0)
-            msgs = [{"role": "user", "content": [{"type": "image", "image": crops[len(crops) // 2]},
-                                                 {"type": "text", "text": INSTRUCTION_PRINTED}]}]
-            inp = procr.apply_chat_template(msgs, add_generation_prompt=True, tokenize=True,
-                                            return_dict=True, return_tensors="pt").to(dev)
-            n = inp["input_ids"].shape[1]
-            with torch.no_grad():
-                o = model.generate(**inp, max_new_tokens=160, do_sample=False)
-            txt = procr.decode(o[0][n:], skip_special_tokens=True).split("<|im_end|>")[0].strip()
-            if dev == "mps":
-                torch.mps.empty_cache()
-            rec["cells"] = n_cells(txt)
-            rec["profile"] = BY_CELLS.get(rec["cells"])
-            rec["sample_row"] = txt[:150]
+            # Three rows, decided by majority. One badly-cropped row was
+            # discarding whole pages: 52 pages of layouts we already have came
+            # back with a count one or two off and were dropped, because the
+            # first version demanded an exact match on a single sample.
+            mid = len(crops) // 2
+            picks = [c for c in (crops[mid], crops[max(0, mid - 3)],
+                                 crops[min(len(crops) - 1, mid + 3)])]
+            counts, texts = [], []
+            for crop in picks:
+                msgs = [{"role": "user", "content": [{"type": "image", "image": crop},
+                                                     {"type": "text", "text": INSTRUCTION_PRINTED}]}]
+                inp = procr.apply_chat_template(msgs, add_generation_prompt=True, tokenize=True,
+                                                return_dict=True, return_tensors="pt").to(dev)
+                n = inp["input_ids"].shape[1]
+                with torch.no_grad():
+                    o = model.generate(**inp, max_new_tokens=160, do_sample=False)
+                txt = procr.decode(o[0][n:], skip_special_tokens=True).split("<|im_end|>")[0].strip()
+                if dev == "mps":
+                    torch.mps.empty_cache()
+                counts.append(n_cells(txt))
+                texts.append(txt)
+            # Requiring two of three to agree on an exact count was WORSE than
+            # one sample: rows legitimately differ, because a row with an empty
+            # cell emits fewer. What matters is whether any sampled row lands
+            # exactly on a known layout, preferring the count seen most often.
+            tally = collections.Counter(counts)
+            hits = [c for c, _ in tally.most_common() if c in BY_CELLS]
+            best = hits[0] if hits else tally.most_common(1)[0][0]
+            rec["cells"] = best
+            rec["cell_votes"] = f"{counts}"
+            rec["profile"] = BY_CELLS.get(best)
+            rec["sample_row"] = texts[0][:150]
+            txt = " ".join(texts)
             if rec["profile"] and len(COMPASS.findall(txt)) >= 3:
                 rec["profile"] = None
                 rec["rejected"] = "linha de rumos de vento, não de números"
+            if best == 16:
+                cells16 = [c.strip() for c in texts[0].split("|")]
+                numeric = sum(1 for c in cells16[1:4] if re.match(r"^-?\d+\.\d+$", c))
+                rec["profile"] = "rio-1883-actinometrie" if numeric >= 2 else None
+                if numeric < 2:
+                    rec["rejected"] = "16 células mas não é actinometria (provável tabela de nuvem)"
         out.append(rec)
         if i % 10 == 0:
             OUT.write_text(json.dumps(out, indent=1, ensure_ascii=False))
