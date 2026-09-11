@@ -1,0 +1,408 @@
+{
+ "_needs_verification": true,
+ "_note": "Column -> SEF (Vbl, Stat, Units) mapping. The C3S accepted-code lists live behind an image and a PDF that could not be read (2026-09-11), so these codes are a best effort and MUST be checked against the C3S Data Rescue Guidelines for Metadata Inventories before submission. A wrong code is a rejected file. The format machinery around them is verified against the published SEF spec; the codes are not.",
+ "_units_note": "The tables print pressure in mmHg. SEF wants UDUNITS-2 units, so pressure is converted to hPa and the printed unit is carried in the per-observation Meta, as the spec suggests for original units.",
+ "columns": {
+  "pressure": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "instantaneous",
+   "hour": 24
+  },
+  "pressure_max": {
+   "vbl": "p",
+   "stat": "maximum",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "instantaneous",
+   "hour": 24
+  },
+  "pressure_min": {
+   "vbl": "p",
+   "stat": "minimum",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "instantaneous",
+   "hour": 24
+  },
+  "tmean": {
+   "vbl": "ta",
+   "stat": "mean",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "tmax": {
+   "vbl": "ta",
+   "stat": "maximum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "tmin": {
+   "vbl": "ta",
+   "stat": "minimum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "vapor": {
+   "vbl": "e",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "day",
+   "hour": 24
+  },
+  "humidity": {
+   "vbl": "rh",
+   "stat": "mean",
+   "units": "percent",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "wind_force": {
+   "vbl": "ff",
+   "stat": "mean",
+   "units": "m/s",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "cloudiness": {
+   "vbl": "n",
+   "stat": "mean",
+   "units": "1",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "precip": {
+   "vbl": "rr",
+   "stat": "sum",
+   "units": "mm",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "evap_sol": {
+   "vbl": "ev",
+   "stat": "sum",
+   "units": "mm",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "evap_sombra": {
+   "vbl": "ev",
+   "stat": "sum",
+   "units": "mm",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "ozone": {
+   "vbl": "o3",
+   "stat": "mean",
+   "units": "1",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "h04m": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "instantaneous",
+   "hour": 4
+  },
+  "h07m": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "instantaneous",
+   "hour": 7
+  },
+  "h10m": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "instantaneous",
+   "hour": 10
+  },
+  "h01s": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "instantaneous",
+   "hour": 13
+  },
+  "h04s": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "instantaneous",
+   "hour": 16
+  },
+  "h07s": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "instantaneous",
+   "hour": 19
+  },
+  "h10s": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "instantaneous",
+   "hour": 22
+  },
+  "moyenne": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "day",
+   "hour": 24
+  },
+  "t_centigrados": {
+   "vbl": "ta",
+   "stat": "mean",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "t_media": {
+   "vbl": "ta",
+   "stat": "mean",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "t_maxima_dia": {
+   "vbl": "ta",
+   "stat": "maximum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "t_maximo": {
+   "vbl": "ta",
+   "stat": "maximum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "t_minima_noite": {
+   "vbl": "ta",
+   "stat": "minimum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "t_minimo": {
+   "vbl": "ta",
+   "stat": "minimum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "baro_media": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "day",
+   "hour": 24
+  },
+  "baro_fortin": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "day",
+   "hour": 24
+  },
+  "baro_aneroides": {
+   "vbl": "p",
+   "stat": "mean",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "day",
+   "hour": 24
+  },
+  "baro_maxima": {
+   "vbl": "p",
+   "stat": "maximum",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "day",
+   "hour": 24
+  },
+  "baro_maximo": {
+   "vbl": "p",
+   "stat": "maximum",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "day",
+   "hour": 24
+  },
+  "baro_minima": {
+   "vbl": "p",
+   "stat": "minimum",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "day",
+   "hour": 24
+  },
+  "baro_minimo": {
+   "vbl": "p",
+   "stat": "minimum",
+   "units": "hPa",
+   "convert": "mmHg_to_hPa",
+   "period": "day",
+   "hour": 24
+  },
+  "humidade": {
+   "vbl": "rh",
+   "stat": "mean",
+   "units": "percent",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "chuva": {
+   "vbl": "rr",
+   "stat": "sum",
+   "units": "mm",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "vento_forca": {
+   "vbl": "ff",
+   "stat": "mean",
+   "units": "m/s",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "vento_velocidade": {
+   "vbl": "ff",
+   "stat": "mean",
+   "units": "m/s",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "hygrometro": {
+   "vbl": "rh",
+   "stat": "mean",
+   "units": "percent",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "psychrometro": {
+   "vbl": "ta",
+   "stat": "mean",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "m09_T": {
+   "vbl": "ta",
+   "stat": "maximum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "midi_T": {
+   "vbl": "ta",
+   "stat": "maximum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "s15_T": {
+   "vbl": "ta",
+   "stat": "maximum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "abrite_max": {
+   "vbl": "ta",
+   "stat": "maximum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "abrite_min": {
+   "vbl": "ta",
+   "stat": "minimum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "sansabri_max": {
+   "vbl": "ta",
+   "stat": "maximum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "sansabri_min": {
+   "vbl": "ta",
+   "stat": "minimum",
+   "units": "degC",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "pluviometro": {
+   "vbl": "rr",
+   "stat": "sum",
+   "units": "mm",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  },
+  "rio_altura": {
+   "vbl": "wl",
+   "stat": "mean",
+   "units": "m",
+   "convert": null,
+   "period": "day",
+   "hour": 24
+  }
+ },
+ "_hour_note": "Hour is per column: 24 for a daily value (the spec's recommendation for midnight-to-midnight), and the printed reading hour for the 1883 Annales' seven daily readings, where M is morning and S is afternoon."
+}

@@ -1,0 +1,49 @@
+{
+ "_note": "Station metadata for the SEF export. `verified` is the ONLY thing that decides whether a coordinate is written: an unverified one goes out as NA, because an approximate latitude in a registry file looks authoritative and nothing downstream can tell it is a guess. Flip these to true only after checking each against the observatory's own record.",
+ "_checked_by": null,
+ "rio_imperial": {
+  "id": "rio_imperial",
+  "name": "Imperial Observatorio, Rio de Janeiro",
+  "verified": false,
+  "lat": -22.895,
+  "lon": -43.183,
+  "alt": 30,
+  "dataset_name": "Imperial Observatório, Rio de Janeiro"
+ },
+ "rio_santacruz": {
+  "id": "rio_santacruz",
+  "name": "Observatorio de Santa-Cruz, Rio de Janeiro",
+  "verified": false,
+  "lat": -22.917,
+  "lon": -43.683,
+  "alt": 10,
+  "dataset_name": "Observatório de Santa-Cruz, Rio de Janeiro"
+ },
+ "corumba": {
+  "id": "corumba",
+  "name": "Corumba, Mato Grosso",
+  "verified": false,
+  "lat": -19.009,
+  "lon": -57.653,
+  "alt": 118,
+  "dataset_name": "Corumbá, Mato Grosso"
+ },
+ "cuyaba": {
+  "id": "cuyaba",
+  "name": "Cuyaba, Mato Grosso",
+  "verified": false,
+  "lat": -15.601,
+  "lon": -56.097,
+  "alt": 165,
+  "dataset_name": "Cuyabá, Mato Grosso"
+ },
+ "porto_maranhao": {
+  "id": "porto_maranhao",
+  "name": "Porto do Maranhao, Maranhao",
+  "verified": false,
+  "lat": -2.529,
+  "lon": -44.302,
+  "alt": 5,
+  "dataset_name": "Porto do Maranhão, Maranhão"
+ }
+}

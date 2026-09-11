@@ -114,15 +114,51 @@ def cells(p: prof.Profile, raw: str) -> dict:
     return p.from_printed(values)
 
 
-def compare(a: dict, b: dict) -> list[str]:
-    """Cells where two readings of the same row differ."""
-    out = []
-    for k in a:
-        if k in DAY_KEYS:
+def classify(p: prof.Profile, a: dict, b: dict) -> dict:
+    """What kind of disagreement two readings of one row have.
+
+    Not every difference is a defect, and the first cut of this script learned
+    that the hard way: on 15/22 it reported 22 of 31 rows differing while the
+    VALUES were identical between the two reads. The difference was cell
+    alignment - across scales the model slides values into neighbouring
+    columns - and presence-only changes (a cell null in one read and filled in
+    the other) swamped the list without meaning anything.
+
+    Three classes, and only two of them are defects:
+
+      shift   a value sits in column k in one read and in column k+1 or k-1 in
+              the other. THIS is the signature of the human-found error: a
+              printed "21.3 | 16.75" read as "21.16 | 16.75" is a value that
+              moved into its neighbour. Both cells non-null.
+      changed same column, both non-null, different values. A real misread.
+      (presence-only differences are ignored - the model omits blank cells
+      freely and the parser fills them.)
+    """
+    keys = [k for k in a if k not in DAY_KEYS]
+    shifts, changed = [], []
+    for i, k in enumerate(keys):
+        va, vb = a.get(k), b.get(k)
+        if va == vb:
             continue
-        if a.get(k) != b.get(k):
-            out.append(k)
-    return out
+        if va is None or vb is None:
+            continue                      # presence-only: not evidence
+        moved = None
+        for j in (i + 1, i - 1):
+            if 0 <= j < len(keys) and keys[j] in b:
+                if vb == a.get(keys[j]) and va == b.get(keys[j]):
+                    moved = keys[j]       # the two reads swapped these columns
+                    break
+                if va == b.get(keys[j]):
+                    moved = keys[j]       # a's value for k sits at j in b
+                    break
+                if vb == a.get(keys[j]):
+                    moved = keys[j]
+                    break
+        if moved:
+            shifts.append(f"{k}<->{moved}")
+        else:
+            changed.append({"col": k, "a": va, "b": vb})
+    return {"shifts": shifts, "changed": changed}
 
 
 def main() -> None:
@@ -133,6 +169,8 @@ def main() -> None:
     ap.add_argument("--out", default="data/verify/disagreements.jsonl")
     ap.add_argument("--limit", type=int, default=0, help="pages, for a smoke test")
     ap.add_argument("--batch", type=int, default=8)
+    ap.add_argument("--scales", default="2.0,3.5",
+                    help="the two crop scales; 3.5 degrades badly on faint pages")
     args = ap.parse_args()
 
     reader = PrintedRowReader(str(ROOT / args.model), batch=args.batch)
@@ -172,37 +210,44 @@ def main() -> None:
             fh.flush()
             continue
 
-        read_a = reader.read_rows(crop_boxes(im, boxes, loc.skew_deg, scale=SCALE_A))
-        read_b = reader.read_rows(crop_boxes(im, boxes, loc.skew_deg, scale=SCALE_B))
+        sa, sb = args.scales.split(",")
+        read_a = reader.read_rows(crop_boxes(im, boxes, loc.skew_deg, scale=float(sa)))
+        read_b = reader.read_rows(crop_boxes(im, boxes, loc.skew_deg, scale=float(sb)))
 
         whole_page_differs = 0
         for i, sr in enumerate(stored):
             if i >= len(read_a):
                 break
             a, b = cells(p, read_a[i]), cells(p, read_b[i])
-            sc = compare(a, b)
-            st = compare(a, sr.get("values") or {})
-            # every column differing means the crops themselves moved, not the read
+            cls = classify(p, a, b)
+            # does today's read reproduce the stored one at all? when every
+            # column differs the crops themselves moved (the locator's answer
+            # has drifted since production) and per-cell comparison is
+            # meaningless for that page - recorded as a page-level fact.
+            st = [k for k in a if k not in DAY_KEYS and a.get(k) != (sr.get("values") or {}).get(k)]
             moved = len(st) >= max(3, 0.7 * len([k for k in a if k not in DAY_KEYS]))
             whole_page_differs += moved
             rec = {"id": f"{args.profile}/{item}/{page}/{sr['row']}", "item": item, "page": page,
                    "row": sr["row"], "period": period, "day": sr["values"].get("day"),
-                   "scale_differ": sc, "stored_differ": st,
-                   "geometry_moved": moved, "verdict": sr.get("verdict")}
+                   "shifts": cls["shifts"], "changed": cls["changed"],
+                   "crops_moved": moved, "verdict": sr.get("verdict")}
             fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
-            if sc:
-                stats["rows_scale_differ"] += 1
-            if st and not moved:
-                stats["rows_stored_differ"] += 1
+            if cls["shifts"]:
+                stats["rows_with_shift"] += 1
+            if cls["changed"]:
+                stats["rows_with_changed"] += 1
             if moved:
-                stats["rows_geometry_moved"] += 1
+                stats["rows_crops_moved"] += 1
             if sr.get("human_verified"):
                 stats["rows_human_verified"] += 1
         fh.write(json.dumps({"page_record": True, "item": item, "page": page,
-                             "rows": len(read_a), "geometry_moved": whole_page_differs}) + "\n")
+                             "rows": len(read_a), "crops_moved": whole_page_differs,
+                             "shift_rows": stats["rows_with_shift"],
+                             "changed_rows": stats["rows_with_changed"]}) + "\n")
         fh.flush()
-        print(f"  {item}/{page} {period}: {len(read_a)} rows, "
-              f"{stats['rows_scale_differ']} scale-differ so far", flush=True)
+        print(f"  {item}/{page} {period}: {len(read_a)} rows | "
+              f"shift={stats['rows_with_shift']} changed={stats['rows_with_changed']} "
+              f"crops_moved={stats['rows_crops_moved']}", flush=True)
     fh.close()
     print(json.dumps(stats, indent=1))
 
