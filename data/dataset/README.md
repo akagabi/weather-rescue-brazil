@@ -8,9 +8,9 @@ modelo aberto de 2B rodando num laptop. Gerado por `scripts/g4_produce.py` com o
 
 | | |
 |---|---|
-| Linhas | 5.015 (**3.059 utilizáveis**) |
-| Valores nas linhas utilizáveis | **35.974** |
-| Linhas que são de facto dias | 4.172 — das quais 3.059 aproveitáveis (73,3%); as outras 843 são resumos e linhas de cabeçalho que o localizador captura e o filtro marca |
+| Linhas | 5.015 (**2.895 utilizáveis**) |
+| Valores nas linhas utilizáveis | **34.502** |
+| Linhas que são de facto dias | 4.172 — das quais 2.895 aproveitáveis (69.4%); as outras 843 são resumos e linhas de cabeçalho que o localizador captura e o filtro marca |
 | Páginas | 192 |
 | Estações (linhas utilizáveis) | Imperial Observatório 2.801, Santa-Cruz 230, Corumbá 20, Porto do Maranhão 6, Cuyabá 4 |
 | Publicações | Revista do Observatório (1886-91) e **Annales de l'Observatoire Impérial (1883-85)** |
@@ -57,7 +57,7 @@ pressure ≥ pressure_min`, `baro_maxima ≥ baro_media ≥ baro_minima`, …).
 Verificação de consistência interna do tier utilizável depois disso: **5.345 comparações entre
 colunas ordenadas por construção, 0 violações.**
 
-**Efeito no total: 3.061 → 3.059 utilizáveis.**
+**Efeito no total (com o item seguinte): 3.061 → 2.895 utilizáveis.**
 
 ## O que `checks_pass` quer mesmo dizer (releia antes de filtrar)
 
@@ -212,3 +212,32 @@ desejado.
 Imagens: Biblioteca Digital de Obras Raras do Observatório Nacional, via DocVirt (sem CAPTCHA,
 acesso público). Obras de 1886–1890, domínio público no Brasil (Lei 9.610). A atribuição do acervo
 acompanha cada página baixada em `data/raw/docvirt/*/*.json`.
+
+### Sexta correcção (2026-09-11): 164 linhas impossíveis no tier mais forte
+
+Encontrada pela primeira verificação **contra a imagem da página** — a que faltava. A faixa do
+barómetro do `rio-1883-barometre` era `[700, 800]`: admitia 717 mmHg, que a 0° e ao nível do mar no
+Rio é 956 hPa, fisicamente impossível. **308 das 989 linhas** com média mensal caíam entre 700 e 729,
+separadas das 676 reais (750–780) por um **vazio entre 730 e 749**. Uma pressão real não é bimodal
+com um buraco de 30 mmHg.
+
+A leitura está certa — a página de Abril de 1883 imprime mesmo `17.56` onde a de Novembro imprime
+`57.56` (ambas fiéis: `17.56 → 717.56`, `57.56 → 757.56`, e a linha `Mois` da própria página de
+Abril diz 16.9). É uma inconsistência **da fonte**, não do pipeline: o projecto leu-a fielmente e
+cumpriu a convenção "nunca corrigir em silêncio". O que faltava era a faixa recusar 717.
+
+Faixa corrigida para a banda física real `[740, 790]` (e a do `vapeur`, que é tensão de vapor e não
+pressão, de `[0,40]` para `[5,30]`).
+
+**Efeito: 164 linhas saíram do tier utilizável — 163 que eram `checks_pass`.** Total: 3.059 → 2.895.
+
+### Primeira verificação contra a imagem (2026-09-11)
+
+Amostra estratificada de 19 páginas / 297 linhas do tier utilizável, lida contra as imagens. Foi ela
+que encontrou a correcção acima. Nas páginas verificadas linha a linha até agora — `revista-santacruz-1889`
+doc 15 p44, entre outras — **os valores batem com o impresso em todas as colunas**, incluindo duas
+anomalias que a própria página imprime (`tmax 20,2` com `tmin 22,8` nos dias 5 e 10) e que o dataset
+registra fielmente como `flagged`.
+
+A amostra **não** está completa: 19 páginas é o suficiente para ter encontrado isto, não para
+declarar uma taxa de erro. A verificação Linha-a-linha das restantes está por fazer.
