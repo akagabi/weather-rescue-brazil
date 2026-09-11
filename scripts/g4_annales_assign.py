@@ -35,7 +35,8 @@ ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "data" / "raw" / "docvirt" / "8"
 SRC = ROOT / "data" / "g4" / "annales1883.json"
 OUT = ROOT / "data" / "g4" / "annales_assigned.json"
-BY_CELLS = {10: "rio-1883-barometre", 9: "rio-1883-vapeur", 13: "rio-1883-thermo"}
+BY_CELLS = {10: "rio-1883-barometre", 9: "rio-1883-vapeur", 13: "rio-1883-thermo", 15: "rio-1883-vento"}
+# 17 also matches actinometry: border noise from the crop adds one stray token
 # 16 cells is ambiguous: both the hourly cloud table and the actinometry table
 # (temperature in sun/shade, three times a day) land there by accident. They
 # separate on content the same way wind does - actinometry rows are numbers
@@ -92,9 +93,16 @@ def main() -> None:
             # discarding whole pages: 52 pages of layouts we already have came
             # back with a count one or two off and were dropped, because the
             # first version demanded an exact match on a single sample.
-            mid = len(crops) // 2
-            picks = [c for c in (crops[mid], crops[max(0, mid - 3)],
-                                 crops[min(len(crops) - 1, mid + 3)])]
+            # Five rows spread across the page rather than three near the
+            # middle. Empty rows (blank spacer lines the locator sometimes
+            # includes) and header/decade-summary rows both produce degenerate
+            # counts; sampling wider makes it likelier at least two land on
+            # real data rows. This single change recovered most of what looked
+            # like six new unknown layouts - they were all pages we already
+            # have a profile for, just sampled unluckily.
+            n = len(crops)
+            idxs = sorted({max(0, min(n - 1, int(n * f))) for f in (0.15, 0.35, 0.5, 0.65, 0.85)})
+            picks = [crops[i] for i in idxs]
             counts, texts = [], []
             for crop in picks:
                 msgs = [{"role": "user", "content": [{"type": "image", "image": crop},
@@ -113,7 +121,11 @@ def main() -> None:
             # one sample: rows legitimately differ, because a row with an empty
             # cell emits fewer. What matters is whether any sampled row lands
             # exactly on a known layout, preferring the count seen most often.
-            tally = collections.Counter(counts)
+            # Drop degenerate reads (blank row -> huge pipe count from an
+            # all-empty line, or a stray "2" from a header fragment) before
+            # voting, so one bad sample cannot outvote real data rows.
+            real = [c for c in counts if 5 <= c <= 40] or counts
+            tally = collections.Counter(real)
             hits = [c for c, _ in tally.most_common() if c in BY_CELLS]
             best = hits[0] if hits else tally.most_common(1)[0][0]
             rec["cells"] = best
@@ -122,14 +134,27 @@ def main() -> None:
             rec["sample_row"] = texts[0][:150]
             txt = " ".join(texts)
             if rec["profile"] and len(COMPASS.findall(txt)) >= 3:
-                rec["profile"] = None
-                rec["rejected"] = "linha de rumos de vento, não de números"
-            if best == 16:
+                # 13 cells collides between thermometer and wind (day + 6
+                # dir/force pairs); a row dominated by compass points is wind,
+                # not thermometer - reassign rather than just discard.
+                rec["profile"] = "rio-1883-vento" if best == 13 else None
+                if not rec["profile"]:
+                    rec["rejected"] = "linha de rumos de vento, não de números"
+            if best in (16, 17):
+                # Two DIFFERENT 16-cell tables exist: actinometry (blocks of 5:
+                # T, t, theta, neb, cloud-text - the first three are decimals
+                # like a temperature, "32.0") and nebulosity (blocks of 2: neb,
+                # cloud-text - the number is a plain 0-10 integer, "5"). Tell
+                # them apart by whether cell[1] carries a decimal point.
                 cells16 = [c.strip() for c in texts[0].split("|")]
-                numeric = sum(1 for c in cells16[1:4] if re.match(r"^-?\d+\.\d+$", c))
-                rec["profile"] = "rio-1883-actinometrie" if numeric >= 2 else None
-                if numeric < 2:
-                    rec["rejected"] = "16 células mas não é actinometria (provável tabela de nuvem)"
+                first_num = next((c for c in cells16[1:3] if re.match(r"^-?\d+\.?\d*$", c)), "")
+                if "." in first_num:
+                    rec["profile"] = "rio-1883-actinometrie"
+                elif re.match(r"^\d{1,2}$", first_num):
+                    rec["profile"] = "rio-1883-nebulosite"
+                else:
+                    rec["profile"] = None
+                    rec["rejected"] = f"{best} células, não identificado (nem actinometria nem nebulosidade)"
         out.append(rec)
         if i % 10 == 0:
             OUT.write_text(json.dumps(out, indent=1, ensure_ascii=False))

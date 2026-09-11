@@ -1,0 +1,186 @@
+{
+ "id": "rio-1883-vento",
+ "name": "Annales de l'Observatoire Impérial — direction et force du vent, 7x ao dia (1883-85)",
+ "columns": [
+  {
+   "key": "date",
+   "label": "Date",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h04m_dir",
+   "label": "4 h. M. direction",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h04m_forca",
+   "label": "4 h. M. force",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    6.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h07m_dir",
+   "label": "7 h. M. direction",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h07m_forca",
+   "label": "7 h. M. force",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    6.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h10m_dir",
+   "label": "10 h. M. direction",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h10m_forca",
+   "label": "10 h. M. force",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    6.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h01s_dir",
+   "label": "1 h. S. direction",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h01s_forca",
+   "label": "1 h. S. force",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    6.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h04s_dir",
+   "label": "4 h. S. direction",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h04s_forca",
+   "label": "4 h. S. force",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    6.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h07s_dir",
+   "label": "7 h. S. direction",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h07s_forca",
+   "label": "7 h. S. force",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    6.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h10s_dir",
+   "label": "10 h. S. direction",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h10s_forca",
+   "label": "10 h. S. force",
+   "kind": "number",
+   "unit": null,
+   "range": [
+    0.0,
+    6.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "source": "DocVirt obnacional/8 — Annales de l'Observatoire Impérial, 1883-85",
+ "rows_per_page": "days_in_month",
+ "adapter": "",
+ "checks": [],
+ "markers": [],
+ "probe_x_frac": null,
+ "table_x_frac": null,
+ "notes": "Direcao e forca do vento, 7 leituras diarias (mesmos horarios das outras tabelas do volume). Direcao e rosa dos ventos em texto (SW, NNE, 0=calmaria). Sem coluna de resumo impressa - sem checksum proprio; QC fica limitado a faixa fisica da forca.",
+ "extra": {}
+}

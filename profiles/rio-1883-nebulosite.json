@@ -1,0 +1,213 @@
+{
+ "id": "rio-1883-nebulosite",
+ "name": "Annales de l'Observatoire Impérial — nébulosité en dixièmes, 7x ao dia (1883-85)",
+ "columns": [
+  {
+   "key": "date",
+   "label": "Date",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h04m_neb",
+   "label": "4 h. M. nébulosité",
+   "kind": "number",
+   "unit": "décimos",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h04m_nuvens",
+   "label": "4 h. M. nuvens",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h07m_neb",
+   "label": "7 h. M. nébulosité",
+   "kind": "number",
+   "unit": "décimos",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h07m_nuvens",
+   "label": "7 h. M. nuvens",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h10m_neb",
+   "label": "10 h. M. nébulosité",
+   "kind": "number",
+   "unit": "décimos",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h10m_nuvens",
+   "label": "10 h. M. nuvens",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h01s_neb",
+   "label": "1 h. S. nébulosité",
+   "kind": "number",
+   "unit": "décimos",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h01s_nuvens",
+   "label": "1 h. S. nuvens",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h04s_neb",
+   "label": "4 h. S. nébulosité",
+   "kind": "number",
+   "unit": "décimos",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h04s_nuvens",
+   "label": "4 h. S. nuvens",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h07s_neb",
+   "label": "7 h. S. nébulosité",
+   "kind": "number",
+   "unit": "décimos",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h07s_nuvens",
+   "label": "7 h. S. nuvens",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h10s_neb",
+   "label": "10 h. S. nébulosité",
+   "kind": "number",
+   "unit": "décimos",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "h10s_nuvens",
+   "label": "10 h. S. nuvens",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "moyenne",
+   "label": "Moyenne",
+   "kind": "number",
+   "unit": "décimos",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "source": "DocVirt obnacional/8 — Annales de l'Observatoire Impérial, 1883-85",
+ "rows_per_page": "days_in_month",
+ "adapter": "",
+ "checks": [
+  {
+   "kind": "mean",
+   "result": "moyenne",
+   "of": [
+    "h04m_neb",
+    "h07m_neb",
+    "h10m_neb",
+    "h01s_neb",
+    "h04s_neb",
+    "h07s_neb",
+    "h10s_neb"
+   ]
+  }
+ ],
+ "markers": [],
+ "probe_x_frac": null,
+ "table_x_frac": null,
+ "notes": "Nebulosidade em decimos do ceu coberto, 7 leituras diarias (mesmos horarios do barometro/vapor). Cada leitura e numero+forma da nuvem em texto (C,K,C-K,K-N,N...). Moyenne = media dos 7 numeros - checksum proprio.",
+ "extra": {}
+}

@@ -1,0 +1,29 @@
+230 páginas com período a reclassificar
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 7913.61it/s]
+  0/230 0.8min p13: 10 células -> rio-1883-barometre
+  10/230 6.3min p28: 17 células -> rio-1883-actinometrie
+  20/230 12.1min p42: 17 células -> rio-1883-nebulosite
+  30/230 18.5min p57: 13 células -> rio-1883-thermo
+  40/230 24.1min p75: 15 células -> None
+  50/230 29.9min p89: 13 células -> rio-1883-thermo
+  60/230 36.5min p103: 9 células -> rio-1883-vapeur
+  70/230 43.4min p121: 9 células -> rio-1883-vapeur
+  80/230 50.0min p154: 15 células -> None
+  90/230 56.0min p168: 13 células -> rio-1883-thermo
+  100/230 61.3min p180: 10 células -> rio-1883-barometre
+  110/230 66.4min p195: 17 células -> rio-1883-actinometrie
+  120/230 72.1min p211: 16 células -> rio-1883-nebulosite
+  130/230 80.6min p226: 41 células -> None
+  140/230 89.7min p241: 17 células -> rio-1883-nebulosite
+  150/230 102.1min p260: 10 células -> rio-1883-barometre
+  160/230 112.6min p291: 10 células -> rio-1883-barometre
+  170/230 121.1min p307: 10 células -> rio-1883-barometre
+  180/230 128.7min p322: 17 células -> rio-1883-nebulosite
+  190/230 137.2min p338: 17 células -> rio-1883-actinometrie
+  200/230 145.1min p352: 32 células -> None
+  210/230 152.6min p368: 36 células -> None
+  220/230 159.4min p385: 32 células -> None
+
+contagem de células: {10: 46, 15: 37, 17: 37, 13: 26, 9: 21, 29: 9, 32: 9, 16: 7, 11: 7, 42: 3, 41: 2, 79: 2, 36: 2, 25: 2, 12: 2, 19: 2, 18: 2, 26: 1, 27: 1, 34: 1, 24: 1, 33: 1, 28: 1, 74: 1, 45: 1, 31: 1, 14: 1, 20: 1, 23: 1, 75: 1, 2: 1}
+perfis: {'rio-1883-barometre': 45, None: 89, 'rio-1883-thermo': 24, 'rio-1883-nebulosite': 23, 'rio-1883-vento': 11, 'rio-1883-actinometrie': 18, 'rio-1883-vapeur': 20}
+worklist: 141 páginas -> data/g4/worklist_annales.json
