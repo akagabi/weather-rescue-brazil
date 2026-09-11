@@ -8,15 +8,78 @@ modelo aberto de 2B rodando num laptop. Gerado por `scripts/g4_produce.py` com o
 
 | | |
 |---|---|
-| Linhas | 2.708 (1.862 utilizáveis) |
-| Valores nas linhas utilizáveis | **22.548** |
-| Linhas que são de facto dias | 2.280 — **81,7% delas aproveitáveis** (as outras 428 são resumos `Dec.`/`Mez` que o localizador captura e o filtro remove) |
-| Páginas | 98 |
-| Estações (linhas utilizáveis) | Imperial Observatório 1.567, Santa-Cruz 230, Corumbá 20, Porto do Maranhão 6, Cuyabá 4 |
+| Linhas | 5.015 (**3.059 utilizáveis**) |
+| Valores nas linhas utilizáveis | **35.974** |
+| Linhas que são de facto dias | 4.172 — das quais 3.059 aproveitáveis (73,3%); as outras 843 são resumos e linhas de cabeçalho que o localizador captura e o filtro marca |
+| Páginas | 192 |
+| Estações (linhas utilizáveis) | Imperial Observatório 2.801, Santa-Cruz 230, Corumbá 20, Porto do Maranhão 6, Cuyabá 4 |
 | Publicações | Revista do Observatório (1886-91) e **Annales de l'Observatoire Impérial (1883-85)** |
-| Publicações | 4 layouts / 2 obras |
-| Período | **1883-01 a 1890-11** (61 meses) |
-| **Ausente dos arquivos internacionais** | **as 1.194 linhas** — ver *Ineditismo* abaixo |
+| Período | **1883-01 a 1890-11** (66 meses) |
+| **Ausente dos arquivos internacionais** | as 1.194 linhas da v0.1 — ver *Ineditismo* abaixo |
+
+> **Estes números são recalculados, não escritos à mão** (2026-09-11): `scripts/g4_merge.py`
+> recontagem a partir do próprio `.jsonl`, e `data/dataset/weather-rescue-brazil.summary.json`
+> é gerado por ele. A versão anterior desta tabela dizia 2.708 / 1.862 / 22.548 / 98 páginas e
+> estava **duas revisões atrás** do ficheiro que descreve — a tabela de estações vinha de um
+> commit e a tabela de cabeçalho de outro.
+
+## Quarta correcção (2026-09-11): uma linha fabricada que passava no tier mais forte
+
+`revista-rio-1886` doc 14 p140 (1886-06) trazia uma linha cujo `raw` é **quinze `1` seguidos**.
+Todas as células caíam dentro das faixas declaradas, e uma linha de valores iguais não pode
+contradizer a sua própria ordenação — por isso chegou a `checks_pass`, o tier mais forte.
+
+Só a forma da linha a denuncia. Entrou `wrb.qc.degenerate_row` (≥8 colunas numéricas com ≤2 valores
+distintos), aplicado em `g4_produce.py` **e** em `g4_rescore.py`. O mesmo defeito em
+`revista-santacruz-1889` p24 já era `flagged` — a mesma corrupção tinha dois veredictos diferentes
+conforme a página.
+
+As **faixas físicas também estavam largas demais para servir de alguma coisa**: `tmean`/`tmax`/`tmin`
+estavam declaradas `[-10, 50]` °C para o Rio de Janeiro, ou seja uma faixa global. Apertadas para
+climatologia do Rio (`tmean [12,35]`, `tmin [5,30]`, `humidity [30,100]`, …), mais 9 linhas saíram do
+tier utilizável por razões reais (humidade 0,4%, tmin 0,1 °C, evap_sol 40 mm).
+
+**Efeito no total: 3.070 → 3.059 utilizáveis.** Onze linhas, mas onze linhas honestas.
+
+### Quinta correcção (2026-09-11): máximos abaixo do próprio mínimo
+
+Duas linhas de `rio-1883-thermo` (doc 8 p33 e p97) chegaram a `checks_pass` com
+`sansabri_max = 7,5` e `sansabri_min = 39,2` — um máximo abaixo do seu próprio mínimo, impossível
+para duas leituras do mesmo instrumento. Passaram porque **o check declarado se cala quando a
+célula do resultado está vazia**: o perfil verificava `sansabri_oscil = max − min`, e essas linhas
+têm a oscilação em branco, então a verificação declinou correr em vez de falhar.
+
+Corrigido com um tipo de check novo, `atleast` ("esta coluna nunca cai abaixo daquela"), que não
+depende de nenhuma célula derivada e portanto não tem como se calar. **23 checks `atleast` foram
+declarados** nos sete perfis com pares máximo/mínimo (`tmax ≥ tmean ≥ tmin`, `pressure_max ≥
+pressure ≥ pressure_min`, `baro_maxima ≥ baro_media ≥ baro_minima`, …).
+
+Verificação de consistência interna do tier utilizável depois disso: **5.345 comparações entre
+colunas ordenadas por construção, 0 violações.**
+
+**Efeito no total: 3.061 → 3.059 utilizáveis.**
+
+## O que `checks_pass` quer mesmo dizer (releia antes de filtrar)
+
+Continua a valer o que já estava escrito: **`checks_pass` significa "esta linha não se contradiz",
+não "esta linha está certa"**. E há agora um número para isso:
+
+| Verificação declarada | Linhas utilizáveis | O que foi de facto verificado |
+|---|---|---|
+| `mean`/`diff` — aritmética impressa (Annales 1883: barómetro, termómetro, vapor, actinometria) | ~1.900 | a conta que a página afirma sobre si mesma |
+| `order` — só a sequência dos dias (Revista Rio + Santa-Cruz, Corumbá, Cuyabá, Maranhão) | ~950 | que os números dos dias formam uma série sensata |
+
+Uma troca entre duas colunas da mesma unidade passa nas duas: ambos os valores continuam plausíveis.
+Só um checksum impresso apanha isso — e é por isso que a média mensal impressa (`Mez`) passa a ser
+lida: `Profile.verify_month` compara agora o bloco de dias com a linha-resumo da página, usando a
+convenção medida por coluna (média para a maioria, máximo/mínimo para os extremos, soma para a chuva
+— medido em doc 14 p41, 1886-01).
+
+**Limite honesto:** o localizador quase nunca captura a linha `Mez`. No artefacto de hoje a
+verificação corre em **34 linhas** — o resultado fica registado em `monthly_check`, não aplicado ao
+veredicto, porque a cobertura ainda não sustenta uma decisão. Para valer para as ~950 linhas de
+`order` seria preciso uma passagem dedicada a ler as tabelas-resumo ("Revista climatologica do mez"),
+que estão noutra região da página.
 
 ## Terceira correcção (2026-09-08): linhas que não são dias
 

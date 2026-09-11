@@ -17,15 +17,20 @@ de 38 linhas.
 
 | | |
 |---|---|
-| Linhas-dia que fecham a conta | **27/29 = 93,1%** |
-| Linhas pontuáveis | 29 de 31 |
+| Linhas-dia que fecham a conta | **27/31 = 87,1%** |
+| Linhas localizadas / pontuáveis | 33 localizadas, 31 pontuáveis (2 sem valor lido) |
 | Contagem de células emitida | 9 células em 29 linhas (o perfil espera 9) |
 
-As duas falhas são precisamente o que um checksum serve para achar:
+Quatro linhas não fecham — precisamente o que um checksum serve para achar. Duas delas valem o
+registo:
 
 - **linha 20**: erra por 0,013 — um dígito final comido;
 - **linha 23**: fecharia exatamente se uma célula fosse `19.57` em vez do `12.57` lido. O checksum
   **localizou uma única célula suspeita** para revisão, sem ninguém ler a página.
+
+> **Correcção (2026-09-11).** Esta tabela dizia "27/29 = 93,1%" e "as duas falhas"; o artefacto
+> `bench/g4/checksum-8-15-gen3.json` diz `scoreable: 31, closed: 27` e traz `closes` **False em 4
+> linhas** (e None em 2). O denominador menor subia a taxa sem razão. O número certo é 87,1%.
 
 Descoberta lateral: dada a linha de cabeçalho, o modelo transcreveu os rótulos das colunas
 corretamente (`Date | 4 h. M. | 7 h. M. | …`) — a mesma tarefa em que um modelo 2B tinha ido mal
