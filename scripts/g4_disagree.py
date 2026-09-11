@@ -4,7 +4,18 @@ disagrees with itself.
     python scripts/g4_disagree.py --profile revista-santacruz-1889 \
         --model runs/g4/mlx-smoke4-q8 --out data/verify/disagreements.jsonl
 
-Why this exists. Human reading of the pages found two misread digits in
+RESULT (2026-09-11): IT DOES NOT FIND THE ERRORS IT WAS BUILT FOR.
+Run over all 960 rows of Santa-Cruz, it flags neither of the two misreads a
+human found - both scales produce the SAME wrong digit, so self-disagreement
+cannot see them - while flagging 227 rows as shifted and 244 as changed, a
+quarter of the dataset. The failures are consistent, not random, which is the
+same wall the G3 consensus hit (98.85% -> 99.06%, residual = the same wrong
+glyph in all three votes). Full write-up: docs/g4-disagreement-result.md.
+Kept because a negative result that is written down stops the next person
+rebuilding it - and because the concentration it DOES show (precip <-> evap_
+sombra, two adjacent mm columns) is a real symptom of where the model slips.
+
+Why this was attempted. Human reading of the pages found two misread digits in
 Santa-Cruz (tmin 21.16 for a printed 21.3; cloudiness 0.01 for 0.00) - errors
 that no rule catches, because both produce a legal-looking number inside its
 physical range. The project's own answer to this class, built at G3 and then
