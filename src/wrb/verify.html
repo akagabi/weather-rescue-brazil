@@ -1,0 +1,163 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>WRB — verificação</title>
+<style>
+  :root { --bg:#f6f6f4; --ink:#1a1a1a; --dim:#6a6a6a; --line:#d8d8d2;
+          --ok:#1f7a3d; --bad:#a4262c; --warn:#8a6d1f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:14px/1.45 ui-sans-serif,-apple-system,"Helvetica Neue",sans-serif; }
+  header { position:sticky; top:0; z-index:5; background:var(--bg);
+           border-bottom:1px solid var(--line); padding:8px 16px;
+           display:flex; gap:20px; align-items:baseline; flex-wrap:wrap; }
+  header b { font-weight:600; }
+  header .sp { flex:1; }
+  .num { font-variant-numeric:tabular-nums; }
+  main { padding:16px; display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:20px; }
+  @media (max-width:1100px){ main{ grid-template-columns:1fr; } }
+  .imgbox { background:#fff; border:1px solid var(--line); overflow:auto; max-height:78vh; }
+  .imgbox img { display:block; max-width:none; }
+  .claimed h2 { font-size:12px; text-transform:uppercase; letter-spacing:.06em;
+                color:var(--dim); font-weight:600; margin:0 0 8px; }
+  table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
+  td { padding:3px 6px; border-bottom:1px solid var(--line); }
+  td.k { color:var(--dim); }
+  td.v { text-align:right; font-weight:500; }
+  td.v.null { color:var(--dim); font-weight:400; }
+  .meta { color:var(--dim); font-size:12px; margin-bottom:8px; }
+  .meta code { color:var(--ink); }
+  .keys { margin-top:14px; display:flex; gap:8px; flex-wrap:wrap; }
+  button { font:inherit; padding:8px 14px; border:1px solid var(--line);
+           background:#fff; border-radius:5px; cursor:pointer; }
+  button:hover { border-color:#999; }
+  button.ok  { border-color:var(--ok);  color:var(--ok); }
+  button.bad { border-color:var(--bad); color:var(--bad); }
+  button.ok.on  { background:var(--ok);  color:#fff; }
+  button.bad.on { background:var(--bad); color:#fff; }
+  textarea { width:100%; margin-top:10px; padding:6px; font:inherit;
+             border:1px solid var(--line); border-radius:5px; resize:vertical; }
+  .hint { color:var(--dim); font-size:12px; margin-top:10px; }
+  kbd { border:1px solid var(--line); border-bottom-width:2px; border-radius:4px;
+        padding:0 4px; font:11px ui-monospace,monospace; background:#fff; }
+  img.page { display:none; }
+  body.pageview img.page { display:block; }
+  body.pageview img.row { display:none; }
+  .bar { display:flex; gap:3px; margin-top:6px; }
+  .bar i { flex:1; height:4px; background:var(--line); border-radius:2px; }
+  .bar i.ok { background:var(--ok); } .bar i.wrong { background:var(--bad); }
+  .bar i.skip { background:var(--warn); }
+  .done { color:var(--dim); padding:24px; }
+</style>
+
+<header>
+  <b>Verificação</b>
+  <span class="num" id="prog">—</span>
+  <span class="num" id="err"></span>
+  <span class="sp"></span>
+  <button id="toggle">Ver página inteira <kbd>p</kbd></button>
+  <button id="undo">Voltar <kbd>⌫</kbd></button>
+</header>
+
+<main>
+  <div>
+    <div class="imgbox"><img class="row" id="rowimg"><img class="page" id="pageimg"></div>
+    <div class="bar" id="bar"></div>
+  </div>
+  <div class="claimed">
+    <div class="meta" id="meta"></div>
+    <h2>O que o dataset afirma</h2>
+    <table id="vals"></table>
+    <textarea id="note" rows="2" placeholder="nota (o que está errado)"></textarea>
+    <div class="keys">
+      <button class="ok"  id="bok">Certo <kbd>1</kbd></button>
+      <button class="bad" id="bbad">Errado <kbd>2</kbd></button>
+      <button id="bskip">Pular <kbd>3</kbd></button>
+    </div>
+    <div class="hint">
+      Compare a imagem com os valores. <kbd>1</kbd> certo · <kbd>2</kbd> errado ·
+      <kbd>3</kbd> pulo · <kbd>p</kbd> página inteira · <kbd>⌫</kbd> voltar.
+    </div>
+  </div>
+</main>
+
+<script>
+let Q=[], judged={}, i=0, order=[];
+
+const $ = s => document.querySelector(s);
+const fmt = v => v===null||v===undefined ? '—' : (typeof v==='number' ? +v.toFixed(4) : String(v));
+
+async function load(){
+  const r = await (await fetch('/api/queue')).json();
+  Q = r.queue; judged = r.judged;
+  render();
+}
+
+function render(){
+  // first unjudged, else the end
+  let idx = Q.findIndex(e => !(e.id in judged));
+  if (idx === -1) {
+    $('#prog').textContent = `${Q.length} / ${Q.length} — fim`;
+    $('#rowimg').removeAttribute('src'); $('#pageimg').removeAttribute('src');
+    $('#vals').innerHTML = ''; $('#meta').textContent = 'Fila concluída.';
+    $('#bar').innerHTML = ''; return;
+  }
+  i = idx;
+  const e = Q[i];
+  $('#prog').textContent = `${Object.keys(judged).length} / ${Q.length}`;
+  const st = stats();
+  $('#err').textContent = st.total ? `erro ${(100*st.error_rate).toFixed(1)}% em ${st.total}` : '';
+  const p = new URLSearchParams({profile:e.profile,item:e.item,page:e.page,period:e.period,row:e.row});
+  $('#rowimg').src = '/api/crop?' + p;
+  $('#pageimg').src = '/api/page?' + new URLSearchParams({item:e.item,page:e.page});
+  $('#meta').innerHTML = `<code>${e.profile}</code> · doc ${e.item} p${e.page} · ${e.period} · ` +
+                         `linha ${e.row} · dia <b>${fmt(e.day)}</b> · tier <b>${e.verdict}</b>`;
+  $('#vals').innerHTML = Object.entries(e.values)
+    .map(([k,v]) => `<tr><td class="k">${k}</td><td class="v ${v===null?'null':''}">${fmt(v)}</td></tr>`).join('');
+  const j = judged[e.id];
+  $('#note').value = j?.note || '';
+  $('#bok').classList.toggle('on', j?.verdict==='ok');
+  $('#bbad').classList.toggle('on', j?.verdict==='wrong');
+  $('#bar').innerHTML = Q.map(x => {
+    const v = judged[x.id]?.verdict;
+    return `<i class="${v||''}"></i>`;
+  }).join('');
+}
+
+function stats(){
+  const vs = Object.values(judged);
+  const total = vs.length, wrong = vs.filter(v=>v.verdict==='wrong').length;
+  return {total, wrong, error_rate: total? wrong/total : 0};
+}
+
+async function mark(v){
+  if ($('#prog').textContent.startsWith('Fila') || !Q[i]) return;
+  const e = Q[i];
+  const body = {id:e.id, profile:e.profile, item:e.item, page:e.page, row:e.row,
+                period:e.period, verdict:v, note:$('#note').value};
+  const r = await (await fetch('/api/verdict', {method:'POST',
+      headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)})).json();
+  judged[e.id] = body;
+  render();
+  document.querySelector('.imgbox').scrollTop = 0;
+}
+
+document.addEventListener('keydown', ev => {
+  if (ev.target.tagName === 'TEXTAREA') { if (ev.key !== 'Escape') return; ev.target.blur(); return; }
+  if (ev.key === '1') mark('ok');
+  else if (ev.key === '2') mark('wrong');
+  else if (ev.key === '3') mark('skip');
+  else if (ev.key === 'p') document.body.classList.toggle('pageview');
+  else if (ev.key === 'Backspace') {
+    const ids = Object.keys(judged);
+    if (ids.length) { delete judged[ids[ids.length-1]]; render(); }
+  }
+});
+$('#bok').onclick = () => mark('ok');
+$('#bbad').onclick = () => mark('wrong');
+$('#bskip').onclick = () => mark('skip');
+$('#toggle').onclick = () => document.body.classList.toggle('pageview');
+$('#undo').onclick = () => { const ids = Object.keys(judged);
+  if (ids.length){ delete judged[ids[ids.length-1]]; render(); } };
+
+load();
+</script>
