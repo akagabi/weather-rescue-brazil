@@ -42,3 +42,20 @@ ilegíveis — o que anularia o exercício.
 
 O trabalho de verificação da amostra de 19 páginas **não está completo**:
 3 páginas lidas linha a linha. A app é para acabar isso e para a amostra de 82.
+
+## Aviso importante (2026-09-11): use a PÁGINA INTEIRA
+
+O recorte da linha é recalculado a cada arranque, a partir do `locate_day_rows`
+de hoje. **O localizador responde de forma diferente da que produziu as linhas
+da Revista** — em `16/159`, por exemplo, o passo de linha que ele mede hoje é
+23 px quando o verdadeiro é ~40 px, e as caixas caem nas linhas erradas.
+
+Consequência: nesses casos o recorte mostra uma linha que **não** é a que os
+valores ao lado descrevem, e não avisa. A verificação do Gabriel foi válida
+porque ele leu a **página inteira** — a app abre agora nesse modo, com o
+recorte da linha como alternância (`p`).
+
+Isto não é um defeito do dataset: as linhas foram produzidas com a geometria
+como estava então, e batem com o papel. É um defeito da ferramenta, e a razão
+pela qual a reprodutibilidade do recorte está registada como limitação no
+`DATASET_CARD.md`.

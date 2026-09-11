@@ -49,12 +49,13 @@
   .done { color:var(--dim); padding:24px; }
 </style>
 
+<body class="pageview">
 <header>
   <b>Verificação</b>
   <span class="num" id="prog">—</span>
   <span class="num" id="err"></span>
   <span class="sp"></span>
-  <button id="toggle">Ver página inteira <kbd>p</kbd></button>
+  <button id="toggle">Ver só a linha <kbd>p</kbd></button>
   <button id="undo">Voltar <kbd>⌫</kbd></button>
 </header>
 
@@ -75,7 +76,11 @@
     </div>
     <div class="hint">
       Compare a imagem com os valores. <kbd>1</kbd> certo · <kbd>2</kbd> errado ·
-      <kbd>3</kbd> pulo · <kbd>p</kbd> página inteira · <kbd>⌫</kbd> voltar.
+      <kbd>3</kbd> pulo · <kbd>p</kbd> alternar linha/página · <kbd>⌫</kbd> voltar.
+      <br><br><b>A página inteira é o modo fiável.</b> O recorte da linha é
+      recalculado a cada arranque e o localizador pode responder de forma
+      diferente da que produziu o dataset — nesses casos mostra a linha errada
+      sem avisar. Ver a ressalva em <code>docs/verify.md</code>.
     </div>
   </div>
 </main>
