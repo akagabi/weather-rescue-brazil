@@ -1,0 +1,43 @@
+MIT License
+
+Copyright (c) 2026 Gabriel (Weather Rescue Brazil)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+The licence above covers the SOFTWARE: the pipeline in `src/` and `scripts/`,
+the profiles, and the tests.
+
+The DATASET is different, and deliberately so:
+
+  * The underlying observations are nineteenth-century Brazilian government
+    publications, in the public domain in Brazil (Lei 9.610; the corpus is
+    1883-1890, well past the term). No rights are asserted over them here.
+  * The transcriptions, quality verdicts and corrections are released under
+    CC0 1.0 (public domain dedication). Use them however you like.
+
+ATTRIBUTION, carried as a matter of academic practice rather than licence
+obligation:
+
+    Acervo: Biblioteca Digital de Obras Raras do Observatorio Nacional, via
+    DocVirt. Digitalizado e transcrito pelo projeto Weather Rescue Brazil.
+
+The Observatory's attribution string accompanies every downloaded page in
+`data/raw/docvirt/*/*.json`; carry it into anything you publish from this data.
