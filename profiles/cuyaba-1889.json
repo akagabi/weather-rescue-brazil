@@ -204,6 +204,41 @@
     "t_minima_noite",
     "t_maxima_dia"
    ]
+  },
+  {
+   "kind": "atleast",
+   "result": "t_maxima_dia",
+   "of": [
+    "t_minima_noite"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "t_maxima_dia",
+   "of": [
+    "t_media"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "t_media",
+   "of": [
+    "t_minima_noite"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "baro_maxima",
+   "of": [
+    "baro_media"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "baro_media",
+   "of": [
+    "baro_minima"
+   ]
   }
  ],
  "markers": [

@@ -29,6 +29,39 @@ here) is consensus-disagreement OR this validator flag - see the G3 plan.
 
 from wrb.gold import RANGES, Row, Sheet, TOL
 
+# Columns that index a row rather than measure it: a day number (or a year, in
+# the Oxford tables where rows are years) is a sequence position, so agreement
+# between it and a measurement means nothing.
+INDEX_KEYS = {"day", "date", "dates", "hour", "year"}
+
+
+def degenerate_row(values: dict, *, min_cols: int = 8, max_distinct: int = 2,
+                   index_keys: set[str] | None = None) -> bool:
+    """True when a row's measurements have collapsed to a repeated constant.
+
+    Not every wrong row is an out-of-range one. The model occasionally emits a
+    single value repeated across the whole row - the real case (doc 14 p140,
+    1886-06) came back as fifteen consecutive 1s, `raw` = "20 | 1 | 1 | ...".
+    Every cell sits inside the profile's declared range, and a row whose values
+    are all equal cannot contradict its own `order` check, so it reached
+    `checks_pass` - the strongest tier - while being entirely fabricated.
+
+    Nothing but the row's own shape can catch this: the numbers are plausible
+    one by one, and the only evidence is that they agree too well.
+
+    `min_cols` is the point below which agreement is not evidence (three equal
+    cells happen by chance); `max_distinct` is the point above which the row is
+    carrying real information. Nulls are absence, not agreement, and are not
+    counted. Index columns (day/date/hour/year) are excluded for the same
+    reason.
+    """
+    skip = INDEX_KEYS if index_keys is None else index_keys
+    vals = [v for k, v in values.items()
+            if k not in skip and isinstance(v, (int, float)) and not isinstance(v, bool)]
+    if len(vals) < min_cols:
+        return False
+    return len(set(vals)) <= max_distinct
+
 
 def _row_day(date_str: str) -> int:
     return int(date_str.split("-")[2])

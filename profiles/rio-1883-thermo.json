@@ -178,6 +178,20 @@
    "result": "sansabri_oscil",
    "a": "sansabri_max",
    "b": "sansabri_min"
+  },
+  {
+   "kind": "atleast",
+   "result": "abrite_max",
+   "of": [
+    "abrite_min"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "sansabri_max",
+   "of": [
+    "sansabri_min"
+   ]
   }
  ],
  "markers": [

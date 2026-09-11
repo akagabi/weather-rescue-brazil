@@ -172,6 +172,41 @@
     "t_minimo",
     "t_maximo"
    ]
+  },
+  {
+   "kind": "atleast",
+   "result": "baro_maximo",
+   "of": [
+    "baro_media"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "baro_media",
+   "of": [
+    "baro_minimo"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "t_maximo",
+   "of": [
+    "t_minimo"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "t_maximo",
+   "of": [
+    "t_media"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "t_media",
+   "of": [
+    "t_minimo"
+   ]
   }
  ],
  "markers": [

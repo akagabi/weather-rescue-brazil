@@ -44,7 +44,12 @@ def main() -> None:
     ap.add_argument("--adapter", required=True)
     ap.add_argument("--base", default="Qwen/Qwen3.5-2B")
     ap.add_argument("--worklist", required=True)
-    ap.add_argument("--out", default="data/dataset/weather-rescue-brazil.jsonl")
+    # REQUIRED, and deliberately not defaulted to the published dataset: this
+    # script truncates its output at start and has no resumability, so a
+    # default pointing at data/dataset/weather-rescue-brazil.jsonl meant one
+    # absent-minded run replaced the whole published artefact with a single
+    # worklist's rows. Callers pass an explicit per-doc path (g4_pipeline.sh).
+    ap.add_argument("--out", required=True)
     ap.add_argument("--limit", type=int, default=0)
     args = ap.parse_args()
 
@@ -61,9 +66,11 @@ def main() -> None:
     model = PeftModel.from_pretrained(model, args.adapter).to(dev)
     model.eval()
 
+    # Write beside the target and rename at the end, so a run that dies (there
+    # is no --resume) cannot leave a half-written file where a good one was.
     out_path = ROOT / args.out
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    fh = out_path.open("w")
+    fh = out_path.with_suffix(out_path.suffix + ".partial").open("w")
     stats = {"pages": 0, "refused": 0, "rows": 0, "checks_pass": 0, "qc_clean": 0, "flagged": 0}
     t0 = time.time()
     for w in work:
@@ -136,6 +143,12 @@ def main() -> None:
             scoreable = bool(p.checks) and any(
                 isinstance(restored.get(c["result"]), (int, float)) for c in p.checks)
             from wrb.profile import PADDED_TRAILING
+            from wrb.qc import degenerate_row
+            # a row whose measurements collapsed to one repeated value is
+            # fabricated: it sits inside every declared range, so only its own
+            # shape can catch it (see wrb.qc.degenerate_row)
+            if degenerate_row(restored, index_keys={p.day_key or "day", "year"}):
+                problems = problems + ["degenerate_row: measurements collapsed to a repeated value"]
             hard = [x for x in problems if x != PADDED_TRAILING]
             padded = PADDED_TRAILING in problems
             verdict = ("checks_pass" if scoreable and not check_fail and not viol and not hard
@@ -161,6 +174,9 @@ def main() -> None:
               f"checks_pass={n_pass} qc_clean={n_clean} flagged={n_flag}"
               + ("" if located_ok else "  [rows did not close]"), flush=True)
     fh.close()
+    # only now does the target path change; an aborted run leaves whatever was
+    # already there untouched (its `.partial` sibling is for the next run)
+    out_path.with_suffix(out_path.suffix + ".partial").replace(out_path)
     stats["minutes"] = round((time.time() - t0) / 60, 1)
     (out_path.with_suffix(".summary.json")).write_text(json.dumps(stats, indent=1))
     print(f"\n{json.dumps(stats)}\nwrote {out_path.relative_to(ROOT)}")

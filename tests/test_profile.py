@@ -181,3 +181,115 @@ def test_parses_a_sign_separated_from_its_number() -> None:
     assert vals["oscillation"] == 0.35 and not probs
     vals, probs = p.parse("2 | — 1.23")
     assert vals["oscillation"] == -1.23 and not probs
+
+
+# --- the page's own monthly summary row -----------------------------------
+# The newspaper tables print a month-total row ("Mez") carrying the month's
+# MEAN per measurement column (max for the maxima, min for the minima, sum for
+# rainfall) - measured on revista-rio-1886 doc 14 p41 1886-01, where the printed
+# row reproduces the mean of that page's 31 day rows exactly (tmean 25.30,
+# vapor 18.50) for 8 of its 14 columns. It is the only arithmetic available for
+# the ~2000 rows whose profiles carry no per-row check.
+
+from wrb.profile import Column, Profile
+
+
+def _monthly_profile(**kw):
+    return Profile(
+        id="t", name="t",
+        columns=[Column(key="day", label="Date", kind="day"),
+                 Column(key="tmean", label="T", unit="C", range=(15, 35)),
+                 Column(key="tmax", label="Tmax", unit="C", range=(18, 42)),
+                 Column(key="tmin", label="Tmin", unit="C", range=(8, 30)),
+                 Column(key="precip", label="Rain", unit="mm", range=(0, 300))],
+        monthly={"markers": ["Mez", "Mois"], "aggregate": {"tmean": "mean", "tmax": "max",
+                                                           "tmin": "min", "precip": "sum"}},
+        **kw)
+
+
+def test_summary_row_is_identified_by_the_word_the_page_prints():
+    p = _monthly_profile()
+    assert p.is_monthly_summary("Mez | 55.53 | 25.3 | 34.5 | 20.6 | 26.2") is True
+    assert p.is_monthly_summary("Mois | 55.53 | 25.3") is True
+    # a day row is never a summary, however its numbers look
+    assert p.is_monthly_summary("20 | 55.53 | 25.3 | 34.5 | 20.6 | 26.2") is False
+
+
+def test_verify_month_accepts_a_month_that_reproduces_its_printed_totals():
+    p = _monthly_profile()
+    # a ramp, so mean / max / min / sum are four DIFFERENT numbers and the
+    # test cannot pass by applying one aggregation to all four columns
+    days = [{"day": d, "tmean": 20.0 + d * 0.1, "tmax": 30.0 + d * 0.1,
+             "tmin": 10.0 + d * 0.1, "precip": 1.0} for d in range(1, 11)]
+    summary = {"tmean": 20.55, "tmax": 31.0, "tmin": 10.1, "precip": 10.0}
+    assert p.verify_month(days, summary) == []
+
+
+def test_verify_month_flags_the_column_that_does_not_reproduce():
+    """The check's whole value: it names the column, not just the page. A
+    shifted column is exactly the failure physical ranges cannot see, because
+    both columns stay plausible."""
+    p = _monthly_profile()
+    days = [{"day": d, "tmean": 20.0 + d * 0.1, "tmax": 30.0 + d * 0.1,
+             "tmin": 10.0 + d * 0.1, "precip": 1.0} for d in range(1, 11)]
+    summary = {"tmean": 20.55, "tmax": 31.0, "tmin": 10.1, "precip": 999.0}
+    fails = p.verify_month(days, summary)
+    assert len(fails) == 1
+    assert fails[0].startswith("precip")
+
+
+def test_verify_month_skips_a_column_the_page_did_not_fully_print():
+    """A mean over a gapped month cannot match the printed mean - that is
+    absence of evidence, not evidence of an error."""
+    p = _monthly_profile()
+    days = [{"day": 1, "tmean": 20.0, "tmax": 30.0, "tmin": 10.0, "precip": 1.0},
+            {"day": 2, "tmean": None, "tmax": 30.0, "tmin": 10.0, "precip": 1.0}]
+    fails = p.verify_month(days, {"tmean": 20.0, "tmax": 30.0, "tmin": 10.0, "precip": 2.0})
+    assert fails == []
+
+
+def test_verify_month_ignores_a_column_it_has_no_convention_for():
+    p = _monthly_profile()
+    days = [{"day": d, "tmean": 20.0, "tmax": 30.0, "tmin": 10.0, "precip": 1.0} for d in range(1, 11)]
+    fails = p.verify_month(days, {"tmean": 20.0, "tmax": 30.0, "tmin": 10.0, "precip": 10.0,
+                                  "not_a_column": 12345.0})
+    assert fails == []
+
+
+# --- a maximum must not fall below its own minimum -------------------------
+# The 1883 thermometer page prints a maximum and a minimum per thermometer
+# (in-shelter, unsheltered). Both are checked against their printed
+# oscillation, but that check SKIPS when the oscillation cell is blank - and
+# two rows reached `checks_pass` with sansabri_max 7.5 and sansabri_min 39.2,
+# which is impossible for any two readings of one instrument.
+
+def _pair_profile():
+    return Profile(id="t", name="t",
+                   columns=[Column(key="day", label="D", kind="day"),
+                            Column(key="tmax", label="Max", unit="C", range=(-40, 60)),
+                            Column(key="tmin", label="Min", unit="C", range=(-40, 60))],
+                   checks=[{"kind": "atleast", "result": "tmax", "of": ["tmin"]}])
+
+
+def test_atleast_accepts_a_max_above_its_minimum():
+    p = _pair_profile()
+    assert p.verify({"day": 1, "tmax": 30.0, "tmin": 20.0}) == []
+
+
+def test_atleast_flags_a_max_below_its_minimum():
+    p = _pair_profile()
+    fails = p.verify({"day": 1, "tmax": 7.5, "tmin": 39.2})
+    assert len(fails) == 1
+    assert "tmax" in fails[0] and "tmin" in fails[0]
+
+
+def test_atleast_accepts_equal_values():
+    """Two readings of one instrument can genuinely coincide."""
+    p = _pair_profile()
+    assert p.verify({"day": 1, "tmax": 20.0, "tmin": 20.0}) == []
+
+
+def test_atleast_is_skipped_when_either_cell_is_missing():
+    p = _pair_profile()
+    assert p.verify({"day": 1, "tmax": None, "tmin": 20.0}) == []
+    assert p.verify({"day": 1, "tmax": 30.0, "tmin": None}) == []

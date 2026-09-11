@@ -18,8 +18,8 @@
    "kind": "number",
    "unit": "mm",
    "range": [
-    650.0,
-    800.0
+    740,
+    790
    ],
    "elided": true,
    "elided_range": [
@@ -34,8 +34,8 @@
    "kind": "number",
    "unit": "mm",
    "range": [
-    650.0,
-    800.0
+    740,
+    795
    ],
    "elided": true,
    "elided_range": [
@@ -50,8 +50,8 @@
    "kind": "number",
    "unit": "mm",
    "range": [
-    650.0,
-    800.0
+    735,
+    790
    ],
    "elided": true,
    "elided_range": [
@@ -66,8 +66,8 @@
    "kind": "number",
    "unit": "°C",
    "range": [
-    -10.0,
-    50.0
+    12,
+    35
    ],
    "elided": false,
    "elided_range": null,
@@ -79,8 +79,8 @@
    "kind": "number",
    "unit": "°C",
    "range": [
-    -10.0,
-    50.0
+    15,
+    42
    ],
    "elided": false,
    "elided_range": null,
@@ -92,8 +92,8 @@
    "kind": "number",
    "unit": "°C",
    "range": [
-    -10.0,
-    50.0
+    5,
+    30
    ],
    "elided": false,
    "elided_range": null,
@@ -105,8 +105,8 @@
    "kind": "number",
    "unit": "mm",
    "range": [
-    0.0,
-    40.0
+    4,
+    30
    ],
    "elided": false,
    "elided_range": null,
@@ -118,8 +118,8 @@
    "kind": "number",
    "unit": "%",
    "range": [
-    0.0,
-    100.0
+    30,
+    100
    ],
    "elided": false,
    "elided_range": null,
@@ -141,8 +141,8 @@
    "kind": "number",
    "unit": "m/s",
    "range": [
-    0.0,
-    30.0
+    0,
+    20
    ],
    "elided": false,
    "elided_range": null,
@@ -154,8 +154,8 @@
    "kind": "number",
    "unit": null,
    "range": [
-    0.0,
-    10.0
+    0,
+    10
    ],
    "elided": false,
    "elided_range": null,
@@ -167,8 +167,8 @@
    "kind": "number",
    "unit": "mm",
    "range": [
-    0.0,
-    400.0
+    0,
+    300
    ],
    "elided": false,
    "elided_range": null,
@@ -180,8 +180,8 @@
    "kind": "number",
    "unit": "mm",
    "range": [
-    0.0,
-    50.0
+    0,
+    25
    ],
    "elided": false,
    "elided_range": null,
@@ -193,8 +193,8 @@
    "kind": "number",
    "unit": "mm",
    "range": [
-    0.0,
-    50.0
+    0,
+    25
    ],
    "elided": false,
    "elided_range": null,
@@ -206,8 +206,8 @@
    "kind": "number",
    "unit": null,
    "range": [
-    0.0,
-    21.0
+    0,
+    21
    ],
    "elided": false,
    "elided_range": null,
@@ -233,6 +233,41 @@
     "tmin",
     "tmax"
    ]
+  },
+  {
+   "kind": "atleast",
+   "result": "tmax",
+   "of": [
+    "tmin"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "tmax",
+   "of": [
+    "tmean"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "tmean",
+   "of": [
+    "tmin"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "pressure_max",
+   "of": [
+    "pressure"
+   ]
+  },
+  {
+   "kind": "atleast",
+   "result": "pressure",
+   "of": [
+    "pressure_min"
+   ]
   }
  ],
  "markers": [
@@ -244,5 +279,27 @@
  "probe_x_frac": null,
  "table_x_frac": null,
  "notes": "Layout A. Evaporação em duas colunas (Sol, Sombra). Barômetro impresso sem o dígito dos milhares.",
- "extra": {}
+ "extra": {},
+ "monthly": {
+  "markers": [
+   "Mez",
+   "Mois",
+   "Déc",
+   "Dec",
+   "Med"
+  ],
+  "aggregate": {
+   "tmean": "mean",
+   "tmax": "max",
+   "tmin": "min",
+   "vapor": "mean",
+   "humidity": "mean",
+   "cloudiness": "mean",
+   "wind_force": "mean",
+   "ozone": "mean",
+   "precip": "sum",
+   "evap_sol": "mean",
+   "evap_sombra": "mean"
+  }
+ }
 }

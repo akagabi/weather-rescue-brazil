@@ -212,6 +212,13 @@
     "baro_fortin",
     "baro_aneroides"
    ]
+  },
+  {
+   "kind": "atleast",
+   "result": "t_maxima_dia",
+   "of": [
+    "t_minima_noite"
+   ]
   }
  ],
  "markers": [],

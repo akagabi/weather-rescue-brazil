@@ -83,6 +83,12 @@ class Profile:
     # words historical tables print instead of a number: trace rain, no reading.
     # They are data, not parse failures - recorded as a marker with a null value.
     markers: list[str] = field(default_factory=list)
+    # the page's printed MONTH-TOTAL row, as data: which words the page prints
+    # in the day column for it, and which aggregation each column's printed
+    # figure is. Declared per publication because the convention differs - the
+    # Revista prints means for most columns but the month's max/min for the
+    # extremes and a sum for rainfall (measured on doc 14 p41, 1886-01).
+    monthly: dict = field(default_factory=dict)
     probe_x_frac: tuple[float, float] | None = None
     table_x_frac: tuple[float, float] | None = None
     notes: str = ""
@@ -255,6 +261,18 @@ class Profile:
                 if not (lo - tol <= got <= hi + tol):
                     out.append(f"{c['result']}={got} outside [{lo}, {hi}]")
                 continue
+            if c["kind"] == "atleast":
+                # "this column can never fall below that one" - a maximum below
+                # its own minimum, a mean below its minimum. Impossible for any
+                # two readings of one instrument, so it needs no tolerance to
+                # speak of. Declared separately from the printed `diff` check
+                # because that one SKIPS when its result cell is blank: two
+                # rows reached `checks_pass` with sansabri_max 7.5 and
+                # sansabri_min 39.2 precisely because the oscillation cell was
+                # empty and the check quietly declined to run.
+                if got < float(vals[1]) - tol:
+                    out.append(f"{c['result']}={got} below {c['of'][0]}={vals[1]}")
+                continue
             if c["kind"] == "diff":
                 want = float(vals[1]) - float(vals[2])
             elif c["kind"] == "sum":
@@ -263,6 +281,61 @@ class Profile:
                 want = sum(float(v) for v in vals[1:]) / (len(vals) - 1)
             if abs(got - want) > tol:
                 out.append(f"{c['result']}={got} but {c['kind']} gives {want:.4f}")
+        return out
+
+    # --- the page's printed month-total row ------------------------------
+    def is_monthly_summary(self, raw: str) -> bool:
+        """True when a row's day cell holds the word the page prints for its
+        month total ("Mez", "Mois", "Déc") instead of a day number. Deliberately
+        structural: it reads the printed marker, never the numbers, so it cannot
+        be fooled by a total that happens to look plausible."""
+        markers = self.monthly.get("markers") or []
+        if not markers or not raw:
+            return False
+        first = raw.split("|")[0].strip().rstrip(".").lower()
+        return first in {m.rstrip(".").lower() for m in markers}
+
+    def verify_month(self, day_rows: list[dict], summary: dict, tol: float = 0.06) -> list[str]:
+        """Check the page's printed month-total row against the day rows it
+        summarises - the one arithmetic available to publications whose rows
+        carry no per-row check of their own.
+
+        Declared per column in `monthly.aggregate`, because the convention is
+        not uniform: on doc 14 p41 (1886-01) the printed row reproduces the
+        MEAN of the 31 day rows for tmean (25.30), vapor (18.50), humidity,
+        evaporation, cloudiness, ozone and wind, but the month's MAX for tmax
+        and MIN for tmin, and a SUM for rainfall.
+
+        The value is that it names the COLUMN, and it catches the one failure
+        physical ranges cannot see: two same-unit columns swapped. Both values
+        stay plausible, so no range check fires - but the column's monthly mean
+        stops reproducing. Like `verify`, it needs no human and no model.
+
+        A column the page did not print in full is skipped, not failed: a mean
+        over a gapped month cannot match, and that is absence of evidence
+        rather than evidence of an error.
+        """
+        agg = self.monthly.get("aggregate") or {}
+        out: list[str] = []
+        for key, kind in agg.items():
+            printed = summary.get(key)
+            if not isinstance(printed, (int, float)):
+                continue
+            col = [r.get(key) for r in day_rows]
+            if not col or any(not isinstance(v, (int, float)) for v in col):
+                continue
+            if kind == "mean":
+                want = sum(col) / len(col)
+            elif kind == "sum":
+                want = sum(col)
+            elif kind == "max":
+                want = max(col)
+            elif kind == "min":
+                want = min(col)
+            else:
+                continue
+            if abs(want - printed) > tol:
+                out.append(f"{key}: printed {printed} but {kind} of the day rows gives {want:.4f}")
         return out
 
     def resolve_dittos(self, rows: list[dict]) -> list[dict]:

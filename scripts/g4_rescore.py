@@ -13,6 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from wrb import profile as prof  # noqa: E402
 from wrb.profile import PADDED_TRAILING  # noqa: E402
+from wrb.qc import degenerate_row  # noqa: E402
 import calendar  # noqa: E402
 from collections import defaultdict  # noqa: E402
 
@@ -79,6 +80,8 @@ def main() -> None:
         by_page[(r["item"], r["page"], r["period"])].append(r)
     is_day: dict[int, bool] = {}
     page_complete: dict[int, bool] = {}
+    day_key_of: dict[int, str] = {}
+    monthly: dict[int, list[str]] = {}
     for key, prs in by_page.items():
         pk = cache.setdefault(prs[0]["profile"], prof.load(prs[0]["profile"]))
         day_key = next((c.key for c in pk.columns if c.kind == "day"), "day")
@@ -86,6 +89,18 @@ def main() -> None:
         for i, r in enumerate(prs):
             is_day[id(r)] = i in keep
             page_complete[id(r)] = complete
+            day_key_of[id(r)] = day_key
+        # The page's printed month-total row, if the reader captured it: judged
+        # against the day rows it summarises. Recorded, not enforced - see the
+        # module docstring. On today's artefact this fires on very few pages,
+        # because the locator usually drops the summary row; it costs nothing
+        # and it starts working the moment a pass reads those rows.
+        summary = next((r for r in prs if pk.is_monthly_summary(r.get("raw") or "")), None)
+        if summary is not None and pk.monthly:
+            fails = pk.verify_month([r["values"] for i, r in enumerate(prs) if i in keep],
+                                    summary["values"])
+            for r in prs:
+                monthly[id(r)] = fails
 
     out = src.with_name(src.stem + ".rescored.jsonl").open("w")
     for r in rows:
@@ -95,6 +110,13 @@ def main() -> None:
         restored = p.from_printed(values)
         viol = p.violations(restored)
         fails = p.verify(restored) if p.checks else []
+        # A row whose measurements have collapsed to a repeated constant is
+        # fabricated, not merely wrong: fifteen 1s on doc 14 p140 reached
+        # `checks_pass` because every cell sat inside the profile's range and a
+        # row of equal values cannot contradict its own ordering. Shape is the
+        # only thing that can catch it, so it is a hard problem.
+        if degenerate_row(restored, index_keys={day_key_of[id(r)], "year"}):
+            problems = problems + ["degenerate_row: measurements collapsed to a repeated value"]
         hard = [x for x in problems if x != PADDED_TRAILING]
         scoreable = bool(p.checks) and any(isinstance(restored.get(c["result"]), (int, float)) for c in p.checks)
         # A page whose located row count does not equal the days in its month has
@@ -126,7 +148,8 @@ def main() -> None:
         r["publication"] = p.name
         r.update(values_as_printed=values, values=restored, markers=markers, verdict=verdict,
                  padded_trailing=PADDED_TRAILING in problems, problems=problems,
-                 range_violations=viol, check_failures=fails)
+                 range_violations=viol, check_failures=fails,
+                 monthly_check=monthly.get(id(r), []))
         stats[verdict] += 1
         stats["padded"] += PADDED_TRAILING in problems
         out.write(json.dumps(r, ensure_ascii=False) + "\n")
