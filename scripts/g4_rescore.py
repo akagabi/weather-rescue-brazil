@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from wrb import profile as prof  # noqa: E402
 from wrb.profile import PADDED_TRAILING  # noqa: E402
 from wrb.qc import degenerate_row  # noqa: E402
+from wrb.verify import apply_corrections, load_corrections  # noqa: E402
 import calendar  # noqa: E402
 from collections import defaultdict  # noqa: E402
 
@@ -88,6 +89,10 @@ def main() -> None:
     src = Path(sys.argv[1])
     rows = [json.loads(l) for l in src.open()]
     cache: dict[str, prof.Profile] = {}
+    # Cells a person has read against the page and found misread. Applied
+    # here so a correction survives re-scoring and stays distinguishable
+    # from a model reading (see wrb.verify.apply_corrections).
+    corr = load_corrections(src.parent.parent / "verify" / "corrections.jsonl")
     stats: Counter = Counter()
     # first pass: parse every row, so the day sequence can be read off the page
     for r in rows:
@@ -140,6 +145,8 @@ def main() -> None:
         restored = p.from_printed(values)
         if id(r) in resolved_day:
             restored[day_key_of[id(r)]] = resolved_day[id(r)]
+        rid = f"{r['profile']}/{r.get('item')}/{r['page']}/{r['row']}"
+        had = apply_corrections({'values': restored}, corr.get(rid))
         viol = p.violations(restored)
         fails = p.verify(restored) if p.checks else []
         # A row whose measurements have collapsed to a repeated constant is
@@ -182,6 +189,9 @@ def main() -> None:
                  padded_trailing=PADDED_TRAILING in problems, problems=problems,
                  range_violations=viol, check_failures=fails,
                  monthly_check=monthly.get(id(r), []))
+        if had:
+            r["human_verified"] = True
+            r["corrections"] = had
         stats[verdict] += 1
         stats["padded"] += PADDED_TRAILING in problems
         out.write(json.dumps(r, ensure_ascii=False) + "\n")

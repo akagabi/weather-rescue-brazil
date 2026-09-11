@@ -262,3 +262,33 @@ O Gabriel descreveu também a geometria da tabela, que não estava escrita em la
 é `1 às 10, 1 às 4, 2 às 10, 2 às 4`, e as duas colunas de temperatura alinham-se a linhas
 diferentes — a máxima do dia na linha das 4h, a mínima da noite na linha das 10h. É a razão pela qual
 a pauta escalonada faz um leitor humano hesitar sobre a que linha pertence um valor.
+
+### Oitava correcção (2026-09-11): as primeiras células corrigidas por um humano
+
+A primeira verificação contra a imagem encontrou **dois dígitos mal lidos**, ambos em Santa-Cruz:
+
+| linha | campo | modelo leu | a página imprime |
+|---|---|---|---|
+| `revista-santacruz-1889` 16/159, dia 8 | `tmin` | 21,16 | **21,3** |
+| `revista-santacruz-1889` 15/166, dia 22 | `cloudiness` | 0,01 | **0,00** |
+
+Estão em `data/verify/corrections.jsonl` e são aplicadas em `g4_rescore.py`, não à mão no ficheiro:
+uma célula corrigida tem de ser distinguível de uma leitura do modelo. As linhas ficam com
+`human_verified: true` e `corrections: [...]`, e **continuam `checks_pass`** — uma linha que uma
+pessoa verificou é a mais fiável do ficheiro, não menos; pôr a nota em `problems` faria o
+classificador castigá-la por ter sido corrigida.
+
+**A taxa de erro medida, e o que ela diz do tier.** 31 linhas julgadas por um humano, **2 erradas**.
+Mas as duas estão no mesmo perfil: **2 de 8 em Santa-Cruz**. Com n=8 o intervalo de confiança é
+largo (≈3–65%), portanto não há aqui um número por perfil — há uma direcção, e é a que o aviso
+inicial apontava.
+
+**`checks_pass` não é um tier uniforme, e agora há números para o dizer:**
+
+| Perfil | O que verifica a linha | Verificação humana |
+|---|---|---|
+| Annales 1883 (barómetro, termómetro, vapor, actinometria) | aritmética **impressa** na própria página | 0 erros nas linhas vistas |
+| Revista (Rio, Santa-Cruz, Corumbá, Cuyabá, Maranhão) | só a sequência dos dias | **2 erros em 8** (Santa-Cruz) |
+
+O perfil com aritmética impressa aguentou tudo o que se lhe fez. O perfil que só tem o teste de
+ordem dos dias é onde os erros apareceram — e é 23% do que o ficheiro chama "utilizável".

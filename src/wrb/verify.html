@@ -89,6 +89,12 @@ const fmt = v => v===null||v===undefined ? '—' : (typeof v==='number' ? +v.toF
 async function load(){
   const r = await (await fetch('/api/queue')).json();
   Q = r.queue; judged = r.judged;
+  // ?profile=… narrows the queue to one publication. The profiles differ in
+  // what verifies them - printed arithmetic for the 1883 Annales, only a
+  // day-order check for the Revista - so "how good is the Revista tier" is a
+  // question you want to answer with the Revista rows alone.
+  const want = new URLSearchParams(location.search).get('profile');
+  if (want) Q = Q.filter(e => e.profile === want);
   render();
 }
 

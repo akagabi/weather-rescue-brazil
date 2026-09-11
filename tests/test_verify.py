@@ -69,3 +69,43 @@ def test_summary_error_rate_is_about_rows_not_profiles():
     v = [{"profile": "A", "verdict": "wrong"} for _ in range(3)]
     assert summarise_verdicts(v)["error_rate"] == 1.0
     assert summarise_verdicts([])["error_rate"] == 0.0
+
+
+# --- human corrections -----------------------------------------------------
+# A verified misread must be recorded as data, not applied by hand-editing the
+# JSONL. The project's rule is faithful-to-print-and-flag, never silent
+# correction - so a correction carries who made it, what it replaced, and
+# leaves a visible mark on the row.
+
+from wrb.verify import apply_corrections, load_corrections
+
+
+def test_a_correction_sets_the_value_and_says_so():
+    rows = {"a": {"values": {"tmin": 21.16, "tmax": 23.2}}}
+    corr = {"a": {"tmin": 21.3}}
+    notes = apply_corrections(rows["a"], corr.get("a"))
+    assert rows["a"]["values"]["tmin"] == 21.3
+    assert rows["a"]["values"]["tmax"] == 23.2          # untouched
+    assert rows["a"]["human_verified"] is True
+    assert notes and "21.16" in notes[0]
+
+
+def test_a_row_without_a_correction_is_left_alone():
+    row = {"values": {"tmin": 21.16}}
+    assert apply_corrections(row, None) == []
+    assert row["values"]["tmin"] == 21.16
+    assert "human_verified" not in row
+
+
+def test_corrections_are_keyed_by_the_row_id(tmp_path):
+    p = tmp_path / "c.jsonl"
+    p.write_text(
+        '{"id": "A/1/2/3", "field": "cloudiness", "now": 0.0, "was": 0.01, "note": "page shows 0.00"}\n'
+        '{"id": "B/1/2/3", "field": "tmin", "now": 21.3, "was": 21.16}\n')
+    c = load_corrections(p)
+    assert c["A/1/2/3"] == {"cloudiness": 0.0}
+    assert c["B/1/2/3"] == {"tmin": 21.3}
+
+
+def test_a_missing_corrections_file_is_not_an_error(tmp_path):
+    assert load_corrections(tmp_path / "nope.jsonl") == {}

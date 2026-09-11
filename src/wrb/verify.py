@@ -61,6 +61,56 @@ def build_queue(rows: list[dict], *, per_profile: int = 8, seed: int = 0) -> lis
     return queue
 
 
+def load_corrections(path) -> dict[str, dict[str, float]]:
+    """Read a corrections file: one JSON object per line, keyed by row id.
+
+    {"id": "revista-santacruz-1889/16/159/7", "field": "tmin",
+     "was": 21.16, "now": 21.3, "note": "page prints 21.3"}
+
+    A missing file is normal - most profiles have no corrections.
+    """
+    import json
+    from pathlib import Path
+    p = Path(path)
+    if not p.exists():
+        return {}
+    out: dict[str, dict[str, float]] = {}
+    for line in p.open():
+        if not line.strip():
+            continue
+        rec = json.loads(line)
+        out.setdefault(rec["id"], {})[rec["field"]] = rec["now"]
+    return out
+
+
+def apply_corrections(row: dict, corrections: dict[str, float] | None) -> list[str]:
+    """Overwrite the cells a person verified, and record that they did.
+
+    Deliberately NOT a silent edit of the dataset file. The project's rule is
+    faithful-to-print-and-flag - and the reading was wrong, so it is fixed -
+    but a fixed cell has to be distinguishable from a model reading, or the
+    next person cannot tell which values to trust. Hence `human_verified` on
+    the row and the replaced value named in `problems`.
+    """
+    if not corrections:
+        return []
+    notes: list[str] = []
+    values = row.setdefault("values", {})
+    for field, now in corrections.items():
+        was = values.get(field)
+        if was == now:
+            continue
+        values[field] = now
+        notes.append(f"human correction: {field} was {was}, set to {now}")
+    if notes:
+        row["human_verified"] = True
+        # A separate field, NOT `problems`: a row a person has verified is the
+        # most trustworthy kind in the file, and putting the note in `problems`
+        # would make the verdict ladder flag it as if something were wrong.
+        row["corrections"] = list(row.get("corrections") or []) + notes
+    return notes
+
+
 def summarise_verdicts(judgements: list[dict]) -> dict:
     """Score a queue by ROWS, per profile and overall.
 
