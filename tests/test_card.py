@@ -54,3 +54,17 @@ def test_the_published_state_still_verifies():
     """The card describes a frozen artefact. If the file moved, the card's
     numbers are the least of it - the card must be re-derived."""
     assert check_version(DATASET, ROOT / "data" / "dataset" / "version.json") == []
+
+
+# --- the README quotes the same numbers --------------------------------
+# It is the first thing a visitor reads and the second place a stale figure
+# hides, so it is tied to the artifact the same way the card is.
+
+def readme_text() -> str:
+    return (ROOT / "README.md").read_text()
+
+
+def test_readme_headline_matches_the_artifact():
+    fp = fingerprint(DATASET)
+    assert f"**{fp['rows']:,} rows, {fp['usable']:,} usable, {fp['values_usable']:,} values" \
+        in readme_text()
