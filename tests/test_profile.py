@@ -293,3 +293,37 @@ def test_atleast_is_skipped_when_either_cell_is_missing():
     p = _pair_profile()
     assert p.verify({"day": 1, "tmax": None, "tmin": 20.0}) == []
     assert p.verify({"day": 1, "tmax": 30.0, "tmin": None}) == []
+
+
+def test_rescore_resolves_a_dittoe_day_instead_of_publishing_the_mark() -> None:
+    """Corumba prints the day once and dittos the second reading of it, so half
+    that station's rows published `day: "»"` - a consumer could not say which
+    day they were. `resolve_dittos` existed and was tested but was never wired
+    into the production path. Found by reading the verification app, not code.
+    """
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    from g4_rescore import resolve_page_days
+    p = load("corumba-1889")
+    page = [
+        {"values": {"day": 1, "hour": 10.0}},
+        {"values": {"day": "»", "hour": 4.0}},      # same day, second reading
+        {"values": {"day": 2, "hour": 10.0}},
+        {"values": {"day": "»", "hour": 4.0}},
+    ]
+    got = resolve_page_days(p, page, "day")
+    assert got == {1: 1, 3: 2}
+    # the hour column carries its own value on both readings - nothing to
+    # resolve there, and the helper must report only the rows that changed
+    assert 0 not in got and 2 not in got
+
+
+def test_rescore_reports_nothing_when_a_page_has_no_ditto() -> None:
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    from g4_rescore import resolve_page_days
+    p = load("corumba-1889")
+    page = [{"values": {"day": 1, "hour": 10.0}}, {"values": {"day": 2, "hour": 10.0}}]
+    assert resolve_page_days(p, page, "day") == {}

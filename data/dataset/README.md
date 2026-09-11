@@ -241,3 +241,24 @@ registra fielmente como `flagged`.
 
 A amostra **não** está completa: 19 páginas é o suficiente para ter encontrado isto, não para
 declarar uma taxa de erro. A verificação Linha-a-linha das restantes está por fazer.
+
+### Sétima correcção (2026-09-11): o dia que ficou por resolver
+
+`resolve_dittos` existe em `wrb.profile`, com teste, desde o trabalho dos perfis — e **nunca foi
+chamado no caminho de produção**. A página de Corumbá imprime dois lançamentos por dia e escreve o
+número do dia só no primeiro, como sinal de repetição (`»`) no segundo. Resultado: **31 das 62
+linhas daquela estação publicavam `day: "»"`**, 12 delas no tier utilizável. Um consumidor não tinha
+como saber de que dia eram.
+
+Encontrado pelo Gabriel a ler a app de verificação, não pelo código nem pelos checks — nenhum
+check podia apanhá-lo, porque `»` era tratado corretamente em todo o lado *excepto* no que saía no
+ficheiro.
+
+Corrigido: a resolução entra em `values` (convenções desfeitas em código) e o `»` impresso fica em
+`values_as_printed`, que tem de continuar fiel ao papel. 36 linhas resolvidas, os 31 pares da página
+passam a concordar no dia, e **nenhum veredicto mudou** — o `»` nunca afectou os tiers.
+
+O Gabriel descreveu também a geometria da tabela, que não estava escrita em lado nenhum: a sequência
+é `1 às 10, 1 às 4, 2 às 10, 2 às 4`, e as duas colunas de temperatura alinham-se a linhas
+diferentes — a máxima do dia na linha das 4h, a mínima da noite na linha das 10h. É a razão pela qual
+a pauta escalonada faz um leitor humano hesitar sobre a que linha pertence um valor.

@@ -65,6 +65,25 @@ def day_rows_for_page(page_rows: list[dict], period: str, day_key: str) -> tuple
 
 
 
+def resolve_page_days(pk, page_rows: list[dict], day_key: str) -> dict:
+    """Which rows of a page carry a ditto in the day column, and what it means.
+
+    Returns {index of the row in `page_rows`: the day it actually is}. Corumba
+    prints two readings a day and writes the day once, dittoeing the second -
+    so half of that station's rows published `day: "»"` until this existed
+    (`resolve_dittos` had been written and tested but never wired in). A
+    consumer could not say which day those rows were.
+
+    The resolved value belongs in `values` (conventions undone in code); the
+    printed `»` stays in `values_as_printed`, which must remain faithful.
+    """
+    out: dict[int, object] = {}
+    for i, fixed in enumerate(pk.resolve_dittos([dict(r["values"]) for r in page_rows])):
+        if fixed.get(day_key) != page_rows[i]["values"].get(day_key):
+            out[i] = fixed[day_key]
+    return out
+
+
 def main() -> None:
     src = Path(sys.argv[1])
     rows = [json.loads(l) for l in src.open()]
@@ -78,6 +97,15 @@ def main() -> None:
     by_page: dict = defaultdict(list)
     for r in rows:
         by_page[(r["item"], r["page"], r["period"])].append(r)
+    # A ditto mark in the day column means "the same day as the line above" -
+    # Corumba prints two readings a day and dittos the second. `resolve_dittos`
+    # has been in wrb.profile (with a test) since the profile work, but NOTHING
+    # in the production path ever called it, so 31 of that page's 62 rows
+    # published `day: "»"` and a consumer could not tell which day they were.
+    # The resolution belongs in `values` (conventions undone in code), not in
+    # `values_as_printed`, which must stay faithful to what the page shows.
+    resolved_day: dict[int, object] = {}
+
     is_day: dict[int, bool] = {}
     page_complete: dict[int, bool] = {}
     day_key_of: dict[int, str] = {}
@@ -101,6 +129,8 @@ def main() -> None:
                                     summary["values"])
             for r in prs:
                 monthly[id(r)] = fails
+        for i, day in resolve_page_days(pk, prs, day_key).items():
+            resolved_day[id(prs[i])] = day
 
     out = src.with_name(src.stem + ".rescored.jsonl").open("w")
     for r in rows:
@@ -108,6 +138,8 @@ def main() -> None:
         values, problems = p.parse(r["raw"])
         markers = dict(getattr(p, "last_markers", {}) or {})
         restored = p.from_printed(values)
+        if id(r) in resolved_day:
+            restored[day_key_of[id(r)]] = resolved_day[id(r)]
         viol = p.violations(restored)
         fails = p.verify(restored) if p.checks else []
         # A row whose measurements have collapsed to a repeated constant is

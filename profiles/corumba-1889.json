@@ -224,6 +224,6 @@
  "markers": [],
  "probe_x_frac": null,
  "table_x_frac": null,
- "notes": "Layout inédito, usado como teste de generalização (docs/g4-generalisation.md). Duas leituras por dia (10h e 4h); instrumentos ausentes na Revista; quatro colunas de texto livre. Barômetro impresso POR EXTENSO (não elidido).",
+ "notes": "Layout inédito, usado como teste de generalização (docs/g4-generalisation.md). Duas leituras por dia (10h e 4h); instrumentos ausentes na Revista; quatro colunas de texto livre. Barômetro impresso POR EXTENSO (não elidido).\n\nLAYOUT (descrito pelo Gabriel ao verificar, 2026-09-11): a pagina imprime DOIS lancamentos por dia, na ordem 10h e depois 4h, e escreve o numero do dia so no primeiro - o segundo traz o sinal de repeticao (»), ou seja o mesmo dia. A sequencia e 1 as 10, 1 as 4, 2 as 10, 2 as 4. E as duas colunas de temperatura alinham-se a linhas diferentes: a MAXIMA do dia vem na linha das 4h, e a MINIMA da noite (a da noite anterior, lida na observacao da manha) vem na linha das 10h. Nenhuma das duas coisas estava escrita em lado nenhum; a segunda e a razao pela qual um leitor humano hesita sobre a que linha pertence um valor, porque a pauta escalona as colunas.",
  "extra": {}
 }
