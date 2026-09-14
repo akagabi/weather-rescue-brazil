@@ -1,0 +1,667 @@
+{
+ "id": "revista-mensal-dekadal",
+ "name": "Revista do Observatorio - Resumo mensal por decadas (1882-83)",
+ "source": "DocVirt obnacional doc 5 - Observacoes meteorologicas do mez, blocos por decada",
+ "columns": [
+  {
+   "key": "decada",
+   "label": "Decadas e Mez",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_media",
+   "label": "Altura media",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_var_media",
+   "label": "Variacao media",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_maxima",
+   "label": "Altura maxima",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_data_max",
+   "label": "Data correspondente",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_minima",
+   "label": "Altura minima",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_data_min",
+   "label": "Data correspondente",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_var_extrema",
+   "label": "Variacao extrema",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_media",
+   "label": "Temperatura media",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_var_media",
+   "label": "Variacao media",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_maxima",
+   "label": "Temperatura maxima",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_data_max",
+   "label": "Data correspondente",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_minima",
+   "label": "Temperatura minima",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_data_min",
+   "label": "Data correspondente",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_var_extrema",
+   "label": "Variacao extrema",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "humidade",
+   "label": "Humidade relativa",
+   "kind": "number",
+   "unit": "percent",
+   "range": [
+    20,
+    100
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "tensao",
+   "label": "Tensao media",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    5,
+    30
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "dias_limpos",
+   "label": "Dias limpos",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "dias_nublados",
+   "label": "Dias nublados",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "dias_cobertos",
+   "label": "Dias cobertos",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "dias_chuva",
+   "label": "Dias de chuva",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "dias_nevoeiro",
+   "label": "Dias de nevoeiro",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "dias_neve",
+   "label": "Dias de neve",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "dias_tempestade",
+   "label": "Dias de tempestade",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "chuva",
+   "label": "Millimetros de chuva",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0,
+    600
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_N",
+   "label": "Vento N",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_NNE",
+   "label": "Vento NNE",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_NE",
+   "label": "Vento NE",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_ENE",
+   "label": "Vento ENE",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_E",
+   "label": "Vento E",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_ESE",
+   "label": "Vento ESE",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_SE",
+   "label": "Vento SE",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_SSE",
+   "label": "Vento SSE",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_S",
+   "label": "Vento S",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_SSO",
+   "label": "Vento SSO",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_SO",
+   "label": "Vento SO",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_OSO",
+   "label": "Vento OSO",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_O",
+   "label": "Vento O",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_ONO",
+   "label": "Vento ONO",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_NO",
+   "label": "Vento NO",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "vento_NNO",
+   "label": "Vento NNO",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "forca_calma",
+   "label": "Calma",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "forca_muito_fraco",
+   "label": "Muito fraco",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "forca_fraco",
+   "label": "Fraco",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "forca_moderado",
+   "label": "Moderado",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "forca_fresco",
+   "label": "Fresco",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "forca_forte",
+   "label": "Forte",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "forca_muito_forte",
+   "label": "Muito forte",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "forca_violento",
+   "label": "Violento",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "forca_furacao",
+   "label": "Furacao",
+   "kind": "number",
+   "unit": "dias",
+   "range": [
+    0,
+    31
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "rows_per_page": "fixed:4",
+ "adapter": "",
+ "checks": [],
+ "markers": [
+  "Gottas",
+  "Inap.",
+  "..."
+ ],
+ "monthly": {},
+ "probe_x_frac": null,
+ "table_x_frac": null,
+ "notes": "Duas tabelas empilhadas numa pagina, alinhadas pela mesma linha de decada: BAROMETRO/THERMOMETRO/PSYCHROMETRO em cima, ESTADO GERAL DA ATMOSPHERA/ANEMOMETRO em baixo. Por isso o perfil tem ~50 colunas e UMA linha por decada. As linhas sao 1a, 2a, 3a e Mez (tres decadas + total do mez), NAO dias - e um resumo decadal, nao uma serie diaria. Traz 'Data correspondente': o DIA em que cada extremo ocorreu. A pagina imprime a estacao no rodape (ex.: 'Rio Grande do Sul. - Observador, Loppo Netto, Engenheiro director'), e as notas no fim (chuva em que dias, trovoada em que dias, cometa). LIMITE MEDIDO: o modelo atual le 9-16 celulas; nesta pagina emitiu 45 celulas mas so preencheu 15 e devolveu null no resto, com um valor trocado. Esta forma precisa de uma variante treinada nela - ~40 linhas rotuladas, como manda a curva de aprendizagem.",
+ "extra": {}
+}

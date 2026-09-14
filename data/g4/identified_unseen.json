@@ -1,0 +1,650 @@
+[
+ {
+  "doc": "10",
+  "page": 51,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 101,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "10",
+  "page": 93,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 78,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 209,
+  "caption": "DISTANCIAS LUNARES.\nSETEMBRO DE 1853.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1853-09"
+ },
+ {
+  "doc": "11",
+  "page": 262,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 41,
+  "caption": "AGOSTO DE 1855.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1855-08"
+ },
+ {
+  "doc": "11",
+  "page": 11,
+  "caption": "JANEIRO DE 1855.\nAO MEIO DIA MEDIO NO RIO DE JANEIRO.",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1855-01"
+ },
+ {
+  "doc": "11",
+  "page": 260,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 151,
+  "caption": "DISTANCIAS LUNARES.\nABRIL DE 1835.",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 137,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 113,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 263,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 223,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "11",
+  "page": 90,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 37,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 26,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "12",
+  "page": 79,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 103,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 205,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 6,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "14",
+  "page": 189,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 160,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS EM S. JOÃO D'EL-REI, PELO SR. JOÃO PACHECO, ENCARREGADO DAS OBSERVAÇÕES\nMEZ DE SETEMBRO DE 1889",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1889-09"
+ },
+ {
+  "doc": "15",
+  "page": 38,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 61,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 154,
+  "caption": "REVISTA DO OBSERVATORIO\n143",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 174,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO DO RIO DE JANEIRO NO MEZ DE NOVEMBRO DE 1890",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1890-01"
+ },
+ {
+  "doc": "16",
+  "page": 110,
+  "caption": "ESTRELLAS\nPASSAGEM\nOBSERVADA\nCORREÇÕES\nDO INSTRUM.\nPASSAGEM\nCORRETA\nR\nTABULAR\nESTADO\nABSOL.\nDO\nCHRONOM.\nα Libræ.\nh m s\n+ 0.11\n58.29\n14.44.42.50\n- 18.15",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "2",
+  "page": 27,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "2",
+  "page": 51,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "2",
+  "page": 63,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 168,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 270,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 240,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 256,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 244,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "4",
+  "page": 260,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 103,
+  "caption": "DE RIO DE JANEIRO\nIxxxij",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 373,
+  "caption": "Observations météorologiques du mois d'Août 1883.\nRio de Janeiro, August 1883.",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "5",
+  "page": 71,
+  "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
+  "is_weather_table": true,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 37,
+  "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1882-01"
+ },
+ {
+  "doc": "5",
+  "page": 107,
+  "caption": "DE RIO DE JANEIRO\nIxxxvj",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 451,
+  "caption": "Observações meteorológicas do meio de Outubro de 1882.\nRio Grande do Sul. — Observador, Lóppo Netto, Engenheiro director.\n(27)\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1882-01"
+ },
+ {
+  "doc": "5",
+  "page": 201,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 247,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 418,
+  "caption": "DE RIO DE JANEIRO\nTension de la vapeur d'eau contenue dans l'air. — Moyennes diurnes, mensuelles et annuelles.",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": null
+ },
+ {
+  "doc": "5",
+  "page": 329,
+  "caption": "Observations météorologiques du mois de Mars 1883.\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "5",
+  "page": 407,
+  "caption": "Observations météorologiques du mois de Décembre 1882.\nTempsérature centigrade à l'ombre.\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1882-01"
+ },
+ {
+  "doc": "5",
+  "page": 459,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 529,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 647,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 495,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 622,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 653,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 547,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 200,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 486,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 24,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 290,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 668,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 702,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 121,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 475,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "6",
+  "page": 626,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 20,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 40,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "7",
+  "page": 52,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "8",
+  "page": 143,
+  "caption": "DE RIO DE JANEIRO\n131\nRésumé météorologique de l'année 1883\nMoyennes horaires, mensuelles et de l'année. Tension de la vapeur atmosphérique en millimètres\nMOIS\n4 h. M.\n7 h. M.\n10 h. M.\n1 h. S.\n4 h. S.\n7 h. S",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 63,
+  "caption": "Observations météorologiques du mois de Juillet 1883\nTension de la vapeur atmosphérique en millimètres\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 39,
+  "caption": "Observations météorologiques du mois d'Avril 1883\nDE RIO DE JANEIRO\nTension de la vapeur atmosphérique en millimètres",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 222,
+  "caption": "Observations météorologiques du mois d'Octobre 1884\nTension de la vapeur atmosphérique en millimètres\nDate 4 h. M. 7 h. M. 10 h. M. 1 h. S. 4 h. S. 7 h. S. 10 h. S. Moyenne\n1 15.22 15.3",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1884-10"
+ },
+ {
+  "doc": "8",
+  "page": 374,
+  "caption": "Observations météorologiques du mois de Décembre 1885\nDE RIO DE JANEIRO\n365",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1885-01"
+ },
+ {
+  "doc": "8",
+  "page": 291,
+  "caption": "Observations météorologiques du mois de Février 1885\nDe Rio de Janeiro\nBaromètre réduit à 0°, 700mm +",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1885-01"
+ },
+ {
+  "doc": "8",
+  "page": 47,
+  "caption": "Observations météorologiques du mois de Mai 1883\nTension de la vapeur atmosphérique en millimètres\nDate | 4 h. M. | 7 h. M. | 10 h. M. | 1 h. S. | 4 h. S. | 7 h. S. | 10 h. S. | Moyenne\n--- | --- | --- |",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1883-05"
+ },
+ {
+  "doc": "8",
+  "page": 169,
+  "caption": "Observations météorologiques du mois de Mars 1884\nNebulosité en dixièmes du ciel couvert\nDate\t4 h. M.\t7 h. M.\t10 h. M.\t1 h. S.\t4 h. S.\t7 h. S.\t10 h. S.\tMoyenne\n1\t9\tC-K,K\t9\tC-K,K",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1884-03"
+ },
+ {
+  "doc": "8",
+  "page": 352,
+  "caption": "Observations météorologiques du mois de Septembre 1885\nNébulosité en dixièmes du ciel couvert\nANNALES DE L'OBSEVATOIRE IMPÉRIAL",
+  "is_weather_table": true,
+  "profile": null,
+  "period": "1885-09"
+ },
+ {
+  "doc": "8",
+  "page": 41,
+  "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois d'Avril 1883",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 194,
+  "caption": "Observations météorologiques du mois de Juin 1884\nDE RIO DE JANEIRO\n183",
+  "is_weather_table": true,
+  "profile": "revista-rio-1886",
+  "period": "1884-01"
+ },
+ {
+  "doc": "9",
+  "page": 26,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 12,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "9",
+  "page": 94,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "profile": null,
+  "period": null
+ }
+]

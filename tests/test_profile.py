@@ -327,3 +327,21 @@ def test_rescore_reports_nothing_when_a_page_has_no_ditto() -> None:
     p = load("corumba-1889")
     page = [{"values": {"day": 1, "hour": 10.0}}, {"values": {"day": 2, "hour": 10.0}}]
     assert resolve_page_days(p, page, "day") == {}
+
+
+def test_the_dekadal_summary_profile_round_trips() -> None:
+    """The Revista's monthly-by-decade summary: two stacked tables on one page
+    aligned by the same decade row, ~50 columns, rows are 1a/2a/3a/Mez and NOT
+    days. It is a different product from the daily tables and needed its own
+    profile - the `cuyaba-1889` shape does not fit it."""
+    p = load("revista-mensal-dekadal")
+    assert p.n_cells == 50
+    assert p.expected_rows("1882-10") == 4          # 1a, 2a, 3a, Mez
+    vals = {c.key: None for c in p.columns}
+    vals.update(decada="2a", baro_media=762.13, baro_data_max="13-15", t_media=18.60,
+                dias_chuva=15, vento_N=2, forca_moderado=26)
+    back, problems = p.parse(p.target(vals))
+    assert problems == []
+    assert back["baro_media"] == 762.13 and back["baro_data_max"] == "13-15"
+    assert back["dias_chuva"] == 15 and back["vento_N"] == 2
+    assert back["forca_moderado"] == 26
