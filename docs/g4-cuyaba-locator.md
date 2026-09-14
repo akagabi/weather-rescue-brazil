@@ -45,17 +45,51 @@ Foi revertido. Acrescentar superfície à função mais load-bearing do reposit�
 — de que dependem 192 páginas — por uma capacidade que não resolve o caso que a
 motivou é exactamente o tipo de coisa que não se deve deixar ficar.
 
-## O que uma tentativa futura precisa de fazer
+## Instrumentado: porque é que afinar parâmetros não resolve
 
-1. Perceber porque a tentativa a 2× não devolve 31 nesta página (o passo a 2×
-   seria ~44 px, bem dentro da janela). Instrumentar `_search` a 2× e ver a
-   contagem de picos.
-2. Só depois decidir se a correcção é uma banda declarada no perfil, um
-   `MIN_PITCH_PX` menor, ou outra coisa.
-3. **Verificar contra a imagem em cada passo.** Três vezes nesta sessão se
-   inferiu a partir de geometria (regularidade do passo) em vez de olhar para a
-   página, e as três vezes a inferência estava errada — a última delas levou a
-   correr o modelo sobre seis páginas que nunca tinham sido abertas.
+Medido em `15/76` (2026-09-14). **Não há um parâmetro errado; há uma estratégia
+errada para esta página.**
+
+**(1) A cadeia desfaz-se por tolerância, não por cabeçalho.**
+`CHAIN_GAP_RANGE = (0.8, 1.2)` exige que centros consecutivos distem do passo
+entre ±20%. Com passo 22 isso é 17,6–26,4 px — e **apenas 26 dos 49 intervalos
+reais caem nessa banda**; os intervalos medidos vão de 14 a 47 px. A passo
+apertado, o centróide de tinta oscila mais do que a tolerância permite, e a
+cadeia parte-se em pedaços de 3 a 8 linhas.
+
+**(2) Alargar a tolerância move a falha, não a resolve.** Com o intervalo
+alargado, a melhor cadeia devolve 11, 12, 22, 29 ou 41 linhas conforme o valor
+— e começa em y=674, 1180 ou 202, ou seja **em sítios diferentes a cada
+tentativa**. Isto diz que o problema não é o limiar: é o **conjunto de picos**,
+que não é estável nesta página. Afinar um parâmetro aqui é escolher qual falha
+preferimos.
+
+**(3) A tentativa a 2× tira à página a estrutura de que ela depende.**
+`horizontal_rules` encontra **2 regras a 1× e 1 a 2×**. O construtor de cadeia
+usa as regras para decidir onde uma cadeia começa e acaba; a tentativa que
+existe para *salvar* a página degrada exactamente o sinal de que a página
+precisa.
+
+## O que uma tentativa futura deve fazer
+
+**Usar o oráculo do número do dia — e não a geometria — para ancorar as linhas
+desta página.** O mecanismo já existe e já foi provado no projecto: foi
+construído para os Annales (`DayOracle` em `g4_build_dataset.py`,
+`MlxDayOracle` em `g4_run_pages.py`), e a nota do projecto descreve-o como
+*"localização guiada por oráculo em cada página: os números de dia impressos
+decidem, a geometria apenas propõe"*. Esta página reúne quatro condições que
+derrotam a geometria ao mesmo tempo — passo de 22 px abaixo do `MIN_PITCH_PX`,
+oscilação de centróide de ±50%, cabeçalho de três níveis, e linhas `Doc.`/`Mez`
+— e é exactamente para isso que serve decidir pela leitura em vez do desenho.
+
+Não vale a pena mexer mais em limiares globais: `MIN_PITCH_PX` e
+`CHAIN_GAP_RANGE` estão calibrados para 192 páginas que funcionam, e esta
+página não é um caso de afinação.
+
+**E olhar para a página em cada passo.** Três vezes nesta sessão se inferiu a
+partir de geometria em vez de olhar, e as três vezes a inferência estava
+errada — a última levou a correr o modelo sobre seis páginas que nunca tinham
+sido abertas.
 
 ## Prioridade
 
