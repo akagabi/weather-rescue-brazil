@@ -37,13 +37,13 @@ front matter above is the dataset card format.
 
 | | |
 |---|---|
-| Rows | 5,015 |
-| Usable rows (`checks_pass` + `qc_clean`) | **2,895** |
-| Values in usable rows | 34,502 |
-| Pages transcribed | 192 |
-| Period | 1883-01 to 1890-11 |
+| Rows | 5,925 |
+| Usable rows (`checks_pass` + `qc_clean`) | **3,391** |
+| Values in usable rows | 39,983 |
+| Pages transcribed | 226 |
+| Period | 1882-01 to 1890-11 |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão |
-| Sources | *Revista do Observatório* (1886–1891), *Annales de l'Observatoire Impérial* (1883–1885) |
+| Sources | *Revista do Observatório* (1886–1891), *Annales de l'Observatoire Impérial* (1882–1885) |
 | Languages of the printed tables | Portuguese, French |
 
 Measured variables: atmospheric pressure (mean, max, min, and for 1883–85 seven
@@ -81,11 +81,15 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
 
 ## Known limitations
 
+- **1882 comes from a second Annales volume** (doc 5), added after the first
+  release: 496 usable rows, 202 of them 1882, in the same French daily layouts.
+  Checked the same way as the rest — 2 climatologically impossible values in
+  3,417 (0.06%), no ordering violations.
 - **A 31-month gap.** 1887-01 through 1888-11 are absent, and it is a source
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **2,120 of 5,015 rows are `flagged`**, including whole-profile sections
+- **2,534 of 5,925 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.

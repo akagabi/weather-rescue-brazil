@@ -1,0 +1,344 @@
+{
+ "pages": [
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 309,
+   "period": "1882-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/309 1882-01 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 311,
+   "period": "1882-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/311 1882-01 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-nebulosite",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 313,
+   "period": "1882-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/313 1882-01 rio-1883-nebulosite"
+  },
+  {
+   "profile": "rio-1883-thermo",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 315,
+   "period": "1882-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/315 1882-01 rio-1883-thermo"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 327,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/327 1883-01 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 329,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/329 1883-01 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 330,
+   "period": "1883-03",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/330 1883-03 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 337,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/337 1883-01 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-nebulosite",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 340,
+   "period": "1883-04",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/340 1883-04 rio-1883-nebulosite"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 342,
+   "period": "1883-04",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/342 1883-04 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-thermo",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 344,
+   "period": "1883-04",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/344 1883-04 rio-1883-thermo"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 345,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/345 1883-01 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 347,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/347 1883-01 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 351,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/351 1883-01 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-actinometrie",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 352,
+   "period": "1883-05",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/352 1883-05 rio-1883-actinometrie"
+  },
+  {
+   "profile": "rio-1883-nebulosite",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 358,
+   "period": "1883-06",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/358 1883-06 rio-1883-nebulosite"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 363,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/363 1883-01 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 365,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/365 1883-01 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-nebulosite",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 367,
+   "period": "1883-07",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/367 1883-07 rio-1883-nebulosite"
+  },
+  {
+   "profile": "rio-1883-thermo",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 369,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/369 1883-01 rio-1883-thermo"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 373,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/373 1883-01 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-nebulosite",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 376,
+   "period": "1883-08",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/376 1883-08 rio-1883-nebulosite"
+  },
+  {
+   "profile": "rio-1883-thermo",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 378,
+   "period": "1883-08",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/378 1883-08 rio-1883-thermo"
+  },
+  {
+   "profile": "rio-1883-actinometrie",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 379,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/379 1883-01 rio-1883-actinometrie"
+  },
+  {
+   "profile": "rio-1883-thermo",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 385,
+   "period": "1882-09",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/385 1882-09 rio-1883-thermo"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 388,
+   "period": "1882-10",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/388 1882-10 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 389,
+   "period": "1882-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/389 1882-01 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 397,
+   "period": "1882-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/397 1882-01 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 398,
+   "period": "1882-11",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/398 1882-11 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 399,
+   "period": "1882-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/399 1882-01 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-thermo",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 403,
+   "period": "1882-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/403 1882-01 rio-1883-thermo"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 406,
+   "period": "1882-12",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/406 1882-12 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 407,
+   "period": "1882-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/407 1882-01 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-nebulosite",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 410,
+   "period": "1882-12",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/410 1882-12 rio-1883-nebulosite"
+  }
+ ]
+}
