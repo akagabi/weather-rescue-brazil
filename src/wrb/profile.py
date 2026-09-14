@@ -91,6 +91,18 @@ class Profile:
     monthly: dict = field(default_factory=dict)
     probe_x_frac: tuple[float, float] | None = None
     table_x_frac: tuple[float, float] | None = None
+    # WHERE the table sits vertically, as a fraction of page height - the Y twin
+    # of table_x_frac. Needed when a header is as tall as the data is dense and
+    # the row search starts counting header rows (wrb.rows.locate_day_rows).
+    table_y_frac: tuple[float, float] | None = None
+    # For a table that prints a FIXED number of rows per page (a monthly or
+    # dekadal summary prints 1a/2a/3a/Mez and nothing else), say where those
+    # rows are and skip detection entirely. A printed form does not move, and on
+    # this layout the detector cannot be made to work: the row pitch is ~25px
+    # under a three-level header, and the ink peaks are too faint for the
+    # strong-peak threshold - it returns 2 rows of the 4. Declaring them is both
+    # simpler and more honest than tuning a threshold until it happens to pass.
+    row_bands: list | None = None
     notes: str = ""
     extra: dict = field(default_factory=dict)
 
@@ -229,6 +241,10 @@ class Profile:
             kw["probe_x_frac"] = tuple(self.probe_x_frac)
         if self.table_x_frac:
             kw["table_x_frac"] = tuple(self.table_x_frac)
+        if self.table_y_frac:
+            kw["table_y_frac"] = tuple(self.table_y_frac)
+        if self.row_bands:
+            kw["row_bands"] = [tuple(b) for b in self.row_bands]
         return kw
 
     def verify(self, values: dict, tol: float = 0.051) -> list[str]:
@@ -368,7 +384,7 @@ class Profile:
     # --- io -------------------------------------------------------------
     def to_dict(self) -> dict:
         d = asdict(self)
-        for k in ("probe_x_frac", "table_x_frac"):
+        for k in ("probe_x_frac", "table_x_frac", "table_y_frac"):
             if d.get(k) is not None:
                 d[k] = list(d[k])
         for c in d["columns"]:

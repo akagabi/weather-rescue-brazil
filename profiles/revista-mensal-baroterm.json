@@ -1,0 +1,249 @@
+{
+ "id": "revista-mensal-baroterm",
+ "name": "Revista - resumo mensal por decadas: barometro/termometro/psychrometro",
+ "source": "DocVirt obnacional doc 5 - bloco superior da pagina",
+ "columns": [
+  {
+   "key": "decada",
+   "label": "Decadas e Mez",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_media",
+   "label": "Baro altura media",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_var_media",
+   "label": "Baro variacao media",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_maxima",
+   "label": "Baro altura maxima",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_data_max",
+   "label": "Data correspondente",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": "dia ou intervalo (\"13-15\")"
+  },
+  {
+   "key": "baro_minima",
+   "label": "Baro altura minima",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "baro_data_min",
+   "label": "Data correspondente",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": "dia ou intervalo (\"13-15\")"
+  },
+  {
+   "key": "baro_var_extrema",
+   "label": "Baro variacao extrema",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    740,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_media",
+   "label": "Temp media",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_var_media",
+   "label": "Temp variacao media",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_maxima",
+   "label": "Temp maxima",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_data_max",
+   "label": "Data correspondente",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": "dia ou intervalo (\"13-15\")"
+  },
+  {
+   "key": "t_minima",
+   "label": "Temp minima",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_data_min",
+   "label": "Data correspondente",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": "dia ou intervalo (\"13-15\")"
+  },
+  {
+   "key": "t_var_extrema",
+   "label": "Temp variacao extrema",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    0,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "humidade",
+   "label": "Humidade relativa",
+   "kind": "number",
+   "unit": "percent",
+   "range": [
+    20,
+    100
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "tensao",
+   "label": "Tensao media",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    5,
+    30
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "notes": "A pagina traz DUAS tabelas empilhadas pelo mesmo rotulo de decada, e por isso sao DOIS perfis: nao ha uma faixa continua que contenha uma linha das duas. As linhas sao 1a, 2a, 3a e Mez (tres decadas + total do mez), NAO dias: e um resumo decadal, nao uma serie diaria. A estacao vem impressa no rodape (ex.: 'Rio Grande do Sul. - Observador, Loppo Netto'). Este e o BLOCO SUPERIOR (~17 colunas; o modelo ja leu 14 de 15 corretamente aqui). As quatro linhas estao DECLARADAS em `row_bands` (fraccoes da altura da pagina), medidas na pagina 5/451 e verificadas contra o impresso: o detector de linhas nao da conta deste layout (passo ~25px sob um cabecalho de tres niveis, picos fracos demais) e devolvia 2 das 4. Uma forma impressa nao se move, portanto declarar e mais simples e mais honesto do que afinar um limiar ate ele passar por acaso.",
+ "rows_per_page": "fixed:4",
+ "adapter": "",
+ "checks": [],
+ "markers": [
+  "Gottas",
+  "Inap.",
+  "...",
+  "..."
+ ],
+ "monthly": {},
+ "probe_x_frac": null,
+ "table_x_frac": null,
+ "extra": {},
+ "row_bands": [
+  [
+   0.44,
+   0.452
+  ],
+  [
+   0.4548,
+   0.4668
+  ],
+  [
+   0.4696,
+   0.4816
+  ],
+  [
+   0.4844,
+   0.4964
+  ]
+ ],
+ "table_y_frac": [
+  0.42,
+  0.52
+ ]
+}

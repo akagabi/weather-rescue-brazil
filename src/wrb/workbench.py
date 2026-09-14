@@ -103,7 +103,12 @@ def page_state(profile_id: str, doc: str, page: int, period: str) -> PageState:
     else:
         image = Image.open(img_path).convert("RGB")
         want = p.expected_rows(period)
-        loc = locate_day_rows(image, want)
+        # **p.geometry(): the profile's declared geometry - probe_x_frac,
+        # table_x_frac, table_y_frac and row_bands. Omitting it made the review
+        # UI ignore every one of them, so a page whose rows are declared in the
+        # profile (a fixed-row monthly form) showed the detector's wrong guess
+        # instead of the declared rows.
+        loc = locate_day_rows(image, want, **p.geometry())
         st.skew = loc.skew_deg
         if loc.ok:
             st.boxes = [list(b) for b in loc.day_boxes]

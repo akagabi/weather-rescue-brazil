@@ -1,7 +1,7 @@
 {
- "id": "revista-mensal-dekadal",
- "name": "Revista do Observatorio - Resumo mensal por decadas (1882-83)",
- "source": "DocVirt obnacional doc 5 - Observacoes meteorologicas do mez, blocos por decada",
+ "id": "revista-mensal-estado",
+ "name": "Revista - resumo mensal por decadas: estado da atmosfera/anemometro",
+ "source": "DocVirt obnacional doc 5 - bloco inferior da pagina",
  "columns": [
   {
    "key": "decada",
@@ -9,202 +9,6 @@
    "kind": "text",
    "unit": null,
    "range": null,
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "baro_media",
-   "label": "Altura media",
-   "kind": "number",
-   "unit": "mm",
-   "range": [
-    740,
-    790
-   ],
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "baro_var_media",
-   "label": "Variacao media",
-   "kind": "number",
-   "unit": "mm",
-   "range": [
-    740,
-    790
-   ],
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "baro_maxima",
-   "label": "Altura maxima",
-   "kind": "number",
-   "unit": "mm",
-   "range": [
-    740,
-    790
-   ],
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "baro_data_max",
-   "label": "Data correspondente",
-   "kind": "text",
-   "unit": null,
-   "range": null,
-   "elided": false,
-   "elided_range": null,
-   "note": "data em que o extremo ocorreu; pode ser um intervalo (\"13-15\"), nao um numero"
-  },
-  {
-   "key": "baro_minima",
-   "label": "Altura minima",
-   "kind": "number",
-   "unit": "mm",
-   "range": [
-    740,
-    790
-   ],
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "baro_data_min",
-   "label": "Data correspondente",
-   "kind": "text",
-   "unit": null,
-   "range": null,
-   "elided": false,
-   "elided_range": null,
-   "note": "data em que o extremo ocorreu; pode ser um intervalo (\"13-15\"), nao um numero"
-  },
-  {
-   "key": "baro_var_extrema",
-   "label": "Variacao extrema",
-   "kind": "number",
-   "unit": "mm",
-   "range": [
-    740,
-    790
-   ],
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "t_media",
-   "label": "Temperatura media",
-   "kind": "number",
-   "unit": "degC",
-   "range": [
-    0,
-    45
-   ],
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "t_var_media",
-   "label": "Variacao media",
-   "kind": "number",
-   "unit": "degC",
-   "range": [
-    0,
-    45
-   ],
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "t_maxima",
-   "label": "Temperatura maxima",
-   "kind": "number",
-   "unit": "degC",
-   "range": [
-    0,
-    45
-   ],
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "t_data_max",
-   "label": "Data correspondente",
-   "kind": "text",
-   "unit": null,
-   "range": null,
-   "elided": false,
-   "elided_range": null,
-   "note": "data em que o extremo ocorreu; pode ser um intervalo (\"13-15\"), nao um numero"
-  },
-  {
-   "key": "t_minima",
-   "label": "Temperatura minima",
-   "kind": "number",
-   "unit": "degC",
-   "range": [
-    0,
-    45
-   ],
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "t_data_min",
-   "label": "Data correspondente",
-   "kind": "text",
-   "unit": null,
-   "range": null,
-   "elided": false,
-   "elided_range": null,
-   "note": "data em que o extremo ocorreu; pode ser um intervalo (\"13-15\"), nao um numero"
-  },
-  {
-   "key": "t_var_extrema",
-   "label": "Variacao extrema",
-   "kind": "number",
-   "unit": "degC",
-   "range": [
-    0,
-    45
-   ],
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "humidade",
-   "label": "Humidade relativa",
-   "kind": "number",
-   "unit": "percent",
-   "range": [
-    20,
-    100
-   ],
-   "elided": false,
-   "elided_range": null,
-   "note": ""
-  },
-  {
-   "key": "tensao",
-   "label": "Tensao media",
-   "kind": "number",
-   "unit": "mm",
-   "range": [
-    5,
-    30
-   ],
    "elided": false,
    "elided_range": null,
    "note": ""
@@ -315,7 +119,7 @@
   },
   {
    "key": "vento_N",
-   "label": "Vento N",
+   "label": "Dias de vento N",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -328,7 +132,7 @@
   },
   {
    "key": "vento_NNE",
-   "label": "Vento NNE",
+   "label": "Dias de vento NNE",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -341,7 +145,7 @@
   },
   {
    "key": "vento_NE",
-   "label": "Vento NE",
+   "label": "Dias de vento NE",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -354,7 +158,7 @@
   },
   {
    "key": "vento_ENE",
-   "label": "Vento ENE",
+   "label": "Dias de vento ENE",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -367,7 +171,7 @@
   },
   {
    "key": "vento_E",
-   "label": "Vento E",
+   "label": "Dias de vento E",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -380,7 +184,7 @@
   },
   {
    "key": "vento_ESE",
-   "label": "Vento ESE",
+   "label": "Dias de vento ESE",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -393,7 +197,7 @@
   },
   {
    "key": "vento_SE",
-   "label": "Vento SE",
+   "label": "Dias de vento SE",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -406,7 +210,7 @@
   },
   {
    "key": "vento_SSE",
-   "label": "Vento SSE",
+   "label": "Dias de vento SSE",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -419,7 +223,7 @@
   },
   {
    "key": "vento_S",
-   "label": "Vento S",
+   "label": "Dias de vento S",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -432,7 +236,7 @@
   },
   {
    "key": "vento_SSO",
-   "label": "Vento SSO",
+   "label": "Dias de vento SSO",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -445,7 +249,7 @@
   },
   {
    "key": "vento_SO",
-   "label": "Vento SO",
+   "label": "Dias de vento SO",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -458,7 +262,7 @@
   },
   {
    "key": "vento_OSO",
-   "label": "Vento OSO",
+   "label": "Dias de vento OSO",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -471,7 +275,7 @@
   },
   {
    "key": "vento_O",
-   "label": "Vento O",
+   "label": "Dias de vento O",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -484,7 +288,7 @@
   },
   {
    "key": "vento_ONO",
-   "label": "Vento ONO",
+   "label": "Dias de vento ONO",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -497,7 +301,7 @@
   },
   {
    "key": "vento_NO",
-   "label": "Vento NO",
+   "label": "Dias de vento NO",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -510,7 +314,7 @@
   },
   {
    "key": "vento_NNO",
-   "label": "Vento NNO",
+   "label": "Dias de vento NNO",
    "kind": "number",
    "unit": "dias",
    "range": [
@@ -639,17 +443,40 @@
    "note": ""
   }
  ],
+ "notes": "A pagina traz DUAS tabelas empilhadas pelo mesmo rotulo de decada, e por isso sao DOIS perfis: nao ha uma faixa continua que contenha uma linha das duas. As linhas sao 1a, 2a, 3a e Mez (tres decadas + total do mez), NAO dias: e um resumo decadal, nao uma serie diaria. A estacao vem impressa no rodape (ex.: 'Rio Grande do Sul. - Observador, Loppo Netto'). Este e o BLOCO INFERIOR (~34 colunas, incluindo 16 direccoes de vento contadas por dia). As quatro linhas estao DECLARADAS em `row_bands` (fraccoes da altura da pagina), medidas na pagina 5/451 e verificadas contra o impresso: o detector de linhas nao da conta deste layout (passo ~25px sob um cabecalho de tres niveis, picos fracos demais) e devolvia 2 das 4. Uma forma impressa nao se move, portanto declarar e mais simples e mais honesto do que afinar um limiar ate ele passar por acaso.",
  "rows_per_page": "fixed:4",
  "adapter": "",
  "checks": [],
  "markers": [
   "Gottas",
   "Inap.",
+  "...",
   "..."
  ],
  "monthly": {},
  "probe_x_frac": null,
  "table_x_frac": null,
- "notes": "Duas tabelas empilhadas numa pagina, alinhadas pela mesma linha de decada: BAROMETRO/THERMOMETRO/PSYCHROMETRO em cima, ESTADO GERAL DA ATMOSPHERA/ANEMOMETRO em baixo. Por isso o perfil tem ~50 colunas e UMA linha por decada. As linhas sao 1a, 2a, 3a e Mez (tres decadas + total do mez), NAO dias - e um resumo decadal, nao uma serie diaria. Traz 'Data correspondente': o DIA em que cada extremo ocorreu. A pagina imprime a estacao no rodape (ex.: 'Rio Grande do Sul. - Observador, Loppo Netto, Engenheiro director'), e as notas no fim (chuva em que dias, trovoada em que dias, cometa). LIMITE MEDIDO: o modelo atual le 9-16 celulas; nesta pagina emitiu 45 celulas mas so preencheu 15 e devolveu null no resto, com um valor trocado. Esta forma precisa de uma variante treinada nela - ~40 linhas rotuladas, como manda a curva de aprendizagem. As colunas 'Data correspondente' sao TEXTO: imprimem o dia, ou um intervalo (ex. '13-15').",
- "extra": {}
+ "extra": {},
+ "row_bands": [
+  [
+   0.699,
+   0.711
+  ],
+  [
+   0.7138,
+   0.7258
+  ],
+  [
+   0.7286,
+   0.7406
+  ],
+  [
+   0.7434,
+   0.7554
+  ]
+ ],
+ "table_y_frac": [
+  0.68,
+  0.78
+ ]
 }

@@ -329,19 +329,76 @@ def test_rescore_reports_nothing_when_a_page_has_no_ditto() -> None:
     assert resolve_page_days(p, page, "day") == {}
 
 
-def test_the_dekadal_summary_profile_round_trips() -> None:
-    """The Revista's monthly-by-decade summary: two stacked tables on one page
-    aligned by the same decade row, ~50 columns, rows are 1a/2a/3a/Mez and NOT
-    days. It is a different product from the daily tables and needed its own
-    profile - the `cuyaba-1889` shape does not fit it."""
-    p = load("revista-mensal-dekadal")
-    assert p.n_cells == 50
-    assert p.expected_rows("1882-10") == 4          # 1a, 2a, 3a, Mez
+def test_the_dekadal_summary_is_TWO_profiles_not_one() -> None:
+    """The Revista's monthly-by-decade summary is two stacked tables on one page
+    that share the decade row labels - but they are separate tables, and no
+    contiguous crop contains one row of both. So it is two profiles, not one
+    50-column profile: that was the first attempt and it cannot be cropped."""
+    upper, lower = load("revista-mensal-baroterm"), load("revista-mensal-estado")
+    assert upper.n_cells == 17      # barometro(7) + termometro(7) + psychrometro(2) + label
+    assert lower.n_cells == 34      # estado(8) + 16 wind directions + force(9) + label
+    for p in (upper, lower):
+        assert p.expected_rows("1882-10") == 4      # 1a, 2a, 3a, Mez - NOT days
+        assert p.rows_per_page == "fixed:4"
+
+
+def test_the_upper_block_round_trips() -> None:
+    p = load("revista-mensal-baroterm")
     vals = {c.key: None for c in p.columns}
-    vals.update(decada="2a", baro_media=762.13, baro_data_max="13-15", t_media=18.60,
-                dias_chuva=15, vento_N=2, forca_moderado=26)
+    vals.update(decada="2a", baro_media=762.13, baro_data_max="13-15",
+                t_media=18.60, t_maxima=20.50, humidade=85.47, tensao=13.4)
     back, problems = p.parse(p.target(vals))
     assert problems == []
-    assert back["baro_media"] == 762.13 and back["baro_data_max"] == "13-15"
-    assert back["dias_chuva"] == 15 and back["vento_N"] == 2
-    assert back["forca_moderado"] == 26
+    assert back["baro_media"] == 762.13 and back["t_media"] == 18.60
+    assert back["humidade"] == 85.47 and back["tensao"] == 13.4
+    # the extreme dates are TEXT: the page prints a day or a RANGE ("13-15"),
+    # which the first version of this profile declared numeric and dropped
+    assert back["baro_data_max"] == "13-15"
+
+
+def test_the_lower_block_round_trips() -> None:
+    p = load("revista-mensal-estado")
+    vals = {c.key: None for c in p.columns}
+    vals.update(decada="Mez", dias_limpos=7, dias_nublados=25, dias_chuva=9,
+                chuva=96.8, vento_N=2, vento_NO=2, forca_moderado=26, forca_calma=1)
+    back, problems = p.parse(p.target(vals))
+    assert problems == []
+    assert back["dias_limpos"] == 7 and back["dias_chuva"] == 9 and back["chuva"] == 96.8
+    assert back["vento_N"] == 2 and back["forca_moderado"] == 26
+
+
+def test_the_workbench_passes_the_profiles_declared_geometry_to_the_locator(monkeypatch):
+    """A profile's geometry fields were silently ignored by the review UI.
+
+    `page_state` called `locate_day_rows(image, want)` with no `**p.geometry()`,
+    so probe_x_frac, table_x_frac, table_y_frac and row_bands never reached the
+    detector there - the Oxford-era table_x_frac fix included. On a fixed-row
+    form that meant the UI showed the detector's wrong guess instead of the rows
+    the profile declares.
+    """
+    import wrb.workbench as wb
+    import wrb.rows as rows_mod
+    seen = {}
+
+    def spy(image, want, **kw):
+        seen.update(kw)
+        return rows_mod.RowLocation([], [], {}, pitch=1.0, ink_threshold=0, skew_deg=0.0,
+                                    rules=[], day_col=(0, 0), chain=[], ok=False, reason="spy")
+
+    monkeypatch.setattr(wb, "locate_day_rows", spy)
+    monkeypatch.setattr(wb, "page_image_path", lambda root, doc, page: _FakePath())
+    monkeypatch.setattr(wb.Image, "open", _fake_image)
+    wb._pages.clear()
+    wb.page_state("revista-mensal-baroterm", "5", 451, "1882-10")
+    assert seen.get("row_bands"), f"row_bands did not reach the locator: {seen}"
+    assert seen.get("table_y_frac"), f"table_y_frac did not reach the locator: {seen}"
+
+
+class _FakePath:
+    def exists(self) -> bool:
+        return True
+
+
+def _fake_image(*a, **k):
+    from PIL import Image as _I
+    return _I.new("RGB", (100, 100), (255, 255, 255))

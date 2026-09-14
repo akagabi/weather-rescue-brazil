@@ -484,12 +484,23 @@ def locate_day_rows(
     *,
     table_x_frac: tuple[float, float] = _TABLE_X_FRAC,
     probe_x_frac: tuple[float, float] = PROBE_X_FRAC,
+    table_y_frac: tuple[float, float] | None = None,
+    row_bands: list | None = None,
     band_frac: float = 1.0,
     _upscaled: bool = False,
 ) -> RowLocation:
     """Find the `day_count` day rows. See the module docstring. Boxes are
     `band_frac * pitch` tall, centred on each row's ink centroid, and span
-    `table_x_frac` of the (deskewed) page width."""
+    `table_x_frac` of the (deskewed) page width.
+
+    `table_y_frac` declares WHERE a publication's table sits vertically, as a
+    fraction of page height - the Y twin of `table_x_frac`. Pitch cannot always
+    separate a header from a row: on the Cuyaba "Resumo" form the chain starts
+    four header rows early, so the first four rows are column titles and the last
+    four DAYS are never read at all. Irregular gaps do not help either, since the
+    newspaper tables break their own pitch with Dec. subtotals. What IS reliable
+    is that on one publication the table occupies a fixed band of the page.
+    None means the whole page, which is what every existing profile gets."""
     gray = image.convert("L")
     width, height = gray.size
     x0 = max(0, round(table_x_frac[0] * width))
@@ -506,12 +517,32 @@ def locate_day_rows(
     rules = horizontal_rules(gray, x0, x1, thr)
     dx0, dx1 = day_column(gray, rule_thr)
     day_prof, _ = row_profile(gray, dx0, dx1, thr)
+    y_band = None if table_y_frac is None else (round(table_y_frac[0] * height),
+                                                round(table_y_frac[1] * height))
+
+    def _in_band(y: float) -> bool:
+        """Every candidate row must sit in the declared band, when one is given."""
+        return y_band is None or (y_band[0] <= y <= y_band[1])
+
+    if row_bands:
+        # a fixed-row form: the rows are DECLARED, not detected. See
+        # Profile.row_bands - on the Revista's dekadal summary the detector
+        # cannot be made to find the four rows, and there is no reason to ask it.
+        centres = [round((lo + hi) / 2 * height) for lo, hi in row_bands]
+        half = max(4.0, (max(centres) - min(centres)) / max(1, len(centres) - 1) / 2)
+        loc = RowLocation([], centres, dropped={"isolated": []}, pitch=2 * half,
+                          ink_threshold=thr, skew_deg=angle, rules=rules,
+                          day_col=(dx0, dx1), chain=centres)
+        loc.day_boxes = [(x0, max(0, round(c - half)), x1, min(height, round(c + half)))
+                         for c in centres]
+        loc.reason = "rows declared in the profile (fixed-row form)"
+        return loc
 
     def _search(prof, rules, day_prof):
         tried: list[float] = []
         best = None
         for pitch in pitch_candidates(prof):
-            peaks = find_peaks(prof, pitch)
+            peaks = [q for q in find_peaks(prof, pitch) if _in_band(q[0])]
             chain, dropped = _chain_for_pitch(peaks, pitch, rules, day_count, day_prof)
             tried.append(pitch)
             cand = (abs(len(chain) - day_count), pitch, peaks, chain, dropped)
@@ -544,12 +575,13 @@ def locate_day_rows(
         k = 2
         big = image.resize((image.width * k, image.height * k), Image.LANCZOS)
         alt = locate_day_rows(big, day_count, table_x_frac=table_x_frac,
-                              probe_x_frac=probe_x_frac, band_frac=band_frac, _upscaled=True)
+                              probe_x_frac=probe_x_frac, table_y_frac=table_y_frac,
+                              band_frac=band_frac, _upscaled=True)
         if alt.ok and len(alt.chain) == day_count:
             return _rescale(alt, k)
     if len(chain) != day_count:
         # constant pitch failed; try the day column's own ink runs
-        centres = locate_rows_by_runs(gray, day_count, dx0, dx1, thr)
+        centres = [c for c in locate_rows_by_runs(gray, day_count, dx0, dx1, thr) if _in_band(c)]
         if centres:
             gaps = [b - a for a, b in zip(centres, centres[1:])]
             run_pitch = _median(gaps) if gaps else pitch
