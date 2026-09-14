@@ -55,15 +55,12 @@
   {
    "key": "baro_data_max",
    "label": "Data correspondente",
-   "kind": "number",
-   "unit": "mm",
-   "range": [
-    740,
-    790
-   ],
+   "kind": "text",
+   "unit": null,
+   "range": null,
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "data em que o extremo ocorreu; pode ser um intervalo (\"13-15\"), nao um numero"
   },
   {
    "key": "baro_minima",
@@ -81,15 +78,12 @@
   {
    "key": "baro_data_min",
    "label": "Data correspondente",
-   "kind": "number",
-   "unit": "mm",
-   "range": [
-    740,
-    790
-   ],
+   "kind": "text",
+   "unit": null,
+   "range": null,
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "data em que o extremo ocorreu; pode ser um intervalo (\"13-15\"), nao um numero"
   },
   {
    "key": "baro_var_extrema",
@@ -146,15 +140,12 @@
   {
    "key": "t_data_max",
    "label": "Data correspondente",
-   "kind": "number",
-   "unit": "degC",
-   "range": [
-    0,
-    45
-   ],
+   "kind": "text",
+   "unit": null,
+   "range": null,
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "data em que o extremo ocorreu; pode ser um intervalo (\"13-15\"), nao um numero"
   },
   {
    "key": "t_minima",
@@ -172,15 +163,12 @@
   {
    "key": "t_data_min",
    "label": "Data correspondente",
-   "kind": "number",
-   "unit": "degC",
-   "range": [
-    0,
-    45
-   ],
+   "kind": "text",
+   "unit": null,
+   "range": null,
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "data em que o extremo ocorreu; pode ser um intervalo (\"13-15\"), nao um numero"
   },
   {
    "key": "t_var_extrema",
@@ -662,6 +650,6 @@
  "monthly": {},
  "probe_x_frac": null,
  "table_x_frac": null,
- "notes": "Duas tabelas empilhadas numa pagina, alinhadas pela mesma linha de decada: BAROMETRO/THERMOMETRO/PSYCHROMETRO em cima, ESTADO GERAL DA ATMOSPHERA/ANEMOMETRO em baixo. Por isso o perfil tem ~50 colunas e UMA linha por decada. As linhas sao 1a, 2a, 3a e Mez (tres decadas + total do mez), NAO dias - e um resumo decadal, nao uma serie diaria. Traz 'Data correspondente': o DIA em que cada extremo ocorreu. A pagina imprime a estacao no rodape (ex.: 'Rio Grande do Sul. - Observador, Loppo Netto, Engenheiro director'), e as notas no fim (chuva em que dias, trovoada em que dias, cometa). LIMITE MEDIDO: o modelo atual le 9-16 celulas; nesta pagina emitiu 45 celulas mas so preencheu 15 e devolveu null no resto, com um valor trocado. Esta forma precisa de uma variante treinada nela - ~40 linhas rotuladas, como manda a curva de aprendizagem.",
+ "notes": "Duas tabelas empilhadas numa pagina, alinhadas pela mesma linha de decada: BAROMETRO/THERMOMETRO/PSYCHROMETRO em cima, ESTADO GERAL DA ATMOSPHERA/ANEMOMETRO em baixo. Por isso o perfil tem ~50 colunas e UMA linha por decada. As linhas sao 1a, 2a, 3a e Mez (tres decadas + total do mez), NAO dias - e um resumo decadal, nao uma serie diaria. Traz 'Data correspondente': o DIA em que cada extremo ocorreu. A pagina imprime a estacao no rodape (ex.: 'Rio Grande do Sul. - Observador, Loppo Netto, Engenheiro director'), e as notas no fim (chuva em que dias, trovoada em que dias, cometa). LIMITE MEDIDO: o modelo atual le 9-16 celulas; nesta pagina emitiu 45 celulas mas so preencheu 15 e devolveu null no resto, com um valor trocado. Esta forma precisa de uma variante treinada nela - ~40 linhas rotuladas, como manda a curva de aprendizagem. As colunas 'Data correspondente' sao TEXTO: imprimem o dia, ou um intervalo (ex. '13-15').",
  "extra": {}
 }
