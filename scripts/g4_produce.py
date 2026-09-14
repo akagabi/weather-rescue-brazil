@@ -28,6 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from g4_train import INSTRUCTION_PRINTED  # noqa: E402
 from wrb import profile as prof  # noqa: E402
 from wrb.dataset import boxes_for_centres, crop_boxes  # noqa: E402
+from g4_build_dataset import resolve_by_oracle  # noqa: E402
 from wrb.rows import locate_day_rows  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,6 +52,15 @@ def main() -> None:
     # worklist's rows. Callers pass an explicit per-doc path (g4_pipeline.sh).
     ap.add_argument("--out", required=True)
     ap.add_argument("--limit", type=int, default=0)
+    # Geometry alone cannot localise every layout. On the Cuyaba "Resumo" form
+    # the row pitch is 22px - below MIN_PITCH_PX, so the cheap path is built to
+    # reject it - the centroids jitter by +/-50% around a pitch that tight, the
+    # header is three levels deep, and Doc./Mez rows break the chain. Measured:
+    # the geometric chain returns 31 rows of which the first FOUR are the
+    # header, so days 28-31 are never read. Letting the printed day numbers
+    # decide recovers all 31 (see docs/g4-cuyaba-locator.md).
+    ap.add_argument("--oracle", choices=("none", "torch", "mlx"), default="none",
+                    help="localise rows by reading the printed day numbers, not by geometry")
     args = ap.parse_args()
 
     work = json.loads(Path(args.worklist).read_text())["pages"]
@@ -68,6 +78,16 @@ def main() -> None:
 
     # Write beside the target and rename at the end, so a run that dies (there
     # is no --resume) cannot leave a half-written file where a good one was.
+    oracle = None
+    if args.oracle != "none":
+        if args.oracle == "mlx":
+            from g4_run_pages import MlxDayOracle
+            oracle = MlxDayOracle()
+        else:
+            from g4_build_dataset import DayOracle
+            oracle = DayOracle()
+        print(f"oracle localisation: {args.oracle}", flush=True)
+
     out_path = ROOT / args.out
     out_path.parent.mkdir(parents=True, exist_ok=True)
     fh = out_path.with_suffix(out_path.suffix + ".partial").open("w")
@@ -88,7 +108,20 @@ def main() -> None:
             stats["refused"] += 1
             continue
         located_ok = loc.ok
-        crops = crop_boxes(image, boxes_for_centres(loc.chain, loc, *image.size), loc.skew_deg, scale=2.0)
+        localisation = "geometry"
+        centres = loc.chain
+        if oracle is not None:
+            centres, info = resolve_by_oracle(oracle, image, loc, want)
+            if centres is None:
+                print(f"  {w.get('label')}: oracle could not resolve the day rows "
+                      f"({info['direct']} of {want} read directly) - page skipped", flush=True)
+                stats["refused"] += 1
+                continue
+            localisation = "oracle"
+            located_ok = True
+            print(f"  {w.get('label')}: oracle localised {info['direct']}/{want} days directly, "
+                  f"{info['candidates']} candidates", flush=True)
+        crops = crop_boxes(image, boxes_for_centres(centres, loc, *image.size), loc.skew_deg, scale=2.0)
 
         # Preflight. A caption read off the whole page is NOT evidence that the
         # page is a daily table: doc 14 p140 is prose whose caption belongs to a
@@ -162,7 +195,8 @@ def main() -> None:
                 "archive": w.get("archive", "docvirt"), "item": w.get("item", w.get("doc")),
                 "page": w["page"], "period": w["period"], "row": idx,
                 "values_as_printed": values, "values": restored, "markers": markers, "raw": text,
-                "verdict": verdict, "padded_trailing": padded, "problems": problems, "range_violations": viol,
+                "verdict": verdict, "padded_trailing": padded, "problems": problems, "localisation": localisation,
+                "range_violations": viol,
                 "check_failures": check_fail, "page_rows_located_ok": located_ok,
             }, ensure_ascii=False) + "\n")
         stats["pages"] += 1
@@ -179,7 +213,11 @@ def main() -> None:
     out_path.with_suffix(out_path.suffix + ".partial").replace(out_path)
     stats["minutes"] = round((time.time() - t0) / 60, 1)
     (out_path.with_suffix(".summary.json")).write_text(json.dumps(stats, indent=1))
-    print(f"\n{json.dumps(stats)}\nwrote {out_path.relative_to(ROOT)}")
+    try:
+        shown = out_path.relative_to(ROOT)
+    except ValueError:
+        shown = out_path          # an --out outside the repo is legal
+    print(f"\n{json.dumps(stats)}\nwrote {shown}")
 
 
 if __name__ == "__main__":
