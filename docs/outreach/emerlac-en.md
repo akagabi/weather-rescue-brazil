@@ -4,7 +4,7 @@
 meteorological records from Latin-America and the Caribbean during the 18th and
 19th centuries*, Scientific Data 4, 170169 (2017).
 
-**Address:** `f.dominguez.castro@gmail.com`, published as the corresponding
+**Address:** published as the corresponding
 author's contact in the PANGAEA metadata (doi:10.1594/PANGAEA.871490).
 
 **Subject:** Daily Brazilian records 1885–1890, absent from EMERLAC and GHCN

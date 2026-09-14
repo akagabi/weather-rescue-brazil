@@ -1,6 +1,6 @@
 ---
 pretty_name: Weather Rescue Brazil
-license: cc0-1.0
+license: cc-by-nc-4.0
 language:
   - pt
   - fr
@@ -117,8 +117,18 @@ Images: **Biblioteca Digital de Obras Raras do Observatório Nacional, via
 DocVirt.** Works of 1886–1890, public domain in Brazil (Lei 9.610); no rights
 are asserted over the underlying observations here.
 
-The transcriptions, verdicts and corrections are released under **CC0 1.0**.
-The pipeline code is MIT (`LICENSE`).
+**The observations themselves are not ours to licence** — they come from
+nineteenth-century Brazilian government publications and are in the public
+domain (Lei 9.610). Anyone may use the numbers for any purpose.
+
+What this project added — the transcriptions, the per-row verdicts, the
+corrections and the provenance — is released under **CC BY-NC 4.0**
+(non-commercial, with attribution). The pipeline code is **PolyForm
+Noncommercial 1.0.0**. See [LICENSE](LICENSE).
+
+Worth knowing before you build on it: the non-commercial terms were a
+deliberate choice, and they make this dataset ineligible for some open-data
+services and for C3S ingestion in some channels.
 
 Please carry the attribution:
 

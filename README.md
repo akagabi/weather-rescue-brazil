@@ -102,7 +102,8 @@ is tracked.
 
 ## Licence
 
-Pipeline: MIT. Transcriptions: CC0. The underlying observations are in the
-public domain (Lei 9.610). See [LICENSE](LICENSE) and
+Transcriptions: **CC BY-NC 4.0**. Code: **PolyForm Noncommercial 1.0.0**.
+The underlying observations are in the public domain (Lei 9.610) and are not
+ours to licence. See [LICENSE](LICENSE) and
 [DATASET_CARD.md](DATASET_CARD.md#provenance-and-rights) — the collection asks
 for an attribution string, and it is worth carrying.

@@ -1,43 +1,63 @@
-MIT License
+Weather Rescue Brazil — licensing
+=================================
 
-Copyright (c) 2026 Gabriel (Weather Rescue Brazil)
+Three different things live in this repository, and they are licensed
+differently on purpose.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. THE OBSERVATIONS ARE NOT OURS TO LICENCE.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+   The measurements themselves come from nineteenth-century Brazilian
+   government publications and are in the public domain (Lei 9.610; the corpus
+   is 1883-1890). Anyone may use the numbers themselves for any purpose. No
+   licence here restricts that, and no licence could.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2. THE TRANSCRIPTIONS, VERDICTS AND ANNOTATIONS — CC BY-NC 4.0
 
----
+   What this project added: reading the printed tables into machine-readable
+   values, the per-row quality verdicts, the corrections, and the provenance.
+   Those are licensed under Creative Commons Attribution-NonCommercial 4.0
+   International.
 
-The licence above covers the SOFTWARE: the pipeline in `src/` and `scripts/`,
-the profiles, and the tests.
+   You may share and adapt them for any NON-COMMERCIAL purpose, provided you
+   attribute the project and this licence. Commercial use requires permission.
 
-The DATASET is different, and deliberately so:
+   https://creativecommons.org/licenses/by-nc/4.0/legalcode
 
-  * The underlying observations are nineteenth-century Brazilian government
-    publications, in the public domain in Brazil (Lei 9.610; the corpus is
-    1883-1890, well past the term). No rights are asserted over them here.
-  * The transcriptions, quality verdicts and corrections are released under
-    CC0 1.0 (public domain dedication). Use them however you like.
+3. THE CODE — PolyForm Noncommercial 1.0.0
 
-ATTRIBUTION, carried as a matter of academic practice rather than licence
-obligation:
+   Everything in `src/`, `scripts/`, `tests/` and `profiles/`.
 
-    Acervo: Biblioteca Digital de Obras Raras do Observatorio Nacional, via
-    DocVirt. Digitalizado e transcrito pelo projeto Weather Rescue Brazil.
+   You may use it for any noncommercial purpose, including research, teaching
+   and personal projects. You may not use it commercially.
 
-The Observatory's attribution string accompanies every downloaded page in
-`data/raw/docvirt/*/*.json`; carry it into anything you publish from this data.
+   https://polyformproject.org/licenses/noncommercial/1.0.0/
+
+   (The usual software licences — MIT, Apache — permit commercial use, so they
+   are not what is written here. PolyForm Noncommercial is a software licence
+   that says what you asked for, in a form lawyers and tooling both recognise.)
+
+4. THE MODEL WEIGHTS — CC BY-NC 4.0
+
+   The LoRA adapters and the packaged quantised model. Same terms as the
+   transcriptions: non-commercial, with attribution.
+
+   Note the base model is Qwen3.5-2B under its own licence (Apache-2.0 at the
+   time of writing); this licence covers the adapter, not the base.
+
+ATTRIBUTION
+-----------
+
+   Acervo: Biblioteca Digital de Obras Raras do Observatório Nacional, via
+   DocVirt. Digitalizado e transcrito pelo projeto Weather Rescue Brazil.
+
+The collection asks for this string and it travels with every downloaded page
+in `data/raw/docvirt/*/*.json`. Please carry it.
+
+A NOTE ON WHY NON-COMMERCIAL
+----------------------------
+
+This was a deliberate choice by the project owner, not an oversight, and it is
+worth stating plainly what it costs: non-commercial terms make the dataset
+ineligible for some open-data services and for C3S ingestion in some channels.
+If that trade-off turns out to be the wrong one, changing it later is a licence
+change and nothing else — the data does not have to be re-derived.
