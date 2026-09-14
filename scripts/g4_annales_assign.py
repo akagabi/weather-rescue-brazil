@@ -1,6 +1,15 @@
-"""Re-assign profiles for the 1883-85 Annales, fixing a counting bug.
+"""Assign Annales profiles by counting the cells the model reads on a page.
 
-    python scripts/g4_annales_assign.py
+    python scripts/g4_annales_assign.py                    # doc 8, as before
+    python scripts/g4_annales_assign.py --doc 5 \
+        --src data/g4/identified_doc5.json
+
+Originally written for doc 8 and fixed a counting bug there; now takes --doc,
+because doc 5 turns out to be ANOTHER VOLUME OF THE SAME PUBLICATION. Its pages
+carry the identical French daily tables ("Tension de la vapeur atmospherique en
+millimetres", Date | 4 h. M. | ... | Moyenne) - the layouts this project already
+has profiles for. 472 pages, of which 286 are table candidates and 15 had ever
+been swept.
 
 The first pass counted cells as len(text.split("|")), which also counts the
 empty segments either side of a leading and trailing pipe. Every count came out
@@ -32,9 +41,20 @@ from wrb.dataset import boxes_for_centres, crop_boxes  # noqa: E402
 from wrb.rows import locate_day_rows  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "raw" / "docvirt" / "8"
-SRC = ROOT / "data" / "g4" / "annales1883.json"
-OUT = ROOT / "data" / "g4" / "annales_assigned.json"
+import argparse
+
+_ap = argparse.ArgumentParser()
+_ap.add_argument("--doc", default="8")
+_ap.add_argument("--src", default="data/g4/annales1883.json")
+_ap.add_argument("--out", default="")
+_ap.add_argument("--worklist", default="")
+ARGS = _ap.parse_args()
+
+DOC = str(ARGS.doc)
+RAW = ROOT / "data" / "raw" / "docvirt" / DOC
+SRC = ROOT / ARGS.src
+OUT = ROOT / (ARGS.out or f"data/g4/annales_assigned_{DOC}.json")
+WORKLIST = ROOT / (ARGS.worklist or f"data/g4/worklist_annales_{DOC}.json")
 BY_CELLS = {10: "rio-1883-barometre", 9: "rio-1883-vapeur", 13: "rio-1883-thermo", 15: "rio-1883-vento"}
 # 17 also matches actinometry: border noise from the crop adds one stray token
 # 16 cells is ambiguous: both the hourly cloud table and the actinometry table
@@ -165,12 +185,12 @@ def main() -> None:
     print("\ncontagem de células:", dict(collections.Counter(r["cells"] for r in out).most_common()))
     print("perfis:", dict(collections.Counter(r["profile"] for r in out)))
 
-    wl = [{"profile": r["profile"], "archive": "docvirt", "doc": "8", "page": r["page"],
+    wl = [{"profile": r["profile"], "archive": "docvirt", "doc": DOC, "page": r["page"],
            "period": r["period"], "station": "Imperial Observatório, Rio de Janeiro",
            "station_source": "legenda impressa",
-           "label": f"Annales 8/{r['page']} {r['period']} {r['profile']}"}
+           "label": f"Annales {DOC}/{r['page']} {r['period']} {r['profile']}"}
           for r in out if r["profile"]]
-    p = ROOT / "data" / "g4" / "worklist_annales.json"
+    p = WORKLIST
     p.write_text(json.dumps({"pages": wl}, indent=1, ensure_ascii=False))
     print("worklist:", len(wl), "páginas ->", p.relative_to(ROOT))
 
