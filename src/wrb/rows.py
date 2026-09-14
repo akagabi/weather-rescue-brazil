@@ -529,7 +529,11 @@ def locate_day_rows(
         # Profile.row_bands - on the Revista's dekadal summary the detector
         # cannot be made to find the four rows, and there is no reason to ask it.
         centres = [round((lo + hi) / 2 * height) for lo, hi in row_bands]
-        half = max(4.0, (max(centres) - min(centres)) / max(1, len(centres) - 1) / 2)
+        # the DECLARED band is the row's extent. Deriving the height from the
+        # centre spacing instead made each box taller than the band, so on a
+        # tight pitch (~25px) every crop caught its neighbour and the model
+        # emitted 32-56 cells for a 17-column row.
+        half = max(2.0, max((hi - lo) for lo, hi in row_bands) * height / 2)
         loc = RowLocation([], centres, dropped={"isolated": []}, pitch=2 * half,
                           ink_threshold=thr, skew_deg=angle, rules=rules,
                           day_col=(dx0, dx1), chain=centres)
