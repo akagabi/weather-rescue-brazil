@@ -37,9 +37,9 @@ front matter above is the dataset card format.
 
 | | |
 |---|---|
-| Rows | 6,522 |
-| Usable rows (`checks_pass` + `qc_clean`) | **3,590** |
-| Values in usable rows | 43,144 |
+| Rows | 6,786 |
+| Usable rows (`checks_pass` + `qc_clean`) | **3,718** |
+| Values in usable rows | 44,719 |
 | Pages transcribed | 255 |
 | Period | 1882-01 to 1890-11 (one page captioned 1893, flagged) |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão |
@@ -93,6 +93,17 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   page, the station and the verdicts are unchanged, and only doc 5 (the v0.2
   addition) was affected. Fixed in `wrb.caption`, corrected by
   `scripts/g4_audit_periods.py`, frozen as **v0.2.1**.
+- **92 pages had read short and 49 were recovered in v0.5.** A page whose row
+  locator finds 5 rows of 30 is not damaged — doc 8 page 43 is crisp, and a
+  person reads its Date column at a glance. What defeats the detector is a
+  layout whose columns are text: an ink profile finds row boundaries in a grid
+  of figures and loses them in a grid of words. Re-run with oracle localisation
+  (printed day numbers decide, geometry only proposes) plus candidates proposed
+  at half the pitch, those 92 pages gave 1,303 rows where they had given 1,039,
+  and 803 of the new ones are usable. The 43 that still refuse read too few of
+  their day numbers to localise — the Annales set them in old-style figures,
+  where 1 is a small-capital I, and that is the remaining gap
+  (`docs/g4-wind-locator.md`).
 - **Two rows cannot be the same day.** On a layout that prints one row per day,
   a day appearing twice means one of those rows is not a data row — doc 5 page
   309 reads 1…31 and then a thirty-second row claiming 28. Where the rest of the
@@ -124,7 +135,7 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **2,932 of 6,522 rows are `flagged`**, including whole-profile sections
+- **3,068 of 6,786 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.
