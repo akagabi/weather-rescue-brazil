@@ -1,0 +1,193 @@
+{
+ "id": "annales-resume-barometre",
+ "name": "Annales - Resume meteorologique du mois: barometre a 0",
+ "source": "DocVirt obnacional doc 8 - bloco superior da pagina de resumo mensal",
+ "columns": [
+  {
+   "key": "decada",
+   "label": "Décades",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": "1re, 2e, 3e ou Mois - decada, nao dia"
+  },
+  {
+   "key": "h04m",
+   "label": "4 h. M.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700,
+    800
+   ],
+   "elided": true,
+   "elided_range": [
+    700,
+    800
+   ],
+   "note": ""
+  },
+  {
+   "key": "h07m",
+   "label": "7 h. M.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700,
+    800
+   ],
+   "elided": true,
+   "elided_range": [
+    700,
+    800
+   ],
+   "note": ""
+  },
+  {
+   "key": "h10m",
+   "label": "10 h. M.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700,
+    800
+   ],
+   "elided": true,
+   "elided_range": [
+    700,
+    800
+   ],
+   "note": ""
+  },
+  {
+   "key": "h01s",
+   "label": "1 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700,
+    800
+   ],
+   "elided": true,
+   "elided_range": [
+    700,
+    800
+   ],
+   "note": ""
+  },
+  {
+   "key": "h04s",
+   "label": "4 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700,
+    800
+   ],
+   "elided": true,
+   "elided_range": [
+    700,
+    800
+   ],
+   "note": ""
+  },
+  {
+   "key": "h07s",
+   "label": "7 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700,
+    800
+   ],
+   "elided": true,
+   "elided_range": [
+    700,
+    800
+   ],
+   "note": ""
+  },
+  {
+   "key": "h10s",
+   "label": "10 h. S.",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700,
+    800
+   ],
+   "elided": true,
+   "elided_range": [
+    700,
+    800
+   ],
+   "note": ""
+  },
+  {
+   "key": "moyenne",
+   "label": "Moyennes",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    700,
+    800
+   ],
+   "elided": true,
+   "elided_range": [
+    700,
+    800
+   ],
+   "note": ""
+  }
+ ],
+ "notes": "Bloco do BAROMETRO na pagina de resumo mensal das Annales. A pagina empilha varios blocos com a MESMA forma - Decades | sete horas | Moyennes, quatro linhas 1re/2e/3e/Mois - um por instrumento (barometro, temperatura a sombra, ...), pelo que sao perfis diferentes com as mesmas colunas e faixas diferentes.\n\nAs centenas vem ELIDIDAS depois da primeira linha, como no resto do volume: 8/127 imprime 758.42 na primeira celula e 58.87 na linha seguinte. restore_thousands repoe-as a partir da faixa declarada.\n\nA coluna Moyennes e a media das sete horas e a pagina afirma-o: em 8/127, 1re decada, 758.42 759.15 759.26 757.57 756.91 758.17 759.32 dao 758.40, que e exactamente o impresso. E um checksum gratis por linha.\n\nAs quatro linhas estao DECLARADAS em row_bands, medidas em 8/127 e conferidas no scan. Sem elas o detector punha a primeira banda acima da tabela e perdia a linha Mois: de quatro linhas por pagina saiam uma de lixo, 1re, 2e e 3e, e o resumo do mes - que e a linha mais util - nunca era lido. Uma forma impressa nao se move; declarar e mais barato do que afinar um limiar.\n\nRENDIMENTO MEDIDO 2026-09-15, e e MAU: 37 paginas, 148 linhas, 26 utilizaveis (18%), contra 57% de media no resto do conjunto. NAO foi integrado no dataset publicado.\n\nA causa esta identificada e nao e o perfil. Os recortes estao CERTOS - conferidos a olho em 8/127 e 8/109, com as sete horas e a Moyenne todas legiveis - mas tem a FORMA errada: as bandas declaradas tem 0.007 da altura da pagina, o que da um recorte de 36 px de altura por 2966 de largura, uma tira de 82:1. O modelo le mal uma tira tao baixa e na linha 1re devolve os pontinhos do leader (`1re . . . . . . .`) e para. As linhas distam 0.0077, portanto nao da para alargar as bandas sem as sobrepor.\n\nO que falta e um recorte MAIS ALTO, ou seja um factor de escala por perfil: crop_boxes(..., scale=2.0) esta fixo no produtor. Sem bandas declaradas o rendimento era ~45% mas perdia-se a linha Mois, que e a mais util da pagina. A alternativa e ensinar a convencao do leader pontilhado com ~40 linhas rotuladas (docs/g4-learning-curve.md).",
+ "rows_per_page": "fixed:4",
+ "adapter": "",
+ "markers": [],
+ "checks": [
+  {
+   "kind": "mean",
+   "result": "moyenne",
+   "of": [
+    "h04m",
+    "h07m",
+    "h10m",
+    "h01s",
+    "h04s",
+    "h07s",
+    "h10s"
+   ]
+  }
+ ],
+ "monthly": {},
+ "probe_x_frac": null,
+ "table_x_frac": null,
+ "band_x_frac": null,
+ "oracle_min_direct": 0.55,
+ "blocks": null,
+ "row_bands": [
+  [
+   0.2629,
+   0.2699
+  ],
+  [
+   0.2706,
+   0.2776
+  ],
+  [
+   0.2783,
+   0.2853
+  ],
+  [
+   0.2934,
+   0.3004
+  ]
+ ],
+ "table_y_frac": [
+  0.255,
+  0.31
+ ],
+ "extra": {}
+}

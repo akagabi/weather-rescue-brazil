@@ -1,0 +1,44 @@
+{
+ "pages": [
+  {
+   "profile": "annales-resume-barometre",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 109,
+   "period": "1883-01",
+   "station": "Imperial Observat\u00f3rio, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Resume 8/109"
+  },
+  {
+   "profile": "annales-resume-barometre",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 111,
+   "period": "1883-02",
+   "station": "Imperial Observat\u00f3rio, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Resume 8/111"
+  },
+  {
+   "profile": "annales-resume-barometre",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 115,
+   "period": "1883-04",
+   "station": "Imperial Observat\u00f3rio, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Resume 8/115"
+  },
+  {
+   "profile": "annales-resume-barometre",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 117,
+   "period": "1883-05",
+   "station": "Imperial Observat\u00f3rio, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Resume 8/117"
+  }
+ ]
+}
