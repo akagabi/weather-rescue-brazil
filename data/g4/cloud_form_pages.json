@@ -1,0 +1,69 @@
+{
+  "_note": "Pages of the Annales' hourly CLOUD-FORM table: a date and seven pairs of (hour, cloud-form codes), fifteen cells, which is the same shape and the same count as the hourly WIND table. The cell-count assignment sent them to rio-1883-vento until wrb.qc.looks_like_cloud_forms was written.\n\nThis project has no profile for them, so they are recorded here rather than read under a layout that is not theirs. The codes are C cirrus, K cumulus, N nimbus, S stratus, combining with hyphens (C-K cirro-cumulus) and with commas when an interval showed more than one form.\n\nThey are a real observation series - cloud type seven times a day for a month - and writing the profile is a small job whenever someone wants it.",
+  "pages": [
+    {
+      "doc": "8",
+      "page": 98,
+      "period": "1883-11",
+      "cells": 15,
+      "sample_row": "6 | 6 | C,C-K | 9 | C,C-K | 10 | C,C-K,K-N | 10 | C,C-K,K-N | 10 | C-K,K-N | 10 | C-K,K-N | 9.5 | ES",
+      "caption": "Observations météorologiques du mois de Novembre 1883\nANNALES DE L'OBSEVATOIRE IMPÉRIAL."
+    },
+    {
+      "doc": "8",
+      "page": 153,
+      "period": "1884-01",
+      "cells": 15,
+      "sample_row": "4 | 10 | N | 8 | C-K,K-N | 10 | N | 8 | C-K,K-N,N | 10 | C-K,K-N,N | 10 | C-K,K-N,N | 9.4 | Z",
+      "caption": "Observations météorologiques du mois de Janvier 1884\nAébulosité en dixièmes du ciel couvert\nANNALES DE L'Observatoire IMPÉRIAL"
+    },
+    {
+      "doc": "8",
+      "page": 161,
+      "period": "1884-02",
+      "cells": 15,
+      "sample_row": "| 6 | 3 | C,K | 9 | C-K,K | 1 | C,C-K,K | 1 | C,C-K,K | 1 | C,C-K,K | 0 | 0 | 0 | 2.1 |",
+      "caption": "Observations météorologiques du mois de Février 1884\nNébulosité en dixièmes du ciel couvert\nAnnales de l'Observatoire Imperial"
+    },
+    {
+      "doc": "8",
+      "page": 169,
+      "period": "1884-03",
+      "cells": 15,
+      "sample_row": "| 7 | 10 | C-K,K | 3 | C,C-K | 7 | C,C-K,K | 9 | C,C-K,K | 7 | C-K,R-N | 8 | C,C-K,R-N | 10 | C,C-K,R-N | 10 | C-K,K | 6.6 | ESS |",
+      "caption": "Observations météorologiques du mois de Mars 1884\nNebulosité en dixièmes du ciel couvert\nDate\t4 h. M.\t7 h. M.\t10 h. M.\t1 h. S.\t4 h. S.\t7 h. S.\t10 h. S.\tMoyenne\n1\t9\tC-K,K\t9\tC-K,K"
+    },
+    {
+      "doc": "8",
+      "page": 217,
+      "period": "1884-09",
+      "cells": 15,
+      "sample_row": "13 | 10 | K-N,N | 10 | N | 9 | C-K,K-N,N | 6 | C-K,K,K-N | 4 | C,C-K,K-N | 7 | C-K,K,K-N | 8 | C-K,K,K-N | 7.7 | ER",
+      "caption": "Observations météorologiques du mois de Septembre 1884\nNebulosité en dixièmes du ciel couvert\nDate 4 h. M. 7 h. M. 10 h. M. 1 h. S. 4 h. S. 7 h. S. 10 h. S. Moyenne\nMois 0.5 7.5 6."
+    },
+    {
+      "doc": "8",
+      "page": 296,
+      "period": "1885-02",
+      "cells": 15,
+      "sample_row": "20 | 10 | C-K,K,K-N | 6 | C.C-K,K | 6 | C.C-K,K | 3 | C.C-K,K | 9 | C-R,K,K-N | 10 | K | 10 | C,C-K | 9.0 |",
+      "caption": "Observations météorologiques du mois de Février 1885\nANNAIRES DE L'Observatoire IMPÉRIAL"
+    },
+    {
+      "doc": "8",
+      "page": 328,
+      "period": "1885-06",
+      "cells": 15,
+      "sample_row": "5 | 5 | C,C-K,K | 9 | C-K,K,K-N | 7 | C,C-K | 7 | C,K,K-N | 9 | C,C-K,K-N | 4 | C,C-K | 10 | C-K,K,K-N | 7.3 | L",
+      "caption": "Observations météorologiques du mois de Juin 1885\nNébulosité en dixièmes du ciel couvert\nANNEXES DE L'OBSEVATOIRE IMPÉRIAL"
+    },
+    {
+      "doc": "8",
+      "page": 360,
+      "period": "1885-10",
+      "cells": 15,
+      "sample_row": "7 | 2 | C | 8 | C,C-K,K-N | 8 | C,C-K,K | 6 | C,K | 4 | C,K | 3 | S,K | 5 | C-K,D | 4-4 | H",
+      "caption": "Observations météorologiques du mois d'Octobre 1885\nANNALES DE L'OBSEVATOIRE IMPÉRIAL"
+    }
+  ]
+}
