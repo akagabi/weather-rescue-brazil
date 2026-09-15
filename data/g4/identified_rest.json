@@ -382,10 +382,11 @@
   "doc": "16",
   "page": 36,
   "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO ASTRONÔMICO NO MEZ DE JANEIRO DE 1890",
-  "is_weather_table": true,
-  "astronomy": false,
+  "is_weather_table": false,
+  "astronomy": true,
   "profile": null,
-  "period": "1890-01"
+  "period": null,
+  "period_suspect": null
  },
  {
   "doc": "16",

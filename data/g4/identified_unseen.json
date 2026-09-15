@@ -223,9 +223,11 @@
   "doc": "16",
   "page": 110,
   "caption": "ESTRELLAS\nPASSAGEM\nOBSERVADA\nCORREÇÕES\nDO INSTRUM.\nPASSAGEM\nCORRETA\nR\nTABULAR\nESTADO\nABSOL.\nDO\nCHRONOM.\nα Libræ.\nh m s\n+ 0.11\n58.29\n14.44.42.50\n- 18.15",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true,
+  "period_suspect": null
  },
  {
   "doc": "2",

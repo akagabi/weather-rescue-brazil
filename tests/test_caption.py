@@ -250,3 +250,18 @@ def test_every_usable_published_period_is_inside_its_volume():
         if why:
             bad.append(f"{r['item']}/{r['page']}: {why}")
     assert not bad, "\n".join(sorted(set(bad))[:10])
+
+
+def test_timekeeping_is_astronomy_too():
+    """The Annales print the chronometer service and the transit of stars
+    beside the weather; both reached the triage as weather tables."""
+    for cap in ["SERVIÇO CHRONOMETRICO DO MEZ DE AGOSTO DE 1882.",
+                "ESTRELLAS PASSAGEM OBSERVADA CORREÇÕES DO INSTRUM.",
+                "Service chronométrique du mois de Mai 1884"]:
+        assert is_astronomy(cap), cap
+        assert match_profile(cap) is None, cap
+
+
+def test_a_chronometer_reading_in_a_weather_caption_is_not_vetoed():
+    assert not is_astronomy(
+        "Resumo das observações meteorologicas, Rio de Janeiro, Maio de 1886")

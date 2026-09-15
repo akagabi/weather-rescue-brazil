@@ -1298,26 +1298,32 @@
   "doc": "5",
   "page": 279,
   "caption": "The page contains two tables. The first table, titled \"Serviço chronométrico do mês de Junho de 1882,\" lists data for June 1882. The second table, titled \"Mez de Julho,\" lists data for July. Both tables include columns for \"Datas\" (dates), \"Est. absoluto\" (absolute estimate), \"M. D.\" (mean difference), and \"Temp.\" (temperature),",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": "1882-07",
-  "period_before_fix": "1882-06"
+  "period": null,
+  "period_before_fix": "1882-06",
+  "astronomy": true,
+  "period_suspect": null
  },
  {
   "doc": "5",
   "page": 283,
   "caption": "SERVIÇO CHRONOMETRICO DO MEZ DE AGOSTO DE 1882.",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": "1882-08"
+  "period": null,
+  "astronomy": true,
+  "period_suspect": null
  },
  {
   "doc": "5",
   "page": 285,
   "caption": "SERVIÇO CHRONOMETRICO DO MEZ DE AGOSTO DE 1882.",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": "1882-08"
+  "period": null,
+  "astronomy": true,
+  "period_suspect": null
  },
  {
   "doc": "5",
@@ -1331,9 +1337,11 @@
   "doc": "5",
   "page": 298,
   "caption": "SERVIÇO CHRONOMETRICO DO MEZ DE DEZEMBRO DE 1882.",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": "1882-12"
+  "period": null,
+  "astronomy": true,
+  "period_suspect": null
  },
  {
   "doc": "5",

@@ -1288,9 +1288,11 @@
   "doc": "16",
   "page": 20,
   "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO ASTRONÔMICO NO MEZ DE DEZEMBRO DE 1889",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": "1889-12"
+  "period": null,
+  "astronomy": true,
+  "period_suspect": null
  },
  {
   "doc": "16",
@@ -1555,11 +1557,11 @@
   "doc": "16",
   "page": 112,
   "caption": "ESTRELLAS\nPASSAGEM\nOBSERVADA\nCORREÇÕES\nDO INSTRUM.\nPASSAGEM\nCORRETA\nR\nTABULAR\nESTADO\nABSOL.\nDO\nCHRONOM.\n13 DE JULHO DE 1888\nα Serpentis.\n15.44.33.80\n+ 0.04\n33.84",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": "1888-07",
-  "astronomy": false,
-  "period_suspect": "period 1888-07 is outside doc 16's span 1888-11..1891-12 (Revista do Observatorio)"
+  "period": null,
+  "astronomy": true,
+  "period_suspect": null
  },
  {
   "doc": "16",

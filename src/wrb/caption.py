@@ -50,6 +50,12 @@ ASTRONOMY = (
     # The Annales label their astronomical plates in the running head itself:
     # "Observat. astron. f. 10", "Observ. astr. t. 12". Two of doc 5's pages
     # say so and were still matched to a weather profile.
+    # timekeeping is astronomy's other half: the Annales print the chronometer
+    # service and the transit of stars beside the weather, and both reached the
+    # triage as unidentified weather tables
+    "servico chronometrico", "serviço chronometrico", "service chronometrique",
+    "chronometrico", "chronometrique", "estrellas passagem", "passagem observada",
+    "estado absoluto", "marcha diurna",
     "observat. astron", "observ. astr", "observations astronomiques",
     "observacoes astronomicas", "observações astronômicas", "astronomic",
     "apogeo", "apogeu", "perigeo", "perigeu", "semi-diametro", "semi diametro",
@@ -84,9 +90,23 @@ def norm(s: str) -> str:
     return re.sub(r"\s+", " ", s.lower()).strip()
 
 
+def _fold(s: str) -> str:
+    """Lowercase, whitespace-collapsed, and WITHOUT accents.
+
+    The term list carries both spellings of everything it names and still
+    missed "Service chronometrique" because it held the unaccented form and the
+    caption used the accented one. Folding both sides ends that class: a term
+    written once now matches however the compositor set it.
+    """
+    import unicodedata
+    n = unicodedata.normalize("NFKD", norm(s))
+    return "".join(c for c in n if not unicodedata.combining(c))
+
+
 def is_astronomy(caption: str) -> bool:
     """True when the caption names something only an astronomical table prints."""
-    if any(t in norm(caption) for t in ASTRONOMY):
+    folded = _fold(caption)
+    if any(_fold(t) in folded for t in ASTRONOMY):
         return True
     # A bare "SOL." / "LUA." heading, with or without the month line under it.
     # Split the RAW caption: norm() collapses newlines into spaces, so a line
