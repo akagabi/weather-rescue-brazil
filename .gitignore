@@ -10,3 +10,6 @@ data/g4/gold_rows/
 runs/
 data/labels/
 .publish/
+
+# in-progress production output; the finished file lands beside it via os.replace
+*.jsonl.partial
