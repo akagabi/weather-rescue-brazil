@@ -31,6 +31,12 @@
    "from": "1852-01",
    "to": "1856-12",
    "publication": "Ephemerides (astronomy; no weather)"
+  },
+  "6": {
+   "from": null,
+   "to": null,
+   "publication": "Commissao de Punta-Arenas (expedition report; prose, two columns)"
   }
- }
+ },
+ "_identified_but_not_weather": "doc 6 is a bilingual Portuguese/French expedition report on the Magellan colony and doc 11 a volume of astronomical ephemerides. Between them they hold 588 of the 637 sweep candidates nobody has read, and neither is a promising place to look for weather tables: the sweep's geometry filter passes two-column prose and ruled star tables alike."
 }
