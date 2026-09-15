@@ -277,5 +277,95 @@
   "astronomy": false,
   "profile": "revista-rio-1886",
   "period": "1889-07"
+ },
+ {
+  "doc": "15",
+  "page": 141,
+  "caption": "OBSERVATORIO DE SANTA-CRUZ\nResumo das observações meteorológicas feitas no mês de Julho de 1889\nem Santa-Cruz",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-santacruz-1889",
+  "period": "1889-07"
+ },
+ {
+  "doc": "15",
+  "page": 157,
+  "caption": "OBSERVATORIO DE SANTA-CRUZ\n\nResumo das observações meteorológicas feitas no mês de Agosto de 1889\nem Santa-Cruz\n\nPor J. N. da Cunha Louzada",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-santacruz-1889",
+  "period": "1889-08"
+ },
+ {
+  "doc": "15",
+  "page": 159,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 166,
+  "caption": "OBSERVATORIO DE SANTA-CRUZ\n\nResumo das observações meteorológicas feitas no mês de Setembro de 1889\nem Santa-Cruz\nPor J. N. da Cunha Louzada",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-santacruz-1889",
+  "period": "1889-09"
+ },
+ {
+  "doc": "15",
+  "page": 181,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 190,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "15",
+  "page": 197,
+  "caption": "OBSERVATORIO DE SANTA-CRUC\nResumo das observações meteorológicas feitas no mês de Novembro de 1889\nem Santa-Cruz\nPor J. N. da Cunha Louzada",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-santacruz-1889",
+  "period": "1889-11"
+ },
+ {
+  "doc": "16",
+  "page": 8,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 15,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 18,
+  "caption": "Observações feitas durante o mês de Dezembro de 1889, no Observatório meteorológico da Escola de Minas de Ouro Preto\nPor EULALIO FERREIRA",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1889-12"
  }
 ]

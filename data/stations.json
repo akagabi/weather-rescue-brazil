@@ -1,5 +1,5 @@
 {
- "_note": "Station metadata for the SEF export. `verified` is the ONLY thing that decides whether a coordinate is written: an unverified one goes out as NA, because an approximate latitude in a registry file looks authoritative and nothing downstream can tell it is a guess. Flip these to true only after checking each against the observatory's own record.",
+ "_note": "Station metadata for the SEF export. `verified` is the ONLY thing that decides whether a coordinate is written: an unverified one goes out as NA, because an approximate latitude in a registry file looks authoritative and nothing downstream can tell it is a guess. Flip these to true only after checking each against the observatory's own record. A station carrying a `printed` block has the observatory's own line from the Revista recorded beside the guess (see data/stations_printed.json and wrb.stations). That is the primary source this file asks to be checked against, but the reading of it is still a model reading: `verified` stays false until a person compares the two numbers against the scan named in `printed.source`.",
  "_checked_by": null,
  "rio_imperial": {
   "id": "rio_imperial",
@@ -17,7 +17,22 @@
   "lat": -22.917,
   "lon": -43.683,
   "alt": 10,
-  "dataset_name": "Observatório de Santa-Cruz, Rio de Janeiro"
+  "dataset_name": "Observatório de Santa-Cruz, Rio de Janeiro",
+  "printed": {
+   "printed": "Estação, Santa Cruz; Observador, J. N. C. Lousada; Latitude, 22°,56'; Longitude, 2m W; Hora local, 9h,9m; Alt. do Bar. 26m",
+   "source": {
+    "archive": "docvirt",
+    "doc": "16",
+    "page": 41
+   },
+   "lon": -43.6725,
+   "lon_from_rio": -0.5,
+   "lat_magnitude": 22.9333,
+   "bar_alt_m": 26,
+   "hemisphere_missing": true,
+   "identification": "INFERRED: the printed block names only 'Santa Cruz' (observer J. N. C. Lousada). Read as the Observatorio de Santa-Cruz in Rio because its longitude, 0°30' west of the Imperial Observatorio, puts it there. Not stated on the page.",
+   "agrees_with_guess": "lon -43.6725 printed vs -43.683 guessed (about 1 km apart); lat magnitude 22.9333 vs 22.917 guessed"
+  }
  },
  "corumba": {
   "id": "corumba",
