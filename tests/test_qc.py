@@ -231,3 +231,48 @@ def test_a_sea_level_band_would_have_mangled_ouro_preto():
     assert restore_thousands(65.65, (730.0, 790.0)) == 765.65      # wrong station
     p = pressure_for_altitude(1145)
     assert restore_thousands(65.65, (p - 30.0, p + 30.0)) == 665.65
+
+
+# --- the wind table's only available validator ------------------------------
+
+from wrb.qc import direction_keys, invalid_compass  # noqa: E402
+
+
+def _vento():
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+    from wrb import profile as prof
+    return prof.load("rio-1883-vento")
+
+
+def test_the_profile_names_its_own_direction_columns():
+    keys = direction_keys(_vento())
+    assert len(keys) == 7, keys
+    assert all(k.endswith("_dir") for k in keys)
+
+
+def test_every_compass_point_the_pages_print():
+    keys = direction_keys(_vento())
+    row = dict(zip(keys, ["N", "NNE", "SW", "E.N.E.", "o", "calma", "0"]))
+    assert invalid_compass(row, keys) == []
+
+
+def test_a_force_figure_in_a_direction_cell_is_caught():
+    """The failure this exists for: a cell shifted from the column beside it."""
+    keys = direction_keys(_vento())
+    row = dict(zip(keys, ["N", "27", "SW", "3.5", None, "NE", "S"]))
+    bad = invalid_compass(row, keys)
+    assert len(bad) == 2
+    assert "27" in bad[0] and "3.5" in bad[1]
+
+
+def test_a_fragment_of_the_row_above_is_caught():
+    keys = direction_keys(_vento())
+    assert invalid_compass({keys[0]: "Mez"}, keys)
+    assert invalid_compass({keys[0]: "17.31"}, keys)
+
+
+def test_an_empty_cell_is_not_a_failure():
+    keys = direction_keys(_vento())
+    assert invalid_compass({keys[0]: None, keys[1]: ""}, keys) == []

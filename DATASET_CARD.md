@@ -38,8 +38,8 @@ front matter above is the dataset card format.
 | | |
 |---|---|
 | Rows | 5,925 |
-| Usable rows (`checks_pass` + `qc_clean`) | **3,391** |
-| Values in usable rows | 39,983 |
+| Usable rows (`checks_pass` + `qc_clean`) | **3,385** |
+| Values in usable rows | 39,899 |
 | Pages transcribed | 226 |
 | Period | 1882-01 to 1890-11 |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão |
@@ -93,6 +93,15 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   page, the station and the verdicts are unchanged, and only doc 5 (the v0.2
   addition) was affected. Fixed in `wrb.caption`, corrected by
   `scripts/g4_audit_periods.py`, frozen as **v0.2.1**.
+- **A wind-direction cell must hold a direction.** The wind layouts print no
+  summary column, so until v0.2.2 their only check was the force range (0–6).
+  A direction cell is not free text, and one holding a force figure, a
+  temperature or a fragment of a caption is a misread the page can refute. It
+  names the cause of 291 rows across 34 pages — 285 of which the earlier checks
+  had already flagged for other reasons, and 6 of which it found on its own.
+  Eight of those pages fail as a whole: they were assigned the wrong layout
+  entirely (doc 5 page 351 is a thermometer table produced as wind). None of
+  them were ever in the usable set.
 - **Wind is under-represented, and it was a bug rather than the source.** The
   Annales print all six of their layouts for every month, so the page counts
   should be comparable. They are not: barometer 57 pages, thermometer 35,
@@ -106,7 +115,7 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **2,534 of 5,925 rows are `flagged`**, including whole-profile sections
+- **2,540 of 5,925 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.

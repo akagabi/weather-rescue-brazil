@@ -13,7 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from wrb import profile as prof  # noqa: E402
 from wrb.profile import PADDED_TRAILING  # noqa: E402
-from wrb.qc import degenerate_row  # noqa: E402
+from wrb.qc import degenerate_row, direction_keys, invalid_compass  # noqa: E402
 from wrb.verify import apply_corrections, load_corrections  # noqa: E402
 import calendar  # noqa: E402
 from collections import defaultdict  # noqa: E402
@@ -156,6 +156,13 @@ def main() -> None:
         # only thing that can catch it, so it is a hard problem.
         if degenerate_row(restored, index_keys={day_key_of[id(r)], "year"}):
             problems = problems + ["degenerate_row: measurements collapsed to a repeated value"]
+        # The wind layout prints no summary column and so has no arithmetic to
+        # check itself against: without this its whole QC is the force range.
+        # A direction cell is not free text, and a cell holding a force figure
+        # or a fragment of the row above is a misread this can name.
+        dkeys = direction_keys(p)
+        if dkeys:
+            problems = problems + invalid_compass(restored, dkeys)
         hard = [x for x in problems if x != PADDED_TRAILING]
         scoreable = bool(p.checks) and any(isinstance(restored.get(c["result"]), (int, float)) for c in p.checks)
         # A page whose located row count does not equal the days in its month has

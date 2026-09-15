@@ -232,5 +232,115 @@
   "cells": 9,
   "cell_votes": "[79, 9, 10, 9, 42]",
   "sample_row": "|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  "
+ },
+ {
+  "doc": "8",
+  "page": 125,
+  "caption": "RESUME METEOROLOGIQUE DU MOIS DE SEPTEMBRE 1883",
+  "period": "1883-09",
+  "profile": null,
+  "n_cells": null,
+  "cells": 32,
+  "cell_votes": "[2, 1, 53, 32, 42]",
+  "sample_row": "| 26 | . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+ },
+ {
+  "doc": "8",
+  "page": 127,
+  "caption": "DE RIO DE JANEIRO\nRÉSUMÉ MÉTÉOROLOGIQUE DU MOIS D'OCTOBRE 1883",
+  "period": "1883-10",
+  "profile": null,
+  "n_cells": null,
+  "cells": 29,
+  "cell_votes": "[98, 2, 79, 134, 29]",
+  "sample_row": "| 26 | | | | | | | | |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 82.8 | | | | | | | | |\n| 81.2 | | | | | | | | |\n| 76.7 | | | | | | | "
+ },
+ {
+  "doc": "8",
+  "page": 131,
+  "caption": "DE RIO DE JANEIRO\nRÉSUMÉ MÉTÉOROLOGIQUE DU MOIS DE DÉCEMBRE 1883",
+  "period": "1883-12",
+  "profile": null,
+  "n_cells": null,
+  "cells": 24,
+  "cell_votes": "[24, 29, 154, 42, 42]",
+  "sample_row": "| Moja | 22.08 | 23.08 | 24.08 | 25.08 | 26.08 | 27.08 | 28.08 | 29.08 | 30.08 | 31.08 | 01.09 | 02.09 | 03.09 | 04.09 | 05.09 | 06.09 | 07.09 | 08.09"
+ },
+ {
+  "doc": "8",
+  "page": 153,
+  "caption": "Observations météorologiques du mois de Janvier 1884\nAébulosité en dixièmes du ciel couvert\nANNALES DE L'Observatoire IMPÉRIAL",
+  "period": "1884-01",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[15, 14, 17, 17, 17]",
+  "sample_row": "4 | 10 | N | 8 | C-K,K-N | 10 | N | 8 | C-K,K-N,N | 10 | C-K,K-N,N | 10 | C-K,K-N,N | 9.4 | Z"
+ },
+ {
+  "doc": "8",
+  "page": 154,
+  "caption": "Observations météorologiques du mois de Janvier 1884\nDE RIO DE JANEIRO",
+  "period": "1884-01",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[16, 15, 15, 13, 15]",
+  "sample_row": "13 | NW | 1 | NNW | 1 | SW | 2 | SSE | 2 | SSE | 1 | 0 | 0 | NW | 1 | Z"
+ },
+ {
+  "doc": "8",
+  "page": 161,
+  "caption": "Observations météorologiques du mois de Février 1884\nNébulosité en dixièmes du ciel couvert\nAnnales de l'Observatoire Imperial",
+  "period": "1884-02",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[15, 17, 15, 9, 16]",
+  "sample_row": "| 6 | 3 | C,K | 9 | C-K,K | 1 | C,C-K,K | 1 | C,C-K,K | 1 | C,C-K,K | 0 | 0 | 0 | 2.1 |"
+ },
+ {
+  "doc": "8",
+  "page": 162,
+  "caption": "Observations météorologiques du mois de Février 1884\nDE RIO DE JANEIRO",
+  "period": "1884-02",
+  "profile": null,
+  "n_cells": null,
+  "cells": 36,
+  "cell_votes": "[36, 66, 35, 48, 63]",
+  "sample_row": "| 1h M | 2h M | 3h M | 4h M | 5h M | 6h M | 7h M | 8h M | 9h M | 10h M | 11h M | 12h M | 13h M | 14h M | 15h M | 16h M | 17h M | 18h M | 19h M | 20h M"
+ },
+ {
+  "doc": "8",
+  "page": 169,
+  "caption": "Observations météorologiques du mois de Mars 1884\nNebulosité en dixièmes du ciel couvert\nDate\t4 h. M.\t7 h. M.\t10 h. M.\t1 h. S.\t4 h. S.\t7 h. S.\t10 h. S.\tMoyenne\n1\t9\tC-K,K\t9\tC-K,K",
+  "period": "1884-03",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[19, 17, 15, 17, 14]",
+  "sample_row": "| 7 | 10 | C-K,K | 3 | C,C-K | 7 | C,C-K,K | 9 | C,C-K,K | 7 | C-K,R-N | 8 | C,C-K,R-N | 10 | C,C-K,R-N | 10 | C-K,K | 6.6 | ESS |"
+ },
+ {
+  "doc": "8",
+  "page": 170,
+  "caption": "Observations météorologiques du mois de Mars 1884\nDE RIO DE JANEIRO",
+  "period": "1884-03",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[16, 16, 48, 15, 15]",
+  "sample_row": "| 8 | NW | 1 | 0 | 0 | NW | 1 | SSE | 1 | SSE | 1 | 0 | 0 | SSE | 2 | 10 |"
+ },
+ {
+  "doc": "8",
+  "page": 171,
+  "caption": "Observations météorologiques du mois de Mars 1884",
+  "period": "1884-03",
+  "profile": null,
+  "n_cells": null,
+  "cells": 33,
+  "cell_votes": "[58, 56, 33, 17, 16]",
+  "sample_row": "2 | 46.0 | 34.0 | 12.0 | 10 | C | 54.4 | 39.6 | 14.8 | 3 | C,C-K,K | 50.6 | 36.0 | 14.6 | 3 | C,K | ALU | null | null | null | null | null | null | nu"
  }
 ]

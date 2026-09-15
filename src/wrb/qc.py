@@ -27,6 +27,7 @@ down to which cell(s) caused it. Final per-cell uncertainty (not computed
 here) is consensus-disagreement OR this validator flag - see the G3 plan.
 """
 
+import re
 from wrb.gold import RANGES, Row, Sheet, TOL
 
 # Columns that index a row rather than measure it: a day number (or a year, in
@@ -230,3 +231,68 @@ def near_duplicate_rows(rows: list[dict], keys: list[str],
             if len(diffs) >= 2 and max(diffs) < max_diff:
                 out.append((i, j))
     return out
+
+
+# --- the wind table's only available validator -------------------------------
+#
+# rio-1883-vento prints no summary column, so it has no arithmetic to check
+# itself against: its QC is the force range (0-6) and nothing else. That is
+# thin for a layout about to gain a lot of rows.
+#
+# But a direction cell is not free text. It is a point of the compass, or the
+# mark the page uses for calm, and anything else is a misread - a "27" that
+# belongs in the neighbouring force column, a fragment of the row above, a
+# stray letter. This costs nothing and needs no human.
+#
+# Deliberately permissive about CASE and about the compositor's variants (N.E.,
+# NE, ne), and about the several things printed for calm: the point is to catch
+# a cell that is not a direction at all, not to normalise spelling.
+COMPASS_POINTS = {
+    "n", "nne", "ne", "ene", "e", "ese", "se", "sse",
+    "s", "ssw", "sw", "wsw", "w", "wnw", "nw", "nnw",
+    # the Annales set W as O (oeste) on some sheets
+    "o", "oso", "so", "sso", "no", "nno", "ono", "eno",
+}
+CALM_MARKS = {"0", "c", "calma", "calme", "calm", "-", "--", "\u2014", ""}
+# The Revista records a wind that shifted, or one with no settled direction, and
+# both are readings: `NW, SSE` is two points in one cell and `Variavel` is the
+# absence of one. A first version of this check rejected both and flagged 1,063
+# published rows that are perfectly good - more rows than the layout it was
+# written for contains. A validator that does not know its publication's
+# notation is not a validator.
+VARIABLE_MARKS = {"var", "varvel", "variavel", "variavel", "variable", "vari"}
+
+
+def invalid_compass(values: dict, dir_keys: list[str]) -> list[str]:
+    """Direction cells holding something that is not a direction at all.
+
+    Accepts a point of the compass, a mark for calm, a mark for variable, and
+    any comma-separated combination of those - the Revista prints `NW, SSE` for
+    a wind that shifted during the interval.
+    """
+    out = []
+    for key in dir_keys:
+        v = values.get(key)
+        if v is None:
+            continue
+        raw = str(v).strip()
+        # split on commas AND whitespace: the compositor sets both
+        # "Var., SSE" and "Var. SSE"
+        parts = [t.strip().lower().replace(".", "")
+                 for t in re.split(r"[,;/\s]+|\be\b", raw) if t.strip()] or [""]
+        if all(t in CALM_MARKS or t in COMPASS_POINTS or t in VARIABLE_MARKS
+               for t in parts):
+            continue
+        out.append(f"{key}={v!r} is not a compass point")
+    return out
+
+
+def direction_keys(profile) -> list[str]:
+    """A profile's wind-direction columns, asked of the profile.
+
+    Text columns whose key ends in `_dir`, which is how every wind layout in
+    this project names them; a layout that names them otherwise gets an empty
+    list and no check, rather than a wrong one.
+    """
+    return [c.key for c in profile.columns
+            if c.kind == "text" and c.key.endswith("_dir")]
