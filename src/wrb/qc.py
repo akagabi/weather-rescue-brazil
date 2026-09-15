@@ -335,3 +335,65 @@ def looks_like_cloud_forms(row: str, min_hits: int = 3) -> bool:
     compound = sum(1 for c in cells if c and ("-" in c or "," in c)
                    and CLOUD_FORMS.match(c.replace(" ", "")))
     return compound >= 1 and hits >= min_hits
+
+
+# --- two rows claiming the same day ------------------------------------------
+#
+# A candidate that is not a data row can still be read, assigned a day and
+# produced. Doc 8 page 43 came back with its first row claiming date 10 and
+# holding "02 | 01" where a direction and a force belong, while the real day 10
+# sat in its proper place further down. The page's own dates give it away: a
+# day appears once.
+#
+# Where the rest of the page is in order, the impostor names itself. Doc 5 page
+# 309 reads 1,2,3,...,31 and then a thirty-second row claiming 28: the real day
+# 28 sits between 27 and 29 and the extra one sits after 31. Flagging both
+# claimants would cost a good row, so the one that breaks the ascending run is
+# returned alone - and when neither does, or both do, both are returned,
+# because then the page cannot say which is which.
+def duplicate_days(rows: list[dict], day_key: str = "date") -> list[tuple[int, int]]:
+    """Index pairs of rows that claim the same day."""
+    seen: dict = {}
+    out = []
+    for i, r in enumerate(rows):
+        d = (r.get("values") or r).get(day_key)
+        if not isinstance(d, (int, float)):
+            continue
+        if d in seen:
+            out.append((seen[d], i))
+        else:
+            seen[d] = i
+    return out
+
+
+def _in_sequence(rows: list[dict], i: int, day_key: str) -> bool:
+    """True when row i's day sits between its neighbours' days."""
+    def day(k):
+        if 0 <= k < len(rows):
+            v = (rows[k].get("values") or rows[k]).get(day_key)
+            return v if isinstance(v, (int, float)) else None
+        return None
+
+    d = day(i)
+    if d is None:
+        return False
+    before, after = day(i - 1), day(i + 1)
+    ok_before = before is None or before < d
+    ok_after = after is None or after > d
+    return ok_before and ok_after
+
+
+def spurious_duplicate_days(rows: list[dict], day_key: str = "date") -> list[int]:
+    """Indices of rows whose day another row already holds, and that do not fit
+    the page's ascending order. Both claimants are returned when the page
+    cannot distinguish them."""
+    out: list[int] = []
+    for i, j in duplicate_days(rows, day_key):
+        fits_i, fits_j = _in_sequence(rows, i, day_key), _in_sequence(rows, j, day_key)
+        if fits_i and not fits_j:
+            out.append(j)
+        elif fits_j and not fits_i:
+            out.append(i)
+        else:
+            out += [i, j]
+    return sorted(set(out))

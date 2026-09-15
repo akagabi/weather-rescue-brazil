@@ -182,5 +182,6 @@
  "probe_x_frac": null,
  "table_x_frac": null,
  "notes": "Direcao e forca do vento, 7 leituras diarias (mesmos horarios das outras tabelas do volume). Direcao e rosa dos ventos em texto (SW, NNE, 0=calmaria). Sem coluna de resumo impressa - sem checksum proprio; QC fica limitado a faixa fisica da forca.",
- "extra": {}
+ "extra": {},
+ "oracle_min_direct": 0.55
 }

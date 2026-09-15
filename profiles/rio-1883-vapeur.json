@@ -139,5 +139,6 @@
  "probe_x_frac": null,
  "table_x_frac": null,
  "notes": "Quinto layout, SEGUNDO TESTE CEGO e primeira PUBLICAÇÃO diferente: não é a Revista do Observatório. Cabeçalho em FRANCÊS. 9 colunas; a estrutura não é instrumento-por-coluna e sim a MESMA medida em 7 horários do dia + a média. Checksum por linha: Moyenne = média das 7 leituras. A coluna Moyenne e a media das 7 leituras impressas na propria linha, portanto a pagina valida-se sozinha - o check estava por declarar.",
- "extra": {}
+ "extra": {},
+ "oracle_min_direct": 0.55
 }

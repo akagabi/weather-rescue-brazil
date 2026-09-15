@@ -111,7 +111,8 @@ def main() -> None:
         localisation = "geometry"
         centres = loc.chain
         if oracle is not None:
-            centres, info = resolve_by_oracle(oracle, image, loc, want)
+            centres, info = resolve_by_oracle(oracle, image, loc, want,
+                                              min_direct=p.oracle_min_direct)
             if centres is None:
                 print(f"  {w.get('label')}: oracle could not resolve the day rows "
                       f"({info['direct']} of {want} read directly) - page skipped", flush=True)

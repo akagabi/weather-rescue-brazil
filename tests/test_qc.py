@@ -305,3 +305,74 @@ def test_a_calm_wind_row_is_not_either():
 def test_an_empty_row_is_not_cloud_forms():
     assert not looks_like_cloud_forms("")
     assert not looks_like_cloud_forms("| | | |")
+
+
+# --- two rows claiming the same day -----------------------------------------
+
+from wrb.qc import duplicate_days  # noqa: E402
+
+
+def test_the_page_43_spurious_row_is_caught():
+    """Its first row claimed date 10 while the real day 10 sat further down."""
+    rows = [{"values": {"date": d}} for d in [10, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11]]
+    assert duplicate_days(rows) == [(0, 9)]
+
+
+def test_a_clean_page_has_none():
+    rows = [{"values": {"date": d}} for d in range(1, 32)]
+    assert duplicate_days(rows) == []
+
+
+def test_a_gap_in_the_days_is_not_a_duplicate():
+    """Day 2 missing is a row not read, which is a different thing."""
+    rows = [{"values": {"date": d}} for d in [1, 3, 4, 5]]
+    assert duplicate_days(rows) == []
+
+
+def test_rows_without_a_day_are_skipped():
+    rows = [{"values": {"date": None}}, {"values": {}}, {"values": {"date": 3}}]
+    assert duplicate_days(rows) == []
+
+
+# --- which claimant is the impostor -----------------------------------------
+
+from wrb.qc import spurious_duplicate_days  # noqa: E402
+
+
+def test_the_page_309_shape_names_the_impostor():
+    """Days 1..31 in order, then a thirty-second row claiming 28."""
+    days = list(range(1, 32)) + [28]
+    rows = [{"values": {"date": d}} for d in days]
+    assert spurious_duplicate_days(rows) == [31]
+
+
+def test_the_legitimate_row_keeps_its_place():
+    days = list(range(1, 32)) + [28]
+    rows = [{"values": {"date": d}} for d in days]
+    assert 27 not in spurious_duplicate_days(rows)   # the real day 28
+
+
+def test_both_are_returned_when_the_page_cannot_tell_them_apart():
+    """Two adjacent rows claiming the same day: neither sits in an ascending
+    run, so neither is the obvious impostor and both are flagged."""
+    rows = [{"values": {"date": 5}}, {"values": {"date": 5}}]
+    assert spurious_duplicate_days(rows) == [0, 1]
+
+
+def test_a_claimant_that_fits_as_the_start_of_the_run_is_kept():
+    """In 5, 9, 5, 2 the first 5 opens an ascending pair and the third does
+    not, so only the third is named."""
+    rows = [{"values": {"date": d}} for d in [5, 9, 5, 2]]
+    assert spurious_duplicate_days(rows) == [2]
+
+
+def test_a_clean_page_names_nobody():
+    rows = [{"values": {"date": d}} for d in range(1, 32)]
+    assert spurious_duplicate_days(rows) == []
+
+
+def test_a_leading_impostor_is_named_not_the_real_row():
+    """Doc 8 page 43: a junk first row claimed day 10, the real one followed."""
+    days = [10, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    rows = [{"values": {"date": d}} for d in days]
+    assert spurious_duplicate_days(rows) == [0]

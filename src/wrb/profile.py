@@ -128,6 +128,16 @@ class Profile:
     # the rest (17 sparse wind-frequency counts) for a second pass rather than
     # corrupting the first.
     band_x_frac: tuple[float, float] | None = None
+    # How much of the day column the oracle must read DIRECTLY before its
+    # localisation is accepted; the rest is interpolated between confirmed days
+    # at the page pitch and checked for overlap. 0.7 suits a publication whose
+    # day numbers are lining figures. The Annales set theirs in OLD-STYLE
+    # figures - 1 as a small-capital I, 10 as IO, 11 as II - and the reader
+    # loses perhaps a third of them, so a bar tuned elsewhere refuses pages that
+    # are perfectly regular and perfectly legible to a person. This is a fact
+    # about the printing, so it is declared per publication rather than lowered
+    # for everyone.
+    oracle_min_direct: float = 0.7
     notes: str = ""
     extra: dict = field(default_factory=dict)
 

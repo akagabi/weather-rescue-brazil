@@ -14,7 +14,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from wrb import profile as prof  # noqa: E402
 from wrb.profile import PADDED_TRAILING  # noqa: E402
 from wrb.caption import load_volume_spans, period_outside_volume  # noqa: E402
-from wrb.qc import degenerate_row, direction_keys, invalid_compass  # noqa: E402
+from wrb.qc import (degenerate_row, direction_keys,  # noqa: E402
+                    invalid_compass, spurious_duplicate_days)
 
 # Re-derived here rather than carried over from the producer. Rescore rebuilds
 # `problems` from the stored `raw`, which silently DROPPED anything the
@@ -130,6 +131,7 @@ def main() -> None:
     page_complete: dict[int, bool] = {}
     day_key_of: dict[int, str] = {}
     monthly: dict[int, list[str]] = {}
+    dupe_day: dict[int, object] = {}
     for key, prs in by_page.items():
         pk = cache.setdefault(prs[0]["profile"], prof.load(prs[0]["profile"]))
         day_key = next((c.key for c in pk.columns if c.kind == "day"), "day")
@@ -151,6 +153,24 @@ def main() -> None:
                 monthly[id(r)] = fails
         for i, day in resolve_page_days(pk, prs, day_key).items():
             resolved_day[id(prs[i])] = day
+        # A candidate that is not a data row can still be read, assigned a day
+        # and produced. Doc 8 page 43's first row claimed date 10 and held
+        # "02 | 01" where a direction and a force belong, while the real day 10
+        # sat in its place further down. The page's own dates give it away.
+        # Both claimants are flagged: which is real is a question for the
+        # checks that look at content, and deleting the wrong one is worse.
+        # Only where the layout prints ONE row per day. Corumba prints two -
+        # page 16/72 holds 62 rows for 31 days, each day twice - so a repeated
+        # day there is the form working correctly, and 20 of its rows were
+        # flagged before this guard existed.
+        if day_key and pk.rows_per_page == "days_in_month":
+            # AFTER resolve_page_days, not before: Corumba prints ditto marks
+            # in its day column and those legitimately repeat until resolved.
+            # Checking the raw parse would flag every ditto page.
+            resolved = [{"values": {day_key: resolved_day.get(
+                id(r), (r.get("values") or {}).get(day_key))}} for r in prs]
+            for i in spurious_duplicate_days(resolved, day_key):
+                dupe_day[id(prs[i])] = resolved[i]["values"].get(day_key)
 
     out = src.with_name(src.stem + ".rescored.jsonl").open("w")
     for r in rows:
@@ -178,6 +198,10 @@ def main() -> None:
         dkeys = direction_keys(p)
         if dkeys:
             problems = problems + invalid_compass(restored, dkeys)
+        if id(r) in dupe_day:
+            problems = problems + [
+                f"duplicate_day: another row on this page also claims day "
+                f"{dupe_day[id(r)]}; one of them is not a data row"]
         why = period_outside_volume(r.get("period"), str(r.get("item")), _SPANS)
         if why:
             problems = problems + [f"period_suspect: {why}"]

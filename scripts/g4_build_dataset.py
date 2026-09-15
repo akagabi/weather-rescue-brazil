@@ -98,7 +98,19 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
     # becomes a candidate and the printed numbers sort them out - which is what
     # the oracle is for.
     if len(loc.chain) < 0.5 * day_count:
-        cands = sorted(loc.peaks)
+        # Propose at HALF the pitch. The peak finder keeps only maxima 0.6 of a
+        # pitch apart, so at the true pitch it returns fewer peaks than the
+        # month has rows on exactly the pages that need help: doc 8 page 43
+        # gives 25 peaks for 30 days at pitch 24 and 34 at pitch 12. Asking for
+        # more candidates than there are rows is the point - the printed
+        # numbers throw the extras away, and an unproposed row is simply gone.
+        from wrb.rows import PROBE_X_FRAC, find_peaks, ink_threshold, row_profile
+        g = image.convert("L")
+        thr = ink_threshold(g)
+        x0, x1 = int(width * PROBE_X_FRAC[0]), int(width * PROBE_X_FRAC[1])
+        prof_, _ = row_profile(g, x0, x1, thr)
+        dense = [y for y, _h in find_peaks(prof_, max(6.0, pitch / 2))]
+        cands = sorted(set(dense) | set(loc.peaks))
     else:
         lo = (min(loc.chain) if loc.chain else 0) - margin_rows * pitch
         hi = (max(loc.chain) if loc.chain else height) + margin_rows * pitch
@@ -110,7 +122,27 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
     for y, r in zip(cands, reads):
         if r is not None and 1 <= r <= day_count:
             by_day.setdefault(r, []).append(y)
+    # A day read by exactly one candidate is settled. A day read by SEVERAL is
+    # not thrown away: on doc 8 page 43 the six candidates above the table are
+    # header strips, the reader answers "1" to all of them because that is what
+    # it says when there is no day to read, and requiring uniqueness deleted
+    # day 1 entirely. Days increase down the page, so the right claimant is the
+    # one that fits the line through the days that ARE settled.
     assigned: dict[int, int] = {d: ys[0] for d, ys in by_day.items() if len(ys) == 1}
+    contested = {d: ys for d, ys in by_day.items() if len(ys) > 1}
+    if contested and len(assigned) >= 3:
+        xs = sorted(assigned)
+        n = len(xs)
+        mean_d = sum(xs) / n
+        mean_y = sum(assigned[d] for d in xs) / n
+        var = sum((d - mean_d) ** 2 for d in xs)
+        if var > 0:
+            slope = sum((d - mean_d) * (assigned[d] - mean_y) for d in xs) / var
+            for d, ys in contested.items():
+                want = mean_y + slope * (d - mean_d)
+                best = min(ys, key=lambda y: abs(y - want))
+                if abs(best - want) <= 1.5 * pitch:
+                    assigned[d] = best
     # reject assignments that break monotonicity (a misread '1' for '7' etc.)
     days = sorted(assigned)
     keep: dict[int, int] = {}

@@ -38,8 +38,8 @@ front matter above is the dataset card format.
 | | |
 |---|---|
 | Rows | 6,522 |
-| Usable rows (`checks_pass` + `qc_clean`) | **3,674** |
-| Values in usable rows | 44,121 |
+| Usable rows (`checks_pass` + `qc_clean`) | **3,590** |
+| Values in usable rows | 43,144 |
 | Pages transcribed | 255 |
 | Period | 1882-01 to 1890-11 (one page captioned 1893, flagged) |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão |
@@ -93,6 +93,13 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   page, the station and the verdicts are unchanged, and only doc 5 (the v0.2
   addition) was affected. Fixed in `wrb.caption`, corrected by
   `scripts/g4_audit_periods.py`, frozen as **v0.2.1**.
+- **Two rows cannot be the same day.** On a layout that prints one row per day,
+  a day appearing twice means one of those rows is not a data row — doc 5 page
+  309 reads 1…31 and then a thirty-second row claiming 28. Where the rest of the
+  page is in order the impostor names itself, and only it is flagged; the real
+  row keeps its verdict. 578 rows across 169 pages, of which 84 were previously
+  counted usable. The check is skipped on layouts that print two rows per day
+  (Corumbá), where a repeated day is the form working correctly.
 - **A wind-direction cell must hold a direction.** The wind layouts print no
   summary column, so until v0.2.2 their only check was the force range (0–6).
   A direction cell is not free text, and one holding a force figure, a
@@ -117,7 +124,7 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **2,848 of 6,522 rows are `flagged`**, including whole-profile sections
+- **2,932 of 6,522 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.

@@ -176,5 +176,6 @@
  "probe_x_frac": null,
  "table_x_frac": null,
  "notes": "Terceiro layout do doc 8, ao lado de rio-1883-vapeur (9 celulas) e rio-1883-thermo (13 celulas). O cabecalho imprime 'Barometre reduit a 0, 700mm +': os milhares sao ELIDIDOS, 59.68 significa 759.68. A pagina traz linha 'Mois' e a Moyenne e a media das 7 leituras, portanto valida-se sozinha. A coluna Oscillation NAO e max-min nem diferenca da media do dia anterior - nao foi identificada, por isso nao tem check declarado.\n\nCORRIGIDO 2026-09-11: a faixa fisica era [700,800], larga demais para servir. 308 das 989 linhas com media mensal caiam entre 700 e 729 mmHg, separadas das 676 reais (750-780) por um vazio entre 730 e 749 - uma pressao real nao e bimodal com um buraco de 30 mmHg. Sao as paginas em que o impresso traz 1x.xx onde as outras trazem 5x.xx (ambas fieis: 17.56 -> 717.56, 57.56 -> 757.56). A leitura esta certa; o que faltava era a faixa recusar 717, que a 0 graus ao nivel do mar no Rio e impossivel (956 hPa). Com a faixa fisica real, essas linhas passam a flagged em vez de checks_pass.",
- "extra": {}
+ "extra": {},
+ "oracle_min_direct": 0.55
 }

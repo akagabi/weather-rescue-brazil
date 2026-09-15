@@ -209,5 +209,6 @@
  "probe_x_frac": null,
  "table_x_frac": null,
  "notes": "Nebulosidade em decimos do ceu coberto, 7 leituras diarias (mesmos horarios do barometro/vapor). Cada leitura e numero+forma da nuvem em texto (C,K,C-K,K-N,N...). Moyenne = media dos 7 numeros - checksum proprio.",
- "extra": {}
+ "extra": {},
+ "oracle_min_direct": 0.55
 }

@@ -226,5 +226,6 @@
  "probe_x_frac": null,
  "table_x_frac": null,
  "notes": "Radiacao solar: termometro ao sol (T), a sombra (t) e a diferenca (theta), tres vezes ao dia, com nebulosidade em decimos e forma das nuvens em texto (C, K, C-K, K-N, N). Checksum proprio e forte: theta = T - t, tres vezes por linha. Serie actinometrica tropical do seculo XIX - nao consta do EMERLAC nem do GHCN.",
- "extra": {}
+ "extra": {},
+ "oracle_min_direct": 0.55
 }
