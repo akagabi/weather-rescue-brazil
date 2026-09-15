@@ -65,13 +65,27 @@ def blocks_for_page(declared: list[dict], width: int, height: int,
     return out
 
 
+# What the caller found in a block's header strip. The three cases have to stay
+# apart, because two of them look identical from the read alone and inheriting
+# on the wrong one attributes a station's observations to another station.
+#
+# Measured on docId 15 page 158: the page prints Cruzador Almirante Barroso,
+# then Ponte B. de Macedo with its own header, then Ponte's next month with no
+# header, then Bahia. The read of Ponte's header came back without the word
+# `Estação`, the block was treated as headerless, and it inherited CRUZADOR -
+# a warship's observations attributed to a bridge works in Recife. The station
+# was wrong, and nothing in the row said so.
+NO_HEADER = None        # the page prints only a month line: inherit, and say so
+UNREADABLE = ""         # a header IS printed and could not be read: no station
+
+
 def resolve_stations(headers: list[str | None]) -> list[dict]:
     """One station record per block, in page order, carrying how it was got.
 
-    `headers[i]` is the text read from block i's header strip, or None when the
-    block prints no header. An inheriting block takes the nearest station above
-    it and says so; a block with nothing above it gets None, which is a gap to
-    report rather than a station to guess.
+    `headers[i]` is the text read from block i's header strip, `NO_HEADER` when
+    the page prints no header there, or `UNREADABLE` when one is printed and
+    the read failed. Only `NO_HEADER` inherits; `UNREADABLE` yields no station,
+    which is a gap to report rather than a neighbour's name to borrow.
 
     It takes the headers rather than the blocks because that is all it needs:
     inheritance runs down the page in order, and a caller that has only read
@@ -92,6 +106,9 @@ def resolve_stations(headers: list[str | None]) -> list[dict]:
                    "bar_alt_m": h["bar_alt_m"], "moves": h["moves"]}
             last = rec
             out.append(rec)
+        elif text == UNREADABLE:
+            out.append({"station": None,
+                        "station_source": "cabecalho impresso mas ilegivel"})
         elif last is not None:
             out.append({**last, "station_source": "herdada do bloco acima"})
         else:

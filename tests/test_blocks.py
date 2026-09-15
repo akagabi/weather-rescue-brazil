@@ -217,3 +217,29 @@ def test_a_broken_dekad_run_is_not_a_block():
 
 def test_trios_do_not_overlap():
     assert dekad_trios(["1", "2", "3", "2", "3"]) == [[0, 1, 2]]
+
+
+# --- a header that exists but could not be read is not an inheritance -------
+
+from wrb.blocks import NO_HEADER, UNREADABLE  # noqa: E402
+
+
+def test_an_unreadable_header_yields_no_station():
+    """15/158: a failed read of Ponte B. de Macedo's header made the block
+    inherit CRUZADOR ALMIRANTE BARROSO - a warship's observations attributed
+    to a bridge works in Recife."""
+    st = resolve_stations([HEADERS[0], UNREADABLE])
+    assert st[1]["station"] is None
+    assert "ilegivel" in st[1]["station_source"]
+
+
+def test_no_header_still_inherits():
+    st = resolve_stations([HEADERS[0], NO_HEADER])
+    assert st[1]["station"] == "S. Paulo"
+    assert st[1]["station_source"] == "herdada do bloco acima"
+
+
+def test_an_unreadable_header_does_not_poison_the_block_below_it():
+    """The next printed header simply takes over."""
+    st = resolve_stations([HEADERS[0], UNREADABLE, HEADERS[1]])
+    assert [s["station"] for s in st] == ["S. Paulo", None, "Bahia (Capital)"]

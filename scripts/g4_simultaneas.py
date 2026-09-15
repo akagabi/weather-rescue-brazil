@@ -39,8 +39,8 @@ sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from wrb import profile as prof                       # noqa: E402
-from wrb.blocks import (band_from_rules, dedupe_labels, dekad_trios,  # noqa: E402
-                        resolve_stations, row_label)
+from wrb.blocks import (NO_HEADER, UNREADABLE, band_from_rules,  # noqa: E402
+                        dedupe_labels, dekad_trios, resolve_stations, row_label)
 from wrb.qc import degenerate_row                      # noqa: E402
 from wrb.rows import ink_threshold                     # noqa: E402
 
@@ -225,12 +225,20 @@ def main() -> None:
             top = b["dekads"][0]["box"][0]
             strip = image.crop((int(0.06 * W), max(0, prev_bottom + 2), int(0.95 * W),
                                 max(prev_bottom + 6, top - 2)))
-            txt = None
-            if strip.height > 12:
-                strip = strip.resize((min(1600, strip.width * 2), strip.height * 2),
-                                     Image.LANCZOS)
-                got = run(strip, "Transcribe the printed text on this strip exactly.", 120)
-                txt = got if re.search(r"esta[çc][ãa]o", got, re.I) else None
+            # How many printed lines the gap holds decides what a failed read
+            # MEANS. Two or more lines is a month line plus a station line, so
+            # a header exists and a failure is a failure; one line is a month
+            # on its own, so the block genuinely continues the station above.
+            # Without that distinction a failed read looks exactly like an
+            # absent header and the block silently borrows its neighbour's name.
+            lines = len(ink_runs(strip, (0.0, 1.0), min_h=5, floor=3)[0]) if strip.height > 12 else 0
+            txt = NO_HEADER if lines < 2 else UNREADABLE
+            if lines >= 2:
+                big = strip.resize((min(1600, strip.width * 2), strip.height * 2),
+                                   Image.LANCZOS)
+                got = run(big, "Transcribe the printed text on this strip exactly.", 140)
+                if re.search(r"esta[çc][ãa]o|observador|latitude", got, re.I):
+                    txt = got
             headers.append(txt)
             prev_bottom = (b["mez"] or b["dekads"][-1])["box"][1]
         stations = resolve_stations(headers)
