@@ -66,3 +66,35 @@ def test_settled_days_are_untouched():
 def test_a_contested_day_in_the_middle_picks_its_own_row():
     by_day = {1: [600], 2: [624], 3: [100, 648, 2000], 4: [672], 5: [696]}
     assert resolve(by_day)[3] == 648
+
+
+# --- what to do when neither end of the month was confirmed -----------------
+
+def bracket(keep: dict, day_count: int):
+    """The day range the confirmed days can carry, as resolve_by_oracle picks it."""
+    known = sorted(keep)
+    if not known:
+        return None
+    return (1, day_count) if (1 in keep and day_count in keep) else (known[0], known[-1])
+
+
+def test_a_page_with_both_ends_confirmed_covers_the_month():
+    keep = {d: 100 + 24 * d for d in [1, 5, 12, 20, 30]}
+    assert bracket(keep, 30) == (1, 30)
+
+
+def test_a_page_missing_both_ends_covers_what_it_brackets():
+    """Doc 5 page 342 read twenty of its thirty days and was thrown away whole
+    because neither end was among them."""
+    keep = {d: 100 + 24 * d for d in range(4, 27)}
+    assert bracket(keep, 30) == (4, 26)
+
+
+def test_one_end_confirmed_is_still_only_the_bracket():
+    """Day 1 alone does not license extrapolating past the last known day."""
+    keep = {d: 100 + 24 * d for d in [1, 5, 12, 22]}
+    assert bracket(keep, 30) == (1, 22)
+
+
+def test_nothing_confirmed_brackets_nothing():
+    assert bracket({}, 30) is None

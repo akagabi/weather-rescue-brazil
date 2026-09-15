@@ -153,11 +153,20 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
         if prev_ok and next_ok:
             keep[d] = y
     info = {"candidates": len(cands), "direct": len(keep), "reads": reads}
-    if len(keep) < min_direct * day_count or 1 not in keep and day_count not in keep and len(keep) < day_count:
+    if len(keep) < min_direct * day_count:
         return None, info
-    centres: list[int] = []
     known = sorted(keep)
-    for d in range(1, day_count + 1):
+    # Without day 1 or the last day there is nothing to anchor the ends on, and
+    # the old rule refused the whole page for it. That costs every row to avoid
+    # extrapolating two: doc 5 page 342 read TWENTY of its thirty days and was
+    # thrown away because neither end was among them. Emit the range the
+    # confirmed days BRACKET instead - every row in it is interpolated between
+    # two known neighbours, which is the safe half of what the rule was
+    # protecting, and the ends are simply not claimed.
+    first, last = (1, day_count) if (1 in keep and day_count in keep) else (known[0], known[-1])
+    info["day_range"] = (first, last)
+    centres: list[int] = []
+    for d in range(first, last + 1):
         if d in keep:
             centres.append(keep[d])
             continue
@@ -171,6 +180,9 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
         else:
             y = keep[after[0]] - pitch * (after[0] - d)
         centres.append(round(y))
+    if not centres:
+        info["reason"] = "no day could be bracketed"
+        return None, info
     gaps = [b - a for a, b in zip(centres, centres[1:])]
     if any(g < 0.5 * pitch for g in gaps):
         info["reason"] = f"rows overlap after interpolation: min gap {min(gaps):.0f} px"
