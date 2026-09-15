@@ -187,3 +187,46 @@ def pressure_implausible(baro_mm, alt_m, tol: float = 25.0) -> str | None:
         return None
     return (f"barometro {baro_mm} mmHg is {off:+.1f} from the {want:.0f} that "
             f"{alt_m:.0f} m implies (tolerance {tol})")
+
+
+# --- one printed row read twice ---------------------------------------------
+#
+# Row candidates are proposed generously and a tall ink run is split rather
+# than dropped, so a crop can straddle two printed rows. When it does, the
+# reader returns the label of one and the numbers of the other, and the result
+# is a row that is confidently wrong and looks like every other row.
+#
+# Measured on docId 15 page 142, Maceio's July block. The page prints
+#
+#     1a  765.67  24.9  25.0  20.1  78.6
+#     2a  766.60  24.9  25.1  18.6  76.1
+#     3a  767.00  24.6  24.8  18.8  78.1
+#
+# and the run produced 1a correctly, 3a correctly, and for `2a` the figures
+# 767.09  24.8  24.9  18.9  78.1 - the third row again, a whisker off. The
+# second dekad was never read and nothing downstream could tell: every value
+# is in range, and the block's month check still passes because two of the
+# three dekads are right.
+#
+# What gives it away is that no two dekads of a real block sit this close. The
+# tightest genuine pair measured across these pages differs by 1.2 in some
+# column; this one differs by at most 0.2 in any.
+NEAR_DUPLICATE_MAX = 0.5
+
+
+def near_duplicate_rows(rows: list[dict], keys: list[str],
+                        max_diff: float = NEAR_DUPLICATE_MAX) -> list[tuple[int, int]]:
+    """Pairs of rows so alike they must be the same printed row read twice.
+
+    Compares only the columns both rows carry a number for, and needs at least
+    two of them - a pair agreeing on one column is a coincidence, not evidence.
+    """
+    out = []
+    for i in range(len(rows)):
+        for j in range(i + 1, len(rows)):
+            diffs = [abs(rows[i][k] - rows[j][k]) for k in keys
+                     if isinstance(rows[i].get(k), (int, float))
+                     and isinstance(rows[j].get(k), (int, float))]
+            if len(diffs) >= 2 and max(diffs) < max_diff:
+                out.append((i, j))
+    return out

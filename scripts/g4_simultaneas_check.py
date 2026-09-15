@@ -46,20 +46,39 @@ def main() -> None:
     args = ap.parse_args()
 
     ref = json.loads(SECOND.read_text())
+
     rows = [json.loads(l) for l in Path(args.dataset).read_text().splitlines() if l.strip()]
+    # Keyed by the block's POSITION on its page, not by its station name. Two
+    # blocks on one sheet can carry the same station - docId 15 page 142 holds
+    # Maceio's June and Maceio's July - and keying by name collapsed them, so
+    # the run's July was compared against this file's June and twenty cells
+    # were reported wrong when every one of them was right.
     by = {}
     for r in rows:
-        by.setdefault((str(r["item"]), int(r["page"]), str(r.get("station"))), {})[str(r["row"])] = r
+        by.setdefault((str(r["item"]), int(r["page"]), int(r.get("block", 0))), {})[str(r["row"])] = r
+
+    # the second reading lists blocks in page order, so position is the key
+    order = {}
+    for blk in ref["blocks"]:
+        k = (blk["doc"], blk["page"])
+        blk["_index"] = order.get(k, 0)
+        order[k] = blk["_index"] + 1
 
     per_col = {c: [0, 0] for c in COLUMNS}
     misses, unmatched = [], []
     for blk in ref["blocks"]:
-        key = (blk["doc"], blk["page"], blk["station"])
+        key = (blk["doc"], blk["page"], blk["_index"])
         got = by.get(key)
         if got is None:
             near = [k for k in by if k[0] == blk["doc"] and k[1] == blk["page"]]
-            unmatched.append((key, near))
+            unmatched.append(((blk["doc"], blk["page"], blk["station"]), near))
             continue
+        produced_station = next((r.get("station") for r in got.values()), None)
+        if produced_station and produced_station.split(",")[0].strip() != \
+                blk["station"].split(",")[0].strip():
+            misses.append(((blk["doc"], blk["page"], blk["station"]), "-",
+                           f"station: run {produced_station!r} vs second read "
+                           f"{blk['station']!r}"))
         for label, want in blk["rows"].items():
             row = got.get(label)
             if row is None:

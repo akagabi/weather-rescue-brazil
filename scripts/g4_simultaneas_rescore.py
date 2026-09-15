@@ -31,7 +31,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from wrb.qc import pressure_implausible  # noqa: E402
+from wrb.qc import near_duplicate_rows, pressure_implausible  # noqa: E402
+
+COLUMNS = ["baro", "t_secco", "t_maxima", "t_minima", "humidade"]
 
 
 def main() -> None:
@@ -58,12 +60,32 @@ def main() -> None:
                 r["problems"] = list(r.get("problems") or []) + [why]
             r["verdict"] = "flagged"
 
+    # One printed row read twice. A crop that straddles two rows returns the
+    # label of one and the numbers of the other, and the row it displaced is
+    # never read at all - see wrb.qc.near_duplicate_rows for the measured case.
+    blocks: dict[tuple, list] = {}
+    for r in rows:
+        if str(r.get("row")) != "Mez":
+            blocks.setdefault((r["item"], r["page"], r.get("block")), []).append(r)
+    dupes = 0
+    for key, rr in blocks.items():
+        for i, j in near_duplicate_rows([r.get("values") or {} for r in rr], COLUMNS):
+            why = (f"near_duplicate_row: rows {rr[i].get('row')} and "
+                   f"{rr[j].get('row')} of this block are the same reading; one "
+                   f"printed row was read twice and another was not read")
+            for r in (rr[i], rr[j]):
+                if why not in (r.get("problems") or []):
+                    r["problems"] = list(r.get("problems") or []) + [why]
+                r["verdict"] = "flagged"
+            dupes += 1
+
     checked = sum(1 for r in rows if isinstance(r.get("station_bar_alt_m"), (int, float))
                   and isinstance((r.get("values") or {}).get("baro"), (int, float)))
     verd = collections.Counter(r["verdict"] for r in rows)
     print(f"{len(rows)} rows, {checked} with both a barometer figure and a printed altitude")
     print(f"{month_flagged} month rows flagged because their block's arithmetic "
           f"did not close")
+    print(f"{dupes} near-duplicate dekad pairs (one printed row read twice)")
     print(f"{len(hit)} implausible for their station's altitude")
     for r in hit[:25]:
         print(f"  {r['item']}/{r['page']} blk{r['block']} {r['row']:<4} "

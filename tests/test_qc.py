@@ -161,3 +161,41 @@ def test_a_missing_altitude_is_not_a_failure():
     """Absence of evidence: the check only exists where the page printed one."""
     assert pressure_implausible(598.32, None) is None
     assert pressure_implausible(None, 1145) is None
+
+
+# --- one printed row read twice ---------------------------------------------
+
+from wrb.qc import near_duplicate_rows  # noqa: E402
+
+KEYS = ["baro", "t_secco", "t_maxima", "t_minima", "humidade"]
+
+
+def _rows(*vals):
+    return [dict(zip(KEYS, v)) for v in vals]
+
+
+def test_the_maceio_july_block_as_produced():
+    """Row `2a` came back carrying row 3's figures; the real 2a was lost."""
+    got = _rows((765.67, 24.9, 25.0, 20.1, 78.6),
+                (767.09, 24.8, 24.9, 18.9, 78.1),
+                (767.00, 24.6, 24.8, 18.8, 78.1))
+    assert near_duplicate_rows(got, KEYS) == [(1, 2)]
+
+
+def test_the_same_block_as_printed_is_clean():
+    printed = _rows((765.67, 24.9, 25.0, 20.1, 78.6),
+                    (766.60, 24.9, 25.1, 18.6, 76.1),
+                    (767.00, 24.6, 24.8, 18.8, 78.1))
+    assert near_duplicate_rows(printed, KEYS) == []
+
+
+def test_genuinely_close_dekads_are_not_flagged():
+    """Cidade do Rio Grande's November barometer moves 0.02 between dekads."""
+    close = _rows((760.46, 18.67, None, None, 79.4),
+                  (760.44, 19.78, None, None, 75.5))
+    assert near_duplicate_rows(close, KEYS) == []
+
+
+def test_one_matching_column_is_a_coincidence_not_evidence():
+    assert near_duplicate_rows(_rows((760.0, None, None, None, None),
+                                     (760.1, None, None, None, None)), KEYS) == []
