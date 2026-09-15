@@ -114,8 +114,14 @@ def main() -> None:
             centres, info = resolve_by_oracle(oracle, image, loc, want,
                                               min_direct=p.oracle_min_direct)
             if centres is None:
+                # print WHY. Three pages refused at 0.74, 0.67 and 0.67 of
+                # their days read directly - comfortably over the bar - and the
+                # message said only how many were read, so the bar looked
+                # broken when the overlap check was doing the refusing.
                 print(f"  {w.get('label')}: oracle could not resolve the day rows "
-                      f"({info['direct']} of {want} read directly) - page skipped", flush=True)
+                      f"({info['direct']} of {want} read directly"
+                      + (f"; {info['reason']}" if info.get("reason") else "")
+                      + ") - page skipped", flush=True)
                 stats["refused"] += 1
                 continue
             localisation = "oracle"
