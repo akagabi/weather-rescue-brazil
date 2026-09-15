@@ -93,6 +93,15 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   page, the station and the verdicts are unchanged, and only doc 5 (the v0.2
   addition) was affected. Fixed in `wrb.caption`, corrected by
   `scripts/g4_audit_periods.py`, frozen as **v0.2.1**.
+- **Wind is under-represented, and it was a bug rather than the source.** The
+  Annales print all six of their layouts for every month, so the page counts
+  should be comparable. They are not: barometer 57 pages, thermometer 35,
+  cloudiness 29, vapour 25, actinometry 20, and **wind 8**. Every fifteen-cell
+  wind page was being rejected by the layout-assignment step for containing
+  compass points — which is what a wind table contains. Fixed on 2026-09-15;
+  the pages it locked out are not in this release, and a later one will carry
+  them. Nothing already published is wrong, there is simply much less wind in
+  it than the source holds.
 - **A 31-month gap.** 1887-01 through 1888-11 are absent, and it is a source
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not

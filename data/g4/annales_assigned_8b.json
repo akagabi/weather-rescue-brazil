@@ -122,5 +122,115 @@
   "cells": 41,
   "cell_votes": "[41, 142, 153, 159, 79]",
   "sample_row": "| 8 | Observations météorologiques du mois d'Octobre 1892 |\n| --- | --- |\n| 1 | 1892 |\n| 2 | 1892 |\n| 3 | 1892 |\n| 4 | 1892 |\n| 5 | 1892 |\n| 6 | 1892 "
+ },
+ {
+  "doc": "8",
+  "page": 98,
+  "caption": "Observations météorologiques du mois de Novembre 1883\nANNALES DE L'OBSEVATOIRE IMPÉRIAL.",
+  "period": "1883-11",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[15, 17, 17, 18, 16]",
+  "sample_row": "6 | 6 | C,C-K | 9 | C,C-K | 10 | C,C-K,K-N | 10 | C,C-K,K-N | 10 | C-K,K-N | 10 | C-K,K-N | 9.5 | ES"
+ },
+ {
+  "doc": "8",
+  "page": 99,
+  "caption": "Observations météorologiques du mois de Novembre 1883\nDirection et force du vent\nDate\n4 h. M.\n7 h. M.\n10 h. M.\n1 h. S.\n4 h. S.\n7 h. S.\n10 h. S.\nDE RIO DE ANERO\n87",
+  "period": "1883-11",
+  "profile": null,
+  "n_cells": null,
+  "cells": 29,
+  "cell_votes": "[48, 29, 51, 47, 34]",
+  "sample_row": "20 | S | 2 | SSE | 1 | SSE | 1 | SSE | 2 | S | 3 | SE | 1 | S | 2 | null | 21 | S | 2 | SSE | 1 | SSE | 1 | SSE | 2 | S | 3 | SE | 1 | S | 2 | null | "
+ },
+ {
+  "doc": "8",
+  "page": 100,
+  "caption": "Observations météorologiques du mois de Novembre 1883\nANNALES DE L'OBSEVATOIRE IMPÉRIAL",
+  "period": "1883-11",
+  "profile": null,
+  "n_cells": null,
+  "cells": 34,
+  "cell_votes": "[34, 34, 34, 17, 32]",
+  "sample_row": "4 | 51.0 | 34.0 | 17.0 | 3 | C,K | 50.4 | 33.4 | 17.0 | 3 | C | 46.0 | 30.4 | 15.6 | 3 | C,C-K | S |\n5 | 49.0 | 33.0 | 16.0 | 2 | C | 47.8 | 32.0 | 15"
+ },
+ {
+  "doc": "8",
+  "page": 106,
+  "caption": "Observations météorologiques du mois de Décembre 1883\nNebulosité en dixièmes du ciel couvert\nANNEXES DE L'OBSEVATOIRE IMPÉRIAL",
+  "period": "1883-12",
+  "profile": null,
+  "n_cells": null,
+  "cells": 29,
+  "cell_votes": "[42, 29, 79, 42, 40]",
+  "sample_row": "| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32"
+ },
+ {
+  "doc": "8",
+  "page": 107,
+  "caption": "Observations météorologiques du mois de Décembre 1883\nDE RIO DE ANGERO",
+  "period": "1883-12",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[17, 16, 15, 15, 13]",
+  "sample_row": "\"| 8 | NNW | 1 | SSE | 1 | SSE | 2 | SE | 1 | SSE | 1 | SSE | 2 | SE | 1 | RIC\""
+ },
+ {
+  "doc": "8",
+  "page": 109,
+  "caption": "Résumé météorologique du mois de Janvier 1883\nObservatoire de Rio de Janeiro, 1883",
+  "period": "1883-01",
+  "profile": null,
+  "n_cells": null,
+  "cells": 32,
+  "cell_votes": "[159, 32, 2, 2]",
+  "sample_row": "| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | "
+ },
+ {
+  "doc": "8",
+  "page": 111,
+  "caption": "RESUME MÉTÉOROLOGIQUE DU MOIS DE FÉVRIER 1883",
+  "period": "1883-02",
+  "profile": "rio-1883-barometre",
+  "n_cells": null,
+  "cells": 10,
+  "cell_votes": "[11, 79, 10, 9, 79]",
+  "sample_row": "\"| Mois................. | 755.05 | 755.83 | 756.44 | 755.31 | 754.27 | 754.95 | 756.23 | 755.43 |\""
+ },
+ {
+  "doc": "8",
+  "page": 115,
+  "caption": "DE RIO DE JANEIRO\n103\nRÉSUMÉ MÉTÉOROLOGIQUE DU MOIS D'AVRIL 1883\nBaromètre à 0°\nTempérature centigrade à l'ombre\nTension de la vapeur\nHumidité relative\nNébulosité en dixièmes du ciel couvert\nPLUIE\nJOURS\nOZONE\nEVAPORATION",
+  "period": "1883-04",
+  "profile": null,
+  "n_cells": null,
+  "cells": 79,
+  "cell_votes": "[79, 78, 78, 2, 79]",
+  "sample_row": "|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  "
+ },
+ {
+  "doc": "8",
+  "page": 117,
+  "caption": "RESUME METEOROLOGIQUE DU MOIS DE MAI 1883",
+  "period": "1883-05",
+  "profile": null,
+  "n_cells": null,
+  "cells": 42,
+  "cell_votes": "[42, 79, 76, 78, 42]",
+  "sample_row": "| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32"
+ },
+ {
+  "doc": "8",
+  "page": 119,
+  "caption": "DE RIO DE JANEIRO\n107\nRésumé météorologique du mois de Juin 1883\nBaromètre à 0°\nDécades\n4 h. M.\n7 h. M.\n10 h. M.\n1 h. S.\n4 h. S.\n7 h. S.\n10 h. S.\nMoyennes\n1re",
+  "period": "1883-06",
+  "profile": "rio-1883-vapeur",
+  "n_cells": null,
+  "cells": 9,
+  "cell_votes": "[79, 9, 10, 9, 42]",
+  "sample_row": "|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  "
  }
 ]
