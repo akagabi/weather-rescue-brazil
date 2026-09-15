@@ -103,9 +103,27 @@ Maceió's June). Such a block inherits the station above it and the row records
 that it was inherited; a headerless block with nothing above it gets **no
 station**, which is a gap to report rather than one to fill.
 
-The header line also carries the coordinates — see `docs`-adjacent
-`wrb/stations.py` for the two ways to misread them (longitudes are measured
-from Rio, and a bare `2m W` is minutes of *time*).
+The header line also carries the coordinates — see `wrb/stations.py` for the
+two ways to misread them (longitudes are measured from Rio, and a bare `2m W`
+is minutes of *time*).
+
+**A header that failed to read is not a header that was never printed.** These
+look identical downstream and the difference decides whether a block inherits.
+On docId 15 page 158 a failed read of Ponte B. de Macedo's header let the block
+inherit *Cruzador Almirante Barroso* — a warship's observations filed at a
+bridge works in Recife, with nothing in the row saying so. A missing station is
+a gap a consumer can see; a wrong one is data.
+
+Counting the printed lines above a block was tried for this and is **wrong**:
+the form sets a station line on its own whenever the month is shared, so on
+docId 15 page 126 the Ponte and Bahia blocks each carry a single line,
+indistinguishable by count from a month-only continuation. That version read
+every block as headerless and returned the page as four blocks of Maceió.
+
+`header_kind` reads the words instead — a strip naming an *estação*, an
+*observador* or a *latitude* is a header; a strip that is nothing but `Mez de
+<month> de <year>` is a continuation and inherits; anything else is `unclear`
+and yields **no station**. Only the middle case inherits.
 
 ## What the page asserts about itself, and how loosely
 
@@ -142,6 +160,24 @@ and it should stay that way: mixing summaries into it would misstate what the
 file is, and a consumer averaging it would double-count. They belong in a
 companion file at a different temporal resolution, declared as such.
 
+## Checking it
+
+`data/g4/second_read/simultaneas.json` holds thirteen station blocks — 52 rows,
+260 cells — transcribed from the scans independently of the production run;
+`scripts/g4_simultaneas_check.py` diffs them per column. This is **not** human
+verification and nothing it touches is marked verified. It is a second reading,
+which is what makes a disagreement informative: where two independent reads
+agree the value is probably right, where they differ one of them is wrong.
+
+On its first run it found exactly one disagreement in 70 cells — Ponte B. de
+Macedo's 3rd dekad, `762.34` from the run against `762.31` from the second
+reading. The scan was cropped at 7× and consulted: the page prints **762.34**.
+The run was right and the second reading was wrong.
+
+Blank cells count as readings. Cidade do Rio Grande prints no maximum or
+minimum temperature for two of its months, and a run that invented numbers
+there would be wrong in a way a value-only comparison could not see.
+
 ## Files
 
 | | |
@@ -149,5 +185,8 @@ companion file at a different temporal resolution, declared as such.
 | `profiles/revista-resumo-simultaneas.json` | the band-A profile, 6 columns |
 | `src/wrb/blocks.py` | block geometry, the label oracle, station inheritance |
 | `src/wrb/stations.py` | the printed header line and its coordinates |
-| `scripts/g4_simultaneas.py` | the producer |
+| `scripts/g4_simultaneas.py` | the producer (`--debug-labels` prints every candidate read) |
+| `scripts/g4_simultaneas_check.py` | diff against the independent second reading |
+| `scripts/g4_simultaneas_rescore.py` | pressure against the station's printed altitude |
+| `scripts/g4_simultaneas_calibrate.py` | propose `monthly.tolerance` from the pages |
 | `data/g4/worklist_simultaneas.json` | the pages |
