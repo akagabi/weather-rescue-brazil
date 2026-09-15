@@ -163,40 +163,6 @@ def resolve_stations(headers: list[str | None]) -> list[dict]:
 # tried first and reads 3 of the 10 known pages correctly; the labels read all
 # of them. Same principle as the printed day numbers at Cuyabá: geometry
 # proposes, the print disposes.
-def text_lines(image, floor: int = 3, min_h: int = 4) -> int:
-    """How many printed lines of text a strip holds.
-
-    Deliberately NOT the row detector, which filters candidates against a modal
-    ROW height and splits anything much taller - right for a table, wrong for a
-    caption. Here the only question is how many bands of ink there are, so
-    nothing is filtered and nothing is split.
-
-    Note what this does NOT settle: whether a header is printed. Counting lines
-    was tried for that and is wrong, because the form sets a station line on
-    its own when the month is shared - on docId 15 page 126 the Ponte B. de
-    Macedo and Bahia blocks each carry a single line, exactly like a month-only
-    continuation. `header_kind` reads the text instead.
-    """
-    import numpy as np
-
-    from wrb.rows import ink_threshold
-
-    g = image.convert("L")
-    a = np.asarray(g, dtype=float)
-    on = (a < ink_threshold(g)).sum(axis=1) > floor
-    lines, start = 0, None
-    for y, v in enumerate(on):
-        if v and start is None:
-            start = y
-        elif not v and start is not None:
-            if y - start >= min_h:
-                lines += 1
-            start = None
-    if start is not None and len(on) - start >= min_h:
-        lines += 1
-    return lines
-
-
 def band_from_rules(image, span: tuple[float, float], bleed: float = 0.010
                     ) -> tuple[float, float] | None:
     """The x-band to crop, anchored on THIS page's own table rules.
