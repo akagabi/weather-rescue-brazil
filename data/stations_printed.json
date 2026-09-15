@@ -1,0 +1,139 @@
+{
+ "_note": "Coordinates as PRINTED by the Revista do Observatório, with the page each came from. Longitudes are printed relative to the Rio meridian and converted here (wrb.stations.RIO_LONGITUDE). A coordinate whose hemisphere the page does not print is left unsigned and flagged; it is not guessed. `verified` stays false until a person checks the line against the scan.",
+ "_source_form": "RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS",
+ "stations": {
+  "s_paulo": {
+   "name": "S. Paulo",
+   "observer": "Alberto Loefgren",
+   "printed": "Estação, S. Paulo; Observador, Alberto Loefgren; Latitude, 23°36' S; Longitude, 3°28' W; Hora local, 8h29m27s; Alt. do Bar. 735m42",
+   "source": {
+    "archive": "docvirt",
+    "doc": "16",
+    "page": 41
+   },
+   "verified": false,
+   "moves": false,
+   "bar_alt_m": 735,
+   "lat_printed": "23°36' S",
+   "lon_printed": "3°28' W",
+   "lon_reference": "Rio de Janeiro (Imperial Observatório)",
+   "lat": -23.6,
+   "lon": -46.6392,
+   "lon_from_rio": -3.4667
+  },
+  "maceio": {
+   "name": "Maceió",
+   "observer": "Pedro Rodrigues Soares",
+   "printed": "Estação, Maceió; Observador, Pedro Rodrigues Soares; Latitude, 9°,38'; Longitude, 0h,30m E; Hora local, 9h,36m; Altura do Barometro, 10m",
+   "source": {
+    "archive": "docvirt",
+    "doc": "15",
+    "page": 126
+   },
+   "verified": false,
+   "moves": false,
+   "bar_alt_m": 10,
+   "lat_printed": "9°,38'",
+   "lon_printed": "0h,30m E",
+   "lon_reference": "Rio de Janeiro (Imperial Observatório)",
+   "lat_magnitude": 9.6333,
+   "hemisphere_missing": true,
+   "lon": -35.6725,
+   "lon_from_rio": 7.5
+  },
+  "ponte_b_de_macedo": {
+   "name": "Ponte B. de Macedo",
+   "observer": "Manoel Villarouco",
+   "printed": "Estação, Ponte B. de Macedo; Observador, Manoel Villarouco; Latit., 8°3'54'' S; Long., 0h33m11s4 E; Hora local, 9h40m; Alt. do Bar., 2m,87",
+   "source": {
+    "archive": "docvirt",
+    "doc": "15",
+    "page": 126
+   },
+   "verified": false,
+   "moves": false,
+   "bar_alt_m": 2,
+   "lat_printed": "8°3'54'' S",
+   "lon_printed": "0h33m11s4 E",
+   "lon_reference": "Rio de Janeiro (Imperial Observatório)",
+   "lat": -8.065,
+   "lon": -34.8767,
+   "lon_from_rio": 8.2958
+  },
+  "bahia_capital": {
+   "name": "Bahia (Capital)",
+   "observer": "Dr. R. A. Pereira Guimarães",
+   "printed": "Estação, Bahia (Capital); Observador, Dr. R. A. Pereira Guimarães; Latitude, S 12°58'27''; Long., E 4°37'40''; Hora local, 9h25m30s; Alt. do Bar. 64m",
+   "source": {
+    "archive": "docvirt",
+    "doc": "16",
+    "page": 41
+   },
+   "verified": false,
+   "moves": false,
+   "bar_alt_m": 64,
+   "lat_printed": "S 12°58'27''",
+   "lon_printed": "E 4°37'40''",
+   "lon_reference": "Rio de Janeiro (Imperial Observatório)",
+   "lat": -12.9742,
+   "lon": -38.5447,
+   "lon_from_rio": 4.6278
+  },
+  "santa_cruz": {
+   "name": "Santa Cruz",
+   "observer": "J. N. C. Lousada",
+   "printed": "Estação, Santa Cruz; Observador, J. N. C. Lousada; Latitude, 22°,56'; Longitude, 2m W; Hora local, 9h,9m; Alt. do Bar. 26m",
+   "source": {
+    "archive": "docvirt",
+    "doc": "16",
+    "page": 41
+   },
+   "verified": false,
+   "moves": false,
+   "bar_alt_m": 26,
+   "lat_printed": "22°,56'",
+   "lon_printed": "2m W",
+   "lon_reference": "Rio de Janeiro (Imperial Observatório)",
+   "lat_magnitude": 22.9333,
+   "hemisphere_missing": true,
+   "lon": -43.6725,
+   "lon_from_rio": -0.5
+  },
+  "cidade_do_rio_grande": {
+   "name": "Cidade do Rio Grande",
+   "observer": "Commissão da Barra",
+   "printed": "Estação, Cidade do Rio Grande; Observador, Commissão da Barra; Latitude, 31°,59'53''; Longitude, 0h,36m,30s; Hora local, 8h,31m; Alt. do Bar. 16m,50",
+   "source": {
+    "archive": "docvirt",
+    "doc": "16",
+    "page": 90
+   },
+   "verified": false,
+   "moves": false,
+   "bar_alt_m": 16,
+   "lat_printed": "31°,59'53''",
+   "lon_printed": "0h,36m,30s",
+   "lon_reference": "Rio de Janeiro (Imperial Observatório)",
+   "lat_magnitude": 31.9981,
+   "hemisphere_missing": true,
+   "lon_from_rio_magnitude": 9.0
+  },
+  "cruzador_almirante_barroso": {
+   "name": "Cruzador Almirante Barroso",
+   "observer": "2º tenente A. Silvado",
+   "printed": "Estação, Cruzador Almirante Barroso; Observador, 2º tenente A. Silvado; Latitude, var ; Longitude, var.; Hora local, var.; Alt. do Bar., 2m,5",
+   "source": {
+    "archive": "docvirt",
+    "doc": "15",
+    "page": 158
+   },
+   "verified": false,
+   "moves": true,
+   "bar_alt_m": 2,
+   "lat_printed": "var",
+   "lon_printed": "var",
+   "lon_reference": "Rio de Janeiro (Imperial Observatório)",
+   "note": "ship under way; the page prints `var` for both coordinates"
+  }
+ }
+}
