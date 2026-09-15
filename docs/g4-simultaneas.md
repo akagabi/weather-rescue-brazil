@@ -152,6 +152,24 @@ That last line is the point of keeping the check at all: four columns confirm
 themselves and the fifth raises its hand, at an order of magnitude above the
 noise.
 
+## What this probably unblocks
+
+The two dekadal Revista profiles — `revista-mensal-baroterm` (17 columns) and
+`revista-mensal-estado` (34) — were shelved earlier as *needing a trained
+variant*, on the evidence that the model fed the whole row dropped cells and
+shifted everything after them. That diagnosis now looks wrong in the same way
+this form's did: **the problem was width, not training.**
+
+Their structure is the same in kind — `1ª`, `2ª`, `3ª`, `Mez` down the side,
+measurements across — so the band crop, the label oracle and the month check
+should all carry over, and a layout that was going to cost forty hand-typed
+rows may cost none.
+
+One thing does not carry over as it stands: `band_from_rules` finds no table on
+docId 5 page 451, so the anchor needs a second way to locate the table on pages
+whose rules the detector misses. That is the piece of work, and it is a smaller
+one than training a variant.
+
 ## These are not daily observations
 
 Every row here is a **dekad** (a third of a month) or a **month**, not a day.
