@@ -32,15 +32,19 @@ from g4_train import INSTRUCTION_PRINTED  # noqa: E402
 from wrb import profile as prof  # noqa: E402
 from wrb.rows import (PROBE_X_FRAC, find_peaks, ink_threshold, pitch_candidates,  # noqa: E402
                       row_profile, vertical_rules, locate_day_rows)
+from wrb.caption import match_period  # noqa: E402
 from wrb.dataset import boxes_for_centres, crop_boxes  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "data" / "raw" / "docvirt" / "8"
 OUT = ROOT / "data" / "g4" / "annales1883.json"
 
-MONTHS = {"janvier": 1, "fevrier": 2, "mars": 3, "avril": 4, "mai": 5, "juin": 6,
-          "juillet": 7, "aout": 8, "septembre": 9, "octobre": 10,
-          "novembre": 11, "decembre": 12}
+# Month parsing lives in wrb.caption, not here. A local table matched by
+# substring in dict order, which is the bug that dated 509 published rows to
+# January: "Rio de Janeiro" contains "janeiro". This script's table was French
+# only, so it escaped - but the same shape would bite the moment a Portuguese
+# month was added to it, and a caption naming two months still resolved to
+# whichever the dict happened to list first.
 BY_CELLS = {10: "rio-1883-barometre", 9: "rio-1883-vapeur", 13: "rio-1883-thermo"}
 
 
@@ -117,10 +121,7 @@ def main() -> None:
         rec = {"page": page, "caption": cap, "profile": None, "period": None, "n_cells": None}
         if "NOT_WEATHER" not in cap.upper():
             c = strip(cap)
-            year = re.search(r"\b(188\d)\b", c)
-            month = next((n for name, n in MONTHS.items() if name in c), None)
-            if year and month:
-                rec["period"] = f"{int(year.group(1)):04d}-{month:02d}"
+            rec["period"] = match_period(cap)
             # the caption cannot tell the three layouts apart: read one row and
             # count the cells the model emits. 9, 10 and 13 are distinct.
             loc = locate_day_rows(im, 28)
