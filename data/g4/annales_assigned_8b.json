@@ -10,5 +10,117 @@
   "cell_votes": "[79, 15, 26, 19]",
   "sample_row": "|  |  |  |  |  |  |  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  |  |  |  |  |  |  |\n|  |  |  |  |  |  |  |\n|  |  |  |  |  |  |  |\n|  |  |  |  | ",
   "rejected": "linha de rumos de vento, não de números"
+ },
+ {
+  "doc": "8",
+  "page": 35,
+  "caption": "Observations météorologiques du mois de Mars 1883\nDE RIO DE JANEIRO",
+  "period": "1883-03",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[16, 15, 15, 13, 15]",
+  "sample_row": "13 | NW | 1 | NNW | 1 | NW | 1 | SE | 2 | SW | 1 | WNW | 1 | NW | 1 | Z"
+ },
+ {
+  "doc": "8",
+  "page": 36,
+  "caption": "Observations météorologiques do mois de Mars 1883\nANNALES DE L'OBSEVATOIRE IMPÉRIAL",
+  "period": "1883-03",
+  "profile": null,
+  "n_cells": null,
+  "cells": 17,
+  "cell_votes": "[18, 54, 17, 17, 16]",
+  "sample_row": "8 | 45,4 | 37,8 | 7,6 | 3 | C,C-K | 57,4 | 41,6 | 15,8 | 1 | C,K | 52,4 | 38,0 | 14,4 | 2 | K | | |",
+  "rejected": "17 células, não identificado (nem actinometria nem nebulosidade)"
+ },
+ {
+  "doc": "8",
+  "page": 43,
+  "caption": "Observations météorologiques du mois d'Avril 1883\nDE RIO DE JANEIRO",
+  "period": "1883-04",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[13, 15, 15, 15, 15]",
+  "sample_row": "26 | SW | 3 | SW | 3 | SW | 2 | SW | 3 | SW | 2 | SW | 3"
+ },
+ {
+  "doc": "8",
+  "page": 49,
+  "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mai 1883",
+  "period": "1883-05",
+  "profile": null,
+  "n_cells": null,
+  "cells": 26,
+  "cell_votes": "[23, 26, 25, 66, 26]",
+  "sample_row": "4 | 23.5 | 19.3 | 4.2 | 38.8 | | | | 5.6 | 3.1 | 6 | 4\n5 | 24.7 | 20.2 | 4.5 | 37.4 | | | | 4.7 | 2.3 | 8 | 5"
+ },
+ {
+  "doc": "8",
+  "page": 51,
+  "caption": "Observations météorologiques du mois de Mai 1883\nDE RIO DE JANEIRO",
+  "period": "1883-05",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[17, 16, 15, 15, 15]",
+  "sample_row": "\"| 8 | NW | 2 | NW | 1 | NNW | 2 | SSE | 1 | SSE | 1 | SSW | 1 | 0 | 0 | RIC\""
+ },
+ {
+  "doc": "8",
+  "page": 55,
+  "caption": "Observations météorologiques du mois de Juin 1883\nTension de la vapeur atmosphérique en millimètres\nDate | 4 h. M. | 7 h. M. | 10 h. M. | 1 h. S. | 4 h. S. | 7 h. S. | 10 h. S. | Moyenne\n--- | --- | --- |",
+  "period": "1883-06",
+  "profile": null,
+  "n_cells": null,
+  "cells": 29,
+  "cell_votes": "[32, 29, 29, 29, 29]",
+  "sample_row": "|  | 4 | 14.75 | 14.41 | 15.24 | 16.11 | 14.20 | 13.19 | 14.63 | 14.65 |\n|---|---|---|---|---|---|---|---|---|---|\n| | | | | | | | | | |"
+ },
+ {
+  "doc": "8",
+  "page": 59,
+  "caption": "Observations météorologiques du mois de Juin 1883\nDE RIO DE ANVERO",
+  "period": "1883-06",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[15, 13, 15, 15, 15]",
+  "sample_row": "13 | NNW | I | ENE | I | NW | I | SSE | 2 | SSE | 1 | 0 | 0 | 0 | Z"
+ },
+ {
+  "doc": "8",
+  "page": 82,
+  "caption": "Observations météorologiques du mois de Septembre 1883\nNébulosité en dixièmes du ciel couvert\nData 4 h. M. 7 h. M. 10 h. M. 1 h. S. 4 h. S. 7 h. S. 10 h. S. Moyenne\n1 6 C-K-K 4 C 7 C",
+  "period": "1883-09",
+  "profile": null,
+  "n_cells": null,
+  "cells": 27,
+  "cell_votes": "[27, 94, 16]",
+  "sample_row": "| 01 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 1982 | 198"
+ },
+ {
+  "doc": "8",
+  "page": 83,
+  "caption": "Observations météorologiques du mois de Septembre 1893\nDE RIO DE ANHERO",
+  "period": "1893-09",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "period_suspect": "period 1893-09 is outside doc 8's span 1882-01..1886-12 (Annales de l'Observatoire Imperial)",
+  "cells": 15,
+  "cell_votes": "[15, 15, 15, 13, 15]",
+  "sample_row": "13 | NW | 1 | NW | 1 | NW | S | 1 | S | 2 | NE | 1 | 0 | 0 | null"
+ },
+ {
+  "doc": "8",
+  "page": 92,
+  "caption": "Observations météorologiques du mois d'Octobre 1883\nANNALES DE L'Observatoire IMPÉRIAL",
+  "period": "1883-10",
+  "profile": null,
+  "n_cells": null,
+  "cells": 41,
+  "cell_votes": "[41, 142, 153, 159, 79]",
+  "sample_row": "| 8 | Observations météorologiques du mois d'Octobre 1892 |\n| --- | --- |\n| 1 | 1892 |\n| 2 | 1892 |\n| 3 | 1892 |\n| 4 | 1892 |\n| 5 | 1892 |\n| 6 | 1892 "
  }
 ]
