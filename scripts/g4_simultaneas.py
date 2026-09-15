@@ -39,7 +39,7 @@ sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from wrb import profile as prof                       # noqa: E402
-from wrb.blocks import (band_from_rules, blocks_from_labels, dedupe_labels,  # noqa: E402
+from wrb.blocks import (band_from_rules, dedupe_labels, dekad_trios,  # noqa: E402
                         resolve_stations, row_label)
 from wrb.qc import degenerate_row                      # noqa: E402
 from wrb.rows import ink_threshold                     # noqa: E402
@@ -175,19 +175,46 @@ def main() -> None:
         # both makes a block read 1,1,2,2,3,3,Mez and discards it whole.
         def _cells(i):
             return sum(1 for v in p.parse(read[i]["raw"])[0].values() if v is not None)
-        labelled = [read[i] for i in dedupe_labels([r["label"] for r in read], score=_cells)]
-        if not labelled:
+        kept = [read[i] for i in dedupe_labels([r["label"] for r in read], score=_cells)]
+        if not kept:
             print(f"  {doc}/{page}: no row carried a dekad label, page refused", flush=True)
             stats["refused"] += 1
             continue
 
-        # 2. a block is a complete 1, 2, 3, Mez and nothing less
-        idx = blocks_from_labels([r["label"] for r in labelled])
-        blocks = [[labelled[j] for j in group] for group in idx]
+        # 2. A block is found by its three DEKADS, which read reliably. The
+        # month row is taken by position afterwards, because on this form it is
+        # the row that reads worst: on 15/126 three of four came back with
+        # their cells reversed, label last. Requiring it would throw away three
+        # complete blocks of good data to protect a row that restates them.
+        trios = dekad_trios([r["label"] for r in kept])
+        blocks = []
+        for t in trios:
+            rows = [kept[i] for i in t]
+            pitch = max(8, rows[2]["box"][0] - rows[1]["box"][0])
+            below = [r for r in read if r["box"][0] > rows[2]["box"][0]]
+            mez = None
+            if below:
+                cand = min(below, key=lambda r: r["box"][0])
+                if cand["box"][0] - rows[2]["box"][0] <= pitch * 2.6:
+                    mez = cand
+                    if row_label(mez["raw"]) != "Mez":
+                        # one more look at a different scale; the cell order on
+                        # this row is scale-sensitive and a retry is one call
+                        for sc in (2, 4):
+                            y0, y1 = mez["box"]
+                            pad = max(2, (y1 - y0) // 4)
+                            c = image.crop((bx0, max(0, y0 - pad), bx1, min(H, y1 + pad)))
+                            c = c.resize((c.width * sc, c.height * sc), Image.LANCZOS)
+                            again = run(c)
+                            if row_label(again) == "Mez":
+                                mez = {**mez, "raw": again, "label": "Mez"}
+                                break
+                        else:
+                            mez = {**mez, "label": None}
+            blocks.append({"dekads": rows, "mez": mez})
         if not blocks:
-            seq = [r["label"] for r in labelled]
-            print(f"  {doc}/{page}: no complete 1/2/3/Mez block (labels {seq}), refused",
-                  flush=True)
+            seq = [r["label"] for r in kept]
+            print(f"  {doc}/{page}: no 1/2/3 dekad run (labels {seq}), refused", flush=True)
             stats["refused"] += 1
             continue
 
@@ -195,7 +222,7 @@ def main() -> None:
         headers = []
         prev_bottom = 0
         for b in blocks:
-            top = b[0]["box"][0]
+            top = b["dekads"][0]["box"][0]
             strip = image.crop((int(0.06 * W), max(0, prev_bottom + 2), int(0.95 * W),
                                 max(prev_bottom + 6, top - 2)))
             txt = None
@@ -205,23 +232,27 @@ def main() -> None:
                 got = run(strip, "Transcribe the printed text on this strip exactly.", 120)
                 txt = got if re.search(r"esta[çc][ãa]o", got, re.I) else None
             headers.append(txt)
-            prev_bottom = b[-1]["box"][1]
+            prev_bottom = (b["mez"] or b["dekads"][-1])["box"][1]
         stations = resolve_stations(headers)
 
         for bi, (b, st) in enumerate(zip(blocks, stations)):
-            parsed = []
-            for r in b:
+            entries = list(zip(b["dekads"], ["1", "2", "3"]))
+            dek_values = []
+            for r, _lab in entries:
+                dek_values.append(p.parse(r["raw"])[0])
+            mez = b["mez"]
+            mez_ok = bool(mez and mez.get("label") == "Mez")
+            month_fail = (p.verify_month(dek_values, p.parse(mez["raw"])[0])
+                          if mez_ok else [])
+            if mez_ok:
+                entries.append((mez, "Mez"))
+            for r, label in entries:
                 values, problems = p.parse(r["raw"])
-                parsed.append((r, values, problems))
-            dek = [v for (_, v, _) in parsed[:3]]
-            mez = parsed[3][1]
-            month_fail = p.verify_month(dek, mez)
-            for (r, values, problems), label in zip(parsed, ["1", "2", "3", "Mez"]):
                 viol = p.violations(values)
                 if degenerate_row(values, index_keys={"decada"}):
                     problems = problems + ["degenerate_row: measurements collapsed to a repeated value"]
                 hard = [x for x in problems if x != prof.PADDED_TRAILING]
-                verdict = ("checks_pass" if not month_fail and not viol and not hard
+                verdict = ("checks_pass" if mez_ok and not month_fail and not viol and not hard
                            else "qc_clean" if not viol and not hard
                            else "flagged")
                 fh.write(json.dumps({
@@ -236,9 +267,12 @@ def main() -> None:
                     "station_bar_alt_m": st.get("bar_alt_m"),
                     "verdict": verdict, "problems": problems,
                     "range_violations": viol, "month_check": month_fail,
-                    "localisation": "printed row label",
+                    "month_row_read": mez_ok,
+                    "localisation": "printed dekad label, month row by position",
                 }, ensure_ascii=False) + "\n")
                 stats["rows"] += 1
+            if not mez_ok:
+                stats["month_unread"] = stats.get("month_unread", 0) + 1
             stats["blocks"] += 1
             if st.get("station"):
                 stats["stations"].add(st["station"])

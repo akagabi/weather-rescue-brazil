@@ -194,3 +194,26 @@ def test_two_blocks_are_not_collapsed_into_one():
     """A Mez is followed by a 1, never by another Mez."""
     labels = ["1", "2", "3", "Mez", "1", "2", "3", "Mez"]
     assert [labels[i] for i in dedupe_labels(labels)] == labels
+
+
+# --- the month row reads worst, so it is not what finds a block -------------
+
+from wrb.blocks import dekad_trios  # noqa: E402
+
+
+def test_the_three_dekads_find_the_block():
+    assert dekad_trios(["1", "2", "3", "Mez", "1", "2", "3", "Mez"]) == [[0, 1, 2], [4, 5, 6]]
+
+
+def test_a_block_survives_an_unreadable_month_row():
+    """Measured on 15/126: three of four month rows came back out of order."""
+    assert dekad_trios(["1", "2", "3", None, "1", "2", "3", None]) == [[0, 1, 2], [4, 5, 6]]
+
+
+def test_a_broken_dekad_run_is_not_a_block():
+    assert dekad_trios(["1", "3", "2"]) == []
+    assert dekad_trios(["1", "2"]) == []
+
+
+def test_trios_do_not_overlap():
+    assert dekad_trios(["1", "2", "3", "2", "3"]) == [[0, 1, 2]]

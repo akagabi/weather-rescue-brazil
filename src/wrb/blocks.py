@@ -205,3 +205,31 @@ def blocks_from_labels(labels: list[str]) -> list[list[int]]:
                 out.append(cur)
             cur = []
     return out
+
+
+def dekad_trios(labels: list[str | None]) -> list[list[int]]:
+    """Indices of each `1, 2, 3` run - a block's three dekadal rows.
+
+    The month row is deliberately NOT required here, because on this form it is
+    the row that reads worst. Measured on docId 15 page 126, the three dekads
+    of all four blocks came back exactly right and three of the four month rows
+    came back with their cells out of order - Maceió's printed
+    `Mez.... | 763.64 | 26.9 | 26.9 | 21 1 | 80.9` was read as
+    `21 | 80.9 | 26.9 | 763.64 | 26.9 | Mez.`, right to left with the label
+    last. Requiring a leading `Mez` threw away three complete blocks of good
+    dekadal data to protect a row that only restates them.
+
+    So the dekads are found by their labels, which are reliable, and the month
+    row is taken by POSITION afterwards (see `month_row_after`). A month row
+    that cannot be read is recorded as unreadable and its arithmetic check
+    skipped - the dekads are the observations, the month is the summary.
+    """
+    out: list[list[int]] = []
+    i = 0
+    while i + 2 < len(labels):
+        if [labels[i], labels[i + 1], labels[i + 2]] == ["1", "2", "3"]:
+            out.append([i, i + 1, i + 2])
+            i += 3
+        else:
+            i += 1
+    return out
