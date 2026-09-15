@@ -296,3 +296,35 @@ def direction_keys(profile) -> list[str]:
     """
     return [c.key for c in profile.columns
             if c.kind == "text" and c.key.endswith("_dir")]
+
+
+# --- fifteen cells is not unique to the wind table ---------------------------
+#
+# The Annales' hourly CLOUD-FORM table has the same shape as the hourly wind
+# table - a date and seven pairs - and lands on the same cell count, so the
+# count alone assigns it to rio-1883-vento. Doc 8 page 98 produced twelve rows
+# reading
+#
+#     9 | 6 | C,C-K,N | 10 | C-K,K,K-N | 5 | C,C-K,K | ...
+#
+# where a wind row would read `9 | NE | 3 | SSE | 2 | ...`. Every row was
+# flagged, because the cloud letters do not parse as a force - so no bad data
+# reached the usable set - but the page was still read under the wrong layout
+# and its real content was thrown away as noise.
+#
+# They separate cleanly. A wind table's force cells are numbers 0-6; a
+# cloud-form table's second cell of each pair is a letter code, and the codes
+# combine with hyphens and commas (C-K for cirro-cumulus, "C,K" for two forms
+# in one interval), which nothing numeric does.
+CLOUD_FORMS = re.compile(r"^[CKNSPÇĆ](?:[-,][CKNSPÇĆ])*$", re.I)
+
+
+def looks_like_cloud_forms(row: str, min_hits: int = 3) -> bool:
+    """True when a row's cells are cloud-form codes rather than wind forces."""
+    cells = [c.strip() for c in (row or "").strip().strip("|").split("|")]
+    hits = sum(1 for c in cells if c and CLOUD_FORMS.match(c.replace(" ", "")))
+    # a bare "C" or "N" is also a calm mark and a compass point, so a single
+    # hit proves nothing; a hyphenated or comma-joined code proves a lot
+    compound = sum(1 for c in cells if c and ("-" in c or "," in c)
+                   and CLOUD_FORMS.match(c.replace(" ", "")))
+    return compound >= 1 and hits >= min_hits

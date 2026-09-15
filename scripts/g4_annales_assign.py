@@ -38,6 +38,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from g4_train import INSTRUCTION_PRINTED  # noqa: E402
 from wrb.dataset import boxes_for_centres, crop_boxes  # noqa: E402
+from wrb.qc import looks_like_cloud_forms  # noqa: E402
 from wrb.rows import locate_day_rows  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -171,6 +172,16 @@ def main() -> None:
                 else:
                     rec["profile"] = None
                     rec["rejected"] = "linha de rumos de vento, não de números"
+            # Fifteen cells is not unique to the wind table: the hourly
+            # CLOUD-FORM table has the same date-plus-seven-pairs shape and the
+            # same count. Doc 8 page 98 produced twelve rows of cirrus and
+            # cumulus codes under wind-direction names. They separate on
+            # content - a force is a number 0-6, a cloud form is a letter code
+            # that combines with hyphens and commas.
+            if best == 15 and looks_like_cloud_forms(texts[0]):
+                rec["profile"] = None
+                rec["rejected"] = ("tabela de formas de nuvens por hora, não de vento "
+                                   "(mesmo número de células)")
             if best in (16, 17):
                 # Two DIFFERENT 16-cell tables exist: actinometry (blocks of 5:
                 # T, t, theta, neb, cloud-text - the first three are decimals

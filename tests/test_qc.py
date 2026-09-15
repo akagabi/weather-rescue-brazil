@@ -276,3 +276,32 @@ def test_a_fragment_of_the_row_above_is_caught():
 def test_an_empty_cell_is_not_a_failure():
     keys = direction_keys(_vento())
     assert invalid_compass({keys[0]: None, keys[1]: ""}, keys) == []
+
+
+# --- fifteen cells is not unique to the wind table --------------------------
+
+from wrb.qc import looks_like_cloud_forms  # noqa: E402
+
+CLOUD_ROW = "9 | 6 | C,C-K,N | 10 | C-K,K,K-N | 5 | C,Ć-K,K | 6 | Ć,K | 5 | Ć,K | 4 | C"
+WIND_ROW_2 = "9 | NE | 3 | SSE | 2 | N | 1 | SW | 2 | E | 3 | NNW | 1 | S | 2"
+CALM_WIND_ROW = "9 | C | 0 | C | 0 | N | 1 | C | 0 | E | 2 | C | 0 | S | 1"
+
+
+def test_the_cloud_form_page_that_was_produced_as_wind():
+    """Doc 8 page 98: twelve rows read under the wrong layout."""
+    assert looks_like_cloud_forms(CLOUD_ROW)
+
+
+def test_a_wind_row_is_not_mistaken_for_one():
+    assert not looks_like_cloud_forms(WIND_ROW_2)
+
+
+def test_a_calm_wind_row_is_not_either():
+    """`C` is a cloud form AND the mark for calm; a bare letter proves nothing,
+    which is why a compound code is required."""
+    assert not looks_like_cloud_forms(CALM_WIND_ROW)
+
+
+def test_an_empty_row_is_not_cloud_forms():
+    assert not looks_like_cloud_forms("")
+    assert not looks_like_cloud_forms("| | | |")
