@@ -1,9 +1,23 @@
-# Why the Annales wind pages read short — a negative result
+# Why the Annales' text-column pages read short — a negative result
 
 The wind layout yields **5 to 31 rows where the month has 30 or 31**. This is
 the largest remaining data gap in the Annales, and four approaches were tried
 on 2026-09-15. None of them fixed it. Written down so the next attempt starts
 from here rather than from the beginning.
+
+**It is not a wind problem.** The same eight pages re-produced as
+`rio-1883-nebulosite` — a layout whose columns are also half text, cloud forms
+beside each hour's figure — came back at 6, 9, 12, 20, 29, 30, 31 rows for
+months of 28 to 31. The shared property is TEXT COLUMNS: an ink profile finds
+row boundaries in a grid of figures and loses them in a grid of words, so the
+pitch comes out wrong and the crops straddle rows. Doc 8 page 98 returned cell
+counts of 17, 31, 34 and 35 where sixteen were expected — two printed rows in
+one rectangle.
+
+The reads themselves are fine. Page 98's first row came back
+`9 | 6 | C,C-K,N | 10 | C-K,K,K-N | ...`, which is exactly what the page
+prints. **The model reads these tables well; the geometry hands it the wrong
+rectangle.**
 
 ## What is actually wrong
 

@@ -15,7 +15,7 @@ data, and publishes the method so the rest can follow.
 
 ## The dataset
 
-**6,329 rows, 3,621 usable, 43,293 values, 243 pages, 1882–1890.** Five
+**6,477 rows, 3,673 usable, 44,106 values, 251 pages, 1882–1890.** Five
 stations, two publications, in Portuguese and French.
 
 Read **[DATASET_CARD.md](DATASET_CARD.md)** before using it — in particular the

@@ -37,10 +37,10 @@ front matter above is the dataset card format.
 
 | | |
 |---|---|
-| Rows | 6,329 |
-| Usable rows (`checks_pass` + `qc_clean`) | **3,621** |
-| Values in usable rows | 43,293 |
-| Pages transcribed | 243 |
+| Rows | 6,477 |
+| Usable rows (`checks_pass` + `qc_clean`) | **3,673** |
+| Values in usable rows | 44,106 |
+| Pages transcribed | 251 |
 | Period | 1882-01 to 1890-11 (one page captioned 1893, flagged) |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão |
 | Sources | *Revista do Observatório* (1886–1891), *Annales de l'Observatoire Impérial* (1882–1885) |
@@ -117,7 +117,7 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **2,708 of 6,329 rows are `flagged`**, including whole-profile sections
+- **2,804 of 6,477 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.
