@@ -46,6 +46,15 @@ from wrb.rows import ink_threshold                     # noqa: E402
 PROFILE = "revista-resumo-simultaneas"
 
 
+# The probe column: where to ask "is there a row here". It is a fraction of the
+# PAGE, unlike the band, and deliberately so - it only has to land inside the
+# numeric columns, which it does on every page measured, and deriving it from
+# the detected rules made it worse rather than better (the outer rule the
+# detector returns is the printed frame on some scans and the table edge on
+# others, and a span computed from that lands on the frame line itself).
+PROBE_X = (0.150, 0.205)
+
+
 def ink_runs(image, x_frac, min_h=6, floor=2):
     import numpy as np
     W, H = image.size
@@ -67,7 +76,19 @@ def ink_runs(image, x_frac, min_h=6, floor=2):
         return [], H
     hs = [b - a_ for a_, b in out]
     mode = statistics.median([h for h in hs if h <= max(hs) * 0.5] or hs)
-    return [(a_, b) for a_, b in out if abs((b - a_) - mode) <= mode * 0.5], H
+    kept = []
+    for a_, b in out:
+        h = b - a_
+        # Two rows whose ink touches come back as one run twice the height.
+        # Dropping it loses both; splitting it evenly recovers both, and a bad
+        # split costs only a crop that comes back without a label.
+        n = max(1, round(h / mode)) if mode else 1
+        if n > 1 and h > mode * 1.6:
+            step = h / n
+            kept += [(round(a_ + i * step), round(a_ + (i + 1) * step)) for i in range(n)]
+        elif abs(h - mode) <= mode * 0.5:
+            kept.append((a_, b))
+    return kept, H
 
 
 def main() -> None:
@@ -127,12 +148,11 @@ def main() -> None:
         W, H = image.size
         span = tuple(p.extra["band_table_span"])
         band = band_from_rules(image, span)
-        probe = band_from_rules(image, tuple(p.extra["probe_table_span"]), bleed=0.0)
-        if band is None or probe is None:
+        if band is None:
             print(f"  {doc}/{page}: table rules not found, page refused", flush=True)
             stats["refused"] += 1
             continue
-        runs, _ = ink_runs(image, probe)
+        runs, _ = ink_runs(image, PROBE_X)
         bx0, bx1 = int(band[0] * W), int(band[1] * W)
 
         # 1. read every proposed run, let the printed label decide what it is
