@@ -110,3 +110,39 @@ def test_the_moons_geometry_is_astronomy_too():
 
 def test_a_diameter_that_is_not_the_moons_is_not_vetoed():
     assert not is_astronomy("Diametro do pluviometro, Rio de Janeiro, Maio de 1886")
+
+
+# --- the Annales caption cannot name its own sheet --------------------------
+
+from wrb.caption import is_annales  # noqa: E402
+
+ANNALES_CAPTIONS = [
+    "Observations météorologiques du mois de Septembre 1883 DE RIO DE JANEIRO",
+    "Observations météorologiques du mois de Juin 1883",
+    "Observations météorologiques do mois de Mars 1883",
+    "Observations météorologiques du mois d'Août 1883. Rio de Janeiro",
+]
+
+
+def test_an_annales_caption_matches_no_profile():
+    """It was handing them revista-rio-1886 - a Portuguese daily layout from a
+    different publication, whose columns are not these columns."""
+    for cap in ANNALES_CAPTIONS:
+        assert is_annales(cap), cap
+        assert match_profile(cap) is None, cap
+
+
+def test_the_period_still_comes_out_of_it():
+    """The month is the one thing the caption CAN say."""
+    assert match_period(ANNALES_CAPTIONS[0]) == "1883-09"
+    assert match_period(ANNALES_CAPTIONS[2]) == "1883-03"
+
+
+def test_the_revista_captions_are_untouched():
+    for cap, want in [
+        ("Resumo das observações meteorologicas feitas no Imperial Observatorio "
+         "no mez de Julho de 1886", "revista-rio-1886"),
+        ("Observações meteorologicas de Corumbá, Setembro de 1889", "corumba-1889"),
+    ]:
+        assert not is_annales(cap)
+        assert match_profile(cap) == want

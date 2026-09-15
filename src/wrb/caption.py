@@ -90,9 +90,32 @@ def is_astronomy(caption: str) -> bool:
     return first in ASTRONOMY_HEADINGS
 
 
+# The Annales print one month across several sheets, one instrument to a sheet,
+# and every one of them is headed "Observations meteorologiques du mois de
+# <Month> <Year>" with the station named only as RIO DE JANEIRO. That caption
+# is not enough to say WHICH sheet it is - barometre, thermo, vapeur,
+# nebulosite, vento and actinometrie are six different profiles - and matching
+# on the station alone hands them `revista-rio-1886`, a Portuguese daily layout
+# from a different publication with different columns. Parsing an Annales row
+# against it would produce numbers in the wrong fields, all of them plausible.
+#
+# g4_annales_assign.py tells these apart by CELL COUNT, which is the only thing
+# that can. So a French Annales caption deliberately matches no profile here.
+_ANNALES = re.compile(r"observations?\s+m[ée]t[ée]orologiques?\s+d[ou]\s+mois", re.I)
+
+
+def is_annales(caption: str) -> bool:
+    """True for the Annales' own caption form, whose sheet a caption cannot name."""
+    return bool(_ANNALES.search(norm(caption)))
+
+
 def match_profile(caption: str) -> str | None:
-    """The profile this caption names, or None. Astronomy never matches."""
-    if is_astronomy(caption):
+    """The profile this caption names, or None.
+
+    Astronomy never matches, and neither does the Annales caption form: see
+    the note above on why the station alone is the wrong key there.
+    """
+    if is_astronomy(caption) or is_annales(caption):
         return None
     c = norm(caption)
     for frag, pid in STATIONS:
