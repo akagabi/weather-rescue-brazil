@@ -1,0 +1,36 @@
+{
+ "_note": "The span of months each volume covers, with a margin. A period is a DATE and no downstream check looks at dates: no range test, no printed arithmetic, no verdict. The only witness is the caption, and the caption is the thing being misread - doc 8 page 83 is captioned 'Septembre 1893' for a volume that ends in 1885, and doc 15 page 109 'Marco de 1859' for an 1889 volume. A period outside its volume's span is not corrected here, it is flagged: the month may be right and only the year misread, and guessing which is how 509 rows came to be dated January.",
+ "_measured_from": "data/dataset/weather-rescue-brazil.jsonl, then widened by a year at each end because a volume may reach further than what has been produced from it so far.",
+ "spans": {
+  "5": {
+   "from": "1881-01",
+   "to": "1884-12",
+   "publication": "Annales de l'Observatoire Imperial"
+  },
+  "8": {
+   "from": "1882-01",
+   "to": "1886-12",
+   "publication": "Annales de l'Observatoire Imperial"
+  },
+  "14": {
+   "from": "1884-12",
+   "to": "1887-12",
+   "publication": "Revista do Observatorio"
+  },
+  "15": {
+   "from": "1887-10",
+   "to": "1890-12",
+   "publication": "Revista do Observatorio"
+  },
+  "16": {
+   "from": "1888-11",
+   "to": "1891-12",
+   "publication": "Revista do Observatorio"
+  },
+  "11": {
+   "from": "1852-01",
+   "to": "1856-12",
+   "publication": "Ephemerides (astronomy; no weather)"
+  }
+ }
+}

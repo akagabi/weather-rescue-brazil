@@ -187,3 +187,36 @@ def match_period(caption: str) -> str | None:
     if len(months) != 1:
         return None
     return f"{year:04d}-{months[0]:02d}" if year else None
+
+
+# --- a period that cannot belong to its volume -------------------------------
+#
+# A period is a DATE, and nothing downstream looks at dates: no range test, no
+# printed arithmetic, no verdict. The only witness is the caption, and the
+# caption is the thing being misread. Two cases already seen:
+#
+#   doc 8 page 83  captioned "Septembre 1893" in a volume that ends in 1885
+#   doc 15 page 109 captioned "Março de 1859" in the 1889 Revista
+#
+# Neither is corrected here. The month may be right and only the year misread,
+# and guessing which is exactly how 509 rows came to be dated January.
+def period_outside_volume(period: str | None, doc: str, spans: dict | None = None
+                          ) -> str | None:
+    """A reason string when a period cannot belong to that volume, else None."""
+    if not period or not spans:
+        return None
+    span = (spans.get("spans") or spans).get(str(doc))
+    if not span:
+        return None
+    lo, hi = span.get("from"), span.get("to")
+    if lo and hi and not (lo <= period <= hi):
+        return (f"period {period} is outside doc {doc}'s span {lo}..{hi} "
+                f"({span.get('publication', '')})".strip())
+    return None
+
+
+def load_volume_spans(path=None) -> dict:
+    import json as _json
+    from pathlib import Path as _Path
+    p = _Path(path) if path else _Path(__file__).resolve().parents[2] / "data" / "volume_spans.json"
+    return _json.loads(p.read_text()) if p.exists() else {}

@@ -196,3 +196,48 @@ def test_a_caption_with_something_to_say_still_matches():
          "revista-santacruz-1889"),
     ]:
         assert match_profile(cap) == want, cap
+
+
+# --- a period that cannot belong to its volume ------------------------------
+
+from wrb.caption import load_volume_spans, period_outside_volume  # noqa: E402
+
+
+def test_both_misread_years_actually_seen_are_caught():
+    spans = load_volume_spans()
+    assert spans, "data/volume_spans.json is missing"
+    # doc 8 page 83: "Septembre 1893" in a volume that ends in 1885
+    assert period_outside_volume("1893-09", "8", spans)
+    # doc 15 page 109: "Março de 1859" in the 1889 Revista
+    assert period_outside_volume("1859-03", "15", spans)
+
+
+def test_the_real_periods_of_those_volumes_pass():
+    spans = load_volume_spans()
+    for period, doc in [("1883-09", "8"), ("1889-03", "15"), ("1882-01", "5"),
+                        ("1885-12", "14"), ("1890-11", "16")]:
+        assert period_outside_volume(period, doc, spans) is None, (period, doc)
+
+
+def test_an_unknown_volume_is_not_a_failure():
+    """Absence of evidence: the check exists only where a span is declared."""
+    assert period_outside_volume("1999-01", "99", load_volume_spans()) is None
+    assert period_outside_volume(None, "8", load_volume_spans()) is None
+
+
+def test_every_published_period_is_inside_its_volume():
+    """Run over the artifact, not a fixture."""
+    import json
+    from pathlib import Path
+
+    spans = load_volume_spans()
+    root = Path(__file__).resolve().parents[1]
+    bad = []
+    for line in (root / "data" / "dataset" / "weather-rescue-brazil.jsonl").read_text().splitlines():
+        if not line.strip():
+            continue
+        r = json.loads(line)
+        why = period_outside_volume(r.get("period"), str(r.get("item")), spans)
+        if why:
+            bad.append(f"{r['item']}/{r['page']}: {why}")
+    assert not bad, "\n".join(sorted(set(bad))[:10])
