@@ -27,9 +27,11 @@ output: 57.23 | 58.08 | 55.67 | 22.37 | 23.2 | 21.3 | 16.75 | 83.4 | C, SSE | 3.
 ```
 
 Trained and evaluated entirely on Brazilian historical records, but the
-interesting result is that it reads **layouts it has never seen** after about
-40 hand-labelled rows — which is what makes the recipe reusable for other
-archives.
+interesting result is that it reads **layouts it has never seen** — and usually
+with no labelled rows at all. Of the 17 layouts this project describes, **two
+ever needed hand-labelling**; the other fifteen were added by writing a JSON
+description of the columns and running the pipeline. `docs/ADDING-A-PUBLICATION.md`
+is the path and the evidence.
 
 ## Base and adapters
 
@@ -68,6 +70,20 @@ Blind tests on layouts it had never seen, with `gen3`:
 | Porto do Maranhão, 12 printed columns (trained on 15 and 16) | 264/264 numeric cells; the model's rainfall column sums to the printed monthly total it never saw |
 | Rio 1883 vapour, French, 9 columns | 98.4% |
 | Radcliffe Observatory, Oxford — another archive, another country, rows are years and columns are months | 99.3% temperature, 96.7% rain (on rows whose months close to the printed annual total) |
+
+Added 2026-09-15, on layouts absent from the corpus when the adapter was
+trained and given **no labelled rows at all**:
+
+| Test | Result |
+|---|---|
+| *Resumo mensal das observações simultaneas* — 26 printed columns, four stations to a sheet, dekadal rather than daily | **24 of 24 cells**, first contact, reading one column band at a time |
+| Revista dekadal summary — 18 columns, rows labelled `1ª 2ª 3ª Mez` | full row correct in one pass, no band and no training |
+| Annales nébulosité — 16 columns, half of them cloud-form text | 38 rows `checks_pass` on 8 pages, where the same pages under the wrong profile gave zero |
+
+The useful correction in those three: a claim that the model **could not read
+rows wider than 16 columns** had shelved a whole layout as needing a trained
+variant. It reads 18 columns in one pass and 26 in two bands. What had failed
+was the crop.
 
 ## Training-data provenance — please read
 
