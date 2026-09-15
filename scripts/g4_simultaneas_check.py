@@ -2,9 +2,9 @@
 
     python scripts/g4_simultaneas_check.py data/dataset/simultaneas.jsonl
 
-`data/g4/second_read/simultaneas.json` holds five station blocks - twenty rows,
-a hundred cells - transcribed from the same scans separately from the
-production run. Where the two agree the cell is probably right; where they
+`data/g4/second_read/simultaneas.json` holds thirteen station blocks - 52 rows,
+260 cells - transcribed from the same scans separately from the production
+run, across three pages of two documents. Where the two agree the cell is probably right; where they
 differ one of them is wrong and that cell is worth a person's time. This is
 NOT human verification and nothing it touches is marked verified.
 
@@ -25,11 +25,19 @@ SECOND = ROOT / "data" / "g4" / "second_read" / "simultaneas.json"
 
 
 def close(a, b, key) -> bool:
+    """Agreement on the value, including agreement that there is none.
+
+    A blank cell is a reading too: Cidade do Rio Grande prints no maximum or
+    minimum temperature for two of its months, and a run that invented numbers
+    there would be wrong in a way a value-only comparison could not see.
+    """
+    if a is None and b is None:
+        return True
     if a is None or b is None:
         return False
     # The reader drops trailing zeros the compositor set (25.6 for 25.60), so
     # equality is on the number, not the string. Nothing here is rounded.
-    return abs(float(a) - float(b)) < (0.005 if key != "baro" else 0.005)
+    return abs(float(a) - float(b)) < 0.005
 
 
 def main() -> None:

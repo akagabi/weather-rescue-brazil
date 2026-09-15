@@ -75,8 +75,32 @@ def blocks_for_page(declared: list[dict], width: int, height: int,
 # `Estação`, the block was treated as headerless, and it inherited CRUZADOR -
 # a warship's observations attributed to a bridge works in Recife. The station
 # was wrong, and nothing in the row said so.
+import re as _re  # noqa: E402
+
 NO_HEADER = None        # the page prints only a month line: inherit, and say so
 UNREADABLE = ""         # a header IS printed and could not be read: no station
+
+# What a strip's text turns out to be. Line count cannot answer this - the form
+# sets a station line alone when the month is shared, so a header can be one
+# line and a continuation is also one line - so the words decide.
+def header_kind(text: str) -> str:
+    """`station`, `month_only`, or `unclear` for a strip's transcription.
+
+    `month_only` is the only one that inherits. `unclear` yields no station:
+    a missing station is a gap a consumer can see, a wrong one is data, and
+    docId 15 page 158 produced the wrong one - a failed read of Ponte B. de
+    Macedo's header let the block inherit CRUZADOR ALMIRANTE BARROSO, putting
+    a warship's observations at a bridge works in Recife.
+    """
+    t = _re.sub(r"\s+", " ", (text or "")).strip().lower()
+    if not t:
+        return "unclear"
+    if _re.search(r"esta[çc][ãa]o|observador|observ\.|latitude|latit\.|alt\. do bar", t):
+        return "station"
+    # "Mez de Junho de 1889", "Mezes de Julho de 1889" and nothing else
+    if _re.fullmatch(r"(?:mez|mês|mes|mezes|meses)\s+d[eo]\s+[a-zà-ÿ]+\s+de\s+\d{4}\.?", t):
+        return "month_only"
+    return "unclear"
 
 
 def resolve_stations(headers: list[str | None]) -> list[dict]:
@@ -121,6 +145,40 @@ def resolve_stations(headers: list[str | None]) -> list[dict]:
 # tried first and reads 3 of the 10 known pages correctly; the labels read all
 # of them. Same principle as the printed day numbers at Cuyabá: geometry
 # proposes, the print disposes.
+def text_lines(image, floor: int = 3, min_h: int = 4) -> int:
+    """How many printed lines of text a strip holds.
+
+    Deliberately NOT the row detector, which filters candidates against a modal
+    ROW height and splits anything much taller - right for a table, wrong for a
+    caption. Here the only question is how many bands of ink there are, so
+    nothing is filtered and nothing is split.
+
+    Note what this does NOT settle: whether a header is printed. Counting lines
+    was tried for that and is wrong, because the form sets a station line on
+    its own when the month is shared - on docId 15 page 126 the Ponte B. de
+    Macedo and Bahia blocks each carry a single line, exactly like a month-only
+    continuation. `header_kind` reads the text instead.
+    """
+    import numpy as np
+
+    from wrb.rows import ink_threshold
+
+    g = image.convert("L")
+    a = np.asarray(g, dtype=float)
+    on = (a < ink_threshold(g)).sum(axis=1) > floor
+    lines, start = 0, None
+    for y, v in enumerate(on):
+        if v and start is None:
+            start = y
+        elif not v and start is not None:
+            if y - start >= min_h:
+                lines += 1
+            start = None
+    if start is not None and len(on) - start >= min_h:
+        lines += 1
+    return lines
+
+
 def band_from_rules(image, span: tuple[float, float], bleed: float = 0.010
                     ) -> tuple[float, float] | None:
     """The x-band to crop, anchored on THIS page's own table rules.
@@ -155,7 +213,7 @@ def band_from_rules(image, span: tuple[float, float], bleed: float = 0.010
     return (max(0.0, left + span[0] * w - bleed), min(1.0, left + span[1] * w))
 
 
-import re as _re
+import re as _re  # noqa: E402
 
 _DEKAD = _re.compile(r"^([123])\s*[ªaº°o]?$", _re.I)
 

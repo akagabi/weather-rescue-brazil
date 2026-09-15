@@ -243,3 +243,36 @@ def test_an_unreadable_header_does_not_poison_the_block_below_it():
     """The next printed header simply takes over."""
     st = resolve_stations([HEADERS[0], UNREADABLE, HEADERS[1]])
     assert [s["station"] for s in st] == ["S. Paulo", None, "Bahia (Capital)"]
+
+
+# --- what the strip says, not how many lines it has -------------------------
+
+from wrb.blocks import header_kind  # noqa: E402
+
+
+def test_a_station_line_is_recognised_however_it_is_set():
+    for t in ["Estação, Ponte B. de Macedo; Observador, Manoel Villarouco",
+              "Estação de S. Paulo; Observador, Alberto Loefgren",
+              "Observ., Rosendo A. Pereira Guimarães; Latit., 12°58'27'' S",
+              "Estação, Cruzador Almirante Barroso; Latitude, var"]:
+        assert header_kind(t) == "station", t
+
+
+def test_only_a_bare_month_line_inherits():
+    for t in ["Mez de Junho de 1889", "Mezes de Julho de 1889", "Mez de Maio de 1888."]:
+        assert header_kind(t) == "month_only", t
+
+
+def test_anything_else_is_unclear_and_yields_no_station():
+    for t in ["", "REVISTA DO OBSERVATORIO 116", "116", "Chuva nos dias 2, 9 e 10"]:
+        assert header_kind(t) == "unclear", t
+
+
+def test_a_month_line_with_a_station_on_it_is_a_station():
+    assert header_kind("Mez de Junho de 1889 Estação de S. Paulo") == "station"
+
+
+def test_line_count_cannot_answer_this():
+    """Both of these are a single printed line on docId 15 page 126."""
+    assert header_kind("Estação, Bahia, Capital; Observ., Dr. R. A. Pereira") == "station"
+    assert header_kind("Mez de Junho de 1889") == "month_only"
