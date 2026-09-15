@@ -13,8 +13,16 @@ mmHg and Ouro Preto's printed 598.32 sits comfortably inside it while being 65
 mmHg below anything that altitude can produce. The printed altitude turns that
 loose range into a tight one.
 
-It also recalibrates nothing and corrects nothing: a row that fails is flagged
-with the reason and the cell to look at.
+It also settles where a failed MONTH check belongs. That check spans a block -
+the printed Mez against the mean of the three dekads - so it cannot say which
+row is wrong. Flagging all four would throw away three dekads because a summary
+disagrees; flagging none would let a block that does not close pass silently.
+The month row is the one the page asserts, so the month row is the one flagged,
+and the dekads keep their own verdict and carry the block's `month_check` so a
+consumer can see it did not close.
+
+It recalibrates nothing and corrects nothing: a row that fails is flagged with
+the reason and the cell to look at.
 """
 from __future__ import annotations
 
@@ -35,8 +43,12 @@ def main() -> None:
 
     path = Path(args.dataset)
     rows = [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
-    hit = []
+    hit, month_flagged = [], 0
     for r in rows:
+        # the block's arithmetic belongs to the row that asserts it
+        if r.get("month_check") and str(r.get("row")) == "Mez":
+            r["verdict"] = "flagged"
+            month_flagged += 1
         why = pressure_implausible((r.get("values") or {}).get("baro"),
                                    r.get("station_bar_alt_m"), tol=args.tol)
         r["pressure_check"] = why
@@ -50,6 +62,8 @@ def main() -> None:
                   and isinstance((r.get("values") or {}).get("baro"), (int, float)))
     verd = collections.Counter(r["verdict"] for r in rows)
     print(f"{len(rows)} rows, {checked} with both a barometer figure and a printed altitude")
+    print(f"{month_flagged} month rows flagged because their block's arithmetic "
+          f"did not close")
     print(f"{len(hit)} implausible for their station's altitude")
     for r in hit[:25]:
         print(f"  {r['item']}/{r['page']} blk{r['block']} {r['row']:<4} "
