@@ -144,3 +144,54 @@ def parse_header(line: str) -> dict:
     out["bar_alt_m"] = int(alt.group(1)) if alt else None
     out["moves"] = bool(f["lat"] and f["lat"].strip().lower().startswith("var"))
     return out
+
+
+# --- one station, however the compositor set its name ------------------------
+#
+# The same station is not set the same way twice. Across the `Resumo mensal`
+# pages produced so far the capital of Bahia appears as "Bahia, Capital" and
+# "Bahia (Capital)"; Sao Paulo as "S. Paulo" and "Estacao de S. Paulo". Counted
+# by printed name that is two stations, which is the same fault the merge
+# docstring already records having to fix by hand once.
+#
+# The printed name is kept - it is what the page says - and a canonical id sits
+# beside it for counting and joining.
+_STATION_ALIASES = {
+    "bahia": "bahia_capital",
+    "bahia capital": "bahia_capital",
+    "s paulo": "sao_paulo",
+    "sao paulo": "sao_paulo",
+    "s joao del rei": "sao_joao_del_rei",
+    "s joao d el rei": "sao_joao_del_rei",
+    "ponte b de macedo": "ponte_buarque_de_macedo",
+    "ponte b macedo": "ponte_buarque_de_macedo",
+    "ponte buarque de macedo": "ponte_buarque_de_macedo",
+    "cidade do rio grande": "cidade_do_rio_grande",
+    "cruzador almirante barroso": "cruzador_almirante_barroso",
+    "ouro preto": "ouro_preto",
+    "santa cruz": "santa_cruz",
+    "maceio": "maceio",
+}
+
+
+def canonical_station(name: str | None) -> str | None:
+    """A stable id for a printed station name, or None if there is no name.
+
+    Unknown names are slugged rather than rejected: a station this project has
+    not seen before is a finding, and dropping its rows would hide it.
+    """
+    if not name:
+        return None
+    import unicodedata
+    t = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()
+    # Only the leading label is furniture. "de" is NOT: stripping it turned
+    # "ponte b de macedo" into "ponte b macedo" and lost the alias.
+    t = re.sub(r"^\s*(?:estacao|observatorio)\s+(?:de\s+|do\s+|da\s+)?", " ", t)
+    t = re.sub(r"[^a-z0-9]+", " ", t).strip()
+    t = re.sub(r"\s+", " ", t)
+    if t in _STATION_ALIASES:
+        return _STATION_ALIASES[t]
+    for frag, sid in _STATION_ALIASES.items():
+        if t.startswith(frag) or frag.startswith(t):
+            return sid
+    return t.replace(" ", "_") or None

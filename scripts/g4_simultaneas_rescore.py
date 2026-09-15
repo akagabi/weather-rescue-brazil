@@ -34,6 +34,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from wrb.qc import (near_duplicate_rows, pressure_for_altitude,  # noqa: E402
                     pressure_implausible)
 from wrb.reconstruct import restore_thousands  # noqa: E402
+from wrb.stations import canonical_station  # noqa: E402
 
 COLUMNS = ["baro", "t_secco", "t_maxima", "t_minima", "humidade"]
 
@@ -58,6 +59,12 @@ def main() -> None:
     # the pressure that altitude implies and restore_thousands is asked for the
     # unique candidate within 30 mmHg of it - and refuses, rather than guesses,
     # if there is not exactly one.
+    # The printed name stays; a canonical id sits beside it so the same station
+    # set two ways - "Bahia, Capital" and "Bahia (Capital)" both appear in this
+    # run's output - counts once.
+    for r in rows:
+        r["station_id"] = canonical_station(r.get("station"))
+
     restored = 0
     for r in rows:
         v = (r.get("values") or {}).get("baro")
@@ -125,7 +132,10 @@ def main() -> None:
     for r in hit[:25]:
         print(f"  {r['item']}/{r['page']} blk{r['block']} {r['row']:<4} "
               f"{str(r.get('station'))[:22]:<22} {r['pressure_check']}")
-    print(f"\nverdicts: {dict(verd)}")
+    ids = collections.Counter(r.get("station_id") for r in rows)
+    print(f"\n{len([k for k in ids if k])} stations: "
+          + ", ".join(f"{k} ({v})" for k, v in ids.most_common() if k))
+    print(f"verdicts: {dict(verd)}")
     if args.write:
         tmp = path.with_suffix(path.suffix + ".partial")
         tmp.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows))

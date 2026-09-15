@@ -78,3 +78,38 @@ def test_a_ship_has_no_coordinate():
         "Latitude, var ; Longitude, var.; Hora local, var.; Alt. do Bar., 2m,5")
     assert h["moves"] and h["lat_deg"] is None and h["lon_deg"] is None
     assert h["bar_alt_m"] == 2
+
+
+# --- one station, however the compositor set its name -----------------------
+
+from wrb.stations import canonical_station  # noqa: E402
+
+
+def test_the_same_station_set_two_ways_is_one_station():
+    """Both spellings appear in the run's own output, on different pages."""
+    assert canonical_station("Bahia, Capital") == canonical_station("Bahia (Capital)")
+    assert canonical_station("S. Paulo") == canonical_station("Estação de S. Paulo")
+
+
+def test_every_station_seen_on_this_form():
+    assert canonical_station("Ponte B. de Macedo") == "ponte_buarque_de_macedo"
+    assert canonical_station("S. João d'El-Rei") == "sao_joao_del_rei"
+    assert canonical_station("Cidade do Rio Grande") == "cidade_do_rio_grande"
+    assert canonical_station("Cruzador Almirante Barroso") == "cruzador_almirante_barroso"
+    assert canonical_station("Maceió") == "maceio"
+    assert canonical_station("Ouro Preto") == "ouro_preto"
+
+
+def test_de_is_part_of_a_name_not_furniture():
+    """Stripping it turned `ponte b de macedo` into `ponte b macedo`."""
+    assert canonical_station("Ponte B. de Macedo") == canonical_station("Ponte Buarque de Macedo")
+
+
+def test_the_rio_observatory_spelling_joins_the_existing_registry():
+    assert canonical_station("Observatorio de Santa-Cruz") == "santa_cruz"
+
+
+def test_an_unknown_station_is_slugged_not_dropped():
+    """A station this project has not seen is a finding; dropping it hides it."""
+    assert canonical_station("Algum Lugar Novo") == "algum_lugar_novo"
+    assert canonical_station(None) is None
