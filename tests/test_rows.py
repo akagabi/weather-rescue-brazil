@@ -108,3 +108,44 @@ def test_rules_and_pitch_primitives():
 
 def test_day_count_helper_consistency():
     assert calendar.monthrange(1886, 2)[1] == 28
+
+
+# --- a regular grid, when the rows are regular and the chain is not ----------
+
+from wrb.rows import grid_from_peaks  # noqa: E402
+
+
+def test_a_clean_grid_is_recovered_from_every_peak():
+    peaks = [100 + 24 * i for i in range(30)]
+    g = grid_from_peaks(peaks, 30)
+    assert g is not None and len(g) == 30
+    assert g[0] == 100 and g[-1] == 100 + 24 * 29
+
+
+def test_it_fills_in_the_peaks_that_were_never_detected():
+    """Doc 8 page 43: 26 peaks for a 30-day month, chain of five."""
+    peaks = [100 + 24 * i for i in range(30) if i not in (3, 11, 19, 27)]
+    g = grid_from_peaks(peaks, 30)
+    assert g is not None and len(g) == 30
+    assert all(abs(g[i] - (100 + 24 * i)) <= 2 for i in range(30))
+
+
+def test_it_refuses_when_the_peaks_agree_on_nothing():
+    """A grid that explains nothing is a confident way to read wrong rows."""
+    assert grid_from_peaks([10, 57, 61, 300, 811, 1200], 30) is None
+
+
+def test_it_refuses_when_there_are_too_few_peaks():
+    assert grid_from_peaks([100, 124], 30) is None
+    assert grid_from_peaks([], 30) is None
+
+
+def test_it_refuses_a_grid_most_of_whose_rows_land_nowhere():
+    peaks = [100 + 24 * i for i in range(6)]      # six peaks, thirty wanted
+    assert grid_from_peaks(peaks, 30) is None
+
+
+def test_a_declared_pitch_overrides_the_measured_one():
+    peaks = [100, 148, 196, 244]                  # gaps of 48, i.e. every other row
+    g = grid_from_peaks(peaks, 8, pitch=24.0)
+    assert g is None or len(g) == 8

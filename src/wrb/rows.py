@@ -640,3 +640,66 @@ def crop_day_rows(
         c.save(buf, format="PNG")
         crops.append(buf.getvalue())
     return loc, crops
+
+
+# --- a regular grid, when the rows are regular and the chain is not ----------
+#
+# Some pages defeat both localisation paths at once. Doc 8 page 43 is a wind
+# table: 26 ink peaks for a 30-day month, a chain of FIVE, and a day oracle
+# that reads 13 of the 30 numbers. The page is not damaged - it is crisp, and a
+# person reads it at a glance - but its Date column is set in OLD-STYLE
+# FIGURES, where 1 is a small-capital I and 10 reads as IO. The oracle was
+# never going to win that, and the chain gives up because a wind row is mostly
+# compass text and its ink peaks are weak and uneven.
+#
+# What the page does have is a perfectly regular pitch. So: take the peaks,
+# find the pitch they agree on, anchor on the longest evenly-spaced run, and
+# extend it to the row count the month requires.
+#
+# The guard matters more than the fit. A grid that explains nothing is a
+# confident way to read the wrong rows, so it is only accepted when most of the
+# rows it proposes land on a peak that was actually detected.
+def grid_from_peaks(peaks: list[int], want: int, pitch: float | None = None,
+                    tol_frac: float = 0.3, min_explained: float = 0.8
+                    ) -> list[int] | None:
+    """`want` evenly spaced row centres fitted to `peaks`, or None.
+
+    Returns None rather than a guess when the peaks do not agree on a pitch, or
+    when the fitted grid cannot be matched to enough of them.
+    """
+    import statistics
+
+    ys = sorted(set(int(p) for p in peaks))
+    if len(ys) < max(4, want // 4):
+        return None
+    gaps = [b - a for a, b in zip(ys, ys[1:]) if b - a > 2]
+    if not gaps:
+        return None
+    step = float(pitch) if pitch else statistics.median(gaps)
+    if step <= 2:
+        return None
+    tol = step * tol_frac
+
+    # the longest run of peaks that sit a whole number of steps apart
+    best: list[int] = []
+    for i, y0 in enumerate(ys):
+        run = [y0]
+        for y in ys[i + 1:]:
+            k = round((y - run[-1]) / step)
+            if k >= 1 and abs((y - run[-1]) - k * step) <= tol:
+                run.append(y)
+        if len(run) > len(best):
+            best = run
+    if len(best) < 3:
+        return None
+
+    # place the grid so the anchor run falls on it, then extend both ways
+    anchor = best[0]
+    first_index = max(0, round((anchor - ys[0]) / step))
+    start = anchor - first_index * step
+    grid = [int(round(start + i * step)) for i in range(want)]
+
+    explained = sum(1 for g in grid if any(abs(g - y) <= tol for y in ys))
+    if explained < min_explained * want:
+        return None
+    return grid
