@@ -133,3 +133,43 @@ deriva 1200 px à direita, e o modelo lia as células da vizinha. **Erro de geom
 
 **smoke3 (rodando):** dados rebuildados, vol. 14 ×8, augmentação fotométrica/geométrica
 on-the-fly, 3 épocas, checkpoint a cada 20 passos, gold 9/9 ao fim.
+
+## Captions: what a caption can and cannot settle
+
+Four things were learned the hard way in one night of sweeping, each after the
+matcher had already produced a confident wrong answer. They are listed here
+because the shape repeats and the next publication will have its own version of
+each.
+
+**A place name is not a month.** `Rio de Janeiro` contains `janeiro`, and a
+substring match in dict order dated **509 published rows to January** — pages
+the caption itself headed *Mars*, *Mai*, *Juillet*, *Août*, *Octobre*,
+*Novembre*, *Décembre*. The signature was visible in the published file as a
+January count four times its neighbours', and nobody read it. Place names are
+removed before any month is looked for, months match on word boundaries, and a
+caption naming two months resolves by its `mois de` phrase **or not at all**.
+
+**A place name is not a layout.** Doc 5 sets `DE RIO DE JANEIRO` across the top
+of every left-hand page with a roman folio beside it. Eleven of those were
+offered as pages ready to produce, two while saying `Observat. astron.` in the
+same breath. A caption must say something besides the place name and the
+furniture.
+
+**A caption cannot always name its own sheet.** The Annales print one month
+across six sheets, one instrument each, all headed identically. The caption
+gives the month and the city and nothing that distinguishes barometre from
+vapeur from nébulosité — so it deliberately matches **no** profile, and
+`g4_annales_assign.py` decides by cell count. Matching on the station alone
+handed them a Portuguese daily layout from another publication, whose columns
+are not those columns.
+
+**A year read off a caption is the least reliable thing on it.** Doc 8 page 83
+is captioned *Septembre 1893* in a volume that ends in 1885; doc 15 page 109
+*Março de 1859* in the 1889 Revista. The volume's own span
+(`data/volume_spans.json`) is a free second witness. It flags and never
+corrects: the month may be right and only the year misread, and guessing which
+is the first mistake repeated.
+
+The common thread is that **a date and a name are not measurements**, so none
+of the project's real defences look at them — no physical range, no printed
+arithmetic, no verdict. Whatever guards them has to be built on purpose.

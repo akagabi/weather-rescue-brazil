@@ -2077,5 +2077,95 @@
   "astronomy": false,
   "profile": null,
   "period": "1885-03"
+ },
+ {
+  "doc": "8",
+  "page": 307,
+  "caption": "Observations météorologiques du mois d'Avril 1885\nDe Rio de Janeiro\nBaromètre réduit à 0°, 700mm +",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1885-04"
+ },
+ {
+  "doc": "8",
+  "page": 309,
+  "caption": "Observations météorologiques du mois d'Avril 1885\nDE RIO DE JANEIRO\n299",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1885-04"
+ },
+ {
+  "doc": "8",
+  "page": 311,
+  "caption": "Observations météorologiques du mois d'Avril 1885\nDE RIO DE JANEIRO\n301",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1885-04"
+ },
+ {
+  "doc": "8",
+  "page": 312,
+  "caption": "Observations météorologiques du mois d'Avril 1885\nANNALES DE L'OBSEUVATOIRE IMPÉRIAL",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1885-04"
+ },
+ {
+  "doc": "8",
+  "page": 313,
+  "caption": "Observations météorologiques du mois d’Avril 1885\nObservatoire de Rio de Janeiro\nAvril 1885",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1885-04"
+ },
+ {
+  "doc": "8",
+  "page": 314,
+  "caption": "Observations météorologiques du mois d'Avril 1885\nANNEXES DE L'OBSEVATOIRE IMPÉRIAL",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1885-04"
+ },
+ {
+  "doc": "8",
+  "page": 317,
+  "caption": "Observations météorologiques du mois de Mai 1885\nDE RIO DE JANEIRO\nTension de la vapeur atmosphérique en millimètres",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1885-05"
+ },
+ {
+  "doc": "8",
+  "page": 319,
+  "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mai 1885",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1885-05"
+ },
+ {
+  "doc": "8",
+  "page": 320,
+  "caption": "Observations météorologiques du mois de Mai 1885\nNebulosités en dixièmes du ciel couvert\nDate\t4 h. M.\t7 h. M.\t10 h. M.\t1 h. S.\t4 h. S.\t7 h. S.\t10 h. S.\tMoyenne\n4\tC,B\t3\tC,G,C,B\t4\tC",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1885-05"
+ },
+ {
+  "doc": "8",
+  "page": 321,
+  "caption": "Observations météorologiques du mois de Mai 1885\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1885-05"
  }
 ]
