@@ -108,13 +108,13 @@
   },
   "note": "A linha Mez e a media das tres decadas, e a pagina afirma-o. Medido em 16/41 bloco 1 (S. Paulo): baro 698.17 calculado contra 698.50 impresso, t_secco 22.97 contra 23.03, t_maxima 25.88 contra 25.88, humidade 79.9 contra 79.9 - e t_minima 18.33 contra 19.67 impresso, que NAO fecha. Esse e o valor do teste: quatro colunas confirmam-se sozinhas e a quinta levanta a mao. As decadas tem 10, 10 e 11 dias, portanto a media simples e aproximada e a tolerancia tem de acomodar isso.",
   "tolerance": {
-   "baro": 0.6,
-   "t_secco": 0.3,
-   "t_maxima": 0.4,
-   "t_minima": 0.5,
-   "humidade": 0.8
+   "baro": 0.85,
+   "t_secco": 0.25,
+   "t_maxima": 0.85,
+   "t_minima": 0.3,
+   "humidade": 0.45
   },
-  "tolerance_note": "PROVISORIO, a calibrar com a propria producao. Medido em 16/41 bloco 1 e 15/126 bloco 1, a discrepancia sistematica entre a linha Mez e a media das tres decadas anda pelas 0.3-0.4 unidades em ambos os sentidos, porque o Mez vem de todas as observacoes diarias e as decadas sao medias arredondadas de subconjuntos de 10, 10 e 11 dias. Estes numeros deixam passar esse ruido e apanham o t_minima de 16/41, fora por 1.34."
+  "tolerance_note": "MEDIDO, nao adivinhado. Residuo |Mez impresso - media das tres decadas| nos nove blocos que passaram todos os outros testes e cuja linha Mez foi lida na ordem certa (scripts/g4_simultaneas_calibrate.py):\n  baro      0.000 a 0.793, mais um 3.663 num bloco onde o modelo leu 687.68 por 697.68\n  t_secco   0.000 a 0.177\n  t_maxima  0.003 a 0.800\n  t_minima  0.000 a 0.213, mais 0.667, 1.340, 2.007 e 2.533\n  humidade  0.000 a 0.367, mais um 1.600\nOu seja: a aritmetica desta forma FECHA, e fecha apertado. A ideia inicial de que havia um desvio sistematico de 0.3-0.4 vinha de dois blocos medidos a mao, um deles com um erro de leitura. As tolerancias cobrem a distribuicao limpa e deixam de fora os outliers, que e para o que o teste serve.\nt_minima levanta a mao mais vezes do que as outras colunas e isso e um achado, nao um defeito: em 16/41 a pagina imprime 19.67 onde as suas proprias tres decadas dao 18.33, verificado a mao no scan. E a pagina que nao fecha."
  },
  "probe_x_frac": null,
  "table_x_frac": null,

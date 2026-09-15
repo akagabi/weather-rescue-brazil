@@ -31,6 +31,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
+from wrb import profile as prof  # noqa: E402
 from wrb.qc import (near_duplicate_rows, pressure_for_altitude,  # noqa: E402
                     pressure_implausible)
 from wrb.reconstruct import restore_thousands  # noqa: E402
@@ -85,12 +86,49 @@ def main() -> None:
                 r["baro_restored_from"] = v
                 restored += 1
 
-    hit, month_flagged = [], 0
+    # group a page's blocks once; several steps below need them
+    blocks: dict[tuple, list] = {}
     for r in rows:
-        # the block's arithmetic belongs to the row that asserts it
-        if r.get("month_check") and str(r.get("row")) == "Mez":
+        if str(r.get("row")) != "Mez":
+            blocks.setdefault((r["item"], r["page"], r.get("block")), []).append(r)
+
+    # Re-run the month check against the profile's CURRENT tolerances. The
+    # producer computed it once with whatever they were that day, so a
+    # calibration would otherwise not reach the data without re-reading every
+    # page - and re-deriving a judgement from stored values is the whole point
+    # of this step.
+    p = prof.load("revista-resumo-simultaneas")
+    month_flagged = 0
+    for key, rr in blocks.items():
+        mez = next((r for r in rows if (r["item"], r["page"], r.get("block")) == key
+                    and str(r.get("row")) == "Mez"), None)
+        dek = sorted(rr, key=lambda r: str(r.get("row")))
+        if len(dek) < 3:
+            continue
+        vals = [r.get("values") or {} for r in dek]
+        if mez is not None:
+            fail = p.verify_month(vals, mez.get("values") or {})
+        else:
+            continue
+        for r in dek + [mez]:
+            r["month_check"] = fail
+        if not fail:
+            continue
+        # A block whose printed arithmetic does not close contains an error and
+        # there is no way to say which row holds it. Leaving the dekads
+        # qc_clean overstates what is known: on both blocks the independent
+        # second reading disagreed with, the arithmetic had already failed and
+        # the rows were being published as clean. Flagged is not discarded -
+        # the rows stay, with the reason - so nothing is lost by saying so.
+        for r in dek + [mez]:
+            why = f"block arithmetic does not close: {fail[0]}"
+            if why not in (r.get("problems") or []):
+                r["problems"] = list(r.get("problems") or []) + [why]
             r["verdict"] = "flagged"
             month_flagged += 1
+
+    hit = []
+    for r in rows:
         why = pressure_implausible((r.get("values") or {}).get("baro"),
                                    r.get("station_bar_alt_m"), tol=args.tol)
         r["pressure_check"] = why
@@ -103,10 +141,6 @@ def main() -> None:
     # One printed row read twice. A crop that straddles two rows returns the
     # label of one and the numbers of the other, and the row it displaced is
     # never read at all - see wrb.qc.near_duplicate_rows for the measured case.
-    blocks: dict[tuple, list] = {}
-    for r in rows:
-        if str(r.get("row")) != "Mez":
-            blocks.setdefault((r["item"], r["page"], r.get("block")), []).append(r)
     dupes = 0
     for key, rr in blocks.items():
         for i, j in near_duplicate_rows([r.get("values") or {} for r in rr], COLUMNS):
@@ -123,8 +157,7 @@ def main() -> None:
                   and isinstance((r.get("values") or {}).get("baro"), (int, float)))
     verd = collections.Counter(r["verdict"] for r in rows)
     print(f"{len(rows)} rows, {checked} with both a barometer figure and a printed altitude")
-    print(f"{month_flagged} month rows flagged because their block's arithmetic "
-          f"did not close")
+    print(f"{month_flagged} rows flagged because their block's arithmetic did not close")
     print(f"{dupes} near-duplicate dekad pairs (one printed row read twice)")
     print(f"{restored} elided barometer readings restored from the block's "
           f"printed altitude")

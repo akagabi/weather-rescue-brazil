@@ -15,6 +15,13 @@ admits the bulk of it. Two things it deliberately does NOT do: it does not fit
 the tolerance to include every observation, because the outliers are what the
 check exists to catch; and it does not write the profile, because widening a
 tolerance is a decision about what the project is willing to call clean.
+
+It also ignores blocks that are already known bad. Run over everything, the
+first calibration proposed a barometer tolerance of 7.9 mmHg and a humidity
+tolerance of 22.9 - numbers driven entirely by rows the other checks had
+already flagged, one of which had 71.9 where a barometer reading belongs.
+Calibrating a check against data it would itself reject is circular, and the
+tolerance it yields would pass anything.
 """
 from __future__ import annotations
 
@@ -42,12 +49,21 @@ def main() -> None:
     blocks: dict[tuple, dict] = {}
     for r in rows:
         blocks.setdefault((r["item"], r["page"], r["block"]), {})[str(r["row"])] = r
+    # a block any other check has already condemned cannot calibrate this one
+    def _sound(rr: dict) -> bool:
+        return not any(r.get("range_violations") or
+                       [p for p in (r.get("problems") or []) if "degenerate" in p
+                        or "near_duplicate" in p or "elided" in p]
+                       for r in rr.values())
 
     diffs: dict[str, list[float]] = collections.defaultdict(list)
-    n_ordered = 0
+    n_ordered = skipped = 0
     for key, rr in blocks.items():
         mez = rr.get("Mez")
         if mez is None or mez.get("month_check_kind") != "ordered":
+            continue
+        if not _sound(rr):
+            skipped += 1
             continue
         dek = [rr.get(x) for x in ("1", "2", "3")]
         if any(d is None for d in dek):
@@ -60,7 +76,8 @@ def main() -> None:
                 continue
             diffs[col].append(abs(printed - sum(vals) / len(vals)))
 
-    print(f"{len(blocks)} blocks, {n_ordered} with a month row read in column order\n")
+    print(f"{len(blocks)} blocks, {n_ordered} sound and with a month row read in "
+          f"column order ({skipped} skipped: already flagged by another check)\n")
     if not n_ordered:
         print("Nothing to calibrate: no month row was read in order. The unordered "
               "check is what ran, and it uses the same tolerances.")

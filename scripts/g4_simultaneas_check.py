@@ -57,22 +57,66 @@ def main() -> None:
     for r in rows:
         by.setdefault((str(r["item"]), int(r["page"]), int(r.get("block", 0))), {})[str(r["row"])] = r
 
-    # the second reading lists blocks in page order, so position is the key
-    order = {}
+    # Matching a block of this file to a block of the run is its own problem,
+    # and two obvious answers are both wrong.
+    #
+    # By POSITION fails the moment the run misses a block: on docId 16 page 90
+    # it produced two of the four, and position compared its October against
+    # this file's November and called thirty correct cells wrong.
+    #
+    # By CONTENT alone fails exactly where it matters: docId 16 page 41's
+    # S. Paulo block was produced with 687.68 where the page prints 697.68, so
+    # content pushes it away from the very block it should be compared with -
+    # the check would quietly stop looking at the row it exists to catch.
+    #
+    # So: by STATION first, which the run reads off the page independently of
+    # the numbers, and by content only to separate two blocks of the SAME
+    # station on one sheet (Cidade do Rio Grande prints three).
+    from wrb.stations import canonical_station
+
+    def _row1(rowmap):
+        r = rowmap.get("1")
+        return (r.get("values") or {}) if r else {}
+
+    def _distance(rowmap, want):
+        got = _row1(rowmap)
+        d = [abs(got[c] - w) for c, w in zip(COLUMNS, want)
+             if isinstance(got.get(c), (int, float)) and isinstance(w, (int, float))]
+        return sum(d) / len(d) if d else float("inf")
+
+    # Assignment is GLOBAL, not first-come. Cidade do Rio Grande prints three
+    # months on docId 16 page 90 and the run produced one of them; taking the
+    # fixture blocks in order handed that one to November when its figures are
+    # October's, and reported twenty correct cells wrong. Every same-station
+    # pairing is scored first and the closest pairs claim each other.
+    pairs = []
     for blk in ref["blocks"]:
-        k = (blk["doc"], blk["page"])
-        blk["_index"] = order.get(k, 0)
-        order[k] = blk["_index"] + 1
+        want_id = canonical_station(blk["station"])
+        for k, rowmap in by.items():
+            if k[0] != blk["doc"] or k[1] != blk["page"]:
+                continue
+            if canonical_station(next((r.get("station") for r in rowmap.values()), None)) \
+                    != want_id:
+                continue
+            pairs.append((_distance(rowmap, blk["rows"].get("1", [])), id(blk), k))
+    matched: dict[int, tuple] = {}
+    taken: set[tuple] = set()
+    for _d, bid, k in sorted(pairs, key=lambda t: t[0]):
+        if bid in matched or k in taken:
+            continue
+        matched[bid] = k
+        taken.add(k)
 
     per_col = {c: [0, 0] for c in COLUMNS}
     misses, unmatched, not_emitted = [], [], []
     for blk in ref["blocks"]:
-        key = (blk["doc"], blk["page"], blk["_index"])
-        got = by.get(key)
+        key = matched.get(id(blk))
+        got = by.get(key) if key else None
         if got is None:
             near = [k for k in by if k[0] == blk["doc"] and k[1] == blk["page"]]
             unmatched.append(((blk["doc"], blk["page"], blk["station"]), near))
             continue
+        key = (blk["doc"], blk["page"], blk["station"])
         produced_station = next((r.get("station") for r in got.values()), None)
         if produced_station and produced_station.split(",")[0].strip() != \
                 blk["station"].split(",")[0].strip():

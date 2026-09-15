@@ -1,0 +1,23 @@
+{
+ "pages": 9,
+ "refused": 1,
+ "blocks": 26,
+ "rows": 92,
+ "stations": [
+  "Bahia (Capital)",
+  "Bahia, Capital",
+  "Cidade do Rio Grande",
+  "Cruzador Almirante Barroso",
+  "Maceió",
+  "Ouro Preto",
+  "Ponte B. de Macedo",
+  "S. João d'El-Rei",
+  "S. Paulo",
+  "Santa Cruz"
+ ],
+ "inherited": 1,
+ "no_station": 2,
+ "month_ordered": 14,
+ "month_unordered": 12,
+ "minutes": 17.3
+}
