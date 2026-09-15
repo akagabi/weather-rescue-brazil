@@ -34,6 +34,17 @@ formatting, not a misreading. The width was the problem, not the hand.
 The wind counts, force, cloudiness and rainfall are a second band and are
 **not** in this profile. They are recorded as unread rather than guessed at.
 
+**The band is a fraction of the table, not of the page.** The first version
+declared it as page-width fractions measured on docId 16 page 41. It read that
+page perfectly and returned *nothing at all* on docId 15 page 126: the two
+scans do not share a margin — the table's left rule sits at **0.133** of the
+width on one and **0.102** on the other — so a band fixed on the first clips
+the `Decadas` column on the second, and without the printed label no row can
+be identified. The band is now anchored on each page's own outermost rules
+(`wrb.blocks.band_from_rules`), and a page whose rules do not bound a plausible
+table is **refused** rather than read at a guessed offset. One of the ten,
+docId 15 page 199, is refused on exactly that ground.
+
 ### 2. The rows are decided by their printed label
 
 Geometry proposes bands of ink in the barometer column; the label read out of

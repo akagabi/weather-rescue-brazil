@@ -111,3 +111,32 @@ def test_summarise_counts_from_the_rows_not_from_a_stale_sidecar():
     assert s["qc_clean"] == 1
     assert s["flagged"] == 1
     assert s["usable"] == 3
+
+
+# --- four tables on one sheet, and rows labelled the way the page labels them
+
+from wrb.merge import row_key, row_ordinal  # noqa: E402
+
+
+def test_a_labelled_row_does_not_crash_the_key():
+    """`Resumo mensal` rows are 1a, 2a, 3a, Mez - not integers."""
+    assert row_ordinal({"block": 0, "row": "1"}) == (0, 1)
+    assert row_ordinal({"block": 0, "row": "Mez"}) == (0, 99)
+    assert row_ordinal({"row": 7}) == (0, 7)
+
+
+def test_the_month_row_sorts_after_its_dekads():
+    b = [{"block": 0, "row": r} for r in ["Mez", "3", "1", "2"]]
+    assert [r["row"] for r in sorted(b, key=row_ordinal)] == ["1", "2", "3", "Mez"]
+
+
+def test_four_stations_on_one_page_keep_four_identities():
+    """Without `block` they all claim row 1 and three are dropped as dupes."""
+    rows = [{"profile": "p", "item": "16", "page": 41, "block": b, "row": "1"}
+            for b in range(4)]
+    assert len({row_key(r) for r in rows}) == 4
+
+
+def test_blocks_stay_in_page_order():
+    rows = [{"block": 1, "row": "1"}, {"block": 0, "row": "Mez"}]
+    assert [r["block"] for r in sorted(rows, key=row_ordinal)] == [0, 1]
