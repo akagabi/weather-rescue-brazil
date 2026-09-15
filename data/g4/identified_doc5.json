@@ -1205,7 +1205,8 @@
   "caption": "The page contains two tables. The first table, titled \"Serviço chronométrico do mês de Junho de 1882,\" lists data for June 1882. The second table, titled \"Mez de Julho,\" lists data for July. Both tables include columns for \"Datas\" (dates), \"Est. absoluto\" (absolute estimate), \"M. D.\" (mean difference), and \"Temp.\" (temperature),",
   "is_weather_table": true,
   "profile": null,
-  "period": "1882-06"
+  "period": "1882-07",
+  "period_before_fix": "1882-06"
  },
  {
   "doc": "5",
@@ -1301,7 +1302,8 @@
   "caption": "Temps de Rio de Janeiro. Observations météorologiques du mois de Février 1883.",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-02",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1333,7 +1335,8 @@
   "caption": "Observations météorologiques du mois de Février 1883.\nObservations actinométriques\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-02",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1349,7 +1352,8 @@
   "caption": "Observations météorologiques du mois de Mars 1883.\nBaromètre réduit à 0°, 700mm +.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-03",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1357,7 +1361,8 @@
   "caption": "Observations météorologiques du mois de Mars 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-03",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1389,7 +1394,8 @@
   "caption": "Observations météorologiques du mois de Mars 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-03",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1397,7 +1403,8 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mars 1883.",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-03",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1405,7 +1412,8 @@
   "caption": "Observations météorologiques du mois d'Avril 1883.\nTempsérature centigrade à l'ombre.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-04",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1413,7 +1421,8 @@
   "caption": "Observations météorologiques du mois d'Avril de 1883\nDE RIO DE JANEIRO\n31",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-04",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1429,7 +1438,8 @@
   "caption": "Observations météorologiques du mois d'Avril 1883.\nDE RIO DE JANEIRO\n33",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-04",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1461,7 +1471,8 @@
   "caption": "Observations météorologiques du mois de Mai 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-05",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1469,7 +1480,8 @@
   "caption": "Observations météorologiques du mois de Mai 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-05",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1485,7 +1497,8 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mai 1883.",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-05",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1501,7 +1514,8 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mai 1883.",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-05",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1517,7 +1531,8 @@
   "caption": "Temps de l'Observatoire de Rio de Janeiro, Juin 1883.",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-06",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1525,7 +1540,8 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Juin 1883.",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-06",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1541,7 +1557,8 @@
   "caption": "Observations météorologiques du mois de Juin 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-06",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1549,7 +1566,8 @@
   "caption": "Observations météorologiques du mois de Juin 1883.\nObservations actinométriques\nDATE\n9 h. Matin\nT\nt\nθ\nNÉBULOSITÉ\nMidi\nT\nt\nθ\nNÉBULOSITÉ\n3 h. Boir\nT\nt\nθ\nNÉBULOSITÉ\nDE RIO DE JANEIRO\n55",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-06",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1565,7 +1583,8 @@
   "caption": "Observations météorologiques du mois de Juillet 1883.\nRio de Janeiro, July 1883",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-07",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1573,7 +1592,8 @@
   "caption": "Observations météorologiques du mois de Juillet 1883.\nTension de la vapeur atmosphérique en millimètres.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-07",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1589,7 +1609,8 @@
   "caption": "Observations météorologiques du mois de Juillet 1883.\nRio de Janeiro, July 1883",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-07",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1621,7 +1642,8 @@
   "caption": "Observations météorologiques du mois d'Août 1883.\nRio de Janeiro, August 1883.",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-08",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1629,7 +1651,8 @@
   "caption": "Observations météorologiques du mois d'Août 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-08",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1661,7 +1684,8 @@
   "caption": "Observations météorologiques du mois de Août 1883.\nObservations actinométriques\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-08",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -1717,7 +1741,8 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois d'Octobre 1882.\nTempérature centigrade à l'ombre.",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-10",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -1725,7 +1750,8 @@
   "caption": "Observations météorologiques du mois d'Octobre 1882.\nDE RIO DE JANEIRO\n83",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-10",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -1741,7 +1767,8 @@
   "caption": "Observations météorologiques du mois d'Octobre 1882.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-10",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -1757,7 +1784,8 @@
   "caption": "Observations météorologiques du mois d'Octobre 1882.\nObservatoire de Rio de Janeiro\nOctobre 1882",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-10",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -1773,7 +1801,8 @@
   "caption": "Observations météorologiques du mois de Novembre 1882.\nDe Rio de Janeiro\nAnnales de l'Observ. Imp. t. II.",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-11",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -1789,7 +1818,8 @@
   "caption": "Observations météorologiques du mois de Novembre 1882.\nDE RIO DE JANEIRO\n91",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-11",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -1813,7 +1843,8 @@
   "caption": "Observations météorologiques du mois de Novembre 1882.\nDE RIO DE JANEIRO\n95",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-11",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -1845,7 +1876,8 @@
   "caption": "Observations météorologiques du mois de Décembre 1882.\nTempsérature centigrade à l'ombre.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-12",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -1853,7 +1885,8 @@
   "caption": "Observations météorologiques du mois de Décembre 1882.\nDE RIO DE JANEIRO\n101",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-12",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -1869,7 +1902,8 @@
   "caption": "Observations météorologiques du mois de Décembre 1882.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-12",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -1957,7 +1991,8 @@
   "caption": "Observações meteorológicas do mês de Março de 1882.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-03",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -2149,7 +2184,8 @@
   "caption": "Observações meteorológicas do meio de Outubro de 1882.\nRio Grande do Sul. — Observador, Lóppo Netto, Engenheiro director.\n(27)\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "period": "1882-10",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",

@@ -85,6 +85,14 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   release: 496 usable rows, 202 of them 1882, in the same French daily layouts.
   Checked the same way as the rest — 2 climatologically impossible values in
   3,417 (0.06%), no ordering violations.
+- **509 rows were re-dated after v0.2** and carry `period_as_published` with
+  the wrong month they shipped with. The caption parser matched month names by
+  substring, and *Rio de Janeiro* contains *janeiro*, so 16 Annales pages headed
+  "du mois de Mars/Mai/Juillet/Août/Octobre/Novembre/Décembre … DE RIO DE
+  JANEIRO" were dated to January. Only the month was wrong; the values, the
+  page, the station and the verdicts are unchanged, and only doc 5 (the v0.2
+  addition) was affected. Fixed in `wrb.caption`, corrected by
+  `scripts/g4_audit_periods.py`, frozen as **v0.2.1**.
 - **A 31-month gap.** 1887-01 through 1888-11 are absent, and it is a source
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not

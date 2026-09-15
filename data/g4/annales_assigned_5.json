@@ -71,10 +71,11 @@
   "caption": "Temps de Rio de Janeiro. Observations météorologiques du mois de Février 1883.",
   "is_weather_table": true,
   "profile": null,
-  "period": "1883-01",
+  "period": "1883-02",
   "cells": 29,
   "cell_votes": "[29, 29, 29, 29, 29]",
-  "sample_row": "| 14 | 24.8 | 25.0 | 26.2 | 26.4 | 24.6 | 24.0 | 23.0 | 24.94 |\n|---|---|---|---|---|---|---|---|---|\n| | | | | | | | | |"
+  "sample_row": "| 14 | 24.8 | 25.0 | 26.2 | 26.4 | 24.6 | 24.0 | 23.0 | 24.94 |\n|---|---|---|---|---|---|---|---|---|\n| | | | | | | | | |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -104,10 +105,11 @@
   "caption": "Observations météorologiques du mois de Février 1883.\nObservations actinométriques\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": null,
-  "period": "1883-01",
+  "period": "1883-02",
   "cells": 29,
   "cell_votes": "[102, 29, 36, 30, 32]",
-  "sample_row": "| P. t. II. | DATE | T | t | 0 | NÉBULOSITÉ | T | t | 0 | NÉBULOSITÉ | T | t | 0 | NÉBULOSITÉ |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|-"
+  "sample_row": "| P. t. II. | DATE | T | t | 0 | NÉBULOSITÉ | T | t | 0 | NÉBULOSITÉ | T | t | 0 | NÉBULOSITÉ |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|-",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -126,10 +128,11 @@
   "caption": "Observations météorologiques du mois de Mars 1883.\nBaromètre réduit à 0°, 700mm +.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "rio-1883-barometre",
-  "period": "1883-01",
+  "period": "1883-03",
   "cells": 10,
   "cell_votes": "[10, 10, 10, 11, 11]",
-  "sample_row": "| 15 | 56.79 | 58.58 | 62.85 | 62.07 | 60.87 | 61.44 | 62.25 | 60.69 | + 3.25 |"
+  "sample_row": "| 15 | 56.79 | 58.58 | 62.85 | 62.07 | 60.87 | 61.44 | 62.25 | 60.69 | + 3.25 |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -137,10 +140,11 @@
   "caption": "Observations météorologiques du mois de Mars 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "rio-1883-vapeur",
-  "period": "1883-01",
+  "period": "1883-03",
   "cells": 9,
   "cell_votes": "[11, 9, 29, 108, 29]",
-  "sample_row": "| 4 | 20.15 | 20.52 | 21.38 | 20.57 | 22.44 | 21.32 | 20.41 | 20.79 | | |"
+  "sample_row": "| 4 | 20.15 | 20.52 | 21.38 | 20.57 | 22.44 | 21.32 | 20.41 | 20.79 | | |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -182,10 +186,11 @@
   "caption": "Observations météorologiques du mois de Mars 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": null,
-  "period": "1883-01",
+  "period": "1883-03",
   "cells": 11,
   "cell_votes": "[11, 139, 139, 139, 139]",
-  "sample_row": "22 | 27.0 | 22.7 | 4.3 | 41.0 | | | 4.1 | 2.2 | 9 | 0"
+  "sample_row": "22 | 27.0 | 22.7 | 4.3 | 41.0 | | | 4.1 | 2.2 | 9 | 0",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -193,10 +198,11 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mars 1883.",
   "is_weather_table": true,
   "profile": null,
-  "period": "1883-01",
+  "period": "1883-03",
   "cells": 144,
   "cell_votes": "[144, 1, 131, 2, 136]",
-  "sample_row": "8 | Eclairs du N à W à 7 h. du soir. | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |"
+  "sample_row": "8 | Eclairs du N à W à 7 h. du soir. | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -204,10 +210,11 @@
   "caption": "Observations météorologiques du mois d'Avril 1883.\nTempsérature centigrade à l'ombre.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "rio-1883-vapeur",
-  "period": "1883-01",
+  "period": "1883-04",
   "cells": 9,
   "cell_votes": "[29, 9, 29, 9, 9]",
-  "sample_row": "| 8 | 24.2 | 23.6 | 25.8 | 29.4 | 25.2 | 26 4 | 23.6 | 25.46 |\n|---|---|---|---|---|---|---|---|---|\n| null | null | null | null | null | null | null "
+  "sample_row": "| 8 | 24.2 | 23.6 | 25.8 | 29.4 | 25.2 | 26 4 | 23.6 | 25.46 |\n|---|---|---|---|---|---|---|---|---|\n| null | null | null | null | null | null | null ",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -215,10 +222,11 @@
   "caption": "Observations météorologiques du mois d'Avril de 1883\nDE RIO DE JANEIRO\n31",
   "is_weather_table": true,
   "profile": null,
-  "period": "1883-01",
+  "period": "1883-04",
   "cells": 32,
   "cell_votes": "[32, 21, 32, 32, 32]",
-  "sample_row": "| 8 | 82 | 90 | 85 | 57 | 74 | 60. | 83 | 75.8 | Fort orage lè soir pluie. |\n|---|---|---|---|---|---|---|---|---|---|\n| null | null | null | null | n"
+  "sample_row": "| 8 | 82 | 90 | 85 | 57 | 74 | 60. | 83 | 75.8 | Fort orage lè soir pluie. |\n|---|---|---|---|---|---|---|---|---|---|\n| null | null | null | null | n",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -237,10 +245,11 @@
   "caption": "Observations météorologiques du mois d'Avril 1883.\nDE RIO DE JANEIRO\n33",
   "is_weather_table": true,
   "profile": null,
-  "period": "1883-01",
+  "period": "1883-04",
   "cells": 48,
   "cell_votes": "[48, 49, 61, 57, 47]",
-  "sample_row": "13 | N | 1 | NNE | 1 | NW | 1 | SE | 1 | SSE | 1 | S | 2 | WW | 1 | RO |\n14 | NW | 2 | NW | 2 | NW | 1 | NE | 1 | SSE | 2 | SSE | 2 | NW | 1 | 1 |\n15 "
+  "sample_row": "13 | N | 1 | NNE | 1 | NW | 1 | SE | 1 | SSE | 1 | S | 2 | WW | 1 | RO |\n14 | NW | 2 | NW | 2 | NW | 1 | NE | 1 | SSE | 2 | SSE | 2 | NW | 1 | 1 |\n15 ",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -281,10 +290,11 @@
   "caption": "Observations météorologiques du mois de Mai 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "rio-1883-barometre",
-  "period": "1883-01",
+  "period": "1883-05",
   "cells": 10,
   "cell_votes": "[11, 32, 10, 10, 10]",
-  "sample_row": "| 3 | 59.89 | 60.41 | 61.34 | 60.51 | 59.30 | 60.39 | 61.07 | 60.42 | + 0.45 | |"
+  "sample_row": "| 3 | 59.89 | 60.41 | 61.34 | 60.51 | 59.30 | 60.39 | 61.07 | 60.42 | + 0.45 | |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -292,10 +302,11 @@
   "caption": "Observations météorologiques du mois de Mai 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "rio-1883-barometre",
-  "period": "1883-01",
+  "period": "1883-05",
   "cells": 10,
   "cell_votes": "[11, 10, 9, 10, 11]",
-  "sample_row": "| 8 | 13.59 | 15.77 | 15.06 | 18.28 | 15.62 | 14.66 | 16.80 | 15.68 | | |"
+  "sample_row": "| 8 | 13.59 | 15.77 | 15.06 | 18.28 | 15.62 | 14.66 | 16.80 | 15.68 | | |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -315,10 +326,11 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mai 1883.",
   "is_weather_table": true,
   "profile": "rio-1883-vento",
-  "period": "1883-01",
+  "period": "1883-05",
   "cells": 15,
   "cell_votes": "[15, 12, 13, 15, 13]",
-  "sample_row": "| 22 | 24.2 | 19.5 | 4.7 | 37.4 | 15.5 | 21.9 | | | 3.0 | 15 | 9 | 0 | | |"
+  "sample_row": "| 22 | 24.2 | 19.5 | 4.7 | 37.4 | 15.5 | 21.9 | | | 3.0 | 15 | 9 | 0 | | |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -337,10 +349,11 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mai 1883.",
   "is_weather_table": true,
   "profile": null,
-  "period": "1883-01",
+  "period": "1883-05",
   "cells": 2,
   "cell_votes": "[2, 152, 3, 138, 42]",
-  "sample_row": "| 18 | Pluie à 4 h. du matin et fort vent SSW de 4 à 10 h. ESE fort à 1 h. du soir et halo |"
+  "sample_row": "| 18 | Pluie à 4 h. du matin et fort vent SSW de 4 à 10 h. ESE fort à 1 h. du soir et halo |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -359,10 +372,11 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Juin 1883.",
   "is_weather_table": true,
   "profile": null,
-  "period": "1883-01",
+  "period": "1883-06",
   "cells": 32,
   "cell_votes": "[21, 32, 32, 32, 32]",
-  "sample_row": "| 3 | 90 | 86 | 80 | 67 | 76 | 70 | 78 | 78.1 | Brouillard le matin. |\n|---|---|---|---|---|---|---|---|---|---|"
+  "sample_row": "| 3 | 90 | 86 | 80 | 67 | 76 | 70 | 78 | 78.1 | Brouillard le matin. |\n|---|---|---|---|---|---|---|---|---|---|",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -381,10 +395,11 @@
   "caption": "Observations météorologiques du mois de Juin 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": null,
-  "period": "1883-01",
+  "period": "1883-06",
   "cells": 26,
   "cell_votes": "[41, 159, 26, 127]",
-  "sample_row": "Observations météorologiques du mois de Juin 1883. | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 2"
+  "sample_row": "Observations météorologiques du mois de Juin 1883. | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 2",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -392,10 +407,11 @@
   "caption": "Observations météorologiques du mois de Juin 1883.\nObservations actinométriques\nDATE\n9 h. Matin\nT\nt\nθ\nNÉBULOSITÉ\nMidi\nT\nt\nθ\nNÉBULOSITÉ\n3 h. Boir\nT\nt\nθ\nNÉBULOSITÉ\nDE RIO DE JANEIRO\n55",
   "is_weather_table": true,
   "profile": null,
-  "period": "1883-01",
+  "period": "1883-06",
   "cells": 42,
   "cell_votes": "[42, 153]",
-  "sample_row": "| Observations météorologiques du mois de Juin 1883. |\n| --- |\n| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 |"
+  "sample_row": "| Observations météorologiques du mois de Juin 1883. |\n| --- |\n| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -414,10 +430,11 @@
   "caption": "Observations météorologiques du mois de Juillet 1883.\nRio de Janeiro, July 1883",
   "is_weather_table": true,
   "profile": "rio-1883-barometre",
-  "period": "1883-01",
+  "period": "1883-07",
   "cells": 10,
   "cell_votes": "[103, 10, 21, 10, 10]",
-  "sample_row": "| 5 | 63.08 | 63.90 | 65.00 | 63.76 | 62.86 | 62.76 | 63.44 | 63.54 | - 0.60 | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |"
+  "sample_row": "| 5 | 63.08 | 63.90 | 65.00 | 63.76 | 62.86 | 62.76 | 63.44 | 63.54 | - 0.60 | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -425,10 +442,11 @@
   "caption": "Observations météorologiques du mois de Juillet 1883.\nTension de la vapeur atmosphérique en millimètres.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "rio-1883-vapeur",
-  "period": "1883-01",
+  "period": "1883-07",
   "cells": 9,
   "cell_votes": "[10, 9, 9, 9, 10]",
-  "sample_row": "| 9 | 13.69 | 14.11 | 14.46 | 11.60 | 13.15 | 10.29 | 13.86 | 13.02 | |"
+  "sample_row": "| 9 | 13.69 | 14.11 | 14.46 | 11.60 | 13.15 | 10.29 | 13.86 | 13.02 | |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -447,10 +465,11 @@
   "caption": "Observations météorologiques du mois de Juillet 1883.\nRio de Janeiro, July 1883",
   "is_weather_table": true,
   "profile": "rio-1883-thermo",
-  "period": "1883-01",
+  "period": "1883-07",
   "cells": 13,
   "cell_votes": "[13, 13, 12, 125, 12]",
-  "sample_row": "| 3 | 21.1 | 15.1 | 6.0 | 35.5 | 12.0 | 23.5 | | | 4.4 | 2.2 | 6 | 5 |"
+  "sample_row": "| 3 | 21.1 | 15.1 | 6.0 | 35.5 | 12.0 | 23.5 | | | 4.4 | 2.2 | 6 | 5 |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -491,10 +510,11 @@
   "caption": "Observations météorologiques du mois d'Août 1883.\nRio de Janeiro, August 1883.",
   "is_weather_table": true,
   "profile": "rio-1883-barometre",
-  "period": "1883-01",
+  "period": "1883-08",
   "cells": 10,
   "cell_votes": "[10, 10, 10, 29, 10]",
-  "sample_row": "| 3 | 14.4 | 15.4 | 16.8 | 20.0 | 17.8 | 17.4 | 17.0 | 15.55 | null |"
+  "sample_row": "| 3 | 14.4 | 15.4 | 16.8 | 20.0 | 17.8 | 17.4 | 17.0 | 15.55 | null |",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -502,10 +522,11 @@
   "caption": "Observations météorologiques du mois d'Août 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": null,
-  "period": "1883-01",
+  "period": "1883-08",
   "cells": 32,
   "cell_votes": "[32, 32, 32, 32, 35]",
-  "sample_row": "| 8 | 94 | 94 | 94 | 80 | 84 | 80 | 90 | 88.0 | Pluie. |\n|---|---|---|---|---|---|---|---|---|---|\n| null | null | null | null | null | null | null | "
+  "sample_row": "| 8 | 94 | 94 | 94 | 80 | 84 | 80 | 90 | 88.0 | Pluie. |\n|---|---|---|---|---|---|---|---|---|---|\n| null | null | null | null | null | null | null | ",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -547,10 +568,11 @@
   "caption": "Observations météorologiques du mois de Août 1883.\nObservations actinométriques\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "rio-1883-actinometrie",
-  "period": "1883-01",
+  "period": "1883-08",
   "cells": 16,
   "cell_votes": "[17, 17, 16, 16, 16]",
-  "sample_row": "6 | 42.4 | 28.6 | 13.8 | 2 | C | 45.2 | 33.2 | 12.0 | 3 | C,K | 45.8 | 35.0 | 10.8 | 6 | C | Dni"
+  "sample_row": "6 | 42.4 | 28.6 | 13.8 | 2 | C | 45.2 | 33.2 | 12.0 | 3 | C,K | 45.8 | 35.0 | 10.8 | 6 | C | Dni",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "5",
@@ -613,10 +635,11 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois d'Octobre 1882.\nTempérature centigrade à l'ombre.",
   "is_weather_table": true,
   "profile": "rio-1883-barometre",
-  "period": "1882-01",
+  "period": "1882-10",
   "cells": 10,
   "cell_votes": "[29, 9, 10, 29, 10]",
-  "sample_row": "| 8 | 17.6 | 18.6 | 19.2 | 20.2 | 20.0 | 19.6 | 19.4 | 19.23 |\n|---|---|---|---|---|---|---|---|---|\n| null | null | null | null | null | null | null "
+  "sample_row": "| 8 | 17.6 | 18.6 | 19.2 | 20.2 | 20.0 | 19.6 | 19.4 | 19.23 |\n|---|---|---|---|---|---|---|---|---|\n| null | null | null | null | null | null | null ",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -624,11 +647,12 @@
   "caption": "Observations météorologiques du mois d'Octobre 1882.\nDE RIO DE JANEIRO\n83",
   "is_weather_table": true,
   "profile": null,
-  "period": "1882-01",
+  "period": "1882-10",
   "cells": 10,
   "cell_votes": "[10, 32, 32, 32, 10]",
   "sample_row": "3 | 100 | 98 | 66 | 37 | 36 | 36 | 63 | 62.3 | Brouillard de 4 à 10 h. soir. |",
-  "rejected": "linha de rumos de vento, não de números"
+  "rejected": "linha de rumos de vento, não de números",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -648,10 +672,11 @@
   "caption": "Observations météorologiques du mois d'Octobre 1882.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": null,
-  "period": "1882-01",
+  "period": "1882-10",
   "cells": 26,
   "cell_votes": "[141, 153, 26]",
-  "sample_row": "| Observations météorologiques du mois d'Octobre 1882. | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |"
+  "sample_row": "| Observations météorologiques du mois d'Octobre 1882. | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -670,10 +695,11 @@
   "caption": "Observations météorologiques du mois d'Octobre 1882.\nObservatoire de Rio de Janeiro\nOctobre 1882",
   "is_weather_table": true,
   "profile": null,
-  "period": "1882-01",
+  "period": "1882-10",
   "cells": 40,
   "cell_votes": "[40, 159]",
-  "sample_row": "| 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 "
+  "sample_row": "| 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 ",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -692,10 +718,11 @@
   "caption": "Observations météorologiques du mois de Novembre 1882.\nDe Rio de Janeiro\nAnnales de l'Observ. Imp. t. II.",
   "is_weather_table": true,
   "profile": "rio-1883-barometre",
-  "period": "1882-01",
+  "period": "1882-11",
   "cells": 10,
   "cell_votes": "[10, 35, 12, 10, 12]",
-  "sample_row": "| 2 | 53.58 | 54.14 | 54.04 | 52.43 | 51.46 | 52.16 | 53.67 | 53.07 | - 3 15 |"
+  "sample_row": "| 2 | 53.58 | 54.14 | 54.04 | 52.43 | 51.46 | 52.16 | 53.67 | 53.07 | - 3 15 |",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -714,10 +741,11 @@
   "caption": "Observations météorologiques du mois de Novembre 1882.\nDE RIO DE JANEIRO\n91",
   "is_weather_table": true,
   "profile": "rio-1883-vapeur",
-  "period": "1882-01",
+  "period": "1882-11",
   "cells": 9,
   "cell_votes": "[9, 29, 9, 29, 10]",
-  "sample_row": "| 3 | 17.87 | 17.75 | 16.88 | 16.64 | 19.04 | 19.17 | 19.33 | 18.10 |"
+  "sample_row": "| 3 | 17.87 | 17.75 | 16.88 | 16.64 | 19.04 | 19.17 | 19.33 | 18.10 |",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -748,10 +776,11 @@
   "caption": "Observations météorologiques du mois de Novembre 1882.\nDE RIO DE JANEIRO\n95",
   "is_weather_table": true,
   "profile": "rio-1883-thermo",
-  "period": "1882-01",
+  "period": "1882-11",
   "cells": 13,
   "cell_votes": "[13, 13, 14, 13, 13]",
-  "sample_row": "3 | 26.7 | 21.3 | 5.4 | 26.0 | 20.0 | 6.0 | null | null | 4.0 | 2.0 | 14 | 14"
+  "sample_row": "3 | 26.7 | 21.3 | 5.4 | 26.0 | 20.0 | 6.0 | null | null | 4.0 | 2.0 | 14 | 14",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -781,10 +810,11 @@
   "caption": "Observations météorologiques du mois de Décembre 1882.\nTempsérature centigrade à l'ombre.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "rio-1883-barometre",
-  "period": "1882-01",
+  "period": "1882-12",
   "cells": 10,
   "cell_votes": "[29, 29, 29, 10, 29]",
-  "sample_row": "| 10 | 21.4 | 23.0 | 23.4 | 22.0 | 22.4 | 21.8 | 21.6 | 22.23 |\n|---|---|---|---|---|---|---|---|---|\n| | | | | | | | | |"
+  "sample_row": "| 10 | 21.4 | 23.0 | 23.4 | 22.0 | 22.4 | 21.8 | 21.6 | 22.23 |\n|---|---|---|---|---|---|---|---|---|\n| | | | | | | | | |",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -792,10 +822,11 @@
   "caption": "Observations météorologiques du mois de Décembre 1882.\nDE RIO DE JANEIRO\n101",
   "is_weather_table": true,
   "profile": null,
-  "period": "1882-01",
+  "period": "1882-12",
   "cells": 32,
   "cell_votes": "[32, 29, 67, 32, 11]",
-  "sample_row": "| 3 | 83 | 81 | 72 | 60 | 62 | 82 | 83 | 74·7 | Lune avec auréole. Pluie |\n|---|---|---|---|---|---|---|---|---|---|\n| | | | | | | | | | éne le soir |"
+  "sample_row": "| 3 | 83 | 81 | 72 | 60 | 62 | 82 | 83 | 74·7 | Lune avec auréole. Pluie |\n|---|---|---|---|---|---|---|---|---|---|\n| | | | | | | | | | éne le soir |",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",
@@ -814,11 +845,12 @@
   "caption": "Observations météorologiques du mois de Décembre 1882.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": null,
-  "period": "1882-01",
+  "period": "1882-12",
   "cells": 15,
   "cell_votes": "[15, 15, 20]",
   "sample_row": "24 | NW | I | NW | I | NW | I | SSE | 2 | SSE | 2 | NNW | 2 | NW | 2",
-  "rejected": "linha de rumos de vento, não de números"
+  "rejected": "linha de rumos de vento, não de números",
+  "period_before_fix": "1882-01"
  },
  {
   "doc": "5",

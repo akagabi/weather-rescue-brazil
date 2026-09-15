@@ -15,61 +15,16 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from wrb.caption import is_astronomy, match_period, match_profile  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parents[1]
-
-MONTHS = {
-    "janeiro": 1, "fevereiro": 2, "marco": 3, "março": 3, "abril": 4, "maio": 5,
-    "junho": 6, "julho": 7, "agosto": 8, "setembro": 9, "outubro": 10,
-    "novembro": 11, "dezembro": 12,
-    "janvier": 1, "fevrier": 2, "février": 2, "mars": 3, "avril": 4, "mai": 5,
-    "juin": 6, "juillet": 7, "aout": 8, "août": 8, "septembre": 9,
-    "octobre": 10, "novembre": 11, "decembre": 12, "décembre": 12,
-}
-
-# station name fragments -> profile id. Order matters: first hit wins.
-STATIONS = [
-    ("santa-cruz", "revista-santacruz-1889"), ("santa cruz", "revista-santacruz-1889"),
-    ("sta. cruz", "revista-santacruz-1889"), ("sta cruz", "revista-santacruz-1889"),
-    ("corumba", "corumba-1889"), ("corumbá", "corumba-1889"),
-    ("maranhao", "porto-maranhao-1886"), ("maranhão", "porto-maranhao-1886"),
-    ("rio de janeiro", "revista-rio-1886"), ("imperial observatorio", "revista-rio-1886"),
-    ("imperial observatório", "revista-rio-1886"),
-]
-
-
-def norm(s: str) -> str:
-    return re.sub(r"\s+", " ", s.lower()).strip()
-
-
-def match_profile(caption: str) -> str | None:
-    c = norm(caption)
-    for frag, pid in STATIONS:
-        if frag in c:
-            return pid
-    return None
-
-
-def match_period(caption: str) -> str | None:
-    c = norm(caption)
-    year = None
-    ym = re.search(r"\b(18[5-9]\d)\b", c)
-    if ym:
-        year = int(ym.group(1))
-    for name, n in MONTHS.items():
-        if name in c:
-            if year:
-                return f"{year:04d}-{n:02d}"
-            return None
-    return None
-
 
 def page_path(doc: str, page: int) -> Path:
     p = ROOT / "data" / "raw" / "docvirt" / doc / f"{page:06d}.webp"
@@ -142,9 +97,13 @@ def main() -> None:
         # rules). The production run already localises properly and refuses a
         # page whose rows do not close, so let it be the geometry filter and
         # keep this pass to the one question a caption can answer: what is it?
-        weather = "NOT_WEATHER" not in cap.upper()
+        # An ephemeris passes both the geometric sweep and the station match
+        # (docId 11's "AO MEIO DIA MEDIO NO RIO DE JANEIRO" is a SOL table),
+        # so the veto has to be explicit and has to be recorded.
+        astro = is_astronomy(cap)
+        weather = "NOT_WEATHER" not in cap.upper() and not astro
         rec = {"doc": str(c["doc"]), "page": int(c["page"]), "caption": cap,
-               "is_weather_table": weather,
+               "is_weather_table": weather, "astronomy": astro,
                "profile": match_profile(cap) if weather else None,
                "period": match_period(cap) if weather else None}
         results.append(rec)
@@ -157,7 +116,9 @@ def main() -> None:
     out_path.write_text(json.dumps(results, indent=1, ensure_ascii=False))
     ok = [r for r in results if r["profile"] and r["period"]]
     wx = [r for r in results if r["is_weather_table"]]
-    print(f"\n{len(wx)}/{len(results)} pages read as a weather table")
+    astro = [r for r in results if r.get("astronomy")]
+    print(f"\n{len(wx)}/{len(results)} pages read as a weather table "
+          f"({len(astro)} vetoed as astronomy)")
     print(f"identified {len(ok)}/{len(results)} pages with a profile AND a period")
     import collections
     print(collections.Counter(r["profile"] for r in results))

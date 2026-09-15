@@ -45,7 +45,8 @@
   "caption": "MARÇO DE 1855.\nAO MEIO DIA MEDIO NO RIO DE JANEIRO.",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1855-01"
+  "period": "1855-03",
+  "period_before_fix": "1855-01"
  },
  {
   "doc": "11",
@@ -53,7 +54,8 @@
   "caption": "AGOSTO DE 1855.\nAO MEIO DIA MEDIO NO RIO DE JANEIRO.",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1855-01"
+  "period": "1855-08",
+  "period_before_fix": "1855-01"
  },
  {
   "doc": "11",
@@ -749,7 +751,8 @@
   "caption": "Redução das observações meteorológicas feitas em Cuyabá, no meio de Outubro de 1888 pelo maior Américo Rodrigues de Vasconcelos.\nObservatório de Cuyabá, 1888",
   "is_weather_table": true,
   "profile": null,
-  "period": "1888-05"
+  "period": "1888-10",
+  "period_before_fix": "1888-05"
  },
  {
   "doc": "15",
@@ -757,7 +760,8 @@
   "caption": "RESUMO DAS OBSERAÇÕES METEOROLÓGICAS FEITAS EM CUYABÁ NO MEZ DE OUTUBRO DE 1888 PELO MAIOR AMÉRICO RODRIGUES DE VAZCONCELOS",
   "is_weather_table": true,
   "profile": null,
-  "period": "1888-05"
+  "period": "1888-10",
+  "period_before_fix": "1888-05"
  },
  {
   "doc": "15",
@@ -1093,7 +1097,8 @@
   "caption": "REVISTA DO OBSERVATORIO\n153\n\nRevista climatologica do mez de Setembro\nde 1889 no Rio de Janeiro\n\nHa entre os factores climatologica deste mez\ne os valores de comparacao, certas divergencias,\nque vamos mostrar nas linhas que seguem.\n\nA media mensal da pressao atmosferica foi,\ncomo se ve no quadro junto, de 0mm.34 maior",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1889-01"
+  "period": "1889-09",
+  "period_before_fix": "1889-01"
  },
  {
   "doc": "15",
@@ -1117,7 +1122,8 @@
   "caption": "REVISTA DO OBSERVATORIO\n159\n\nRevista climatológica do mez de Outubro\nde 1889 no Rio de Janeiro\n\nELEMENTOS CLIMATÓLOGICOS\nVALORES NORMAES E\nEXTREMOS\n1889\n\nAltura barométrica média. . . . . . . . . . . . . . . . . . . . . . . . . . . .",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1889-01"
+  "period": "1889-10",
+  "period_before_fix": "1889-01"
  },
  {
   "doc": "15",
@@ -1965,7 +1971,8 @@
   "caption": "Observations météorologiques du mois de Février 1883\nDE RIO DE JANEIRO\n13",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-02",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "8",
@@ -1973,7 +1980,8 @@
   "caption": "Observations météorologiques du mois de Mars 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-03",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "8",
@@ -1989,7 +1997,8 @@
   "caption": "Observations météorologiques du mois d'Aout 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-08",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "8",
@@ -2005,7 +2014,8 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Novembre 1883\nTension de la vapeur atmosphérique en millimètres",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-11",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "8",
@@ -2013,7 +2023,8 @@
   "caption": "Observations météorologiques du mois de Décembre 1883\nDE RIO DE JANEIRO\n93",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-12",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "8",
@@ -2021,7 +2032,8 @@
   "caption": "DE RIO DE JANEIRO\n103\nRÉSUMÉ MÉTÉOROLOGIQUE DU MOIS D'AVRIL 1883\nBaromètre à 0°\nTempérature centigrade à l'ombre\nTension de la vapeur\nHumidité relative\nNébulosité en dixièmes du ciel couvert\nPLUIE\nJOURS\nOZONE\nEVAPORATION",
   "is_weather_table": true,
   "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "period": "1883-04",
+  "period_before_fix": "1883-01"
  },
  {
   "doc": "8",
