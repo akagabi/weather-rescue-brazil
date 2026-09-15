@@ -2098,7 +2098,9 @@
   "caption": "Tension de la vapeur atmosphérique.\nANNEXES DE L'Observatoire IMPÉRIAL\nJanvier 1867",
   "is_weather_table": true,
   "profile": null,
-  "period": "1867-01"
+  "period": "1867-01",
+  "astronomy": false,
+  "period_suspect": "period 1867-01 is outside doc 5's span 1881-01..1884-12 (Annales de l'Observatoire Imperial)"
  },
  {
   "doc": "5",

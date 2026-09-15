@@ -969,7 +969,9 @@
   "caption": "RESUMO DAS OBSERAÇÕES METEOROLÓGICAS FEITAS EM CUBÁY NO MEZ DE MARÇO DE 1859 PELO MAJOR AMÉRICO RODRIGUES DE VASCONCELLOS",
   "is_weather_table": true,
   "profile": null,
-  "period": "1859-03"
+  "period": "1859-03",
+  "astronomy": false,
+  "period_suspect": "period 1859-03 is outside doc 15's span 1887-10..1890-12 (Revista do Observatorio)"
  },
  {
   "doc": "15",
@@ -977,7 +979,9 @@
   "caption": "Redução das observações meteorológicas feitas em Cuyabá, no mês de Março de 1859 pelo major Amerio Rodrigues de Vasconcellos.\nObservatório: Observatório de Cuyabá\nMês: Março\nAno: 1859",
   "is_weather_table": true,
   "profile": null,
-  "period": "1859-03"
+  "period": "1859-03",
+  "astronomy": false,
+  "period_suspect": "period 1859-03 is outside doc 15's span 1887-10..1890-12 (Revista do Observatorio)"
  },
  {
   "doc": "15",
@@ -1358,7 +1362,9 @@
   "caption": "COMISSÃO GEOGRÁFICA E GEOLOGICA DO ESTADO DE S. PAULO\nQUADRO CLIMATICO DO ANO DE 1888 — Estação de Tatuhy\nELEMENTOS CLIMATOLÓGICOS\nJan.  Feb.  Mar.  Abr.  Mai.  Jun.  Jul.  Ago.  Set.  Out.  Nov.  Dez.  SOMA",
   "is_weather_table": true,
   "profile": null,
-  "period": "1888-05"
+  "period": "1888-05",
+  "astronomy": false,
+  "period_suspect": "period 1888-05 is outside doc 16's span 1888-11..1891-12 (Revista do Observatorio)"
  },
  {
   "doc": "16",
@@ -1551,7 +1557,9 @@
   "caption": "ESTRELLAS\nPASSAGEM\nOBSERVADA\nCORREÇÕES\nDO INSTRUM.\nPASSAGEM\nCORRETA\nR\nTABULAR\nESTADO\nABSOL.\nDO\nCHRONOM.\n13 DE JULHO DE 1888\nα Serpentis.\n15.44.33.80\n+ 0.04\n33.84",
   "is_weather_table": true,
   "profile": null,
-  "period": "1888-07"
+  "period": "1888-07",
+  "astronomy": false,
+  "period_suspect": "period 1888-07 is outside doc 16's span 1888-11..1891-12 (Revista do Observatorio)"
  },
  {
   "doc": "16",

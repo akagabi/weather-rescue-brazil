@@ -18,7 +18,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from wrb.caption import is_astronomy, match_period, match_profile  # noqa: E402
+from wrb.caption import (is_astronomy, load_volume_spans,  # noqa: E402
+                         match_period, match_profile, period_outside_volume)
 
 
 def main() -> None:
@@ -27,6 +28,7 @@ def main() -> None:
     ap.add_argument("--write", action="store_true")
     args = ap.parse_args()
 
+    spans = load_volume_spans()
     for f in args.files:
         path = Path(f)
         recs = json.loads(path.read_text())
@@ -40,6 +42,11 @@ def main() -> None:
                    "is_weather_table": "NOT_WEATHER" not in cap.upper() and not astro}
             new["profile"] = match_profile(cap) if new["is_weather_table"] else None
             new["period"] = match_period(cap) if new["is_weather_table"] else None
+            # A year read off a caption is the least reliable thing on it; the
+            # volume's own span is a free second witness. Recorded, never acted
+            # on - the month may be right and only the year misread.
+            new["period_suspect"] = period_outside_volume(
+                new["period"], str(r.get("doc", r.get("item"))), spans)
             # A field the record never had is not a change worth reporting:
             # adding `astronomy` to an old sweep touched all 269 records and
             # buried the six that actually moved.
