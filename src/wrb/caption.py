@@ -47,6 +47,11 @@ ASTRONOMY = (
     # docId 15 page 87 came through the sweep as a weather table: the Revista
     # prints the Moon's apogee, perigee and semi-diameter in a ruled grid with
     # a day column, and none of the terms above appear on it.
+    # The Annales label their astronomical plates in the running head itself:
+    # "Observat. astron. f. 10", "Observ. astr. t. 12". Two of doc 5's pages
+    # say so and were still matched to a weather profile.
+    "observat. astron", "observ. astr", "observations astronomiques",
+    "observacoes astronomicas", "observações astronômicas", "astronomic",
     "apogeo", "apogeu", "perigeo", "perigeu", "semi-diametro", "semi diametro",
     "semi-diâmetro", "diametro da lua", "diâmetro da lua", "fases da lua",
     "phases de la lune", "distancias lunares", "distâncias lunares",
@@ -101,7 +106,11 @@ def is_astronomy(caption: str) -> bool:
 #
 # g4_annales_assign.py tells these apart by CELL COUNT, which is the only thing
 # that can. So a French Annales caption deliberately matches no profile here.
-_ANNALES = re.compile(r"observations?\s+m[ée]t[ée]orologiques?\s+d[ou]\s+mois", re.I)
+_ANNALES = re.compile(
+    r"(?:observations?|r[ée]sum[ée]s?)\s+m[ée]t[ée]orologiques?\s+"
+    r"d[eou]\s+(?:l['\u2019]\s*)?(?:mois|ann[ée]e)"
+    r"|r[ée]sum[ée]\s+m[ée]t[ée]orologique\s+d[eou]\s+(?:l['\u2019]\s*)?(?:mois|ann[ée]e)"
+    r"|annales de l['\u2019 ]\s*observatoire", re.I)
 
 
 def is_annales(caption: str) -> bool:
@@ -109,18 +118,35 @@ def is_annales(caption: str) -> bool:
     return bool(_ANNALES.search(norm(caption)))
 
 
+# A place name on its own is a RUNNING HEAD, not a table. Doc 5 sets "DE RIO
+# DE JANEIRO" across the top of every left-hand page with a roman folio beside
+# it, and eleven of those were matched to revista-rio-1886 - two of them say
+# "Observat. astron." in the same breath. Requiring something besides the place
+# name and the furniture is what separates a caption from a page header.
+_FURNITURE = re.compile(
+    r"\b(?:de|do|da|dos|das|no|na|em|of|the|annales|annaes|observ|obs|imp|"
+    r"imperial|t|f|p|n|pag|pl)\b|[ivxlcdmj]{2,}|\d+|[^\w\s]", re.I)
+
+
+def _has_content_beyond(caption: str, station_fragment: str) -> bool:
+    rest = norm(caption).replace(station_fragment, " ")
+    rest = _FURNITURE.sub(" ", rest)
+    return any(len(w) >= 4 for w in rest.split())
+
+
 def match_profile(caption: str) -> str | None:
     """The profile this caption names, or None.
 
-    Astronomy never matches, and neither does the Annales caption form: see
-    the note above on why the station alone is the wrong key there.
+    Astronomy never matches, the Annales caption form never matches (the
+    station alone cannot say which of its six sheets a page is), and neither
+    does a caption that is only a place name - that is a running head.
     """
     if is_astronomy(caption) or is_annales(caption):
         return None
     c = norm(caption)
     for frag, pid in STATIONS:
         if frag in c:
-            return pid
+            return pid if _has_content_beyond(caption, frag) else None
     return None
 
 

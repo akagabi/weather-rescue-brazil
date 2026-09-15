@@ -2596,8 +2596,9 @@
   "page": 128,
   "caption": "DE RIO DE JANEIRO [123]",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "7",

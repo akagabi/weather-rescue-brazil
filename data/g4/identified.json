@@ -43,19 +43,21 @@
   "doc": "11",
   "page": 15,
   "caption": "MARÇO DE 1855.\nAO MEIO DIA MEDIO NO RIO DE JANEIRO.",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1855-03",
-  "period_before_fix": "1855-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "period_before_fix": "1855-01",
+  "astronomy": true
  },
  {
   "doc": "11",
   "page": 25,
   "caption": "AGOSTO DE 1855.\nAO MEIO DIA MEDIO NO RIO DE JANEIRO.",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1855-08",
-  "period_before_fix": "1855-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "period_before_fix": "1855-01",
+  "astronomy": true
  },
  {
   "doc": "11",
@@ -93,9 +95,10 @@
   "doc": "11",
   "page": 75,
   "caption": "TEMPO MÉDIO NO RIO DE JANEIRO. 1853. Passagem meridiana. Asc. recta. Declinação a 0h.",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1853-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "11",
@@ -141,25 +144,28 @@
   "doc": "11",
   "page": 135,
   "caption": "DISTANCIAS LUNARES.\nFEBREIRO DE 1855.",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "11",
   "page": 145,
   "caption": "DISTANCIAS LUNARES.\nMARÇO DE 1853.",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": "1853-03"
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "11",
   "page": 165,
   "caption": "DISTANCIAS LUNARES.\nMAIO DE 1853.",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": "1853-05"
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "12",
@@ -301,9 +307,10 @@
   "doc": "14",
   "page": 73,
   "caption": "REVISTA DO OBSERVATORIO\n61\n\nPHENOMENOS APRESENTADOS PELOS SATELLITES\nDE JUPITER\n\n| Dias | Horas | | SATELLITES |\n|---|---|---|---|\n| 1 | 9.47 T | | Passagem do 1º satellite. |\n| 2 | 10.40 T | | Entrada",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "14",
@@ -687,7 +694,8 @@
   "caption": "REVISTA DO OBSERVATORIO\nOBSERVATORIO DE GRACA FILHO\n12\nELEMENTOS CLIMATOLÓGICOS\nVALORES NORMAES E\nEXTREMOS\n1888\nAltura barometrica média... 754mm,53 755,63\nIdem, idem, a mais alta... 757mm,91 75",
   "is_weather_table": true,
   "profile": null,
-  "period": "1888-05"
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "15",
@@ -985,7 +993,8 @@
   "caption": "COMISSÃO DE MELHORAMENTOS DA BARRA DO RIO GRANDE DO SUL\nMappa anual da chuva caída na Provincia do Rio Grande do Sul, correspondente ao anno de 1888\n\nESTÁGES\nJANEIRO\nFEBREIRO\nMARÇO\nABRIL\nMAIO\nJUNHO\nJULHO\nAGOSTO\nSETEMBRO\nOUTUBRO\nNOVEMBRO",
   "is_weather_table": true,
   "profile": null,
-  "period": "1888-01"
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "15",
@@ -1187,7 +1196,8 @@
   "caption": "REVISTA DO OBSERVATORIO\n183\n\nELEMENTOS CLIMATOLOGICOS\nVALORES NORMAES E\nEXTREMOS\n1889\n\nAltura barometrica media... 755mm,56 754,42\nIdem, idem, a mais alta... 750mm,39\nIdem, idem, a mais baixa... 75",
   "is_weather_table": true,
   "profile": null,
-  "period": "1889-05"
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "15",
@@ -1203,7 +1213,8 @@
   "caption": "COMISSÃO GEOGRÁFICA E GEOLOGICA DO ESTADO DE S. PAULO\nQUADRO CLIMATICOLOGICO DO ANO DE 1887 - Estacao de S. Paulo\nELEMENTOS CLIMATOLÓGICOS\n| | Janeiro | Fevereiro | Março | Abril | Maio | Junho | Julho | Agosto | Setembro | Outubro | Novembro | Dezembro | SOMMA |\n|---|---|---",
   "is_weather_table": true,
   "profile": null,
-  "period": "1887-01"
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "15",
@@ -1483,7 +1494,8 @@
   "caption": "REVISTA DO OBSERVATORIO\n61\n\nELEMENTOS CLIMATOLOGICOS\nVALORES NORMAES E\nEXTREMOS\n1890\n\nAltura barometrica média... 755mm,45 756mm,28\nIdem, idem, a mais alta... 760mm,62 759mm,64\nIdem, idem",
   "is_weather_table": true,
   "profile": null,
-  "period": "1890-05"
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "16",
@@ -1769,49 +1781,55 @@
   "doc": "5",
   "page": 25,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1881-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 35,
   "caption": "Observations faites à la lunette méridienne en 1881-82 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 45,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nDE RIO DE JANEIRO\nxxiiij",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 55,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 65,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nDE RIO DE JANEIRO\nxliij",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 75,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nRio de Janeiro\n1882",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
@@ -1826,56 +1844,63 @@
   "page": 95,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 105,
   "caption": "DE RIO DE JANEIRO\nlxxxv",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 115,
   "caption": "DE RIO DE JANEIRO\nXCV",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 125,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 135,
   "caption": "DE RIO DE JANEIRO\nCXV",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 145,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 165,
   "caption": "DE RIO DE JANEIRO\ncxlvij",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "6",
@@ -1970,18 +1995,20 @@
   "page": 25,
   "caption": "Observations météorologiques du mois de Février 1883\nDE RIO DE JANEIRO\n13",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-02",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "8",
   "page": 35,
   "caption": "Observations météorologiques du mois de Mars 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-03",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "8",
@@ -1996,9 +2023,10 @@
   "page": 75,
   "caption": "Observations météorologiques du mois d'Aout 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-08",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "8",
@@ -2013,35 +2041,39 @@
   "page": 95,
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Novembre 1883\nTension de la vapeur atmosphérique en millimètres",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-11",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "8",
   "page": 105,
   "caption": "Observations météorologiques du mois de Décembre 1883\nDE RIO DE JANEIRO\n93",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-12",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "8",
   "page": 115,
   "caption": "DE RIO DE JANEIRO\n103\nRÉSUMÉ MÉTÉOROLOGIQUE DU MOIS D'AVRIL 1883\nBaromètre à 0°\nTempérature centigrade à l'ombre\nTension de la vapeur\nHumidité relative\nNébulosité en dixièmes du ciel couvert\nPLUIE\nJOURS\nOZONE\nEVAPORATION",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-04",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "8",
   "page": 135,
   "caption": "DE RIO DE JANEIRO\nRÉSUMÉ MÉTÉOROLOGIQUE DE L'ANNÉE 1883\nMaxima diurnes de la température à l'ombre, moyennes décadiques et mensuelles",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1883-01"
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "8",

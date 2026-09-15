@@ -146,3 +146,53 @@ def test_the_revista_captions_are_untouched():
     ]:
         assert not is_annales(cap)
         assert match_profile(cap) == want
+
+
+def test_the_annales_set_their_caption_more_than_one_way():
+    """`Résumé météorologique du mois` reached the sweep as a Revista page."""
+    for cap in ["Résumé météorologique du mois de Janvier 1883",
+                "ANNALES DE L'OBSERVATOIRE IMPÉRIAL Observations météorologiques "
+                "du mois de Mai 1884 DE RIO DE JANEIRO",
+                "Observations météorologiques de l'année 1883"]:
+        assert is_annales(cap), cap
+        assert match_profile(cap) is None, cap
+
+
+def test_a_portuguese_revista_caption_is_not_swept_up_by_it():
+    cap = ("Resumo das observações meteorologicas feitas no Imperial Observatorio "
+           "no mez de Julho de 1886")
+    assert not is_annales(cap)
+    assert match_profile(cap) == "revista-rio-1886"
+
+
+# --- a place name on its own is a running head ------------------------------
+
+RUNNING_HEADS = [
+    "DE RIO DE JANEIRO",
+    "DE RIO DE JANEIRO, lxxix",
+    "DE RIO DE JANEIRO\nIxxx",
+    "DE RIO DE JANEIRO\nlxxij\nAnnales de l'Observ. Imp. t. II.\n"
+    "Observat. astron. f. 10",
+    "REVISTA DO OBSERVATORIO 116",
+]
+
+
+def test_a_running_head_is_not_a_table():
+    """Doc 5 sets `DE RIO DE JANEIRO` across every left-hand page. Eleven of
+    them were matched to revista-rio-1886, two while saying `Observat. astron.`
+    in the same breath."""
+    for cap in RUNNING_HEADS:
+        assert match_profile(cap) is None, cap
+
+
+def test_a_caption_with_something_to_say_still_matches():
+    for cap, want in [
+        ("Resumo das observações meteorologicas feitas no Imperial Observatorio "
+         "no mez de Julho de 1886", "revista-rio-1886"),
+        ("Observações meteorologicas de Corumbá, Setembro de 1889", "corumba-1889"),
+        ("Estação de Santa Cruz, Março de 1889", "revista-santacruz-1889"),
+        ("Porto do Maranhão, Dezembro de 1886", "porto-maranhao-1886"),
+        ("OBSERVATORIO DE SANTA-CRUZ Resumo das observações meteorológicas feitas",
+         "revista-santacruz-1889"),
+    ]:
+        assert match_profile(cap) == want, cap

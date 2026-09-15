@@ -67,121 +67,136 @@
   "doc": "5",
   "page": 23,
   "caption": "Observations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 24,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\nObservations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 25,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1881-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 27,
   "caption": "Observations faites à la lunette méridienne en 1881 par J. O. LACAILLE\nDE RIO DE JANEIRO",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1881-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 28,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\nObservations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 29,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1881-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 30,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\nObservations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 31,
   "caption": "Observations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 32,
   "caption": "ANNALES DE L'Observatoire Impérial.\nObservations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 33,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1881-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 34,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1881 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 35,
   "caption": "Observations faites à la lunette méridienne en 1881-82 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 36,
   "caption": "ANNALES DE L'Observatoire Impérial.\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 37,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 38,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
@@ -195,353 +210,397 @@
   "doc": "5",
   "page": 40,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 41,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 42,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 43,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 44,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 45,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nDE RIO DE JANEIRO\nxxiiij",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 46,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 47,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 48,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 49,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 50,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 51,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 52,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 53,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 54,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 55,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 56,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 57,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 58,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 59,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 60,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 61,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 62,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 63,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 64,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 65,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nDE RIO DE JANEIRO\nxliij",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 66,
   "caption": "ANNALES DE L' Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 67,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 68,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 69,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 70,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 71,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 72,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 73,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 74,
   "caption": "ANNALES DE L' Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 75,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nRio de Janeiro\n1882",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 76,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 77,
   "caption": "DE RIO DE JANEIRO\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 78,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 79,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nDE RIO DE JANEIRO\n1882",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 80,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 81,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nObservatory: Rio de Janeiro\nMonth: July\nYear: 1882",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 82,
   "caption": "ANNALES DE L'Observatoire Impérial\nObservations faites à la lunette méridienne en 1882 par J. O. LACAILLE",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 83,
   "caption": "Observations faites à la lunette méridienne en 1882 par J. O. LACAILLE\nObservatory: Rio de Janeiro\nMonth: July 14, 1882\nYear: 1882",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
@@ -556,56 +615,63 @@
   "page": 87,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 89,
   "caption": "DE RIO DE JANEIRO, lxxix",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 91,
   "caption": "DE RIO DE JANEIRO\nIxxx",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 93,
   "caption": "DE RIO DE JANEIRO\nlxxij\nAnnales de l'Observ. Imp. t. II.\nObservat. astron. f. 10",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 95,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 97,
   "caption": "DE RIO DE JANEIRO\nlxxvij",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 99,
   "caption": "DE RIO DE JANEIRO\nlxxix",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -620,152 +686,171 @@
   "page": 103,
   "caption": "DE RIO DE JANEIRO\nIxxxij",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 105,
   "caption": "DE RIO DE JANEIRO\nlxxxv",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 107,
   "caption": "DE RIO DE JANEIRO\nIxxxvj",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 109,
   "caption": "DE RIO DE JANEIRO\nlxxxix\nObserv. astr. t. 12",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 111,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 113,
   "caption": "DE RIO DE JANEIRO\nxcij",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 115,
   "caption": "DE RIO DE JANEIRO\nXCV",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 117,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 119,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 121,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 123,
   "caption": "DE RIO DE JANEIRO ciij",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 125,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 127,
   "caption": "DE RIO DE JANEIRO\ncvij",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 129,
   "caption": "DE RIO DE JANEIRO\ncix",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 131,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 133,
   "caption": "DE RIO DE JANEIRO\ncxij\nAnnales de l'Observ. Imp. t. II.\nObservat. astron. t. 16",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 135,
   "caption": "DE RIO DE JANEIRO\nCXV",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 137,
   "caption": "DE RIO DE JANEIRO\ncxvij",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 139,
   "caption": "DE RIO DE JANEIRO\ncxix",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -780,40 +865,45 @@
   "page": 143,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 145,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 147,
   "caption": "DE RIO DE JANEIRO\ncxxxvij",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 149,
   "caption": "DE RIO DE JANEIRO\nObserv. astron. -.-. 17.",
-  "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "is_weather_table": false,
+  "profile": null,
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
   "page": 153,
   "caption": "The image contains a table with columns such as \"No de l'étoile\" (Number of the star), \"Désignation de l'étoile\" (Designation of the star), \"Ascension droite moyenne 1880.0\" (Right ascension mean 1880.0), \"Précession annuelle\" (Annual precession), \"Époque moyenne 1800+\" (Mean epoch",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "5",
@@ -828,16 +918,18 @@
   "page": 157,
   "caption": "DE RIO DE JANEIRO cxxxix",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 159,
   "caption": "DE RIO DE JANEIRO\ncxvj",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -860,24 +952,27 @@
   "page": 165,
   "caption": "DE RIO DE JANEIRO\ncxlvij",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 167,
   "caption": "DE RIO DE JANEIRO\ncxlIX",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 169,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1253,8 +1348,9 @@
   "page": 309,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL DE RIO DE JANEIRO\nObservations météorologiques du mois de Janvier 1882.",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "profile": null,
+  "period": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1269,8 +1365,9 @@
   "page": 311,
   "caption": "Observations météorologiques du mois de Janvier 1882.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "profile": null,
+  "period": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1285,8 +1382,9 @@
   "page": 315,
   "caption": "Observations météorologiques du mois de Janvier 1882.\nDE RIO DE JANEIRO\n7",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": "1882-01"
+  "profile": null,
+  "period": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1301,17 +1399,19 @@
   "page": 319,
   "caption": "Temps de Rio de Janeiro. Observations météorologiques du mois de Février 1883.",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-02",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 321,
   "caption": "DE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
-  "period": null
+  "profile": null,
+  "period": null,
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1334,9 +1434,10 @@
   "page": 325,
   "caption": "Observations météorologiques du mois de Février 1883.\nObservations actinométriques\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-02",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1351,18 +1452,20 @@
   "page": 327,
   "caption": "Observations météorologiques du mois de Mars 1883.\nBaromètre réduit à 0°, 700mm +.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-03",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 329,
   "caption": "Observations météorologiques du mois de Mars 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-03",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1393,36 +1496,40 @@
   "page": 333,
   "caption": "Observations météorologiques du mois de Mars 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-03",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 335,
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mars 1883.",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-03",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 337,
   "caption": "Observations météorologiques du mois d'Avril 1883.\nTempsérature centigrade à l'ombre.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-04",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 339,
   "caption": "Observations météorologiques du mois d'Avril de 1883\nDE RIO DE JANEIRO\n31",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-04",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1437,9 +1544,10 @@
   "page": 341,
   "caption": "Observations météorologiques du mois d'Avril 1883.\nDE RIO DE JANEIRO\n33",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-04",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1470,18 +1578,20 @@
   "page": 345,
   "caption": "Observations météorologiques du mois de Mai 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-05",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 347,
   "caption": "Observations météorologiques du mois de Mai 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-05",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1496,9 +1606,10 @@
   "page": 351,
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mai 1883.",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-05",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1513,9 +1624,10 @@
   "page": 353,
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mai 1883.",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-05",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1539,9 +1651,10 @@
   "page": 357,
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Juin 1883.",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-06",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1556,18 +1669,20 @@
   "page": 359,
   "caption": "Observations météorologiques du mois de Juin 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-06",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 361,
   "caption": "Observations météorologiques du mois de Juin 1883.\nObservations actinométriques\nDATE\n9 h. Matin\nT\nt\nθ\nNÉBULOSITÉ\nMidi\nT\nt\nθ\nNÉBULOSITÉ\n3 h. Boir\nT\nt\nθ\nNÉBULOSITÉ\nDE RIO DE JANEIRO\n55",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-06",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1582,18 +1697,20 @@
   "page": 363,
   "caption": "Observations météorologiques du mois de Juillet 1883.\nRio de Janeiro, July 1883",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-07",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 365,
   "caption": "Observations météorologiques du mois de Juillet 1883.\nTension de la vapeur atmosphérique en millimètres.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-07",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1608,9 +1725,10 @@
   "page": 369,
   "caption": "Observations météorologiques du mois de Juillet 1883.\nRio de Janeiro, July 1883",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-07",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1641,18 +1759,20 @@
   "page": 373,
   "caption": "Observations météorologiques du mois d'Août 1883.\nRio de Janeiro, August 1883.",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-08",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 375,
   "caption": "Observations météorologiques du mois d'Août 1883.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-08",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1683,9 +1803,10 @@
   "page": 379,
   "caption": "Observations météorologiques du mois de Août 1883.\nObservations actinométriques\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-08",
-  "period_before_fix": "1883-01"
+  "period_before_fix": "1883-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1740,18 +1861,20 @@
   "page": 389,
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois d'Octobre 1882.\nTempérature centigrade à l'ombre.",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1882-10",
-  "period_before_fix": "1882-01"
+  "period_before_fix": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 391,
   "caption": "Observations météorologiques du mois d'Octobre 1882.\nDE RIO DE JANEIRO\n83",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1882-10",
-  "period_before_fix": "1882-01"
+  "period_before_fix": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1766,9 +1889,10 @@
   "page": 393,
   "caption": "Observations météorologiques du mois d'Octobre 1882.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1882-10",
-  "period_before_fix": "1882-01"
+  "period_before_fix": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1783,9 +1907,10 @@
   "page": 395,
   "caption": "Observations météorologiques du mois d'Octobre 1882.\nObservatoire de Rio de Janeiro\nOctobre 1882",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1882-10",
-  "period_before_fix": "1882-01"
+  "period_before_fix": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1800,9 +1925,10 @@
   "page": 397,
   "caption": "Observations météorologiques du mois de Novembre 1882.\nDe Rio de Janeiro\nAnnales de l'Observ. Imp. t. II.",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1882-11",
-  "period_before_fix": "1882-01"
+  "period_before_fix": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1817,9 +1943,10 @@
   "page": 399,
   "caption": "Observations météorologiques du mois de Novembre 1882.\nDE RIO DE JANEIRO\n91",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1882-11",
-  "period_before_fix": "1882-01"
+  "period_before_fix": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1842,9 +1969,10 @@
   "page": 403,
   "caption": "Observations météorologiques du mois de Novembre 1882.\nDE RIO DE JANEIRO\n95",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1882-11",
-  "period_before_fix": "1882-01"
+  "period_before_fix": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1875,18 +2003,20 @@
   "page": 407,
   "caption": "Observations météorologiques du mois de Décembre 1882.\nTempsérature centigrade à l'ombre.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1882-12",
-  "period_before_fix": "1882-01"
+  "period_before_fix": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
   "page": 409,
   "caption": "Observations météorologiques du mois de Décembre 1882.\nDE RIO DE JANEIRO\n101",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1882-12",
-  "period_before_fix": "1882-01"
+  "period_before_fix": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",
@@ -1901,9 +2031,10 @@
   "page": 411,
   "caption": "Observations météorologiques du mois de Décembre 1882.\nDE RIO DE JANEIRO",
   "is_weather_table": true,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1882-12",
-  "period_before_fix": "1882-01"
+  "period_before_fix": "1882-01",
+  "astronomy": false
  },
  {
   "doc": "5",

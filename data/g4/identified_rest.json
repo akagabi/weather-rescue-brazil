@@ -210,8 +210,8 @@
   "doc": "15",
   "page": 87,
   "caption": "REVISTA DO OBSERVATORIO\nAPOGEO, PERIGEO E SEMI-DIAMETRO\nDA LUA\nPerigeeo... . . . dia 13 ás 1 h. 16' 45\" 5.\nApogeeo . . . . dia 26 ás 18 h. 14' 43\" 5.\nMAIORES MARÉS",
-  "is_weather_table": true,
-  "astronomy": false,
+  "is_weather_table": false,
+  "astronomy": true,
   "profile": null,
   "period": null
  },
@@ -608,7 +608,7 @@
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL DE RIO DE JANEIRO\nObservations météorologiques du mois de Janvier 1883\nBaromètre réduit à 0°, 700mm +",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-01"
  },
  {
@@ -617,7 +617,7 @@
   "caption": "Observations météorologiques du mois de Janvier 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-01"
  },
  {
@@ -671,17 +671,17 @@
   "caption": "Observations météorologiques du mois de Février 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-02"
  },
  {
   "doc": "8",
   "page": 28,
   "caption": "Observations météorologiques do mois de Février 1883\nObservations astronomiques\nDATE\n8 h. Matin\nMidí\n3 h. Soir\nT\nt\n0\nNÉBULOSITÉ\nT\nt\n0\nNÉBULOSITÉ\nT\nt\n0\nNÉBULOSITÉ\n1\n50.4\n34.4\n1",
-  "is_weather_table": true,
-  "astronomy": false,
+  "is_weather_table": false,
+  "astronomy": true,
   "profile": null,
-  "period": "1883-02"
+  "period": null
  },
  {
   "doc": "8",
@@ -689,7 +689,7 @@
   "caption": "Observations météorologiques du mois de Mars 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-03"
  },
  {
@@ -698,7 +698,7 @@
   "caption": "Observations météorologiques du mois de Mars 1883\nTension de la vapeur atmosphérique en millimètres\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-03"
  },
  {
@@ -707,7 +707,7 @@
   "caption": "Observations météorologiques du mois de Mars 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-03"
  },
  {
@@ -752,7 +752,7 @@
   "caption": "Observations météorologiques du mois d'Avril 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-04"
  },
  {
@@ -770,7 +770,7 @@
   "caption": "Observations météorologiques du mois de Mai 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-05"
  },
  {
@@ -779,7 +779,7 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Mai 1883",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-05"
  },
  {
@@ -788,7 +788,7 @@
   "caption": "Observations météorologiques du mois de Mai 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-05"
  },
  {
@@ -815,7 +815,7 @@
   "caption": "Observations météorologiques du mois de Juin 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-06"
  },
  {
@@ -842,7 +842,7 @@
   "caption": "Observations météorologiques du mois de Juillet 1883\nDE RIO DE JANEIRO\nBaromètre réduit à 0°, 700mm +",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-07"
  },
  {
@@ -851,7 +851,7 @@
   "caption": "Observations météorologiques du mois de Juillet 1883\nDE RIO DE JANEIRO\n53",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-07"
  },
  {
@@ -860,7 +860,7 @@
   "caption": "Observations météorologiques du mois de Juillet 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-07"
  },
  {
@@ -878,7 +878,7 @@
   "caption": "Observations météorologiques du mois d'Aout 1883\nTension de la vapeur atmosphérique en millimètres\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-08"
  },
  {
@@ -887,7 +887,7 @@
   "caption": "Observations météorologiques du mois d'Aout 1883\nDE RIO DE JANEIRO\nG1",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-08"
  },
  {
@@ -905,7 +905,7 @@
   "caption": "Observations météorologiques du mois de Septembre 1883\nDe Rio de Janeiro",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-09"
  },
  {
@@ -914,7 +914,7 @@
   "caption": "Observations météorologiques du mois de Septembre 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-09"
  },
  {
@@ -923,7 +923,7 @@
   "caption": "Observations météorologiques du mois de Septembre 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-09"
  },
  {
@@ -959,7 +959,7 @@
   "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois d'Octobre 1883\nTension de la vapeur atmosphérique en millimètres",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-10"
  },
  {
@@ -968,7 +968,7 @@
   "caption": "Observations météorologiques du mois d'Octobre 1883\nDE RIO DE JANEIRO\n77",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-10"
  },
  {
@@ -977,7 +977,7 @@
   "caption": "Observations météorologiques du mois d'Octobre 1883\nDE RIO DE JANEIRO",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-10"
  },
  {
@@ -995,7 +995,367 @@
   "caption": "Observations météorologiques du mois de Novembre 1883\nDE RIO DE JANEIRO\n81",
   "is_weather_table": true,
   "astronomy": false,
-  "profile": "revista-rio-1886",
+  "profile": null,
   "period": "1883-11"
+ },
+ {
+  "doc": "8",
+  "page": 97,
+  "caption": "Observations météorologiques du mois de Novembre 1883\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-11"
+ },
+ {
+  "doc": "8",
+  "page": 98,
+  "caption": "Observations météorologiques du mois de Novembre 1883\nANNALES DE L'OBSEVATOIRE IMPÉRIAL.",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-11"
+ },
+ {
+  "doc": "8",
+  "page": 99,
+  "caption": "Observations météorologiques du mois de Novembre 1883\nDirection et force du vent\nDate\n4 h. M.\n7 h. M.\n10 h. M.\n1 h. S.\n4 h. S.\n7 h. S.\n10 h. S.\nDE RIO DE ANERO\n87",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-11"
+ },
+ {
+  "doc": "8",
+  "page": 100,
+  "caption": "Observations météorologiques du mois de Novembre 1883\nANNALES DE L'OBSEVATOIRE IMPÉRIAL",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-11"
+ },
+ {
+  "doc": "8",
+  "page": 101,
+  "caption": "ANNALES DE L'Observatoire Impérial\nObservations météorologiques du mois de Décembre 1883\nBaromètre réduit à 0°, 700mm +",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-12"
+ },
+ {
+  "doc": "8",
+  "page": 103,
+  "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Décembre 1883\nTension de la vapeur atmosphérique en millimètres",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-12"
+ },
+ {
+  "doc": "8",
+  "page": 106,
+  "caption": "Observations météorologiques du mois de Décembre 1883\nNebulosité en dixièmes du ciel couvert\nANNEXES DE L'OBSEVATOIRE IMPÉRIAL",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-12"
+ },
+ {
+  "doc": "8",
+  "page": 107,
+  "caption": "Observations météorologiques du mois de Décembre 1883\nDE RIO DE ANGERO",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-12"
+ },
+ {
+  "doc": "8",
+  "page": 108,
+  "caption": "Observations météorologiques du mois de Décembre 1883\nANNALES DE L'OBSEVATOIRE IMPÉRIAL",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-12"
+ },
+ {
+  "doc": "8",
+  "page": 109,
+  "caption": "Résumé météorologique du mois de Janvier 1883\nObservatoire de Rio de Janeiro, 1883",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 111,
+  "caption": "RESUME MÉTÉOROLOGIQUE DU MOIS DE FÉVRIER 1883",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-02"
+ },
+ {
+  "doc": "8",
+  "page": 117,
+  "caption": "RESUME METEOROLOGIQUE DU MOIS DE MAI 1883",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-05"
+ },
+ {
+  "doc": "8",
+  "page": 119,
+  "caption": "DE RIO DE JANEIRO\n107\nRésumé météorologique du mois de Juin 1883\nBaromètre à 0°\nDécades\n4 h. M.\n7 h. M.\n10 h. M.\n1 h. S.\n4 h. S.\n7 h. S.\n10 h. S.\nMoyennes\n1re",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-06"
+ },
+ {
+  "doc": "8",
+  "page": 121,
+  "caption": "Résumé météorologique du mois de Juillet 1883\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-07"
+ },
+ {
+  "doc": "8",
+  "page": 123,
+  "caption": "RESUMÉ METÉOROLOGIQUE DU MOIS D'AOUT 1883",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-08"
+ },
+ {
+  "doc": "8",
+  "page": 125,
+  "caption": "RESUME METEOROLOGIQUE DU MOIS DE SEPTEMBRE 1883",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-09"
+ },
+ {
+  "doc": "8",
+  "page": 127,
+  "caption": "DE RIO DE JANEIRO\nRÉSUMÉ MÉTÉOROLOGIQUE DU MOIS D'OCTOBRE 1883",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-10"
+ },
+ {
+  "doc": "8",
+  "page": 129,
+  "caption": "DE RIO DE JANEIRO\n117\nRésumé météorologique du mois de Novembre 1883\nBaromètre à 0°\nTempérature centigrade à l'Ombre\nTension de la vapeur\nHumidité relative\nNébulosité en dixièmes du ciel couvert\nPLUIE\nJOURS\nOZONE\nEVAPORATION",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-11"
+ },
+ {
+  "doc": "8",
+  "page": 131,
+  "caption": "DE RIO DE JANEIRO\nRÉSUMÉ MÉTÉOROLOGIQUE DU MOIS DE DÉCEMBRE 1883",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-12"
+ },
+ {
+  "doc": "8",
+  "page": 133,
+  "caption": "DE RIO DE JANEIRO\nRésumé météorologique de l'année 1883\nMoyennes diurnes, décadiques et mensuelles du baromètre réduit à 0°, 700 mm.+\nDate\tJanvier\tFévrier\tMars\tAvril\tMai\tJuin\tJuillet\tSeptembre\tOctobre\tNovembre\tDécembre\n1\t59.4",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "8",
+  "page": 137,
+  "caption": "RÉSUMÉ MÉTÉOROLOGIQUE DE L'ANNÉE 1883\nOscillations d'urnes entre les maxima et les minima de la température à l'ombre, moyennes décadiques et mensuelles\nDate\tJanvier\tFévrier\tMars\tAvril\tMai\tJuin\tJuillet\tAoût\tSeptembre\tOctobre\tNovembre\tDécembre\n1\t6",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "8",
+  "page": 139,
+  "caption": "DE RIO DE JANEIRO\nRÉSUMÉ MÉTÉOROLOGIQUE DE L'ANNÉE 1883\nMoyennes diurnes, décadiques et mensuelles de l'humidité atmosphérique en centièmes",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "8",
+  "page": 141,
+  "caption": "Résumé météorologique de l'année 1883\nQuantités diurnes, décadiques et mensuelles de la pluie tombée sur la terrasse\nDE RIO DE JANEIRO\n129",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "8",
+  "page": 148,
+  "caption": "Observations météorologiques du mois de Janvier 1884\nDe Rio de Janeiro\n137",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-01"
+ },
+ {
+  "doc": "8",
+  "page": 150,
+  "caption": "Observations météorologiques du mois de Janvier 1884\nDE RIO DE JANEIRO\n139",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-01"
+ },
+ {
+  "doc": "8",
+  "page": 152,
+  "caption": "DE RIO DE JANEIRO\nObservations météorologiques du mois de Janvier 1884",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-01"
+ },
+ {
+  "doc": "8",
+  "page": 153,
+  "caption": "Observations météorologiques du mois de Janvier 1884\nAébulosité en dixièmes du ciel couvert\nANNALES DE L'Observatoire IMPÉRIAL",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-01"
+ },
+ {
+  "doc": "8",
+  "page": 154,
+  "caption": "Observations météorologiques du mois de Janvier 1884\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-01"
+ },
+ {
+  "doc": "8",
+  "page": 155,
+  "caption": "Observations météorologiques du mois de Janvier 1884\nANNALES DE L'OBSEVATOIRE IMPÉRIAL",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-01"
+ },
+ {
+  "doc": "8",
+  "page": 156,
+  "caption": "Observations météorologiques du mois de Février 1884\nDE RIO DE JANEIRO\nBaromètre réduit à 0°, 700mm = +",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-02"
+ },
+ {
+  "doc": "8",
+  "page": 158,
+  "caption": "Observations météorologiques du mois de Février 1884\nDE RIO DE JANEIRO\nTension de la vapeur atmosphérique en millimètres",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-02"
+ },
+ {
+  "doc": "8",
+  "page": 160,
+  "caption": "Observations météorologiques du mois de Février 1884\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-02"
+ },
+ {
+  "doc": "8",
+  "page": 161,
+  "caption": "Observations météorologiques du mois de Février 1884\nNébulosité en dixièmes du ciel couvert\nAnnales de l'Observatoire Imperial",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-02"
+ },
+ {
+  "doc": "8",
+  "page": 162,
+  "caption": "Observations météorologiques du mois de Février 1884\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-02"
+ },
+ {
+  "doc": "8",
+  "page": 163,
+  "caption": "Observations météorologiques du mois de Février 1884.\nANNALES DE L'Observatoire Imperial.",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-02"
+ },
+ {
+  "doc": "8",
+  "page": 164,
+  "caption": "ANNALES DE L'Observatoire Impérial\nObservations météorologiques du mois de Mars 1884\nBaromètre réduit à 0°, 700mm +",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-03"
+ },
+ {
+  "doc": "8",
+  "page": 166,
+  "caption": "Observations météorologiques du mois de Mars 1884\nTension de la vapeur atmosphérique en millimètres\nDate 4 h. M. 7 h. M. 10 h. M. 1 h. S. 4 h. S. 7 h. S. 10 h. S. Moyenne\n1 20.02 20.37",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-03"
+ },
+ {
+  "doc": "8",
+  "page": 168,
+  "caption": "Observations météorologiques du mois de Mars 1884\nRio de Janeiro\n1884",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-03"
+ },
+ {
+  "doc": "8",
+  "page": 170,
+  "caption": "Observations météorologiques du mois de Mars 1884\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-03"
+ },
+ {
+  "doc": "8",
+  "page": 171,
+  "caption": "Observations météorologiques du mois de Mars 1884",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1884-03"
  }
 ]

@@ -307,9 +307,10 @@
   "doc": "14",
   "page": 73,
   "caption": "REVISTA DO OBSERVATORIO\n61\n\nPHENOMENOS APRESENTADOS PELOS SATELLITES\nDE JUPITER\n\n| Dias | Horas | | SATELLITES |\n|---|---|---|---|\n| 1 | 9.47 T | | Passagem do 1º satellite. |\n| 2 | 10.40 T | | Entrada",
-  "is_weather_table": true,
+  "is_weather_table": false,
   "profile": null,
-  "period": null
+  "period": null,
+  "astronomy": true
  },
  {
   "doc": "14",
