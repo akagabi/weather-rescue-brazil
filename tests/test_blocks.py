@@ -276,3 +276,18 @@ def test_line_count_cannot_answer_this():
     """Both of these are a single printed line on docId 15 page 126."""
     assert header_kind("Estação, Bahia, Capital; Observ., Dr. R. A. Pereira") == "station"
     assert header_kind("Mez de Junho de 1889") == "month_only"
+
+
+def test_a_month_line_survives_the_furniture_around_it():
+    """The running head, the folio and a stray full stop are not content."""
+    for t in ["REVISTA DO OBSERVATORIO 132  Mez de Julho de 1889",
+              "Mez de Julho de 1889. 132",
+              "132 Mez de Julho de 1889."]:
+        assert header_kind(t) == "month_only", t
+
+
+def test_an_unexplained_word_beside_the_month_is_unclear():
+    """The only thing between an inheritance and the 15/158 failure: a header
+    WAS printed there and simply did not transcribe."""
+    assert header_kind(
+        "Mez de Julho de 1889 Ponte B. de Macedo Manoel Villarouco") == "unclear"

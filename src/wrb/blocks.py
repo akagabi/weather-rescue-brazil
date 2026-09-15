@@ -83,6 +83,10 @@ UNREADABLE = ""         # a header IS printed and could not be read: no station
 # What a strip's text turns out to be. Line count cannot answer this - the form
 # sets a station line alone when the month is shared, so a header can be one
 # line and a continuation is also one line - so the words decide.
+_MONTH_LINE = _re.compile(
+    r"(?:mez|mês|mes|mezes|meses)\s+d[eo]\s+[a-zà-ÿ]+\s+de\s+\d{4}", _re.I)
+
+
 def header_kind(text: str) -> str:
     """`station`, `month_only`, or `unclear` for a strip's transcription.
 
@@ -95,12 +99,26 @@ def header_kind(text: str) -> str:
     t = _re.sub(r"\s+", " ", (text or "")).strip().lower()
     if not t:
         return "unclear"
-    if _re.search(r"esta[çc][ãa]o|observador|observ\.|latitude|latit\.|alt\. do bar", t):
+    if _re.search(r"esta[çc][ãa]o|observador|observ\.|latitude|latit\.|long|alt\. do bar", t):
         return "station"
-    # "Mez de Junho de 1889", "Mezes de Julho de 1889" and nothing else
-    if _re.fullmatch(r"(?:mez|mês|mes|mezes|meses)\s+d[eo]\s+[a-zà-ÿ]+\s+de\s+\d{4}\.?", t):
-        return "month_only"
-    return "unclear"
+    # A month line arrives with the furniture around it - the running head set
+    # up the page's edge, the folio, the tail of the row above. Requiring the
+    # strip to be NOTHING but the month was too strict and cost docId 15 page
+    # 142 a station it had inherited correctly: the block prints "Mez de Julho
+    # de 1889" and the strip transcribed more than that.
+    #
+    # So the furniture is removed and what remains has to be the month and
+    # nothing else. That "nothing else" matters: it is the only thing standing
+    # between an inheritance and the 15/158 failure, where a header WAS printed
+    # and simply did not transcribe. A strip with unexplained words in it is
+    # `unclear`, and `unclear` never inherits.
+    if not _MONTH_LINE.search(t):
+        return "unclear"
+    rest = _MONTH_LINE.sub(" ", t)                       # the month line itself
+    rest = _re.sub(r"revista do observat[óo]rio", " ", rest)   # the running head
+    rest = _re.sub(r"\b\d{1,4}\b", " ", rest)                 # the folio
+    rest = _re.sub(r"[\s.,;:|\-–—\[\]()º°ª]+", "", rest)
+    return "month_only" if not rest else "unclear"
 
 
 def resolve_stations(headers: list[str | None]) -> list[dict]:
