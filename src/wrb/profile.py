@@ -103,6 +103,31 @@ class Profile:
     # strong-peak threshold - it returns 2 rows of the 4. Declaring them is both
     # simpler and more honest than tuning a threshold until it happens to pass.
     row_bands: list | None = None
+    # A sheet that carries SEVERAL tables, each with its own station.
+    #
+    # Every layout before this one held a page to a single station named in the
+    # caption, and the producer attached that station to the whole page. The
+    # Revista's `RESUMO MENSAL DAS OBSERVAÇÕES SIMULTANEAS` form does not: one
+    # landscape sheet carries four station blocks - São Paulo, Bahia, Ouro
+    # Preto and Santa Cruz on docId 16 page 41 - each with its own printed
+    # header line and often its own month. A block that repeats the station
+    # above it prints only the month and no header at all.
+    #
+    # So the station is a property of the BLOCK, not of the page, and the
+    # geometry has to say where each block's header line and rows sit:
+    #
+    #     "blocks": [{"header": [y0, y1] | null, "rows": [[y0, y1], ...]}, ...]
+    #
+    # all as fractions of page height. A null header means "same station as the
+    # block above" - inherited, and recorded as inherited, never re-read.
+    blocks: list | None = None
+    # The x-extent to crop, as fractions of page width, when the printed table
+    # is wider than the model can read in one row. This form is 26 columns; the
+    # reader is reliable to about 16. Declaring the band that carries the
+    # measurements turns one unreadable row into one readable one, and leaves
+    # the rest (17 sparse wind-frequency counts) for a second pass rather than
+    # corrupting the first.
+    band_x_frac: tuple[float, float] | None = None
     notes: str = ""
     extra: dict = field(default_factory=dict)
 
@@ -332,6 +357,17 @@ class Profile:
         rather than evidence of an error.
         """
         agg = self.monthly.get("aggregate") or {}
+        # Per-column tolerance, because how exact the printed total IS varies by
+        # publication. The Revista's daily pages assert a mean over 31 equal
+        # days and it reproduces to the last printed digit. The `Resumo mensal
+        # das observacoes simultaneas` form does not: its Mez row and its three
+        # dekad rows disagree by a few tenths on every column of every block
+        # measured, in both directions, because the Mez is computed from all
+        # the daily observations and the dekad figures are rounded means of
+        # subsets of 10, 10 and 11 days. A tolerance tight enough for the first
+        # form flags every row of the second. Where `monthly.tolerance` names a
+        # column, its number is used; otherwise `tol`.
+        per_key = self.monthly.get("tolerance") or {}
         out: list[str] = []
         for key, kind in agg.items():
             printed = summary.get(key)
@@ -350,8 +386,10 @@ class Profile:
                 want = min(col)
             else:
                 continue
-            if abs(want - printed) > tol:
-                out.append(f"{key}: printed {printed} but {kind} of the day rows gives {want:.4f}")
+            limit = float(per_key.get(key, tol))
+            if abs(want - printed) > limit:
+                out.append(f"{key}: printed {printed} but {kind} of the day rows "
+                           f"gives {want:.4f} (tolerance {limit})")
         return out
 
     def resolve_dittos(self, rows: list[dict]) -> list[dict]:

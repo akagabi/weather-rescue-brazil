@@ -1,0 +1,138 @@
+{
+ "id": "revista-resumo-simultaneas",
+ "name": "Revista - Resumo mensal das observacoes simultaneas (bloco barometro/termometro)",
+ "source": "DocVirt obnacional docs 15 e 16 - formulario apaisado, 4 blocos de estacao por folha",
+ "columns": [
+  {
+   "key": "decada",
+   "label": "Decadas",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "note": "1a, 2a, 3a ou Mez - decada, nao dia"
+  },
+  {
+   "key": "baro",
+   "label": "Barometro reduzido a 0",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    560,
+    790
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": "faixa larga de proposito: as estacoes vao do nivel do mar (Bahia, 760) a Ouro Preto a 1145 m (~665). A altura do barometro vem impressa no cabecalho de cada bloco, portanto uma faixa por estacao e possivel depois; por ora a aritmetica impressa (monthly.aggregate) e o teste forte, nao a faixa."
+  },
+  {
+   "key": "t_secco",
+   "label": "Thermometro secco",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    -5,
+    45
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_maxima",
+   "label": "Temperatura maxima",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    -5,
+    50
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "t_minima",
+   "label": "Temperatura minima",
+   "kind": "number",
+   "unit": "degC",
+   "range": [
+    -10,
+    40
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  },
+  {
+   "key": "humidade",
+   "label": "Humidade relativa",
+   "kind": "number",
+   "unit": "percent",
+   "range": [
+    10,
+    100
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": ""
+  }
+ ],
+ "notes": "UM DOS BLOCOS DE COLUNAS, nao a tabela inteira. O formulario impresso tem 26 colunas - Decadas, cinco medidas, dezassete contagens de vento (Calma + 16 rumos), Forca, Nebulosidade, Chuva total e NOTAS - e o leitor e fiavel ate cerca de 16. Recortar a faixa que carrega as medidas transforma uma linha ilegivel numa linha legivel: medido em 16/41, o modelo leu as 24 celulas das quatro linhas do primeiro bloco SEM TREINO NENHUM, com o adaptador gen3, errando apenas zeros finais de formatacao (25.6 por 25.60). As contagens de vento e a chuva ficam para uma segunda faixa; nao entram nesta.\n\nA ESTACAO E DO BLOCO, NAO DA PAGINA. Cada folha traz quatro blocos de estacoes diferentes - 16/41 tem S. Paulo, Bahia, Ouro Preto e Santa Cruz - cada um com a sua linha impressa de cabecalho (estacao, observador, latitude, longitude, hora local, altura do barometro) e muitas vezes com o seu proprio mes. Um bloco que continua a estacao de cima imprime so a linha do mes. Ver wrb.blocks e wrb.stations.\n\nAs LINHAS sao decidas pelo rotulo impresso, nao pela geometria: a deteccao propoe faixas de tinta e o rotulo lido (1a/2a/3a/Mez) decide quais sao linhas de dados e onde comeca cada bloco. A geometria sozinha nao aguenta - medido nas dez paginas conhecidas, o agrupamento por intervalos acerta em 3 de 10. E o mesmo principio do oraculo dos dias em Cuyaba.",
+ "rows_per_page": "fixed:4",
+ "adapter": "",
+ "checks": [],
+ "markers": [
+  "Mez",
+  "Mez....",
+  "Mez...",
+  "—",
+  "-"
+ ],
+ "monthly": {
+  "markers": [
+   "Mez",
+   "Mez.",
+   "Mez..",
+   "Mez...",
+   "Mez....",
+   "Mez....."
+  ],
+  "aggregate": {
+   "baro": "mean",
+   "t_secco": "mean",
+   "t_maxima": "mean",
+   "t_minima": "mean",
+   "humidade": "mean"
+  },
+  "note": "A linha Mez e a media das tres decadas, e a pagina afirma-o. Medido em 16/41 bloco 1 (S. Paulo): baro 698.17 calculado contra 698.50 impresso, t_secco 22.97 contra 23.03, t_maxima 25.88 contra 25.88, humidade 79.9 contra 79.9 - e t_minima 18.33 contra 19.67 impresso, que NAO fecha. Esse e o valor do teste: quatro colunas confirmam-se sozinhas e a quinta levanta a mao. As decadas tem 10, 10 e 11 dias, portanto a media simples e aproximada e a tolerancia tem de acomodar isso."
+ },
+ "probe_x_frac": null,
+ "table_x_frac": null,
+ "band_x_frac": null,
+ "extra": {
+  "band": "A",
+  "band_label": "Decadas + barometro, thermometro secco, t.maxima, t.minima, humidade",
+  "full_form_columns": 26,
+  "bands_not_yet_read": [
+   "ventos (17 contagens)",
+   "Forca",
+   "Nebulosidade",
+   "Chuva total",
+   "NOTAS"
+  ],
+  "band_table_span": [
+   0.0,
+   0.253
+  ],
+  "probe_table_span": [
+   0.023,
+   0.098
+  ],
+  "band_note": "Fraccao da LARGURA DA TABELA, nao da pagina, ancorada nas reguas verticais da propria pagina (wrb.blocks.band_from_rules). Declarar fraccoes de pagina nao serve: a regua esquerda da tabela cai em 0.133 da largura em 16/41 e em 0.102 em 15/126, e uma faixa fixa medida na primeira corta a coluna Decadas na segunda - sem o rotulo impresso nenhuma linha se identifica."
+ },
+ "blocks": null,
+ "row_bands": null,
+ "table_y_frac": null
+}
