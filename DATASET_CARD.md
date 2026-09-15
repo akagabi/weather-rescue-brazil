@@ -37,11 +37,11 @@ front matter above is the dataset card format.
 
 | | |
 |---|---|
-| Rows | 5,925 |
-| Usable rows (`checks_pass` + `qc_clean`) | **3,385** |
-| Values in usable rows | 39,899 |
-| Pages transcribed | 226 |
-| Period | 1882-01 to 1890-11 |
+| Rows | 6,329 |
+| Usable rows (`checks_pass` + `qc_clean`) | **3,621** |
+| Values in usable rows | 43,293 |
+| Pages transcribed | 243 |
+| Period | 1882-01 to 1890-11 (one page captioned 1893, flagged) |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão |
 | Sources | *Revista do Observatório* (1886–1891), *Annales de l'Observatoire Impérial* (1882–1885) |
 | Languages of the printed tables | Portuguese, French |
@@ -102,20 +102,22 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   Eight of those pages fail as a whole: they were assigned the wrong layout
   entirely (doc 5 page 351 is a thermometer table produced as wind). None of
   them were ever in the usable set.
-- **Wind is under-represented, and it was a bug rather than the source.** The
-  Annales print all six of their layouts for every month, so the page counts
-  should be comparable. They are not: barometer 57 pages, thermometer 35,
-  cloudiness 29, vapour 25, actinometry 20, and **wind 8**. Every fifteen-cell
-  wind page was being rejected by the layout-assignment step for containing
-  compass points — which is what a wind table contains. Fixed on 2026-09-15;
-  the pages it locked out are not in this release, and a later one will carry
-  them. Nothing already published is wrong, there is simply much less wind in
-  it than the source holds.
+- **Wind was almost entirely missing until v0.3, and it was a bug rather than
+  the source.** Every fifteen-cell wind page was rejected by the
+  layout-assignment step for containing compass points — which is what a wind
+  table contains — so the only "wind" pages that got through were pages
+  *misidentified* as wind. Of the 197 wind rows in v0.2.2, **eleven** were
+  usable, on two pages. v0.3 adds 16 recovered pages and the figure is now
+  **220 usable rows on 17 pages**, spanning 1883–1885. The remaining wind gap
+  is the row locator rather than the assignment: a wind row is mostly compass
+  text and carries far less ink than a row of figures, so the detector finds 5
+  to 30 rows where the month has 30 or 31. The oracle used at Cuyabá — printed
+  day numbers decide, geometry only proposes — would close it.
 - **A 31-month gap.** 1887-01 through 1888-11 are absent, and it is a source
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **2,540 of 5,925 rows are `flagged`**, including whole-profile sections
+- **2,708 of 6,329 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.

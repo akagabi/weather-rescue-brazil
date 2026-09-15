@@ -1,9 +1,9 @@
 {
- "version": "0.2.2",
- "frozen_at": "2026-09-15T03:56:09+00:00",
+ "version": "0.3",
+ "frozen_at": "2026-09-15T05:14:05+00:00",
  "dataset": "weather-rescue-brazil.jsonl",
- "rows": 5925,
- "usable": 3385,
- "values_usable": 39899,
- "sha256": "4d20558c144f1e983527dad32952f23cd2d15117838cdc13f361b1c5d485a7fa"
+ "rows": 6329,
+ "usable": 3621,
+ "values_usable": 43293,
+ "sha256": "a7ce431be2d7768758c5fa23a9a8d52c103ca01a6efc78d389540c9707577d81"
 }

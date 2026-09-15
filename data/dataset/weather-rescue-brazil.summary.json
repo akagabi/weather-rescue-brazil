@@ -1,9 +1,9 @@
 {
- "pages": 226,
- "rows": 5925,
- "checks_pass": 3301,
- "qc_clean": 90,
- "flagged": 2534,
- "usable": 3391,
- "values_usable": 39983
+ "pages": 243,
+ "rows": 6329,
+ "checks_pass": 3322,
+ "qc_clean": 345,
+ "flagged": 2662,
+ "usable": 3667,
+ "values_usable": 39899
 }

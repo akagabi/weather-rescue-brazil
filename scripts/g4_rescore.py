@@ -13,7 +13,22 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from wrb import profile as prof  # noqa: E402
 from wrb.profile import PADDED_TRAILING  # noqa: E402
+from wrb.caption import load_volume_spans, period_outside_volume  # noqa: E402
 from wrb.qc import degenerate_row, direction_keys, invalid_compass  # noqa: E402
+
+# Re-derived here rather than carried over from the producer. Rescore rebuilds
+# `problems` from the stored `raw`, which silently DROPPED anything the
+# producer had added about the page rather than the row - and the first
+# casualty was the period_suspect flag, written and wired end to end an hour
+# before this rescore erased it. Doc 8 page 83 is captioned "Septembre 1893" in
+# a volume that ends in 1885; its 22 rows arrived flagged and came out of the
+# rescore with 13 of them usable.
+#
+# Preserving the producer's problems would work and is the wrong fix: a
+# judgement that cannot be re-derived from what the row stores is a judgement
+# this project cannot re-check. The row has its item and its period, so the
+# volume span can speak for itself.
+_SPANS = load_volume_spans()
 from wrb.verify import apply_corrections, load_corrections  # noqa: E402
 import calendar  # noqa: E402
 from collections import defaultdict  # noqa: E402
@@ -163,6 +178,9 @@ def main() -> None:
         dkeys = direction_keys(p)
         if dkeys:
             problems = problems + invalid_compass(restored, dkeys)
+        why = period_outside_volume(r.get("period"), str(r.get("item")), _SPANS)
+        if why:
+            problems = problems + [f"period_suspect: {why}"]
         hard = [x for x in problems if x != PADDED_TRAILING]
         scoreable = bool(p.checks) and any(isinstance(restored.get(c["result"]), (int, float)) for c in p.checks)
         # A page whose located row count does not equal the days in its month has

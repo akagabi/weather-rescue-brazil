@@ -131,3 +131,19 @@ def test_the_direction_check_reaches_the_data():
             if _direction_keys(r.get("profile"))
             and (r.get("values") or {}).get(_direction_keys(r["profile"])[0]) is not None)
     assert n > 1000, f"only {n} direction cells were checked"
+
+
+def test_no_usable_row_carries_a_period_its_volume_cannot_hold():
+    """Rescore rebuilds `problems` from the stored raw and so DROPPED anything
+    the producer had recorded about the page rather than the row. The first
+    casualty was this flag: doc 8 page 83, captioned "Septembre 1893" in a
+    volume that ends in 1885, arrived flagged and came out of the rescore with
+    13 of its 22 rows usable."""
+    from wrb.caption import load_volume_spans, period_outside_volume
+
+    spans = load_volume_spans()
+    bad = [f"{r['item']}/{r['page']}: {period_outside_volume(r.get('period'), str(r.get('item')), spans)}"
+           for r in _rows()
+           if r.get("verdict") in ("checks_pass", "qc_clean")
+           and period_outside_volume(r.get("period"), str(r.get("item")), spans)]
+    assert not bad, "\n".join(sorted(set(bad))[:10])

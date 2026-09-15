@@ -225,8 +225,15 @@ def test_an_unknown_volume_is_not_a_failure():
     assert period_outside_volume(None, "8", load_volume_spans()) is None
 
 
-def test_every_published_period_is_inside_its_volume():
-    """Run over the artifact, not a fixture."""
+def test_every_usable_published_period_is_inside_its_volume():
+    """Run over the artifact, not a fixture.
+
+    USABLE rows only, deliberately. Since v0.3 the dataset carries doc 8 page
+    83, whose caption reads "Septembre 1893" in a volume that ends in 1885. Its
+    rows are kept and flagged rather than dropped - the month may be right and
+    only the year misread - so the guarantee is about what a consumer filtering
+    on verdict receives, not about every row in the file.
+    """
     import json
     from pathlib import Path
 
@@ -237,6 +244,8 @@ def test_every_published_period_is_inside_its_volume():
         if not line.strip():
             continue
         r = json.loads(line)
+        if r.get("verdict") not in ("checks_pass", "qc_clean"):
+            continue
         why = period_outside_volume(r.get("period"), str(r.get("item")), spans)
         if why:
             bad.append(f"{r['item']}/{r['page']}: {why}")
