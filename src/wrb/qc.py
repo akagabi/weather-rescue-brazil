@@ -137,3 +137,53 @@ def flag_violations(sheet: Sheet) -> Sheet:
         columns=sheet.columns, rows=rows,
         printed_totals=sheet.printed_totals,
     )
+
+
+# --- pressure against the station's own printed altitude ---------------------
+#
+# A barometer range wide enough for this corpus is nearly useless. The
+# `Resumo mensal das observacoes simultaneas` form runs from Bahia at 64 m to
+# Ouro Preto at 1145 m, so the declared range has to span 560-790 mmHg, and a
+# reading of 598 sits comfortably inside it while being 65 mmHg below anything
+# Ouro Preto can produce.
+#
+# The form prints each station's `Alt. do Bar.` in its own header, which turns
+# the loose range into a tight one: the barometric formula gives the pressure
+# that altitude implies, and a real reading sits within a few mmHg of it
+# (weather moves sea-level pressure by about +/-15 mmHg at the extremes).
+#
+# Measured against the printed pages, with the 25 mmHg window below:
+#
+#     Bahia        64 m   expect 754   printed 756-760   ok
+#     Santa Cruz   26 m   expect 758   printed 756-758   ok
+#     Maceio       10 m   expect 759   printed 762-765   ok
+#     S. Paulo    735 m   expect 696   printed 697-704   ok
+#     Ouro Preto 1145 m   expect 663   printed 665.65    ok
+#                                      printed 598.32    65 BELOW - flagged
+#
+# This does not correct anything. It says which cell to look at.
+SEA_LEVEL_MM = 760.0
+SCALE_HEIGHT_M = 8434.0
+
+
+def pressure_for_altitude(alt_m: float) -> float:
+    """Station pressure the barometric formula implies, in mmHg."""
+    import math
+    return SEA_LEVEL_MM * math.exp(-float(alt_m) / SCALE_HEIGHT_M)
+
+
+def pressure_implausible(baro_mm, alt_m, tol: float = 25.0) -> str | None:
+    """A reason string when a barometer reading cannot belong to that altitude.
+
+    None when it is plausible, when either input is missing, or when the
+    altitude is not a number - an absent altitude is absence of evidence, and
+    this check is only ever available where the page printed one.
+    """
+    if not isinstance(baro_mm, (int, float)) or not isinstance(alt_m, (int, float)):
+        return None
+    want = pressure_for_altitude(alt_m)
+    off = baro_mm - want
+    if abs(off) <= tol:
+        return None
+    return (f"barometro {baro_mm} mmHg is {off:+.1f} from the {want:.0f} that "
+            f"{alt_m:.0f} m implies (tolerance {tol})")

@@ -119,3 +119,45 @@ def test_nulls_do_not_count_toward_the_evidence():
     """Only real numbers count; nulls are absence, not agreement."""
     vals = {"a": 1.0, "b": 1.0, "c": 1.0, "d": None, "e": None, "f": None, "g": None, "h": None}
     assert degenerate_row(vals) is False
+
+
+# --- pressure against the station's own printed altitude --------------------
+
+from wrb.qc import pressure_for_altitude, pressure_implausible  # noqa: E402
+
+# (altitude printed on the page, barometer figures printed in the block)
+PRINTED = [
+    ("Bahia", 64, [756.1, 758.3, 759.2, 757.8, 761.8, 759.4, 759.8, 760.3]),
+    ("Santa Cruz", 26, [756.22, 758.83, 757.03, 757.36]),
+    ("Maceió", 10, [762.82, 764.27, 764.82, 763.64, 764.49, 766.25, 766.99]),
+    ("S. Paulo", 735, [697.68, 699.12, 697.71, 698.50, 701.40, 703.88, 704.27]),
+    ("Ouro Preto", 1145, [665.65]),
+]
+
+
+def test_every_printed_reading_is_plausible_at_its_printed_altitude():
+    for name, alt, readings in PRINTED:
+        for v in readings:
+            assert pressure_implausible(v, alt) is None, f"{name} {v} at {alt}m"
+
+
+def test_the_ouro_preto_outlier_is_caught():
+    """598.32 sits inside the declared 560-790 range and cannot be real."""
+    why = pressure_implausible(598.32, 1145)
+    assert why is not None and "598.32" in why
+
+
+def test_a_sea_level_reading_at_a_mountain_station_is_caught():
+    assert pressure_implausible(760.0, 1145) is not None
+
+
+def test_the_formula_matches_the_stations():
+    assert pressure_for_altitude(0) == 760.0
+    assert round(pressure_for_altitude(735)) == 697
+    assert round(pressure_for_altitude(1145)) == 664
+
+
+def test_a_missing_altitude_is_not_a_failure():
+    """Absence of evidence: the check only exists where the page printed one."""
+    assert pressure_implausible(598.32, None) is None
+    assert pressure_implausible(None, 1145) is None
