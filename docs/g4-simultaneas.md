@@ -63,6 +63,26 @@ A block is only accepted when its labels read exactly `1, 2, 3, Mez`. Half a
 block is worse than none — its `Mez` would be checked against the wrong three
 dekads.
 
+That strictness has a cost that took two runs to find. Candidates are proposed
+generously — a run of ink taller than one row is **split** rather than dropped,
+because a merged run loses both rows while a bad split only costs a crop that
+comes back unlabelled — and so one printed row can arrive as two crops that
+both read back as `1`. The block's labels then come out `1, 1, 2, 2, 3, 3,
+Mez`, which is not `1, 2, 3, Mez`, and the whole block is discarded. **docId 15
+page 126 returned one block of its four** while its band, its reads and its
+station header were all correct. `dedupe_labels` collapses consecutive
+same-label candidates, keeping the fuller read; it is safe by the form's own
+structure, since within a block the labels run strictly `1, 2, 3, Mez` and
+between blocks a `Mez` is followed by a `1`.
+
+The **probe column** — where to ask "is there a row here" — stays a fraction of
+the page, not of the table. Deriving it from the rules the way the band is
+derived made it worse: the outer rule the detector returns is the printed frame
+on some scans and the table edge on others, so a span computed from it landed
+on the frame line itself and the ink profile locked onto the rule instead of
+the numbers. The probe only has to land somewhere inside the numeric columns,
+and a fixed `(0.150, 0.205)` does on all ten pages.
+
 ### 3. The station belongs to the block, not the page
 
 Every layout before this one held a page to one station, named in the caption,
@@ -113,6 +133,14 @@ row here.
 That last line is the point of keeping the check at all: four columns confirm
 themselves and the fifth raises its hand, at an order of magnitude above the
 noise.
+
+## These are not daily observations
+
+Every row here is a **dekad** (a third of a month) or a **month**, not a day.
+The published `weather-rescue-brazil.jsonl` is described as daily observations
+and it should stay that way: mixing summaries into it would misstate what the
+file is, and a consumer averaging it would double-count. They belong in a
+companion file at a different temporal resolution, declared as such.
 
 ## Files
 
