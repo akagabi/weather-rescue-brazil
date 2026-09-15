@@ -89,9 +89,20 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
     Geometry only proposes; the printed numbers decide."""
     width, height = image.size
     pitch = loc.pitch or 28.0
-    lo = (min(loc.chain) if loc.chain else 0) - margin_rows * pitch
-    hi = (max(loc.chain) if loc.chain else height) + margin_rows * pitch
-    cands = sorted(y for y in loc.peaks if lo <= y <= hi)
+    # The window exists to bound the search around a chain that is roughly
+    # right. When the chain is badly short it inherits its unreliability: doc 8
+    # page 43 has 26 peaks for a 30-day month and a chain of FIVE, so a window
+    # of eight pitches either side of those five never reaches the rest of the
+    # table and the oracle read 11 days of 30 before giving up. A chain that
+    # has lost half its rows is not a place to anchor anything, so every peak
+    # becomes a candidate and the printed numbers sort them out - which is what
+    # the oracle is for.
+    if len(loc.chain) < 0.5 * day_count:
+        cands = sorted(loc.peaks)
+    else:
+        lo = (min(loc.chain) if loc.chain else 0) - margin_rows * pitch
+        hi = (max(loc.chain) if loc.chain else height) + margin_rows * pitch
+        cands = sorted(y for y in loc.peaks if lo <= y <= hi)
     boxes = boxes_for_centres(cands, loc, width, height)
     crops = crop_boxes(image, boxes, loc.skew_deg, scale=2.0)
     reads = oracle.read_days(crops) if hasattr(oracle, "read_days") else [oracle.read_day(c) for c in crops]

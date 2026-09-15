@@ -300,10 +300,12 @@ def direction_keys(profile) -> list[str]:
 
 # --- fifteen cells is not unique to the wind table ---------------------------
 #
-# The Annales' hourly CLOUD-FORM table has the same shape as the hourly wind
-# table - a date and seven pairs - and lands on the same cell count, so the
-# count alone assigns it to rio-1883-vento. Doc 8 page 98 produced twelve rows
-# reading
+# The Annales' NEBULOSITE table pairs a tenths-of-sky figure with the cloud
+# forms seen at each of seven hours - `Data | 4h M. | ... | 10h S. | Moyenne`,
+# sixteen columns, and rio-1883-nebulosite already describes it. But when the
+# reader drops a cell it comes back as FIFTEEN, which is the hourly wind
+# table's count, and the assignment sends it to rio-1883-vento. Doc 8 page 98
+# produced twelve rows reading
 #
 #     9 | 6 | C,C-K,N | 10 | C-K,K,K-N | 5 | C,C-K,K | ...
 #
@@ -320,7 +322,12 @@ CLOUD_FORMS = re.compile(r"^[CKNSPÇĆ](?:[-,][CKNSPÇĆ])*$", re.I)
 
 
 def looks_like_cloud_forms(row: str, min_hits: int = 3) -> bool:
-    """True when a row's cells are cloud-form codes rather than wind forces."""
+    """True when a row's cells are cloud-form codes rather than wind forces.
+
+    Says only what the row is NOT. Reading it as "a layout we do not have" cost
+    an hour: the eight pages it caught are ordinary nebulosite pages that came
+    back one cell short, and a profile for them has existed all along.
+    """
     cells = [c.strip() for c in (row or "").strip().strip("|").split("|")]
     hits = sum(1 for c in cells if c and CLOUD_FORMS.match(c.replace(" ", "")))
     # a bare "C" or "N" is also a calm mark and a compass point, so a single
