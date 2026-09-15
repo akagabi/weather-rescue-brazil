@@ -1,0 +1,14 @@
+[
+ {
+  "doc": "8",
+  "page": 19,
+  "caption": "Observations météorologiques du mois de Janvier 1883\nObservatoire de la Côte de Nacre\nJanuary 1883",
+  "period": "1883-01",
+  "profile": null,
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[79, 15, 26, 19]",
+  "sample_row": "|  |  |  |  |  |  |  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  |  |  |  |  |  |  |\n|  |  |  |  |  |  |  |\n|  |  |  |  |  |  |  |\n|  |  |  |  | ",
+  "rejected": "linha de rumos de vento, não de números"
+ }
+]
