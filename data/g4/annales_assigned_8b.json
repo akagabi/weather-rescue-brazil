@@ -342,5 +342,115 @@
   "cells": 33,
   "cell_votes": "[58, 56, 33, 17, 16]",
   "sample_row": "2 | 46.0 | 34.0 | 12.0 | 10 | C | 54.4 | 39.6 | 14.8 | 3 | C,C-K,K | 50.6 | 36.0 | 14.6 | 3 | C,K | ALU | null | null | null | null | null | null | nu"
+ },
+ {
+  "doc": "8",
+  "page": 178,
+  "caption": "Observations météorologiques du mois d'Avril 1884\nDE RIO DE JANEIRO",
+  "period": "1884-04",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[15, 16, 14, 30, 15]",
+  "sample_row": "2 | NW | 1 | NNW | 1 | NE | 1 | SSE | 2 | SE | 2 | SSE | 1 | NNW | 1 |"
+ },
+ {
+  "doc": "8",
+  "page": 186,
+  "caption": "Observations météorologiques du mois de Mai 1884\nDE RIO DE ANGERO",
+  "period": "1884-05",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[16, 75, 15, 13, 15]",
+  "sample_row": "8 | NW | 1 | NNW | 2 | NW | 1 | WSW | 2 | SW | 1 | 0 | 0 | SSW | 1 | HO |"
+ },
+ {
+  "doc": "8",
+  "page": 194,
+  "caption": "Observations météorologiques du mois de Juin 1884\nDE RIO DE JANEIRO\n183",
+  "period": "1884-06",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[18, 16, 15, 15, 15]",
+  "sample_row": "\"| 8 | NNW | I | WNW | I | ENE | I | SE | I | SSE | I | SE | I | SE | I | 10 |\""
+ },
+ {
+  "doc": "8",
+  "page": 202,
+  "caption": "Observations météorologiques du mois de Juillet 1884\nDE RIO DE ANERO",
+  "period": "1884-07",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[15, 15, 15, 15, 15]",
+  "sample_row": "20 | NW | 1 | NW | 1 | N | 1 | E | 1 | SSE | 2 | S | 1 | WSW | 1"
+ },
+ {
+  "doc": "8",
+  "page": 210,
+  "caption": "Observations météorologiques du mois d'Août 1884\nDE RIO DE JANEIRO",
+  "period": "1884-08",
+  "profile": null,
+  "n_cells": null,
+  "cells": 28,
+  "cell_votes": "[28, 29, 30, 43]",
+  "sample_row": "14 | NW | 1 | NW | 2 | NW | 1 | S | 2 | NW | 1 | S | 1 | EIRO\n15 | NW | 1 | NW | 2 | NW | 1 | SSE | 2 | SSE | 1 | S | 1 | S | 1"
+ },
+ {
+  "doc": "8",
+  "page": 217,
+  "caption": "Observations météorologiques du mois de Septembre 1884\nNebulosité en dixièmes du ciel couvert\nDate 4 h. M. 7 h. M. 10 h. M. 1 h. S. 4 h. S. 7 h. S. 10 h. S. Moyenne\nMois 0.5 7.5 6.",
+  "period": "1884-09",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[17, 17, 15, 17, 14]",
+  "sample_row": "13 | 10 | K-N,N | 10 | N | 9 | C-K,K-N,N | 6 | C-K,K,K-N | 4 | C,C-K,K-N | 7 | C-K,K,K-N | 8 | C-K,K,K-N | 7.7 | ER"
+ },
+ {
+  "doc": "8",
+  "page": 218,
+  "caption": "Observations météorologiques du mois de Septembre 1884\nDE RIO DE ANEIRO",
+  "period": "1884-09",
+  "profile": null,
+  "n_cells": null,
+  "cells": 25,
+  "cell_votes": "[25, 48, 69, 48]",
+  "sample_row": "11 | NW | 1 | NW | 1 | SSE | 1 | S | 1 | E | 1 | DE |\n12 | N | 1 | N | 1 | NW | 1 | S | 2 | SF | 1 | NNF | 1 |"
+ },
+ {
+  "doc": "8",
+  "page": 226,
+  "caption": "Observations météorologiques du mois d'Octobre 1884\nObservatoire de Rio de Janeiro\nOctober 1884",
+  "period": "1884-10",
+  "profile": null,
+  "n_cells": null,
+  "cells": 41,
+  "cell_votes": "[41, 98, 69, 60]",
+  "sample_row": "Observations météorologiques du mois d'Octobre 1884 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | "
+ },
+ {
+  "doc": "8",
+  "page": 234,
+  "caption": "Observations météorologiques du mois de Novembre 1884\nObservatoire de la Ville de Paris\nNovembre 1884",
+  "period": "1884-11",
+  "profile": "rio-1883-vento",
+  "n_cells": null,
+  "cells": 15,
+  "cell_votes": "[32, 16, 15, 15, 15]",
+  "sample_row": "7 | ENE | 1 | NW | 1 | NW | 1 | S | 1 | S | 2 | E | 1 | S | 1 | RLI |\n8 | F | | NW | | NW | | SE | | S | | SSE | | SSE | | |"
+ },
+ {
+  "doc": "8",
+  "page": 238,
+  "caption": "Observations météorologiques du mois de Décembre 1884\nDE RIO DE JANEIRO\nTension de la vapeur atmosphérique en millimètres",
+  "period": "1884-12",
+  "profile": null,
+  "n_cells": null,
+  "cells": 11,
+  "cell_votes": "[57, 42, 90, 90, 11]",
+  "sample_row": "18 | 18.28 | 19.28 | 19.72 | 19.74 | 19.88 | 19.89 | 19.22 | 19.29 | 18.29 | null | null | null | null | null | null | null | null | null | null | nul"
  }
 ]

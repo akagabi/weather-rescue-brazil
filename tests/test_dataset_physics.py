@@ -90,3 +90,44 @@ def test_the_check_actually_reaches_the_data():
     rows = _rows()
     n = sum(1 for _ in _checkable(rows, _altitudes()))
     assert n > 3000, f"only {n} barometer values were checked"
+
+
+# --- a direction cell holds a direction --------------------------------------
+
+def _direction_keys(profile_id, _cache={}):
+    from wrb import profile as prof
+    from wrb.qc import direction_keys
+    if profile_id not in _cache:
+        try:
+            _cache[profile_id] = direction_keys(prof.load(profile_id))
+        except Exception:
+            _cache[profile_id] = []
+    return _cache[profile_id]
+
+
+def test_no_usable_row_holds_a_direction_that_is_not_one():
+    """The wind layouts print no summary column, so this is the only check they
+    have beyond the force range. It also catches a page assigned the wrong
+    layout outright - doc 5 page 351 is a thermometer table that was produced
+    as wind, and its 31 rows carry temperatures where rhumbs belong."""
+    from wrb.qc import invalid_compass
+
+    bad = []
+    for r in _rows():
+        if r.get("verdict") not in ("checks_pass", "qc_clean"):
+            continue
+        keys = _direction_keys(r.get("profile"))
+        if not keys:
+            continue
+        for why in invalid_compass(r.get("values") or {}, keys):
+            bad.append(f"{r['item']}/{r['page']} row {r['row']}: {why}")
+    assert not bad, "\n".join(bad[:15])
+
+
+def test_the_direction_check_reaches_the_data():
+    """It was written twice: the first version rejected `Variavel` and
+    `NW, SSE`, which are readings, and would have flagged 1,063 good rows."""
+    n = sum(1 for r in _rows()
+            if _direction_keys(r.get("profile"))
+            and (r.get("values") or {}).get(_direction_keys(r["profile"])[0]) is not None)
+    assert n > 1000, f"only {n} direction cells were checked"
