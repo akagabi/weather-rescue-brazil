@@ -65,7 +65,7 @@ def main() -> None:
         order[k] = blk["_index"] + 1
 
     per_col = {c: [0, 0] for c in COLUMNS}
-    misses, unmatched = [], []
+    misses, unmatched, not_emitted = [], [], []
     for blk in ref["blocks"]:
         key = (blk["doc"], blk["page"], blk["_index"])
         got = by.get(key)
@@ -82,7 +82,12 @@ def main() -> None:
         for label, want in blk["rows"].items():
             row = got.get(label)
             if row is None:
-                misses.append((key, label, "row not produced"))
+                # A month row the producer declined to emit is not a
+                # disagreement about a value: the run says so, in
+                # month_row_read, and a row whose columns are unknown is not
+                # data. Counted apart so the headline number means what it says.
+                (not_emitted if label == "Mez" else misses).append(
+                    (key, label, "row not produced"))
                 continue
             vals = row.get("values") or {}
             for col, w in zip(COLUMNS, want):
@@ -104,6 +109,10 @@ def main() -> None:
         print(f"  {col:<10} {bar:>8}  {100*ok/n:5.1f}%" if n else f"  {col:<10}      -")
     print(f"\n  {'TOTAL':<10} {total_ok}/{total}  "
           f"{(100*total_ok/total if total else 0):.1f}% cell agreement")
+    if not_emitted:
+        print(f"\n{len(not_emitted)} month rows the run declined to emit "
+              f"(read out of column order; the block's arithmetic was still "
+              f"checked as a set)")
     if misses:
         print(f"\n{len(misses)} disagreements:")
         for k, label, why in misses[:40]:
