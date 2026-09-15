@@ -165,6 +165,14 @@ def main() -> None:
             if dev == "mps":
                 torch.mps.empty_cache()
             values, problems = p.parse(text)
+            # A period the worklist already doubts travels with every row it
+            # dates. The caption is the only witness to a date and it is the
+            # thing being misread - doc 8 page 83 is captioned "Septembre 1893"
+            # in a volume that ends in 1885. Nothing is corrected: the month
+            # may be right and only the year wrong, and guessing which is how
+            # 509 rows came to be dated January.
+            if w.get("period_suspect"):
+                problems = problems + [f"period_suspect: {w['period_suspect']}"]
             # words the page prints instead of a number, kept verbatim
             markers = dict(getattr(p, 'last_markers', {}) or {})
             # read AS PRINTED, then restore the publication's elided digits in

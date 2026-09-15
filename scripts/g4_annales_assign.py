@@ -185,11 +185,20 @@ def main() -> None:
     print("\ncontagem de células:", dict(collections.Counter(r["cells"] for r in out).most_common()))
     print("perfis:", dict(collections.Counter(r["profile"] for r in out)))
 
-    wl = [{"profile": r["profile"], "archive": "docvirt", "doc": DOC, "page": r["page"],
-           "period": r["period"], "station": "Imperial Observatório, Rio de Janeiro",
-           "station_source": "legenda impressa",
-           "label": f"Annales {DOC}/{r['page']} {r['period']} {r['profile']}"}
-          for r in out if r["profile"]]
+    wl = []
+    for r in out:
+        if not r["profile"]:
+            continue
+        entry = {"profile": r["profile"], "archive": "docvirt", "doc": DOC,
+                 "page": r["page"], "period": r["period"],
+                 "station": "Imperial Observatório, Rio de Janeiro",
+                 "station_source": "legenda impressa",
+                 "label": f"Annales {DOC}/{r['page']} {r['period']} {r['profile']}"}
+        # carried through rather than dropped: a page with a doubtful year still
+        # has good readings on it, and a page thrown away is one nobody revisits
+        if r.get("period_suspect"):
+            entry["period_suspect"] = r["period_suspect"]
+        wl.append(entry)
     p = WORKLIST
     p.write_text(json.dumps({"pages": wl}, indent=1, ensure_ascii=False))
     print("worklist:", len(wl), "páginas ->", p.relative_to(ROOT))
