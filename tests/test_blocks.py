@@ -291,3 +291,64 @@ def test_an_unexplained_word_beside_the_month_is_unclear():
     WAS printed there and simply did not transcribe."""
     assert header_kind(
         "Mez de Julho de 1889 Ponte B. de Macedo Manoel Villarouco") == "unclear"
+
+
+# --- rules that span the table, not the page --------------------------------
+
+from wrb.blocks import rules_in_band  # noqa: E402
+
+
+def _sheet(width=1000, height=1000, band=(0.4, 0.5), rules=(0.2, 0.8)):
+    """A page of aged paper with vertical rules drawn only across `band`.
+
+    Paper tone and ink tone, not pure white and black: `wrb.rows.ink_threshold`
+    is adaptive and returns 0 for a two-valued image, so a synthetic sheet has
+    to look like a scan or nothing is ink.
+    """
+    import random
+
+    from PIL import Image, ImageDraw
+
+    rnd = random.Random(0)
+    im = Image.new("L", (width, height), 232)
+    px = im.load()
+    for y in range(0, height, 3):          # a little grain, as a scan has
+        for x in range(0, width, 3):
+            px[x, y] = 232 - rnd.randint(0, 12)
+    d = ImageDraw.Draw(im)
+    y0, y1 = int(band[0] * height), int(band[1] * height)
+    for r in rules:
+        x = int(r * width)
+        d.rectangle([x, y0, x + 2, y1], fill=40)
+    # some text-like ink elsewhere, so the histogram has two modes
+    d.rectangle([int(0.3 * width), int(0.1 * height),
+                 int(0.6 * width), int(0.12 * height)], fill=60)
+    return im.convert("RGB")
+
+
+def test_a_rule_that_spans_only_its_table_is_found_in_the_band():
+    found = rules_in_band(_sheet(), (0.4, 0.5))
+    assert len(found) == 2
+    assert found[0] == pytest.approx(0.2, abs=0.01)
+    assert found[1] == pytest.approx(0.8, abs=0.01)
+
+
+def test_the_page_wide_detector_misses_the_same_rules():
+    """Why this exists: doc 5's dekadal tables are blocks on a sheet, and
+    wrb.rows.vertical_rules asks for ink spanning a share of the PAGE."""
+    from wrb.rows import ink_threshold, vertical_rules
+
+    im = _sheet()
+    g = im.convert("L")
+    assert [x for x in vertical_rules(g, ink_threshold(g)) if 0.05 < x / 1000 < 0.95] == []
+
+
+def test_looking_in_the_wrong_slice_finds_nothing():
+    assert rules_in_band(_sheet(), (0.7, 0.9)) == []
+
+
+def test_the_band_derives_from_rules_found_this_way():
+    b = band_from_rules(_sheet(), (0.0, 0.25), y_frac=(0.4, 0.5))
+    assert b is not None
+    assert b[0] == pytest.approx(0.19, abs=0.02)
+    assert b[1] == pytest.approx(0.35, abs=0.02)

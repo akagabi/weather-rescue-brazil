@@ -163,7 +163,44 @@ def resolve_stations(headers: list[str | None]) -> list[dict]:
 # tried first and reads 3 of the 10 known pages correctly; the labels read all
 # of them. Same principle as the printed day numbers at Cuyabá: geometry
 # proposes, the print disposes.
-def band_from_rules(image, span: tuple[float, float], bleed: float = 0.010
+def rules_in_band(image, y_frac: tuple[float, float], fill: float = 0.8) -> list[float]:
+    """Vertical rules found INSIDE a declared slice of the page, as fractions
+    of width.
+
+    `wrb.rows.vertical_rules` asks for a column of ink spanning a large share of
+    the PAGE, which is right when the table is the page and wrong when it is a
+    block on it. Doc 5's dekadal summaries put two small tables and a paragraph
+    on one sheet, so their rules run a tenth of the page height and the sweep
+    finds none at all - which is why `band_from_rules` returns None there and
+    the whole layout looked like it needed a trained variant.
+
+    Given the y-extent (a profile that declares `table_y_frac` already has it),
+    the same rules are obvious: a column that is ink for most of THAT slice.
+    """
+    import numpy as np
+
+    from wrb.rows import ink_threshold
+
+    g = image.convert("L")
+    w, h = g.size
+    a = np.asarray(g, dtype=float)[int(y_frac[0] * h):int(y_frac[1] * h), :]
+    if a.shape[0] < 8:
+        return []
+    col = (a < ink_threshold(g)).sum(axis=0)
+    hits = [i for i, v in enumerate(col) if v > fill * a.shape[0]]
+    out, cur = [], []
+    for x in hits:
+        if cur and x - cur[-1] > 2:
+            out.append(sum(cur) / len(cur) / w)
+            cur = []
+        cur.append(x)
+    if cur:
+        out.append(sum(cur) / len(cur) / w)
+    return out
+
+
+def band_from_rules(image, span: tuple[float, float], bleed: float = 0.010,
+                    y_frac: tuple[float, float] | None = None
                     ) -> tuple[float, float] | None:
     """The x-band to crop, anchored on THIS page's own table rules.
 
@@ -186,7 +223,10 @@ def band_from_rules(image, span: tuple[float, float], bleed: float = 0.010
 
     g = image.convert("L")
     width = g.width
-    rules = [x / width for x in vertical_rules(g, ink_threshold(g))]
+    if y_frac:
+        rules = rules_in_band(image, y_frac)
+    else:
+        rules = [x / width for x in vertical_rules(g, ink_threshold(g))]
     inner = [x for x in rules if 0.05 < x < 0.95]
     if len(inner) < 2:
         return None

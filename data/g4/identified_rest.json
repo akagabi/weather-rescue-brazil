@@ -457,5 +457,185 @@
   "astronomy": false,
   "profile": null,
   "period": null
+ },
+ {
+  "doc": "16",
+  "page": 80,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 87,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 96,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 104,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 107,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO DO RIO DE JANEIRO NO MEZ DE JUNHO DE 1890",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1890-06"
+ },
+ {
+  "doc": "16",
+  "page": 111,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 116,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 126,
+  "caption": "REVISTA DO OBSERVATÓRIO 115",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 142,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO DO RIO DE JANEIRO NO MEZ DE AGOSTO DE 1890",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1890-08"
+ },
+ {
+  "doc": "16",
+  "page": 153,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 156,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO DO RIO DE JANEIRO NO MEZ DE SETEMBRO DE 1890",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1890-09"
+ },
+ {
+  "doc": "16",
+  "page": 158,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 159,
+  "caption": "RESUMO DAS OBSERVAÇÕES METEOROLÓGICAS FEITAS NO OBSERVATÓRIO DO RIO DE JANEIRO NO MEZ DE OUTUBRO DE 1890",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1890-10"
+ },
+ {
+  "doc": "16",
+  "page": 164,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "16",
+  "page": 166,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "8",
+  "page": 9,
+  "caption": "NOT_WEATHER",
+  "is_weather_table": false,
+  "astronomy": false,
+  "profile": null,
+  "period": null
+ },
+ {
+  "doc": "8",
+  "page": 13,
+  "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL DE RIO DE JANEIRO\nObservations météorologiques du mois de Janvier 1883\nBaromètre réduit à 0°, 700mm +",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 17,
+  "caption": "Observations météorologiques du mois de Janvier 1883\nDE RIO DE JANEIRO",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": "revista-rio-1886",
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 18,
+  "caption": "Observations météorologiques du mois de Janvier 1883\nNebulosité en dixièmes du ciel couvert\nDate\n4 h. M.\n7 h. M.\n10 h. M.\n1 h. S.\n4 h. S.\n7 h. S.\n10 h. S.\nMoyenno\n1\nC\n2\nC,G-K",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-01"
+ },
+ {
+  "doc": "8",
+  "page": 19,
+  "caption": "Observations météorologiques du mois de Janvier 1883\nObservatoire de la Côte de Nacre\nJanuary 1883",
+  "is_weather_table": true,
+  "astronomy": false,
+  "profile": null,
+  "period": "1883-01"
  }
 ]
