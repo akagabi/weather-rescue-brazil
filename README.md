@@ -22,6 +22,19 @@ Read **[DATASET_CARD.md](DATASET_CARD.md)** before using it — in particular th
 section on what `checks_pass` actually verifies, which differs by publication
 and is *not* a uniform quality tier.
 
+### Also in this repository, and not published
+
+`data/dataset/simultaneas.jsonl` — **92 rows, 46 usable, 9 stations**, from the
+Revista's `Resumo mensal das observações simultaneas` form
+(`docs/g4-simultaneas.md`). It reaches **São Paulo, Bahia, Ouro Preto, Santa
+Cruz, Maceió, Recife, Cidade do Rio Grande, S. João d'El-Rei** and the cruiser
+**Almirante Barroso**, against a published dataset that is otherwise almost
+entirely Rio de Janeiro.
+
+It is deliberately a separate file: every row is a **dekad or a month**, not a
+day. Mixing summaries into a dataset described as daily observations would
+misstate what that file is, and a consumer averaging it would double-count.
+
 ## How it works
 
 ```
