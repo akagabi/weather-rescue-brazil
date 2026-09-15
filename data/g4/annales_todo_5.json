@@ -257,41 +257,9 @@
  },
  {
   "doc": "5",
-  "page": 279,
-  "caption": "The page contains two tables. The first table, titled \"Serviço chronométrico do mês de Junho de 1882,\" lists data for June 1882. The second table, titled \"Mez de Julho,\" lists data for July. Both tables include columns for \"Datas\" (dates), \"Est. absoluto\" (absolute estimate), \"M. D.\" (mean difference), and \"Temp.\" (temperature),",
-  "period": "1882-07",
-  "profile": null,
-  "n_cells": null
- },
- {
-  "doc": "5",
-  "page": 283,
-  "caption": "SERVIÇO CHRONOMETRICO DO MEZ DE AGOSTO DE 1882.",
-  "period": "1882-08",
-  "profile": null,
-  "n_cells": null
- },
- {
-  "doc": "5",
-  "page": 285,
-  "caption": "SERVIÇO CHRONOMETRICO DO MEZ DE AGOSTO DE 1882.",
-  "period": "1882-08",
-  "profile": null,
-  "n_cells": null
- },
- {
-  "doc": "5",
   "page": 292,
   "caption": "ANNALES DE L'OBSEVATOIRE IMPÉRIAL\n[xxxvij]\nServício cronometrico do mez de Outubro de 1882.",
   "period": "1882-10",
-  "profile": null,
-  "n_cells": null
- },
- {
-  "doc": "5",
-  "page": 298,
-  "caption": "SERVIÇO CHRONOMETRICO DO MEZ DE DEZEMBRO DE 1882.",
-  "period": "1882-12",
   "profile": null,
   "n_cells": null
  },

@@ -1,3 +1,54 @@
 {
- "pages": []
+ "pages": [
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 292,
+   "period": "1882-10",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/292 1882-10 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 355,
+   "period": "1883-06",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/355 1883-06 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 377,
+   "period": "1883-08",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/377 1883-08 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 411,
+   "period": "1882-12",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/411 1882-12 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-actinometrie",
+   "archive": "docvirt",
+   "doc": "5",
+   "page": 437,
+   "period": "1882-08",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 5/437 1882-08 rio-1883-actinometrie"
+  }
+ ]
 }

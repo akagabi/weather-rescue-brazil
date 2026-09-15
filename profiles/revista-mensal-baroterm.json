@@ -208,9 +208,22 @@
    "elided": false,
    "elided_range": null,
    "note": ""
+  },
+  {
+   "key": "saussure",
+   "label": "Hygrometro de Saussure",
+   "kind": "number",
+   "unit": "degrees",
+   "range": [
+    0,
+    100
+   ],
+   "elided": false,
+   "elided_range": null,
+   "note": "Ultima coluna impressa, que faltava a este perfil. O cabecalho de 5/437 le BAROMETRO A 0 (sete colunas) | THERMOMETRO (sete) | PSYCHROMETRO DE AUGUST (duas) | HYGROMETRO DE SAUSSURE (uma) = 18 com a coluna das decadas. Conferido no scan."
   }
  ],
- "notes": "A pagina traz DUAS tabelas empilhadas pelo mesmo rotulo de decada, e por isso sao DOIS perfis: nao ha uma faixa continua que contenha uma linha das duas. As linhas sao 1a, 2a, 3a e Mez (tres decadas + total do mez), NAO dias: e um resumo decadal, nao uma serie diaria. A estacao vem impressa no rodape (ex.: 'Rio Grande do Sul. - Observador, Loppo Netto'). Este e o BLOCO SUPERIOR (~17 colunas; o modelo ja leu 14 de 15 corretamente aqui). As quatro linhas estao DECLARADAS em `row_bands` (fraccoes da altura da pagina), medidas na pagina 5/451 e verificadas contra o impresso: o detector de linhas nao da conta deste layout (passo ~25px sob um cabecalho de tres niveis, picos fracos demais) e devolvia 2 das 4. Uma forma impressa nao se move, portanto declarar e mais simples e mais honesto do que afinar um limiar ate ele passar por acaso.",
+ "notes": "A pagina traz DUAS tabelas empilhadas pelo mesmo rotulo de decada, e por isso sao DOIS perfis: nao ha uma faixa continua que contenha uma linha das duas. As linhas sao 1a, 2a, 3a e Mez (tres decadas + total do mez), NAO dias: e um resumo decadal, nao uma serie diaria. A estacao vem impressa no rodape (ex.: 'Rio Grande do Sul. - Observador, Loppo Netto'). Este e o BLOCO SUPERIOR (18 colunas - o perfil declarava 17 e faltava-lhe o Hygrometro de Saussure, a ultima coluna impressa, o que explica por que nenhuma pagina lhe correspondia por contagem de celulas; o modelo ja leu 14 de 15 corretamente aqui). As quatro linhas estao DECLARADAS em `row_bands` (fraccoes da altura da pagina), medidas na pagina 5/451 e verificadas contra o impresso: o detector de linhas nao da conta deste layout (passo ~25px sob um cabecalho de tres niveis, picos fracos demais) e devolvia 2 das 4. Uma forma impressa nao se move, portanto declarar e mais simples e mais honesto do que afinar um limiar ate ele passar por acaso.\n\nCORRECAO 2026-09-15: a ideia de que o modelo nao consegue ler uma linha tao larga esta ERRADA. Em 5/431 leu de uma vez\n  1a | 683.26 | 0.16 | 686.86 | 8 | 677.65 | 1 | 9.21 | 16.08 | 0.51 | 23.0 | 9 | 10.0 | 10 | 13.0 | 85.4 ...\nque e a linha inteira e certa. O que falhava antes era o RECORTE, nao a largura: sem faixa de colunas e sem treino nenhum. As paginas identificam-se pelo rotulo impresso da linha (1a/2a/3a/Mez), nao pela contagem - das oito paginas com 18 celulas neste volume so tres sao decadais; as outras sao leituras degeneradas que calham na mesma contagem.",
  "rows_per_page": "fixed:4",
  "adapter": "",
  "checks": [],

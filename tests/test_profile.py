@@ -335,7 +335,12 @@ def test_the_dekadal_summary_is_TWO_profiles_not_one() -> None:
     contiguous crop contains one row of both. So it is two profiles, not one
     50-column profile: that was the first attempt and it cannot be cropped."""
     upper, lower = load("revista-mensal-baroterm"), load("revista-mensal-estado")
-    assert upper.n_cells == 17      # barometro(7) + termometro(7) + psychrometro(2) + label
+    # barometro(7) + termometro(7) + psychrometro(2) + hygrometro(1) + label.
+    # This said 17 and omitted the Saussure hygrometer, which is the last column
+    # the page prints - the same miscount the profile carried, which is why no
+    # page in doc 5 ever matched it by cell count. Checked against the header of
+    # doc 5 page 437.
+    assert upper.n_cells == 18
     assert lower.n_cells == 34      # estado(8) + 16 wind directions + force(9) + label
     for p in (upper, lower):
         assert p.expected_rows("1882-10") == 4      # 1a, 2a, 3a, Mez - NOT days
