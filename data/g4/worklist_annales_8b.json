@@ -1,0 +1,295 @@
+{
+ "pages": [
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 35,
+   "period": "1883-03",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/35 1883-03 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 43,
+   "period": "1883-04",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/43 1883-04 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 51,
+   "period": "1883-05",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/51 1883-05 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 59,
+   "period": "1883-06",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/59 1883-06 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 83,
+   "period": "1893-09",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/83 1893-09 rio-1883-vento",
+   "period_suspect": "period 1893-09 is outside doc 8's span 1882-01..1886-12 (Annales de l'Observatoire Imperial)"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 98,
+   "period": "1883-11",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/98 1883-11 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 107,
+   "period": "1883-12",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/107 1883-12 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 111,
+   "period": "1883-02",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/111 1883-02 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 119,
+   "period": "1883-06",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/119 1883-06 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 153,
+   "period": "1884-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/153 1884-01 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 154,
+   "period": "1884-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/154 1884-01 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 161,
+   "period": "1884-02",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/161 1884-02 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 169,
+   "period": "1884-03",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/169 1884-03 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 170,
+   "period": "1884-03",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/170 1884-03 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 178,
+   "period": "1884-04",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/178 1884-04 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 186,
+   "period": "1884-05",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/186 1884-05 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 194,
+   "period": "1884-06",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/194 1884-06 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 202,
+   "period": "1884-07",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/202 1884-07 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 217,
+   "period": "1884-09",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/217 1884-09 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 234,
+   "period": "1884-11",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/234 1884-11 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 266,
+   "period": "1884-12",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/266 1884-12 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 296,
+   "period": "1885-02",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/296 1885-02 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 313,
+   "period": "1885-04",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/313 1885-04 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 321,
+   "period": "1885-05",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/321 1885-05 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 328,
+   "period": "1885-06",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/328 1885-06 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 360,
+   "period": "1885-10",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/360 1885-10 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-thermo",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 374,
+   "period": "1885-12",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/374 1885-12 rio-1883-thermo"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 399,
+   "period": "1885-12",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/399 1885-12 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 19,
+   "period": "1883-01",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/19 1883-01 rio-1883-vento"
+  }
+ ]
+}
