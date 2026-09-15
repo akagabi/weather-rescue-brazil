@@ -31,7 +31,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from wrb.qc import near_duplicate_rows, pressure_implausible  # noqa: E402
+from wrb.qc import (near_duplicate_rows, pressure_for_altitude,  # noqa: E402
+                    pressure_implausible)
+from wrb.reconstruct import restore_thousands  # noqa: E402
 
 COLUMNS = ["baro", "t_secco", "t_maxima", "t_minima", "humidade"]
 
@@ -45,6 +47,37 @@ def main() -> None:
 
     path = Path(args.dataset)
     rows = [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
+    # The hundreds digit is elided in some blocks and not in others. On docId
+    # 16 page 41 Bahia prints 755.7 in full and Santa Cruz prints 56.22 for
+    # 756.22, on the same sheet. The usual machinery restores from a single
+    # declared band per column, which cannot work here: the stations run from
+    # sea level to Ouro Preto at 1145 m, so one band wide enough for all of
+    # them is wide enough to be ambiguous.
+    #
+    # The block's own printed altitude settles it. The barometric formula gives
+    # the pressure that altitude implies and restore_thousands is asked for the
+    # unique candidate within 30 mmHg of it - and refuses, rather than guesses,
+    # if there is not exactly one.
+    restored = 0
+    for r in rows:
+        v = (r.get("values") or {}).get("baro")
+        alt = r.get("station_bar_alt_m")
+        if isinstance(v, (int, float)) and v < 200 and isinstance(alt, (int, float)):
+            want = pressure_for_altitude(alt)
+            try:
+                full = restore_thousands(float(v), (want - 30.0, want + 30.0))
+            except ValueError:
+                r["problems"] = list(r.get("problems") or []) + [
+                    f"baro {v} is elided and no unique value near the "
+                    f"{want:.0f} mmHg that {alt:.0f} m implies"]
+                r["verdict"] = "flagged"
+            else:
+                r.setdefault("values_as_printed", dict(r["values"]))
+                r["values_as_printed"]["baro"] = v
+                r["values"]["baro"] = full
+                r["baro_restored_from"] = v
+                restored += 1
+
     hit, month_flagged = [], 0
     for r in rows:
         # the block's arithmetic belongs to the row that asserts it
@@ -86,6 +119,8 @@ def main() -> None:
     print(f"{month_flagged} month rows flagged because their block's arithmetic "
           f"did not close")
     print(f"{dupes} near-duplicate dekad pairs (one printed row read twice)")
+    print(f"{restored} elided barometer readings restored from the block's "
+          f"printed altitude")
     print(f"{len(hit)} implausible for their station's altitude")
     for r in hit[:25]:
         print(f"  {r['item']}/{r['page']} blk{r['block']} {r['row']:<4} "

@@ -199,3 +199,35 @@ def test_genuinely_close_dekads_are_not_flagged():
 def test_one_matching_column_is_a_coincidence_not_evidence():
     assert near_duplicate_rows(_rows((760.0, None, None, None, None),
                                      (760.1, None, None, None, None)), KEYS) == []
+
+
+# --- elided hundreds, restored from the block's own printed altitude --------
+
+def test_the_printed_altitude_restores_an_elided_barometer():
+    """On docId 16 page 41 Bahia prints 755.7 in full and Santa Cruz prints
+    56.22 for 756.22, on the same sheet. One declared band cannot serve both
+    those stations and Ouro Preto at 1145 m; the printed altitude can."""
+    from wrb.reconstruct import restore_thousands
+
+    for printed, alt, want in [(56.22, 26, 756.22), (58.83, 26, 758.83),
+                               (57.03, 26, 757.03), (98.5, 735, 698.5)]:
+        p = pressure_for_altitude(alt)
+        assert restore_thousands(printed, (p - 30.0, p + 30.0)) == want
+
+
+def test_it_refuses_rather_than_guesses_when_the_band_holds_no_candidate():
+    import pytest
+    from wrb.reconstruct import restore_thousands
+
+    p = pressure_for_altitude(26)
+    with pytest.raises(ValueError):
+        restore_thousands(10.0, (p - 30.0, p + 30.0))   # 710 and 810 both out
+
+
+def test_a_sea_level_band_would_have_mangled_ouro_preto():
+    """Why the band is per block and not per column."""
+    from wrb.reconstruct import restore_thousands
+
+    assert restore_thousands(65.65, (730.0, 790.0)) == 765.65      # wrong station
+    p = pressure_for_altitude(1145)
+    assert restore_thousands(65.65, (p - 30.0, p + 30.0)) == 665.65
