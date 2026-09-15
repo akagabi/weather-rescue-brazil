@@ -66,7 +66,7 @@
      73.0
     ],
     "3": [
-     762.31,
+     762.34,
      27.5,
      29.1,
      23.3,
@@ -79,7 +79,10 @@
      24.1,
      74.0
     ]
-   }
+   },
+   "corrections": [
+    "baro 3a: first transcribed 762.31; the scan prints 762.34 (checked at 7x). The production run had it right and this second reading was wrong."
+   ]
   },
   {
    "doc": "15",
@@ -480,5 +483,6 @@
     ]
    }
   }
- ]
+ ],
+ "_adjudicated": "Where the two readings differed the scan was consulted and the loser corrected here, with a note. So far: 1 disagreement in 70 cells, and it was this file that was wrong."
 }
