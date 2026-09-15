@@ -52,3 +52,20 @@ def test_a_missing_version_file_says_so(tmp_path):
     p = tmp_path / "d.jsonl"
     p.write_text(json.dumps(row()) + "\n")
     assert check_version(p, tmp_path / "nope.json") != []
+
+
+def test_a_dekadal_row_counts_as_a_measurement(tmp_path):
+    """Counting only is_day_row reported 0 values for a file holding 210."""
+    import json
+    from wrb.freeze import fingerprint
+
+    f = tmp_path / "d.jsonl"
+    f.write_text("".join(json.dumps(r) + "\n" for r in [
+        {"verdict": "checks_pass", "is_dekad": True, "values": {"a": 1, "b": 2}},
+        {"verdict": "qc_clean", "is_day_row": True, "values": {"a": 3}},
+        {"verdict": "checks_pass", "is_dekad": False, "values": {"a": 9}},  # month total
+        {"verdict": "flagged", "is_dekad": True, "values": {"a": 9}},
+    ]))
+    fp = fingerprint(f)
+    assert fp["rows"] == 4 and fp["usable"] == 3
+    assert fp["values_usable"] == 3

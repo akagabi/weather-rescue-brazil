@@ -1,0 +1,9 @@
+{
+ "version": "monthly-0.1",
+ "frozen_at": "2026-09-15T03:04:07+00:00",
+ "dataset": "simultaneas.jsonl",
+ "rows": 92,
+ "usable": 46,
+ "values_usable": 252,
+ "sha256": "bf7c97a67d12e7fa5023efc9d975883fa9669889eeb700b983bd14a3bd31d2e8"
+}

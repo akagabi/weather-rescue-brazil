@@ -33,7 +33,12 @@ def fingerprint(dataset: Path) -> dict:
     data = Path(dataset).read_bytes()
     rows = [json.loads(l) for l in data.decode().splitlines() if l.strip()]
     usable_rows = [r for r in rows if r.get("verdict") in ("checks_pass", "qc_clean")]
-    values = sum(1 for r in usable_rows if r.get("is_day_row")
+    # A row that carries a measurement, whatever its layout calls it: a day on
+    # the daily tables, a dekad on the `Resumo mensal` form. Counting only
+    # is_day_row reported 0 values for a 92-row file holding 210 - the same slip
+    # wrb.merge.summarise had, and a fingerprint that says zero is worse than no
+    # fingerprint, because it looks like an answer.
+    values = sum(1 for r in usable_rows if (r.get("is_day_row") or r.get("is_dekad"))
                  for v in (r.get("values") or {}).values() if v is not None)
     return {
         "rows": len(rows),
