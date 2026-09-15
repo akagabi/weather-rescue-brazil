@@ -96,3 +96,17 @@ def test_two_months_named_without_an_of_phrase_is_unidentified():
 def test_two_months_resolve_by_the_of_phrase():
     assert match_period(
         "Observações do mez de Agosto de 1886; comparar com Julho") == "1886-08"
+
+
+def test_the_moons_geometry_is_astronomy_too():
+    """docId 15 page 87 reached the triage as an unidentified weather table."""
+    for cap in ["APOGEO, PERIGEO E SEMI-DIAMETRO DA LUA. Perigeo.",
+                "DISTANCIAS LUNARES. SETEMBRO DE 1853.",
+                "Phases de la lune, Janvier 1883",
+                "Fases da Lua - Março de 1889"]:
+        assert is_astronomy(cap), cap
+    assert match_profile("APOGEO, PERIGEO E SEMI-DIAMETRO DA LUA") is None
+
+
+def test_a_diameter_that_is_not_the_moons_is_not_vetoed():
+    assert not is_astronomy("Diametro do pluviometro, Rio de Janeiro, Maio de 1886")

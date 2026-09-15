@@ -44,6 +44,12 @@ ASTRONOMY = (
     "satellites de jupiter", "satellites", "planeta", "planete", "planète",
     "eclipse", "azimuth do sol", "nascimento do sol", "meio dia medio",
     "meio dia médio", "midi moyen",
+    # docId 15 page 87 came through the sweep as a weather table: the Revista
+    # prints the Moon's apogee, perigee and semi-diameter in a ruled grid with
+    # a day column, and none of the terms above appear on it.
+    "apogeo", "apogeu", "perigeo", "perigeu", "semi-diametro", "semi diametro",
+    "semi-diâmetro", "diametro da lua", "diâmetro da lua", "fases da lua",
+    "phases de la lune", "distancias lunares", "distâncias lunares",
 )
 
 # Headings that are the whole caption on an ephemeris page.
