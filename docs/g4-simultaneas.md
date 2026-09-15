@@ -125,6 +125,30 @@ every block as headerless and returned the page as four blocks of Maceió.
 <month> de <year>` is a continuation and inherits; anything else is `unclear`
 and yields **no station**. Only the middle case inherits.
 
+## The printed altitude does two jobs
+
+Each block heads with its own `Alt. do Bar.`, and that one figure turns two
+otherwise unanswerable questions into arithmetic.
+
+**It bounds the barometer.** A range wide enough for this form is nearly
+useless — Bahia at 64 m to Ouro Preto at 1145 m forces 560–790 mmHg, and Ouro
+Preto's printed `598.32` sits comfortably inside it while being 65 mmHg below
+anything that altitude can produce. The barometric formula gives the implied
+pressure, and a 25 mmHg window passes every genuine reading measured across
+these pages while catching that one.
+
+**It restores the elided hundreds.** Page 16/41 prints Bahia's barometer as
+`755.7` and Santa Cruz's as `56.22` — on the same sheet. Left alone that is a
+reading 700 mmHg wrong that no range check would question. The usual machinery
+restores from a single band declared per *column*, which cannot work when the
+column spans sea level to 1145 m: one band wide enough is wide enough to be
+ambiguous. The altitude-implied pressure ±30 mmHg is narrow enough to have
+exactly one candidate, and `restore_thousands` refuses rather than guesses when
+it does not. `values_as_printed` keeps `56.22`; `values` carries `756.22`.
+
+It also correctly declines the trap: `598.32` is *not* restored, because it is
+already a three-digit figure. It is flagged.
+
 ## What the page asserts about itself, and how loosely
 
 The `Mez` row is the month's summary of the three dekads, and
