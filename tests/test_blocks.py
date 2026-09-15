@@ -163,3 +163,34 @@ def test_a_page_whose_rules_do_not_bound_a_table_is_refused():
         assert band_from_rules(_patched(mp, 2468, [0.4]), (0.0, 0.253)) is None
     finally:
         mp.undo()
+
+
+# --- the same row detected twice --------------------------------------------
+
+from wrb.blocks import dedupe_labels  # noqa: E402
+
+
+def test_a_row_detected_twice_is_one_row():
+    """Left alone this reads 1,1,2,2,3,3,Mez and the whole block is discarded."""
+    labels = ["1", "1", "2", "2", "3", "3", "Mez"]
+    kept = dedupe_labels(labels)
+    assert [labels[i] for i in kept] == ["1", "2", "3", "Mez"]
+    assert blocks_from_labels([labels[i] for i in kept]) == [[0, 1, 2, 3]]
+
+
+def test_unlabelled_candidates_drop_out():
+    labels = [None, "1", None, "2", "3", None, "Mez", None]
+    assert [labels[i] for i in dedupe_labels(labels)] == ["1", "2", "3", "Mez"]
+
+
+def test_the_fuller_read_wins_a_duplicate():
+    labels = ["1", "1"]
+    cells = {0: 2, 1: 6}
+    assert dedupe_labels(labels, score=cells.get) == [1]
+    assert dedupe_labels(labels, score={0: 6, 1: 2}.get) == [0]
+
+
+def test_two_blocks_are_not_collapsed_into_one():
+    """A Mez is followed by a 1, never by another Mez."""
+    labels = ["1", "2", "3", "Mez", "1", "2", "3", "Mez"]
+    assert [labels[i] for i in dedupe_labels(labels)] == labels

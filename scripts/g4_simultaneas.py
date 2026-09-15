@@ -39,7 +39,8 @@ sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from wrb import profile as prof                       # noqa: E402
-from wrb.blocks import band_from_rules, blocks_from_labels, resolve_stations, row_label  # noqa: E402
+from wrb.blocks import (band_from_rules, blocks_from_labels, dedupe_labels,  # noqa: E402
+                        resolve_stations, row_label)
 from wrb.qc import degenerate_row                      # noqa: E402
 from wrb.rows import ink_threshold                     # noqa: E402
 
@@ -98,6 +99,8 @@ def main() -> None:
     ap.add_argument("--adapter", default="runs/g4/gen3/epoch2")
     ap.add_argument("--base", default="Qwen/Qwen3.5-2B")
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--debug-labels", action="store_true",
+                    help="print every candidate crop's read and the label it yielded")
     args = ap.parse_args()
 
     p = prof.load(PROFILE)
@@ -163,7 +166,16 @@ def main() -> None:
             c = c.resize((c.width * 3, c.height * 3), Image.LANCZOS)
             raw = run(c)
             read.append({"box": (y0, y1), "raw": raw, "label": row_label(raw)})
-        labelled = [r for r in read if r["label"]]
+        if args.debug_labels:
+            for r in read:
+                print(f"     y={r['box'][0]:>5}-{r['box'][1]:<5} label={str(r['label']):<5} "
+                      f"| {r['raw'][:88]!r}", flush=True)
+        # The same printed row can arrive as two crops (a tall ink run is split
+        # rather than dropped), and both read back with the same label. Keeping
+        # both makes a block read 1,1,2,2,3,3,Mez and discards it whole.
+        def _cells(i):
+            return sum(1 for v in p.parse(read[i]["raw"])[0].values() if v is not None)
+        labelled = [read[i] for i in dedupe_labels([r["label"] for r in read], score=_cells)]
         if not labelled:
             print(f"  {doc}/{page}: no row carried a dekad label, page refused", flush=True)
             stats["refused"] += 1

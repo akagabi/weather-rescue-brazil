@@ -159,6 +159,34 @@ def row_label(raw: str) -> str | None:
     return m.group(1) if m else None
 
 
+def dedupe_labels(labels: list[str | None], score=None) -> list[int]:
+    """Indices to keep when the same row was detected more than once.
+
+    Row candidates are proposed generously - a run of ink taller than one row
+    is split rather than dropped - so the same printed row can arrive as two
+    crops, and both read back with the same label. Left alone that is fatal,
+    not merely wasteful: a block's labels come out `1, 1, 2, 2, 3, 3, Mez`,
+    which is not the `1, 2, 3, Mez` a block has to be, and the whole block is
+    discarded. It is why docId 15 page 126 yielded one block of its four.
+
+    Consecutive candidates carrying the SAME label are one row, and only one
+    survives - by `score` when given (the fuller read wins), else the first.
+    Within a block the labels are strictly 1, 2, 3, Mez and between blocks a
+    Mez is followed by a 1, so no two genuinely different rows are ever
+    adjacent with the same label.
+    """
+    keep: list[int] = []
+    for i, lab in enumerate(labels):
+        if lab is None:
+            continue
+        if keep and labels[keep[-1]] == lab:
+            if score is not None and score(i) > score(keep[-1]):
+                keep[-1] = i
+            continue
+        keep.append(i)
+    return keep
+
+
 def blocks_from_labels(labels: list[str]) -> list[list[int]]:
     """Indices of each complete `1, 2, 3, Mez` block, in page order.
 
