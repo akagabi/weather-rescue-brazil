@@ -109,6 +109,14 @@ def apply_station(rows: list[dict], pages: list[dict]) -> int:
         by_page[(str(doc), int(p["page"]))] = p
     touched = 0
     for r in rows:
+        # A row that already knows its station from the PAGE ITSELF keeps it.
+        # The `Resumo mensal das observacoes simultaneas` form prints four
+        # stations on one sheet and each block carries its own; a worklist
+        # station is per page, so applying it here would overwrite three
+        # correct stations in four with one wrong one.
+        if r.get("station") and r.get("station_source", "").startswith(
+                ("linha impressa do bloco", "herdada do bloco")):
+            continue
         entry = by_page.get((str(r.get("item")), int(r.get("page", -1))))
         if entry is None:
             continue

@@ -140,3 +140,31 @@ def test_four_stations_on_one_page_keep_four_identities():
 def test_blocks_stay_in_page_order():
     rows = [{"block": 1, "row": "1"}, {"block": 0, "row": "Mez"}]
     assert [r["block"] for r in sorted(rows, key=row_ordinal)] == [0, 1]
+
+
+def test_a_block_station_survives_the_worklist():
+    """Four stations on one sheet; a page-level station would overwrite three."""
+    from wrb.merge import apply_station
+    rows = [{"item": "16", "page": 41, "block": b, "row": "1",
+             "station": s, "station_source": "linha impressa do bloco"}
+            for b, s in enumerate(["S. Paulo", "Bahia", "Ouro Preto", "Santa Cruz"])]
+    apply_station(rows, [{"doc": "16", "page": 41, "station": "Rio de Janeiro",
+                          "station_source": "legenda impressa"}])
+    assert [r["station"] for r in rows] == ["S. Paulo", "Bahia", "Ouro Preto", "Santa Cruz"]
+
+
+def test_an_inherited_block_station_also_survives():
+    from wrb.merge import apply_station
+    rows = [{"item": "15", "page": 142, "block": 1, "row": "1",
+             "station": "Maceió", "station_source": "herdada do bloco acima"}]
+    apply_station(rows, [{"doc": "15", "page": 142, "station": "Rio de Janeiro",
+                          "station_source": "legenda impressa"}])
+    assert rows[0]["station"] == "Maceió"
+
+
+def test_a_page_level_station_still_reaches_the_daily_layouts():
+    from wrb.merge import apply_station
+    rows = [{"item": "14", "page": 41, "row": 3}]
+    n = apply_station(rows, [{"doc": "14", "page": 41, "station": "Imperial Observatório",
+                              "station_source": "legenda impressa"}])
+    assert n == 1 and rows[0]["station"] == "Imperial Observatório"
