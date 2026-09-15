@@ -154,11 +154,22 @@ def main() -> None:
             rec["sample_row"] = texts[0][:150]
             txt = " ".join(texts)
             if rec["profile"] and len(COMPASS.findall(txt)) >= 3:
-                # 13 cells collides between thermometer and wind (day + 6
-                # dir/force pairs); a row dominated by compass points is wind,
-                # not thermometer - reassign rather than just discard.
-                rec["profile"] = "rio-1883-vento" if best == 13 else None
-                if not rec["profile"]:
+                # Compass points in the row mean it is a WIND table. That
+                # confirms rio-1883-vento (15 cells) and contradicts anything
+                # else - 13 cells collides between the thermometer and the
+                # hourly wind table (day plus six direction/force pairs), so a
+                # 13 full of rhumbs is wind, not temperature.
+                #
+                # The previous version nulled the profile for every count
+                # except 13, which meant every genuine 15-cell WIND page was
+                # rejected for looking like wind. Doc 8 page 19 was the first
+                # page of the backlog and it went "15 celulas -> None".
+                if best == 15:
+                    pass                                   # already vento
+                elif best == 13:
+                    rec["profile"] = "rio-1883-vento"
+                else:
+                    rec["profile"] = None
                     rec["rejected"] = "linha de rumos de vento, não de números"
             if best in (16, 17):
                 # Two DIFFERENT 16-cell tables exist: actinometry (blocks of 5:
