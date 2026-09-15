@@ -392,6 +392,46 @@ class Profile:
                            f"gives {want:.4f} (tolerance {limit})")
         return out
 
+    def verify_month_unordered(self, day_rows: list[dict], printed: list[float],
+                               tol: float | None = None) -> list[str]:
+        """The month row's arithmetic when its CELL ORDER cannot be trusted.
+
+        On the `Resumo mensal das observacoes simultaneas` form the month row
+        frequently comes back with its cells out of order - Maceio's printed
+        `Mez.... | 763.64 | 26.9 | 26.9 | 21 1 | 80.9` read right to left with
+        the label last. The numbers are all there and all correct; only their
+        order is lost. Matching them to columns by position would invent data,
+        so this compares the two SETS instead: every expected column mean has
+        to find a printed number near it, and each printed number is spent
+        once.
+
+        It cannot name the column that failed, which `verify_month` can, so it
+        is the weaker check and says so at the call site. What it still does is
+        catch a month row that does not summarise these dekads at all - and, on
+        the block measured, the one column that is genuinely out by 1.34.
+        """
+        agg = self.monthly.get("aggregate") or {}
+        per_key = self.monthly.get("tolerance") or {}
+        wants: list[tuple[str, float]] = []
+        for key, kind in agg.items():
+            col = [r.get(key) for r in day_rows]
+            if not col or any(not isinstance(v, (int, float)) for v in col):
+                continue
+            if kind != "mean":
+                continue
+            wants.append((key, sum(col) / len(col)))
+        pool = [v for v in printed if isinstance(v, (int, float))]
+        out: list[str] = []
+        for key, want in wants:
+            limit = float(per_key.get(key, tol if tol is not None else 0.06))
+            hit = min(pool, key=lambda v: abs(v - want)) if pool else None
+            if hit is None or abs(hit - want) > limit:
+                out.append(f"{key}: no printed figure near {want:.4f} "
+                           f"(closest {hit}, tolerance {limit})")
+            else:
+                pool.remove(hit)
+        return out
+
     def resolve_dittos(self, rows: list[dict]) -> list[dict]:
         """Replace ditto marks with the value they repeat from the row above.
         A ditto in the first row has nothing to repeat and becomes None."""

@@ -402,3 +402,43 @@ class _FakePath:
 def _fake_image(*a, **k):
     from PIL import Image as _I
     return _I.new("RGB", (100, 100), (255, 255, 255))
+
+
+# --- a month row whose cell order was lost ----------------------------------
+
+def _simultaneas():
+    from wrb import profile as prof
+    return prof.load("revista-resumo-simultaneas")
+
+
+DEKADS = [
+    {"baro": 697.68, "t_secco": 22.84, "t_maxima": 25.13, "t_minima": 17.97, "humidade": 80.1},
+    {"baro": 699.12, "t_secco": 24.04, "t_maxima": 26.90, "t_minima": 18.52, "humidade": 77.3},
+    {"baro": 697.71, "t_secco": 22.02, "t_maxima": 25.60, "t_minima": 18.50, "humidade": 82.3},
+]
+
+
+def test_a_reversed_month_row_still_checks_out():
+    """The numbers are all there and correct; only the order was lost."""
+    p = _simultaneas()
+    p.monthly["tolerance"] = {"baro": 0.6, "t_secco": 0.3, "t_maxima": 0.3,
+                              "t_minima": 0.5, "humidade": 0.8}
+    printed = [79.9, 19.67, 25.88, 23.03, 698.50]          # reversed
+    fails = p.verify_month_unordered(DEKADS, printed)
+    assert [f.split(":")[0] for f in fails] == ["t_minima"]
+
+
+def test_a_month_row_from_another_block_does_not_match():
+    p = _simultaneas()
+    p.monthly["tolerance"] = {"baro": 0.6, "t_secco": 0.3, "t_maxima": 0.3,
+                              "t_minima": 0.5, "humidade": 0.8}
+    printed = [763.64, 26.9, 26.9, 21.1, 80.9]             # Maceió's, not São Paulo's
+    assert len(p.verify_month_unordered(DEKADS, printed)) >= 3
+
+
+def test_each_printed_number_is_spent_once():
+    """Two columns cannot both claim the same figure."""
+    p = _simultaneas()
+    p.monthly["tolerance"] = {k: 50.0 for k in
+                              ("baro", "t_secco", "t_maxima", "t_minima", "humidade")}
+    assert p.verify_month_unordered(DEKADS, [698.5]) != []

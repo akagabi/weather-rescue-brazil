@@ -242,17 +242,30 @@ def main() -> None:
                 dek_values.append(p.parse(r["raw"])[0])
             mez = b["mez"]
             mez_ok = bool(mez and mez.get("label") == "Mez")
-            month_fail = (p.verify_month(dek_values, p.parse(mez["raw"])[0])
-                          if mez_ok else [])
+            month_fail, month_kind = [], "none"
             if mez_ok:
+                month_fail = p.verify_month(dek_values, p.parse(mez["raw"])[0])
+                month_kind = "ordered"
                 entries.append((mez, "Mez"))
+            elif mez:
+                # The month row's cells came back out of order. The numbers are
+                # still there, so the page's arithmetic can still be checked as
+                # a SET - weaker, because it cannot name the column that failed,
+                # but enough to tell a month row that summarises these dekads
+                # from one that does not. The row itself is NOT emitted: a row
+                # whose columns are unknown is not data.
+                nums = [v for v in p.parse(mez["raw"])[0].values()
+                        if isinstance(v, (int, float))]
+                month_fail = p.verify_month_unordered(dek_values, nums)
+                month_kind = "unordered"
             for r, label in entries:
                 values, problems = p.parse(r["raw"])
                 viol = p.violations(values)
                 if degenerate_row(values, index_keys={"decada"}):
                     problems = problems + ["degenerate_row: measurements collapsed to a repeated value"]
                 hard = [x for x in problems if x != prof.PADDED_TRAILING]
-                verdict = ("checks_pass" if mez_ok and not month_fail and not viol and not hard
+                verdict = ("checks_pass" if month_kind != "none" and not month_fail
+                           and not viol and not hard
                            else "qc_clean" if not viol and not hard
                            else "flagged")
                 fh.write(json.dumps({
@@ -267,12 +280,11 @@ def main() -> None:
                     "station_bar_alt_m": st.get("bar_alt_m"),
                     "verdict": verdict, "problems": problems,
                     "range_violations": viol, "month_check": month_fail,
-                    "month_row_read": mez_ok,
+                    "month_check_kind": month_kind, "month_row_read": mez_ok,
                     "localisation": "printed dekad label, month row by position",
                 }, ensure_ascii=False) + "\n")
                 stats["rows"] += 1
-            if not mez_ok:
-                stats["month_unread"] = stats.get("month_unread", 0) + 1
+            stats[f"month_{month_kind}"] = stats.get(f"month_{month_kind}", 0) + 1
             stats["blocks"] += 1
             if st.get("station"):
                 stats["stations"].add(st["station"])
