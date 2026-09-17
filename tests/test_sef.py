@@ -67,3 +67,43 @@ def test_write_sef_emits_header_then_column_row_then_data(tmp_path):
     lines = p.read_text().split("\n")
     assert len([l for l in lines if l.strip()]) == 12 + 1 + 2
     assert lines[12].split("\t") == ["Year", "Month", "Day", "Hour", "Minute", "Period", "Value", "Meta"]
+
+
+# --- the day column is named by the profile, not guessed ---------------------
+
+def test_every_profile_day_key_is_discoverable_from_the_profile():
+    """The exporter guessed the day column from the literals `day`, `date`,
+    `datas`. Exactly one profile - rio-1883-thermo - calls it `dates`, so all
+    736 of its rows, a fifth of every usable day row and the largest
+    temperature series in the dataset, hit a `continue` and never reached the
+    export. The three Radcliffe profiles name it `year` and were missing for
+    the same reason. Nothing reported it: a row with no day looks exactly like
+    a row that was correctly skipped.
+    """
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+    from wrb import profile as prof
+
+    missing = []
+    for pid in prof.available():
+        p = prof.load(pid)
+        has_day_column = any(c.kind == "day" for c in p.columns)
+        if has_day_column and not p.day_key:
+            missing.append(pid)
+    assert not missing, f"profiles with a day column but no day_key: {missing}"
+
+
+def test_the_guessed_literals_would_not_have_covered_every_profile():
+    """A regression guard on the reasoning, not just the fix: if someone
+    reintroduces a hardcoded list, this says why it cannot work."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+    from wrb import profile as prof
+
+    guessed = {"day", "date", "datas"}
+    declared = {prof.load(pid).day_key for pid in prof.available()}
+    declared.discard(None)
+    assert declared - guessed, "the old guess happens to cover everything now - re-check this test"
+    assert "dates" in declared or "year" in declared

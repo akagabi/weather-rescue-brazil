@@ -44,9 +44,27 @@ def main() -> None:
     spec = load_variables()["columns"]
 
     rows = [json.loads(l) for l in (ROOT / args.dataset).open() if l.strip()]
+    # The day column is named by the PROFILE, not guessed from a list of
+    # literals. The guess was `day` or `date` or `datas`, and exactly one
+    # profile - rio-1883-thermo - calls it `dates`, so all 736 of its rows hit
+    # the `continue` below and never reached the export. That is the largest
+    # temperature series in the dataset, roughly a fifth of every usable row,
+    # silently absent from the artefact this script exists to produce. The
+    # three Radcliffe profiles name it `year` and were missing for the same
+    # reason. Nothing reported it, because a row without a day looks exactly
+    # like a row that was correctly skipped.
+    from wrb import profile as prof
+    day_key_of = {}
+    for pid in {r.get("profile") for r in rows if r.get("profile")}:
+        try:
+            day_key_of[pid] = prof.load(pid).day_key
+        except Exception:
+            day_key_of[pid] = None
     wanted = ("checks_pass", "qc_clean") + (("flagged",) if args.include_flagged else ())
     series = defaultdict(list)          # (station_id, vbl, stat) -> rows
     skipped_station = set()
+    no_day = defaultdict(int)
+    no_column = defaultdict(int)
     meta_note = defaultdict(set)
 
     for r in rows:
@@ -61,18 +79,24 @@ def main() -> None:
             year, month = int(period[:4]), int(period[5:7])
         except (ValueError, IndexError):
             continue
-        day = r["values"].get("day") or r["values"].get("date") or r["values"].get("datas")
+        dk = day_key_of.get(r.get("profile"))
+        day = r["values"].get(dk) if dk else None
         if not isinstance(day, (int, float)):
+            no_day[(r.get("profile"), dk)] += 1
             continue
         qc = "qc=uncertain" if r["verdict"] == "flagged" else ""
+        mapped = False
         for col, m in spec.items():
             v = r["values"].get(col)
             if v is None or not isinstance(v, (int, float)):
                 continue
+            mapped = True
             series[(st["id"], m["vbl"], m["stat"])].append(
                 (year, month, int(day), m.get("hour"), None, m["period"], convert(m["convert"], v), qc))
             if m["convert"] == "mmHg_to_hPa":
                 meta_note[(st["id"], m["vbl"], m["stat"])].add("printed units mmHg")
+        if not mapped:
+            no_column[r.get("profile")] += 1
 
     out = ROOT / args.out
     written = []
@@ -93,6 +117,21 @@ def main() -> None:
     print(f"{len(written)} SEF files -> {shown}")
     for n, k in written:
         print(f"   {n:52s} {k:5d} observations")
+
+    # Report what did NOT make it, the way unknown stations already are. A
+    # silent `continue` is how 736 rows went missing without anyone noticing.
+    if skipped_station:
+        print(f"\n{len(skipped_station)} station name(s) not in data/stations.json:")
+        for name in sorted(str(x) for x in skipped_station):
+            print(f"   {name}")
+    if no_day:
+        print("\nrows dropped for having no usable day number:")
+        for (pid, dk), n in sorted(no_day.items(), key=lambda kv: -kv[1]):
+            print(f"   {str(pid):<30} day key {str(dk)!r:<10} {n:5d} rows")
+    if no_column:
+        print("\nrows whose columns map to no SEF variable in data/sef_variables.json:")
+        for pid, n in sorted(no_column.items(), key=lambda kv: -kv[1]):
+            print(f"   {str(pid):<30} {n:5d} rows")
     if skipped_station:
         print(f"\nstation names with no entry in data/stations.json: {sorted(skipped_station)}")
     unverified = [s["id"] for s in stations.values() if isinstance(s, dict) and not s.get("verified")]

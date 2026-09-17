@@ -33,6 +33,17 @@ from wrb.rows import locate_day_rows  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 
+# The chat template ends the assistant turn with <|im_end|> (248046), but
+# Qwen3.5-2B ships no generation_config.json and its config.json declares no
+# eos_token_id, so generate() falls back to <|endoftext|> (248044) alone. The
+# model therefore emits <|im_end|>, is not stopped by it, and keeps going: 110
+# published rows carry a newline and the START OF THE NEXT DAY'S ROW inside
+# them, which reached Profile.parse as extra cells. The `.split("<|im_end|>")`
+# guard below cannot help - skip_special_tokens=True has already removed the
+# marker by then.
+STOP_IDS = [248046, 248044]          # <|im_end|>, <|endoftext|>
+
+
 
 def page_path(item: dict) -> Path:
     if item.get("archive") == "ia":
@@ -145,7 +156,8 @@ def main() -> None:
                                                 return_dict=True, return_tensors="pt").to(dev)
                 n = inp["input_ids"].shape[1]
                 with torch.no_grad():
-                    o = model.generate(**inp, max_new_tokens=140, do_sample=False)
+                    o = model.generate(**inp, max_new_tokens=140, do_sample=False,
+                                       eos_token_id=STOP_IDS)
                 txt = procr.decode(o[0][n:], skip_special_tokens=True).split("<|im_end|>")[0].strip()
                 if dev == "mps":
                     torch.mps.empty_cache()
@@ -167,7 +179,8 @@ def main() -> None:
                                             return_dict=True, return_tensors="pt").to(dev)
             n = inp["input_ids"].shape[1]
             with torch.no_grad():
-                o = model.generate(**inp, max_new_tokens=140, do_sample=False)
+                o = model.generate(**inp, max_new_tokens=140, do_sample=False,
+                                   eos_token_id=STOP_IDS)
             text = procr.decode(o[0][n:], skip_special_tokens=True).split("<|im_end|>")[0].strip()
             if dev == "mps":
                 torch.mps.empty_cache()
