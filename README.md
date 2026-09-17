@@ -115,7 +115,9 @@ is tracked.
 
 ## Licence
 
-Transcriptions: **CC BY-NC 4.0**. Code: **PolyForm Noncommercial 1.0.0**.
+Transcriptions: **CC0 1.0** (public domain dedication). Code and model
+weights: **Apache-2.0**. Everything here is free for any use, commercial
+included.
 The underlying observations are in the public domain (Lei 9.610) and are not
 ours to licence. See [LICENSE](LICENSE) and
 [DATASET_CARD.md](DATASET_CARD.md#provenance-and-rights) — the collection asks

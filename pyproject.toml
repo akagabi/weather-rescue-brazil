@@ -1,8 +1,15 @@
 [project]
 name = "wrb"
 version = "0.0.1"
-description = "Weather Rescue Brazil - AI-assisted, human-verified rescue of historical Brazilian weather records"
+# "human-verified" was wrong and had been wrong since the first commit: the
+# GOLD SET is human-verified (9 pages, triple-transcribed, every disagreement
+# adjudicated against the image), the published dataset is not. DATASET_CARD.md
+# says so plainly - "No row in this file has been verified line-by-line by a
+# human" - and the package metadata contradicted it.
+description = "Weather Rescue Brazil - reading historical Brazilian weather tables into an open dataset with a small offline model"
 requires-python = ">=3.12,<3.13"
+license = "Apache-2.0"
+license-files = ["LICENSE", "LICENSE-CODE"]
 dependencies = ["httpx>=0.27", "pillow>=10.0", "pydantic>=2.7", "certifi>=2024.0"]
 
 [project.optional-dependencies]

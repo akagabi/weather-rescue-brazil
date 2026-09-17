@@ -1,6 +1,6 @@
 ---
 pretty_name: Weather Rescue Brazil
-license: cc-by-nc-4.0
+license: cc0-1.0
 language:
   - pt
   - fr
@@ -172,13 +172,19 @@ nineteenth-century Brazilian government publications and are in the public
 domain (Lei 9.610). Anyone may use the numbers for any purpose.
 
 What this project added — the transcriptions, the per-row verdicts, the
-corrections and the provenance — is released under **CC BY-NC 4.0**
-(non-commercial, with attribution). The pipeline code is **PolyForm
-Noncommercial 1.0.0**. See [LICENSE](LICENSE).
+corrections and the provenance — is dedicated to the public domain under
+**CC0 1.0**. Use it for anything, commercial or not, with or without credit.
+The pipeline code and the model weights are **Apache-2.0**. See
+[LICENSE](LICENSE).
 
-Worth knowing before you build on it: the non-commercial terms were a
-deliberate choice, and they make this dataset ineligible for some open-data
-services and for C3S ingestion in some channels.
+A waiver rather than a licence, deliberately: a faithful transcription of a
+printed public-domain table exercises no creative selection, and Lei 9.610
+art. 7º §2º says protection "não abarca os dados ou materiais em si mesmos".
+Until 2026-09-17 these were CC BY-NC 4.0, which asserted a right that probably
+did not exist — this card said "anyone may use the numbers for any purpose"
+three lines above the NC clause — and which barred the dataset from ISPD,
+Scientific Data, Dryad, Figshare and Brazilian federal open data while quietly
+lowering its ingestion priority at C3S.
 
 Please carry the attribution:
 

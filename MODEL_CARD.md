@@ -2,7 +2,7 @@
 language:
   - pt
   - fr
-license: cc-by-nc-4.0
+license: apache-2.0
 base_model: Qwen/Qwen3.5-2B
 library_name: peft
 tags:
@@ -138,8 +138,18 @@ reconstructed form taught it to invent digits.
 
 ## Licence
 
-**CC BY-NC 4.0** — non-commercial, with attribution. The base model is under its
-own licence (Apache-2.0 for Qwen3.5-2B), which this does not alter.
+**Apache-2.0** — the same terms as the base model it adapts (Qwen3.5-2B), which
+this does not alter. Commercial use is permitted.
+
+Until 2026-09-17 these weights were CC BY-NC 4.0. That was changed so the method
+could be adopted by the people most likely to want it — national meteorological
+institutes with their own shelves of scanned tables — and so the work could go
+to venues that require an OSI-conforming licence. Read the provenance section
+above before building on it: the training labels came from the Gemini API.
+Google claims no ownership of generated content, and its use restriction on
+developing competing services binds the API customer rather than travelling with
+these weights, but anyone redistributing them should know where the targets came
+from.
 
 ## Companion
 

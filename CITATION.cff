@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: "Weather Rescue Brazil: nineteenth-century Brazilian weather observations transcribed by a small offline model"
+message: "If you use this dataset or the method, please cite it. Attribution is not required by the licence (the transcriptions are CC0); this file is here because citation is how the work becomes findable."
+type: dataset
+authors:
+  - alias: akagabi
+    website: "https://github.com/akagabi"
+repository-code: "https://github.com/akagabi/weather-rescue-brazil"
+url: "https://huggingface.co/datasets/akagabi/weather-rescue-brazil"
+abstract: >-
+  Daily and dekadal meteorological observations from eleven Brazilian stations
+  and one ship, 1882-1890, transcribed from the printed tables of the Annales de
+  l'Observatoire Imperial de Rio de Janeiro (French) and the Revista do
+  Observatorio (Portuguese). Variables include barometric pressure read seven
+  times daily, temperature maxima, minima and means, relative humidity, vapour
+  tension, cloudiness, wind direction and force, rainfall, evaporation, ozone and
+  actinometry. Transcription is by a Qwen3.5-2B model with a LoRA adapter running
+  offline on a laptop; each printed layout is described by a JSON profile
+  declaring its columns, units, physical ranges and the arithmetic the page
+  asserts about itself, which is used to judge every row without a human.
+  No row has been verified line-by-line by a human; the 3,822-cell evaluation
+  gold set has been, and is separate from the dataset.
+keywords:
+  - data rescue
+  - historical climatology
+  - Brazil
+  - nineteenth century
+  - table recognition
+  - document understanding
+license: CC0-1.0
