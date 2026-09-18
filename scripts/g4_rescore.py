@@ -35,8 +35,9 @@ import calendar  # noqa: E402
 from collections import defaultdict  # noqa: E402
 
 
-def day_rows_for_page(page_rows: list[dict], period: str, day_key: str) -> tuple[set[int], bool]:
-    """Which rows of a page are actually DAY rows, decided by what was read.
+def day_rows_for_page(page_rows: list[dict], period: str, day_key: str,
+                      pk: "prof.Profile" = None) -> tuple[set[int], bool]:
+    """Which rows of a page are actually DATA rows, decided by what was read.
 
     The locator over-counts on a third of pages: the Revista prints a decade
     sub-total ("Dec.") and a month total ("Mez") in the day column, and pitch
@@ -50,16 +51,27 @@ def day_rows_for_page(page_rows: list[dict], period: str, day_key: str) -> tuple
       and days 4..28 are 25 good rows plus a coverage gap, not 26 bad ones;
     * that a day appears once - Corumba prints two readings a day and marks the
       second with a ditto, so its column reads 1, », 2, », 3 ...
+
+    A fourth, added for the Radcliffe tables: that the index is a day at all.
+    Those rows are indexed by YEAR (1855..1879, one row each), which is the
+    same shape of test - a consecutive run of a declared length inside a
+    declared range - so the profile supplies the bounds and the expected count
+    instead of `calendar` and the literal 1..31.
     """
-    year, month = (int(x) for x in period.split("-")[:2])
-    want = calendar.monthrange(year, month)[1]
+    if pk is not None:
+        want = pk.expected_rows(period)
+        lo, hi = pk.index_range
+    else:
+        year, month = (int(x) for x in period.split("-")[:2])
+        want = calendar.monthrange(year, month)[1]
+        lo, hi = 1, 31
     days: list[int | None] = []
     last: int | None = None
     for r in page_rows:
         d = r.get("values", {}).get(day_key)
         if isinstance(d, str) and d.strip() == prof.DITTO:
             days.append(last)              # ditto = the same day again
-        elif isinstance(d, (int, float)) and 1 <= d <= 31:
+        elif isinstance(d, (int, float)) and lo <= d <= hi:
             last = int(d)
             days.append(last)
         else:
@@ -78,7 +90,11 @@ def day_rows_for_page(page_rows: list[dict], period: str, day_key: str) -> tuple
         if len(cur) > len(best):
             best = list(cur)
     distinct = {days[i] for i in best}
-    return set(best), (len(distinct) == want and min(distinct, default=0) == 1)
+    # "complete" is: the run covers every index the page should hold, and it
+    # starts at the first one. For a day table that first index is 1; for a
+    # year table it is the first year the page prints.
+    first = 1 if pk is None or pk.index_kind == "day_of_month" else int(lo)
+    return set(best), (len(distinct) == want and min(distinct, default=0) == first)
 
 
 
@@ -108,7 +124,18 @@ def main() -> None:
     # Cells a person has read against the page and found misread. Applied
     # here so a correction survives re-scoring and stays distinguishable
     # from a model reading (see wrb.verify.apply_corrections).
-    corr = load_corrections(src.parent.parent / "verify" / "corrections.jsonl")
+    corr_path = src.parent.parent / "verify" / "corrections.jsonl"
+    corr = load_corrections(corr_path)
+    # Say so when there are none. The path is relative to the dataset file, so
+    # rescoring a copy somewhere else finds no corrections and silently
+    # publishes the model's original reading - while the row still carries the
+    # `corrections` note and `human_verified: true` saying it was fixed. Two
+    # hand-checked cells were reverted exactly this way.
+    if not corr:
+        print(f"WARNING: no corrections found at {corr_path} - "
+              f"every human correction will be dropped from this file")
+    else:
+        print(f"{sum(len(v) for v in corr.values())} human correction(s) from {corr_path.name}")
     stats: Counter = Counter()
     # first pass: parse every row, so the day sequence can be read off the page
     for r in rows:
@@ -126,6 +153,14 @@ def main() -> None:
     # The resolution belongs in `values` (conventions undone in code), not in
     # `values_as_printed`, which must stay faithful to what the page shows.
     resolved_day: dict[int, object] = {}
+    # An integer part the page omitted because it had not changed since the
+    # cell ABOVE. Like a ditto, this cannot be resolved from one row - it is a
+    # property of the column down the page - so it is settled here and applied
+    # to `values` (conventions undone in code), never to `values_as_printed`.
+    resolved_carry: dict[int, dict] = {}
+    # A row index the reader lost, recovered from the page's own sequence.
+    # Recorded on the row, never silent: the value did not come off the page.
+    resolved_index: dict[int, int] = {}
 
     is_day: dict[int, bool] = {}
     page_complete: dict[int, bool] = {}
@@ -135,7 +170,15 @@ def main() -> None:
     for key, prs in by_page.items():
         pk = cache.setdefault(prs[0]["profile"], prof.load(prs[0]["profile"]))
         day_key = next((c.key for c in pk.columns if c.kind == "day"), "day")
-        keep, complete = day_rows_for_page(prs, key[2], day_key)
+        # BEFORE the day-run test, which is what the filled index is for: a
+        # page with six unreadable years has no run long enough to certify
+        # itself, and eighteen rows that read perfectly were being called
+        # `not_a_day_row` because of the six.
+        for i, idx in pk.resolve_index_sequence(
+                [dict(r["values"]) for r in prs]).items():
+            resolved_index[id(prs[i])] = idx
+            prs[i]["values"][day_key] = idx
+        keep, complete = day_rows_for_page(prs, key[2], day_key, pk)
         for i, r in enumerate(prs):
             is_day[id(r)] = i in keep
             page_complete[id(r)] = complete
@@ -153,6 +196,12 @@ def main() -> None:
                 monthly[id(r)] = fails
         for i, day in resolve_page_days(pk, prs, day_key).items():
             resolved_day[id(prs[i])] = day
+        if any(c.elided_carry for c in pk.columns):
+            for i, fixed in enumerate(pk.resolve_column_carry(
+                    [dict(r["values"]) for r in prs])):
+                diff = {k: v for k, v in fixed.items() if v != prs[i]["values"].get(k)}
+                if diff:
+                    resolved_carry[id(prs[i])] = diff
         # A candidate that is not a data row can still be read, assigned a day
         # and produced. Doc 8 page 43's first row claimed date 10 and held
         # "02 | 01" where a direction and a force belong, while the real day 10
@@ -178,6 +227,10 @@ def main() -> None:
         values, problems = p.parse(r["raw"])
         markers = dict(getattr(p, "last_markers", {}) or {})
         restored = p.from_printed(values)
+        if id(r) in resolved_carry:
+            restored.update(resolved_carry[id(r)])
+        if id(r) in resolved_index:
+            restored[day_key_of[id(r)]] = resolved_index[id(r)]
         if id(r) in resolved_day:
             restored[day_key_of[id(r)]] = resolved_day[id(r)]
         rid = f"{r['profile']}/{r.get('item')}/{r['page']}/{r['row']}"
@@ -205,7 +258,7 @@ def main() -> None:
         why = period_outside_volume(r.get("period"), str(r.get("item")), _SPANS)
         if why:
             problems = problems + [f"period_suspect: {why}"]
-        hard = [x for x in problems if x != PADDED_TRAILING]
+        hard = [x for x in problems if not prof.is_soft_problem(x)]
         scoreable = bool(p.checks) and any(isinstance(restored.get(c["result"]), (int, float)) for c in p.checks)
         # A page whose located row count does not equal the days in its month has
         # picked up rows that are not days - the Revista prints a decade sub-total
@@ -218,6 +271,10 @@ def main() -> None:
         row_is_day = is_day[id(r)]
         if not row_is_day:
             problems = problems + ["not_a_day_row"]
+        if id(r) in resolved_index:
+            problems = problems + [
+                f"index_from_page_sequence: the printed index was unreadable; "
+                f"{resolved_index[id(r)]} comes from this page's own row order"]
         if not page_ok:
             # a coverage gap, not a correctness one: the row's date is fixed by its
             # neighbours in the consecutive run, so it stays usable and says so

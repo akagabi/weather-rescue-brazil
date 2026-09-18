@@ -2,6 +2,7 @@
 language:
   - pt
   - fr
+  - en
 license: apache-2.0
 base_model: Qwen/Qwen3.5-2B
 library_name: peft
@@ -28,7 +29,7 @@ output: 57.23 | 58.08 | 55.67 | 22.37 | 23.2 | 21.3 | 16.75 | 83.4 | C, SSE | 3.
 
 Trained and evaluated entirely on Brazilian historical records, but the
 interesting result is that it reads **layouts it has never seen** — and usually
-with no labelled rows at all. Of the 17 layouts this project describes, **two
+with no labelled rows at all. Of the 18 layouts this project describes, **two
 ever needed hand-labelling**; the other fifteen were added by writing a JSON
 description of the columns and running the pipeline. `docs/ADDING-A-PUBLICATION.md`
 is the path and the evidence.
@@ -69,7 +70,7 @@ Blind tests on layouts it had never seen, with `gen3`:
 |---|---|
 | Porto do Maranhão, 12 printed columns (trained on 15 and 16) | 264/264 numeric cells; the model's rainfall column sums to the printed monthly total it never saw |
 | Rio 1883 vapour, French, 9 columns | 98.4% |
-| Radcliffe Observatory, Oxford — another archive, another country, rows are years and columns are months | 99.3% temperature, 96.7% rain (on rows whose months close to the printed annual total) |
+| Radcliffe Observatory, Oxford — another archive, another country, another language, rows are years and columns are months | **100%** dry bulb and **96.7%** rain against Oxford's own published series, on the rows the pipeline calls usable (99.3% and 91.1% over every row it read) |
 
 Added 2026-09-15, on layouts absent from the corpus when the adapter was
 trained and given **no labelled rows at all**:
@@ -84,6 +85,21 @@ The useful correction in those three: a claim that the model **could not read
 rows wider than 16 columns** had shelved a whole layout as needing a trained
 variant. It reads 18 columns in one pass and 26 in two bands. What had failed
 was the crop.
+
+Added 2026-09-18, the fourth Radcliffe table and the first English-language
+layout added with no labelled rows and no new code — only a JSON file copied
+from its neighbour on the same sheet:
+
+| Test | Result |
+|---|---|
+| Radcliffe Table III, wet bulb — a layout absent from the corpus, onboarded by editing one profile | **22 of 25 rows** pass the page's printed annual mean, first contact |
+
+What that table cost was writing down its columns. What the *barometer* table
+on the facing page cost was three separate printing conventions the pipeline
+had never met — an integer part elided down the column, a raised decimal point,
+and a double rule the reader takes for an empty column — and it still only
+reaches 15 of 25. The lesson is the one this project keeps relearning: the
+model reads what it is shown, and the work is in what you show it.
 
 ## Training-data provenance — please read
 

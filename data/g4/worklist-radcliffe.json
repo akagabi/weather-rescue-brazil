@@ -1,0 +1,49 @@
+{
+ "_note": "Radcliffe Observatory, Oxford - the four year-by-month summary tables in Internet Archive astronomicaland03obsegoog. Rows are YEARS and columns are MONTHS, so `period` here is the FIRST month the PAGE covers and `period_end` the last; the period a given ROW covers is its own `year` value. The other thirteen pages held from this volume are daily and wind layouts with no profile and are deliberately not in this list.",
+ "pages": [
+  {
+   "archive": "ia",
+   "item": "astronomicaland03obsegoog",
+   "page": 120,
+   "profile": "radcliffe-1855-1879",
+   "period": "1855-01",
+   "period_end": "1879-12",
+   "station": "Radcliffe Observatory, Oxford",
+   "station_source": "printed page title",
+   "label": "Radcliffe/120 1855-01..1879-12 Table I barometer"
+  },
+  {
+   "archive": "ia",
+   "item": "astronomicaland03obsegoog",
+   "page": 121,
+   "profile": "radcliffe-drybulb-1855-1879",
+   "period": "1855-01",
+   "period_end": "1879-12",
+   "station": "Radcliffe Observatory, Oxford",
+   "station_source": "printed page title",
+   "label": "Radcliffe/121 1855-01..1879-12 Table II dry bulb"
+  },
+  {
+   "archive": "ia",
+   "item": "astronomicaland03obsegoog",
+   "page": 122,
+   "profile": "radcliffe-wetbulb-1855-1879",
+   "period": "1855-01",
+   "period_end": "1879-12",
+   "station": "Radcliffe Observatory, Oxford",
+   "station_source": "printed page title",
+   "label": "Radcliffe/122 1855-01..1879-12 Table III wet bulb"
+  },
+  {
+   "archive": "ia",
+   "item": "astronomicaland03obsegoog",
+   "page": 123,
+   "profile": "radcliffe-rain-1851-1879",
+   "period": "1851-01",
+   "period_end": "1879-12",
+   "station": "Radcliffe Observatory, Oxford",
+   "station_source": "printed page title",
+   "label": "Radcliffe/123 1851-01..1879-12 Table IV rain"
+  }
+ ]
+}

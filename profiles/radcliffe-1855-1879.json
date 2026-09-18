@@ -7,10 +7,13 @@
    "label": "Year",
    "kind": "day",
    "unit": null,
-   "range": null,
+   "range": [
+    1855.0,
+    1879.0
+   ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "linha = ANO, nao dia do mes"
   },
   {
    "key": "jan",
@@ -23,7 +26,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "feb",
@@ -36,7 +40,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "mar",
@@ -49,7 +54,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "apr",
@@ -62,7 +68,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "may",
@@ -75,7 +82,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "jun",
@@ -88,7 +96,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "jul",
@@ -101,7 +110,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "aug",
@@ -114,7 +124,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "sep",
@@ -127,7 +138,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "oct",
@@ -140,7 +152,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "nov",
@@ -153,7 +166,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "dec",
@@ -166,7 +180,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   },
   {
    "key": "yearly_mean",
@@ -179,7 +194,8 @@
    ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "",
+   "elided_carry": true
   }
  ],
  "source": "Internet Archive astronomicaland03obsegoog p.138 (Table I)",
@@ -214,5 +230,6 @@
   0.96
  ],
  "notes": "TERCEIRO CORPUS, de outro arquivo e outro país. Inglaterra, inglês, barômetro em POLEGADAS. A semântica da tabela é invertida: linhas = ANOS, colunas = MESES. O ponto decimal é elevado e a parte inteira (29) é elidida, sendo impressa só quando muda (30·100, 29·721). Checksum: Yearly Means = média dos 12 meses.",
- "extra": {}
+ "extra": {},
+ "index_kind": "year"
 }

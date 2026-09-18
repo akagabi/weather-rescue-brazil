@@ -40,7 +40,7 @@ CASES = {
     "rain": {
         "profile": "radcliffe-rain-1851-1879",
         "image": "data/raw/ia/astronomicaland03obsegoog/000123.jpg",
-        "reference": "oxf_rain.csv",
+        "reference": "oxford-monthly-pptn-mm.csv",
         "years": (1851, 1879),
         "relation": "scale",     # printed inches * 25.4 vs published mm
         "convert": lambda v: v * 25.4,
@@ -50,7 +50,7 @@ CASES = {
     "drybulb": {
         "profile": "radcliffe-drybulb-1855-1879",
         "image": "data/raw/ia/astronomicaland03obsegoog/000121.jpg",
-        "reference": "oxf_t.csv",
+        "reference": "oxford-monthly-tmean-celsius.csv",
         "years": (1855, 1879),
         "relation": "offset",    # (F-32)/1.8 vs published mean-of-max-min C
         "convert": lambda v: (v - 32.0) / 1.8,
@@ -124,12 +124,22 @@ def transcribe(image_path: Path, p, adapter: str, base: str, limit: int = 0) -> 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--adapter", required=True)
+    ap.add_argument("--adapter", default="")
     ap.add_argument("--base", default="Qwen/Qwen3.5-2B")
     ap.add_argument("--case", choices=sorted(CASES), required=True)
-    ap.add_argument("--refdir", default="/private/tmp/claude-501/-Users-bueno-detail/"
-                                        "03aa8294-398f-4419-bfc6-dedee8ad0e1d/scratchpad")
+    # The reference series used to be read from a scratchpad directory that no
+    # longer exists, so this test - the only externally graded one in the
+    # project - could not be re-run by anyone, including us. Oxford's own
+    # published files now live in the repository, fetched from
+    # geog.ox.ac.uk/research/climate/rms/monthly-annual.html.
+    ap.add_argument("--refdir", default=str(ROOT / "data" / "reference" / "oxford"))
     ap.add_argument("--limit", type=int, default=0)
+    # Grade rows that were ALREADY produced, instead of reading the page again.
+    # The published dataset is the thing a user gets; re-transcribing here
+    # graded a private read that nobody else would ever see, and the two can
+    # differ (the produced rows go through the page passes - the carried
+    # integer part, the recovered index - which a one-shot read does not).
+    ap.add_argument("--rows", default="", help="a produced .jsonl to grade instead of re-reading")
     ap.add_argument("--out", default="")
     args = ap.parse_args()
 
@@ -139,7 +149,19 @@ def main() -> None:
     print(f"\n{case['title']}")
     print(f"reference: {len(ref)} years, {sum(len(v) for v in ref.values())} monthly values\n")
 
-    rows = transcribe(ROOT / case["image"], p, args.adapter, args.base, args.limit)
+    if args.rows:
+        want = case["profile"]
+        rows = [{"row": r["row"], "raw": r["raw"], "values": r["values"],
+                 "problems": r.get("problems", []), "verdict": r.get("verdict")}
+                for r in (json.loads(l) for l in Path(args.rows).open() if l.strip())
+                if r.get("profile") == want]
+        if not rows:
+            raise SystemExit(f"no {want} rows in {args.rows}")
+        print(f"grading {len(rows)} already-produced rows from {args.rows}")
+    else:
+        if not args.adapter:
+            raise SystemExit("pass --adapter to read the page, or --rows to grade a production")
+        rows = transcribe(ROOT / case["image"], p, args.adapter, args.base, args.limit)
 
     # pair every transcribed cell with the published one for the same year+month
     pairs = []
@@ -156,7 +178,8 @@ def main() -> None:
             if not isinstance(got, (int, float)) or want is None:
                 continue
             pairs.append({"year": y, "month": m, "printed": float(got),
-                          "converted": case["convert"](float(got)), "published": want})
+                          "converted": case["convert"](float(got)), "published": want,
+                          "verdict": r.get("verdict")})
 
     if not pairs:
         raise SystemExit("no cells could be paired - check the year column")
@@ -184,6 +207,19 @@ def main() -> None:
     print(f"fitted {rel:<24} {centre:.4f}  (MAD {spread:.4f})")
     print(f"cells ON the relation     {len(agree)}/{len(pairs)} = {len(agree)/len(pairs):.1%}")
     print(f"cells OFF (suspect)       {len(bad)}")
+    # The dataset's own verdict is supposed to predict this. Split the score by
+    # it and see whether it does - a QC tier that does not separate the cells
+    # an independent source disagrees with is not earning its place.
+    usable = [q for q in pairs if q.get("verdict") in ("checks_pass", "qc_clean")]
+    if usable and len(usable) != len(pairs):
+        on = sum(1 for q in usable if q["residual_mad"] <= OUT)
+        print(f"  of which, rows the dataset calls USABLE: "
+              f"{on}/{len(usable)} = {on/len(usable):.1%} on the relation")
+        rest = [q for q in pairs if q.get("verdict") == "flagged"]
+        if rest:
+            onf = sum(1 for q in rest if q["residual_mad"] <= OUT)
+            print(f"                   rows it calls FLAGGED: "
+                  f"{onf}/{len(rest)} = {onf/len(rest):.1%}")
     for q in bad[:15]:
         print(f"   {q['year']} {q['month']}: printed {q['printed']}{case['unit_printed']}"
               f" -> {q['converted']:.2f}, Oxford {q['published']}{case['unit_reference']}"
@@ -195,7 +231,10 @@ def main() -> None:
                                "n_cells": len(pairs), "fitted_centre": centre, "mad": spread,
                                "on_relation": len(agree), "agreement": len(agree)/len(pairs),
                                "suspects": bad, "rows": rows}, indent=1, ensure_ascii=False))
-    print(f"\nwrote {out.relative_to(ROOT)}")
+    try:
+        print(f"\nwrote {out.relative_to(ROOT)}")
+    except ValueError:
+        print(f"\nwrote {out}")          # an --out outside the repo is legal
 
 
 if __name__ == "__main__":

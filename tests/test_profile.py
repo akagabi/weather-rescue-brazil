@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 
+from wrb import profile as prof
 from wrb.profile import Column, Profile, available, blank, from_dict, load
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -447,3 +448,122 @@ def test_each_printed_number_is_spent_once():
     p.monthly["tolerance"] = {k: 50.0 for k in
                               ("baro", "t_secco", "t_maxima", "t_minima", "humidade")}
     assert p.verify_month_unordered(DEKADS, [698.5]) != []
+
+
+# --- Radcliffe: a table whose rows are years, not days -------------------
+# Every convention below was added for the Oxford tables and each is gated on
+# the profile declaring it, so no Brazilian layout can be affected. The tests
+# assert both halves: that the repair fires where it should, and that it stays
+# out of the way where it should not.
+
+def test_index_range_defaults_to_days_but_follows_the_profile():
+    day = prof.load("rio-1883-thermo")
+    assert day.index_range == (1.0, 31.0)
+    assert day.index_kind == "day_of_month"
+    year = prof.load("radcliffe-drybulb-1855-1879")
+    assert year.index_range == (1855.0, 1879.0)
+    assert year.index_kind == "year"
+
+
+def test_year_split_into_two_tokens_is_rejoined():
+    """The old-style `1856` comes back as `18 | 56`, one cell too many."""
+    p = prof.load("radcliffe-drybulb-1855-1879")
+    v, problems = p.parse("18 | 56 | 39.7 | 42.0 | 38.8 | 46.7 | 48.7 | 57.6 | 60.9 "
+                          "| 62.7 | 54.4 | 50.3 | 41.7 | 40.4 | 48.66")
+    assert v["year"] == 1856
+    assert v["jan"] == 39.7 and v["dec"] == 40.4
+    assert any("two tokens" in x for x in problems)
+    # and the page's own arithmetic closes, which is the real proof
+    assert p.verify(v) == []
+    # recorded, but not a reason to distrust the row
+    assert all(prof.is_soft_problem(x) for x in problems)
+
+
+def test_a_legible_year_is_never_rejoined():
+    p = prof.load("radcliffe-drybulb-1855-1879")
+    v, problems = p.parse("1863 | 22.365 | 1.08 | 2.01 | 2.961 | 2.721 | 2.648 | 2.657 "
+                          "| 0.657 | 0.941 | 1.414 | 0.672 | 0.76 | 3.411 | 40.886")
+    assert v["year"] == 1863
+    assert not any("two tokens" in x for x in problems)
+
+
+def test_day_layouts_are_untouched_by_the_index_repairs():
+    """The repairs need a declared index range; no daily profile has one."""
+    for pid in prof.available():
+        p = prof.load(pid)
+        if p.index_kind != "day_of_month":
+            continue
+        col = next((c for c in p.columns if c.kind == "day"), None)
+        assert col is None or col.range is None, f"{pid} would now be re-segmented"
+
+
+def test_raised_decimal_point_parses():
+    """British scientific printing sets the decimal separator high."""
+    p = prof.load("radcliffe-1855-1879")
+    v, problems = p.parse("1855 | 29·969 | 29·563 | 29·498 | 29·893 | 29·642 "
+                          "| 29·801 | 29·698 | 29·803 | 29·926 | 29·456 "
+                          "| 29·819 | 29·687 | 29·730")
+    assert problems == []
+    assert v["jan"] == 29.969 and v["yearly_mean"] == 29.73
+
+
+def test_elided_integer_part_carries_down_the_column():
+    """Radcliffe prints the integer part only when it changes, per COLUMN.
+
+    The witness is the page's own Yearly Mean, which equals the mean of the
+    twelve restored months and does not under any other reading.
+    """
+    p = prof.load("radcliffe-1855-1879")
+    raws = [
+        "1855 | 29·969 | 29·563 | 29·498 | 29·893 | 29·642 | 29·801 | 29·698 "
+        "| 29·803 | 29·926 | 29·456 | 29·819 | 29·687 | 29·730",
+        "1856 | ·404 | ·840 | ·972 | ·554 | ·621 | ·831 | ·784 | ·691 | ·600 "
+        "| ·936 | ·876 | ·584 | ·724",
+        "1857 | ·589 | ·891 | ·651 | ·583 | ·732 | ·790 | ·792 | ·786 | ·724 "
+        "| ·640 | ·898 | 30·100 | ·765",
+    ]
+    rows = p.resolve_column_carry([p.parse(t)[0] for t in raws])
+    assert rows[1]["jan"] == 29.404          # carried from 29.969 above it
+    assert rows[2]["dec"] == 30.1            # printed its own, so it resets
+    for r in rows:
+        assert p.verify(r) == [], r
+    # the carry runs DOWN the column: December's 30 does not reach the mean
+    assert rows[2]["yearly_mean"] == 29.765
+
+
+def test_a_dropped_raised_point_is_restored_into_the_declared_range():
+    """When the reader loses the point entirely, `404` can only be 29.404."""
+    p = prof.load("radcliffe-1855-1879")
+    first = p.parse("1855 | 29·969 | 29·563 | 29·498 | 29·893 | 29·642 | 29·801 "
+                    "| 29·698 | 29·803 | 29·926 | 29·456 | 29·819 | 29·687 | 29·730")[0]
+    second = p.parse("1856 | 404 | 840 | 972 | 554 | 621 | 831 | 784 | 691 | 600 "
+                     "| 936 | 876 | 584 | 724")[0]
+    rows = p.resolve_column_carry([first, second])
+    assert rows[1]["jan"] == 29.404
+    assert p.verify(rows[1]) == []
+
+
+def test_an_unreadable_index_is_filled_only_when_the_page_agrees():
+    p = prof.load("radcliffe-drybulb-1855-1879")
+    rows = [{"year": 1855}, {"year": 18}, {"year": 1857}, {"year": 1858}, {"year": 18}]
+    assert p.resolve_index_sequence(rows) == {1: 1856, 4: 1859}
+    # witnesses that disagree about the offset fill nothing at all
+    disagree = [{"year": 1855}, {"year": 18}, {"year": 1860}, {"year": 1858}]
+    assert p.resolve_index_sequence(disagree) == {}
+    # and fewer than three witnesses is not a page speaking, it is a guess
+    assert p.resolve_index_sequence([{"year": 1855}, {"year": 18}]) == {}
+
+
+def test_index_fill_never_runs_on_a_daily_layout():
+    p = prof.load("rio-1883-thermo")
+    assert p.resolve_index_sequence([{"dates": d} for d in (1, 2, None, 4, 5)]) == {}
+
+
+def test_an_empty_cell_at_a_printed_rule_is_dropped():
+    """Table I double-rules before Yearly Mean; the reader takes it for a column."""
+    p = prof.load("radcliffe-1855-1879")
+    v, problems = p.parse("1858 | 30·108 | ·787 | ·715 | ·719 | ·727 | ·864 | ·733 "
+                          "| ·769 | ·801 | ·792 | ·688 | null | 29·721 | ·785")
+    assert any("rules a line" in x for x in problems)
+    assert v["dec"] == 29.721 and v["yearly_mean"] == 0.785
+    assert all(prof.is_soft_problem(x) for x in problems)

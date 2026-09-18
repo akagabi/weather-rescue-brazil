@@ -18,6 +18,8 @@ That includes layouts structurally unlike anything in the training set:
 | `revista-mensal-baroterm` | 18 columns, dekadal summary, `1ª 2ª 3ª Mez` | **none** — full row read in one pass |
 | `rio-1883-*` (six Annales layouts) | French daily tables, 9 to 16 columns | **none** |
 | `porto-maranhao-1886` | 12 columns, trained on 15 and 16 | **none** — 264/264 numeric cells |
+| `radcliffe-wetbulb-1855-1879` | English, another archive, rows are years | **none** — 22 of 25 rows pass the page's own annual mean, first contact |
+| `radcliffe-*` (four Oxford layouts) | inches and Fahrenheit, raised decimal point | **none** — and the two Oxford also publishes agree with its series at 100% and 96.7% |
 
 The two that needed labels were `corumba-1889` (whose ditto marks the model had
 never seen) and `revista-mensal-baroterm` (labelled before anyone checked
@@ -77,9 +79,26 @@ fails is everything around the reading, and each of these cost real data:
 - **The wrong month.** `"Rio de Janeiro"` contains `"janeiro"`.
 - **The wrong station.** A header that failed to read is not a header that was
   never printed.
+- **The row index.** The thing most likely to defeat the reader is not a
+  measurement at all: it is the day or year printed at the left. The Annales
+  set theirs in old-style figures and 43 pages are still refused over it; the
+  Radcliffe years split into `18 | 56`, which shifted every value one column
+  right. Both are recoverable — one by re-segmenting digits that were read
+  correctly, one by filling from the rows that *did* read — but only because
+  something on the page independently confirms the repair.
+- **A printed rule taken for a column.** Radcliffe double-rules before its
+  Yearly Mean and the reader returns an empty cell there. A page's typography
+  is not its schema.
 
 A date, a name and a column heading are not measurements, so none of the
 physical checks look at them. Whatever guards them has to be built on purpose.
+
+**The general lesson from the Oxford tables** (`docs/g4-radcliffe.md`): every
+assumption the pipeline had written as a constant rather than read from the
+profile broke on the first publication that did not share it. `1 <= day <= 31`
+was a day-of-month assumption in two places, and a table whose rows are years
+failed both. If your layout is refusing pages that look perfectly legible to
+you, check what the code believes before you check the model.
 
 ## What you get
 

@@ -35,6 +35,23 @@ NULL = "null"
 # it - Corumba writes the day once and dittos the second reading of that day.
 # Treated as a first-class value, resolved against the previous row.
 PADDED_TRAILING = "padded 1 trailing cell (assumed the last column is blank)"
+# Problems a row RECORDS without being disqualified by them. Each is a repair
+# made on evidence rather than a defect in the reading: the assumed-blank last
+# cell, and the two index repairs in `_resegment_index`, where the digits were
+# read correctly and only cut into the wrong number of cells. Nothing here
+# excuses a row from the page's own arithmetic - a wrong repair does not close
+# a checksum, which is precisely why these can be soft.
+SOFT_PROBLEM_PREFIXES = (
+    PADDED_TRAILING,
+    "index cell read as two tokens",
+    "dropped a spurious leading cell",
+    "dropped an empty cell at position",
+)
+
+
+def is_soft_problem(problem: str) -> bool:
+    """A recorded repair rather than a reason to distrust the row."""
+    return str(problem).startswith(SOFT_PROBLEM_PREFIXES)
 DITTO = "\u00bb"
 DITTO_TOKENS = {"\u00bb", "\u00ab", '"', "\u201d", "\u2033", "''", ",,", "idem", "id.", "ditto", "\u3003"}
 
@@ -57,6 +74,17 @@ class Column:
     range: tuple[float, float] | None = None
     elided: bool = False           # printed without its leading digit(s), e.g. 54.44 for 754.44
     elided_range: tuple[float, float] | None = None  # the narrow band the true value sits in, for reconstruction
+    # A SECOND elision convention, and a different one. `elided` means a
+    # constant prefix is always omitted (the Rio barometer prints 54.44 for
+    # 754.44, every row, forever), so a single declared band restores it.
+    # The Radcliffe tables omit the integer part only when it is the SAME AS
+    # THE CELL ABOVE IT IN THE SAME COLUMN, and reprint it the moment it
+    # changes: January reads 29·969 / ·404 / ·589 / 30·108. The carry runs
+    # DOWN the column, not along the row - checked against the page's own
+    # yearly-mean checksum, which closes to ±0.0004 under this reading and
+    # not under any other. It needs the whole page, so it is resolved by
+    # `resolve_column_carry` in the page pass, not by `from_printed`.
+    elided_carry: bool = False
     note: str = ""
 
     def __post_init__(self) -> None:
@@ -138,6 +166,17 @@ class Profile:
     # about the printing, so it is declared per publication rather than lowered
     # for everyone.
     oracle_min_direct: float = 0.7
+    # What the row-index column COUNTS. Every layout up to here indexed its
+    # rows by day of month, and the pipeline said so in constants: the
+    # producer's preflight required `1 <= d <= 31` before it would read a
+    # page, and the rescorer looked for a run of days inside the same bounds.
+    # The Radcliffe tables invert the table - rows are YEARS and columns are
+    # MONTHS - so every one of their rows failed a test written for a
+    # different publication, and the whole series would have published as
+    # `flagged` with `not_a_day_row` against rows that are perfectly good.
+    # Declared here rather than inferred, and the legal values come from the
+    # index column's own `range`.
+    index_kind: str = "day_of_month"      # day_of_month | year
     notes: str = ""
     extra: dict = field(default_factory=dict)
 
@@ -153,6 +192,18 @@ class Profile:
     @property
     def day_key(self) -> str | None:
         return next((c.key for c in self.columns if c.kind == "day"), None)
+
+    @property
+    def index_range(self) -> tuple[float, float]:
+        """The values the row-index column may legally take.
+
+        Days of the month unless the profile's index column declares its own
+        range - the Radcliffe year column declares 1851..1879.
+        """
+        c = next((c for c in self.columns if c.kind == "day"), None)
+        if c is not None and c.range is not None:
+            return c.range
+        return (1.0, 31.0)
 
     @property
     def n_cells(self) -> int:
@@ -187,6 +238,97 @@ class Profile:
         """Training/eval target: every printed cell, left to right."""
         return SEP.join(self._fmt(values.get(c.key)) for c in self.columns)
 
+    def _resegment_index(self, toks: list[str], problems: list[str]) -> list[str]:
+        """Repair a row-index cell the reader emitted as two tokens.
+
+        The Radcliffe year column is set in OLD-STYLE figures, and the reader
+        splits `1856` into `18 | 56` - one cell too many, and every value after
+        it shifted one column right. That is a SEGMENTATION failure, not a
+        reading one: both halves of the number are correct, and joining them
+        restores the row exactly. The same rows also pick up a spurious leading
+        cell where the page rules a heavy line down the left edge.
+
+        Two repairs, and each requires evidence rather than a guess:
+
+        * join tokens 0 and 1 when the joined digits land inside the index
+          column's declared range and token 0 alone does not;
+        * drop a leading blank or ditto token when token 1 is already a
+          legal index.
+
+        Both are gated on the index column DECLARING a range, so they cannot
+        touch a layout that has not asked for them - every Brazilian day column
+        leaves `range` null and is unaffected. A row still one cell over after
+        this is left alone and reported, because the extra cell is then
+        somewhere this cannot see.
+        """
+        col = next((c for c in self.columns if c.kind == "day"), None)
+        if col is None or col.range is None or len(toks) != self.n_cells + 1:
+            return toks
+        lo, hi = col.range
+
+        def legal(tok: str) -> bool:
+            try:
+                return lo <= float(tok.replace(",", ".").replace("\u00b7", ".")) <= hi
+            except ValueError:
+                return False
+
+        if legal(toks[0]):
+            return toks                       # the index is fine; the extra cell is elsewhere
+        if toks[0].lower() in DITTO_TOKENS or toks[0].lower() in (
+                NULL, "", "-", "\u2014", "...", "\u2026"):
+            if legal(toks[1]):
+                problems.append(f"dropped a spurious leading cell {toks[0]!r}")
+                return toks[1:]
+            return toks
+        joined = toks[0].strip() + toks[1].strip()
+        if joined.isdigit() and legal(joined):
+            problems.append(
+                f"index cell read as two tokens {toks[0]!r} {toks[1]!r}, joined to {joined!r}")
+            return [joined] + toks[2:]
+        return toks
+
+    def _drop_ruled_blank(self, toks: list[str], problems: list[str]) -> list[str]:
+        """Drop an empty cell the reader invented where the page rules a line.
+
+        Radcliffe Table I sets a DOUBLE rule between December and the Yearly
+        Mean, and the reader takes the gap for a column: seven of its
+        twenty-five rows come back as `... | 688 | null | 29.721 | 785` where
+        the page prints Nov ·688, Dec 29·721, Yearly ·785. The row is one cell
+        too long and the surplus is a blank in the MIDDLE, which the existing
+        trailing-null trim cannot reach.
+
+        Required before removing anything: exactly one cell too many, exactly
+        one interior blank, and - the evidence that matters - every numeric
+        cell landing inside its column's declared range once the blank is
+        gone. A row that only happens to be long does not qualify.
+
+        Gated, like the index repairs, on the index column declaring a range,
+        so no layout that has not asked for this can be affected.
+        """
+        col = next((c for c in self.columns if c.kind == "day"), None)
+        if col is None or col.range is None or len(toks) != self.n_cells + 1:
+            return toks
+        blank = (NULL, "", "-", "\u2014", "...", "\u2026", "....")
+        holes = [i for i, t in enumerate(toks[1:-1], start=1) if t.lower() in blank]
+        if len(holes) != 1:
+            return toks
+        trimmed = toks[:holes[0]] + toks[holes[0] + 1:]
+        probe: dict = {}
+        for c, tok in zip(self.columns, trimmed):
+            try:
+                probe[c.key] = float(tok.replace(",", ".").replace("\u00b7", "."))
+            except ValueError:
+                pass
+        # judged on the columns that are NOT elided-by-carry: those cannot be
+        # range-checked until the page pass restores their integer part.
+        checkable = {k: v for k, v in probe.items()
+                     if not self.column(k).elided_carry}
+        if self.violations(checkable):
+            return toks
+        problems.append(f"dropped an empty cell at position {holes[0]} "
+                        f"(the page rules a line there, it is not a column)")
+        return trimmed
+
     def parse(self, text: str) -> tuple[dict, list[str]]:
         """Inverse of `target`. Never raises; reports problems instead."""
         for stop in ("<|im_end|>", "<|endoftext|>", "</s>"):
@@ -201,6 +343,8 @@ class Profile:
         blank = (NULL, "", "-", "\u2014", "...", "\u2026", "....")
         while len(toks) == self.n_cells + 1 and toks[-1].lower() in blank:
             toks = toks[:-1]
+        toks = self._resegment_index(toks, problems)
+        toks = self._drop_ruled_blank(toks, problems)
         if len(toks) == self.n_cells - 1:
             # ASSUMPTION, recorded not hidden: the absent cell is the last one.
             # If it is not, every value after it is shifted - the failure this
@@ -227,7 +371,17 @@ class Profile:
                 # the sign ("+ 0.35", "— 1.23"), and the em-dash IS a minus
                 # sign here, not punctuation. 36 rows of the 1883 barometer
                 # were being thrown away over the space alone.
-                num = (tok.replace(",", ".").replace("\u2014", "-").replace("\u2013", "-")
+                # The raised decimal point. British scientific printing of the
+                # period sets the decimal separator high on the line - the
+                # Radcliffe tables print 29·969 and ·404, never 29.969 - and
+                # the reader reproduces it faithfully, which is what a reader
+                # of printed text should do. Without this every numeric cell
+                # of the Oxford barometer and rainfall tables came back
+                # `unparsable`, so the pages localised, read correctly and
+                # then produced nothing but nulls.
+                num = (tok.replace(",", ".").replace("\u00b7", ".").replace("\u2027", ".")
+                          .replace("\u2219", ".").replace("\u22c5", ".")
+                          .replace("\u2014", "-").replace("\u2013", "-")
                           .replace("+ ", "+").replace("- ", "-"))
                 values[col.key] = int(float(num)) if col.kind == "day" else float(num)
             except ValueError:
@@ -453,6 +607,96 @@ class Profile:
                     fixed[key] = out[-1].get(key) if out else None
             out.append(fixed)
         return out
+
+    def resolve_column_carry(self, rows: list[dict]) -> list[dict]:
+        """Restore an integer part the page omitted because it had not changed.
+
+        Only columns declaring `elided_carry`. A cell printed as a bare
+        fraction (0 <= v < 1) takes the integer part of the last cell ABOVE it
+        in the same column that printed one; a cell that prints its own
+        integer part sets the carry for everything below. A column whose first
+        rows are bare has nothing to carry from and is left alone, because
+        inventing the digit is how a reconstruction becomes a fabrication.
+
+        The page's own arithmetic is the witness: on Radcliffe Table I the
+        printed Yearly Mean equals the mean of the twelve restored months to
+        four decimal places, and does not under any other reading.
+        """
+        carry: dict[str, int] = {}
+        out: list[dict] = []
+        for row in rows:
+            fixed = dict(row)
+            for col in self.columns:
+                if not col.elided_carry:
+                    continue
+                v = fixed.get(col.key)
+                if not isinstance(v, (int, float)) or isinstance(v, bool):
+                    continue
+                v = abs(float(v))
+                lo, hi = col.range or (float("-inf"), float("inf"))
+                if lo <= v <= hi:
+                    carry[col.key] = int(v)            # this cell printed its own
+                elif v < 1.0 and col.key in carry:
+                    fixed[col.key] = round(carry[col.key] + v, 4)
+                elif col.key in carry and v >= 1.0:
+                    # The raised point dropped ENTIRELY: `·404` came back as
+                    # `404`. The fraction's digits are all there, only its
+                    # scale is gone, and the column's declared range says
+                    # where the point belongs - 404 can only be ·404 when the
+                    # column runs 28..31. Shift until the carried integer part
+                    # plus the fraction lands in range, and if no shift does,
+                    # leave the cell alone rather than invent a scale.
+                    frac = v
+                    for _ in range(6):
+                        if frac < 1.0:
+                            break
+                        frac /= 10.0
+                    cand = round(carry[col.key] + frac, 4)
+                    if frac < 1.0 and lo <= cand <= hi:
+                        fixed[col.key] = cand
+            out.append(fixed)
+        return out
+
+    def resolve_index_sequence(self, rows: list[dict]) -> dict[int, int]:
+        """Fill a row index the reader could not read, from the ones it could.
+
+        The Radcliffe year column is set in old-style figures and the reader
+        sometimes returns only its first two digits - `1856` comes back as
+        `18`, with the row otherwise complete and correct. Nothing in the row
+        can recover the lost digits, but the PAGE can: it prints one row per
+        year, consecutively, and the locator returns those rows in order, so
+        every year that WAS read is a witness to the same mapping from row
+        position to year.
+
+        This fills a missing index only when the rows that read cleanly agree
+        unanimously on one offset, and only from at least three of them. If
+        they disagree - which is what a misread year or a mislocalised row
+        looks like - nothing is filled. That is the same rule the day oracle
+        uses (printed labels decide, the gaps are interpolated between
+        confirmed anchors) applied to a column of years.
+
+        Declared per publication: only a profile whose `index_kind` is not
+        `day_of_month` is eligible, so no daily layout's behaviour changes.
+
+        Returns {row position: the index it must be}.
+        """
+        col = next((c for c in self.columns if c.kind == "day"), None)
+        if col is None or col.range is None or self.index_kind == "day_of_month":
+            return {}
+        lo, hi = col.range
+        legal: dict[int, int] = {}
+        for i, row in enumerate(rows):
+            v = row.get(col.key)
+            if isinstance(v, (int, float)) and not isinstance(v, bool) and lo <= v <= hi:
+                legal[i] = int(v)
+        if len(legal) < 3:
+            return {}
+        offsets = {idx - i for i, idx in legal.items()}
+        if len(offsets) != 1:                 # the witnesses disagree: fill nothing
+            return {}
+        off = offsets.pop()
+        return {i: off + i for i in range(len(rows))
+                if i not in legal and lo <= off + i <= hi}
 
     # --- QC -------------------------------------------------------------
     def violations(self, values: dict) -> list[str]:

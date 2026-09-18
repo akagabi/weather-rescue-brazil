@@ -147,8 +147,13 @@ def main() -> None:
         # QC caught it. Read three rows first and require two of them to start
         # with a plausible day number. One generation per row instead of thirty.
         day_key = next((c.key for c in p.columns if c.kind == "day"), None)
+        # What counts as a plausible index value is the PROFILE's business.
+        # `1 <= d <= 31` was a day of the month, and the Radcliffe tables
+        # index their rows by year, so all four of their pages failed a
+        # preflight written for a different publication.
+        idx_lo, idx_hi = p.index_range
         if day_key and len(crops) >= 3:
-            seen = 0
+            probes = []
             for probe in crops[:3]:
                 msgs = [{"role": "user", "content": [{"type": "image", "image": probe},
                                                      {"type": "text", "text": INSTRUCTION_PRINTED}]}]
@@ -161,13 +166,43 @@ def main() -> None:
                 txt = procr.decode(o[0][n:], skip_special_tokens=True).split("<|im_end|>")[0].strip()
                 if dev == "mps":
                     torch.mps.empty_cache()
-                vals, _ = p.parse(txt)
+                probes.append(p.parse(txt))
+            # The elided integer part carries DOWN the column, so a row cannot
+            # be judged alone - three rows is enough to establish the carry
+            # from the first of them, which is what the page does too.
+            restored = [p.from_printed(v) for v, _ in probes]
+            if any(c.elided_carry for c in p.columns):
+                restored = p.resolve_column_carry(restored)
+            from wrb.qc import degenerate_row as _degen
+            seen = 0
+            for (vals, probs), rest in zip(probes, restored):
                 d = vals.get(day_key)
-                if isinstance(d, (int, float)) and 1 <= d <= 31:
+                if isinstance(d, (int, float)) and idx_lo <= d <= idx_hi:
+                    seen += 1
+                    continue
+                # A legible index is the usual evidence that this is a data
+                # row, but it is not the only evidence, and on the Radcliffe
+                # barometer it is the one thing that does NOT read: the years
+                # are old-style figures and come back as `18`, while every
+                # measurement on the row is perfect. So accept a row that
+                # instead produces exactly the right number of cells, all of
+                # them inside the profile's declared physical ranges and not
+                # collapsed to a repeated constant. That is a HARDER test than
+                # the index, and the page this preflight was built to reject -
+                # doc 14 p140, prose read as fifteen 1s - still fails it on
+                # both counts.
+                hard_probs = [x for x in probs if not prof.is_soft_problem(x)]
+                # not the index column: that is the cell this branch exists
+                # to forgive, and it has already been tested above.
+                measured = {k: v for k, v in rest.items() if k != day_key}
+                if (not hard_probs and not p.violations(measured)
+                        and not _degen(rest, index_keys={day_key, "year"})
+                        and any(isinstance(v, (int, float))
+                                for k, v in rest.items() if k != day_key)):
                     seen += 1
             if seen < 2:
-                print(f"  {w.get('label')}: preflight falhou "
-                      f"({seen}/3 linhas com número de dia), página ignorada", flush=True)
+                print(f"  {w.get('label')}: preflight falhou ({seen}/3 linhas plausíveis, "
+                      f"índice em {idx_lo:g}..{idx_hi:g}), página ignorada", flush=True)
                 stats["refused"] += 1
                 continue
 
@@ -210,7 +245,7 @@ def main() -> None:
             # shape can catch it (see wrb.qc.degenerate_row)
             if degenerate_row(restored, index_keys={p.day_key or "day", "year"}):
                 problems = problems + ["degenerate_row: measurements collapsed to a repeated value"]
-            hard = [x for x in problems if x != PADDED_TRAILING]
+            hard = [x for x in problems if not prof.is_soft_problem(x)]
             padded = PADDED_TRAILING in problems
             verdict = ("checks_pass" if scoreable and not check_fail and not viol and not hard
                        else "qc_clean" if not viol and not hard and not check_fail
@@ -222,6 +257,11 @@ def main() -> None:
                 "profile": p.id, "publication": p.name, "source": p.source,
                 "archive": w.get("archive", "docvirt"), "item": w.get("item", w.get("doc")),
                 "page": w["page"], "period": w["period"], "row": idx,
+                # A page whose rows are YEARS covers a span, not a month. The
+                # row's own period is its `year` value; `period` here is the
+                # first month the PAGE covers and this the last. Absent on the
+                # daily layouts, where page and period are the same thing.
+                **({"period_end": w["period_end"]} if w.get("period_end") else {}),
                 "values_as_printed": values, "values": restored, "markers": markers, "raw": text,
                 "verdict": verdict, "padded_trailing": padded, "problems": problems, "localisation": localisation,
                 "range_violations": viol,

@@ -15,8 +15,17 @@ data, and publishes the method so the rest can follow.
 
 ## The dataset
 
-**6,786 rows, 3,718 usable, 44,719 values, 255 pages, 1882–1890.** Five
-stations, two publications, in Portuguese and French.
+**6,889 rows, 3,801 usable, 45,880 values, 259 pages, 1851–1890.** Six
+stations, three publications, in Portuguese, French and English.
+
+The last of those is new and it is the only part of this dataset that can be
+checked against somebody else's answer key: four summary tables from the
+**Radcliffe Observatory, Oxford**, whose observations Oxford has itself
+published, digitised independently a century later. Of the cells this file
+calls usable, **100% of the dry-bulb and 96.7% of the rainfall** agree with
+Oxford's series; of the cells it *flags*, rainfall agrees only 44.4%. The
+verdict column is doing real work, and that is the first time it has been
+shown against an outside source rather than against our own transcription.
 
 Read **[DATASET_CARD.md](DATASET_CARD.md)** before using it — in particular the
 section on what `checks_pass` actually verifies, which differs by publication
@@ -74,9 +83,28 @@ from the dataset and never trained on:
 
 Blind tests on layouts the model never saw: a 12-column table from a different
 station (100% of 264 numeric cells, and its rainfall column sums to the printed
-monthly total it never saw), a French 9-column table at 98.4%, Oxford
-Observatory's year-rows-by-month-columns tables from another archive and
-country. A new publication costs about **40 hand-read rows** to reach 95%+.
+monthly total it never saw), a French 9-column table at 98.4%. A new
+publication costs about **40 hand-read rows** to reach 95%+ — and fifteen of
+the eighteen layouts here needed none at all, only a JSON file describing the
+columns.
+
+### Graded by someone else
+
+Every figure above is self-graded, against our own labels or the model's own
+parse. The Radcliffe Observatory tables are not: Oxford has published the same
+observations, digitised independently a century later, so those rows have an
+outside answer key (`docs/g4-radcliffe.md`).
+
+| | cells | agree with Oxford |
+|---|---|---|
+| Dry bulb, rows this pipeline calls **usable** | 252 | **100.0%** |
+| Rainfall, rows it calls **usable** | 300 | **96.7%** |
+| Rainfall, rows it **flags** | 36 | **44.4%** |
+
+The last line is the one that matters. The rows the QC flags are more than ten
+times as likely to disagree with an independent source — the verdict column
+predicts correctness, and that had never been shown against anything but our
+own transcription.
 
 Total API spend across the whole project: **US$1.56**.
 

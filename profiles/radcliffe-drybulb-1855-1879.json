@@ -7,10 +7,13 @@
    "label": "Year",
    "kind": "day",
    "unit": null,
-   "range": null,
+   "range": [
+    1855.0,
+    1879.0
+   ],
    "elided": false,
    "elided_range": null,
-   "note": ""
+   "note": "linha = ANO, nao dia do mes"
   },
   {
    "key": "jan",
@@ -215,5 +218,6 @@
   0.96
  ],
  "notes": "Termometro seco em FAHRENHEIT, linhas = ANOS. Oxford publica Tmean (media de max e min) em Celsius - definicao DIFERENTE, logo compara-se por deslocamento constante, nao por igualdade.",
- "extra": {}
+ "extra": {},
+ "index_kind": "year"
 }

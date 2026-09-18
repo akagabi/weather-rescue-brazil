@@ -26,9 +26,6 @@ Daily meteorological observations from Brazilian observatories, 1883–1890,
 transcribed from printed nineteenth-century tables by an open 2B model running
 offline, with every row carrying its provenance and a quality verdict.
 
-**Rename this file to `README.md` before publishing to Hugging Face** — the
-front matter above is the dataset card format.
-
 > This is an independent project. It is not affiliated with Zooniverse or with
 > the Weather Rescue / Rainfall Rescue projects, whose naming family it
 > gratefully follows.
@@ -37,14 +34,14 @@ front matter above is the dataset card format.
 
 | | |
 |---|---|
-| Rows | 6,786 |
-| Usable rows (`checks_pass` + `qc_clean`) | **3,718** |
-| Values in usable rows | 44,719 |
-| Pages transcribed | 255 |
-| Period | 1882-01 to 1890-11 (one page captioned 1893, flagged) |
-| Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão |
-| Sources | *Revista do Observatório* (1886–1891), *Annales de l'Observatoire Impérial* (1882–1885) |
-| Languages of the printed tables | Portuguese, French |
+| Rows | 6,889 |
+| Usable rows (`checks_pass` + `qc_clean`) | **3,801** |
+| Values in usable rows | 45,880 |
+| Pages transcribed | 259 |
+| Period | 1851 to 1890-11 (one page captioned 1893, flagged) |
+| Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão, Radcliffe Observatory (Oxford) |
+| Sources | *Revista do Observatório* (1886–1891), *Annales de l'Observatoire Impérial* (1882–1885), *Astronomical and Meteorological Observations, Radcliffe Observatory* (1851–1879) |
+| Languages of the printed tables | Portuguese, French, English |
 
 Measured variables: atmospheric pressure (mean, max, min, and for 1883–85 seven
 readings a day), air temperature (mean, max, min, in-shelter and unsheltered),
@@ -68,10 +65,41 @@ measured, not asserted:
 |---|---|---|
 | Annales 1883 (barometer, thermometer, vapour, actinometry) | the **printed arithmetic on the page itself** — e.g. `Oscillation = Max − Min`, checked twice per line; `θ = T − t`, three times per line | **0 errors** in the rows examined |
 | Revista (Rio, Santa-Cruz, Corumbá, Cuyabá, Porto do Maranhão) | the **day sequence only** — no arithmetic | **2 errors in 8** (Santa-Cruz) |
+| Radcliffe (Oxford) | the **printed annual mean or total**, against the twelve months of the same row | graded against **Oxford's own published series** — see below |
 
 The tier with real arithmetic behind it survived every check thrown at it. The
 tier with only a day-order test is where human reading found errors, and it is
-23% of what the file calls usable. Two misread digits are known and recorded:
+23% of what the file calls usable.
+
+### The one part of this file graded by someone else
+
+Everything above is self-graded: our gold set is our own labels, and a checksum
+test asks whether the model's numbers close the model's own parse. The 103
+Radcliffe rows are different. Oxford has published the same observations,
+digitised independently more than a century later
+(`data/reference/oxford/`), so those rows can be compared against an outside
+answer key. The two series are not numerically identical — Oxford homogenised
+theirs — so the test is not equality but whether every cell sits on one fitted
+relation, which a misread digit cannot.
+
+| | cells compared | on the fitted relation |
+|---|---|---|
+| Dry bulb, rows this file calls **usable** | 252 | **100.0%** |
+| Dry bulb, rows it **flags** | 48 | 95.8% |
+| Rainfall, rows this file calls **usable** | 300 | **96.7%** |
+| Rainfall, rows it **flags** | 36 | **44.4%** |
+
+The second and fourth lines are the point. The verdict column is not decoration:
+the rows it flags are more than ten times as likely to disagree with Oxford.
+This is the first evidence in the project that `checks_pass` predicts agreement
+with an independent source, rather than only internal consistency. Reproduce it
+with `scripts/g4_external_test.py --case rain --rows <the dataset>`.
+
+Two caveats that belong next to those numbers. The comparison covers rainfall
+and dry bulb only, because those are the two series Oxford publishes — the wet
+bulb and barometer tables have no external key and rest on their printed
+checksums alone. And 336 rainfall cells is a small sample; the dry-bulb 100% is
+252 cells, not a guarantee. Two misread digits are known and recorded:
 `tmin` 21.16 for a printed 21.3, and `cloudiness` 0.01 for a printed 0.00, both
 in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
 `human_verified: true`.
@@ -81,6 +109,23 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
 
 ## Known limitations
 
+- **The Radcliffe tables are monthly summaries, not daily observations, and
+  their rows are YEARS.** Four pages, 103 rows, 83 usable: one row per year
+  with twelve monthly columns and a printed annual mean or total. They do not
+  belong in a daily time series without being unstacked first — the row's date
+  is its `year` value, and `period`/`period_end` give the span the *page*
+  covers, not the row. Units are as printed: inches and degrees Fahrenheit.
+- **The Radcliffe barometer table is the weakest thing in this file**: 15 of
+  its 25 rows pass, against 84–89% for the other three. The cause is measured
+  and named rather than guessed. Its integer part is elided down each column
+  (`29·969`, then `·404`, `·589`, then `30·108` when it changes), its decimal
+  point is set high on the line, and it double-rules between December and the
+  Yearly Mean — which the reader takes for an empty column. The first two are
+  undone in code and tested; the third is repaired only when the row is
+  otherwise exactly right. What remains is ten rows that disagree with their
+  own printed mean, and they are flagged. Oxford publishes no pressure series
+  for these years, so there is no external key to appeal to. A two-band crop
+  that never shows the reader the double rule is the fix, and it is not built.
 - **1882 comes from a second Annales volume** (doc 5), added after the first
   release: 496 usable rows, 202 of them 1882, in the same French daily layouts.
   Checked the same way as the rest — 2 climatologically impossible values in
@@ -135,7 +180,7 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **3,068 of 6,786 rows are `flagged`**, including whole-profile sections
+- **3,088 of 6,889 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.

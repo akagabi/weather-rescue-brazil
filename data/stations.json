@@ -60,5 +60,15 @@
   "lon": -44.302,
   "alt": 5,
   "dataset_name": "Porto do Maranhão, Maranhão"
+ },
+ "radcliffe_oxford": {
+  "id": "radcliffe_oxford",
+  "name": "Radcliffe Observatory, Oxford",
+  "verified": false,
+  "lat": 51.76,
+  "lon": -1.26,
+  "alt": 63,
+  "dataset_name": "Radcliffe Observatory, Oxford",
+  "note": "Approximate, and UNVERIFIED like the other five: the station sits in the garden of Green Templeton College off Woodstock Road, but geog.ox.ac.uk does not state coordinates and none were sourced. SEF writes NA while `verified` is false."
  }
 }

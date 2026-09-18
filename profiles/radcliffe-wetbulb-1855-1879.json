@@ -1,6 +1,6 @@
 {
- "id": "radcliffe-rain-1851-1879",
- "name": "Radcliffe Observatory, Oxford — monthly rainfall 1851-1879 (Table IV)",
+ "id": "radcliffe-wetbulb-1855-1879",
+ "name": "Radcliffe Observatory, Oxford — mean monthly wet bulb 1855-1879 (Table III)",
  "columns": [
   {
    "key": "year",
@@ -8,7 +8,7 @@
    "kind": "day",
    "unit": null,
    "range": [
-    1851.0,
+    1855.0,
     1879.0
    ],
    "elided": false,
@@ -19,192 +19,179 @@
    "key": "jan",
    "label": "Jan.",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
    "key": "feb",
    "label": "Feb.",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
    "key": "mar",
    "label": "Mar.",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
    "key": "apr",
    "label": "Apr.",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
    "key": "may",
    "label": "May",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
    "key": "jun",
    "label": "June",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
    "key": "jul",
    "label": "July",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
    "key": "aug",
    "label": "Aug.",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
    "key": "sep",
    "label": "Sept.",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
    "key": "oct",
    "label": "Oct.",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
    "key": "nov",
    "label": "Nov.",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
    "key": "dec",
    "label": "Dec.",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    0.0,
-    12.0
+    15.0,
+    75.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   },
   {
-   "key": "yearly_sum",
-   "label": "Yearly Sum",
+   "key": "yearly_mean",
+   "label": "Yearly Mean",
    "kind": "number",
-   "unit": "in",
+   "unit": "F",
    "range": [
-    5.0,
+    35.0,
     60.0
    ],
    "elided": false,
    "elided_range": null,
-   "note": "",
-   "elided_carry": false
+   "note": ""
   }
  ],
- "source": "Internet Archive astronomicaland03obsegoog p.141 (Table IV)",
- "rows_per_page": "fixed:29",
+ "source": "Internet Archive astronomicaland03obsegoog p.140 (Table III)",
+ "rows_per_page": "fixed:25",
  "adapter": "",
  "checks": [
   {
-   "kind": "sum",
-   "result": "yearly_sum",
+   "kind": "mean",
+   "result": "yearly_mean",
    "of": [
     "jan",
     "feb",
@@ -230,7 +217,7 @@
   0.06,
   0.96
  ],
- "notes": "QUARTO CORPUS e o primeiro com VERDADE EXTERNA. Chuva mensal em POLEGADAS, linhas = ANOS (1851-1879), ponto decimal elevado (2·899). Oxford publica a mesma serie em mm (geog.ox.ac.uk, monthly-pptn-1767-to-date), homogeneizada: a razao oxford_mm/(polegadas*25.4) e ~0.92 e CONSTANTE, portanto qualquer celula que quebre a razao e erro de transcricao, nao de medicao. Checksum proprio: Yearly Sum = soma dos 12 meses.",
+ "notes": "Termometro UMIDO em FAHRENHEIT, linhas = ANOS. Mesma folha e mesma forma da Tabela II (bulbo seco), uma pagina adiante. Adicionada sem nenhuma linha rotulada: e so este arquivo. Verdade fisica disponivel: o bulbo umido nunca excede o bulbo seco do mesmo mes, e as duas tabelas estao no mesmo volume, portanto uma checa a outra.",
  "extra": {},
  "index_kind": "year"
 }
