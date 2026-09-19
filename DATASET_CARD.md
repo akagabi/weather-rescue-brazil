@@ -34,9 +34,9 @@ offline, with every row carrying its provenance and a quality verdict.
 
 | | |
 |---|---|
-| Rows | 6,889 |
-| Usable rows (`checks_pass` + `qc_clean`) | **3,801** |
-| Values in usable rows | 45,880 |
+| Rows | 7,167 |
+| Usable rows (`checks_pass` + `qc_clean`) | **3,880** |
+| Values in usable rows | 46,868 |
 | Pages transcribed | 259 |
 | Period | 1851 to 1890-11 (one page captioned 1893, flagged) |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão, Radcliffe Observatory (Oxford) |
@@ -145,10 +145,29 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   of figures and loses them in a grid of words. Re-run with oracle localisation
   (printed day numbers decide, geometry only proposes) plus candidates proposed
   at half the pitch, those 92 pages gave 1,303 rows where they had given 1,039,
-  and 803 of the new ones are usable. The 43 that still refuse read too few of
-  their day numbers to localise — the Annales set them in old-style figures,
-  where 1 is a small-capital I, and that is the remaining gap
-  (`docs/g4-wind-locator.md`).
+  and 803 of the new ones are usable. 43 still refused that run.
+- **Fifteen of those 43 were being published at a third of their length, and
+  v0.7 re-reads them in full.** They were never missing — an earlier run had
+  produced them, badly. Doc 5 page 411 was published with **3 of its 31 days**,
+  doc 8 page 228 with 4 of 31. Localised by the production reader rather than
+  by the ink profile, the same fifteen pages give **426 rows covering 31 days
+  where they gave 149 covering 9**, and 119 usable where they gave 41. Fourteen
+  replaced what was published; one covered fewer days than before and was left
+  alone. `docs/g4-wind-locator.md` has the method and `scripts/g4_replace_pages.py`
+  the swap, which is keyed on **how many printed days a read accounts for** and
+  not on how many rows pass QC — choosing the read with the better verdicts
+  would be choosing by the score.
+- **Five of those fifteen produce nothing usable, and that is the QC working.**
+  They are layout mismatches, not localisation failures: doc 5 page 342 is a
+  thermometer table assigned the wind profile, doc 8 pages 317 and 372 read ten
+  cells where the barometer profile declares fourteen. The rows are localised
+  correctly and every one of them is `flagged`. They are kept for transparency,
+  like the other whole-profile sections below.
+- **28 pages are still refused, and the reason is now recorded per page.** Eight
+  fail because the interpolated rows overlap, seven because the days that read
+  do not lie on one line, the rest because too few days read at all. The Annales
+  set their dates in old-style figures — 1 as a small-capital I, 10 as IO — and
+  that remains the root cause (`docs/g4-wind-locator.md`).
 - **Two rows cannot be the same day.** On a layout that prints one row per day,
   a day appearing twice means one of those rows is not a data row — doc 5 page
   309 reads 1…31 and then a thirty-second row claiming 28. Where the rest of the
@@ -180,7 +199,7 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **3,088 of 6,889 rows are `flagged`**, including whole-profile sections
+- **3,287 of 7,167 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.

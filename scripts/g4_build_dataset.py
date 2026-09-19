@@ -35,6 +35,7 @@ from wrb.dataset import (  # noqa: E402
     write_manifest,
 )
 from wrb.gold import load_gold  # noqa: E402
+from wrb.rows import MIN_PITCH_PX  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 BENCH = ROOT / "bench" / "g3" / "revista-full.json"
@@ -77,8 +78,57 @@ class DayOracle:
         return int(m.group()) if m else None
 
 
+def _line_through_days(keep: dict[int, int], pitch: float, *,
+                       resid_frac: float = 0.35, min_days: int = 8) -> dict | None:
+    """Least squares y = intercept + slope*day over the confirmed days.
+
+    Returns the fit and whether it is clean enough to be worth TESTING. It is
+    not, by itself, permission to use it - see `resolve_by_oracle`, which
+    places the rows the fit predicts and re-reads them.
+
+    An earlier version required the fitted slope to match `pitch`, the spacing
+    the ink profile measured, on the reasoning that two independent
+    measurements agreeing is corroboration. Measured on the pages this exists
+    for, that test is worthless: the profile CANNOT find rows in a grid of
+    words, which is the whole reason they were refused, and it reported 15 px
+    and 12 px where the printed day numbers say 23.1 px and 18.9 px. Checking
+    a good measurement against a broken one throws the good one away. `pitch`
+    is now only a sanity floor.
+
+    What remains here is the part that does not depend on the profile:
+
+    * no confirmed day sits more than `resid_frac` of the FITTED spacing off
+      the line, so one bad assignment cannot drag the whole placement. This
+      separates the two cases cleanly - doc 5 page 411 fits to 7.9 px of a
+      23.1 px spacing and its grid then reads 27 of 31 days correctly, while
+      doc 8 page 346 fits to 134.7 px and its grid reads 5.
+    * at least `min_days` confirmed days, because a line through three points
+      is not evidence of anything.
+    """
+    if len(keep) < min_days or pitch <= 0:
+        return None
+    days = sorted(keep)
+    n = len(days)
+    mean_d = sum(days) / n
+    mean_y = sum(keep[d] for d in days) / n
+    var = sum((d - mean_d) ** 2 for d in days)
+    if var <= 0:
+        return None
+    slope = sum((d - mean_d) * (keep[d] - mean_y) for d in days) / var
+    intercept = mean_y - slope * mean_d
+    resid = [abs(keep[d] - (intercept + slope * d)) for d in days]
+    max_resid = max(resid)
+    ok_slope = slope >= max(4.0, 0.5 * MIN_PITCH_PX)      # a sanity floor, not a match
+    ok_resid = max_resid <= resid_frac * slope
+    return {"slope": slope, "intercept": intercept, "max_resid": max_resid,
+            "n_days": n, "pitch": pitch, "slope_ok": ok_slope, "resid_ok": ok_resid,
+            "accept": bool(ok_slope and ok_resid)}
+
+
 def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int, *,
-                      margin_rows: int = 8, min_direct: float = 0.7) -> tuple[list[int] | None, dict]:
+                      margin_rows: int = 8, min_direct: float = 0.7,
+                      verify_frac: float = 0.60, verify_rising: float = 0.80
+                      ) -> tuple[list[int] | None, dict]:
     """Oracle-driven row localisation. Candidates = every strong peak within
     `margin_rows` pitches of the heuristic chain. The oracle reads the
     printed day number at each candidate; day d is assigned to the unique
@@ -122,6 +172,29 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
     for y, r in zip(cands, reads):
         if r is not None and 1 <= r <= day_count:
             by_day.setdefault(r, []).append(y)
+    # Candidates proposed at HALF the page pitch - the short-chain path above -
+    # return the same printed row two or three times, and every copy reads the
+    # same day, correctly. Those are not competing claims; they are one row
+    # proposed more than once. Collapse claimants that sit within a pitch of
+    # each other to their midpoint BEFORE anything decides what is contested.
+    #
+    # Without this the uniqueness rule treats a duplicated row as a contest and
+    # throws it away, and the half-pitch proposal that was added to find MORE
+    # rows was destroying them instead: doc 8 page 346 read 24 of its 31 days
+    # and kept 5. What is left contested afterwards is a genuine disagreement
+    # between two distant candidates, which is what the line fit below is for.
+    for _d, _ys in list(by_day.items()):
+        if len(_ys) < 2:
+            continue
+        _ys = sorted(_ys)
+        _clusters = [[_ys[0]]]
+        for _y in _ys[1:]:
+            if _y - _clusters[-1][-1] <= 0.9 * pitch:
+                _clusters[-1].append(_y)
+            else:
+                _clusters.append([_y])
+        by_day[_d] = [round(sum(c) / len(c)) for c in _clusters]
+
     # A day read by exactly one candidate is settled. A day read by SEVERAL is
     # not thrown away: on doc 8 page 43 the six candidates above the table are
     # header strips, the reader answers "1" to all of them because that is what
@@ -152,9 +225,82 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
         next_ok = i == len(days) - 1 or y < assigned[days[i + 1]]
         if prev_ok and next_ok:
             keep[d] = y
-    info = {"candidates": len(cands), "direct": len(keep), "reads": reads}
+    # Where the days went. "24 read, 5 kept" is a different problem from
+    # "5 read", and the message used to report only the second, so a page
+    # whose reading was fine and whose bookkeeping was not looked identical
+    # to one the reader could not read at all.
+    info = {"candidates": len(cands), "direct": len(keep), "reads": reads,
+            "days_read": len(by_day), "after_cluster": len(assigned) + len(contested),
+            "unique": sum(1 for d, ys in by_day.items() if len(ys) == 1),
+            "contested": len(contested),
+            "contested_resolved": len(assigned) - sum(1 for d, ys in by_day.items() if len(ys) == 1),
+            "dropped_nonmonotonic": len(assigned) - len(keep)}
     if len(keep) < min_direct * day_count:
-        return None, info
+        # SECOND ROUTE, for a page whose days read too few but line up too
+        # well to throw away. `min_direct` is a count, and a count is only a
+        # proxy for the thing that matters: whether the confirmed days pin
+        # down where every row sits. Fifteen days lying on a straight line at
+        # exactly the page pitch pin it down better than twenty scattered
+        # ones, and the Annales pages refused here read 20-24 of 31 with the
+        # missing ones spread evenly - their dates are set in old-style
+        # figures and the reader loses a third of them wherever they fall.
+        #
+        # The guard is not a looser threshold, it is an INDEPENDENT witness:
+        # fit y = a + b*day over the confirmed days and require b to match
+        # the pitch the ink profile measured without ever looking at a day
+        # number. Two unrelated measurements of the same spacing agreeing is
+        # evidence; a lowered bar is not. A page whose assignment is wrong
+        # does not reproduce its own geometry.
+        fit = _line_through_days(keep, pitch)
+        info["line_fit"] = fit
+        if fit is None or not fit["accept"]:
+            if fit is not None:
+                info["reason"] = (f"only {len(keep)} days kept and they do not lie on one line "
+                                  f"(spacing {fit['slope']:.1f}px, worst residual "
+                                  f"{fit['max_resid']:.1f}px = {fit['max_resid']/max(1e-9,fit['slope']):.0%} "
+                                  f"of a row)")
+            return None, info
+        a, b = fit["intercept"], fit["slope"]
+        centres = [round(a + b * d) for d in range(1, day_count + 1)]
+        if min(centres) < 0 or max(centres) >= height:
+            info["reason"] = "the fitted line runs off the page"
+            return None, info
+
+        # VERIFY BY READING, not by trusting the geometry. Place the rows the
+        # line predicts and ask the reader what day each one holds. If the
+        # line is right the answers come back 1, 2, 3 ... in order; if it is
+        # wrong they do not, and no amount of agreement between two geometric
+        # estimates would have told us. This is the only test here that does
+        # not depend on the ink profile, which is the thing that failed.
+        #
+        # Measured on the two pages this was built from: doc 5 page 411 places
+        # 31 rows of which 27 read their expected day (87%) and doc 8 page 346
+        # places 31 of which 5 do (16%). The separation is not marginal.
+        vboxes = boxes_for_centres(centres, loc, width, height)
+        vcrops = crop_boxes(image, vboxes, loc.skew_deg, scale=2.0)
+        vreads = (oracle.read_days(vcrops) if hasattr(oracle, "read_days")
+                  else [oracle.read_day(c) for c in vcrops])
+        on_day = sum(1 for i, r in enumerate(vreads, start=1) if r == i)
+        got = [r for r in vreads if r is not None]
+        rising = sum(1 for x, y in zip(got, got[1:]) if y > x)
+        info["verify"] = {"placed": len(centres), "read": len(got),
+                          "on_expected_day": on_day, "rising_pairs": rising,
+                          "days": vreads}
+        # Both halves matter. A page can land many rows on their day while the
+        # sequence jumps about, which means rows are doubled or skipped.
+        if on_day < verify_frac * day_count or (len(got) > 1 and
+                                                rising < verify_rising * (len(got) - 1)):
+            info["reason"] = (f"the fitted grid does not read back: {on_day}/{day_count} rows "
+                              f"hold their expected day, {rising}/{max(1, len(got) - 1)} "
+                              f"consecutive pairs increase")
+            return None, info
+        info["localisation_note"] = (
+            f"{len(keep)} of {day_count} days read directly; the rest placed on the line "
+            f"they fit (spacing {b:.1f}px, worst residual {fit['max_resid']:.1f}px) and the "
+            f"grid verified by re-reading: {on_day}/{day_count} rows hold their expected day")
+        info["day_range"] = (1, day_count)
+        info["direct"] = on_day
+        return centres, info
     known = sorted(keep)
     # Without day 1 or the last day there is nothing to anchor the ends on, and
     # the old rule refused the whole page for it. That costs every row to avoid

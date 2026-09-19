@@ -98,3 +98,50 @@ def test_one_end_confirmed_is_still_only_the_bracket():
 
 def test_nothing_confirmed_brackets_nothing():
     assert bracket({}, 30) is None
+
+
+# --- placing unread days on the line the read ones fit -------------------
+# `min_direct` is a count, and a count is a proxy. These pages read 20-24 of
+# 31 days because the Annales set their dates in old-style figures; what
+# decides whether the rest can be placed is whether the confirmed days
+# reproduce the page's own measured pitch.
+
+sys.path.insert(0, str(ROOT / "scripts"))
+from g4_build_dataset import _line_through_days  # noqa: E402
+
+
+def test_days_on_the_page_pitch_are_accepted():
+    pitch = 28.0
+    keep = {d: 100 + round(pitch * d) for d in (1, 3, 4, 7, 9, 12, 15, 18, 22, 29)}
+    fit = _line_through_days(keep, pitch)
+    assert fit["accept"]
+    assert abs(fit["slope"] - pitch) < 0.5
+    assert fit["max_resid"] < 1.0
+
+
+def test_a_slope_that_contradicts_the_measured_pitch_is_refused():
+    """The ink profile measured the pitch without ever seeing a day number.
+    If the assignment implies a different spacing, one of them is wrong."""
+    pitch = 28.0
+    keep = {d: 100 + round(14.0 * d) for d in range(1, 15)}   # every OTHER row
+    fit = _line_through_days(keep, pitch)
+    assert not fit["slope_ok"]
+    assert not fit["accept"]
+
+
+def test_one_badly_placed_day_refuses_the_whole_fit():
+    pitch = 28.0
+    keep = {d: 100 + round(pitch * d) for d in range(1, 13)}
+    keep[6] += 40                       # a misassignment, well over 0.35 pitch
+    fit = _line_through_days(keep, pitch)
+    assert not fit["resid_ok"]
+    assert not fit["accept"]
+
+
+def test_too_few_days_is_not_a_line():
+    pitch = 28.0
+    assert _line_through_days({1: 128, 2: 156, 3: 184}, pitch) is None
+
+
+def test_no_pitch_no_fit():
+    assert _line_through_days({d: d * 10 for d in range(1, 20)}, 0.0) is None

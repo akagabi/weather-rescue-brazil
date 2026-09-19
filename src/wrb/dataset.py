@@ -18,6 +18,7 @@ from __future__ import annotations
 import calendar
 import hashlib
 import io
+from math import ceil
 import json
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
@@ -77,6 +78,27 @@ def page_image_path(root: Path, doc: str, page: int) -> Path:
     return root / "data" / "raw" / "docvirt" / doc / f"{page:06d}.webp"
 
 
+# Qwen's image processor refuses an image whose sides differ by more than
+# 200:1. A row crop is always a long thin strip, and on a page whose detected
+# pitch has collapsed it gets thinner: one page of the Annales produced a
+# 206.9:1 crop and killed a three-hour run outright, twenty-five pages in.
+# The strip is not wrong, it is just extreme, so it is padded rather than
+# rejected - white above and below, which is what the margin around a printed
+# row looks like anyway, and the row itself is untouched.
+MAX_ASPECT = 190.0
+
+
+def _fit_aspect(c: Image.Image, max_aspect: float = MAX_ASPECT) -> Image.Image:
+    if c.height <= 0 or c.width / c.height <= max_aspect:
+        return c
+    want = max(1, ceil(c.width / max_aspect))
+    pad = want - c.height
+    out = Image.new(c.mode, (c.width, want),
+                    (255, 255, 255) if c.mode == "RGB" else 255)
+    out.paste(c, (0, pad // 2))
+    return out
+
+
 def crop_boxes(image: Image.Image, boxes: list[tuple[int, int, int, int]], skew_deg: float,
                scale: float = 2.0) -> list[Image.Image]:
     if skew_deg:
@@ -86,7 +108,7 @@ def crop_boxes(image: Image.Image, boxes: list[tuple[int, int, int, int]], skew_
         c = image.crop(b)
         if scale != 1.0:
             c = c.resize((max(1, round(c.width * scale)), max(1, round(c.height * scale))), Image.LANCZOS)
-        out.append(c)
+        out.append(_fit_aspect(c))
     return out
 
 
