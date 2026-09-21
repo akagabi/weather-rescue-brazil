@@ -9,7 +9,15 @@ authors:
     alias: akagabi
     website: "https://github.com/akagabi"
 version: "0.10"
+doi: "10.5281/zenodo.22876699"
 date-released: 2026-09-21
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22876699"
+    description: "Concept DOI - always resolves to the latest version"
+  - type: doi
+    value: "10.5281/zenodo.22876700"
+    description: "Version DOI for v0.10"
 repository-code: "https://github.com/akagabi/weather-rescue-brazil"
 url: "https://huggingface.co/datasets/akagabi/weather-rescue-brazil"
 abstract: >-

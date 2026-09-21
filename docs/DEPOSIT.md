@@ -8,6 +8,26 @@ a data paper.
 
 Everything below is a decision or a click. None of it is code.
 
+## Done — 2026-09-21
+
+**Concept DOI `10.5281/zenodo.22876699`** (cite this one; it always resolves
+to the newest version) and version DOI `10.5281/zenodo.22876700` for v0.10.
+
+One thing to know for next time, recorded because it wasted half an hour of
+suspicion: **Zenodo's public search API did not return the record for at
+least 25 minutes after it was minted**, while the record itself was complete
+and live the whole time. Querying `/api/records?q=...` and getting nothing
+back is not evidence that anything failed. The authoritative places are
+<https://zenodo.org/account/settings/github/>, which shows the DOI badge
+against the repository, and `/api/records/<id>` once the id is known. The
+webhook returning **202** on the `published` event is the real signal that
+Zenodo accepted the job; the `409`s on the `created` and `released` events
+that follow are duplicates being correctly ignored, not errors.
+
+`.zenodo.json` should still be kept to schema fields only — no `_comment`
+key, no empty `affiliation` — but for tidiness, not because either broke
+this deposit. `version` must match `data/dataset/version.json` and the tag.
+
 ## Before you mint anything
 
 **A DOI cannot be edited after it is minted.** The record can get new versions,

@@ -30,6 +30,19 @@ offline, with every row carrying its provenance and a quality verdict.
 > the Weather Rescue / Rainfall Rescue projects, whose naming family it
 > gratefully follows.
 
+## Citing it
+
+**DOI: [10.5281/zenodo.22876699](https://doi.org/10.5281/zenodo.22876699)** — the concept DOI, which always
+resolves to the newest version. To pin this exact release use
+[10.5281/zenodo.22876700](https://doi.org/10.5281/zenodo.22876700).
+
+> Bueno, Gabriel (2026). *Weather Rescue Brazil: nineteenth-century weather
+> observations transcribed by a small offline model* (0.10) [Data set].
+> Zenodo. https://doi.org/10.5281/zenodo.22876699
+
+Citation is not required — the transcriptions are CC0 — but it is how the
+work becomes findable.
+
 ## What is in it
 
 | | |

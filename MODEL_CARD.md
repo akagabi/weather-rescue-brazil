@@ -170,4 +170,5 @@ from.
 ## Companion
 
 Pipeline, profiles, the dataset and every measurement above:
-**github.com/akagabi/weather-rescue-brazil**.
+**github.com/akagabi/weather-rescue-brazil**, archived at
+[10.5281/zenodo.22876699](https://doi.org/10.5281/zenodo.22876699).

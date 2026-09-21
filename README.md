@@ -13,6 +13,8 @@ data, and publishes the method so the rest can follow.
 > Independent project. Not affiliated with Zooniverse or with the Weather
 > Rescue / Rainfall Rescue projects, whose naming family it gratefully follows.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22876699.svg)](https://doi.org/10.5281/zenodo.22876699)
+
 ## The dataset
 
 **7,418 rows, 3,999 usable, 48,355 values, 258 pages, 1851–1890.** Six
