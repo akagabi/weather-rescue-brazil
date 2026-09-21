@@ -34,10 +34,10 @@ offline, with every row carrying its provenance and a quality verdict.
 
 | | |
 |---|---|
-| Rows | 7,448 |
+| Rows | 7,418 |
 | Usable rows (`checks_pass` + `qc_clean`) | **3,999** |
 | Values in usable rows | 48,355 |
-| Pages transcribed | 259 |
+| Pages transcribed | 258 |
 | Period | 1851 to 1890-11 (one page captioned 1893, flagged) |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão, Radcliffe Observatory (Oxford) |
 | Sources | *Revista do Observatório* (1886–1891), *Annales de l'Observatoire Impérial* (1882–1885), *Astronomical and Meteorological Observations, Radcliffe Observatory* (1851–1879) |
@@ -223,10 +223,19 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **3,449 of 7,448 rows are `flagged`**, including whole-profile sections
+- **3,419 of 7,418 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.
+- **One page of prose was removed in v0.10.** Doc 14 page 140 is a Portuguese
+  article whose caption belongs to a table on the neighbouring leaf, and 30 of
+  its lines had been produced as weather rows — `"justamente no meio de Junho
+  apresenta sua fr-"` was in this file. Every one was `flagged`, so a consumer
+  following the recommended filter never saw them, and the preflight rejects
+  that page now (0 of 30 days). But the rows from the run that predated the
+  preflight were never cleared out. Keeping a flagged row is defensible when it
+  is an observation the checks could not confirm; it is not defensible when the
+  row is not an observation at all.
 - **No row in this file has been verified line-by-line by a human.** The frozen
   gold set — nine pages, triple-transcribed — is a separate evaluation corpus
   and is *not* part of this dataset.

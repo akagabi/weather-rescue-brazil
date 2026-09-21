@@ -1,22 +1,24 @@
 {
  "_comment": [
-  "Zenodo reads this when a GitHub release is archived. Two things to change",
-  "BEFORE the first release, because a DOI cannot be edited afterwards:",
-  "  1. `creators` - put your real name and ORCID here, not the handle. A DOI",
-  "     credited to `akagabi` does not connect to you anywhere else.",
-  "  2. `version` - must match data/dataset/version.json and the git tag.",
-  "Everything else can be corrected in later versions of the record."
+  "Zenodo reads this when a GitHub release is archived. One thing is still",
+  "missing and it cannot be added after the DOI is minted: an ORCID. Free at",
+  "orcid.org/register. Put it in the creators block as \"orcid\": \"0000-...\"",
+  "and in CITATION.cff, then cut the release.",
+  "`version` must match data/dataset/version.json and the git tag."
  ],
  "title": "Weather Rescue Brazil: nineteenth-century weather observations transcribed by a small offline model",
  "upload_type": "dataset",
  "access_right": "open",
  "license": "cc-zero",
- "version": "0.8",
+ "version": "0.10",
  "language": "eng",
  "creators": [
-  {"name": "akagabi", "affiliation": ""}
+  {
+   "name": "Bueno, Gabriel",
+   "affiliation": ""
+  }
  ],
- "description": "<p>Daily, dekadal and monthly meteorological observations from six stations, 1851-1890, transcribed from printed nineteenth-century tables: the <i>Annales de l'Observatoire Imp&eacute;rial de Rio de Janeiro</i> (French), the <i>Revista do Observat&oacute;rio</i> (Portuguese) and the <i>Astronomical and Meteorological Observations made at the Radcliffe Observatory, Oxford</i> (English).</p><p><b>7,197 rows, 3,936 usable, 47,544 values, 259 pages.</b> Variables include barometric pressure read seven times daily, temperature maxima, minima and means, relative humidity, vapour tension, cloudiness, wind direction and force, rainfall, evaporation, ozone and actinometry.</p><p>Transcription is by a Qwen3.5-2B model with a LoRA adapter running offline on a laptop. Each printed layout is described by a JSON profile declaring its columns, units, physical ranges and the arithmetic the page asserts about itself, which is used to judge every row without a human. Fifteen of the eighteen layouts needed no labelled rows at all. Total API spend across the project was US$1.56.</p><p><b>External validation.</b> Oxford has published the same observations the Radcliffe tables hold, digitised independently more than a century later. Of the cells this dataset calls usable, 100% of the dry bulb (252 cells) and 96.7% of the rainfall (300 cells) agree with that series; of the rainfall cells it <i>flags</i>, 44.4% do. The quality verdict predicts agreement with an independent source, which is the part of this work that is hardest to obtain and easiest to check.</p><p><b>Read the dataset card before using it.</b> What <code>checks_pass</code> verifies differs by publication, and it is not a uniform quality tier. No row has been verified line-by-line by a human; the 3,822-cell evaluation gold set has been, and is separate from the dataset.</p><p>Images: Biblioteca Digital de Obras Raras do Observat&oacute;rio Nacional, via DocVirt, and the Internet Archive. The observations themselves are public domain (Lei 9.610) and are not ours to licence. The transcriptions, verdicts and provenance are dedicated to the public domain under CC0; the pipeline code and model weights are Apache-2.0.</p>",
+ "description": "<p>Daily, dekadal and monthly meteorological observations from six stations, 1851-1890, transcribed from printed nineteenth-century tables: the <i>Annales de l'Observatoire Imp&eacute;rial de Rio de Janeiro</i> (French), the <i>Revista do Observat&oacute;rio</i> (Portuguese) and the <i>Astronomical and Meteorological Observations made at the Radcliffe Observatory, Oxford</i> (English).</p><p><b>7,418 rows, 3,999 usable, 48,355 values, 259 pages.</b> Variables include barometric pressure read seven times daily, temperature maxima, minima and means, relative humidity, vapour tension, cloudiness, wind direction and force, rainfall, evaporation, ozone and actinometry.</p><p>Transcription is by a Qwen3.5-2B model with a LoRA adapter running offline on a laptop. Each printed layout is described by a JSON profile declaring its columns, units, physical ranges and the arithmetic the page asserts about itself, which is used to judge every row without a human. Fifteen of the eighteen layouts needed no labelled rows at all. Total API spend across the project was US$1.56.</p><p><b>External validation.</b> Oxford has published the same observations the Radcliffe tables hold, digitised independently more than a century later. Of the cells this dataset calls usable, 100% of the dry bulb (252 cells) and 96.7% of the rainfall (300 cells) agree with that series; of the rainfall cells it <i>flags</i>, 44.4% do. The quality verdict predicts agreement with an independent source, which is the part of this work that is hardest to obtain and easiest to check.</p><p><b>Read the dataset card before using it.</b> What <code>checks_pass</code> verifies differs by publication, and it is not a uniform quality tier. No row has been verified line-by-line by a human; the 3,822-cell evaluation gold set has been, and is separate from the dataset.</p><p>Images: Biblioteca Digital de Obras Raras do Observat&oacute;rio Nacional, via DocVirt, and the Internet Archive. The observations themselves are public domain (Lei 9.610) and are not ours to licence. The transcriptions, verdicts and provenance are dedicated to the public domain under CC0; the pipeline code and model weights are Apache-2.0.</p>",
  "keywords": [
   "data rescue",
   "historical climatology",
@@ -29,11 +31,20 @@
   "meteorology"
  ],
  "related_identifiers": [
-  {"identifier": "https://github.com/akagabi/weather-rescue-brazil",
-   "relation": "isSupplementTo", "scheme": "url"},
-  {"identifier": "https://huggingface.co/datasets/akagabi/weather-rescue-brazil",
-   "relation": "isIdenticalTo", "scheme": "url"},
-  {"identifier": "https://huggingface.co/akagabi/weather-rescue-brazil-reader",
-   "relation": "isSupplementedBy", "scheme": "url"}
+  {
+   "identifier": "https://github.com/akagabi/weather-rescue-brazil",
+   "relation": "isSupplementTo",
+   "scheme": "url"
+  },
+  {
+   "identifier": "https://huggingface.co/datasets/akagabi/weather-rescue-brazil",
+   "relation": "isIdenticalTo",
+   "scheme": "url"
+  },
+  {
+   "identifier": "https://huggingface.co/akagabi/weather-rescue-brazil-reader",
+   "relation": "isSupplementedBy",
+   "scheme": "url"
+  }
  ]
 }

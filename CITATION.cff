@@ -3,12 +3,16 @@ title: "Weather Rescue Brazil: nineteenth-century weather observations transcrib
 message: "If you use this dataset or the method, please cite it. Attribution is not required by the licence (the transcriptions are CC0); this file is here because citation is how the work becomes findable."
 type: dataset
 authors:
-  # TODO before minting a DOI: replace `alias` with `family-names` / `given-names`
-  # and add an `orcid:`. A DOI credited to a handle is far less useful to you
-  # than one credited to a person, and it cannot be changed afterwards.
-  - alias: akagabi
+  - family-names: Bueno
+    given-names: Gabriel
+    alias: akagabi
     website: "https://github.com/akagabi"
-version: "0.8"
+    # TODO, and the last thing missing: an ORCID. Free at orcid.org/register,
+    # five minutes, and it is what makes this and every later output
+    # accumulate under one identity instead of under a name string. Add it
+    # here as `orcid: "https://orcid.org/0000-...."` and in .zenodo.json
+    # BEFORE the release - version 1's author block cannot be edited.
+version: "0.10"
 date-released: 2026-09-21
 repository-code: "https://github.com/akagabi/weather-rescue-brazil"
 url: "https://huggingface.co/datasets/akagabi/weather-rescue-brazil"
