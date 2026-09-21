@@ -5,13 +5,9 @@ type: dataset
 authors:
   - family-names: Bueno
     given-names: Gabriel
+    orcid: "https://orcid.org/0009-0008-3237-8637"
     alias: akagabi
     website: "https://github.com/akagabi"
-    # TODO, and the last thing missing: an ORCID. Free at orcid.org/register,
-    # five minutes, and it is what makes this and every later output
-    # accumulate under one identity instead of under a name string. Add it
-    # here as `orcid: "https://orcid.org/0000-...."` and in .zenodo.json
-    # BEFORE the release - version 1's author block cannot be edited.
 version: "0.10"
 date-released: 2026-09-21
 repository-code: "https://github.com/akagabi/weather-rescue-brazil"
