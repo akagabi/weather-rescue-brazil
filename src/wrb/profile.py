@@ -165,6 +165,15 @@ class Profile:
     # are perfectly regular and perfectly legible to a person. This is a fact
     # about the printing, so it is declared per publication rather than lowered
     # for everyone.
+    # Ask the PAGE where its columns are instead of declaring it. See
+    # wrb.rows.column_bands: the ruling is the column layout, it is redrawn on
+    # every page, and it moves with the table when the scan drifts.
+    #   {"crop_columns": 6}   crop from the table's left edge to the 6th rule
+    # `crop_columns` is how many LEADING columns to read, so a trailing column
+    # the profile does not want - Prague's free-text Bemerkungen - is simply
+    # not counted, and stray boundaries the reader finds inside it cannot
+    # affect the crop.
+    columns_from_rules: dict | None = None
     oracle_min_direct: float = 0.7
     # What the row-index column COUNTS. Every layout up to here indexed its
     # rows by day of month, and the pipeline said so in constants: the
@@ -434,6 +443,8 @@ class Profile:
             kw["table_y_frac"] = tuple(self.table_y_frac)
         if self.row_bands:
             kw["row_bands"] = [tuple(b) for b in self.row_bands]
+        if self.columns_from_rules:
+            kw["columns_from_rules"] = dict(self.columns_from_rules)
         return kw
 
     def verify(self, values: dict, tol: float = 0.051) -> list[str]:

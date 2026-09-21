@@ -149,3 +149,68 @@ def test_a_declared_pitch_overrides_the_measured_one():
     peaks = [100, 148, 196, 244]                  # gaps of 48, i.e. every other row
     g = grid_from_peaks(peaks, 8, pitch=24.0)
     assert g is None or len(g) == 8
+
+
+# --- columns read off the page's own ruling ------------------------------
+# A profile normally declares column positions as fractions of PAGE width,
+# measured by hand off one page. On Prague 1903 the same table sits at 0.082
+# of the width in January and 0.113 in December, and a crop fitted to January
+# leaves December's target column entirely outside the image sent to the
+# reader. The ruling moves with the table; the declared fraction does not.
+
+from wrb.rows import column_bands  # noqa: E402
+
+# A pure black-on-white fixture is bimodal at 0/255 and `ink_threshold`
+# returns 0 for it, which is a fact about the fixture and not about the
+# code under test. Real scans are grey. These pass the threshold directly.
+INK = 128
+
+
+def _ruled(width=1000, height=400, xs=(80, 150, 250, 350, 450, 520, 580, 890)):
+    im = Image.new("L", (width, height), 255)
+    d = ImageDraw.Draw(im)
+    for x in xs:
+        d.line([(x, 0), (x, height - 1)], fill=0, width=2)
+    return im
+
+
+def test_column_bands_reads_the_ruling():
+    im = _ruled()
+    got = column_bands(im, INK)
+    assert len(got) == 8, got
+    for want, g in zip((80, 150, 250, 350, 450, 520, 580, 890), got):
+        assert abs(g - want) <= 3, (want, g)
+
+
+def test_doubled_edge_rules_collapse_to_one():
+    """These pages rule their outer edges twice, a few pixels apart."""
+    im = _ruled(xs=(80, 84, 150, 250, 350, 450, 520, 580, 886, 890))
+    got = column_bands(im, INK)
+    assert len(got) == 8, got
+
+
+def test_a_sliver_boundary_is_rejected():
+    """Ink inside a column - a long text cell - can register as a rule, and
+    one spurious boundary shifts every index after it. On Prague page 46 that
+    moved the sixth boundary from 0.617 to 0.557 and would have cropped away
+    the column being transcribed."""
+    im = _ruled(xs=(80, 150, 172, 250, 350, 450, 520, 580, 890))   # 172 is the stray
+    got = column_bands(im, INK)
+    assert 172 not in got and len(got) == 8, got
+
+
+def test_no_ruling_returns_nothing_rather_than_guessing():
+    im = Image.new("L", (1000, 400), 255)
+    assert column_bands(im, INK) == []
+
+
+def test_the_band_restricts_which_rules_are_seen():
+    """A page carrying two tables otherwise mixes both sets of rules."""
+    im = Image.new("L", (1000, 400), 255)
+    d = ImageDraw.Draw(im)
+    for x in (80, 300, 520):                 # upper table
+        d.line([(x, 0), (x, 180)], fill=0, width=2)
+    for x in (120, 420, 700):                # lower table, different registration
+        d.line([(x, 220), (x, 399)], fill=0, width=2)
+    upper = column_bands(im, INK, (0, 180))
+    assert all(abs(u - w) <= 3 for u, w in zip(upper, (80, 300, 520))), upper

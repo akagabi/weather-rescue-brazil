@@ -92,7 +92,7 @@
  ],
  "oracle_min_direct": 0.55,
  "index_kind": "day_of_month",
- "notes": "QUINTO CORPUS e o primeiro em ALEMAO. Linhas = dias. O recorte para de proposito ANTES da coluna Bemerkungen, que e texto livre longo e nao e dado tabular. So `niederschlag` tem verdade externa: o ECA&D publica a mesma serie diaria (STAID 27, SOUID 100082, do CHMI) em 0.1mm, e a comparacao e EXATA, nao ajustada - diferente de Oxford, onde se ajusta uma escala. Um `...` impresso significa sem precipitacao mensuravel e e registrado como marcador, nao como zero. A pagina traz DUAS tabelas: em cima Bewolkung+Niederschlag, em baixo Luftdruck horario. `table_y_frac` delimita a de cima; sem isso a coluna Tag das duas se soma e o detector de passo encontra metade do espacamento real. A primeira versao deste perfil declarava 12 colunas, separando forma / quantidade / direcao dentro de cada hora. Errado: a pagina so risca entre as TRES HORAS, e o leitor devolveu 6 celulas - que e o que a pagina imprime. Os numeros de chuva ja estavam certos na primeira leitura, so caiam numa coluna declarada errada. A pagina imprime a propria soma mensal da chuva ('S. 12.8') na linha Mittel, e esse e o unico arbitro de uma convencao que de outro modo seria suposicao: uma celula Niederschlag VAZIA significa 'sem precipitacao mensuravel' (=0), nao 'nao conseguimos ler'. Se algum numero foi perdido ou deslocado, a soma nao fecha. Medido em 1903-01: a leitura somou 17.0 contra 12.8 impressos, e as quatro celulas erradas eram exatamente as responsaveis.",
+ "notes": "QUINTO CORPUS e o primeiro em ALEMAO. Linhas = dias. O recorte para de proposito ANTES da coluna Bemerkungen, que e texto livre longo e nao e dado tabular. So `niederschlag` tem verdade externa: o ECA&D publica a mesma serie diaria (STAID 27, SOUID 100082, do CHMI) em 0.1mm, e a comparacao e EXATA, nao ajustada - diferente de Oxford, onde se ajusta uma escala. Um `...` impresso significa sem precipitacao mensuravel e e registrado como marcador, nao como zero. A pagina traz DUAS tabelas: em cima Bewolkung+Niederschlag, em baixo Luftdruck horario. `table_y_frac` delimita a de cima; sem isso a coluna Tag das duas se soma e o detector de passo encontra metade do espacamento real. A primeira versao deste perfil declarava 12 colunas, separando forma / quantidade / direcao dentro de cada hora. Errado: a pagina so risca entre as TRES HORAS, e o leitor devolveu 6 celulas - que e o que a pagina imprime. Os numeros de chuva ja estavam certos na primeira leitura, so caiam numa coluna declarada errada. A pagina imprime a propria soma mensal da chuva ('S. 12.8') na linha Mittel, e esse e o unico arbitro de uma convencao que de outro modo seria suposicao: uma celula Niederschlag VAZIA significa 'sem precipitacao mensuravel' (=0), nao 'nao conseguimos ler'. Se algum numero foi perdido ou deslocado, a soma nao fecha. Medido em 1903-01: a leitura somou 17.0 contra 12.8 impressos, e as quatro celulas erradas eram exatamente as responsaveis. As posicoes das colunas NAO sao mais declaradas: vem da propria pauta da pagina (wrb.rows.column_bands). A mesma tabela fica em 0.082-0.889 da largura em Janeiro e em 0.113-0.915 em Dezembro, e o recorte fixo ajustado a Janeiro deixava a coluna Niederschlag de Dezembro INTEIRAMENTE fora da imagem. `crop_columns: 6` le as seis primeiras colunas e ignora Bemerkungen.",
  "extra": {},
  "table_y_frac": [
   0.175,
@@ -113,5 +113,8 @@
   "tolerance": {
    "niederschlag": 0.06
   }
+ },
+ "columns_from_rules": {
+  "crop_columns": 6
  }
 }

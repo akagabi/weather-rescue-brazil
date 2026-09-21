@@ -368,6 +368,62 @@ def horizontal_rules(gray: Image.Image, x0: int, x1: int, thr: int, *, min_dip: 
     return out
 
 
+def column_bands(gray: Image.Image, thr: int, y_band: tuple[int, int] | None = None,
+                 *, merge_frac: float = 0.008) -> list[int]:
+    """The column boundaries the PAGE itself draws, as x pixels, left to right.
+
+    A profile normally declares where its columns sit as fractions of page
+    WIDTH, measured by hand off one page. That is the fragile half of a
+    profile and it has now failed three separate ways: a phantom column where
+    Radcliffe double-rules before its Yearly Mean, a column count declared as
+    twelve where Prague prints seven, and - the one that wasted a whole
+    twelve-month run - a scan whose pages are not registered alike.
+
+    Measured on Prague 1903, the same table sits at 0.082-0.889 of page width
+    in January and 0.113-0.915 in December. A crop fitted to January ends at
+    0.578; December's Niederschlag column runs 0.548-0.607, so on that page
+    the column being transcribed was never inside the image the reader was
+    shown. It read what it was given.
+
+    The page knows better than the profile. Its ruling is the column layout,
+    it is drawn on every page, and it moves with the table. Two details make
+    it usable: restrict the search to the DATA BAND, because a page carrying
+    two tables otherwise mixes both sets of rules, and collapse rules closer
+    together than `merge_frac` of the width, because these pages rule their
+    outer edges twice.
+
+    Returns n+1 boundaries for n columns, or [] when the ruling cannot be
+    read - in which case the caller should fall back to the declared
+    fractions rather than guess.
+    """
+    width = gray.width
+    band = gray if y_band is None else gray.crop((0, y_band[0], width, y_band[1]))
+    out: list[int] = []
+    for x in sorted(vertical_rules(band, thr)):
+        if out and x - out[-1] < merge_frac * width:
+            out[-1] = (out[-1] + x) // 2
+        else:
+            out.append(x)
+    # Drop a boundary that would carve out a sliver. Ink inside a column -
+    # a long text cell, a bracket - is sometimes continuous enough down the
+    # band to register as a rule, and one spurious boundary shifts every
+    # index after it, which is worse than not finding it at all: on Prague
+    # page 46 a stray line 0.023 of the width from its neighbour moved the
+    # sixth boundary from 0.617 to 0.557 and would have cropped away the
+    # column being transcribed. Real columns here are within a factor of two
+    # of each other, so anything under 40% of the median is not one.
+    if len(out) > 3:
+        widths = sorted(b - a for a, b in zip(out, out[1:]))
+        med = widths[len(widths) // 2]
+        if med > 0:
+            keep = [out[0]]
+            for x in out[1:]:
+                if x - keep[-1] >= 0.4 * med:
+                    keep.append(x)
+            out = keep
+    return out
+
+
 def vertical_rules(gray: Image.Image, thr: int, *, cell: int = 20, min_frac: float = 0.3) -> list[int]:
     """x of vertical rules = columns continuously inked over > min_frac of
     the page height (same cell trick as `horizontal_rules`, transposed)."""
@@ -487,6 +543,7 @@ def locate_day_rows(
     table_y_frac: tuple[float, float] | None = None,
     row_bands: list | None = None,
     band_frac: float = 1.0,
+    columns_from_rules: dict | None = None,
     _upscaled: bool = False,
 ) -> RowLocation:
     """Find the `day_count` day rows. See the module docstring. Boxes are
@@ -510,6 +567,31 @@ def locate_day_rows(
     angle = estimate_skew(gray, thr, probe_x_frac=probe_x_frac)
     if angle:
         gray = gray.rotate(angle, resample=Image.BICUBIC, fillcolor=255)
+    # Let the PAGE say where its columns are, when the profile asks for it.
+    # `table_x_frac` and `probe_x_frac` are hand-measured off one page, and a
+    # volume whose scan drifts moves out from under them - on Prague 1903 the
+    # same table sits at 0.082 of page width in January and 0.113 in December,
+    # and the column being transcribed fell outside the crop entirely. The
+    # ruling moves WITH the table. Declared per publication, and it falls back
+    # to the measured fractions rather than guessing when the ruling cannot be
+    # read, so a page with faint rules degrades instead of failing.
+    rule_cols: list[int] = []
+    if columns_from_rules:
+        yb = (None if table_y_frac is None
+              else (round(table_y_frac[0] * height), round(table_y_frac[1] * height)))
+        rule_cols = column_bands(gray, thr, yb)
+        need = int(columns_from_rules.get("crop_columns") or 0)
+        if len(rule_cols) > need >= 1:
+            # ONLY the horizontal extent of the crop. Deliberately not the
+            # probe window and not the threshold: those drive row FINDING,
+            # which on these layouts is the oracle's job anyway, and pinning
+            # the probe to the index column's bounding rules put a continuous
+            # vertical line inside it - ink on every scanline, the row profile
+            # flattens, and Prague's chain fell from 31 rows to 6. What the
+            # ruling is needed for is deciding which columns the reader is
+            # SHOWN, and that is this one assignment.
+            x0, x1 = rule_cols[0], rule_cols[need]
+
     prof, _ = row_profile(gray, px0, px1, thr)
     hist = gray.histogram()
     paper = max(range(256), key=lambda v: hist[v])
@@ -580,7 +662,8 @@ def locate_day_rows(
         big = image.resize((image.width * k, image.height * k), Image.LANCZOS)
         alt = locate_day_rows(big, day_count, table_x_frac=table_x_frac,
                               probe_x_frac=probe_x_frac, table_y_frac=table_y_frac,
-                              band_frac=band_frac, _upscaled=True)
+                              band_frac=band_frac, columns_from_rules=columns_from_rules,
+                              _upscaled=True)
         if alt.ok and len(alt.chain) == day_count:
             return _rescale(alt, k)
     if len(chain) != day_count:

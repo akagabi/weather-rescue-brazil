@@ -1,5 +1,125 @@
-{"_note":"Prague Klementinum 1903 - first German layout, and the first external key that is EXACT rather than fitted. Page 25 of the IA PDF holds January 1903 (Bewolkung + Niederschlag on top, Luftdruck below; table_y_frac bounds the top one).",
- "pages":[{"archive":"ia","item":"prague-klementinum-1903","page":25,
-   "profile":"prague-klementinum-1903","period":"1903-01",
-   "station":"Praha-Klementinum, Prague","station_source":"printed volume title page",
-   "label":"Prague/25 1903-01 Niederschlag"}]}
+{
+ "_note": "Praha-Klementinum 1903, the twelve Niederschlag pages. Each month occupies three pages and this is the SECOND of each block (Bewolkung + Niederschlag + Bemerkungen); they are 3 apart, not 2. table_y_frac bounds the upper of the page's two tables.",
+ "pages": [
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 25,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-01",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/25 1903-01"
+  },
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 28,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-02",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/28 1903-02"
+  },
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 31,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-03",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/31 1903-03"
+  },
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 34,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-04",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/34 1903-04"
+  },
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 37,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-05",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/37 1903-05"
+  },
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 40,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-06",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/40 1903-06"
+  },
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 43,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-07",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/43 1903-07"
+  },
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 46,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-08",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/46 1903-08"
+  },
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 49,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-09",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/49 1903-09"
+  },
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 52,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-10",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/52 1903-10"
+  },
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 55,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-11",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/55 1903-11"
+  },
+  {
+   "archive": "ia",
+   "item": "prague-klementinum-1903",
+   "page": 58,
+   "profile": "prague-klementinum-1903",
+   "period": "1903-12",
+   "station": "Praha-Klementinum, Prague",
+   "station_source": "printed volume title page",
+   "label": "Prague/58 1903-12"
+  }
+ ]
+}
