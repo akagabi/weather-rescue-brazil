@@ -1,30 +1,46 @@
 cff-version: 1.2.0
-title: "Weather Rescue Brazil: nineteenth-century Brazilian weather observations transcribed by a small offline model"
+title: "Weather Rescue Brazil: nineteenth-century weather observations transcribed by a small offline model"
 message: "If you use this dataset or the method, please cite it. Attribution is not required by the licence (the transcriptions are CC0); this file is here because citation is how the work becomes findable."
 type: dataset
 authors:
+  # TODO before minting a DOI: replace `alias` with `family-names` / `given-names`
+  # and add an `orcid:`. A DOI credited to a handle is far less useful to you
+  # than one credited to a person, and it cannot be changed afterwards.
   - alias: akagabi
     website: "https://github.com/akagabi"
+version: "0.8"
+date-released: 2026-09-21
 repository-code: "https://github.com/akagabi/weather-rescue-brazil"
 url: "https://huggingface.co/datasets/akagabi/weather-rescue-brazil"
 abstract: >-
-  Daily and dekadal meteorological observations from eleven Brazilian stations
-  and one ship, 1882-1890, transcribed from the printed tables of the Annales de
-  l'Observatoire Imperial de Rio de Janeiro (French) and the Revista do
-  Observatorio (Portuguese). Variables include barometric pressure read seven
-  times daily, temperature maxima, minima and means, relative humidity, vapour
-  tension, cloudiness, wind direction and force, rainfall, evaporation, ozone and
-  actinometry. Transcription is by a Qwen3.5-2B model with a LoRA adapter running
-  offline on a laptop; each printed layout is described by a JSON profile
-  declaring its columns, units, physical ranges and the arithmetic the page
-  asserts about itself, which is used to judge every row without a human.
-  No row has been verified line-by-line by a human; the 3,822-cell evaluation
-  gold set has been, and is separate from the dataset.
+  Daily, dekadal and monthly meteorological observations from six stations,
+  1851-1890, transcribed from printed nineteenth-century tables: the Annales de
+  l'Observatoire Imperial de Rio de Janeiro (French), the Revista do
+  Observatorio (Portuguese) and the Astronomical and Meteorological
+  Observations made at the Radcliffe Observatory, Oxford (English). Variables
+  include barometric pressure read seven times daily, temperature maxima,
+  minima and means, relative humidity, vapour tension, cloudiness, wind
+  direction and force, rainfall, evaporation, ozone and actinometry.
+
+  Transcription is by a Qwen3.5-2B model with a LoRA adapter running offline on
+  a laptop. Each printed layout is described by a JSON profile declaring its
+  columns, units, physical ranges and the arithmetic the page asserts about
+  itself, which is used to judge every row without a human; fifteen of the
+  eighteen layouts needed no labelled rows at all.
+
+  The Oxford tables carry external validation, which the Brazilian ones cannot:
+  Oxford has published the same observations, digitised independently more than
+  a century later, and of the cells this dataset calls usable 100% of the dry
+  bulb and 96.7% of the rainfall agree with that series, against 44.4% of the
+  rainfall cells it flags. No row has been verified line-by-line by a human;
+  the 3,822-cell evaluation gold set has been, and is separate from the dataset.
 keywords:
   - data rescue
   - historical climatology
   - Brazil
+  - Oxford
   - nineteenth century
   - table recognition
   - document understanding
+  - vision language model
 license: CC0-1.0
