@@ -198,3 +198,56 @@ Coverage, not verdicts: the read that accounts for 31 of a month's days saw
 more of the page than one that accounts for 9, and that is a fact about the
 page rather than a score. On these fifteen the two criteria happened to agree
 on the same fourteen pages, which is reassuring and is not the reason.
+
+
+---
+
+## 2026-09-21 — one bad assignment was condemning whole pages
+
+The run above recovered 15 of 43 and then 18 of 26. The pages left over were
+read as "the reader cannot see these dates", and for 14 of them that is true.
+For the rest it was not.
+
+**Doc 5 page 313 read 31 of its 31 days, in order, and was refused twice.**
+First by the overlap check — one pair of rows landed 9 px apart on a 47 px
+pitch — and then, once overlap was made to fall through to the fitted line, by
+the line itself, because that same pair dragged the least squares past
+`max_resid`. Thirty good rows thrown away to avoid one bad one, by two
+independent guards in series.
+
+Two changes, and the order matters because the first alone did nothing:
+
+**Overlap falls through to the line.** Recovered **0 of 36**. Worth recording:
+the fix was right and insufficient, and the run said so precisely — pages that
+had reported 18, 20, 26, 31 days kept now reported that those days did not lie
+on one line. Some reported a *negative* minimum gap, which is day d+1 placed
+above day d, so the assignment really did contain errors.
+
+**The line fit is robust.** Drop the worst-fitting day, refit, repeat while the
+worst is out of tolerance and while at least 65% of the confirmed days still
+support the line. Recovered **13 of 36**: 400 rows where those pages had
+published 149, and on doc 5 page 355 that is 30 rows with 25 `checks_pass`.
+
+Dropping until something fits would fit anything, so two things bound it: the
+majority requirement, and the fact that the line still only *proposes*. The
+acceptance test is unchanged — place every row on the line, read them back,
+require the days to return 1, 2, 3 in order. Five pages now fail exactly
+there, having fitted a line that did not survive contact with the page. That
+is the guard earning its place rather than a gap.
+
+### Where the remaining 23 stand
+
+| | |
+|---|---|
+| never read enough days to fit a line | 14 |
+| fitted a line that did not read back | 5 |
+| days do not lie on one line | 3 |
+| structurally impossible (Corumbá, two rows per day) | 1 |
+
+Only the first group is a reading problem, and it is the one that would need
+old-style figures taught to the model. It is now 14 pages rather than 43, and
+the labelled data for that training is a by-product of the pages that DID
+work: on a verified grid, row i is day i+1 whatever the reader said, so every
+row it misread is a labelled hard example. There are 54 of them, which is
+thin — about the documented threshold of 40 per layout, spread over six
+Annales layouts — and that is the honest reason it has not been attempted yet.

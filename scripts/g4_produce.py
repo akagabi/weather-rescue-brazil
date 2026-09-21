@@ -169,7 +169,15 @@ def main() -> None:
               located_ok = True
               print(f"  {w.get('label')}: oracle localised {info['direct']}/{want} days directly, "
                     f"{info['candidates']} candidates", flush=True)
-          crops = crop_boxes(image, boxes_for_centres(centres, loc, *image.size), loc.skew_deg, scale=2.0)
+          # Keep the boxes. Until now a row recorded WHAT was read and never
+          # WHERE from, so nothing downstream could put a row back on its page
+          # - not a human auditing a suspect value, not a harvest of crops for
+          # training, not a re-read at another scale. Re-deriving them means
+          # re-running localisation, which on an oracle page costs a model
+          # pass, and on a page localised before a locator change cannot be
+          # done at all. Four numbers a row.
+          row_boxes = boxes_for_centres(centres, loc, *image.size)
+          crops = crop_boxes(image, row_boxes, loc.skew_deg, scale=2.0)
 
           # Preflight. A caption read off the whole page is NOT evidence that the
           # page is a daily table: doc 14 p140 is prose whose caption belongs to a
@@ -294,6 +302,10 @@ def main() -> None:
                   **({"period_end": w["period_end"]} if w.get("period_end") else {}),
                   "values_as_printed": values, "values": restored, "markers": markers, "raw": text,
                   "verdict": verdict, "padded_trailing": padded, "problems": problems, "localisation": localisation,
+                  # where this row was cut from the deskewed page, and the skew
+                  # that was undone first - enough to reproduce the exact crop
+                  "box": list(row_boxes[idx]) if idx < len(row_boxes) else None,
+                  "skew_deg": loc.skew_deg,
                   "range_violations": viol,
                   "check_failures": check_fail, "page_rows_located_ok": located_ok,
               }, ensure_ascii=False) + "\n")

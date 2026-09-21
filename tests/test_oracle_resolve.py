@@ -129,13 +129,39 @@ def test_a_slope_that_contradicts_the_measured_pitch_is_refused():
     assert not fit["accept"]
 
 
-def test_one_badly_placed_day_refuses_the_whole_fit():
+def test_one_badly_placed_day_is_dropped_not_fatal():
+    """A least-squares line is dragged by any single misassignment, and
+    condemning the page for it threw away doc 5 page 313 - 31 of 31 days read,
+    refused because one pair sat 9px apart on a 47px pitch."""
     pitch = 28.0
     keep = {d: 100 + round(pitch * d) for d in range(1, 13)}
     keep[6] += 40                       # a misassignment, well over 0.35 pitch
     fit = _line_through_days(keep, pitch)
-    assert not fit["resid_ok"]
+    assert fit["accept"]
+    assert fit["dropped"] == [6]
+    assert fit["n_supporting"] == 11 and fit["n_days"] == 12
+    assert abs(fit["slope"] - pitch) < 0.5      # the other eleven still set it
+
+
+def test_a_line_through_a_minority_is_refused():
+    """Dropping until it fits would fit anything. A majority of the confirmed
+    days has to support the line, or it is a line through noise."""
+    pitch = 28.0
+    keep = {d: 100 + round(pitch * d) for d in range(1, 13)}
+    for d in (2, 4, 5, 7, 9, 11):       # half of them scattered
+        keep[d] += 200 + 13 * d
+    fit = _line_through_days(keep, pitch)
     assert not fit["accept"]
+    assert fit["n_supporting"] >= int(0.65 * 12)
+
+
+def test_the_fit_never_drops_below_min_days():
+    pitch = 28.0
+    keep = {d: 100 + round(pitch * d) for d in range(1, 10)}
+    for d in (2, 3, 5, 6, 8):
+        keep[d] += 300
+    fit = _line_through_days(keep, pitch)
+    assert fit["n_supporting"] >= 8
 
 
 def test_too_few_days_is_not_a_line():

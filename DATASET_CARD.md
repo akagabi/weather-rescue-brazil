@@ -34,9 +34,9 @@ offline, with every row carrying its provenance and a quality verdict.
 
 | | |
 |---|---|
-| Rows | 7,197 |
-| Usable rows (`checks_pass` + `qc_clean`) | **3,936** |
-| Values in usable rows | 47,544 |
+| Rows | 7,448 |
+| Usable rows (`checks_pass` + `qc_clean`) | **3,999** |
+| Values in usable rows | 48,355 |
 | Pages transcribed | 259 |
 | Period | 1851 to 1890-11 (one page captioned 1893, flagged) |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão, Radcliffe Observatory (Oxford) |
@@ -178,11 +178,20 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   Corumbá page needs this today so the fix is not built; what is fixed is the
   silence, because an unreachable bar looked exactly like a page the reader
   could not read.
-- **28 pages are still refused, and the reason is now recorded per page.** Eight
-  fail because the interpolated rows overlap, seven because the days that read
-  do not lie on one line, the rest because too few days read at all. The Annales
-  set their dates in old-style figures — 1 as a small-capital I, 10 as IO — and
-  that remains the root cause (`docs/g4-wind-locator.md`).
+- **A single bad row assignment was condemning whole pages, and v0.9 stops it.**
+  Doc 5 page 313 read **31 of its 31 days**, all in order, and was refused
+  twice over — once because one pair of rows sat 9px apart, once because that
+  same pair dragged the least-squares line past tolerance. Thirty good rows
+  thrown away to avoid one bad one. The line is now fitted robustly (drop the
+  worst day, refit, while a majority still supports it) and an overlap sends
+  the page to that line rather than refusing it. 13 more pages produced, **400
+  rows against the 149 they had published**.
+- **23 pages are still refused, and the reason is recorded per page.** Fourteen
+  never read enough days to fit a line at all, five fitted a line that did not
+  survive placing the rows and reading them back, three do not lie on one line,
+  and one is Corumbá (above). The Annales set their dates in old-style figures
+  — 1 as a small-capital I, 10 as IO — and that remains the root cause
+  (`docs/g4-wind-locator.md`).
 - **Two rows cannot be the same day.** On a layout that prints one row per day,
   a day appearing twice means one of those rows is not a data row — doc 5 page
   309 reads 1…31 and then a thirty-second row claiming 28. Where the rest of the
@@ -214,7 +223,7 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **3,261 of 7,197 rows are `flagged`**, including whole-profile sections
+- **3,449 of 7,448 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.

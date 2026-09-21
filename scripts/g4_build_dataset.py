@@ -79,7 +79,8 @@ class DayOracle:
 
 
 def _line_through_days(keep: dict[int, int], pitch: float, *,
-                       resid_frac: float = 0.35, min_days: int = 8) -> dict | None:
+                       resid_frac: float = 0.35, min_days: int = 8,
+                       keep_frac: float = 0.65) -> dict | None:
     """Least squares y = intercept + slope*day over the confirmed days.
 
     Returns the fit and whether it is clean enough to be worth TESTING. It is
@@ -107,21 +108,56 @@ def _line_through_days(keep: dict[int, int], pitch: float, *,
     """
     if len(keep) < min_days or pitch <= 0:
         return None
+
+    def _fit(ds):
+        n = len(ds)
+        mean_d = sum(ds) / n
+        mean_y = sum(keep[d] for d in ds) / n
+        var = sum((d - mean_d) ** 2 for d in ds)
+        if var <= 0:
+            return None
+        slope = sum((d - mean_d) * (keep[d] - mean_y) for d in ds) / var
+        return slope, mean_y - slope * mean_d
+
+    # ROBUST. A least-squares line through every confirmed day is dragged by
+    # any one of them that is misassigned, and `max_resid` then condemns the
+    # whole page for it. That is not hypothetical: doc 5 page 313 read 31 of
+    # its 31 days, all monotonic, and was refused because one pair sat 9 px
+    # apart on a 47 px pitch. Thirty good rows thrown away to avoid one bad
+    # one, twice over - first by the overlap check, then by the fit.
+    #
+    # So drop the worst day and refit, while the worst is still out of
+    # tolerance and while a MAJORITY of the confirmed days remain. A line
+    # supported by two thirds of them is the page's geometry with a couple of
+    # bad assignments removed; a line supported by a third of them is a line
+    # through noise, and that is what `keep_frac` refuses.
+    #
+    # Nothing here decides the page. The line only proposes where the rows
+    # are - `resolve_by_oracle` then places them, reads them back and checks
+    # the days return 1, 2, 3 in order, which a line fitted to the wrong
+    # subset cannot survive.
     days = sorted(keep)
-    n = len(days)
-    mean_d = sum(days) / n
-    mean_y = sum(keep[d] for d in days) / n
-    var = sum((d - mean_d) ** 2 for d in days)
-    if var <= 0:
-        return None
-    slope = sum((d - mean_d) * (keep[d] - mean_y) for d in days) / var
-    intercept = mean_y - slope * mean_d
-    resid = [abs(keep[d] - (intercept + slope * d)) for d in days]
-    max_resid = max(resid)
+    kept = list(days)
+    floor = max(min_days, int(keep_frac * len(days)))
+    dropped: list[int] = []
+    while True:
+        f = _fit(kept)
+        if f is None:
+            return None
+        slope, intercept = f
+        resid = {d: abs(keep[d] - (intercept + slope * d)) for d in kept}
+        worst = max(resid, key=resid.get)
+        if resid[worst] <= resid_frac * slope or len(kept) <= floor:
+            break
+        kept.remove(worst)
+        dropped.append(worst)
+
+    max_resid = max(resid.values())
     ok_slope = slope >= max(4.0, 0.5 * MIN_PITCH_PX)      # a sanity floor, not a match
     ok_resid = max_resid <= resid_frac * slope
     return {"slope": slope, "intercept": intercept, "max_resid": max_resid,
-            "n_days": n, "pitch": pitch, "slope_ok": ok_slope, "resid_ok": ok_resid,
+            "n_days": len(days), "n_supporting": len(kept), "dropped": sorted(dropped),
+            "pitch": pitch, "slope_ok": ok_slope, "resid_ok": ok_resid,
             "accept": bool(ok_slope and ok_resid)}
 
 
@@ -253,7 +289,7 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
             "contested": len(contested),
             "contested_resolved": len(assigned) - sum(1 for d, ys in by_day.items() if len(ys) == 1),
             "dropped_nonmonotonic": len(assigned) - len(keep)}
-    if len(keep) < min_direct * day_count:
+    def _by_fitted_line(why: str):
         # SECOND ROUTE, for a page whose days read too few but line up too
         # well to throw away. `min_direct` is a count, and a count is only a
         # proxy for the thing that matters: whether the confirmed days pin
@@ -273,10 +309,12 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
         info["line_fit"] = fit
         if fit is None or not fit["accept"]:
             if fit is not None:
-                info["reason"] = (f"only {len(keep)} days kept and they do not lie on one line "
+                info["reason"] = (f"{why}; the {len(keep)} days kept do not lie on one line "
                                   f"(spacing {fit['slope']:.1f}px, worst residual "
                                   f"{fit['max_resid']:.1f}px = {fit['max_resid']/max(1e-9,fit['slope']):.0%} "
                                   f"of a row)")
+            else:
+                info["reason"] = f"{why}; too few days to fit a line"
             return None, info
         a, b = fit["intercept"], fit["slope"]
         centres = [round(a + b * d) for d in range(1, day_count + 1)]
@@ -319,6 +357,9 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
         info["day_range"] = (1, day_count)
         info["direct"] = on_day
         return centres, info
+
+    if len(keep) < min_direct * day_count:
+        return _by_fitted_line(f"only {len(keep)} of {day_count} days read directly")
     known = sorted(keep)
     # Without day 1 or the last day there is nothing to anchor the ends on, and
     # the old rule refused the whole page for it. That costs every row to avoid
@@ -349,8 +390,20 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
         return None, info
     gaps = [b - a for a, b in zip(centres, centres[1:])]
     if any(g < 0.5 * pitch for g in gaps):
-        info["reason"] = f"rows overlap after interpolation: min gap {min(gaps):.0f} px"
-        return None, info
+        # Two days landed on top of each other, which means one of them is
+        # misassigned - NOT that the page is unreadable. Ten pages died here,
+        # and one of them (doc 5 page 313) had read 31 of its 31 days
+        # directly. Refusing a page that read perfectly because one pair of
+        # its rows is 9 px apart throws away thirty good rows to avoid one bad
+        # one, and the threshold is half of `pitch`, which is the ink
+        # profile's measurement and the thing already known to be unreliable
+        # on exactly these layouts.
+        #
+        # So fall through to the fitted line, which does not care about one
+        # outlier - it is least squares over every confirmed day - and which
+        # has to prove itself by placing the rows and reading them back.
+        return _by_fitted_line(f"rows overlap after interpolation "
+                               f"(min gap {min(gaps):.0f}px, pitch {pitch:.0f}px)")
     return centres, info
 
 
