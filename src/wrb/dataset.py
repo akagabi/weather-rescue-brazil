@@ -145,7 +145,19 @@ def window_candidates(chain: list[int], day_count: int) -> list[list[int]]:
 
 def boxes_for_centres(centres: list[int], loc: RowLocation, width: int, height: int) -> list[tuple[int, int, int, int]]:
     """Rebuild day boxes for chosen centres with the page's pitch and x-extent."""
-    x0, _, x1, _ = loc.day_boxes[0] if loc.day_boxes else (round(0.09 * width), 0, round(0.94 * width), 0)
+    # `table_x` is what locate_day_rows actually settled on, which is not the
+    # same as the profile's declared fractions once the columns are read off
+    # the page's ruling. Preferring day_boxes alone was wrong twice over: a
+    # page whose geometric chain came back empty has none, and then this fell
+    # through to a hardcoded 0.09-0.94 of page width - on Prague that swallows
+    # the free-text Bemerkungen column the crop exists to exclude.
+    tx = getattr(loc, "table_x", None)
+    if loc.day_boxes:
+        x0, _, x1, _ = loc.day_boxes[0]
+    elif tx:
+        x0, x1 = tx
+    else:
+        x0, x1 = round(0.09 * width), round(0.94 * width)
     half = loc.pitch / 2
     return [(x0, max(0, round(y - half)), x1, min(height, round(y + half))) for y in centres]
 

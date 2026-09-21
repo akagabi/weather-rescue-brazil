@@ -565,6 +565,19 @@ def locate_day_rows(
     px0, px1 = round(probe_x_frac[0] * width), round(probe_x_frac[1] * width)
     thr = ink_threshold(gray, (px0, 0, px1, height))
     angle = estimate_skew(gray, thr, probe_x_frac=probe_x_frac)
+    # Read the ruling BEFORE deskewing. `vertical_rules` looks for a
+    # continuous column of ink at one x, and a rule that has been rotated is
+    # no longer at one x: over a 560 px band a 1.5 deg rotation smears it
+    # across 15 px and it stops being a rule at all. Measured on Prague, the
+    # detector finds 8 boundaries on the raw page and 3 on the deskewed one
+    # (page 40 and page 43, at +1.5 and +1.0 deg); the two pages whose skew
+    # is under half a degree survive it. The rotation is applied to the
+    # detected x below, which is cheap and exact, rather than to the detector.
+    pre_rot_cols: list[int] = []
+    if columns_from_rules:
+        _yb = (None if table_y_frac is None
+               else (round(table_y_frac[0] * height), round(table_y_frac[1] * height)))
+        pre_rot_cols = column_bands(gray, thr, _yb)
     if angle:
         gray = gray.rotate(angle, resample=Image.BICUBIC, fillcolor=255)
     # Let the PAGE say where its columns are, when the profile asks for it.
@@ -579,9 +592,38 @@ def locate_day_rows(
     if columns_from_rules:
         yb = (None if table_y_frac is None
               else (round(table_y_frac[0] * height), round(table_y_frac[1] * height)))
-        rule_cols = column_bands(gray, thr, yb)
+        # Prefer what was read off the raw page; fall back to the deskewed one
+        # only if that found nothing at all.
+        rule_cols = pre_rot_cols or column_bands(gray, thr, yb)
+        if pre_rot_cols and angle:
+            # PIL rotates counter-clockwise about the centre, so a point at
+            # height y moves in x by -tan(angle) * (y - height/2). Correct at
+            # the band's mid-height, which is where the crop is taken.
+            import math
+            y_mid = (yb[0] + yb[1]) / 2 if yb else height / 2
+            dx = -math.tan(math.radians(angle)) * (y_mid - height / 2)
+            rule_cols = [max(0, min(width - 1, round(x + dx))) for x in rule_cols]
+        # Where to stop cropping, as a fraction of the TABLE's own span rather
+        # than an index into the detected boundaries. Indexing assumes every
+        # boundary is found, and it is not: across twelve Prague pages the
+        # detector returns between four and nine, so `the sixth rule` is a
+        # different column on different pages. A relative position is stable -
+        # the same target lands within 7 px of the right boundary on ten of
+        # the twelve - and it degrades honestly, because a page whose ruling
+        # is too sparse has no boundary near the target and is refused rather
+        # than cropped somewhere arbitrary.
+        frac = columns_from_rules.get("crop_to_table_frac")
+        snap = float(columns_from_rules.get("max_snap_frac") or 0.025)
+        if frac and len(rule_cols) >= 4:
+            left, right = rule_cols[0], rule_cols[-1]
+            target = left + float(frac) * (right - left)
+            best = min(rule_cols, key=lambda x: abs(x - target))
+            if abs(best - target) <= snap * width and best > left:
+                x0, x1 = left, best
+            else:
+                rule_cols = []          # too far: keep the declared fractions
         need = int(columns_from_rules.get("crop_columns") or 0)
-        if len(rule_cols) > need >= 1:
+        if not frac and len(rule_cols) > need >= 1:
             # ONLY the horizontal extent of the crop. Deliberately not the
             # probe window and not the threshold: those drive row FINDING,
             # which on these layouts is the oracle's job anyway, and pinning
@@ -619,6 +661,12 @@ def locate_day_rows(
         loc = RowLocation([], centres, dropped={"isolated": []}, pitch=2 * half,
                           ink_threshold=thr, skew_deg=angle, rules=rules,
                           day_col=(dx0, dx1), chain=centres)
+        # The x-extent this call settled on, so a caller rebuilding boxes for
+        # its OWN centres - the oracle does exactly that - crops the same
+        # columns. Without it `boxes_for_centres` falls back to a hardcoded
+        # 0.09-0.94 of page width, which on Prague swallows the free-text
+        # Bemerkungen column the crop exists to exclude.
+        loc.table_x = (x0, x1)
         loc.day_boxes = [(x0, max(0, round(c - half)), x1, min(height, round(c + half)))
                          for c in centres]
         loc.reason = "rows declared in the profile (fixed-row form)"
@@ -675,6 +723,12 @@ def locate_day_rows(
             loc = RowLocation([], [round(c) for c in centres], dropped={"isolated": []},
                               pitch=run_pitch, ink_threshold=thr, skew_deg=angle,
                               rules=rules, day_col=(dx0, dx1), chain=[round(c) for c in centres])
+            # The x-extent this call settled on, so a caller rebuilding boxes for
+            # its OWN centres - the oracle does exactly that - crops the same
+            # columns. Without it `boxes_for_centres` falls back to a hardcoded
+            # 0.09-0.94 of page width, which on Prague swallows the free-text
+            # Bemerkungen column the crop exists to exclude.
+            loc.table_x = (x0, x1)
             half = band_frac * run_pitch / 2
             loc.day_boxes = [(x0, max(0, round(c - half)), x1, min(height, round(c + half)))
                              for c in centres]
@@ -682,6 +736,12 @@ def locate_day_rows(
             return loc
     loc = RowLocation([], [y for y, _ in peaks], dropped=dropped, pitch=pitch,
                       ink_threshold=thr, skew_deg=angle, rules=rules, day_col=(dx0, dx1), chain=[y for y, _ in chain])
+    # The x-extent this call settled on, so a caller rebuilding boxes for
+    # its OWN centres - the oracle does exactly that - crops the same
+    # columns. Without it `boxes_for_centres` falls back to a hardcoded
+    # 0.09-0.94 of page width, which on Prague swallows the free-text
+    # Bemerkungen column the crop exists to exclude.
+    loc.table_x = (x0, x1)
     if len(chain) != day_count:
         loc.ok = False
         loc.reason = (f"chain has {len(chain)} rows, expected {day_count} "

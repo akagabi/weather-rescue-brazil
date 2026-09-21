@@ -115,6 +115,7 @@
   }
  },
  "columns_from_rules": {
-  "crop_columns": 6
+  "crop_to_table_frac": 0.613,
+  "max_snap_frac": 0.025
  }
 }
