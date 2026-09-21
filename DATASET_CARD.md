@@ -48,8 +48,8 @@ work becomes findable.
 | | |
 |---|---|
 | Rows | 7,418 |
-| Usable rows (`checks_pass` + `qc_clean`) | **3,999** |
-| Values in usable rows | 48,355 |
+| Usable rows (`checks_pass` + `qc_clean`) | **3,998** |
+| Values in usable rows | 48,341 |
 | Pages transcribed | 258 |
 | Period | 1851 to 1890-11 (one page captioned 1893, flagged) |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão, Radcliffe Observatory (Oxford) |
@@ -236,7 +236,7 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **3,419 of 7,418 rows are `flagged`**, including whole-profile sections
+- **3,420 of 7,418 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.
@@ -249,6 +249,24 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   preflight were never cleared out. Keeping a flagged row is defensible when it
   is an observation the checks could not confirm; it is not defensible when the
   row is not an observation at all.
+- **Station coordinates are not yet good enough for a reanalysis feed.** None
+  of the six was read from the publications; all carry `verified: false`, so
+  the SEF export writes them as `NA`. One was also plainly wrong and is fixed
+  in v0.11: the Imperial Observatório was recorded at the Morro de São
+  Januário site, which it did not occupy until **1913** — 23 years after these
+  observations end. From 1850 to 1920 it stood on the **Morro do Castelo**, a
+  hill since levelled. The longitude now used, 43°10′21″W, is the one the
+  observatory published for itself and is already this project's reference
+  meridian; the latitude is the Castelo site rather than a printed value, so
+  the flag stays false until someone reads the position off the page.
+- **A barometer reading its station's altitude cannot produce is now flagged.**
+  `wrb.qc.pressure_implausible` had existed for some time and was called only
+  by a test, so it never reached a verdict. Correcting the observatory's
+  altitude from 30 m to 61 m exposed what that cost: doc 15 page 89 day 1
+  reads 781.6 mmHg (~1042 hPa), which Rio does not do at any altitude. It had
+  been `checks_pass` because mean, max and min all misread the same elided
+  leading digit, so the row agreed with itself, and it cleared the old
+  tolerance by 0.4 mmHg against the wrong altitude.
 - **No row in this file has been verified line-by-line by a human.** The frozen
   gold set — nine pages, triple-transcribed — is a separate evaluation corpus
   and is *not* part of this dataset.

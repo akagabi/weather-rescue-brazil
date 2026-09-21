@@ -173,6 +173,19 @@ def pressure_for_altitude(alt_m: float) -> float:
     return SEA_LEVEL_MM * math.exp(-float(alt_m) / SCALE_HEIGHT_M)
 
 
+def barometer_keys(profile) -> set:
+    """Which of a profile's columns are barometers - asked of the PROFILE.
+
+    Not of the key name: the barometer is `pressure` on the Revista, `h04m` on
+    the Annales, and `moyenne`, `baro_fortin` or `baro_media` elsewhere. What
+    they share is a declared unit of mm and a range that starts high, which is
+    also what separates them from the other mm columns - vapour tension
+    (4-30), rainfall (0-400), evaporation (0-25).
+    """
+    return {c.key for c in profile.columns
+            if c.unit == "mm" and c.range and c.range[0] >= 600}
+
+
 def pressure_implausible(baro_mm, alt_m, tol: float = 25.0) -> str | None:
     """A reason string when a barometer reading cannot belong to that altitude.
 

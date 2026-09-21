@@ -109,8 +109,26 @@ def main() -> None:
 
     drop = {k for k, _, _ in replace}
     out = [r for r in base if page_key(r) not in drop]
+    # CARRY THE STATION OVER. A re-read comes out of `g4_produce`, which does
+    # not know the station - it is applied later by `g4_merge --worklist`, and
+    # this tool is not merge. Replacing a page therefore silently dropped the
+    # station from every row on it, and after three re-read passes 1,165 rows
+    # (382 of them usable) had no station at all: a tenth of the usable data,
+    # useless to anyone downstream, and invisible because a row with no
+    # station looks exactly like a row that never had one.
+    restored = 0
     for k in drop:
+        was = next((r.get("station") for r in by_old[k] if r.get("station")), None)
+        src = next((r.get("station_source") for r in by_old[k] if r.get("station_source")), None)
+        for r in by_new[k]:
+            if was and not r.get("station"):
+                r["station"] = was
+                if src:
+                    r["station_source"] = src
+                restored += 1
         out.extend(by_new[k])
+    if restored:
+        print(f"station carried over from the replaced rows onto {restored} new row(s)")
     out.sort(key=lambda r: (str(r.get("item")), int(r["page"]), r.get("profile", ""), int(r["row"])))
 
     removed = len(base) - sum(1 for r in base if page_key(r) not in drop)

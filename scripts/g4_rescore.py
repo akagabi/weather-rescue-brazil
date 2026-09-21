@@ -31,6 +31,27 @@ from wrb.qc import (degenerate_row, direction_keys,  # noqa: E402
 # volume span can speak for itself.
 _SPANS = load_volume_spans()
 from wrb.verify import apply_corrections, load_corrections  # noqa: E402
+from wrb.qc import barometer_keys, pressure_implausible  # noqa: E402
+
+
+def _station_altitudes() -> dict:
+    """Station name as the dataset spells it -> altitude in metres.
+
+    Only where the altitude is known; an absent one is absence of evidence and
+    the check is skipped rather than failed.
+    """
+    import json as _j
+    p = Path(__file__).resolve().parents[1] / "data" / "stations.json"
+    if not p.exists():
+        return {}
+    out = {}
+    for v in _j.loads(p.read_text()).values():
+        if isinstance(v, dict) and v.get("dataset_name") and v.get("alt") is not None:
+            out[v["dataset_name"]] = v["alt"]
+    return out
+
+
+_STATION_ALT = _station_altitudes()
 import calendar  # noqa: E402
 from collections import defaultdict  # noqa: E402
 
@@ -251,6 +272,20 @@ def main() -> None:
         dkeys = direction_keys(p)
         if dkeys:
             problems = problems + invalid_compass(restored, dkeys)
+        # A barometer reading its station's altitude cannot produce. This
+        # existed in wrb.qc and was called ONLY by a test, so it never touched
+        # a verdict - the same way `resolve_dittos` sat written and unwired
+        # while half of Corumba published a ditto mark as its day. Three rows
+        # of doc 15 page 89 read 781.6 mmHg, about 1042 hPa, which Rio does
+        # not do at any altitude; they were `checks_pass` because all three of
+        # mean, max and min misread the same leading digit, so the row agreed
+        # with itself.
+        alt = (_STATION_ALT.get(r.get("station")) if r.get("station") else None)
+        if alt is not None:
+            for bkey in barometer_keys(p):
+                why = pressure_implausible(restored.get(bkey), alt)
+                if why:
+                    problems = problems + [f"pressure_implausible: {bkey} {why}"]
         if id(r) in dupe_day:
             problems = problems + [
                 f"duplicate_day: another row on this page also claims day "

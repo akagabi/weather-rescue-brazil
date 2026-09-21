@@ -5,10 +5,11 @@
   "id": "rio_imperial",
   "name": "Imperial Observatorio, Rio de Janeiro",
   "verified": false,
-  "lat": -22.895,
-  "lon": -43.183,
-  "alt": 30,
-  "dataset_name": "Imperial Observatório, Rio de Janeiro"
+  "lat": -22.9067,
+  "lon": -43.1725,
+  "alt": 61,
+  "dataset_name": "Imperial Observatório, Rio de Janeiro",
+  "note": "CORRIGIDO. Estava em -22.895/-43.183, que e o sitio do Morro de Sao Januario, ocupado a partir de 1913 - 23 anos DEPOIS do fim destes dados. Entre 1850 e 1920 o observatorio ficou no MORRO DO CASTELO, morro depois arrasado. A longitude -43.1725 (43 10' 21\" W) e a que o proprio observatorio publicou e ja e o meridiano de referencia deste projeto (wrb.stations.RIO_LONGITUDE), portanto tem fonte. A LATITUDE nao: -22.9067 e o sitio do Castelo, nao um valor impresso que alguem tenha lido. `verified` fica false ate a posicao ser lida das proprias Annaes, e ate la o SEF escreve NA - que e o comportamento correto."
  },
  "rio_santacruz": {
   "id": "rio_santacruz",
@@ -70,5 +71,6 @@
   "alt": 63,
   "dataset_name": "Radcliffe Observatory, Oxford",
   "note": "Approximate, and UNVERIFIED like the other five: the station sits in the garden of Green Templeton College off Woodstock Road, but geog.ox.ac.uk does not state coordinates and none were sourced. SEF writes NA while `verified` is false."
- }
+ },
+ "_coordinates_note": "Nenhuma coordenada aqui foi lida das publicacoes. Para o ISPD isso importa: uma observacao sem posicao nao pode ser assimilada. O passo que falta e pequeno e especifico - achar a pagina em que cada publicacao imprime a posicao da estacao e ler de la."
 }
