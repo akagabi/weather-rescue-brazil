@@ -538,6 +538,22 @@ class Profile:
             if not isinstance(printed, (int, float)):
                 continue
             col = [r.get(key) for r in day_rows]
+            # A BLANK IS NOT ALWAYS A GAP. Skipping any column with a missing
+            # cell is right for a mean - an average over a month with holes in
+            # it cannot be expected to match, and failing it would punish
+            # absence of evidence. It is wrong where the page prints nothing to
+            # mean zero: Prague leaves the Niederschlag cell an ellipsis on a
+            # dry day, so 23 of its 31 January cells are blank and this skip
+            # disabled the only check that could see the column at all.
+            #
+            # Declared per column in `monthly.blank_is_zero`, because it is a
+            # fact about the publication - and it is exactly what makes reading
+            # a blank as 0 safe rather than an assumption: a number that was
+            # dropped or displaced stops the printed sum closing. Measured on
+            # 1903-01, the read summed to 17.0 against a printed 12.8, and the
+            # four cells responsible were the four that were wrong.
+            if key in (self.monthly.get("blank_is_zero") or []):
+                col = [0.0 if v is None else v for v in col]
             if not col or any(not isinstance(v, (int, float)) for v in col):
                 continue
             if kind == "mean":

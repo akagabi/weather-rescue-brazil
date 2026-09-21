@@ -567,3 +567,37 @@ def test_an_empty_cell_at_a_printed_rule_is_dropped():
     assert any("rules a line" in x for x in problems)
     assert v["dec"] == 29.721 and v["yearly_mean"] == 0.785
     assert all(prof.is_soft_problem(x) for x in problems)
+
+
+# --- a blank cell that means zero ---------------------------------------
+
+def test_a_blank_is_a_gap_by_default_and_the_column_is_skipped():
+    """A mean over a month with holes cannot match, and failing it would be
+    punishing absence of evidence. Unchanged behaviour."""
+    p = prof.load("revista-rio-1886")
+    rows = [{"precip": 1.0}, {"precip": None}, {"precip": 2.0}]
+    assert p.verify_month(rows, {"precip": 99.0}) == []
+
+
+def test_a_column_may_declare_that_blank_means_zero():
+    """Prague prints an ellipsis for a dry day, so 23 of 31 cells are blank.
+    Skipping the column disabled the only check that could see it."""
+    p = prof.load("prague-klementinum-1903")
+    assert "niederschlag" in (p.monthly.get("blank_is_zero") or [])
+    rows = [{"niederschlag": v} for v in (1.0, None, None, 0.6, None)]
+    assert p.verify_month(rows, {"niederschlag": 1.6}) == []
+    fails = p.verify_month(rows, {"niederschlag": 12.8})
+    assert fails and "sum of the day rows" in fails[0]
+
+
+def test_the_printed_sum_catches_a_displaced_cell():
+    """The point of the convention: reading a blank as 0 is only safe because
+    a number that was dropped or slid into the wrong column stops the page's
+    own sum closing. This is the real 1903-01 failure - the Tagesmittel slid
+    into the rainfall slot on two rows."""
+    p = prof.load("prague-klementinum-1903")
+    good = [{"niederschlag": v} for v in (None, 1.0, 0.6, 0.2, 4.9, None, 3.8, 0.1, 1.1, 1.1)]
+    assert p.verify_month(good, {"niederschlag": 12.8}) == []
+    displaced = [dict(r) for r in good]
+    displaced[0]["niederschlag"] = 4.0        # a Tagesmittel where a blank belongs
+    assert p.verify_month(displaced, {"niederschlag": 12.8})

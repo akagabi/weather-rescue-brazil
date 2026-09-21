@@ -119,14 +119,23 @@ def test_days_on_the_page_pitch_are_accepted():
     assert fit["max_resid"] < 1.0
 
 
-def test_a_slope_that_contradicts_the_measured_pitch_is_refused():
-    """The ink profile measured the pitch without ever seeing a day number.
-    If the assignment implies a different spacing, one of them is wrong."""
-    pitch = 28.0
-    keep = {d: 100 + round(14.0 * d) for d in range(1, 15)}   # every OTHER row
-    fit = _line_through_days(keep, pitch)
-    assert not fit["slope_ok"]
-    assert not fit["accept"]
+def test_a_degenerate_fit_is_refused():
+    """Every day at the same height is not a line through the rows."""
+    keep = {d: 500 for d in range(1, 15)}
+    fit = _line_through_days(keep, 28.0)
+    assert fit is None or not fit["accept"]
+
+
+def test_a_tight_but_real_spacing_is_accepted_however_wrong_the_pitch_is():
+    """Prague prints its days 16.9px apart. A floor borrowed from the
+    Brazilian layouts' row heights (0.5 * MIN_PITCH_PX = 17) refused a page
+    whose seventeen confirmed days lay on a line to within 24% of a row -
+    by one tenth of a pixel, for having small type. The measured `pitch` is
+    deliberately ignored here; the read-back settles plausibility."""
+    keep = {d: 300 + round(16.9 * d) for d in range(1, 18)}
+    fit = _line_through_days(keep, 48.0)        # loc.pitch wildly wrong, as it was
+    assert fit["slope_ok"] and fit["resid_ok"] and fit["accept"]
+    assert abs(fit["slope"] - 16.9) < 0.3
 
 
 def test_one_badly_placed_day_is_dropped_not_fatal():

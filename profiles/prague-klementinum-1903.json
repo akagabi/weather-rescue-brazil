@@ -1,0 +1,117 @@
+{
+ "id": "prague-klementinum-1903",
+ "name": "K.K. Sternwarte zu Prag - Bewolkung und Niederschlag (Jahrbuch, alemao)",
+ "columns": [
+  {
+   "key": "tag",
+   "label": "Tag",
+   "kind": "day",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "elided_carry": false,
+   "note": "linha = dia do mes"
+  },
+  {
+   "key": "bewolkung_19h",
+   "label": "Bewolkung und Wolkenzug 19h",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "elided_carry": false,
+   "note": "forma, quantidade 0-10 e direcao numa SO celula impressa"
+  },
+  {
+   "key": "bewolkung_2h",
+   "label": "Bewolkung und Wolkenzug 2h",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "elided_carry": false,
+   "note": ""
+  },
+  {
+   "key": "bewolkung_9h",
+   "label": "Bewolkung und Wolkenzug 9h",
+   "kind": "text",
+   "unit": null,
+   "range": null,
+   "elided": false,
+   "elided_range": null,
+   "elided_carry": false,
+   "note": ""
+  },
+  {
+   "key": "tagesmittel",
+   "label": "Tagesmittel",
+   "kind": "number",
+   "unit": "0-10",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "elided_carry": false,
+   "note": "media diaria da nebulosidade"
+  },
+  {
+   "key": "niederschlag",
+   "label": "Niederschlag in Millimetern",
+   "kind": "number",
+   "unit": "mm",
+   "range": [
+    0.0,
+    200.0
+   ],
+   "elided": false,
+   "elided_range": null,
+   "elided_carry": false,
+   "note": "A UNICA coluna com chave externa EXATA: ECA&D RR_STAID000027 (CHMI) em 0.1mm"
+  }
+ ],
+ "source": "Internet Archive bub_gb_6txVAAAAYAAJ (Jahrgang 64, 1903)",
+ "rows_per_page": "days_in_month",
+ "adapter": "",
+ "checks": [],
+ "markers": [
+  "..."
+ ],
+ "probe_x_frac": [
+  0.09,
+  0.155
+ ],
+ "table_x_frac": [
+  0.085,
+  0.578
+ ],
+ "oracle_min_direct": 0.55,
+ "index_kind": "day_of_month",
+ "notes": "QUINTO CORPUS e o primeiro em ALEMAO. Linhas = dias. O recorte para de proposito ANTES da coluna Bemerkungen, que e texto livre longo e nao e dado tabular. So `niederschlag` tem verdade externa: o ECA&D publica a mesma serie diaria (STAID 27, SOUID 100082, do CHMI) em 0.1mm, e a comparacao e EXATA, nao ajustada - diferente de Oxford, onde se ajusta uma escala. Um `...` impresso significa sem precipitacao mensuravel e e registrado como marcador, nao como zero. A pagina traz DUAS tabelas: em cima Bewolkung+Niederschlag, em baixo Luftdruck horario. `table_y_frac` delimita a de cima; sem isso a coluna Tag das duas se soma e o detector de passo encontra metade do espacamento real. A primeira versao deste perfil declarava 12 colunas, separando forma / quantidade / direcao dentro de cada hora. Errado: a pagina so risca entre as TRES HORAS, e o leitor devolveu 6 celulas - que e o que a pagina imprime. Os numeros de chuva ja estavam certos na primeira leitura, so caiam numa coluna declarada errada. A pagina imprime a propria soma mensal da chuva ('S. 12.8') na linha Mittel, e esse e o unico arbitro de uma convencao que de outro modo seria suposicao: uma celula Niederschlag VAZIA significa 'sem precipitacao mensuravel' (=0), nao 'nao conseguimos ler'. Se algum numero foi perdido ou deslocado, a soma nao fecha. Medido em 1903-01: a leitura somou 17.0 contra 12.8 impressos, e as quatro celulas erradas eram exatamente as responsaveis.",
+ "extra": {},
+ "table_y_frac": [
+  0.175,
+  0.515
+ ],
+ "monthly": {
+  "markers": [
+   "Mittel",
+   "S."
+  ],
+  "aggregate": {
+   "tagesmittel": "mean",
+   "niederschlag": "sum"
+  },
+  "blank_is_zero": [
+   "niederschlag"
+  ],
+  "tolerance": {
+   "niederschlag": 0.06
+  }
+ }
+}

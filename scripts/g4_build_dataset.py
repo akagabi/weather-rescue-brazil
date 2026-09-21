@@ -35,7 +35,6 @@ from wrb.dataset import (  # noqa: E402
     write_manifest,
 )
 from wrb.gold import load_gold  # noqa: E402
-from wrb.rows import MIN_PITCH_PX  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 BENCH = ROOT / "bench" / "g3" / "revista-full.json"
@@ -153,7 +152,16 @@ def _line_through_days(keep: dict[int, int], pitch: float, *,
         dropped.append(worst)
 
     max_resid = max(resid.values())
-    ok_slope = slope >= max(4.0, 0.5 * MIN_PITCH_PX)      # a sanity floor, not a match
+    # A floor against a DEGENERATE fit - a slope near zero means every day was
+    # placed at the same height - and nothing more. It was briefly
+    # `0.5 * wrb.rows.MIN_PITCH_PX`, i.e. 17 px, which is not a statement about
+    # degeneracy at all but a constant borrowed from the Brazilian layouts'
+    # row heights. Prague prints its days 16.9 px apart, so that floor refused
+    # a page whose seventeen confirmed days lay on a line to within 24% of a
+    # row - rejected by one tenth of a pixel, for having small type.
+    # Whether the spacing is plausible is settled downstream by reading the
+    # placed rows back, which does not need a constant.
+    ok_slope = slope >= 4.0
     ok_resid = max_resid <= resid_frac * slope
     return {"slope": slope, "intercept": intercept, "max_resid": max_resid,
             "n_days": len(days), "n_supporting": len(kept), "dropped": sorted(dropped),
