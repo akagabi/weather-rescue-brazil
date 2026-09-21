@@ -17,6 +17,7 @@ consumer can restore them deterministically.
 from __future__ import annotations
 
 import argparse
+import calendar
 import json
 import sys
 import time
@@ -139,8 +140,17 @@ def main() -> None:
           localisation = "geometry"
           centres = loc.chain
           if oracle is not None:
+              # how many DISTINCT day numbers the page can print, which is
+              # not `want` on a layout printing two rows per day (see the
+              # guard in resolve_by_oracle)
+              try:
+                  _y, _m = (int(x) for x in str(w["period"]).split("-")[:2])
+                  _distinct = calendar.monthrange(_y, _m)[1]
+              except (ValueError, KeyError):
+                  _distinct = None
               centres, info = resolve_by_oracle(oracle, image, loc, want,
-                                                min_direct=p.oracle_min_direct)
+                                                min_direct=p.oracle_min_direct,
+                                                distinct_days=_distinct)
               if centres is None:
                   # print WHY. Three pages refused at 0.74, 0.67 and 0.67 of
                   # their days read directly - comfortably over the bar - and the

@@ -145,3 +145,49 @@ def test_too_few_days_is_not_a_line():
 
 def test_no_pitch_no_fit():
     assert _line_through_days({d: d * 10 for d in range(1, 20)}, 0.0) is None
+
+
+def test_a_two_rows_per_day_layout_is_refused_with_a_reason_not_silently():
+    """Corumba prints two readings a day, so `day_count` is 62 while only 31
+    distinct day numbers exist. The oracle keys its assignment BY DAY, so at
+    most 31 can ever be confirmed and a bar of 0.55*62 is unreachable however
+    well the page reads - doc 16 page 72 read 30 of its 31 days and was
+    refused. The fix is not built; being told why is."""
+    from g4_build_dataset import resolve_by_oracle
+
+    class NeverCalled:
+        def read_days(self, crops):                    # pragma: no cover
+            raise AssertionError("the guard must fire before any model call")
+
+    centres, info = resolve_by_oracle(NeverCalled(), None, None, 62,
+                                      min_direct=0.55, distinct_days=31)
+    assert centres is None
+    assert "rows per day" in info["reason"]
+    assert "not a reading failure" in info["reason"]
+
+
+def test_a_one_row_per_day_layout_is_not_caught_by_that_guard():
+    """31 days, 31 rows, bar 17 - reachable, so the guard must stay out of
+    the way and let the normal path run."""
+    from g4_build_dataset import resolve_by_oracle
+    calls = []
+
+    class Recorder:
+        def read_days(self, crops):
+            calls.append(len(crops))
+            return [None] * len(crops)
+
+    class Loc:
+        pitch = 24.0
+        chain = [100, 124, 148]
+        peaks = [100, 124, 148]
+        skew_deg = 0.0
+        day_boxes = [(0, 88, 500, 112)]
+
+    from PIL import Image
+    img = Image.new("RGB", (600, 900), "white")
+    centres, info = resolve_by_oracle(Recorder(), img, Loc(), 31,
+                                      min_direct=0.55, distinct_days=31)
+    assert calls, "the guard fired on a layout it should not have"
+    assert centres is None            # nothing read, so it still refuses
+    assert "rows per day" not in (info.get("reason") or "")

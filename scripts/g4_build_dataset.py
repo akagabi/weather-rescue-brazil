@@ -127,7 +127,8 @@ def _line_through_days(keep: dict[int, int], pitch: float, *,
 
 def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int, *,
                       margin_rows: int = 8, min_direct: float = 0.7,
-                      verify_frac: float = 0.60, verify_rising: float = 0.80
+                      verify_frac: float = 0.60, verify_rising: float = 0.80,
+                      distinct_days: int | None = None
                       ) -> tuple[list[int] | None, dict]:
     """Oracle-driven row localisation. Candidates = every strong peak within
     `margin_rows` pitches of the heuristic chain. The oracle reads the
@@ -137,6 +138,23 @@ def resolve_by_oracle(oracle: DayOracle, image: Image.Image, loc, day_count: int
     then checked for spacing. Accept when >= min_direct of the days were
     read directly and every interpolated row sits between its neighbours.
     Geometry only proposes; the printed numbers decide."""
+    # `assigned` below is keyed BY DAY, so at most one row per day survives -
+    # the whole function assumes a layout that prints one row per day. Corumba
+    # prints two, so `day_count` is 62 while only 31 distinct day numbers exist
+    # on the page, and the bar of 0.55*62 = 34 cannot be reached however well
+    # the page reads. Doc 16 page 72 read 30 of its 31 days, which is close to
+    # perfect, and was refused for it.
+    #
+    # No Corumba page currently needs this, so the fix is not built. What is
+    # not acceptable is the silence: a structurally unreachable bar looked
+    # exactly like a page the reader could not read.
+    if distinct_days is not None and min_direct * day_count > distinct_days:
+        return None, {"candidates": 0, "direct": 0, "reads": [],
+                      "reason": (f"this layout prints {day_count // max(1, distinct_days)} rows per "
+                                 f"day, so at most {distinct_days} days can be confirmed, and the "
+                                 f"bar is {min_direct:.2f}*{day_count} = "
+                                 f"{min_direct * day_count:.0f}. The oracle keys its assignment by "
+                                 f"day and cannot localise this layout - not a reading failure")}
     width, height = image.size
     pitch = loc.pitch or 28.0
     # The window exists to bound the search around a chain that is roughly

@@ -34,9 +34,9 @@ offline, with every row carrying its provenance and a quality verdict.
 
 | | |
 |---|---|
-| Rows | 7,167 |
-| Usable rows (`checks_pass` + `qc_clean`) | **3,880** |
-| Values in usable rows | 46,868 |
+| Rows | 7,197 |
+| Usable rows (`checks_pass` + `qc_clean`) | **3,936** |
+| Values in usable rows | 47,544 |
 | Pages transcribed | 259 |
 | Period | 1851 to 1890-11 (one page captioned 1893, flagged) |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão, Radcliffe Observatory (Oxford) |
@@ -163,6 +163,21 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   cells where the barometer profile declares fourteen. The rows are localised
   correctly and every one of them is `flagged`. They are kept for transparency,
   like the other whole-profile sections below.
+- **A further 26 pages were read short and never re-tried, and v0.8 re-reads
+  them.** The same localiser, on pages that had simply never been through it:
+  18 produced, **441 rows against the 328 those pages had published**, and 13
+  replaced what was there. Two of them now read their month end to end with
+  nothing flagged at all — doc 5 page 327 gives 22 rows and 22 `checks_pass`
+  where it published 31 rows, 22 days and 13 usable. Five pages covered no more
+  days than before and were left alone.
+- **A layout that prints two rows per day cannot be oracle-localised, and now
+  says so.** Corumbá writes two readings a day, so a month is 62 rows but only
+  31 distinct day numbers exist, and the oracle keys its assignment by day —
+  at most 31 can ever be confirmed against a bar of 0.55 × 62 = 34. Doc 16 page
+  72 read 30 of its 31 days, which is near perfect, and was refused for it. No
+  Corumbá page needs this today so the fix is not built; what is fixed is the
+  silence, because an unreachable bar looked exactly like a page the reader
+  could not read.
 - **28 pages are still refused, and the reason is now recorded per page.** Eight
   fail because the interpolated rows overlap, seven because the days that read
   do not lie on one line, the rest because too few days read at all. The Annales
@@ -199,7 +214,7 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **3,287 of 7,167 rows are `flagged`**, including whole-profile sections
+- **3,261 of 7,197 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.

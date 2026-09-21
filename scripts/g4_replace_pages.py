@@ -19,8 +19,11 @@ that accounts for 31 of its days saw more of it than one that accounts for 9 -
 and on the pages this was built for the two criteria happened to agree, which
 is worth knowing but is not the reason.
 
-A page is replaced ONLY when the new read covers strictly more days. Ties and
-regressions keep what is already published.
+A page is replaced when the new read covers strictly more days, and on a TIE
+when it carries fewer rows per day it covers. That tiebreak is also a fact and
+not a score: a read holding 31 rows for 22 distinct days is carrying 9 rows
+that are not data rows, whatever verdicts they happen to get. Regressions keep
+what is already published.
 """
 from __future__ import annotations
 
@@ -79,12 +82,22 @@ def main() -> None:
             absent.append(k)
             continue
         od, nd = days_covered(by_old[k], cache), days_covered(rows, cache)
-        (replace if len(nd) > len(od) else keep).append((k, len(od), len(nd)))
+        if len(nd) > len(od):
+            better = True
+        elif len(nd) == len(od) and nd:
+            # Same coverage: prefer the read with less padding around it. On a
+            # layout printing one row per day, 31 rows for 22 days means 9 of
+            # them are not days.
+            better = (len(rows) / len(nd)) < (len(by_old[k]) / max(1, len(od))) - 1e-9
+        else:
+            better = False
+        (replace if better else keep).append((k, len(od), len(nd)))
 
     print(f"{len(by_new)} page(s) in the new read")
     print(f"  {len(replace)} cover more printed days and will REPLACE what is published")
     for k, o, n in replace:
-        print(f"      {k[1]}/{k[2]:<6} {k[0]:22s} {o:3d} -> {n:3d} days")
+        extra = "" if n > o else (f"  (same days, {len(by_old[k])} rows -> {len(by_new[k])})")
+        print(f"      {k[1]}/{k[2]:<6} {k[0]:22s} {o:3d} -> {n:3d} days{extra}")
     if keep:
         print(f"  {len(keep)} do not, and are left alone")
         for k, o, n in keep:
