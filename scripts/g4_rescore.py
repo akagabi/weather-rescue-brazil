@@ -282,8 +282,25 @@ def main() -> None:
         # with itself.
         alt = (_STATION_ALT.get(r.get("station")) if r.get("station") else None)
         if alt is not None:
-            for bkey in barometer_keys(p):
-                why = pressure_implausible(restored.get(bkey), alt)
+            # sorted(): `barometer_keys` is a set, and iterating it put these
+            # messages in an arbitrary order, so re-scoring the same file
+            # twice produced different bytes and a different sha256. The
+            # frozen fingerprint is supposed to mean something.
+            for bkey in sorted(barometer_keys(p)):
+                bval = restored.get(bkey)
+                # Only for a value that could pass for a barometer reading.
+                # One already outside the column's declared range is reported
+                # by `violations`, and saying it again here says it worse: an
+                # unrestored elided 15.52 came out as "-737.9 from the 755
+                # that 61 m implies", which describes the altitude rather than
+                # the actual fault - doc 8 page 357 is a thermometer table
+                # assigned the barometer profile. This check earns its place
+                # on the opposite case, a reading that looks entirely normal
+                # and still cannot belong to that station.
+                lo, hi = p.column(bkey).range or (None, None)
+                if lo is None or not isinstance(bval, (int, float)) or not (lo <= bval <= hi):
+                    continue
+                why = pressure_implausible(bval, alt)
                 if why:
                     problems = problems + [f"pressure_implausible: {bkey} {why}"]
         if id(r) in dupe_day:

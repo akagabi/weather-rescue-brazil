@@ -47,10 +47,10 @@ work becomes findable.
 
 | | |
 |---|---|
-| Rows | 7,418 |
-| Usable rows (`checks_pass` + `qc_clean`) | **3,998** |
-| Values in usable rows | 48,341 |
-| Pages transcribed | 258 |
+| Rows | 7,537 |
+| Usable rows (`checks_pass` + `qc_clean`) | **4,077** |
+| Values in usable rows | 49,514 |
+| Pages transcribed | 262 |
 | Period | 1851 to 1890-11 (one page captioned 1893, flagged) |
 | Stations | Imperial Observatório (Rio), Santa-Cruz (Rio), Corumbá, Cuyabá, Porto do Maranhão, Radcliffe Observatory (Oxford) |
 | Sources | *Revista do Observatório* (1886–1891), *Annales de l'Observatoire Impérial* (1882–1885), *Astronomical and Meteorological Observations, Radcliffe Observatory* (1851–1879) |
@@ -236,7 +236,7 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   limitation, not a pipeline failure: those volumes are not digitised in the
   accessible collection (`docs/g3-corpus-scope.md`). The series is not
   continuous across 1883–1890.
-- **3,420 of 7,418 rows are `flagged`**, including whole-profile sections
+- **3,460 of 7,537 rows are `flagged`**, including whole-profile sections
   (`rio-1883-nebulosite`, `rio-1883-vento`) where the printed layout puts two
   values in one cell and the model's column count is unreliable. These are kept
   for transparency, not for use.
@@ -267,6 +267,16 @@ in Santa-Cruz. They are in `data/verify/corrections.jsonl` and the rows carry
   been `checks_pass` because mean, max and min all misread the same elided
   leading digit, so the row agreed with itself, and it cleared the old
   tolerance by 0.4 mmHg against the wrong altitude.
+- **These volumes are now exhausted for the layouts this project can read.**
+  A sweep of every page not yet transcribed in the five profiled documents
+  found **632** candidate tables. 249 read as weather tables, 164 carried a
+  usable period, and **9** matched a profile that exists here — of which 4
+  produced. The rest are layouts with no profile: hourly matrices, annual
+  summaries, wind-frequency grids, rows running to 144 cells. The dataset is
+  not small because the work stopped; it is small because these six layouts
+  have been read out of the volumes that hold them. More rows would mean more
+  profiles, and each new one has cost days rather than the ninety minutes
+  claimed earlier in this project.
 - **No row in this file has been verified line-by-line by a human.** The frozen
   gold set — nine pages, triple-transcribed — is a separate evaluation corpus
   and is *not* part of this dataset.

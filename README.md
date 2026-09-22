@@ -17,7 +17,7 @@ data, and publishes the method so the rest can follow.
 
 ## The dataset
 
-**7,418 rows, 3,998 usable, 48,341 values, 258 pages, 1851–1890.** Six
+**7,537 rows, 4,077 usable, 49,514 values, 262 pages, 1851–1890.** Six
 stations, three publications, in Portuguese, French and English.
 
 The last of those is new and it is the only part of this dataset that can be

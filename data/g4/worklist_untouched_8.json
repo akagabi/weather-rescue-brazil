@@ -1,0 +1,84 @@
+{
+ "pages": [
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 67,
+   "period": "1883-07",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/67 1883-07 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 75,
+   "period": "1883-08",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/75 1883-08 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 91,
+   "period": "1883-10",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/91 1883-10 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 111,
+   "period": "1883-02",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/111 1883-02 rio-1883-barometre"
+  },
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 119,
+   "period": "1883-06",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/119 1883-06 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-vapeur",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 266,
+   "period": "1884-12",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/266 1884-12 rio-1883-vapeur"
+  },
+  {
+   "profile": "rio-1883-vento",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 329,
+   "period": "1885-06",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/329 1885-06 rio-1883-vento"
+  },
+  {
+   "profile": "rio-1883-barometre",
+   "archive": "docvirt",
+   "doc": "8",
+   "page": 399,
+   "period": "1885-12",
+   "station": "Imperial Observatório, Rio de Janeiro",
+   "station_source": "legenda impressa",
+   "label": "Annales 8/399 1885-12 rio-1883-barometre"
+  }
+ ]
+}
